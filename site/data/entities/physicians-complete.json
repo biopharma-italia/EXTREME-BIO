@@ -420,30 +420,7 @@
       "booking_enabled": true,
       "photo_url": null
     },
-    {
-      "id": "federica-decandia",
-      "slug": "federica-decandia",
-      "title": "Dott.ssa",
-      "name": "Federica Decandia",
-      "full_name": "Dott.ssa Federica Decandia",
-      "specialty_id": "cardiologia",
-      "job_title": "Cardiologa",
-      "role_badge": null,
-      "bio": "Cardiologa specializzata in diagnostica cardiologica.",
-      "procedures": [
-        "visita-cardiologica",
-        "ecg",
-        "ecocardiogramma"
-      ],
-      "pathways": [
-        "checkup-cardiovascolare"
-      ],
-      "miodottore_id": "federica-decandia",
-      "miodottore_url": "https://www.miodottore.it/federica-decandia/cardiologo/sassari",
-      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/federica-decandia/cardiologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"federica-decandia\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Federica Decandia - MioDottore.it</a>",
-      "booking_enabled": true,
-      "photo_url": null
-    },
+    
     {
       "id": "giovanna-costa",
       "slug": "giovanna-costa",

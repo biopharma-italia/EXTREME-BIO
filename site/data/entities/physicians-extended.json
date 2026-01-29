@@ -641,34 +641,7 @@
       "citations": 20,
       "h_index_estimated": 3
     },
-    "federica-decandia": {
-      "sintomi": [
-        "palpitazioni",
-        "pressione alta",
-        "problemi tiroide cardiaci",
-        "ipotiroidismo subclinico",
-        "colesterolo alto"
-      ],
-      "pubblicazioni": [
-        {
-          "titolo": "Serum free thyroxine levels are positively associated with arterial stiffness",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/24954304/",
-          "journal": "Journal of Clinical Endocrinology & Metabolism"
-        },
-        {
-          "titolo": "Subclinical Hypothyroidism and Lipid Metabolism",
-          "url": "https://www.researchgate.net/publication/344657467",
-          "journal": "Archives of Medical Science"
-        }
-      ],
-      "social": [],
-      "affiliazioni": [
-        "Cardiology Unit",
-        "S. Francesco Hospital, Nuoro"
-      ],
-      "citations": 85,
-      "h_index_estimated": 5
-    },
+    
     "paolo-franca": {
       "sintomi": [
         "infarto",

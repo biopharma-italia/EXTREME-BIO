@@ -16,7 +16,6 @@
     "sara-uras",
     "paolo-pischedda",
     "paolo-franca",
-    "federica-decandia",
     "giovanna-costa",
     "alessandra-musinu",
     "speranza-anedda",
@@ -423,33 +422,6 @@
     "paolo-franca": {
       "slug": "paolo-franca",
       "name": "Paolo Franca",
-      "specialty": "cardiologia",
-      "file_exists": true,
-      "validation": {
-        "checks_passed": [
-          "title_tag",
-          "meta_description",
-          "canonical_url",
-          "physician_schema",
-          "faq_schema",
-          "breadcrumb_schema",
-          "knows_about",
-          "bio_section",
-          "miodottore_widget",
-          "contact_phone"
-        ],
-        "issues": [],
-        "score": 100.0
-      },
-      "has_extended_data": true,
-      "publications_count": 2,
-      "symptoms_count": 5,
-      "issues": [],
-      "score": 100.0
-    },
-    "federica-decandia": {
-      "slug": "federica-decandia",
-      "name": "Federica Decandia",
       "specialty": "cardiologia",
       "file_exists": true,
       "validation": {

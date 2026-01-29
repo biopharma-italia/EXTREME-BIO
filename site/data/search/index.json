@@ -169,8 +169,7 @@
         "tonino-bullitta",
         "sara-uras",
         "paolo-pischedda",
-        "paolo-franca",
-        "federica-decandia"
+        "paolo-franca"
       ],
       "specialties": [
         "cardiologia"
@@ -1793,8 +1792,7 @@
     },
     "cardiologa": {
       "physicians": [
-        "sara-uras",
-        "federica-decandia"
+        "sara-uras"
       ],
       "specialties": [
         "cardiologia"
@@ -1860,40 +1858,6 @@
         "cardiologia"
       ],
       "priority": "physician:paolo-franca",
-      "procedures": [
-        "visita-cardiologica",
-        "ecg",
-        "ecocardiogramma"
-      ],
-      "pathways": [
-        "checkup-cardiovascolare"
-      ]
-    },
-    "federica decandia": {
-      "physicians": [
-        "federica-decandia"
-      ],
-      "specialties": [
-        "cardiologia"
-      ],
-      "priority": "physician:federica-decandia",
-      "procedures": [
-        "visita-cardiologica",
-        "ecg",
-        "ecocardiogramma"
-      ],
-      "pathways": [
-        "checkup-cardiovascolare"
-      ]
-    },
-    "decandia": {
-      "physicians": [
-        "federica-decandia"
-      ],
-      "specialties": [
-        "cardiologia"
-      ],
-      "priority": "physician:federica-decandia",
       "procedures": [
         "visita-cardiologica",
         "ecg",
