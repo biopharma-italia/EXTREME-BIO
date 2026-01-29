@@ -417,5 +417,17 @@
 <script src="../js/main.js"></script>
 <script src="../js/search.js"></script>
 <script src="../js/header-search.js"></script>
+<!-- Symptom Checker Script -->
+<script src="../js/symptom-checker.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof SymptomChecker !== 'undefined') {
+            SymptomChecker.init('symptom-checker-widget');
+        } else {
+            console.error('SymptomChecker not loaded');
+            document.getElementById('symptom-checker-widget').innerHTML = '<div style="text-align:center;padding:40px;background:#fef2f2;border-radius:12px;"><h3 style="color:#dc2626;">⚠️ Errore di caricamento</h3><p>Impossibile caricare il Symptom Checker. Riprova più tardi o <a href="tel:+390799561332">contattaci</a>.</p></div>';
+        }
+    });
+</script>
 </body>
 </html>
