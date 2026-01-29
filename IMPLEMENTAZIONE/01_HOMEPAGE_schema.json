@@ -1,0 +1,183 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "MedicalClinic", "MedicalBusiness", "LocalBusiness"],
+      "@id": "https://bio-clinic.it/#organization",
+      "name": "Bio-Clinic",
+      "alternateName": ["BioClinic", "BioClinic Sassari", "Bio Clinic Sassari"],
+      "legalName": "Bio Pharma S.r.l.",
+      "taxID": "02869450904",
+      "description": "Poliambulatorio medico a Sassari con 31 specialità, 67 medici specialisti e oltre 1.840 prestazioni. Centro di riferimento per Slim Care (dimagrimento con Wegovy e Mounjaro), PMA/Fertilità, Ginecologia e Cardiologia. 3.214 recensioni a 5 stelle.",
+      "url": "https://bio-clinic.it",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://bio-clinic.it/logo.png",
+        "width": 300,
+        "height": 100
+      },
+      "image": [
+        "https://bio-clinic.it/images/bio-clinic-sassari-esterno.jpg",
+        "https://bio-clinic.it/images/bio-clinic-reception.jpg",
+        "https://bio-clinic.it/images/bio-clinic-laboratorio.jpg"
+      ],
+      "telephone": "+39 079 956 1332",
+      "email": "gestione@bio-clinic.it",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Renzo Mossa, 23",
+        "addressLocality": "Sassari",
+        "addressRegion": "SS",
+        "postalCode": "07100",
+        "addressCountry": "IT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.7310,
+        "longitude": 8.5553
+      },
+      "hasMap": "https://www.google.com/maps?cid=XXXXXXX",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "07:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:00",
+          "closes": "14:00"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": 3214,
+        "reviewCount": 3214
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Paziente verificato MioDottore"
+          },
+          "reviewBody": "Struttura eccellente, personale professionale e disponibile."
+        }
+      ],
+      "sameAs": [
+        "https://www.miodottore.it/strutture/bioclinic",
+        "https://www.facebook.com/bioclinicss",
+        "https://www.instagram.com/bioclinicss/"
+      ],
+      "medicalSpecialty": [
+        "Gynecology",
+        "Cardiology", 
+        "Endocrinology",
+        "Dermatology",
+        "Ophthalmology",
+        "Neurology",
+        "Orthopedics",
+        "Urology",
+        "Allergology",
+        "Pediatrics"
+      ],
+      "availableService": [
+        {
+          "@type": "MedicalTherapy",
+          "name": "SLIM CARE - Percorso Dimagrimento",
+          "url": "https://bio-clinic.it/percorsi/slim-care/"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "PMA - Procreazione Medicalmente Assistita",
+          "url": "https://bio-clinic.it/percorsi/fertilita-pma/"
+        },
+        {
+          "@type": "MedicalTest",
+          "name": "Laboratorio Analisi",
+          "url": "https://bio-clinic.it/specialita/laboratorio/"
+        }
+      ],
+      "numberOfEmployees": {
+        "@type": "QuantitativeValue",
+        "value": 67
+      },
+      "foundingDate": "2010",
+      "founder": {
+        "@type": "Person",
+        "name": "Prof. Salvatore Dessole"
+      },
+      "slogan": "Il nostro lavoro per il tuo benessere",
+      "knowsAbout": [
+        "Dimagrimento medico",
+        "Wegovy",
+        "Mounjaro",
+        "Fertilità",
+        "PMA",
+        "Ginecologia",
+        "Cardiologia",
+        "Analisi del sangue"
+      ],
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Sassari"
+        },
+        {
+          "@type": "State", 
+          "name": "Sardegna"
+        }
+      ],
+      "priceRange": "€€",
+      "paymentAccepted": ["Cash", "Credit Card", "Debit Card"],
+      "currenciesAccepted": "EUR",
+      "isAccessibleForFree": false,
+      "publicAccess": true
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://bio-clinic.it/#website",
+      "url": "https://bio-clinic.it",
+      "name": "Bio-Clinic Sassari",
+      "description": "Sito ufficiale del poliambulatorio Bio-Clinic di Sassari",
+      "publisher": {
+        "@id": "https://bio-clinic.it/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://bio-clinic.it/ricerca/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "inLanguage": "it-IT"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://bio-clinic.it/#webpage",
+      "url": "https://bio-clinic.it",
+      "name": "Bio-Clinic Sassari | Poliambulatorio Medico | Slim Care, Ginecologia, Cardiologia",
+      "description": "Bio-Clinic è il poliambulatorio di riferimento a Sassari con 31 specialità, 67 medici e 3.214 recensioni a 5 stelle. Centro Slim Care con Wegovy e Mounjaro. Prenota: 079 956 1332.",
+      "isPartOf": {
+        "@id": "https://bio-clinic.it/#website"
+      },
+      "about": {
+        "@id": "https://bio-clinic.it/#organization"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://bio-clinic.it/images/bio-clinic-hero.jpg"
+      },
+      "datePublished": "2020-01-01",
+      "dateModified": "2026-01-26",
+      "inLanguage": "it-IT"
+    }
+  ]
+}

@@ -148,6 +148,95 @@ const BioSearchPro = (function() {
         bookingType: 'whatsapp',
         price: null,
         featured: true
+      },
+      // NUOVI PERCORSI
+      {
+        id: 'checkup-cardiovascolare',
+        name: 'Check-Up Cardiovascolare',
+        description: 'Percorso completo per la salute del cuore: ECG, ecocardiogramma, esami',
+        icon: '❤️',
+        tags: ['cuore', 'cardiologico', 'cardiovascolare', 'ecg', 'ecocardiogramma', 'prevenzione'],
+        url: '/pages/checkup-cardiovascolare.html',
+        bookingType: 'miodottore',
+        price: 150,
+        featured: false
+      },
+      {
+        id: 'checkup-tiroide',
+        name: 'Check-Up Tiroide',
+        description: 'Valutazione completa funzionalità tiroidea: TSH, FT3, FT4, anticorpi',
+        icon: '🦋',
+        tags: ['tiroide', 'tsh', 'ipotiroidismo', 'ipertiroidismo', 'eutirox', 'tiroidite'],
+        url: '/pages/checkup-tiroide.html',
+        bookingType: 'direct',
+        price: 29,
+        featured: false
+      },
+      {
+        id: 'prevenzione',
+        name: 'Prevenzione Personalizzata',
+        description: 'Scopri il check-up giusto per la tua età e le tue esigenze',
+        icon: '🩺',
+        tags: ['prevenzione', 'check-up', 'screening', 'controllo', 'esami'],
+        url: '/pages/prevenzione.html',
+        bookingType: 'direct',
+        price: null,
+        featured: false
+      },
+      {
+        id: 'symptom-checker',
+        name: 'Symptom Checker',
+        description: 'Non sai da dove iniziare? Descrivi i sintomi e trova il percorso giusto',
+        icon: '🏥',
+        tags: ['sintomi', 'non so', 'aiuto', 'cosa fare', 'quale esame', 'quale specialista'],
+        url: '/pages/symptom-checker.html',
+        bookingType: 'direct',
+        price: null,
+        featured: true
+      },
+      {
+        id: 'checkup-donna-under40',
+        name: 'Check-Up Donna Under 40',
+        description: 'Prevenzione femminile completa: anemia, tiroide, vitamina D',
+        icon: '👩',
+        tags: ['donna', 'femminile', 'under 40', 'anemia', 'ferro', 'prevenzione donna'],
+        url: '/laboratorio/index.html#pack-check-up-donna-under-40',
+        bookingType: 'direct',
+        price: 89,
+        featured: false
+      },
+      {
+        id: 'checkup-donna-over40',
+        name: 'Check-Up Donna Over 40',
+        description: 'Prevenzione per menopausa: cuore, ossa, metabolismo',
+        icon: '👩',
+        tags: ['donna', 'over 40', 'menopausa', 'osteoporosi', 'cardiovascolare'],
+        url: '/laboratorio/index.html#pack-check-up-donna-over-40',
+        bookingType: 'direct',
+        price: 129,
+        featured: false
+      },
+      {
+        id: 'checkup-uomo-over40',
+        name: 'Check-Up Uomo Over 40',
+        description: 'Prevenzione maschile: prostata, cuore, diabete',
+        icon: '👨',
+        tags: ['uomo', 'over 40', 'prostata', 'psa', 'cardiovascolare'],
+        url: '/laboratorio/index.html#pack-check-up-uomo-over-40',
+        bookingType: 'direct',
+        price: 119,
+        featured: false
+      },
+      {
+        id: 'mappatura-nei',
+        name: 'Mappatura Nei',
+        description: 'Screening dermatologico con dermatoscopia per prevenzione melanoma',
+        icon: '🔬',
+        tags: ['nei', 'nevi', 'melanoma', 'pelle', 'dermatoscopia', 'mappatura'],
+        url: '/pages/dermatologia.html',
+        bookingType: 'miodottore',
+        price: null,
+        featured: false
       }
     ];
 

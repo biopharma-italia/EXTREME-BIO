@@ -1,0 +1,211 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalTherapy",
+      "@id": "https://bio-clinic.it/percorsi/fertilita-pma/#therapy",
+      "name": "Percorso PMA e Fertilità",
+      "alternateName": [
+        "Procreazione Medicalmente Assistita Sassari",
+        "Centro Fertilità Sassari",
+        "Trattamento Infertilità Sardegna"
+      ],
+      "description": "Percorso diagnostico e terapeutico completo per coppie con difficoltà di concepimento. Include valutazione di entrambi i partner, diagnostica avanzata (Endobiome, Endorecept, TUNEL test), monitoraggi follicolari 7/7, supporto ai trattamenti PMA e diagnostica prenatale post-concepimento.",
+      "url": "https://bio-clinic.it/percorsi/fertilita-pma/",
+      
+      "medicalSpecialty": [
+        {
+          "@type": "MedicalSpecialty",
+          "name": "Reproductive Endocrinology"
+        },
+        {
+          "@type": "MedicalSpecialty",
+          "name": "Gynecology"
+        }
+      ],
+      
+      "indication": [
+        {
+          "@type": "MedicalIndication",
+          "name": "Infertilità (>12 mesi di rapporti non protetti senza concepimento)"
+        },
+        {
+          "@type": "MedicalIndication",
+          "name": "Età materna avanzata (>35 anni)"
+        },
+        {
+          "@type": "MedicalIndication",
+          "name": "Sindrome dell'ovaio policistico (PCOS)"
+        },
+        {
+          "@type": "MedicalIndication",
+          "name": "Endometriosi"
+        },
+        {
+          "@type": "MedicalIndication",
+          "name": "Aborti ricorrenti"
+        },
+        {
+          "@type": "MedicalIndication",
+          "name": "Fattore maschile (alterazioni spermiogramma)"
+        }
+      ],
+      
+      "howPerformed": "FASE 1 - Valutazione Coppia: consulenza sterilità, visita ginecologica, ecografia, pack esami fertilità femminile (FSH, LH, AMH, Estradiolo), spermiogramma, visita andrologica, pack esami maschili. FASE 2 - Diagnostica Avanzata: isteroscopia, sonoisterografia, Endobiome (microbioma endometriale), Endorecept (recettività endometriale), spermiocoltura, TUNEL test (frammentazione DNA). FASE 3 - Monitoraggio Follicolare: ecografie seriali giorno 8-14 del ciclo. FASE 4 - Diagnostica Prenatale: Test combinato, PrenatalAdvance (NIPT), ecografie ostetriche.",
+      
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://bio-clinic.it/#organization"
+      }
+    },
+    {
+      "@type": "MedicalClinic",
+      "@id": "https://bio-clinic.it/percorsi/fertilita-pma/#clinic",
+      "name": "Bio-Clinic - Centro Fertilità e PMA",
+      "description": "Centro di riferimento per fertilità e PMA a Sassari. Monitoraggi follicolari aperti 7 giorni su 7, diagnostica avanzata, team multidisciplinare ginecologi-biologi-psicologi.",
+      "medicalSpecialty": "Reproductive Endocrinology",
+      "availableService": [
+        {
+          "@type": "MedicalProcedure",
+          "name": "Consulenza Sterilità Coppia"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Monitoraggio Follicolare"
+        },
+        {
+          "@type": "MedicalTest",
+          "name": "Spermiogramma"
+        },
+        {
+          "@type": "MedicalTest",
+          "name": "Endobiome (Microbioma Endometriale)"
+        },
+        {
+          "@type": "MedicalTest",
+          "name": "Endorecept (Test Recettività Endometriale)"
+        },
+        {
+          "@type": "MedicalTest",
+          "name": "TUNEL Test (Frammentazione DNA Spermatico)"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Isteroscopia Diagnostica"
+        },
+        {
+          "@type": "MedicalTest",
+          "name": "PrenatalAdvance (NIPT)"
+        }
+      ],
+      "employee": [
+        {
+          "@type": "Physician",
+          "name": "Prof. Salvatore Dessole",
+          "jobTitle": "Ginecologo - Direttore Sanitario"
+        },
+        {
+          "@type": "Physician",
+          "name": "Dott. Francesco Dessole",
+          "jobTitle": "Ginecologo"
+        },
+        {
+          "@type": "Physician",
+          "name": "Dott. Marco Petrillo",
+          "jobTitle": "Ginecologo"
+        },
+        {
+          "@type": "Person",
+          "name": "Dott.ssa Angelica Fois",
+          "jobTitle": "Ostetrica"
+        },
+        {
+          "@type": "Person",
+          "name": "Camilla Ruzzoli",
+          "jobTitle": "Ostetrica"
+        },
+        {
+          "@type": "Person",
+          "name": "Dott.ssa Cinzia Guarino",
+          "jobTitle": "Biologa - Direttrice Laboratorio"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Cosa include il percorso fertilità di Bio-Clinic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Il percorso include: consulenza sterilità per la coppia, valutazione femminile (visita, ecografia, esami ormonali AMH/FSH/LH), valutazione maschile (spermiogramma, visita andrologica), diagnostica avanzata se necessaria (isteroscopia, Endobiome, Endorecept, TUNEL test), monitoraggi follicolari e supporto psicologico."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "I monitoraggi follicolari sono disponibili nel weekend?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì, Bio-Clinic offre monitoraggi follicolari aperti 7 giorni su 7, compresi sabato e domenica, per garantire il timing ottimale del trattamento PMA."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cos'è il test Endobiome?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'Endobiome è un test che analizza il microbioma endometriale (i batteri presenti nell'utero). Un microbioma alterato può ridurre le probabilità di impianto dell'embrione. Il test permette di identificare e correggere eventuali squilibri prima del trasferimento embrionario."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cos'è il test Endorecept?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'Endorecept è un test di recettività endometriale che determina la 'finestra di impianto', cioè il momento ottimale in cui l'endometrio è pronto ad accogliere l'embrione. Questo permette di personalizzare il timing del trasferimento embrionario."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quali test prenatali offre Bio-Clinic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bio-Clinic offre una gamma completa di test prenatali: Test Combinato (Bitest), PrenatalAdvance in tutte le varianti (3, 5, Karyo, Genetics, Plus, Omnia), Fetal DNA, ecografie ostetriche di primo e secondo livello. I referti sono firmati da ginecologi specializzati."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bio-clinic.it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Percorsi",
+          "item": "https://bio-clinic.it/percorsi/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Fertilità e PMA",
+          "item": "https://bio-clinic.it/percorsi/fertilita-pma/"
+        }
+      ]
+    },
+    {
+      "@type": "MedicalWebPage",
+      "url": "https://bio-clinic.it/percorsi/fertilita-pma/",
+      "name": "PMA e Fertilità Sassari | Monitoraggi 7/7 | Endobiome, NIPT | Bio-Clinic",
+      "description": "Centro Fertilità Bio-Clinic Sassari: percorso PMA completo, monitoraggi follicolari 7 giorni su 7, test avanzati Endobiome e Endorecept, diagnostica prenatale. Team ginecologi e biologi. Prenota: 079 956 1332.",
+      "lastReviewed": "2026-01-26",
+      "specialty": ["Reproductive Endocrinology", "Gynecology"]
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalSpecialty",
+      "@id": "https://bio-clinic.it/specialita/cardiologia/#specialty",
+      "name": "Cardiologia",
+      "alternateName": ["Cardiologia Sassari", "Cardiologo Sassari"],
+      "description": "Reparto di Cardiologia di Bio-Clinic Sassari con 5 cardiologi specializzati. Servizi: visita cardiologica, ECG, ecocardiogramma, Holter ECG e pressorio, test da sforzo, ecocolordoppler TSA. Check-up cardiaci scalabili dal base all'avanzato.",
+      "url": "https://bio-clinic.it/specialita/cardiologia/"
+    },
+    {
+      "@type": "MedicalClinic",
+      "@id": "https://bio-clinic.it/specialita/cardiologia/#clinic",
+      "name": "Bio-Clinic - Reparto Cardiologia",
+      "description": "Centro cardiologico di riferimento a Sassari. 39 prestazioni, 5 cardiologi, check-up scalabili, collegamento con chirurgia vascolare.",
+      "url": "https://bio-clinic.it/specialita/cardiologia/",
+      "parentOrganization": {
+        "@id": "https://bio-clinic.it/#organization"
+      },
+      "medicalSpecialty": "Cardiology",
+      "availableService": [
+        {
+          "@type": "MedicalProcedure",
+          "name": "Visita Cardiologica",
+          "procedureType": "http://schema.org/DiagnosticProcedure"
+        },
+        {
+          "@type": "MedicalTest",
+          "name": "Elettrocardiogramma (ECG)",
+          "usedToDiagnose": "Aritmie, ischemia miocardica"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Ecocardiogramma",
+          "procedureType": "http://schema.org/DiagnosticProcedure",
+          "bodyLocation": "Cuore"
+        },
+        {
+          "@type": "MedicalTest",
+          "name": "Holter ECG 24h",
+          "usedToDiagnose": "Aritmie parossistiche"
+        },
+        {
+          "@type": "MedicalTest",
+          "name": "Holter Pressorio (ABPM)",
+          "usedToDiagnose": "Ipertensione"
+        },
+        {
+          "@type": "MedicalTest",
+          "name": "Test da Sforzo (ECG sotto sforzo)",
+          "usedToDiagnose": "Cardiopatia ischemica"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Ecocolordoppler TSA",
+          "bodyLocation": "Carotidi",
+          "procedureType": "http://schema.org/DiagnosticProcedure"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Check-Up Cardiaco Base",
+          "description": "ECG + Visita Cardiologica"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Check-Up Cardiaco Avanzato",
+          "description": "ECG + Visita + Ecocardiogramma + TSA"
+        }
+      ],
+      "employee": [
+        {
+          "@type": "Physician",
+          "name": "Dott. Tonino Bullitta",
+          "jobTitle": "Cardiologo"
+        },
+        {
+          "@type": "Physician",
+          "name": "Dott.ssa Sara Uras",
+          "jobTitle": "Cardiologa"
+        },
+        {
+          "@type": "Physician",
+          "name": "Dott.ssa Giuliana Guagnozzi",
+          "jobTitle": "Cardiologa"
+        },
+        {
+          "@type": "Physician",
+          "name": "Dott. Paolo Pischedda",
+          "jobTitle": "Cardiologo"
+        },
+        {
+          "@type": "Physician",
+          "name": "Dott. Paolo Franca",
+          "jobTitle": "Cardiologo"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "ratingCount": 420,
+        "bestRating": "5"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quali check-up cardiaci offre Bio-Clinic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bio-Clinic offre 4 livelli di check-up cardiaco: 1) Base (ECG + Visita), 2) Base+ (+ Ecocardiogramma), 3) Avanzato (+ Ecocolordoppler TSA carotidi), 4) Avanzato+ (+ Test da sforzo). Ogni livello è pensato per diversi profili di rischio."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanti cardiologi ci sono a Bio-Clinic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bio-Clinic dispone di 5 cardiologi: Dott. Tonino Bullitta, Dott.ssa Sara Uras, Dott.ssa Giuliana Guagnozzi, Dott. Paolo Pischedda e Dott. Paolo Franca."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come si prenota un ECG a Sassari?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Per prenotare un ECG o una visita cardiologica a Bio-Clinic Sassari: telefono 079 956 1332, online su MioDottore, o di persona in Via Renzo Mossa 23. Orari: Lun-Ven 07:00-21:00, Sab 08:00-14:00."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Bio-Clinic fa l'Holter pressorio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì, Bio-Clinic esegue l'Holter pressorio (ABPM - monitoraggio pressione 24 ore) e l'Holter ECG (24h e 48h) per la diagnosi di ipertensione e aritmie."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bio-clinic.it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Specialità",
+          "item": "https://bio-clinic.it/specialita/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Cardiologia",
+          "item": "https://bio-clinic.it/specialita/cardiologia/"
+        }
+      ]
+    },
+    {
+      "@type": "MedicalWebPage",
+      "url": "https://bio-clinic.it/specialita/cardiologia/",
+      "name": "Cardiologia Sassari | 5 Cardiologi | ECG, Ecocardiogramma, Holter | Bio-Clinic",
+      "description": "Reparto Cardiologia Bio-Clinic Sassari: 5 cardiologi, 39 prestazioni. ECG, ecocardiogramma, Holter ECG e pressorio, test da sforzo, check-up cardiaci. Prenota: 079 956 1332.",
+      "lastReviewed": "2026-01-26",
+      "specialty": "Cardiology"
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalSpecialty",
+      "@id": "https://bio-clinic.it/specialita/ginecologia/#specialty",
+      "name": "Ginecologia e Ostetricia",
+      "alternateName": ["Ginecologia", "Ostetricia", "Salute della Donna"],
+      "description": "Reparto di Ginecologia e Ostetricia di Bio-Clinic Sassari con 6 ginecologi specializzati, tra cui la famiglia Dessole con tradizione medica pluridecennale. Servizi: PMA, fertilità, diagnostica prenatale, ecografie 3D/4D, trattamenti rigenerativi, screening oncologici.",
+      "url": "https://bio-clinic.it/specialita/ginecologia/",
+      "relevantSpecialty": [
+        "Obstetrics and Gynecology",
+        "Reproductive Endocrinology"
+      ]
+    },
+    {
+      "@type": "MedicalClinic",
+      "@id": "https://bio-clinic.it/specialita/ginecologia/#clinic",
+      "name": "Bio-Clinic - Reparto Ginecologia",
+      "description": "Centro di riferimento per la salute della donna a Sassari. 94 prestazioni ginecologiche, 6 specialisti, PMA, diagnostica prenatale avanzata.",
+      "url": "https://bio-clinic.it/specialita/ginecologia/",
+      "parentOrganization": {
+        "@id": "https://bio-clinic.it/#organization"
+      },
+      "medicalSpecialty": "Gynecology",
+      "availableService": [
+        {
+          "@type": "MedicalProcedure",
+          "name": "Visita Ginecologica",
+          "procedureType": "http://schema.org/DiagnosticProcedure"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Ecografia Ginecologica",
+          "procedureType": "http://schema.org/DiagnosticProcedure"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Ecografia Ostetrica 3D/4D",
+          "procedureType": "http://schema.org/DiagnosticProcedure"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Monitoraggio Follicolare",
+          "procedureType": "http://schema.org/DiagnosticProcedure"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Colposcopia",
+          "procedureType": "http://schema.org/DiagnosticProcedure"
+        },
+        {
+          "@type": "MedicalTest",
+          "name": "Pap Test",
+          "usedToDiagnose": "Cervical Cancer Screening"
+        },
+        {
+          "@type": "MedicalTest",
+          "name": "HPV Test",
+          "usedToDiagnose": "Human Papillomavirus"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Isteroscopia Diagnostica"
+        },
+        {
+          "@type": "MedicalTest",
+          "name": "PrenatalAdvance (NIPT)",
+          "usedToDiagnose": "Anomalie cromosomiche fetali"
+        },
+        {
+          "@type": "MedicalTest",
+          "name": "Test Combinato (Bitest)",
+          "usedToDiagnose": "Screening primo trimestre"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Caress Flow - Trattamento Rigenerativo"
+        }
+      ],
+      "employee": [
+        {
+          "@type": "Physician",
+          "@id": "https://bio-clinic.it/equipe/prof-salvatore-dessole/#physician",
+          "name": "Prof. Salvatore Dessole",
+          "jobTitle": "Direttore Sanitario - Ginecologo Senior",
+          "description": "Professore Emerito, fondatore di Bio-Clinic, oltre 40 anni di esperienza in ginecologia e ostetricia."
+        },
+        {
+          "@type": "Physician",
+          "@id": "https://bio-clinic.it/equipe/dott-francesco-dessole/#physician",
+          "name": "Dott. Francesco Dessole",
+          "jobTitle": "Specialista in Ginecologia",
+          "description": "Ginecologo specializzato in PCOS, menopausa e percorso Slim Care Donna.",
+          "knowsAbout": ["PCOS", "Menopausa", "Slim Care Donna", "Infertilità"]
+        },
+        {
+          "@type": "Physician",
+          "name": "Dott.ssa Margherita Dessole",
+          "jobTitle": "Specialista in Ginecologia"
+        },
+        {
+          "@type": "Physician",
+          "name": "Dott.ssa Maddalena Pola",
+          "jobTitle": "Specialista in Ginecologia"
+        },
+        {
+          "@type": "Physician",
+          "name": "Dott. Marco Petrillo",
+          "jobTitle": "Specialista in Ginecologia"
+        },
+        {
+          "@type": "Physician",
+          "name": "Dott.ssa Antonella Pruneddu",
+          "jobTitle": "Specialista in Ginecologia"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "ratingCount": 850,
+        "bestRating": "5"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quanti ginecologi ci sono a Bio-Clinic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bio-Clinic dispone di 6 ginecologi specializzati, tra cui il Prof. Salvatore Dessole (Direttore Sanitario), il Dott. Francesco Dessole, la Dott.ssa Margherita Dessole, la Dott.ssa Maddalena Pola, il Dott. Marco Petrillo e la Dott.ssa Antonella Pruneddu."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quali esami ginecologici si possono fare a Bio-Clinic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bio-Clinic offre 94 prestazioni ginecologiche tra cui: visita ginecologica, ecografia transvaginale 3D/4D, Pap test, HPV test, colposcopia, isteroscopia, monitoraggio follicolare per PMA, diagnostica prenatale (PrenatalAdvance, Bitest, Fetal DNA), trattamenti rigenerativi (Caress Flow, radiofrequenza, laser)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Bio-Clinic fa PMA e trattamenti per la fertilità?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì, Bio-Clinic offre un percorso completo per la fertilità: consulenza sterilità per coppia, monitoraggi follicolari (aperti 7 giorni su 7), test avanzati (Endobiome, Endorecept), spermiogramma, e supporto ai trattamenti PMA. Il team include 6 ginecologi e biologi specializzati."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto costa una visita ginecologica a Bio-Clinic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Per informazioni sui costi delle visite ginecologiche e degli esami, contattare Bio-Clinic al numero 079 956 1332 o prenotare online su MioDottore. Sono disponibili anche pacchetti check-up donna con tariffe dedicate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Dove si trova Bio-Clinic per visite ginecologiche a Sassari?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bio-Clinic si trova in Via Renzo Mossa 23, Sassari. Orari: Lun-Ven 07:00-21:00, Sab 08:00-14:00. Telefono: 079 956 1332. Parcheggio disponibile."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bio-clinic.it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Specialità",
+          "item": "https://bio-clinic.it/specialita/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Ginecologia",
+          "item": "https://bio-clinic.it/specialita/ginecologia/"
+        }
+      ]
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://bio-clinic.it/specialita/ginecologia/#webpage",
+      "url": "https://bio-clinic.it/specialita/ginecologia/",
+      "name": "Ginecologia Sassari | 6 Specialisti | PMA, Ecografie 3D, Prenatale | Bio-Clinic",
+      "description": "Reparto di Ginecologia Bio-Clinic Sassari: 6 ginecologi specializzati, 94 prestazioni. PMA, monitoraggi fertilità, ecografie 3D/4D, diagnostica prenatale, trattamenti rigenerativi. Prenota: 079 956 1332.",
+      "lastReviewed": "2026-01-26",
+      "reviewedBy": {
+        "@type": "Physician",
+        "name": "Prof. Salvatore Dessole"
+      },
+      "specialty": "Gynecology"
+    }
+  ]
+}

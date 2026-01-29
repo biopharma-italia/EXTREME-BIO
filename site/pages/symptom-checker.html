@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom Checker | Trova il Percorso Giusto | Bio-Clinic Sassari</title>
+    <meta name="description" content="Non sai da dove iniziare? Descrivi i tuoi sintomi e ricevi suggerimenti personalizzati su esami, specialisti e percorsi clinici. Servizio gratuito Bio-Clinic.">
+    <meta name="keywords" content="symptom checker, sintomi, trova specialista, esami consigliati, sassari, bio-clinic">
+    <link rel="canonical" href="https://bio-clinic.it/pages/symptom-checker.html">
+    
+    <meta property="og:title" content="Symptom Checker | Bio-Clinic Sassari">
+    <meta property="og:description" content="Descrivi i tuoi sintomi e ricevi suggerimenti personalizzati su esami e specialisti.">
+    <meta property="og:url" content="https://bio-clinic.it/pages/symptom-checker.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Bio-Clinic Sassari">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "MedicalClinic",
+                "name": "Bio-Clinic Sassari",
+                "url": "https://bio-clinic.it",
+                "telephone": "+39 079 956 1332"
+            },
+            {
+                "@type": "WebApplication",
+                "name": "Bio-Clinic Symptom Checker",
+                "description": "Strumento interattivo per identificare esami e specialisti in base ai sintomi",
+                "url": "https://bio-clinic.it/pages/symptom-checker.html",
+                "applicationCategory": "HealthApplication",
+                "operatingSystem": "Web Browser"
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bio-clinic.it/"},
+                    {"@type": "ListItem", "position": 2, "name": "Symptom Checker", "item": "https://bio-clinic.it/pages/symptom-checker.html"}
+                ]
+            }
+        ]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header-spacing-fix.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body{padding-top:100px!important}
+        .header{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:1000!important}
+        .trust-bar{margin-top:15px!important}
+        
+        .page-hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .page-hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .checker-container {
+            padding: 40px 0 80px;
+            min-height: 60vh;
+        }
+        
+        .how-it-works {
+            padding: 40px 0;
+            background: #f8f9fa;
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .step-item {
+            text-align: center;
+        }
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: #00a651;
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .step-item h4 {
+            margin-bottom: 8px;
+            color: #1a1a2e;
+        }
+        .step-item p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .disclaimer-banner {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px auto;
+            max-width: 800px;
+        }
+        .disclaimer-banner h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        .disclaimer-banner p {
+            color: #664d03;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .section-title h2 {
+            font-size: 1.8rem;
+            color: #1a1a2e;
+            margin-bottom: 10px;
+        }
+        .section-title p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-main">
+            <div class="container">
+                <div class="header-content">
+                    <a href="../index.html" class="logo">
+                        <img src="../images/logo.png" alt="Bio-Clinic Logo" width="180" height="60">
+                    </a>
+                    <nav class="main-nav">
+                        <ul>
+                            <li><a href="slim-care.html">Slim Care</a></li>
+                            <li><a href="ginecologia.html">Ginecologia</a></li>
+                            <li><a href="specialita.html">Specialità</a></li>
+                            <li><a href="../laboratorio/index.html">Laboratorio</a></li>
+                            <li><a href="../equipe/index.html">Équipe</a></li>
+                            <li><a href="contatti.html">Contatti</a></li>
+                        </ul>
+                    </nav>
+                    <div class="header-cta">
+                        <a href="tel:+390799561332" class="btn btn-outline">📞 079 956 1332</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="page-hero">
+            <div class="container">
+                <h1>🏥 Symptom Checker</h1>
+                <p>Seleziona i tuoi sintomi e ricevi suggerimenti personalizzati su esami, specialisti e percorsi clinici</p>
+            </div>
+        </section>
+        
+        <!-- How it works -->
+        <section class="how-it-works">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Come Funziona</h2>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <h4>Seleziona</h4>
+                        <p>Scegli il sintomo principale tra le categorie disponibili</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <h4>Rispondi</h4>
+                        <p>Rispondi a poche domande per affinare i suggerimenti</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <h4>Scopri</h4>
+                        <p>Ricevi esami, specialisti e percorsi consigliati</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <h4>Prenota</h4>
+                        <p>Prenota direttamente o chiama per assistenza</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Symptom Checker Widget -->
+        <section class="checker-container">
+            <div class="container">
+                <div id="symptom-checker-widget"></div>
+                
+                <div class="disclaimer-banner">
+                    <h4>⚠️ Importante</h4>
+                    <p>Questo strumento fornisce suggerimenti generali basati sui sintomi riportati e <strong>non sostituisce una diagnosi medica</strong>. 
+                    In caso di sintomi gravi o emergenze, chiama immediatamente il <strong>118</strong> o recati al Pronto Soccorso.
+                    Per qualsiasi dubbio, consulta sempre un medico.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background: #1a1a2e; color: white; padding: 40px 0;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+                <div>
+                    <h4 style="margin-bottom: 15px;">Bio-Clinic Sassari</h4>
+                    <p style="color: #aaa; font-size: 0.9rem;">Poliambulatorio medico di riferimento con 31 specialità e oltre 1.800 prestazioni.</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 15px;">Contatti</h4>
+                    <p style="color: #aaa; font-size: 0.9rem;">📍 Via Renzo Mossa 23, Sassari</p>
+                    <p style="color: #aaa; font-size: 0.9rem;">📞 079 956 1332</p>
+                    <p style="color: #aaa; font-size: 0.9rem;">✉️ gestione@bio-clinic.it</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 15px;">Emergenze</h4>
+                    <p style="color: #aaa; font-size: 0.9rem;">🚨 Pronto Soccorso: 118</p>
+                    <p style="color: #aaa; font-size: 0.9rem;">📞 Guardia Medica: 800 456 800</p>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #333; margin-top: 30px; padding-top: 20px; text-align: center; color: #aaa; font-size: 0.85rem;">
+                <p>© 2024 Bio-Clinic Sassari - Bio Pharma S.r.l. | P.IVA 02869450904</p>
+                <p style="margin-top: 10px;"><a href="privacy.html" style="color: #aaa;">Privacy Policy</a> | <a href="cookie.html" style="color: #aaa;">Cookie Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Symptom Checker Script -->
+    <script src="../js/symptom-checker.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof SymptomChecker !== 'undefined') {
+                SymptomChecker.init('symptom-checker-widget');
+            }
+        });
+    </script>
+</body>
+</html>

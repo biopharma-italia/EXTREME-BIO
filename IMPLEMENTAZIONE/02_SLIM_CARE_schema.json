@@ -1,0 +1,247 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["MedicalTherapy", "MedicalProcedure", "Product"],
+      "@id": "https://bio-clinic.it/percorsi/slim-care/#therapy",
+      "name": "SLIM CARE - Percorso Medico Dimagrimento",
+      "alternateName": [
+        "Slim Care Bio-Clinic",
+        "Percorso Obesità Sassari",
+        "Dimagrimento con Wegovy Sassari",
+        "Dimagrimento con Mounjaro Sardegna"
+      ],
+      "description": "Prestazione sanitaria complessa di 3 mesi per perdita peso con farmaci Wegovy (semaglutide) o Mounjaro (tirzepatide). Include: fornitura farmaco, prima somministrazione assistita, 3 scansioni VisBody 3D, 2 analisi sangue complete, visite specialistiche, visita nutrizionale, certificato medico sportivo. Perdita media: 12-18 kg.",
+      "url": "https://bio-clinic.it/percorsi/slim-care/",
+      "image": [
+        "https://bio-clinic.it/images/slim-care-hero.jpg",
+        "https://bio-clinic.it/images/visbody-scanner.jpg",
+        "https://bio-clinic.it/images/wegovy-mounjaro.jpg"
+      ],
+      
+      "medicalSpecialty": [
+        {
+          "@type": "MedicalSpecialty",
+          "name": "Endocrinologia"
+        },
+        {
+          "@type": "MedicalSpecialty", 
+          "name": "Nutrizione Clinica"
+        },
+        {
+          "@type": "MedicalSpecialty",
+          "name": "Medicina dello Sport"
+        }
+      ],
+      
+      "indication": [
+        {
+          "@type": "MedicalIndication",
+          "name": "Obesità (BMI ≥ 30)"
+        },
+        {
+          "@type": "MedicalIndication",
+          "name": "Sovrappeso con comorbidità (BMI ≥ 27 con diabete, ipertensione o dislipidemia)"
+        }
+      ],
+      
+      "contraindication": [
+        {
+          "@type": "MedicalContraindication",
+          "name": "Gravidanza"
+        },
+        {
+          "@type": "MedicalContraindication",
+          "name": "Allattamento"
+        },
+        {
+          "@type": "MedicalContraindication",
+          "name": "Carcinoma midollare della tiroide (storia personale o familiare)"
+        },
+        {
+          "@type": "MedicalContraindication",
+          "name": "Sindrome MEN 2"
+        }
+      ],
+      
+      "drug": [
+        {
+          "@type": "Drug",
+          "@id": "https://bio-clinic.it/percorsi/slim-care/wegovy/#drug",
+          "name": "Wegovy",
+          "activeIngredient": "Semaglutide",
+          "drugClass": "Agonista del recettore GLP-1",
+          "administrationRoute": "Iniezione sottocutanea",
+          "dosageForm": "Penna preriempita",
+          "availableStrength": [
+            {"@type": "DrugStrength", "strengthValue": "0.25", "strengthUnit": "mg"},
+            {"@type": "DrugStrength", "strengthValue": "0.5", "strengthUnit": "mg"},
+            {"@type": "DrugStrength", "strengthValue": "1", "strengthUnit": "mg"},
+            {"@type": "DrugStrength", "strengthValue": "1.7", "strengthUnit": "mg"},
+            {"@type": "DrugStrength", "strengthValue": "2.4", "strengthUnit": "mg"}
+          ],
+          "mechanismOfAction": "Riduce l'appetito agendo sui centri della sazietà nel cervello",
+          "legalStatus": "Approvato AIFA, EMA, FDA",
+          "manufacturer": {
+            "@type": "Organization",
+            "name": "Novo Nordisk"
+          }
+        },
+        {
+          "@type": "Drug",
+          "@id": "https://bio-clinic.it/percorsi/slim-care/mounjaro/#drug",
+          "name": "Mounjaro",
+          "activeIngredient": "Tirzepatide",
+          "drugClass": "Agonista duale GIP/GLP-1",
+          "administrationRoute": "Iniezione sottocutanea",
+          "dosageForm": "Penna preriempita",
+          "availableStrength": [
+            {"@type": "DrugStrength", "strengthValue": "2.5", "strengthUnit": "mg"},
+            {"@type": "DrugStrength", "strengthValue": "5", "strengthUnit": "mg"},
+            {"@type": "DrugStrength", "strengthValue": "7.5", "strengthUnit": "mg"},
+            {"@type": "DrugStrength", "strengthValue": "10", "strengthUnit": "mg"},
+            {"@type": "DrugStrength", "strengthValue": "12.5", "strengthUnit": "mg"},
+            {"@type": "DrugStrength", "strengthValue": "15", "strengthUnit": "mg"}
+          ],
+          "mechanismOfAction": "Doppia azione su GIP e GLP-1 per maggiore efficacia nella perdita di peso",
+          "legalStatus": "Approvato AIFA, EMA, FDA",
+          "manufacturer": {
+            "@type": "Organization",
+            "name": "Eli Lilly"
+          }
+        }
+      ],
+      
+      "usesDevice": {
+        "@type": "MedicalDevice",
+        "name": "VisBody 3D Body Scanner",
+        "description": "Scanner 3D con bioimpedenza (BIA) che analizza oltre 50 parametri della composizione corporea in 8 secondi: massa grassa, massa muscolare, grasso viscerale, circonferenze, metabolismo basale.",
+        "legalStatus": "Dispositivo medico certificato CE"
+      },
+      
+      "howPerformed": "MESE 1: Analisi sangue complete + Prima visita endocrinologica + Certificato medico sportivo + VisBody 3D (1°) + Visita nutrizionale + Farmaco con prima somministrazione assistita. MESE 2: Seconde analisi sangue + VisBody 3D (2°) + Visita di controllo + Supporto telefonico. MESE 3: VisBody 3D (3°) + Valutazione risultati + Piano di mantenimento.",
+      
+      "outcome": "Perdita peso media 12-18 kg in 3 mesi. Con Wegovy: 10-15% del peso corporeo. Con Mounjaro: 15-20% del peso corporeo.",
+      
+      "duration": "P3M",
+      
+      "provider": {
+        "@type": "MedicalClinic",
+        "@id": "https://bio-clinic.it/#organization",
+        "name": "Bio-Clinic Sassari"
+      },
+      
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "areaServed": {
+          "@type": "State",
+          "name": "Sardegna"
+        },
+        "seller": {
+          "@id": "https://bio-clinic.it/#organization"
+        }
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Cos'è SLIM CARE?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SLIM CARE è un percorso medico di 3 mesi per la perdita di peso offerto da Bio-Clinic Sassari. Include farmaco (Wegovy o Mounjaro), prima somministrazione assistita, 3 scansioni VisBody 3D, 2 analisi del sangue complete, visite specialistiche e supporto nutrizionale. La perdita media è di 12-18 kg."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto peso si perde con SLIM CARE?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La perdita media è di 12-18 kg in 3 mesi. Con Wegovy si perde mediamente il 10-15% del peso corporeo, con Mounjaro il 15-20%. I risultati dipendono dal peso iniziale, dall'aderenza al piano e dalla risposta individuale."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Chi può fare SLIM CARE?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SLIM CARE è indicato per adulti con BMI ≥ 30 (obesità) oppure BMI ≥ 27 con comorbidità come diabete tipo 2, ipertensione o dislipidemia. Non è indicato in gravidanza, allattamento o con storia di carcinoma midollare della tiroide."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual è la differenza tra Wegovy e Mounjaro?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wegovy contiene semaglutide (agonista GLP-1) con perdita peso del 10-15%. Mounjaro contiene tirzepatide (agonista duale GIP/GLP-1) con perdita peso del 15-20%. Entrambi sono approvati da AIFA, EMA e FDA. Il medico consiglierà quello più adatto."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Il farmaco è incluso nel prezzo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì, la fornitura del farmaco (Wegovy o Mounjaro) è inclusa nel percorso SLIM CARE, insieme alla prima somministrazione assistita in clinica e alla guida all'uso del device."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Dove fare SLIM CARE a Sassari?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SLIM CARE è disponibile presso Bio-Clinic, Via Renzo Mossa 23, Sassari. Per prenotare: 079 956 1332. Orari: Lun-Ven 07:00-21:00, Sab 08:00-14:00."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bio-clinic.it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Percorsi",
+          "item": "https://bio-clinic.it/percorsi/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Slim Care",
+          "item": "https://bio-clinic.it/percorsi/slim-care/"
+        }
+      ]
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://bio-clinic.it/percorsi/slim-care/#webpage",
+      "url": "https://bio-clinic.it/percorsi/slim-care/",
+      "name": "SLIM CARE Sassari | Dimagrimento con Wegovy e Mounjaro | Bio-Clinic",
+      "description": "Percorso medico SLIM CARE: perdi 12-18 kg in 3 mesi con Wegovy o Mounjaro. Farmaco incluso, tecnologia VisBody 3D, team specializzato. Bio-Clinic Sassari. Prenota: 079 956 1332.",
+      "lastReviewed": "2026-01-26",
+      "reviewedBy": {
+        "@type": "Physician",
+        "name": "Dott. Francesco Tolu",
+        "medicalSpecialty": "Endocrinologia"
+      },
+      "about": {
+        "@id": "https://bio-clinic.it/percorsi/slim-care/#therapy"
+      },
+      "mainContentOfPage": {
+        "@type": "WebPageElement",
+        "cssSelector": ".main-content"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".faq-section", ".summary"]
+      }
+    }
+  ]
+}

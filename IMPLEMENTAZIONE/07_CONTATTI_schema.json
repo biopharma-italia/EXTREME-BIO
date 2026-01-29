@@ -1,0 +1,209 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ContactPage",
+      "@id": "https://bio-clinic.it/contatti/#page",
+      "url": "https://bio-clinic.it/contatti/",
+      "name": "Contatti Bio-Clinic Sassari | Prenota Visita | 079 956 1332",
+      "description": "Contatta Bio-Clinic Sassari: Via Renzo Mossa 23. Telefono 079 956 1332. Email gestione@bio-clinic.it. Prenota visite e analisi online o telefonicamente. Orari: Lun-Ven 07:00-21:00, Sab 08:00-14:00.",
+      "mainEntity": {
+        "@id": "https://bio-clinic.it/#organization"
+      }
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://bio-clinic.it/contatti/#localbusiness",
+      "name": "Bio-Clinic Sassari",
+      "legalName": "Bio Pharma S.r.l.",
+      "taxID": "02869450904",
+      "image": "https://bio-clinic.it/images/bio-clinic-esterno.jpg",
+      "url": "https://bio-clinic.it",
+      
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Renzo Mossa, 23",
+        "addressLocality": "Sassari",
+        "addressRegion": "SS",
+        "postalCode": "07100",
+        "addressCountry": "IT"
+      },
+      
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.7310,
+        "longitude": 8.5553
+      },
+      
+      "hasMap": "https://www.google.com/maps/place/Bio-Clinic/@40.7310,8.5553",
+      
+      "telephone": "+39 079 956 1332",
+      "email": "gestione@bio-clinic.it",
+      
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+39 079 956 1332",
+          "contactType": "customer service",
+          "availableLanguage": ["Italian", "English"],
+          "hoursAvailable": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "07:00",
+            "closes": "21:00"
+          }
+        },
+        {
+          "@type": "ContactPoint",
+          "email": "gestione@bio-clinic.it",
+          "contactType": "customer service"
+        },
+        {
+          "@type": "ContactPoint",
+          "url": "https://www.miodottore.it/strutture/bioclinic",
+          "contactType": "reservations",
+          "description": "Prenotazioni online su MioDottore"
+        }
+      ],
+      
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "07:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:00",
+          "closes": "14:00"
+        }
+      ],
+      
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "ratingCount": 3214
+      },
+      
+      "sameAs": [
+        "https://www.miodottore.it/strutture/bioclinic",
+        "https://www.facebook.com/bioclinicss",
+        "https://www.instagram.com/bioclinicss/"
+      ],
+      
+      "priceRange": "€€",
+      "paymentAccepted": ["Cash", "Credit Card", "Debit Card", "Bank Transfer"],
+      "currenciesAccepted": "EUR",
+      
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Parcheggio gratuito",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Accessibilità disabili",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Aria condizionata",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "WiFi gratuito",
+          "value": true
+        }
+      ],
+      
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Sassari"
+        },
+        {
+          "@type": "City",
+          "name": "Alghero"
+        },
+        {
+          "@type": "City",
+          "name": "Porto Torres"
+        },
+        {
+          "@type": "City",
+          "name": "Olbia"
+        },
+        {
+          "@type": "State",
+          "name": "Sardegna"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Dove si trova Bio-Clinic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bio-Clinic si trova in Via Renzo Mossa 23, 07100 Sassari, nella zona nord della città (fronte posteggi del sole). Parcheggio gratuito disponibile. Struttura accessibile ai disabili."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quali sono gli orari di Bio-Clinic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lunedì-Venerdì: 07:00-21:00. Sabato: 08:00-14:00. I prelievi iniziano alle 07:00 dal lunedì al venerdì."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come posso prenotare una visita a Bio-Clinic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Puoi prenotare: 1) Telefonicamente al 079 956 1332, 2) Online su MioDottore (miodottore.it/strutture/bioclinic), 3) Di persona presso la struttura. Per i prelievi non è necessario appuntamento."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Bio-Clinic ha parcheggio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì, Bio-Clinic dispone di parcheggio gratuito per i pazienti (fronte posteggi del sole, Via Renzo Mossa 23)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quali metodi di pagamento accetta Bio-Clinic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bio-Clinic accetta: contanti, carte di credito/debito (Visa, Mastercard, Bancomat), bonifico bancario. È possibile richiedere fattura per detrazione fiscale."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bio-clinic.it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contatti",
+          "item": "https://bio-clinic.it/contatti/"
+        }
+      ]
+    }
+  ]
+}
