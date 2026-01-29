@@ -1,0 +1,3232 @@
+{
+  "version": "2.1.0",
+  "generated": "2026-01-28T01:45:09.786770",
+  "description": "Indice di ricerca unificato Bio-Clinic - Clinical Knowledge Search Engine",
+  "stats": {
+    "total_terms": 251,
+    "pathways": 4,
+    "procedures": 33,
+    "tests": 24,
+    "physicians": 48,
+    "specialties": 11,
+    "packs": 12
+  },
+  "terms": {
+    "tiroide": {
+      "pathways": [],
+      "procedures": [
+        "visita-endocrinologica",
+        "ecografia-tiroidea"
+      ],
+      "tests": [
+        "tsh-ultrasensibile",
+        "ft3",
+        "ft4",
+        "anti-tpo"
+      ],
+      "physicians": [
+        "francesco-tolu",
+        "irene-aini"
+      ],
+      "specialties": [
+        "endocrinologia"
+      ],
+      "packs": [
+        "checkup-tiroide"
+      ],
+      "priority": "pack:checkup-tiroide",
+      "clinical_context": "Valutazione funzione tiroidea",
+      "uplink": {
+        "type": "pack",
+        "id": "checkup-tiroide",
+        "message": "Per la tiroide, il percorso più completo è il Profilo Tiroide Completo con TSH, FT3, FT4 e anticorpi"
+      }
+    },
+    "tsh": {
+      "tests": [
+        "tsh-ultrasensibile"
+      ],
+      "packs": [
+        "checkup-tiroide",
+        "checkup-completo",
+        "checkup-donna-over40"
+      ],
+      "priority": "test:tsh-ultrasensibile",
+      "uplink": {
+        "type": "pack",
+        "id": "checkup-tiroide",
+        "message": "Questo esame è incluso nel Profilo Tiroide Completo"
+      }
+    },
+    "ft3": {
+      "tests": [
+        "ft3"
+      ],
+      "packs": [
+        "checkup-tiroide"
+      ],
+      "priority": "test:ft3",
+      "uplink": {
+        "type": "pack",
+        "id": "checkup-tiroide",
+        "message": "Questo esame è incluso nel Profilo Tiroide Completo"
+      }
+    },
+    "ft4": {
+      "tests": [
+        "ft4"
+      ],
+      "packs": [
+        "checkup-tiroide",
+        "checkup-completo"
+      ],
+      "priority": "test:ft4",
+      "uplink": {
+        "type": "pack",
+        "id": "checkup-tiroide",
+        "message": "Questo esame è incluso nel Profilo Tiroide Completo"
+      }
+    },
+    "ipotiroidismo": {
+      "tests": [
+        "tsh-ultrasensibile",
+        "ft4",
+        "anti-tpo"
+      ],
+      "procedures": [
+        "visita-endocrinologica"
+      ],
+      "packs": [
+        "checkup-tiroide"
+      ],
+      "priority": "pack:checkup-tiroide"
+    },
+    "ipertiroidismo": {
+      "tests": [
+        "tsh-ultrasensibile",
+        "ft3",
+        "ft4"
+      ],
+      "procedures": [
+        "visita-endocrinologica"
+      ],
+      "packs": [
+        "checkup-tiroide"
+      ],
+      "priority": "pack:checkup-tiroide"
+    },
+    "cuore": {
+      "procedures": [
+        "visita-cardiologica",
+        "ecg",
+        "ecocardiogramma",
+        "holter-ecg",
+        "holter-pressorio"
+      ],
+      "physicians": [
+        "tonino-bullitta",
+        "sara-uras",
+        "giuliana-guagnozzi",
+        "paolo-pischedda",
+        "paolo-franca"
+      ],
+      "specialties": [
+        "cardiologia"
+      ],
+      "packs": [
+        "checkup-cardiovascolare"
+      ],
+      "priority": "specialty:cardiologia",
+      "clinical_context": "Salute cardiovascolare"
+    },
+    "cardiologo": {
+      "procedures": [
+        "visita-cardiologica",
+        "ecg",
+        "ecocardiogramma"
+      ],
+      "physicians": [
+        "tonino-bullitta",
+        "sara-uras",
+        "giuliana-guagnozzi",
+        "paolo-pischedda",
+        "paolo-franca"
+      ],
+      "specialties": [
+        "cardiologia"
+      ],
+      "priority": "physicians"
+    },
+    "cardiologia": {
+      "procedures": [
+        "visita-cardiologica",
+        "ecg",
+        "ecocardiogramma",
+        "holter-ecg",
+        "holter-pressorio"
+      ],
+      "physicians": [
+        "tonino-bullitta",
+        "sara-uras",
+        "paolo-pischedda",
+        "paolo-franca",
+        "federica-decandia"
+      ],
+      "specialties": [
+        "cardiologia"
+      ],
+      "packs": [
+        "checkup-cardiovascolare"
+      ],
+      "priority": "specialty:cardiologia"
+    },
+    "visita cardiologica": {
+      "procedures": [
+        "visita-cardiologica"
+      ],
+      "physicians": [
+        "tonino-bullitta",
+        "sara-uras",
+        "giuliana-guagnozzi",
+        "paolo-pischedda",
+        "paolo-franca"
+      ],
+      "priority": "procedure:visita-cardiologica"
+    },
+    "ecg": {
+      "procedures": [
+        "ecg"
+      ],
+      "physicians": [
+        "tonino-bullitta",
+        "sara-uras",
+        "giuliana-guagnozzi",
+        "paolo-pischedda",
+        "paolo-franca"
+      ],
+      "priority": "procedure:ecg"
+    },
+    "elettrocardiogramma": {
+      "procedures": [
+        "ecg"
+      ],
+      "physicians": [
+        "tonino-bullitta",
+        "sara-uras",
+        "giuliana-guagnozzi",
+        "paolo-pischedda",
+        "paolo-franca"
+      ],
+      "priority": "procedure:ecg"
+    },
+    "ecocardiogramma": {
+      "procedures": [
+        "ecocardiogramma"
+      ],
+      "physicians": [
+        "tonino-bullitta",
+        "sara-uras",
+        "giuliana-guagnozzi",
+        "paolo-pischedda",
+        "paolo-franca"
+      ],
+      "priority": "procedure:ecocardiogramma"
+    },
+    "holter": {
+      "procedures": [
+        "holter-ecg",
+        "holter-pressorio"
+      ],
+      "physicians": [
+        "tonino-bullitta"
+      ],
+      "priority": "procedure:holter-ecg"
+    },
+    "pressione": {
+      "procedures": [
+        "holter-pressorio",
+        "visita-cardiologica"
+      ],
+      "packs": [
+        "checkup-cardiovascolare"
+      ],
+      "priority": "procedure:holter-pressorio"
+    },
+    "ipertensione": {
+      "procedures": [
+        "visita-cardiologica",
+        "holter-pressorio"
+      ],
+      "packs": [
+        "checkup-cardiovascolare"
+      ],
+      "priority": "procedure:visita-cardiologica"
+    },
+    "ginecologo": {
+      "procedures": [
+        "visita-ginecologica",
+        "ecografia-transvaginale",
+        "ecografia-mammaria",
+        "pap-test"
+      ],
+      "physicians": [
+        "salvatore-dessole",
+        "francesco-dessole",
+        "marco-petrillo"
+      ],
+      "specialties": [
+        "ginecologia"
+      ],
+      "pathways": [
+        "slim-care-donna",
+        "pma-fertilita"
+      ],
+      "priority": "physicians"
+    },
+    "ginecologia": {
+      "procedures": [
+        "visita-ginecologica",
+        "ecografia-transvaginale",
+        "ecografia-mammaria",
+        "pap-test",
+        "colposcopia"
+      ],
+      "physicians": [
+        "francesco-dessole",
+        "salvatore-dessole",
+        "maddalena-pola",
+        "marco-petrillo",
+        "antonella-pruneddu",
+        "sonia-bove",
+        "margherita-dessole"
+      ],
+      "specialties": [
+        "ginecologia"
+      ],
+      "pathways": [
+        "slim-care-donna",
+        "pma-fertilita"
+      ],
+      "priority": "specialty:ginecologia"
+    },
+    "visita ginecologica": {
+      "procedures": [
+        "visita-ginecologica"
+      ],
+      "physicians": [
+        "salvatore-dessole",
+        "francesco-dessole"
+      ],
+      "priority": "procedure:visita-ginecologica"
+    },
+    "eco transvaginale": {
+      "procedures": [
+        "ecografia-transvaginale"
+      ],
+      "physicians": [
+        "salvatore-dessole",
+        "francesco-dessole"
+      ],
+      "priority": "procedure:ecografia-transvaginale"
+    },
+    "ecografia transvaginale": {
+      "procedures": [
+        "ecografia-transvaginale"
+      ],
+      "physicians": [
+        "salvatore-dessole",
+        "francesco-dessole"
+      ],
+      "priority": "procedure:ecografia-transvaginale"
+    },
+    "pap test": {
+      "procedures": [
+        "pap-test"
+      ],
+      "physicians": [
+        "salvatore-dessole",
+        "francesco-dessole"
+      ],
+      "priority": "procedure:pap-test"
+    },
+    "paptest": {
+      "procedures": [
+        "pap-test"
+      ],
+      "physicians": [
+        "salvatore-dessole",
+        "francesco-dessole"
+      ],
+      "priority": "procedure:pap-test"
+    },
+    "seno": {
+      "procedures": [
+        "ecografia-mammaria"
+      ],
+      "physicians": [
+        "salvatore-dessole",
+        "francesco-dessole"
+      ],
+      "pathways": [
+        "slim-care-donna"
+      ],
+      "priority": "procedure:ecografia-mammaria"
+    },
+    "eco seno": {
+      "procedures": [
+        "ecografia-mammaria"
+      ],
+      "physicians": [
+        "salvatore-dessole",
+        "francesco-dessole"
+      ],
+      "priority": "procedure:ecografia-mammaria"
+    },
+    "mammella": {
+      "procedures": [
+        "ecografia-mammaria"
+      ],
+      "physicians": [
+        "salvatore-dessole",
+        "francesco-dessole"
+      ],
+      "priority": "procedure:ecografia-mammaria"
+    },
+    "gravidanza": {
+      "procedures": [
+        "visita-ostetrica",
+        "ecografia-ostetrica",
+        "ecografia-morfologica",
+        "translucenza-nucale"
+      ],
+      "tests": [
+        "beta-hcg"
+      ],
+      "physicians": [
+        "salvatore-dessole",
+        "francesco-dessole"
+      ],
+      "specialties": [
+        "ostetricia"
+      ],
+      "priority": "specialty:ostetricia"
+    },
+    "incinta": {
+      "procedures": [
+        "visita-ostetrica",
+        "ecografia-ostetrica"
+      ],
+      "tests": [
+        "beta-hcg"
+      ],
+      "physicians": [
+        "salvatore-dessole",
+        "francesco-dessole"
+      ],
+      "priority": "test:beta-hcg"
+    },
+    "test gravidanza": {
+      "tests": [
+        "beta-hcg"
+      ],
+      "priority": "test:beta-hcg"
+    },
+    "morfologica": {
+      "procedures": [
+        "ecografia-morfologica"
+      ],
+      "physicians": [
+        "salvatore-dessole",
+        "francesco-dessole"
+      ],
+      "priority": "procedure:ecografia-morfologica"
+    },
+    "translucenza": {
+      "procedures": [
+        "translucenza-nucale"
+      ],
+      "physicians": [
+        "salvatore-dessole",
+        "francesco-dessole"
+      ],
+      "priority": "procedure:translucenza-nucale"
+    },
+    "fertilità": {
+      "procedures": [
+        "consulto-pma",
+        "spermiogramma"
+      ],
+      "physicians": [
+        "salvatore-dessole",
+        "francesco-dessole"
+      ],
+      "pathways": [
+        "pma-fertilita"
+      ],
+      "priority": "pathway:pma-fertilita",
+      "clinical_context": "Percorso PMA per la fertilità"
+    },
+    "infertilità": {
+      "procedures": [
+        "consulto-pma",
+        "spermiogramma"
+      ],
+      "physicians": [
+        "salvatore-dessole",
+        "francesco-dessole"
+      ],
+      "pathways": [
+        "pma-fertilita"
+      ],
+      "priority": "pathway:pma-fertilita"
+    },
+    "pma": {
+      "procedures": [
+        "consulto-pma"
+      ],
+      "physicians": [
+        "salvatore-dessole",
+        "francesco-dessole"
+      ],
+      "pathways": [
+        "pma-fertilita"
+      ],
+      "priority": "pathway:pma-fertilita"
+    },
+    "fecondazione": {
+      "procedures": [
+        "consulto-pma"
+      ],
+      "pathways": [
+        "pma-fertilita"
+      ],
+      "priority": "pathway:pma-fertilita"
+    },
+    "spermiogramma": {
+      "procedures": [
+        "spermiogramma"
+      ],
+      "pathways": [
+        "pma-fertilita"
+      ],
+      "priority": "procedure:spermiogramma"
+    },
+    "endocrinologo": {
+      "procedures": [
+        "visita-endocrinologica",
+        "ecografia-tiroidea",
+        "visita-diabetologica"
+      ],
+      "physicians": [
+        "francesco-tolu",
+        "irene-aini"
+      ],
+      "specialties": [
+        "endocrinologia"
+      ],
+      "pathways": [
+        "slim-care",
+        "slim-care-donna"
+      ],
+      "priority": "physicians"
+    },
+    "endocrinologia": {
+      "procedures": [
+        "visita-endocrinologica",
+        "ecografia-tiroidea",
+        "visita-diabetologica"
+      ],
+      "physicians": [
+        "carlo-burrai",
+        "fabrizia-caucci",
+        "francesco-tolu",
+        "irene-aini"
+      ],
+      "specialties": [
+        "endocrinologia"
+      ],
+      "packs": [
+        "checkup-tiroide"
+      ],
+      "pathways": [
+        "slim-care",
+        "slim-care-donna"
+      ],
+      "priority": "specialty:endocrinologia"
+    },
+    "diabete": {
+      "procedures": [
+        "visita-diabetologica",
+        "visita-endocrinologica"
+      ],
+      "tests": [
+        "glicemia",
+        "emoglobina-glicata"
+      ],
+      "physicians": [
+        "francesco-tolu",
+        "irene-aini"
+      ],
+      "packs": [
+        "checkup-diabete"
+      ],
+      "pathways": [
+        "slim-care"
+      ],
+      "priority": "pack:checkup-diabete",
+      "clinical_context": "Gestione del diabete",
+      "uplink": {
+        "type": "pack",
+        "id": "checkup-diabete",
+        "message": "Per il diabete, il Profilo Diabete include glicemia e emoglobina glicata"
+      }
+    },
+    "glicemia": {
+      "tests": [
+        "glicemia"
+      ],
+      "packs": [
+        "checkup-base",
+        "checkup-diabete",
+        "checkup-completo",
+        "checkup-cardiovascolare"
+      ],
+      "priority": "test:glicemia",
+      "uplink": {
+        "type": "pack",
+        "id": "checkup-diabete",
+        "message": "Questo esame è incluso nel Profilo Diabete"
+      }
+    },
+    "glicata": {
+      "tests": [
+        "emoglobina-glicata"
+      ],
+      "packs": [
+        "checkup-diabete",
+        "checkup-completo"
+      ],
+      "priority": "test:emoglobina-glicata",
+      "uplink": {
+        "type": "pack",
+        "id": "checkup-diabete",
+        "message": "Questo esame è incluso nel Profilo Diabete"
+      }
+    },
+    "hba1c": {
+      "tests": [
+        "emoglobina-glicata"
+      ],
+      "packs": [
+        "checkup-diabete"
+      ],
+      "priority": "test:emoglobina-glicata"
+    },
+    "peso": {
+      "procedures": [
+        "visita-nutrizionale",
+        "bioimpedenziometria"
+      ],
+      "pathways": [
+        "slim-care",
+        "slim-care-donna"
+      ],
+      "priority": "pathway:slim-care",
+      "clinical_context": "Gestione del peso corporeo"
+    },
+    "dimagrire": {
+      "procedures": [
+        "visita-nutrizionale",
+        "bioimpedenziometria"
+      ],
+      "pathways": [
+        "slim-care",
+        "slim-care-donna"
+      ],
+      "priority": "pathway:slim-care"
+    },
+    "dieta": {
+      "procedures": [
+        "visita-nutrizionale"
+      ],
+      "pathways": [
+        "slim-care",
+        "slim-care-donna"
+      ],
+      "priority": "pathway:slim-care"
+    },
+    "slim care": {
+      "pathways": [
+        "slim-care"
+      ],
+      "priority": "pathway:slim-care"
+    },
+    "wegovy": {
+      "pathways": [
+        "slim-care",
+        "slim-care-donna"
+      ],
+      "priority": "pathway:slim-care"
+    },
+    "mounjaro": {
+      "pathways": [
+        "slim-care",
+        "slim-care-donna"
+      ],
+      "priority": "pathway:slim-care"
+    },
+    "obesità": {
+      "procedures": [
+        "visita-nutrizionale",
+        "visita-endocrinologica"
+      ],
+      "pathways": [
+        "slim-care",
+        "slim-care-donna"
+      ],
+      "priority": "pathway:slim-care"
+    },
+    "dermatologo": {
+      "procedures": [
+        "visita-dermatologica",
+        "mappatura-nei"
+      ],
+      "physicians": [
+        "giovanna-costa"
+      ],
+      "specialties": [
+        "dermatologia"
+      ],
+      "priority": "physicians"
+    },
+    "dermatologia": {
+      "procedures": [
+        "visita-dermatologica",
+        "mappatura-nei"
+      ],
+      "physicians": [
+        "giovanna-costa",
+        "alessandra-musinu",
+        "speranza-anedda"
+      ],
+      "specialties": [
+        "dermatologia"
+      ],
+      "priority": "specialty:dermatologia"
+    },
+    "pelle": {
+      "procedures": [
+        "visita-dermatologica"
+      ],
+      "physicians": [
+        "giovanna-costa"
+      ],
+      "priority": "procedure:visita-dermatologica"
+    },
+    "nei": {
+      "procedures": [
+        "visita-dermatologica",
+        "mappatura-nei"
+      ],
+      "physicians": [
+        "giovanna-costa"
+      ],
+      "priority": "procedure:mappatura-nei",
+      "clinical_context": "Controllo nei per prevenzione melanoma"
+    },
+    "melanoma": {
+      "procedures": [
+        "mappatura-nei",
+        "visita-dermatologica"
+      ],
+      "physicians": [
+        "giovanna-costa"
+      ],
+      "priority": "procedure:mappatura-nei"
+    },
+    "colesterolo": {
+      "tests": [
+        "colesterolo-totale",
+        "colesterolo-hdl",
+        "colesterolo-ldl"
+      ],
+      "packs": [
+        "checkup-cardiovascolare",
+        "checkup-completo",
+        "checkup-base"
+      ],
+      "priority": "pack:checkup-cardiovascolare",
+      "clinical_context": "Profilo lipidico",
+      "uplink": {
+        "type": "pack",
+        "id": "checkup-cardiovascolare",
+        "message": "Per il colesterolo, il Check-up Cardiovascolare include il profilo lipidico completo"
+      }
+    },
+    "hdl": {
+      "tests": [
+        "colesterolo-hdl"
+      ],
+      "packs": [
+        "checkup-cardiovascolare",
+        "checkup-completo"
+      ],
+      "priority": "test:colesterolo-hdl",
+      "uplink": {
+        "type": "pack",
+        "id": "checkup-cardiovascolare",
+        "message": "Questo esame è incluso nel Check-up Cardiovascolare"
+      }
+    },
+    "ldl": {
+      "tests": [
+        "colesterolo-ldl"
+      ],
+      "packs": [
+        "checkup-cardiovascolare",
+        "checkup-completo"
+      ],
+      "priority": "test:colesterolo-ldl",
+      "uplink": {
+        "type": "pack",
+        "id": "checkup-cardiovascolare",
+        "message": "Questo esame è incluso nel Check-up Cardiovascolare"
+      }
+    },
+    "trigliceridi": {
+      "tests": [
+        "trigliceridi"
+      ],
+      "packs": [
+        "checkup-cardiovascolare",
+        "checkup-completo"
+      ],
+      "priority": "test:trigliceridi",
+      "uplink": {
+        "type": "pack",
+        "id": "checkup-cardiovascolare",
+        "message": "Questo esame è incluso nel Check-up Cardiovascolare"
+      }
+    },
+    "emocromo": {
+      "tests": [
+        "emocromo-completo"
+      ],
+      "packs": [
+        "checkup-base",
+        "checkup-completo",
+        "checkup-donna-over40",
+        "checkup-uomo-over40"
+      ],
+      "priority": "test:emocromo-completo",
+      "uplink": {
+        "type": "pack",
+        "id": "checkup-base",
+        "message": "Questo esame è incluso nel Check-up Base"
+      }
+    },
+    "anemia": {
+      "tests": [
+        "emocromo-completo",
+        "ferritina"
+      ],
+      "packs": [
+        "checkup-anemia"
+      ],
+      "priority": "pack:checkup-anemia",
+      "clinical_context": "Diagnosi anemia",
+      "uplink": {
+        "type": "pack",
+        "id": "checkup-anemia",
+        "message": "Per l'anemia, il Profilo Anemia include emocromo e ferritina"
+      }
+    },
+    "ferro": {
+      "tests": [
+        "ferritina"
+      ],
+      "packs": [
+        "checkup-anemia",
+        "checkup-donna-over40",
+        "checkup-completo"
+      ],
+      "priority": "test:ferritina",
+      "uplink": {
+        "type": "pack",
+        "id": "checkup-anemia",
+        "message": "Questo esame è incluso nel Profilo Anemia"
+      }
+    },
+    "ferritina": {
+      "tests": [
+        "ferritina"
+      ],
+      "packs": [
+        "checkup-anemia",
+        "checkup-donna-over40",
+        "checkup-completo"
+      ],
+      "priority": "test:ferritina",
+      "uplink": {
+        "type": "pack",
+        "id": "checkup-anemia",
+        "message": "Questo esame è incluso nel Profilo Anemia"
+      }
+    },
+    "stanchezza": {
+      "tests": [
+        "emocromo-completo",
+        "ferritina",
+        "tsh-ultrasensibile",
+        "vitamina-d"
+      ],
+      "packs": [
+        "checkup-anemia",
+        "checkup-tiroide"
+      ],
+      "priority": "pack:checkup-anemia",
+      "clinical_context": "La stanchezza può avere diverse cause"
+    },
+    "fegato": {
+      "tests": [
+        "ast-got",
+        "alt-gpt",
+        "gamma-gt"
+      ],
+      "packs": [
+        "checkup-epatico",
+        "checkup-completo"
+      ],
+      "priority": "pack:checkup-epatico",
+      "clinical_context": "Funzione epatica",
+      "uplink": {
+        "type": "pack",
+        "id": "checkup-epatico",
+        "message": "Per il fegato, il Profilo Epatico include tutte le transaminasi"
+      }
+    },
+    "transaminasi": {
+      "tests": [
+        "ast-got",
+        "alt-gpt"
+      ],
+      "packs": [
+        "checkup-epatico",
+        "checkup-completo"
+      ],
+      "priority": "pack:checkup-epatico",
+      "uplink": {
+        "type": "pack",
+        "id": "checkup-epatico",
+        "message": "Questi esami sono inclusi nel Profilo Epatico"
+      }
+    },
+    "got": {
+      "tests": [
+        "ast-got"
+      ],
+      "packs": [
+        "checkup-epatico"
+      ],
+      "priority": "test:ast-got"
+    },
+    "gpt": {
+      "tests": [
+        "alt-gpt"
+      ],
+      "packs": [
+        "checkup-epatico"
+      ],
+      "priority": "test:alt-gpt"
+    },
+    "gamma gt": {
+      "tests": [
+        "gamma-gt"
+      ],
+      "packs": [
+        "checkup-epatico"
+      ],
+      "priority": "test:gamma-gt"
+    },
+    "reni": {
+      "tests": [
+        "creatinina",
+        "azotemia",
+        "esame-urine-completo"
+      ],
+      "packs": [
+        "checkup-renale",
+        "checkup-completo"
+      ],
+      "priority": "pack:checkup-renale",
+      "clinical_context": "Funzione renale",
+      "uplink": {
+        "type": "pack",
+        "id": "checkup-renale",
+        "message": "Per i reni, il Profilo Renale include creatinina, azotemia e urine"
+      }
+    },
+    "creatinina": {
+      "tests": [
+        "creatinina"
+      ],
+      "packs": [
+        "checkup-renale",
+        "checkup-base",
+        "checkup-completo"
+      ],
+      "priority": "test:creatinina",
+      "uplink": {
+        "type": "pack",
+        "id": "checkup-renale",
+        "message": "Questo esame è incluso nel Profilo Renale"
+      }
+    },
+    "azotemia": {
+      "tests": [
+        "azotemia"
+      ],
+      "packs": [
+        "checkup-renale",
+        "checkup-base",
+        "checkup-completo"
+      ],
+      "priority": "test:azotemia"
+    },
+    "urine": {
+      "tests": [
+        "esame-urine-completo"
+      ],
+      "packs": [
+        "checkup-renale",
+        "checkup-base",
+        "checkup-completo"
+      ],
+      "priority": "test:esame-urine-completo"
+    },
+    "prostata": {
+      "tests": [
+        "psa-totale"
+      ],
+      "packs": [
+        "checkup-prostata",
+        "checkup-uomo-over40"
+      ],
+      "priority": "pack:checkup-prostata",
+      "clinical_context": "Screening prostata",
+      "uplink": {
+        "type": "pack",
+        "id": "checkup-uomo-over40",
+        "message": "Il PSA è incluso nel Check-up Uomo Over 40"
+      }
+    },
+    "psa": {
+      "tests": [
+        "psa-totale"
+      ],
+      "packs": [
+        "checkup-prostata",
+        "checkup-uomo-over40"
+      ],
+      "priority": "test:psa-totale",
+      "uplink": {
+        "type": "pack",
+        "id": "checkup-uomo-over40",
+        "message": "Questo esame è incluso nel Check-up Uomo Over 40"
+      }
+    },
+    "vitamina d": {
+      "tests": [
+        "vitamina-d"
+      ],
+      "packs": [
+        "checkup-osteoporosi",
+        "checkup-donna-over40",
+        "checkup-completo"
+      ],
+      "priority": "test:vitamina-d",
+      "uplink": {
+        "type": "pack",
+        "id": "checkup-donna-over40",
+        "message": "Questo esame è incluso nel Check-up Donna Over 40"
+      }
+    },
+    "ossa": {
+      "tests": [
+        "vitamina-d"
+      ],
+      "packs": [
+        "checkup-osteoporosi"
+      ],
+      "priority": "pack:checkup-osteoporosi"
+    },
+    "osteoporosi": {
+      "tests": [
+        "vitamina-d"
+      ],
+      "packs": [
+        "checkup-osteoporosi"
+      ],
+      "priority": "pack:checkup-osteoporosi"
+    },
+    "ves": {
+      "tests": [
+        "ves"
+      ],
+      "packs": [
+        "checkup-base",
+        "checkup-completo"
+      ],
+      "priority": "test:ves"
+    },
+    "pcr": {
+      "tests": [
+        "pcr"
+      ],
+      "packs": [
+        "checkup-completo",
+        "checkup-cardiovascolare"
+      ],
+      "priority": "test:pcr"
+    },
+    "infiammazione": {
+      "tests": [
+        "ves",
+        "pcr"
+      ],
+      "packs": [
+        "checkup-completo"
+      ],
+      "priority": "test:pcr"
+    },
+    "analisi": {
+      "tests": [
+        "emocromo-completo"
+      ],
+      "packs": [
+        "checkup-base"
+      ],
+      "specialties": [
+        "laboratorio"
+      ],
+      "priority": "pack:checkup-base",
+      "clinical_context": "Esami del sangue"
+    },
+    "esami sangue": {
+      "tests": [
+        "emocromo-completo"
+      ],
+      "procedures": [
+        "prelievo-sangue"
+      ],
+      "packs": [
+        "checkup-base"
+      ],
+      "specialties": [
+        "laboratorio"
+      ],
+      "priority": "pack:checkup-base"
+    },
+    "prelievo": {
+      "procedures": [
+        "prelievo-sangue"
+      ],
+      "specialties": [
+        "laboratorio"
+      ],
+      "priority": "procedure:prelievo-sangue"
+    },
+    "check-up": {
+      "packs": [
+        "checkup-base",
+        "checkup-completo",
+        "checkup-donna-over40",
+        "checkup-uomo-over40"
+      ],
+      "priority": "pack:checkup-completo"
+    },
+    "checkup": {
+      "packs": [
+        "checkup-base",
+        "checkup-completo",
+        "checkup-donna-over40",
+        "checkup-uomo-over40"
+      ],
+      "priority": "pack:checkup-completo"
+    },
+    "controllo": {
+      "packs": [
+        "checkup-base",
+        "checkup-completo"
+      ],
+      "priority": "pack:checkup-base"
+    },
+    "neurologo": {
+      "procedures": [
+        "visita-neurologica",
+        "elettromiografia"
+      ],
+      "specialties": [
+        "neurologia"
+      ],
+      "priority": "specialty:neurologia"
+    },
+    "neurologia": {
+      "procedures": [
+        "visita-neurologica",
+        "elettromiografia"
+      ],
+      "specialties": [
+        "neurologia"
+      ],
+      "priority": "specialty:neurologia",
+      "physicians": [
+        "guido-marongiu",
+        "sebastiano-traccis"
+      ]
+    },
+    "mal di testa": {
+      "procedures": [
+        "visita-neurologica"
+      ],
+      "specialties": [
+        "neurologia"
+      ],
+      "priority": "procedure:visita-neurologica"
+    },
+    "emicrania": {
+      "procedures": [
+        "visita-neurologica"
+      ],
+      "specialties": [
+        "neurologia"
+      ],
+      "priority": "procedure:visita-neurologica"
+    },
+    "tunnel carpale": {
+      "procedures": [
+        "elettromiografia"
+      ],
+      "specialties": [
+        "neurologia"
+      ],
+      "priority": "procedure:elettromiografia"
+    },
+    "oculista": {
+      "procedures": [
+        "visita-oculistica",
+        "tonometria"
+      ],
+      "specialties": [
+        "oculistica"
+      ],
+      "priority": "specialty:oculistica"
+    },
+    "oculistica": {
+      "procedures": [
+        "visita-oculistica",
+        "tonometria"
+      ],
+      "specialties": [
+        "oculistica"
+      ],
+      "priority": "specialty:oculistica",
+      "physicians": [
+        "stefano-dore",
+        "laura-dessole",
+        "maria-pina-pintus",
+        "francesco-santoru",
+        "matteo-zucca"
+      ]
+    },
+    "occhi": {
+      "procedures": [
+        "visita-oculistica"
+      ],
+      "specialties": [
+        "oculistica"
+      ],
+      "priority": "procedure:visita-oculistica"
+    },
+    "vista": {
+      "procedures": [
+        "visita-oculistica"
+      ],
+      "specialties": [
+        "oculistica"
+      ],
+      "priority": "procedure:visita-oculistica"
+    },
+    "glaucoma": {
+      "procedures": [
+        "visita-oculistica",
+        "tonometria"
+      ],
+      "specialties": [
+        "oculistica"
+      ],
+      "priority": "procedure:tonometria"
+    },
+    "ortopedico": {
+      "procedures": [
+        "visita-ortopedica",
+        "ecografia-muscolo-tendinea"
+      ],
+      "specialties": [
+        "ortopedia"
+      ],
+      "priority": "specialty:ortopedia"
+    },
+    "ortopedia": {
+      "procedures": [
+        "visita-ortopedica",
+        "ecografia-muscolo-tendinea"
+      ],
+      "specialties": [
+        "ortopedia"
+      ],
+      "priority": "specialty:ortopedia",
+      "physicians": [
+        "andrea-donato",
+        "pietro-lisai"
+      ]
+    },
+    "ginocchio": {
+      "procedures": [
+        "visita-ortopedica",
+        "ecografia-muscolo-tendinea"
+      ],
+      "specialties": [
+        "ortopedia"
+      ],
+      "priority": "procedure:ecografia-muscolo-tendinea"
+    },
+    "spalla": {
+      "procedures": [
+        "visita-ortopedica",
+        "ecografia-muscolo-tendinea"
+      ],
+      "specialties": [
+        "ortopedia"
+      ],
+      "priority": "procedure:ecografia-muscolo-tendinea"
+    },
+    "schiena": {
+      "procedures": [
+        "visita-ortopedica"
+      ],
+      "specialties": [
+        "ortopedia"
+      ],
+      "priority": "procedure:visita-ortopedica"
+    },
+    "mal di schiena": {
+      "procedures": [
+        "visita-ortopedica"
+      ],
+      "specialties": [
+        "ortopedia"
+      ],
+      "priority": "procedure:visita-ortopedica"
+    },
+    "nutrizionista": {
+      "procedures": [
+        "visita-nutrizionale",
+        "bioimpedenziometria"
+      ],
+      "specialties": [
+        "nutrizione"
+      ],
+      "pathways": [
+        "slim-care",
+        "slim-care-donna"
+      ],
+      "priority": "specialty:nutrizione"
+    },
+    "nutrizione": {
+      "procedures": [
+        "visita-nutrizionale",
+        "bioimpedenziometria"
+      ],
+      "specialties": [
+        "nutrizione"
+      ],
+      "pathways": [
+        "slim-care",
+        "slim-care-donna"
+      ],
+      "priority": "specialty:nutrizione"
+    },
+    "certificato sportivo": {
+      "procedures": [
+        "visita-medicina-sportiva"
+      ],
+      "specialties": [
+        "medicina-sport"
+      ],
+      "priority": "procedure:visita-medicina-sportiva"
+    },
+    "idoneità sportiva": {
+      "procedures": [
+        "visita-medicina-sportiva"
+      ],
+      "specialties": [
+        "medicina-sport"
+      ],
+      "priority": "procedure:visita-medicina-sportiva"
+    },
+    "medicina sportiva": {
+      "procedures": [
+        "visita-medicina-sportiva",
+        "spirometria"
+      ],
+      "specialties": [
+        "medicina-sport"
+      ],
+      "priority": "specialty:medicina-sport"
+    },
+    "laboratorio": {
+      "tests": [
+        "emocromo-completo"
+      ],
+      "procedures": [
+        "prelievo-sangue"
+      ],
+      "specialties": [
+        "laboratorio"
+      ],
+      "packs": [
+        "checkup-base"
+      ],
+      "priority": "specialty:laboratorio"
+    },
+    "donna": {
+      "packs": [
+        "checkup-donna-over40"
+      ],
+      "pathways": [
+        "slim-care-donna"
+      ],
+      "procedures": [
+        "visita-ginecologica"
+      ],
+      "priority": "pack:checkup-donna-over40"
+    },
+    "uomo": {
+      "packs": [
+        "checkup-uomo-over40"
+      ],
+      "procedures": [
+        "visita-cardiologica"
+      ],
+      "priority": "pack:checkup-uomo-over40"
+    },
+    "over 40": {
+      "packs": [
+        "checkup-donna-over40",
+        "checkup-uomo-over40"
+      ],
+      "priority": "pack:checkup-donna-over40"
+    },
+    "salvatore dessole": {
+      "physicians": [
+        "salvatore-dessole"
+      ],
+      "specialties": [
+        "ginecologia"
+      ],
+      "priority": "physician:salvatore-dessole",
+      "procedures": [
+        "visita-ginecologica",
+        "ecografia-ginecologica",
+        "ecografia-ostetrica-3d-4d",
+        "consulenza-pma"
+      ],
+      "pathways": [
+        "pma-fertilita"
+      ]
+    },
+    "francesco dessole": {
+      "physicians": [
+        "francesco-dessole"
+      ],
+      "specialties": [
+        "ginecologia"
+      ],
+      "priority": "physician:francesco-dessole",
+      "procedures": [
+        "visita-ginecologica",
+        "ecografia-ginecologica",
+        "monitoraggio-follicolare",
+        "ecografia-pelvica"
+      ],
+      "pathways": [
+        "slim-care-donna",
+        "pma-fertilita"
+      ]
+    },
+    "tonino bullitta": {
+      "physicians": [
+        "tonino-bullitta"
+      ],
+      "specialties": [
+        "cardiologia"
+      ],
+      "priority": "physician:tonino-bullitta",
+      "procedures": [
+        "visita-cardiologica",
+        "ecg",
+        "ecocardiogramma",
+        "holter-ecg",
+        "holter-pressorio",
+        "eco-doppler-tsa"
+      ],
+      "pathways": [
+        "checkup-cardiovascolare"
+      ]
+    },
+    "bullitta": {
+      "physicians": [
+        "tonino-bullitta"
+      ],
+      "priority": "physician:tonino-bullitta"
+    },
+    "dessole": {
+      "physicians": [
+        "salvatore-dessole",
+        "francesco-dessole",
+        "margherita-dessole",
+        "laura-dessole",
+        "paolo-dessole"
+      ],
+      "priority": "physicians"
+    },
+    "francesco tolu": {
+      "physicians": [
+        "francesco-tolu"
+      ],
+      "specialties": [
+        "endocrinologia"
+      ],
+      "priority": "physician:francesco-tolu",
+      "procedures": [
+        "visita-endocrinologica",
+        "ecografia-tiroidea",
+        "visita-diabetologica",
+        "visita-obesita"
+      ],
+      "pathways": [
+        "slim-care",
+        "slim-care-donna",
+        "checkup-tiroide"
+      ]
+    },
+    "tolu": {
+      "physicians": [
+        "francesco-tolu"
+      ],
+      "priority": "physician:francesco-tolu"
+    },
+    "giovanna costa": {
+      "physicians": [
+        "giovanna-costa"
+      ],
+      "specialties": [
+        "dermatologia"
+      ],
+      "priority": "physician:giovanna-costa",
+      "procedures": [
+        "visita-dermatologica",
+        "mappatura-nevi",
+        "dermatoscopia-digitale",
+        "asportazione-neoformazioni"
+      ]
+    },
+    "costa": {
+      "physicians": [
+        "giovanna-costa"
+      ],
+      "priority": "physician:giovanna-costa"
+    },
+    "direttore sanitario - ginecologo senior": {
+      "physicians": [
+        "salvatore-dessole"
+      ],
+      "specialties": [
+        "ginecologia"
+      ],
+      "priority": "specialty:ginecologia"
+    },
+    "maddalena pola": {
+      "physicians": [
+        "maddalena-pola"
+      ],
+      "specialties": [
+        "ginecologia"
+      ],
+      "priority": "physician:maddalena-pola",
+      "procedures": [
+        "visita-ginecologica",
+        "ecografia-ginecologica",
+        "pap-test"
+      ]
+    },
+    "pola": {
+      "physicians": [
+        "maddalena-pola"
+      ],
+      "specialties": [
+        "ginecologia"
+      ],
+      "priority": "physician:maddalena-pola",
+      "procedures": [
+        "visita-ginecologica",
+        "ecografia-ginecologica",
+        "pap-test"
+      ]
+    },
+    "ginecologa": {
+      "physicians": [
+        "maddalena-pola",
+        "antonella-pruneddu",
+        "margherita-dessole"
+      ],
+      "specialties": [
+        "ginecologia"
+      ],
+      "priority": "specialty:ginecologia"
+    },
+    "marco petrillo": {
+      "physicians": [
+        "marco-petrillo"
+      ],
+      "specialties": [
+        "ginecologia"
+      ],
+      "priority": "physician:marco-petrillo",
+      "procedures": [
+        "visita-ginecologica",
+        "ecografia-ginecologica",
+        "monitoraggio-follicolare",
+        "isteroscopia"
+      ],
+      "pathways": [
+        "pma-fertilita"
+      ]
+    },
+    "petrillo": {
+      "physicians": [
+        "marco-petrillo"
+      ],
+      "specialties": [
+        "ginecologia"
+      ],
+      "priority": "physician:marco-petrillo",
+      "procedures": [
+        "visita-ginecologica",
+        "ecografia-ginecologica",
+        "monitoraggio-follicolare",
+        "isteroscopia"
+      ],
+      "pathways": [
+        "pma-fertilita"
+      ]
+    },
+    "antonella pruneddu": {
+      "physicians": [
+        "antonella-pruneddu"
+      ],
+      "specialties": [
+        "ginecologia"
+      ],
+      "priority": "physician:antonella-pruneddu",
+      "procedures": [
+        "visita-ginecologica",
+        "ecografia-ginecologica",
+        "pap-test"
+      ]
+    },
+    "pruneddu": {
+      "physicians": [
+        "antonella-pruneddu"
+      ],
+      "specialties": [
+        "ginecologia"
+      ],
+      "priority": "physician:antonella-pruneddu",
+      "procedures": [
+        "visita-ginecologica",
+        "ecografia-ginecologica",
+        "pap-test"
+      ]
+    },
+    "sonia bove": {
+      "physicians": [
+        "sonia-bove"
+      ],
+      "specialties": [
+        "ginecologia"
+      ],
+      "priority": "physician:sonia-bove",
+      "procedures": [
+        "visita-ginecologica",
+        "visita-senologica",
+        "ecografia-mammaria"
+      ]
+    },
+    "bove": {
+      "physicians": [
+        "sonia-bove"
+      ],
+      "specialties": [
+        "ginecologia"
+      ],
+      "priority": "physician:sonia-bove",
+      "procedures": [
+        "visita-ginecologica",
+        "visita-senologica",
+        "ecografia-mammaria"
+      ]
+    },
+    "ginecologa - senologa": {
+      "physicians": [
+        "sonia-bove"
+      ],
+      "specialties": [
+        "ginecologia"
+      ],
+      "priority": "specialty:ginecologia"
+    },
+    "margherita dessole": {
+      "physicians": [
+        "margherita-dessole"
+      ],
+      "specialties": [
+        "ginecologia"
+      ],
+      "priority": "physician:margherita-dessole",
+      "procedures": [
+        "visita-ginecologica",
+        "ecografia-ginecologica",
+        "pap-test",
+        "colposcopia"
+      ]
+    },
+    "angelica fois": {
+      "physicians": [
+        "angelica-fois"
+      ],
+      "specialties": [
+        "ostetricia"
+      ],
+      "priority": "physician:angelica-fois",
+      "procedures": [
+        "assistenza-ostetrica",
+        "monitoraggio-fetale",
+        "corsi-preparto"
+      ],
+      "pathways": [
+        "pma-fertilita"
+      ]
+    },
+    "fois": {
+      "physicians": [
+        "angelica-fois"
+      ],
+      "specialties": [
+        "ostetricia"
+      ],
+      "priority": "physician:angelica-fois",
+      "procedures": [
+        "assistenza-ostetrica",
+        "monitoraggio-fetale",
+        "corsi-preparto"
+      ],
+      "pathways": [
+        "pma-fertilita"
+      ]
+    },
+    "ostetrica": {
+      "physicians": [
+        "angelica-fois"
+      ],
+      "specialties": [
+        "ostetricia"
+      ],
+      "priority": "specialty:ostetricia"
+    },
+    "sara uras": {
+      "physicians": [
+        "sara-uras"
+      ],
+      "specialties": [
+        "cardiologia"
+      ],
+      "priority": "physician:sara-uras",
+      "procedures": [
+        "visita-cardiologica",
+        "ecg",
+        "ecocardiogramma",
+        "holter-ecg"
+      ],
+      "pathways": [
+        "checkup-cardiovascolare"
+      ]
+    },
+    "uras": {
+      "physicians": [
+        "sara-uras"
+      ],
+      "specialties": [
+        "cardiologia"
+      ],
+      "priority": "physician:sara-uras",
+      "procedures": [
+        "visita-cardiologica",
+        "ecg",
+        "ecocardiogramma",
+        "holter-ecg"
+      ],
+      "pathways": [
+        "checkup-cardiovascolare"
+      ]
+    },
+    "cardiologa": {
+      "physicians": [
+        "sara-uras",
+        "federica-decandia"
+      ],
+      "specialties": [
+        "cardiologia"
+      ],
+      "priority": "specialty:cardiologia"
+    },
+    "paolo pischedda": {
+      "physicians": [
+        "paolo-pischedda"
+      ],
+      "specialties": [
+        "cardiologia"
+      ],
+      "priority": "physician:paolo-pischedda",
+      "procedures": [
+        "visita-cardiologica",
+        "ecg",
+        "ecocardiogramma"
+      ],
+      "pathways": [
+        "checkup-cardiovascolare"
+      ]
+    },
+    "pischedda": {
+      "physicians": [
+        "paolo-pischedda"
+      ],
+      "specialties": [
+        "cardiologia"
+      ],
+      "priority": "physician:paolo-pischedda",
+      "procedures": [
+        "visita-cardiologica",
+        "ecg",
+        "ecocardiogramma"
+      ],
+      "pathways": [
+        "checkup-cardiovascolare"
+      ]
+    },
+    "paolo franca": {
+      "physicians": [
+        "paolo-franca"
+      ],
+      "specialties": [
+        "cardiologia"
+      ],
+      "priority": "physician:paolo-franca",
+      "procedures": [
+        "visita-cardiologica",
+        "ecg",
+        "ecocardiogramma"
+      ],
+      "pathways": [
+        "checkup-cardiovascolare"
+      ]
+    },
+    "franca": {
+      "physicians": [
+        "paolo-franca"
+      ],
+      "specialties": [
+        "cardiologia"
+      ],
+      "priority": "physician:paolo-franca",
+      "procedures": [
+        "visita-cardiologica",
+        "ecg",
+        "ecocardiogramma"
+      ],
+      "pathways": [
+        "checkup-cardiovascolare"
+      ]
+    },
+    "federica decandia": {
+      "physicians": [
+        "federica-decandia"
+      ],
+      "specialties": [
+        "cardiologia"
+      ],
+      "priority": "physician:federica-decandia",
+      "procedures": [
+        "visita-cardiologica",
+        "ecg",
+        "ecocardiogramma"
+      ],
+      "pathways": [
+        "checkup-cardiovascolare"
+      ]
+    },
+    "decandia": {
+      "physicians": [
+        "federica-decandia"
+      ],
+      "specialties": [
+        "cardiologia"
+      ],
+      "priority": "physician:federica-decandia",
+      "procedures": [
+        "visita-cardiologica",
+        "ecg",
+        "ecocardiogramma"
+      ],
+      "pathways": [
+        "checkup-cardiovascolare"
+      ]
+    },
+    "dermatologa": {
+      "physicians": [
+        "giovanna-costa",
+        "alessandra-musinu",
+        "speranza-anedda"
+      ],
+      "specialties": [
+        "dermatologia"
+      ],
+      "priority": "specialty:dermatologia"
+    },
+    "alessandra musinu": {
+      "physicians": [
+        "alessandra-musinu"
+      ],
+      "specialties": [
+        "dermatologia"
+      ],
+      "priority": "physician:alessandra-musinu",
+      "procedures": [
+        "visita-dermatologica",
+        "mappatura-nevi",
+        "dermatoscopia-digitale"
+      ]
+    },
+    "musinu": {
+      "physicians": [
+        "alessandra-musinu"
+      ],
+      "specialties": [
+        "dermatologia"
+      ],
+      "priority": "physician:alessandra-musinu",
+      "procedures": [
+        "visita-dermatologica",
+        "mappatura-nevi",
+        "dermatoscopia-digitale"
+      ]
+    },
+    "speranza anedda": {
+      "physicians": [
+        "speranza-anedda"
+      ],
+      "specialties": [
+        "dermatologia"
+      ],
+      "priority": "physician:speranza-anedda",
+      "procedures": [
+        "visita-dermatologica",
+        "mappatura-nevi"
+      ]
+    },
+    "anedda": {
+      "physicians": [
+        "speranza-anedda"
+      ],
+      "specialties": [
+        "dermatologia"
+      ],
+      "priority": "physician:speranza-anedda",
+      "procedures": [
+        "visita-dermatologica",
+        "mappatura-nevi"
+      ]
+    },
+    "carlo burrai": {
+      "physicians": [
+        "carlo-burrai"
+      ],
+      "specialties": [
+        "endocrinologia"
+      ],
+      "priority": "physician:carlo-burrai",
+      "procedures": [
+        "visita-endocrinologica",
+        "visita-pediatrica",
+        "ecografia-tiroidea"
+      ]
+    },
+    "burrai": {
+      "physicians": [
+        "carlo-burrai"
+      ],
+      "specialties": [
+        "endocrinologia"
+      ],
+      "priority": "physician:carlo-burrai",
+      "procedures": [
+        "visita-endocrinologica",
+        "visita-pediatrica",
+        "ecografia-tiroidea"
+      ]
+    },
+    "endocrinologo - pediatra": {
+      "physicians": [
+        "carlo-burrai"
+      ],
+      "specialties": [
+        "endocrinologia"
+      ],
+      "priority": "specialty:endocrinologia"
+    },
+    "fabrizia caucci": {
+      "physicians": [
+        "fabrizia-caucci"
+      ],
+      "specialties": [
+        "endocrinologia"
+      ],
+      "priority": "physician:fabrizia-caucci",
+      "procedures": [
+        "visita-diabetologica",
+        "visita-endocrinologica",
+        "ecografia-tiroidea"
+      ],
+      "pathways": [
+        "slim-care"
+      ]
+    },
+    "caucci": {
+      "physicians": [
+        "fabrizia-caucci"
+      ],
+      "specialties": [
+        "endocrinologia"
+      ],
+      "priority": "physician:fabrizia-caucci",
+      "procedures": [
+        "visita-diabetologica",
+        "visita-endocrinologica",
+        "ecografia-tiroidea"
+      ],
+      "pathways": [
+        "slim-care"
+      ]
+    },
+    "diabetologa - endocrinologa": {
+      "physicians": [
+        "fabrizia-caucci"
+      ],
+      "specialties": [
+        "endocrinologia"
+      ],
+      "priority": "specialty:endocrinologia"
+    },
+    "irene aini": {
+      "physicians": [
+        "irene-aini"
+      ],
+      "specialties": [
+        "endocrinologia"
+      ],
+      "priority": "physician:irene-aini",
+      "procedures": [
+        "visita-endocrinologica",
+        "ecografia-tiroidea"
+      ],
+      "pathways": [
+        "slim-care",
+        "slim-care-donna",
+        "checkup-tiroide"
+      ]
+    },
+    "aini": {
+      "physicians": [
+        "irene-aini"
+      ],
+      "specialties": [
+        "endocrinologia"
+      ],
+      "priority": "physician:irene-aini",
+      "procedures": [
+        "visita-endocrinologica",
+        "ecografia-tiroidea"
+      ],
+      "pathways": [
+        "slim-care",
+        "slim-care-donna",
+        "checkup-tiroide"
+      ]
+    },
+    "endocrinologa": {
+      "physicians": [
+        "irene-aini"
+      ],
+      "specialties": [
+        "endocrinologia"
+      ],
+      "priority": "specialty:endocrinologia"
+    },
+    "guido marongiu": {
+      "physicians": [
+        "guido-marongiu"
+      ],
+      "specialties": [
+        "neurologia"
+      ],
+      "priority": "physician:guido-marongiu",
+      "procedures": [
+        "visita-neurologica",
+        "elettromiografia",
+        "elettroencefalogramma"
+      ]
+    },
+    "marongiu": {
+      "physicians": [
+        "guido-marongiu"
+      ],
+      "specialties": [
+        "neurologia"
+      ],
+      "priority": "physician:guido-marongiu",
+      "procedures": [
+        "visita-neurologica",
+        "elettromiografia",
+        "elettroencefalogramma"
+      ]
+    },
+    "sebastiano traccis": {
+      "physicians": [
+        "sebastiano-traccis"
+      ],
+      "specialties": [
+        "neurologia"
+      ],
+      "priority": "physician:sebastiano-traccis",
+      "procedures": [
+        "visita-neurologica",
+        "elettromiografia"
+      ]
+    },
+    "traccis": {
+      "physicians": [
+        "sebastiano-traccis"
+      ],
+      "specialties": [
+        "neurologia"
+      ],
+      "priority": "physician:sebastiano-traccis",
+      "procedures": [
+        "visita-neurologica",
+        "elettromiografia"
+      ]
+    },
+    "stefano dore": {
+      "physicians": [
+        "stefano-dore"
+      ],
+      "specialties": [
+        "oculistica"
+      ],
+      "priority": "physician:stefano-dore",
+      "procedures": [
+        "visita-oculistica",
+        "campo-visivo",
+        "oct",
+        "tonometria"
+      ]
+    },
+    "dore": {
+      "physicians": [
+        "stefano-dore"
+      ],
+      "specialties": [
+        "oculistica"
+      ],
+      "priority": "physician:stefano-dore",
+      "procedures": [
+        "visita-oculistica",
+        "campo-visivo",
+        "oct",
+        "tonometria"
+      ]
+    },
+    "laura dessole": {
+      "physicians": [
+        "laura-dessole"
+      ],
+      "specialties": [
+        "oculistica"
+      ],
+      "priority": "physician:laura-dessole",
+      "procedures": [
+        "visita-oculistica",
+        "campo-visivo",
+        "oct"
+      ]
+    },
+    "maria pina pintus": {
+      "physicians": [
+        "maria-pina-pintus"
+      ],
+      "specialties": [
+        "oculistica"
+      ],
+      "priority": "physician:maria-pina-pintus",
+      "procedures": [
+        "visita-oculistica",
+        "campo-visivo"
+      ]
+    },
+    "pintus": {
+      "physicians": [
+        "maria-pina-pintus"
+      ],
+      "specialties": [
+        "oculistica"
+      ],
+      "priority": "physician:maria-pina-pintus",
+      "procedures": [
+        "visita-oculistica",
+        "campo-visivo"
+      ]
+    },
+    "francesco santoru": {
+      "physicians": [
+        "francesco-santoru"
+      ],
+      "specialties": [
+        "oculistica"
+      ],
+      "priority": "physician:francesco-santoru",
+      "procedures": [
+        "visita-oculistica",
+        "campo-visivo",
+        "oct"
+      ]
+    },
+    "santoru": {
+      "physicians": [
+        "francesco-santoru"
+      ],
+      "specialties": [
+        "oculistica"
+      ],
+      "priority": "physician:francesco-santoru",
+      "procedures": [
+        "visita-oculistica",
+        "campo-visivo",
+        "oct"
+      ]
+    },
+    "matteo zucca": {
+      "physicians": [
+        "matteo-zucca"
+      ],
+      "specialties": [
+        "oculistica"
+      ],
+      "priority": "physician:matteo-zucca",
+      "procedures": [
+        "visita-oculistica",
+        "campo-visivo"
+      ]
+    },
+    "zucca": {
+      "physicians": [
+        "matteo-zucca"
+      ],
+      "specialties": [
+        "oculistica"
+      ],
+      "priority": "physician:matteo-zucca",
+      "procedures": [
+        "visita-oculistica",
+        "campo-visivo"
+      ]
+    },
+    "francesco bussu": {
+      "physicians": [
+        "francesco-bussu"
+      ],
+      "specialties": [
+        "otorinolaringoiatria"
+      ],
+      "priority": "physician:francesco-bussu",
+      "procedures": [
+        "visita-orl",
+        "esame-audiometrico",
+        "rinoscopia"
+      ]
+    },
+    "bussu": {
+      "physicians": [
+        "francesco-bussu"
+      ],
+      "specialties": [
+        "otorinolaringoiatria"
+      ],
+      "priority": "physician:francesco-bussu",
+      "procedures": [
+        "visita-orl",
+        "esame-audiometrico",
+        "rinoscopia"
+      ]
+    },
+    "otorinolaringoiatra": {
+      "physicians": [
+        "francesco-bussu",
+        "maria-laura-de-luca"
+      ],
+      "specialties": [
+        "otorinolaringoiatria"
+      ],
+      "priority": "specialty:otorinolaringoiatria"
+    },
+    "maria laura de luca": {
+      "physicians": [
+        "maria-laura-de-luca"
+      ],
+      "specialties": [
+        "otorinolaringoiatria"
+      ],
+      "priority": "physician:maria-laura-de-luca",
+      "procedures": [
+        "visita-orl",
+        "esame-audiometrico"
+      ]
+    },
+    "luca": {
+      "physicians": [
+        "maria-laura-de-luca"
+      ],
+      "specialties": [
+        "otorinolaringoiatria"
+      ],
+      "priority": "physician:maria-laura-de-luca",
+      "procedures": [
+        "visita-orl",
+        "esame-audiometrico"
+      ]
+    },
+    "andrea donato": {
+      "physicians": [
+        "andrea-donato"
+      ],
+      "specialties": [
+        "ortopedia"
+      ],
+      "priority": "physician:andrea-donato",
+      "procedures": [
+        "visita-ortopedica",
+        "infiltrazioni-articolari"
+      ]
+    },
+    "donato": {
+      "physicians": [
+        "andrea-donato"
+      ],
+      "specialties": [
+        "ortopedia"
+      ],
+      "priority": "physician:andrea-donato",
+      "procedures": [
+        "visita-ortopedica",
+        "infiltrazioni-articolari"
+      ]
+    },
+    "pietro lisai": {
+      "physicians": [
+        "pietro-lisai"
+      ],
+      "specialties": [
+        "ortopedia"
+      ],
+      "priority": "physician:pietro-lisai",
+      "procedures": [
+        "visita-ortopedica",
+        "infiltrazioni-articolari",
+        "ecografia-muscolo-tendinea"
+      ]
+    },
+    "lisai": {
+      "physicians": [
+        "pietro-lisai"
+      ],
+      "specialties": [
+        "ortopedia"
+      ],
+      "priority": "physician:pietro-lisai",
+      "procedures": [
+        "visita-ortopedica",
+        "infiltrazioni-articolari",
+        "ecografia-muscolo-tendinea"
+      ]
+    },
+    "angelo deplano": {
+      "physicians": [
+        "angelo-deplano"
+      ],
+      "specialties": [
+        "gastroenterologia"
+      ],
+      "priority": "physician:angelo-deplano",
+      "procedures": [
+        "visita-gastroenterologica",
+        "ecografia-addominale",
+        "visita-epatologica"
+      ]
+    },
+    "deplano": {
+      "physicians": [
+        "angelo-deplano"
+      ],
+      "specialties": [
+        "gastroenterologia"
+      ],
+      "priority": "physician:angelo-deplano",
+      "procedures": [
+        "visita-gastroenterologica",
+        "ecografia-addominale",
+        "visita-epatologica"
+      ]
+    },
+    "gastroenterologo - epatologo": {
+      "physicians": [
+        "angelo-deplano"
+      ],
+      "specialties": [
+        "gastroenterologia"
+      ],
+      "priority": "specialty:gastroenterologia"
+    },
+    "antonio solinas": {
+      "physicians": [
+        "antonio-solinas"
+      ],
+      "specialties": [
+        "medicina-interna"
+      ],
+      "priority": "physician:antonio-solinas",
+      "procedures": [
+        "visita-internistica",
+        "visita-epatologica",
+        "ecografia-addominale"
+      ]
+    },
+    "solinas": {
+      "physicians": [
+        "antonio-solinas"
+      ],
+      "specialties": [
+        "medicina-interna"
+      ],
+      "priority": "physician:antonio-solinas",
+      "procedures": [
+        "visita-internistica",
+        "visita-epatologica",
+        "ecografia-addominale"
+      ]
+    },
+    "internista - epatologo": {
+      "physicians": [
+        "antonio-solinas"
+      ],
+      "specialties": [
+        "medicina-interna"
+      ],
+      "priority": "specialty:medicina-interna"
+    },
+    "paolo dessole": {
+      "physicians": [
+        "paolo-dessole"
+      ],
+      "specialties": [
+        "nefrologia"
+      ],
+      "priority": "physician:paolo-dessole",
+      "procedures": [
+        "visita-nefrologica",
+        "ecografia-renale"
+      ]
+    },
+    "nefrologo": {
+      "physicians": [
+        "paolo-dessole",
+        "sergio-paolo-sotgia"
+      ],
+      "specialties": [
+        "nefrologia"
+      ],
+      "priority": "specialty:nefrologia"
+    },
+    "sergio paolo sotgia": {
+      "physicians": [
+        "sergio-paolo-sotgia"
+      ],
+      "specialties": [
+        "nefrologia"
+      ],
+      "priority": "physician:sergio-paolo-sotgia",
+      "procedures": [
+        "visita-nefrologica",
+        "ecografia-renale"
+      ]
+    },
+    "sotgia": {
+      "physicians": [
+        "sergio-paolo-sotgia"
+      ],
+      "specialties": [
+        "nefrologia"
+      ],
+      "priority": "physician:sergio-paolo-sotgia",
+      "procedures": [
+        "visita-nefrologica",
+        "ecografia-renale"
+      ]
+    },
+    "pietro pirina": {
+      "physicians": [
+        "pietro-pirina"
+      ],
+      "specialties": [
+        "pneumologia"
+      ],
+      "priority": "physician:pietro-pirina",
+      "procedures": [
+        "visita-pneumologica",
+        "spirometria",
+        "prick-test"
+      ]
+    },
+    "pirina": {
+      "physicians": [
+        "pietro-pirina"
+      ],
+      "specialties": [
+        "pneumologia"
+      ],
+      "priority": "physician:pietro-pirina",
+      "procedures": [
+        "visita-pneumologica",
+        "spirometria",
+        "prick-test"
+      ]
+    },
+    "pneumologo": {
+      "physicians": [
+        "pietro-pirina"
+      ],
+      "specialties": [
+        "pneumologia"
+      ],
+      "priority": "specialty:pneumologia"
+    },
+    "luigi podda": {
+      "physicians": [
+        "luigi-podda"
+      ],
+      "specialties": [
+        "ematologia"
+      ],
+      "priority": "physician:luigi-podda",
+      "procedures": [
+        "visita-ematologica"
+      ]
+    },
+    "podda": {
+      "physicians": [
+        "luigi-podda"
+      ],
+      "specialties": [
+        "ematologia"
+      ],
+      "priority": "physician:luigi-podda",
+      "procedures": [
+        "visita-ematologica"
+      ]
+    },
+    "ematologo": {
+      "physicians": [
+        "luigi-podda",
+        "daniele-sabiu"
+      ],
+      "specialties": [
+        "ematologia"
+      ],
+      "priority": "specialty:ematologia"
+    },
+    "daniele sabiu": {
+      "physicians": [
+        "daniele-sabiu"
+      ],
+      "specialties": [
+        "ematologia"
+      ],
+      "priority": "physician:daniele-sabiu",
+      "procedures": [
+        "visita-ematologica"
+      ]
+    },
+    "sabiu": {
+      "physicians": [
+        "daniele-sabiu"
+      ],
+      "specialties": [
+        "ematologia"
+      ],
+      "priority": "physician:daniele-sabiu",
+      "procedures": [
+        "visita-ematologica"
+      ]
+    },
+    "niccolò melis": {
+      "physicians": [
+        "niccolo-melis"
+      ],
+      "specialties": [
+        "reumatologia"
+      ],
+      "priority": "physician:niccolo-melis",
+      "procedures": [
+        "visita-reumatologica",
+        "ecografia-articolare"
+      ]
+    },
+    "melis": {
+      "physicians": [
+        "niccolo-melis"
+      ],
+      "specialties": [
+        "reumatologia"
+      ],
+      "priority": "physician:niccolo-melis",
+      "procedures": [
+        "visita-reumatologica",
+        "ecografia-articolare"
+      ]
+    },
+    "reumatologo": {
+      "physicians": [
+        "niccolo-melis"
+      ],
+      "specialties": [
+        "reumatologia"
+      ],
+      "priority": "specialty:reumatologia"
+    },
+    "carlos manuel cambara zuniga": {
+      "physicians": [
+        "carlos-manuel-cambara-zuniga"
+      ],
+      "specialties": [
+        "urologia"
+      ],
+      "priority": "physician:carlos-manuel-cambara-zuniga",
+      "procedures": [
+        "visita-urologica",
+        "visita-andrologica",
+        "ecografia-prostatica"
+      ]
+    },
+    "zuniga": {
+      "physicians": [
+        "carlos-manuel-cambara-zuniga"
+      ],
+      "specialties": [
+        "urologia"
+      ],
+      "priority": "physician:carlos-manuel-cambara-zuniga",
+      "procedures": [
+        "visita-urologica",
+        "visita-andrologica",
+        "ecografia-prostatica"
+      ]
+    },
+    "urologo - andrologo": {
+      "physicians": [
+        "carlos-manuel-cambara-zuniga"
+      ],
+      "specialties": [
+        "urologia"
+      ],
+      "priority": "specialty:urologia"
+    },
+    "paola dettori": {
+      "physicians": [
+        "paola-dettori"
+      ],
+      "specialties": [
+        "chirurgia-vascolare"
+      ],
+      "priority": "physician:paola-dettori",
+      "procedures": [
+        "visita-chirurgia-vascolare",
+        "eco-doppler-arti",
+        "scleroterapia"
+      ]
+    },
+    "dettori": {
+      "physicians": [
+        "paola-dettori"
+      ],
+      "specialties": [
+        "chirurgia-vascolare"
+      ],
+      "priority": "physician:paola-dettori",
+      "procedures": [
+        "visita-chirurgia-vascolare",
+        "eco-doppler-arti",
+        "scleroterapia"
+      ]
+    },
+    "chirurgo vascolare": {
+      "physicians": [
+        "paola-dettori",
+        "roberto-mancino"
+      ],
+      "specialties": [
+        "chirurgia-vascolare"
+      ],
+      "priority": "specialty:chirurgia-vascolare"
+    },
+    "roberto mancino": {
+      "physicians": [
+        "roberto-mancino"
+      ],
+      "specialties": [
+        "chirurgia-vascolare"
+      ],
+      "priority": "physician:roberto-mancino",
+      "procedures": [
+        "visita-chirurgia-vascolare",
+        "eco-doppler-arti"
+      ]
+    },
+    "mancino": {
+      "physicians": [
+        "roberto-mancino"
+      ],
+      "specialties": [
+        "chirurgia-vascolare"
+      ],
+      "priority": "physician:roberto-mancino",
+      "procedures": [
+        "visita-chirurgia-vascolare",
+        "eco-doppler-arti"
+      ]
+    },
+    "antonio michele cavazzuti": {
+      "physicians": [
+        "antonio-michele-cavazzuti"
+      ],
+      "specialties": [
+        "ecografia"
+      ],
+      "priority": "physician:antonio-michele-cavazzuti",
+      "procedures": [
+        "ecografia-addominale",
+        "ecografia-muscolo-tendinea",
+        "ecografia-tiroidea"
+      ]
+    },
+    "cavazzuti": {
+      "physicians": [
+        "antonio-michele-cavazzuti"
+      ],
+      "specialties": [
+        "ecografia"
+      ],
+      "priority": "physician:antonio-michele-cavazzuti",
+      "procedures": [
+        "ecografia-addominale",
+        "ecografia-muscolo-tendinea",
+        "ecografia-tiroidea"
+      ]
+    },
+    "ecografista": {
+      "physicians": [
+        "antonio-michele-cavazzuti"
+      ],
+      "specialties": [
+        "ecografia"
+      ],
+      "priority": "specialty:ecografia"
+    },
+    "giorgio chiarelli": {
+      "physicians": [
+        "giorgio-chiarelli"
+      ],
+      "specialties": [
+        "medicina-sport"
+      ],
+      "priority": "physician:giorgio-chiarelli",
+      "procedures": [
+        "visita-medicina-sport",
+        "certificato-sportivo-agonistico",
+        "certificato-sportivo-non-agonistico",
+        "test-sforzo"
+      ],
+      "pathways": [
+        "slim-care",
+        "slim-care-donna"
+      ]
+    },
+    "chiarelli": {
+      "physicians": [
+        "giorgio-chiarelli"
+      ],
+      "specialties": [
+        "medicina-sport"
+      ],
+      "priority": "physician:giorgio-chiarelli",
+      "procedures": [
+        "visita-medicina-sport",
+        "certificato-sportivo-agonistico",
+        "certificato-sportivo-non-agonistico",
+        "test-sforzo"
+      ],
+      "pathways": [
+        "slim-care",
+        "slim-care-donna"
+      ]
+    },
+    "medico dello sport": {
+      "physicians": [
+        "giorgio-chiarelli"
+      ],
+      "specialties": [
+        "medicina-sport"
+      ],
+      "priority": "specialty:medicina-sport"
+    },
+    "gianfranco manchia": {
+      "physicians": [
+        "gianfranco-manchia"
+      ],
+      "specialties": [
+        "medicina-lavoro"
+      ],
+      "priority": "physician:gianfranco-manchia",
+      "procedures": [
+        "visita-medicina-lavoro",
+        "certificato-idoneita-lavorativa"
+      ]
+    },
+    "manchia": {
+      "physicians": [
+        "gianfranco-manchia"
+      ],
+      "specialties": [
+        "medicina-lavoro"
+      ],
+      "priority": "physician:gianfranco-manchia",
+      "procedures": [
+        "visita-medicina-lavoro",
+        "certificato-idoneita-lavorativa"
+      ]
+    },
+    "medico competente": {
+      "physicians": [
+        "gianfranco-manchia"
+      ],
+      "specialties": [
+        "medicina-lavoro"
+      ],
+      "priority": "specialty:medicina-lavoro"
+    },
+    "nicola frau": {
+      "physicians": [
+        "nicola-frau"
+      ],
+      "specialties": [
+        "fisiatria"
+      ],
+      "priority": "physician:nicola-frau",
+      "procedures": [
+        "visita-fisiatrica",
+        "infiltrazioni",
+        "onde-urto"
+      ]
+    },
+    "frau": {
+      "physicians": [
+        "nicola-frau"
+      ],
+      "specialties": [
+        "fisiatria"
+      ],
+      "priority": "physician:nicola-frau",
+      "procedures": [
+        "visita-fisiatrica",
+        "infiltrazioni",
+        "onde-urto"
+      ]
+    },
+    "fisiatra": {
+      "physicians": [
+        "nicola-frau"
+      ],
+      "specialties": [
+        "fisiatria"
+      ],
+      "priority": "specialty:fisiatria"
+    },
+    "mariolina azara": {
+      "physicians": [
+        "mariolina-azara"
+      ],
+      "specialties": [
+        "pediatria"
+      ],
+      "priority": "physician:mariolina-azara",
+      "procedures": [
+        "visita-pediatrica",
+        "bilancio-salute"
+      ]
+    },
+    "azara": {
+      "physicians": [
+        "mariolina-azara"
+      ],
+      "specialties": [
+        "pediatria"
+      ],
+      "priority": "physician:mariolina-azara",
+      "procedures": [
+        "visita-pediatrica",
+        "bilancio-salute"
+      ]
+    },
+    "pediatra": {
+      "physicians": [
+        "mariolina-azara"
+      ],
+      "specialties": [
+        "pediatria"
+      ],
+      "priority": "specialty:pediatria"
+    },
+    "alessia piras": {
+      "physicians": [
+        "alessia-piras"
+      ],
+      "specialties": [
+        "psicologia"
+      ],
+      "priority": "physician:alessia-piras",
+      "procedures": [
+        "colloquio-psicologico",
+        "psicoterapia",
+        "sostegno-psicologico"
+      ],
+      "pathways": [
+        "slim-care",
+        "slim-care-donna"
+      ]
+    },
+    "piras": {
+      "physicians": [
+        "alessia-piras"
+      ],
+      "specialties": [
+        "psicologia"
+      ],
+      "priority": "physician:alessia-piras",
+      "procedures": [
+        "colloquio-psicologico",
+        "psicoterapia",
+        "sostegno-psicologico"
+      ],
+      "pathways": [
+        "slim-care",
+        "slim-care-donna"
+      ]
+    },
+    "psicoterapeuta": {
+      "physicians": [
+        "alessia-piras"
+      ],
+      "specialties": [
+        "psicologia"
+      ],
+      "priority": "specialty:psicologia"
+    },
+    "ginecologia e ostetricia": {
+      "physicians": [
+        "francesco-dessole",
+        "salvatore-dessole",
+        "maddalena-pola",
+        "marco-petrillo",
+        "antonella-pruneddu",
+        "sonia-bove",
+        "margherita-dessole"
+      ],
+      "specialties": [
+        "ginecologia"
+      ],
+      "priority": "specialty:ginecologia"
+    },
+    "ostetricia": {
+      "physicians": [
+        "angelica-fois"
+      ],
+      "specialties": [
+        "ostetricia"
+      ],
+      "priority": "specialty:ostetricia"
+    },
+    "otorinolaringoiatria": {
+      "physicians": [
+        "francesco-bussu",
+        "maria-laura-de-luca"
+      ],
+      "specialties": [
+        "otorinolaringoiatria"
+      ],
+      "priority": "specialty:otorinolaringoiatria"
+    },
+    "ortopedia e traumatologia": {
+      "physicians": [
+        "andrea-donato",
+        "pietro-lisai"
+      ],
+      "specialties": [
+        "ortopedia"
+      ],
+      "priority": "specialty:ortopedia"
+    },
+    "gastroenterologia": {
+      "physicians": [
+        "angelo-deplano"
+      ],
+      "specialties": [
+        "gastroenterologia"
+      ],
+      "priority": "specialty:gastroenterologia"
+    },
+    "medicina interna": {
+      "physicians": [
+        "antonio-solinas"
+      ],
+      "specialties": [
+        "medicina-interna"
+      ],
+      "priority": "specialty:medicina-interna"
+    },
+    "medicina-interna": {
+      "physicians": [
+        "antonio-solinas"
+      ],
+      "specialties": [
+        "medicina-interna"
+      ],
+      "priority": "specialty:medicina-interna"
+    },
+    "nefrologia": {
+      "physicians": [
+        "paolo-dessole",
+        "sergio-paolo-sotgia"
+      ],
+      "specialties": [
+        "nefrologia"
+      ],
+      "priority": "specialty:nefrologia"
+    },
+    "pneumologia": {
+      "physicians": [
+        "pietro-pirina"
+      ],
+      "specialties": [
+        "pneumologia"
+      ],
+      "priority": "specialty:pneumologia"
+    },
+    "ematologia": {
+      "physicians": [
+        "luigi-podda",
+        "daniele-sabiu"
+      ],
+      "specialties": [
+        "ematologia"
+      ],
+      "priority": "specialty:ematologia"
+    },
+    "reumatologia": {
+      "physicians": [
+        "niccolo-melis"
+      ],
+      "specialties": [
+        "reumatologia"
+      ],
+      "priority": "specialty:reumatologia"
+    },
+    "urologia e andrologia": {
+      "physicians": [
+        "carlos-manuel-cambara-zuniga"
+      ],
+      "specialties": [
+        "urologia"
+      ],
+      "priority": "specialty:urologia"
+    },
+    "urologia": {
+      "physicians": [
+        "carlos-manuel-cambara-zuniga"
+      ],
+      "specialties": [
+        "urologia"
+      ],
+      "priority": "specialty:urologia"
+    },
+    "chirurgia vascolare": {
+      "physicians": [
+        "paola-dettori",
+        "roberto-mancino"
+      ],
+      "specialties": [
+        "chirurgia-vascolare"
+      ],
+      "priority": "specialty:chirurgia-vascolare"
+    },
+    "chirurgia-vascolare": {
+      "physicians": [
+        "paola-dettori",
+        "roberto-mancino"
+      ],
+      "specialties": [
+        "chirurgia-vascolare"
+      ],
+      "priority": "specialty:chirurgia-vascolare"
+    },
+    "ecografia": {
+      "physicians": [
+        "antonio-michele-cavazzuti"
+      ],
+      "specialties": [
+        "ecografia"
+      ],
+      "priority": "specialty:ecografia"
+    },
+    "medicina dello sport": {
+      "physicians": [
+        "giorgio-chiarelli"
+      ],
+      "specialties": [
+        "medicina-sport"
+      ],
+      "priority": "specialty:medicina-sport"
+    },
+    "medicina-sport": {
+      "physicians": [
+        "giorgio-chiarelli"
+      ],
+      "specialties": [
+        "medicina-sport"
+      ],
+      "priority": "specialty:medicina-sport"
+    },
+    "medicina del lavoro": {
+      "physicians": [
+        "gianfranco-manchia"
+      ],
+      "specialties": [
+        "medicina-lavoro"
+      ],
+      "priority": "specialty:medicina-lavoro"
+    },
+    "medicina-lavoro": {
+      "physicians": [
+        "gianfranco-manchia"
+      ],
+      "specialties": [
+        "medicina-lavoro"
+      ],
+      "priority": "specialty:medicina-lavoro"
+    },
+    "fisiatria": {
+      "physicians": [
+        "nicola-frau"
+      ],
+      "specialties": [
+        "fisiatria"
+      ],
+      "priority": "specialty:fisiatria"
+    },
+    "pediatria": {
+      "physicians": [
+        "mariolina-azara"
+      ],
+      "specialties": [
+        "pediatria"
+      ],
+      "priority": "specialty:pediatria"
+    },
+    "psicologia e psicoterapia": {
+      "physicians": [
+        "alessia-piras"
+      ],
+      "specialties": [
+        "psicologia"
+      ],
+      "priority": "specialty:psicologia"
+    },
+    "psicologia": {
+      "physicians": [
+        "alessia-piras"
+      ],
+      "specialties": [
+        "psicologia"
+      ],
+      "priority": "specialty:psicologia"
+    }
+  },
+  "aliases": {
+    "eco": "ecografia",
+    "ecg": "elettrocardiogramma",
+    "emg": "elettromiografia",
+    "tsh": "tireotropina",
+    "ft3": "triiodotironina",
+    "ft4": "tiroxina",
+    "psa": "antigene prostatico",
+    "hba1c": "emoglobina glicata",
+    "got": "ast",
+    "gpt": "alt",
+    "ggt": "gamma gt",
+    "ves": "velocità eritrosedimentazione",
+    "pcr": "proteina c reattiva",
+    "hcg": "beta hcg",
+    "bun": "azotemia",
+    "hdl": "colesterolo buono",
+    "ldl": "colesterolo cattivo",
+    "bia": "bioimpedenziometria"
+  },
+  "physicians": []
+}

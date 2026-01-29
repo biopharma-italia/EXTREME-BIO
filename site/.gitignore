@@ -1,0 +1,22 @@
+# Dipendenze
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Temp
+*.tmp
+*.temp
+
+# Build
+dist/
+build/
+

@@ -1,0 +1,46 @@
+/* ============================================
+   BIO-CLINIC - HEADER SPACING FIX v4.0
+   Layout semplificato SENZA header-top
+   REGOLA: Header ~70px + 30px buffer = 100px
+   ============================================ */
+
+/* Body padding per header fixed */
+body {
+  padding-top: 100px !important;
+  margin: 0 !important;
+}
+
+/* Header: fixed in alto */
+.header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 9999 !important;
+  background: #fff !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+}
+
+/* Trust-bar: spazio extra dopo header */
+.trust-bar {
+  margin-top: 10px !important;
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+}
+
+/* Prima sezione dopo header (se non è trust-bar) */
+.section:first-of-type {
+  padding-top: 2rem !important;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  body {
+    padding-top: 80px !important;
+  }
+  
+  .trust-bar {
+    margin-top: 5px !important;
+    padding-top: 1rem !important;
+  }
+}

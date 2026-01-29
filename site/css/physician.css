@@ -1,0 +1,364 @@
+/* ============================================
+   BIO-CLINIC PHYSICIAN PAGE STYLES
+   Individual doctor profile pages
+   ============================================ */
+
+/* Breadcrumb */
+.breadcrumb {
+  background: var(--gray-50);
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+.breadcrumb-list li::after {
+  content: '/';
+  margin-left: 0.5rem;
+  color: var(--gray-400);
+}
+
+.breadcrumb-list li:last-child::after {
+  display: none;
+}
+
+.breadcrumb-list a {
+  color: var(--gray-600);
+  text-decoration: none;
+}
+
+.breadcrumb-list a:hover {
+  color: var(--primary);
+}
+
+.breadcrumb-list li:last-child {
+  color: var(--gray-900);
+  font-weight: 500;
+}
+
+/* Physician Page Layout */
+.physician-page {
+  padding: 3rem 0;
+  background: var(--gray-50);
+  min-height: calc(100vh - 200px);
+}
+
+.physician-hero {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 968px) {
+  .physician-hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Profile Section */
+.physician-profile {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.physician-photo-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.physician-photo-placeholder {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 700;
+  border: 4px solid white;
+  box-shadow: var(--shadow-md);
+}
+
+.physician-photo-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.physician-initials {
+  font-family: 'Poppins', sans-serif;
+}
+
+.physician-info {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.physician-specialty-badge {
+  display: inline-block;
+  color: white;
+  padding: 0.375rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.physician-role-badge {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-left: 0.5rem;
+  text-transform: uppercase;
+}
+
+.physician-name {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin: 0.5rem 0 0.25rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.physician-job-title {
+  color: var(--gray-600);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.physician-bio {
+  padding: 1.5rem;
+  background: var(--gray-50);
+  border-radius: var(--radius-md);
+  margin-bottom: 1.5rem;
+}
+
+.physician-bio p {
+  margin: 0;
+  line-height: 1.7;
+  color: var(--gray-700);
+}
+
+.physician-pathways {
+  border-top: 1px solid var(--gray-100);
+  padding-top: 1.5rem;
+}
+
+.physician-pathways h4 {
+  font-size: 0.9rem;
+  color: var(--gray-600);
+  margin: 0 0 0.75rem;
+  font-weight: 500;
+}
+
+.pathway-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.pathway-tag {
+  display: inline-flex;
+  align-items: center;
+  background: var(--primary-bg);
+  color: var(--primary);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.pathway-tag:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* Booking Section */
+.booking-section {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (max-width: 968px) {
+  .booking-section {
+    position: static;
+  }
+}
+
+.booking-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  border: 2px solid var(--primary);
+}
+
+.booking-card h3 {
+  font-size: 1.25rem;
+  margin: 0 0 0.25rem;
+  color: var(--gray-900);
+}
+
+.booking-subtitle {
+  color: var(--gray-600);
+  margin: 0 0 1.25rem;
+  font-size: 0.9rem;
+}
+
+.booking-widget {
+  margin-bottom: 1.5rem;
+}
+
+/* MioDottore Widget Styling */
+.booking-widget .zl-url {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background: var(--primary);
+  color: white !important;
+  text-align: center;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.booking-widget .zl-url:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.booking-alternative {
+  border-top: 1px solid var(--gray-100);
+  padding-top: 1.25rem;
+}
+
+.booking-alternative p {
+  text-align: center;
+  color: var(--gray-500);
+  font-size: 0.85rem;
+  margin: 0 0 0.75rem;
+}
+
+.btn-block {
+  width: 100%;
+  justify-content: center;
+}
+
+.clinic-info-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.clinic-info-card h4 {
+  font-size: 1rem;
+  margin: 0 0 0.75rem;
+  color: var(--gray-900);
+}
+
+.clinic-info-card p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  color: var(--gray-600);
+}
+
+.clinic-info-card strong {
+  color: var(--gray-700);
+}
+
+/* Procedures Section */
+.physician-procedures {
+  margin-top: 2rem;
+}
+
+.physician-procedures h2 {
+  font-size: 1.5rem;
+  margin: 0 0 1.5rem;
+  color: var(--gray-900);
+}
+
+.procedure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.procedure-card {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.procedure-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.procedure-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.procedure-name {
+  font-weight: 500;
+  color: var(--gray-800);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 640px) {
+  .physician-page {
+    padding: 1.5rem 0;
+  }
+  
+  .physician-profile {
+    padding: 1.5rem;
+  }
+  
+  .physician-photo-placeholder {
+    width: 120px;
+    height: 120px;
+    font-size: 2.5rem;
+  }
+  
+  .physician-name {
+    font-size: 1.5rem;
+  }
+  
+  .procedure-grid {
+    grid-template-columns: 1fr;
+  }
+}

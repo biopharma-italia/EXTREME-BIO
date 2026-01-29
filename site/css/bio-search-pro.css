@@ -1,0 +1,743 @@
+/**
+ * BIO-SEARCH PRO - Styles
+ * =======================
+ * UI a cluster, red flags, modals per sistema ricerca intelligente
+ * © Bio-Clinic Sassari
+ */
+
+/* =============================================
+   1. DROPDOWN CONTAINER
+   ============================================= */
+
+.bio-search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+  max-height: 70vh;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  margin-top: 8px;
+}
+
+.bio-search-dropdown.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Custom scrollbar */
+.bio-search-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.bio-search-dropdown::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.bio-search-dropdown::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.bio-search-dropdown::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* =============================================
+   2. CLUSTERED SECTIONS
+   ============================================= */
+
+.bio-search-results-clustered {
+  padding: 8px 0;
+}
+
+.bio-search-section {
+  padding: 8px 0;
+}
+
+.bio-search-section:not(:last-child) {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.bio-search-section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #666;
+}
+
+.bio-search-section-icon {
+  font-size: 14px;
+}
+
+/* Section colors */
+.bio-search-packs .bio-search-section-header {
+  color: #d97706;
+  background: linear-gradient(to right, #fef3c7, transparent);
+}
+
+.bio-search-specialists .bio-search-section-header {
+  color: #059669;
+  background: linear-gradient(to right, #d1fae5, transparent);
+}
+
+.bio-search-exams .bio-search-section-header {
+  color: #2563eb;
+  background: linear-gradient(to right, #dbeafe, transparent);
+}
+
+/* =============================================
+   3. SEARCH ITEMS
+   ============================================= */
+
+.bio-search-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border-left: 3px solid transparent;
+}
+
+.bio-search-item:hover,
+.bio-search-item.selected {
+  background: #f8fafc;
+}
+
+.bio-search-item.selected {
+  border-left-color: #00a651;
+}
+
+/* Item types styling */
+.bio-search-item-pack,
+.bio-search-item-pathway {
+  background: linear-gradient(to right, #fffbeb, white);
+}
+
+.bio-search-item-pack:hover,
+.bio-search-item-pathway:hover,
+.bio-search-item-pack.selected,
+.bio-search-item-pathway.selected {
+  background: linear-gradient(to right, #fef3c7, #fffbeb);
+  border-left-color: #d97706;
+}
+
+.bio-search-item-icon {
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.bio-search-item-pack .bio-search-item-icon,
+.bio-search-item-pathway .bio-search-item-icon {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: white;
+}
+
+.bio-search-item-specialist .bio-search-item-icon {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.bio-search-item-exam .bio-search-item-icon {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+}
+
+.bio-search-item-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.bio-search-item-name {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.bio-search-item-badge {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: white;
+  border-radius: 4px;
+  letter-spacing: 0.3px;
+}
+
+.bio-search-item-desc {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bio-search-item-price {
+  font-weight: 700;
+  color: #00a651;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.bio-search-item-action {
+  flex-shrink: 0;
+}
+
+.bio-search-item-btn {
+  padding: 6px 12px;
+  background: #00a651;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.bio-search-item-btn:hover {
+  background: #008c44;
+  transform: translateY(-1px);
+}
+
+/* =============================================
+   4. RED FLAG ALERT
+   ============================================= */
+
+.bio-search-red-flag {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  background: linear-gradient(135deg, #fef2f2, #fee2e2);
+  border: 2px solid #fca5a5;
+  border-radius: 12px;
+  margin: 8px;
+}
+
+.bio-search-red-flag-icon {
+  font-size: 40px;
+  flex-shrink: 0;
+}
+
+.bio-search-red-flag-content h4 {
+  margin: 0 0 8px;
+  color: #991b1b;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.bio-search-red-flag-content p {
+  margin: 0 0 16px;
+  color: #7f1d1d;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.bio-search-red-flag-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.bio-search-red-flag-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.bio-search-red-flag-btn.primary {
+  background: #dc2626;
+  color: white;
+}
+
+.bio-search-red-flag-btn.primary:hover {
+  background: #b91c1c;
+}
+
+.bio-search-red-flag-btn.secondary {
+  background: white;
+  color: #dc2626;
+  border: 2px solid #dc2626;
+}
+
+.bio-search-red-flag-btn.secondary:hover {
+  background: #fef2f2;
+}
+
+/* =============================================
+   5. EMPTY STATE & FOOTER
+   ============================================= */
+
+.bio-search-empty {
+  padding: 24px;
+  text-align: center;
+  color: #6b7280;
+}
+
+.bio-search-empty p {
+  margin: 0;
+}
+
+.bio-search-empty-hint {
+  margin-top: 8px !important;
+  font-size: 13px;
+}
+
+.bio-search-empty-hint a {
+  color: #00a651;
+  font-weight: 600;
+}
+
+.bio-search-footer {
+  padding: 12px 16px;
+  border-top: 1px solid #f0f0f0;
+  text-align: center;
+}
+
+.bio-search-view-all {
+  color: #00a651;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.bio-search-view-all:hover {
+  text-decoration: underline;
+}
+
+/* =============================================
+   6. MODALS
+   ============================================= */
+
+.bio-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.bio-modal {
+  background: white;
+  border-radius: 16px;
+  max-width: 480px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.25s ease;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0); 
+  }
+}
+
+.bio-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #f3f4f6;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  transition: all 0.15s ease;
+}
+
+.bio-modal-close:hover {
+  background: #e5e7eb;
+  color: #1f2937;
+}
+
+.bio-modal-title {
+  margin: 0;
+  padding: 20px 24px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.bio-modal-content {
+  padding: 24px;
+}
+
+.bio-modal-actions {
+  display: flex;
+  gap: 12px;
+  padding: 16px 24px;
+  border-top: 1px solid #f0f0f0;
+  background: #f9fafb;
+  border-radius: 0 0 16px 16px;
+}
+
+.bio-modal-btn {
+  flex: 1;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: none;
+}
+
+.bio-modal-btn.primary {
+  background: #00a651;
+  color: white;
+}
+
+.bio-modal-btn.primary:hover {
+  background: #008c44;
+}
+
+.bio-modal-btn.secondary {
+  background: white;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.bio-modal-btn.secondary:hover {
+  background: #f9fafb;
+}
+
+/* =============================================
+   7. MODAL - LAB SPECIFIC
+   ============================================= */
+
+.bio-modal-lab-exam {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: linear-gradient(135deg, #dbeafe, #eff6ff);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.bio-modal-lab-exam strong {
+  font-size: 16px;
+  color: #1e40af;
+}
+
+.bio-modal-lab-exam .price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #00a651;
+}
+
+.bio-modal-lab-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.bio-modal-lab-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.bio-modal-lab-row .icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.bio-modal-lab-row span {
+  font-size: 14px;
+  color: #374151;
+}
+
+.bio-modal-lab-upsell {
+  background: linear-gradient(135deg, #fef3c7, #fefce8);
+  border: 1px solid #fbbf24;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.bio-modal-lab-upsell p {
+  margin: 0;
+  font-size: 13px;
+  color: #92400e;
+}
+
+.bio-modal-lab-upsell a {
+  color: #d97706;
+  font-weight: 600;
+}
+
+.bio-modal-lab-note {
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 0;
+  font-size: 14px;
+  color: #166534;
+  text-align: center;
+}
+
+/* =============================================
+   8. MODAL - FORM
+   ============================================= */
+
+.bio-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bio-modal-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bio-modal-form label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.bio-modal-form input,
+.bio-modal-form textarea {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.15s ease;
+}
+
+.bio-modal-form input:focus,
+.bio-modal-form textarea:focus {
+  outline: none;
+  border-color: #00a651;
+  box-shadow: 0 0 0 3px rgba(0, 166, 81, 0.1);
+}
+
+.bio-modal-shop-product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #f3f4f6;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.bio-modal-shop-product .price {
+  font-weight: 700;
+  color: #00a651;
+}
+
+/* =============================================
+   9. RESPONSIVE
+   ============================================= */
+
+@media (max-width: 640px) {
+  .bio-search-dropdown {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 60vh;
+    border-radius: 16px 16px 0 0;
+    margin-top: 0;
+  }
+
+  .bio-search-item {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .bio-search-item-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+
+  .bio-search-item-name {
+    font-size: 13px;
+  }
+
+  .bio-search-item-btn {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+
+  .bio-search-red-flag {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .bio-search-red-flag-actions {
+    justify-content: center;
+  }
+
+  .bio-modal {
+    margin: 0;
+    max-height: 100vh;
+    border-radius: 16px 16px 0 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .bio-modal-actions {
+    flex-direction: column;
+  }
+}
+
+/* =============================================
+   10. DARK MODE SUPPORT
+   ============================================= */
+
+@media (prefers-color-scheme: dark) {
+  /* Solo se il sito supporta dark mode in futuro */
+}
+
+/* =============================================
+   11. ANIMATIONS & MICRO-INTERACTIONS
+   ============================================= */
+
+.bio-search-item {
+  animation: itemFadeIn 0.2s ease;
+  animation-fill-mode: both;
+}
+
+.bio-search-item:nth-child(1) { animation-delay: 0.02s; }
+.bio-search-item:nth-child(2) { animation-delay: 0.04s; }
+.bio-search-item:nth-child(3) { animation-delay: 0.06s; }
+.bio-search-item:nth-child(4) { animation-delay: 0.08s; }
+.bio-search-item:nth-child(5) { animation-delay: 0.10s; }
+
+@keyframes itemFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Pulse animation for featured items */
+.bio-search-item-badge {
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* =============================================
+   12. PRINT STYLES
+   ============================================= */
+
+@media print {
+  .bio-search-dropdown,
+  .bio-modal-overlay {
+    display: none !important;
+  }
+}
+
+/* =============================================
+   FIX: Supporto anche per search-autocomplete
+   ============================================= */
+
+/* Applica stili bio-search-dropdown anche a search-autocomplete */
+.search-autocomplete.active,
+#hero-autocomplete.active,
+#header-autocomplete.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+  display: block !important;
+}
+
+/* Container dropdown unificato */
+#hero-autocomplete,
+#header-autocomplete {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+  max-height: 70vh;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  margin-top: 8px;
+}

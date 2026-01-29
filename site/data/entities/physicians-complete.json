@@ -1,0 +1,1283 @@
+{
+  "version": "2.0.0",
+  "generated": "2026-01-28",
+  "total": 51,
+  "widget_script": "<script>!function($_x,_s,id){var js,fjs=$_x.getElementsByTagName(_s)[0];if(!$_x.getElementById(id)){js=$_x.createElement(_s);js.id=id;js.src=\"//platform.docplanner.com/js/widget.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"zl-widget-s\");</script>",
+  "specialties": {
+    "ginecologia": {
+      "name": "Ginecologia e Ostetricia",
+      "page": "/pages/ginecologia.html",
+      "color": "#E91E8C"
+    },
+    "ostetricia": {
+      "name": "Ostetricia",
+      "page": "/pages/ginecologia.html",
+      "color": "#E91E8C"
+    },
+    "cardiologia": {
+      "name": "Cardiologia",
+      "page": "/pages/cardiologia.html",
+      "color": "#E53935"
+    },
+    "dermatologia": {
+      "name": "Dermatologia",
+      "page": "/pages/dermatologia.html",
+      "color": "#8E24AA"
+    },
+    "endocrinologia": {
+      "name": "Endocrinologia",
+      "page": "/pages/endocrinologia.html",
+      "color": "#43A047"
+    },
+    "neurologia": {
+      "name": "Neurologia",
+      "page": "/pages/neurologia.html",
+      "color": "#5C6BC0"
+    },
+    "oculistica": {
+      "name": "Oculistica",
+      "page": "/pages/oculistica.html",
+      "color": "#00ACC1"
+    },
+    "otorinolaringoiatria": {
+      "name": "Otorinolaringoiatria",
+      "page": "/pages/otorinolaringoiatria.html",
+      "color": "#F4511E"
+    },
+    "ortopedia": {
+      "name": "Ortopedia e Traumatologia",
+      "page": "/pages/ortopedia.html",
+      "color": "#6D4C41"
+    },
+    "gastroenterologia": {
+      "name": "Gastroenterologia",
+      "page": "/pages/gastroenterologia.html",
+      "color": "#FF8F00"
+    },
+    "medicina-interna": {
+      "name": "Medicina Interna",
+      "page": null,
+      "color": "#546E7A"
+    },
+    "nefrologia": {
+      "name": "Nefrologia",
+      "page": null,
+      "color": "#7B1FA2"
+    },
+    "pneumologia": {
+      "name": "Pneumologia",
+      "page": "/pages/pneumologia.html",
+      "color": "#0288D1"
+    },
+    "ematologia": {
+      "name": "Ematologia",
+      "page": "/pages/ematologia.html",
+      "color": "#C62828"
+    },
+    "reumatologia": {
+      "name": "Reumatologia",
+      "page": "/pages/reumatologia.html",
+      "color": "#00796B"
+    },
+    "urologia": {
+      "name": "Urologia e Andrologia",
+      "page": "/pages/urologia.html",
+      "color": "#1565C0"
+    },
+    "chirurgia-vascolare": {
+      "name": "Chirurgia Vascolare",
+      "page": "/pages/chirurgia-vascolare.html",
+      "color": "#AD1457"
+    },
+    "ecografia": {
+      "name": "Ecografia",
+      "page": null,
+      "color": "#757575"
+    },
+    "medicina-sport": {
+      "name": "Medicina dello Sport",
+      "page": null,
+      "color": "#2E7D32"
+    },
+    "medicina-lavoro": {
+      "name": "Medicina del Lavoro",
+      "page": null,
+      "color": "#455A64"
+    },
+    "fisiatria": {
+      "name": "Fisiatria",
+      "page": null,
+      "color": "#00838F"
+    },
+    "pediatria": {
+      "name": "Pediatria",
+      "page": null,
+      "color": "#EC407A"
+    },
+    "psicologia": {
+      "name": "Psicologia e Psicoterapia",
+      "page": null,
+      "color": "#7E57C2"
+    },
+    "nutrizione": {
+      "name": "Nutrizione Clinica",
+      "page": null,
+      "color": "#66BB6A"
+    },
+    "laboratorio": {
+      "name": "Laboratorio Analisi",
+      "page": "/pages/laboratorio.html",
+      "color": "#26A69A"
+    }
+  },
+  "physicians": [
+    {
+      "id": "francesco-dessole",
+      "slug": "francesco-dessole",
+      "title": "Dott.",
+      "name": "Francesco Dessole",
+      "full_name": "Dott. Francesco Dessole",
+      "specialty_id": "ginecologia",
+      "job_title": "Ginecologo",
+      "role_badge": "Medico Rif. Slim Care Donna",
+      "bio": "Ginecologo specializzato in PCOS, menopausa e gestione del peso femminile. Medico di riferimento per il percorso Slim Care Donna.",
+      "procedures": [
+        "visita-ginecologica",
+        "ecografia-ginecologica",
+        "monitoraggio-follicolare",
+        "ecografia-pelvica"
+      ],
+      "pathways": [
+        "slim-care-donna",
+        "pma-fertilita"
+      ],
+      "miodottore_id": "francesco-dessole",
+      "miodottore_url": "https://www.miodottore.it/francesco-dessole/ginecologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/francesco-dessole/ginecologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"francesco-dessole\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Francesco Dessole - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "salvatore-dessole",
+      "slug": "salvatore-dessole",
+      "title": "Prof.",
+      "name": "Salvatore Dessole",
+      "full_name": "Prof. Salvatore Dessole",
+      "specialty_id": "ginecologia",
+      "job_title": "Direttore Sanitario - Ginecologo Senior",
+      "role_badge": "Direttore Sanitario",
+      "bio": "Professore Emerito, fondatore di Bio-Clinic, oltre 40 anni di esperienza in ginecologia e ostetricia. Punto di riferimento per la medicina della riproduzione in Sardegna.",
+      "procedures": [
+        "visita-ginecologica",
+        "ecografia-ginecologica",
+        "ecografia-ostetrica-3d-4d",
+        "consulenza-pma"
+      ],
+      "pathways": [
+        "pma-fertilita"
+      ],
+      "miodottore_id": "salvatore-dessole",
+      "miodottore_url": "https://www.miodottore.it/salvatore-dessole/ginecologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/salvatore-dessole/ginecologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"salvatore-dessole\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Prof. Salvatore Dessole - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "maddalena-pola",
+      "slug": "maddalena-pola",
+      "title": "Dott.ssa",
+      "name": "Maddalena Pola",
+      "full_name": "Dott.ssa Maddalena Pola",
+      "specialty_id": "ginecologia",
+      "job_title": "Ginecologa",
+      "role_badge": null,
+      "bio": "Ginecologa specializzata in ginecologia generale e prevenzione femminile.",
+      "procedures": [
+        "visita-ginecologica",
+        "ecografia-ginecologica",
+        "pap-test"
+      ],
+      "pathways": [],
+      "miodottore_id": "maddalena-pola",
+      "miodottore_url": "https://www.miodottore.it/maddalena-pola/ginecologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/maddalena-pola/ginecologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"maddalena-pola\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Maddalena Pola - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "marco-petrillo",
+      "slug": "marco-petrillo",
+      "title": "Prof.",
+      "name": "Marco Petrillo",
+      "full_name": "Prof. Marco Petrillo",
+      "specialty_id": "ginecologia",
+      "job_title": "Ginecologo",
+      "role_badge": null,
+      "bio": "Ginecologo specializzato in medicina della riproduzione e PMA.",
+      "procedures": [
+        "visita-ginecologica",
+        "ecografia-ginecologica",
+        "monitoraggio-follicolare",
+        "isteroscopia"
+      ],
+      "pathways": [
+        "pma-fertilita"
+      ],
+      "miodottore_id": "marco-petrillo-3",
+      "miodottore_url": "https://www.miodottore.it/marco-petrillo-3/ginecologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/marco-petrillo-3/ginecologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"marco-petrillo-3\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Prof. Marco Petrillo - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "antonella-pruneddu",
+      "slug": "antonella-pruneddu",
+      "title": "Dott.ssa",
+      "name": "Antonella Pruneddu",
+      "full_name": "Dott.ssa Antonella Pruneddu",
+      "specialty_id": "ginecologia",
+      "job_title": "Ginecologa",
+      "role_badge": null,
+      "bio": "Ginecologa specializzata in ginecologia generale.",
+      "procedures": [
+        "visita-ginecologica",
+        "ecografia-ginecologica",
+        "pap-test"
+      ],
+      "pathways": [],
+      "miodottore_id": "antonella-pruneddu",
+      "miodottore_url": "https://www.miodottore.it/antonella-pruneddu/ginecologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/antonella-pruneddu/ginecologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"antonella-pruneddu\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Antonella Pruneddu - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "sonia-bove",
+      "slug": "sonia-bove",
+      "title": "Dott.ssa",
+      "name": "Sonia Bove",
+      "full_name": "Dott.ssa Sonia Bove",
+      "specialty_id": "ginecologia",
+      "job_title": "Ginecologa - Senologa",
+      "role_badge": null,
+      "bio": "Ginecologa e Senologa specializzata nella prevenzione e diagnosi delle patologie mammarie.",
+      "procedures": [
+        "visita-ginecologica",
+        "visita-senologica",
+        "ecografia-mammaria"
+      ],
+      "pathways": [],
+      "miodottore_id": "sonia-bove",
+      "miodottore_url": "https://www.miodottore.it/sonia-bove/ginecologo-senologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/sonia-bove/ginecologo-senologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"sonia-bove\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Sonia Bove - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "margherita-dessole",
+      "slug": "margherita-dessole",
+      "title": "Dott.ssa",
+      "name": "Margherita Dessole",
+      "full_name": "Dott.ssa Margherita Dessole",
+      "specialty_id": "ginecologia",
+      "job_title": "Ginecologa",
+      "role_badge": null,
+      "bio": "Ginecologa con esperienza in ostetricia e ginecologia generale.",
+      "procedures": [
+        "visita-ginecologica",
+        "ecografia-ginecologica",
+        "pap-test",
+        "colposcopia"
+      ],
+      "pathways": [],
+      "miodottore_id": "margherita-dessole",
+      "miodottore_url": "https://www.miodottore.it/margherita-dessole/ginecologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/margherita-dessole/ginecologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"margherita-dessole\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Margherita Dessole - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "angelica-fois",
+      "slug": "angelica-fois",
+      "title": "Dott.ssa",
+      "name": "Angelica Fois",
+      "full_name": "Dott.ssa Angelica Fois",
+      "specialty_id": "ostetricia",
+      "job_title": "Ostetrica",
+      "role_badge": null,
+      "bio": "Ostetrica specializzata in assistenza alla gravidanza, parto e percorsi PMA.",
+      "procedures": [
+        "assistenza-ostetrica",
+        "monitoraggio-fetale",
+        "corsi-preparto"
+      ],
+      "pathways": [
+        "pma-fertilita"
+      ],
+      "miodottore_id": "angelica-fois",
+      "miodottore_url": "https://www.miodottore.it/angelica-fois/ostetrica/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/angelica-fois/ostetrica/sassari\" rel=\"nofollow\" data-zlw-doctor=\"angelica-fois\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Angelica Fois - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "tonino-bullitta",
+      "slug": "tonino-bullitta",
+      "title": "Dr.",
+      "name": "Tonino Bullitta",
+      "full_name": "Dr. Tonino Bullitta",
+      "specialty_id": "cardiologia",
+      "job_title": "Cardiologo",
+      "role_badge": null,
+      "bio": "Cardiologo specializzato in ecocolordoppler cardiaco, ECG Holter 24h, screening cardiologico pediatrico.",
+      "procedures": [
+        "visita-cardiologica",
+        "ecg",
+        "ecocardiogramma",
+        "holter-ecg",
+        "holter-pressorio",
+        "eco-doppler-tsa"
+      ],
+      "pathways": [
+        "checkup-cardiovascolare"
+      ],
+      "miodottore_id": "tonino-bullitta",
+      "miodottore_url": "https://www.miodottore.it/tonino-bullitta/cardiologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/tonino-bullitta/cardiologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"tonino-bullitta\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dr. Tonino Bullitta - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "sara-uras",
+      "slug": "sara-uras",
+      "title": "Dott.ssa",
+      "name": "Sara Uras",
+      "full_name": "Dott.ssa Sara Uras",
+      "specialty_id": "cardiologia",
+      "job_title": "Cardiologa",
+      "role_badge": null,
+      "bio": "Cardiologa specializzata in diagnostica cardiologica non invasiva.",
+      "procedures": [
+        "visita-cardiologica",
+        "ecg",
+        "ecocardiogramma",
+        "holter-ecg"
+      ],
+      "pathways": [
+        "checkup-cardiovascolare"
+      ],
+      "miodottore_id": "sara-uras",
+      "miodottore_url": "https://www.miodottore.it/sara-uras/cardiologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/sara-uras/cardiologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"sara-uras\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Sara Uras - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "paolo-pischedda",
+      "slug": "paolo-pischedda",
+      "title": "Dott.",
+      "name": "Paolo Pischedda",
+      "full_name": "Dott. Paolo Pischedda",
+      "specialty_id": "cardiologia",
+      "job_title": "Cardiologo",
+      "role_badge": null,
+      "bio": "Cardiologo specializzato in diagnostica cardiologica.",
+      "procedures": [
+        "visita-cardiologica",
+        "ecg",
+        "ecocardiogramma"
+      ],
+      "pathways": [
+        "checkup-cardiovascolare"
+      ],
+      "miodottore_id": "paolo-pischedda",
+      "miodottore_url": "https://www.miodottore.it/paolo-pischedda/cardiologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/paolo-pischedda/cardiologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"paolo-pischedda\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Paolo Pischedda - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "paolo-franca",
+      "slug": "paolo-franca",
+      "title": "Dott.",
+      "name": "Paolo Franca",
+      "full_name": "Dott. Paolo Franca",
+      "specialty_id": "cardiologia",
+      "job_title": "Cardiologo",
+      "role_badge": null,
+      "bio": "Cardiologo specializzato in diagnostica cardiologica.",
+      "procedures": [
+        "visita-cardiologica",
+        "ecg",
+        "ecocardiogramma"
+      ],
+      "pathways": [
+        "checkup-cardiovascolare"
+      ],
+      "miodottore_id": "paolo-franca",
+      "miodottore_url": "https://www.miodottore.it/paolo-franca/cardiologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/paolo-franca/cardiologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"paolo-franca\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Paolo Franca - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "federica-decandia",
+      "slug": "federica-decandia",
+      "title": "Dott.ssa",
+      "name": "Federica Decandia",
+      "full_name": "Dott.ssa Federica Decandia",
+      "specialty_id": "cardiologia",
+      "job_title": "Cardiologa",
+      "role_badge": null,
+      "bio": "Cardiologa specializzata in diagnostica cardiologica.",
+      "procedures": [
+        "visita-cardiologica",
+        "ecg",
+        "ecocardiogramma"
+      ],
+      "pathways": [
+        "checkup-cardiovascolare"
+      ],
+      "miodottore_id": "federica-decandia",
+      "miodottore_url": "https://www.miodottore.it/federica-decandia/cardiologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/federica-decandia/cardiologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"federica-decandia\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Federica Decandia - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "giovanna-costa",
+      "slug": "giovanna-costa",
+      "title": "Dott.ssa",
+      "name": "Giovanna Costa",
+      "full_name": "Dott.ssa Giovanna Costa",
+      "specialty_id": "dermatologia",
+      "job_title": "Dermatologa",
+      "role_badge": null,
+      "bio": "Dermatologa specializzata in dermatoscopia, mappatura nevi e patologie cutanee.",
+      "procedures": [
+        "visita-dermatologica",
+        "mappatura-nevi",
+        "dermatoscopia-digitale",
+        "asportazione-neoformazioni"
+      ],
+      "pathways": [],
+      "miodottore_id": "giovanna-costa-2",
+      "miodottore_url": "https://www.miodottore.it/giovanna-costa-2/dermatologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/giovanna-costa-2/dermatologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"giovanna-costa-2\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Giovanna Costa - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "alessandra-musinu",
+      "slug": "alessandra-musinu",
+      "title": "Dott.ssa",
+      "name": "Alessandra Musinu",
+      "full_name": "Dott.ssa Alessandra Musinu",
+      "specialty_id": "dermatologia",
+      "job_title": "Dermatologa",
+      "role_badge": null,
+      "bio": "Dermatologa specializzata in patologie cutanee e dermatologia estetica.",
+      "procedures": [
+        "visita-dermatologica",
+        "mappatura-nevi",
+        "dermatoscopia-digitale"
+      ],
+      "pathways": [],
+      "miodottore_id": "alessandra-musinu",
+      "miodottore_url": "https://www.miodottore.it/alessandra-musinu/dermatologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/alessandra-musinu/dermatologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"alessandra-musinu\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Alessandra Musinu - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "speranza-anedda",
+      "slug": "speranza-anedda",
+      "title": "Dott.ssa",
+      "name": "Speranza Anedda",
+      "full_name": "Dott.ssa Speranza Anedda",
+      "specialty_id": "dermatologia",
+      "job_title": "Dermatologa",
+      "role_badge": null,
+      "bio": "Dermatologa specializzata in patologie cutanee.",
+      "procedures": [
+        "visita-dermatologica",
+        "mappatura-nevi"
+      ],
+      "pathways": [],
+      "miodottore_id": "speranza-anedda",
+      "miodottore_url": "https://www.miodottore.it/speranza-anedda/dermatologo/ossi",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/speranza-anedda/dermatologo/ossi\" rel=\"nofollow\" data-zlw-doctor=\"speranza-anedda\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Speranza Anedda - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "carlo-burrai",
+      "slug": "carlo-burrai",
+      "title": "Dr.",
+      "name": "Carlo Burrai",
+      "full_name": "Dr. Carlo Burrai",
+      "specialty_id": "endocrinologia",
+      "job_title": "Endocrinologo - Pediatra",
+      "role_badge": null,
+      "bio": "Endocrinologo e Pediatra specializzato in patologie tiroidee e metaboliche pediatriche.",
+      "procedures": [
+        "visita-endocrinologica",
+        "visita-pediatrica",
+        "ecografia-tiroidea"
+      ],
+      "pathways": [],
+      "miodottore_id": "carlo-burrai",
+      "miodottore_url": "https://www.miodottore.it/carlo-burrai/endocrinologo-pediatra/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/carlo-burrai/endocrinologo-pediatra/sassari\" rel=\"nofollow\" data-zlw-doctor=\"carlo-burrai\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dr. Carlo Burrai - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "fabrizia-caucci",
+      "slug": "fabrizia-caucci",
+      "title": "Dott.ssa",
+      "name": "Fabrizia Caucci",
+      "full_name": "Dott.ssa Fabrizia Caucci",
+      "specialty_id": "endocrinologia",
+      "job_title": "Diabetologa - Endocrinologa",
+      "role_badge": null,
+      "bio": "Diabetologa ed Endocrinologa specializzata in diabete e patologie metaboliche.",
+      "procedures": [
+        "visita-diabetologica",
+        "visita-endocrinologica",
+        "ecografia-tiroidea"
+      ],
+      "pathways": [
+        "slim-care"
+      ],
+      "miodottore_id": "fabrizia-caucci",
+      "miodottore_url": "https://www.miodottore.it/fabrizia-caucci/diabetologo-endocrinologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/fabrizia-caucci/diabetologo-endocrinologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"fabrizia-caucci\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Fabrizia Caucci - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "francesco-tolu",
+      "slug": "francesco-tolu",
+      "title": "Dr.",
+      "name": "Francesco Tolu",
+      "full_name": "Dr. Francesco Tolu",
+      "specialty_id": "endocrinologia",
+      "job_title": "Endocrinologo",
+      "role_badge": "Responsabile Slim Care",
+      "bio": "Endocrinologo specializzato in tiroide, diabete, obesità e responsabile del percorso Slim Care con Wegovy e Mounjaro.",
+      "procedures": [
+        "visita-endocrinologica",
+        "ecografia-tiroidea",
+        "visita-diabetologica",
+        "visita-obesita"
+      ],
+      "pathways": [
+        "slim-care",
+        "slim-care-donna",
+        "checkup-tiroide"
+      ],
+      "miodottore_id": "francesco-tolu",
+      "miodottore_url": "https://www.miodottore.it/francesco-tolu/endocrinologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/francesco-tolu/endocrinologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"francesco-tolu\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dr. Francesco Tolu - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "irene-aini",
+      "slug": "irene-aini",
+      "title": "Dott.ssa",
+      "name": "Irene Aini",
+      "full_name": "Dott.ssa Irene Aini",
+      "specialty_id": "endocrinologia",
+      "job_title": "Endocrinologa",
+      "role_badge": null,
+      "bio": "Endocrinologa specializzata in patologie tiroidee e metaboliche.",
+      "procedures": [
+        "visita-endocrinologica",
+        "ecografia-tiroidea"
+      ],
+      "pathways": [
+        "slim-care",
+        "slim-care-donna",
+        "checkup-tiroide"
+      ],
+      "miodottore_id": "irene-aini",
+      "miodottore_url": "https://www.miodottore.it/irene-aini/endocrinologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/irene-aini/endocrinologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"irene-aini\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Irene Aini - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "guido-marongiu",
+      "slug": "guido-marongiu",
+      "title": "Dott.",
+      "name": "Guido Marongiu",
+      "full_name": "Dott. Guido Marongiu",
+      "specialty_id": "neurologia",
+      "job_title": "Neurologo",
+      "role_badge": null,
+      "bio": "Neurologo specializzato in patologie neurologiche e cefalee.",
+      "procedures": [
+        "visita-neurologica",
+        "elettromiografia",
+        "elettroencefalogramma"
+      ],
+      "pathways": [],
+      "miodottore_id": "guido-marongiu",
+      "miodottore_url": "https://www.miodottore.it/guido-marongiu/neurologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/guido-marongiu/neurologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"guido-marongiu\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Guido Marongiu - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "sebastiano-traccis",
+      "slug": "sebastiano-traccis",
+      "title": "Dott.",
+      "name": "Sebastiano Traccis",
+      "full_name": "Dott. Sebastiano Traccis",
+      "specialty_id": "neurologia",
+      "job_title": "Neurologo",
+      "role_badge": null,
+      "bio": "Neurologo con esperienza in patologie neurologiche.",
+      "procedures": [
+        "visita-neurologica",
+        "elettromiografia"
+      ],
+      "pathways": [],
+      "miodottore_id": "sebastiano-traccis",
+      "miodottore_url": "https://www.miodottore.it/sebastiano-traccis/neurologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/sebastiano-traccis/neurologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"sebastiano-traccis\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Sebastiano Traccis - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "maria-pina-pintus",
+      "slug": "maria-pina-pintus",
+      "title": "Dott.ssa",
+      "name": "Maria Pina Pintus",
+      "full_name": "Dott.ssa Maria Pina Pintus",
+      "specialty_id": "oculistica",
+      "job_title": "Oculista",
+      "role_badge": null,
+      "bio": "Oculista con esperienza in patologie oculari e medicina generale.",
+      "procedures": [
+        "visita-oculistica",
+        "campo-visivo"
+      ],
+      "pathways": [],
+      "miodottore_id": "maria-pina-pintus",
+      "miodottore_url": "https://www.miodottore.it/maria-pina-pintus/medico-di-base-oculista/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/maria-pina-pintus/medico-di-base-oculista/sassari\" rel=\"nofollow\" data-zlw-doctor=\"maria-pina-pintus\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Maria Pina Pintus - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "francesco-santoru",
+      "slug": "francesco-santoru",
+      "title": "Dott.",
+      "name": "Francesco Santoru",
+      "full_name": "Dott. Francesco Santoru",
+      "specialty_id": "oculistica",
+      "job_title": "Oculista",
+      "role_badge": null,
+      "bio": "Oculista specializzato.",
+      "procedures": [
+        "visita-oculistica",
+        "campo-visivo",
+        "oct"
+      ],
+      "pathways": [],
+      "miodottore_id": "francesco-santoru",
+      "miodottore_url": "https://www.miodottore.it/francesco-santoru/oculista/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/francesco-santoru/oculista/sassari\" rel=\"nofollow\" data-zlw-doctor=\"francesco-santoru\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Francesco Santoru - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "matteo-zucca",
+      "slug": "matteo-zucca",
+      "title": "Dott.",
+      "name": "Matteo Zucca",
+      "full_name": "Dott. Matteo Zucca",
+      "specialty_id": "oculistica",
+      "job_title": "Oculista",
+      "role_badge": null,
+      "bio": "Oculista specializzato.",
+      "procedures": [
+        "visita-oculistica",
+        "campo-visivo"
+      ],
+      "pathways": [],
+      "miodottore_id": "matteo-zucca",
+      "miodottore_url": "https://www.miodottore.it/matteo-zucca/oculista/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/matteo-zucca/oculista/sassari\" rel=\"nofollow\" data-zlw-doctor=\"matteo-zucca\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Matteo Zucca - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "francesco-bussu",
+      "slug": "francesco-bussu",
+      "title": "Prof.",
+      "name": "Francesco Bussu",
+      "full_name": "Prof. Francesco Bussu",
+      "specialty_id": "otorinolaringoiatria",
+      "job_title": "Otorinolaringoiatra",
+      "role_badge": null,
+      "bio": "Otorinolaringoiatra specializzato in patologie ORL e chirurgia.",
+      "procedures": [
+        "visita-orl",
+        "esame-audiometrico",
+        "rinoscopia"
+      ],
+      "pathways": [],
+      "miodottore_id": "francesco-bussu",
+      "miodottore_url": "https://www.miodottore.it/francesco-bussu/otorino/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/francesco-bussu/otorino/sassari\" rel=\"nofollow\" data-zlw-doctor=\"francesco-bussu\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Prof. Francesco Bussu - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "maria-laura-de-luca",
+      "slug": "maria-laura-de-luca",
+      "title": "Dott.ssa",
+      "name": "Maria Laura De Luca",
+      "full_name": "Dott.ssa Maria Laura De Luca",
+      "specialty_id": "otorinolaringoiatria",
+      "job_title": "Otorinolaringoiatra",
+      "role_badge": null,
+      "bio": "Otorinolaringoiatra specializzata in patologie ORL.",
+      "procedures": [
+        "visita-orl",
+        "esame-audiometrico"
+      ],
+      "pathways": [],
+      "miodottore_id": "maria-laura-de-luca",
+      "miodottore_url": "https://www.miodottore.it/maria-laura-de-luca/otorino/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/maria-laura-de-luca/otorino/sassari\" rel=\"nofollow\" data-zlw-doctor=\"maria-laura-de-luca\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Maria Laura De Luca - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "andrea-donato",
+      "slug": "andrea-donato",
+      "title": "Dott.",
+      "name": "Andrea Donato",
+      "full_name": "Dott. Andrea Donato",
+      "specialty_id": "ortopedia",
+      "job_title": "Ortopedico",
+      "role_badge": null,
+      "bio": "Ortopedico specializzato in patologie muscolo-scheletriche.",
+      "procedures": [
+        "visita-ortopedica",
+        "infiltrazioni-articolari"
+      ],
+      "pathways": [],
+      "miodottore_id": "andrea-donato-2",
+      "miodottore_url": "https://www.miodottore.it/andrea-donato-2/ortopedico/arzachena",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/andrea-donato-2/ortopedico/arzachena\" rel=\"nofollow\" data-zlw-doctor=\"andrea-donato-2\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Andrea Donato - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "pietro-lisai",
+      "slug": "pietro-lisai",
+      "title": "Dott.",
+      "name": "Pietro Lisai",
+      "full_name": "Dott. Pietro Lisai",
+      "specialty_id": "ortopedia",
+      "job_title": "Ortopedico",
+      "role_badge": null,
+      "bio": "Ortopedico specializzato in patologie muscolo-scheletriche e traumatologia.",
+      "procedures": [
+        "visita-ortopedica",
+        "infiltrazioni-articolari",
+        "ecografia-muscolo-tendinea"
+      ],
+      "pathways": [],
+      "miodottore_id": "pietro-lisai",
+      "miodottore_url": "https://www.miodottore.it/pietro-lisai/ortopedico/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/pietro-lisai/ortopedico/sassari\" rel=\"nofollow\" data-zlw-doctor=\"pietro-lisai\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Pietro Lisai - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "angelo-deplano",
+      "slug": "angelo-deplano",
+      "title": "Dott.",
+      "name": "Angelo Deplano",
+      "full_name": "Dott. Angelo Deplano",
+      "specialty_id": "gastroenterologia",
+      "job_title": "Gastroenterologo - Epatologo",
+      "role_badge": null,
+      "bio": "Gastroenterologo ed Epatologo specializzato in patologie dell'apparato digerente e del fegato.",
+      "procedures": [
+        "visita-gastroenterologica",
+        "ecografia-addominale",
+        "visita-epatologica"
+      ],
+      "pathways": [],
+      "miodottore_id": "angelo-deplano",
+      "miodottore_url": "https://www.miodottore.it/angelo-deplano/gastroenterologo-epatologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/angelo-deplano/gastroenterologo-epatologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"angelo-deplano\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Angelo Deplano - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "antonio-solinas",
+      "slug": "antonio-solinas",
+      "title": "Prof.",
+      "name": "Antonio Solinas",
+      "full_name": "Prof. Antonio Solinas",
+      "specialty_id": "medicina-interna",
+      "job_title": "Internista - Epatologo",
+      "role_badge": null,
+      "bio": "Internista ed Epatologo specializzato in medicina interna e patologie epatiche.",
+      "procedures": [
+        "visita-internistica",
+        "visita-epatologica",
+        "ecografia-addominale"
+      ],
+      "pathways": [],
+      "miodottore_id": "antonio-solinas-3",
+      "miodottore_url": "https://www.miodottore.it/antonio-solinas-3/epatologo-internista/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/antonio-solinas-3/epatologo-internista/sassari\" rel=\"nofollow\" data-zlw-doctor=\"antonio-solinas-3\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Prof. Antonio Solinas - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "paolo-dessole",
+      "slug": "paolo-dessole",
+      "title": "Dott.",
+      "name": "Paolo Dessole",
+      "full_name": "Dott. Paolo Dessole",
+      "specialty_id": "nefrologia",
+      "job_title": "Nefrologo",
+      "role_badge": null,
+      "bio": "Nefrologo specializzato in patologie renali.",
+      "procedures": [
+        "visita-nefrologica",
+        "ecografia-renale"
+      ],
+      "pathways": [],
+      "miodottore_id": "paolo-dessole",
+      "miodottore_url": "https://www.miodottore.it/paolo-dessole/nefrologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/paolo-dessole/nefrologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"paolo-dessole\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Paolo Dessole - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "sergio-paolo-sotgia",
+      "slug": "sergio-paolo-sotgia",
+      "title": "Dott.",
+      "name": "Sergio Paolo Sotgia",
+      "full_name": "Dott. Sergio Paolo Sotgia",
+      "specialty_id": "nefrologia",
+      "job_title": "Nefrologo",
+      "role_badge": null,
+      "bio": "Nefrologo con esperienza in patologie renali.",
+      "procedures": [
+        "visita-nefrologica",
+        "ecografia-renale"
+      ],
+      "pathways": [],
+      "miodottore_id": "sergio-paolo-sotgia",
+      "miodottore_url": "https://www.miodottore.it/sergio-paolo-sotgia/nefrologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/sergio-paolo-sotgia/nefrologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"sergio-paolo-sotgia\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Sergio Paolo Sotgia - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "pietro-pirina",
+      "slug": "pietro-pirina",
+      "title": "Prof.",
+      "name": "Pietro Pirina",
+      "full_name": "Prof. Pietro Pirina",
+      "specialty_id": "pneumologia",
+      "job_title": "Pneumologo",
+      "role_badge": null,
+      "bio": "Pneumologo specializzato in patologie respiratorie.",
+      "procedures": [
+        "visita-pneumologica",
+        "spirometria",
+        "prick-test"
+      ],
+      "pathways": [],
+      "miodottore_id": "pietro-pirina",
+      "miodottore_url": "https://www.miodottore.it/pietro-pirina/pneumologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/pietro-pirina/pneumologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"pietro-pirina\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Prof. Pietro Pirina - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "luigi-podda",
+      "slug": "luigi-podda",
+      "title": "Dott.",
+      "name": "Luigi Podda",
+      "full_name": "Dott. Luigi Podda",
+      "specialty_id": "ematologia",
+      "job_title": "Ematologo",
+      "role_badge": null,
+      "bio": "Ematologo specializzato in patologie del sangue.",
+      "procedures": [
+        "visita-ematologica"
+      ],
+      "pathways": [],
+      "miodottore_id": "luigi-podda",
+      "miodottore_url": "https://www.miodottore.it/luigi-podda/ematologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/luigi-podda/ematologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"luigi-podda\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Luigi Podda - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "daniele-sabiu",
+      "slug": "daniele-sabiu",
+      "title": "Dr.",
+      "name": "Daniele Sabiu",
+      "full_name": "Dr. Daniele Sabiu",
+      "specialty_id": "ematologia",
+      "job_title": "Ematologo",
+      "role_badge": null,
+      "bio": "Ematologo con esperienza in patologie ematologiche.",
+      "procedures": [
+        "visita-ematologica"
+      ],
+      "pathways": [],
+      "miodottore_id": "daniele-sabiu",
+      "miodottore_url": "https://www.miodottore.it/daniele-sabiu/ematologo/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/daniele-sabiu/ematologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"daniele-sabiu\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dr. Daniele Sabiu - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "niccolo-melis",
+      "slug": "niccolo-melis",
+      "title": "Dott.",
+      "name": "Niccolò Melis",
+      "full_name": "Dott. Niccolò Melis",
+      "specialty_id": "reumatologia",
+      "job_title": "Reumatologo",
+      "role_badge": null,
+      "bio": "Reumatologo specializzato in malattie reumatiche e autoimmuni.",
+      "procedures": [
+        "visita-reumatologica",
+        "ecografia-articolare"
+      ],
+      "pathways": [],
+      "miodottore_id": "niccolo-melis",
+      "miodottore_url": "https://www.miodottore.it/niccolo-melis/reumatologo/cagliari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/niccolo-melis/reumatologo/cagliari\" rel=\"nofollow\" data-zlw-doctor=\"niccolo-melis\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Niccolò Melis - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "carlos-manuel-cambara-zuniga",
+      "slug": "carlos-manuel-cambara-zuniga",
+      "title": "Dott.",
+      "name": "Carlos Manuel Cambara Zuniga",
+      "full_name": "Dott. Carlos Manuel Cambara Zuniga",
+      "specialty_id": "urologia",
+      "job_title": "Urologo - Andrologo",
+      "role_badge": null,
+      "bio": "Urologo e Andrologo specializzato in patologie urologiche e andrologiche.",
+      "procedures": [
+        "visita-urologica",
+        "visita-andrologica",
+        "ecografia-prostatica"
+      ],
+      "pathways": [],
+      "miodottore_id": "carlos-manuel-cambara-zuniga",
+      "miodottore_url": "https://www.miodottore.it/carlos-manuel-cambara-zuniga/urologo-andrologo/oristano",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/carlos-manuel-cambara-zuniga/urologo-andrologo/oristano\" rel=\"nofollow\" data-zlw-doctor=\"carlos-manuel-cambara-zuniga\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Carlos Manuel Cambara Zuniga - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "paola-dettori",
+      "slug": "paola-dettori",
+      "title": "Dott.ssa",
+      "name": "Paola Dettori",
+      "full_name": "Dott.ssa Paola Dettori",
+      "specialty_id": "chirurgia-vascolare",
+      "job_title": "Chirurgo Vascolare",
+      "role_badge": null,
+      "bio": "Chirurgo Vascolare specializzata in patologie vascolari e venose.",
+      "procedures": [
+        "visita-chirurgia-vascolare",
+        "eco-doppler-arti",
+        "scleroterapia"
+      ],
+      "pathways": [],
+      "miodottore_id": "paola-dettori",
+      "miodottore_url": "https://www.miodottore.it/paola-dettori/chirurgo-vascolare-chirurgo-generale/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/paola-dettori/chirurgo-vascolare-chirurgo-generale/sassari\" rel=\"nofollow\" data-zlw-doctor=\"paola-dettori\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Paola Dettori - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "roberto-mancino",
+      "slug": "roberto-mancino",
+      "title": "Dott.",
+      "name": "Roberto Mancino",
+      "full_name": "Dott. Roberto Mancino",
+      "specialty_id": "chirurgia-vascolare",
+      "job_title": "Chirurgo Vascolare",
+      "role_badge": null,
+      "bio": "Chirurgo Vascolare specializzato in patologie vascolari.",
+      "procedures": [
+        "visita-chirurgia-vascolare",
+        "eco-doppler-arti"
+      ],
+      "pathways": [],
+      "miodottore_id": "roberto-mancino",
+      "miodottore_url": "https://www.miodottore.it/roberto-mancino/chirurgo-vascolare/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/roberto-mancino/chirurgo-vascolare/sassari\" rel=\"nofollow\" data-zlw-doctor=\"roberto-mancino\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Roberto Mancino - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "antonio-michele-cavazzuti",
+      "slug": "antonio-michele-cavazzuti",
+      "title": "Dott.",
+      "name": "Antonio Michele Cavazzuti",
+      "full_name": "Dott. Antonio Michele Cavazzuti",
+      "specialty_id": "ecografia",
+      "job_title": "Ecografista",
+      "role_badge": null,
+      "bio": "Ecografista specializzato in diagnostica per immagini ecografiche.",
+      "procedures": [
+        "ecografia-addominale",
+        "ecografia-muscolo-tendinea",
+        "ecografia-tiroidea"
+      ],
+      "pathways": [],
+      "miodottore_id": "antonio-michele-cavazzuti",
+      "miodottore_url": "https://www.miodottore.it/antonio-michele-cavazzuti/ecografista/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/antonio-michele-cavazzuti/ecografista/sassari\" rel=\"nofollow\" data-zlw-doctor=\"antonio-michele-cavazzuti\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Antonio Michele Cavazzuti - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "giorgio-chiarelli",
+      "slug": "giorgio-chiarelli",
+      "title": "Dr.",
+      "name": "Giorgio Chiarelli",
+      "full_name": "Dr. Giorgio Chiarelli",
+      "specialty_id": "medicina-sport",
+      "job_title": "Medico dello Sport",
+      "role_badge": null,
+      "bio": "Medico dello Sport specializzato in certificazioni sportive, test da sforzo e valutazioni atletiche.",
+      "procedures": [
+        "visita-medicina-sport",
+        "certificato-sportivo-agonistico",
+        "certificato-sportivo-non-agonistico",
+        "test-sforzo"
+      ],
+      "pathways": [
+        "slim-care",
+        "slim-care-donna"
+      ],
+      "miodottore_id": "giorgio-chiarelli-2",
+      "miodottore_url": "https://www.miodottore.it/giorgio-chiarelli-2/medico-dello-sport/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/giorgio-chiarelli-2/medico-dello-sport/sassari\" rel=\"nofollow\" data-zlw-doctor=\"giorgio-chiarelli-2\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dr. Giorgio Chiarelli - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "gianfranco-manchia",
+      "slug": "gianfranco-manchia",
+      "title": "Dott.",
+      "name": "Gianfranco Manchia",
+      "full_name": "Dott. Gianfranco Manchia",
+      "specialty_id": "medicina-lavoro",
+      "job_title": "Medico Competente",
+      "role_badge": null,
+      "bio": "Medico Competente specializzato in medicina del lavoro e sorveglianza sanitaria.",
+      "procedures": [
+        "visita-medicina-lavoro",
+        "certificato-idoneita-lavorativa"
+      ],
+      "pathways": [],
+      "miodottore_id": "gianfranco-manchia",
+      "miodottore_url": "https://www.miodottore.it/gianfranco-manchia/medico-competente/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/gianfranco-manchia/medico-competente/sassari\" rel=\"nofollow\" data-zlw-doctor=\"gianfranco-manchia\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Gianfranco Manchia - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "nicola-frau",
+      "slug": "nicola-frau",
+      "title": "Dott.",
+      "name": "Nicola Frau",
+      "full_name": "Dott. Nicola Frau",
+      "specialty_id": "fisiatria",
+      "job_title": "Fisiatra",
+      "role_badge": null,
+      "bio": "Fisiatra specializzato in riabilitazione e medicina fisica.",
+      "procedures": [
+        "visita-fisiatrica",
+        "infiltrazioni",
+        "onde-urto"
+      ],
+      "pathways": [],
+      "miodottore_id": "nicola-frau",
+      "miodottore_url": "https://www.miodottore.it/nicola-frau/fisiatra/oristano",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/nicola-frau/fisiatra/oristano\" rel=\"nofollow\" data-zlw-doctor=\"nicola-frau\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Nicola Frau - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "mariolina-azara",
+      "slug": "mariolina-azara",
+      "title": "Dott.ssa",
+      "name": "Mariolina Azara",
+      "full_name": "Dott.ssa Mariolina Azara",
+      "specialty_id": "pediatria",
+      "job_title": "Pediatra",
+      "role_badge": null,
+      "bio": "Pediatra specializzata nella cura dei bambini e degli adolescenti.",
+      "procedures": [
+        "visita-pediatrica",
+        "bilancio-salute"
+      ],
+      "pathways": [],
+      "miodottore_id": "mariolina-azara",
+      "miodottore_url": "https://www.miodottore.it/mariolina-azara/pediatra/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/mariolina-azara/pediatra/sassari\" rel=\"nofollow\" data-zlw-doctor=\"mariolina-azara\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Mariolina Azara - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "alessia-piras",
+      "slug": "alessia-piras",
+      "title": "Dott.ssa",
+      "name": "Alessia Piras",
+      "full_name": "Dott.ssa Alessia Piras",
+      "specialty_id": "psicologia",
+      "job_title": "Psicoterapeuta",
+      "role_badge": null,
+      "bio": "Psicoterapeuta e Psicologa Clinica specializzata in psicoterapia individuale e di coppia.",
+      "procedures": [
+        "colloquio-psicologico",
+        "psicoterapia",
+        "sostegno-psicologico"
+      ],
+      "pathways": [
+        "slim-care",
+        "slim-care-donna"
+      ],
+      "miodottore_id": "alessia-piras",
+      "miodottore_url": "https://www.miodottore.it/alessia-piras/psicoterapeuta-psicologo-psicologo-clinico/sassari",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/alessia-piras/psicoterapeuta-psicologo-psicologo-clinico/sassari\" rel=\"nofollow\" data-zlw-doctor=\"alessia-piras\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Alessia Piras - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "giuliana-guagnozzi",
+      "slug": "giuliana-guagnozzi",
+      "title": "Dott.ssa",
+      "name": "Giuliana Guagnozzi",
+      "full_name": "Dott.ssa Giuliana Guagnozzi",
+      "specialty_id": "cardiologia",
+      "job_title": "Cardiologa",
+      "role_badge": null,
+      "bio": "Cardiologa specializzata in diagnosi e cura delle patologie cardiovascolari.",
+      "procedures": [
+        "visita-cardiologica",
+        "ecg",
+        "ecocardiogramma"
+      ],
+      "pathways": [],
+      "miodottore_id": null,
+      "miodottore_url": null,
+      "widget_html": null,
+      "booking_enabled": false,
+      "photo_url": null
+    },
+    {
+      "id": "alessandro-pandolfi",
+      "slug": "alessandro-pandolfi",
+      "title": "Dott.",
+      "name": "Alessandro Pandolfi",
+      "full_name": "Dott. Alessandro Pandolfi",
+      "specialty_id": "medicina-interna",
+      "job_title": "Medico Internista",
+      "role_badge": "Team Slim Care",
+      "bio": "Medico internista del team Slim Care.",
+      "procedures": [
+        "visita-internistica"
+      ],
+      "pathways": [
+        "slim-care"
+      ],
+      "miodottore_id": null,
+      "miodottore_url": null,
+      "widget_html": null,
+      "booking_enabled": false,
+      "photo_url": null
+    },
+    {
+      "id": "antonella-galatino",
+      "slug": "antonella-galatino",
+      "title": "Dott.ssa",
+      "name": "Antonella Galatino",
+      "full_name": "Dott.ssa Antonella Galatino",
+      "specialty_id": "nutrizione",
+      "job_title": "Nutrizionista",
+      "role_badge": "Team Slim Care",
+      "bio": "Nutrizionista clinica del team Slim Care.",
+      "procedures": [
+        "visita-nutrizionale"
+      ],
+      "pathways": [
+        "slim-care"
+      ],
+      "miodottore_id": null,
+      "miodottore_url": null,
+      "widget_html": null,
+      "booking_enabled": false,
+      "photo_url": null
+    },
+    {
+      "id": "cinzia-guarino",
+      "slug": "cinzia-guarino",
+      "title": "Dott.ssa",
+      "name": "Cinzia Guarino",
+      "full_name": "Dott.ssa Cinzia Guarino",
+      "specialty_id": "laboratorio",
+      "job_title": "Biologa - Laboratorio Analisi",
+      "role_badge": null,
+      "bio": "Biologa del Laboratorio Analisi Bio-Clinic.",
+      "procedures": [],
+      "pathways": [],
+      "miodottore_id": null,
+      "miodottore_url": null,
+      "widget_html": null,
+      "booking_enabled": false,
+      "photo_url": null
+    },
+    {
+      "id": "gloria-reggiani",
+      "slug": "gloria-reggiani",
+      "title": "Dott.ssa",
+      "name": "Gloria Reggiani",
+      "full_name": "Dott.ssa Gloria Reggiani",
+      "specialty_id": "laboratorio",
+      "job_title": "Biologa - Laboratorio Analisi",
+      "role_badge": null,
+      "bio": "Biologa del Laboratorio Analisi Bio-Clinic.",
+      "procedures": [],
+      "pathways": [],
+      "miodottore_id": null,
+      "miodottore_url": null,
+      "widget_html": null,
+      "booking_enabled": false,
+      "photo_url": null
+    }
+  ],
+  "metadata": {
+    "total_physicians": 51,
+    "generated": "2026-01-28T16:30:00",
+    "version": "2.1.0"
+  }
+}

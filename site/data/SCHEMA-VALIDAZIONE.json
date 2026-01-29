@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bio-clinic.it/schemas/site-validation-v2.json",
+  "title": "BIO-CLINIC Site Validation Schema v2.0",
+  "description": "Schema rigoroso per validare OGNI pagina del sito Bio-Clinic Sassari",
+  "version": "2.0.0",
+  "lastUpdated": "2026-01-28",
+  
+  "rules": {
+    
+    "HEADER": {
+      "description": "Regole per la struttura dell'header",
+      "required": true,
+      "structure": {
+        "topBar": {
+          "required": true,
+          "phone": "+39 079 956 1332",
+          "phoneLink": "tel:+390799561332",
+          "hours": "Lun-Ven 07:00-21:00 | Sab 08:00-14:00",
+          "socialLinks": {
+            "facebook": "https://www.facebook.com/bioclinicss",
+            "instagram": "https://www.instagram.com/bioclinicss/"
+          }
+        },
+        "logo": {
+          "required": true,
+          "altText": "Bio-Clinic Sassari - Poliambulatorio Medico",
+          "width": 180,
+          "height": 60
+        },
+        "navigation": {
+          "required": true,
+          "items": [
+            {"label": "Home", "href": "index.html", "dropdown": false},
+            {"label": "Slim Care Medical", "dropdown": true, "children": ["Slim Care", "Slim Care Donna"]},
+            {"label": "Laboratorio", "href": "laboratorio/index.html", "dropdown": false},
+            {"label": "Donna & PMA", "dropdown": true, "children": ["Ginecologia", "PMA / Fertilità"]},
+            {"label": "Specialisti", "dropdown": true, "children": ["Cardiologia", "Endocrinologia", "Dermatologia", "Neurologia", "Oculistica", "Ortopedia", "Tutte le Specialità", "Équipe Medica"]},
+            {"label": "Medical Shop", "href": "shop/index.html", "dropdown": false},
+            {"label": "Contatti", "href": "pages/contatti.html", "dropdown": false}
+          ],
+          "ctaButton": {
+            "label": "Prenota",
+            "href": "tel:+390799561332",
+            "backgroundColor": "#00704A"
+          }
+        }
+      }
+    },
+    
+    "PHYSICIANS": {
+      "description": "Regole per i link ai medici",
+      "rules": [
+        "OGNI nome di medico visualizzato DEVE essere cliccabile",
+        "Il link DEVE portare a ../equipe/{slug}.html per pagine in /pages/",
+        "Il link DEVE portare a equipe/{slug}.html per pagine nella root",
+        "Il link DEVE avere class='physician-link'",
+        "Il link DEVE avere title con formato 'Vedi profilo di {nome} - {specialità}'",
+        "La pagina equipe/{slug}.html DEVE esistere"
+      ],
+      "linkFormat": {
+        "fromPages": "../equipe/{slug}.html",
+        "fromRoot": "equipe/{slug}.html",
+        "fromLabortorio": "../equipe/{slug}.html",
+        "fromEquipe": "{slug}.html"
+      },
+      "requiredAttributes": ["href", "class", "title"],
+      "classValue": "physician-link"
+    },
+    
+    "HTML_STRUCTURE": {
+      "description": "Regole per struttura HTML valida",
+      "rules": [
+        "Tutti i tag DEVONO essere bilanciati (aperti = chiusi)",
+        "NON possono esserci tag <header> duplicati",
+        "NON possono esserci elementi orfani dopo il footer",
+        "Il doctype DEVE essere <!DOCTYPE html>",
+        "lang DEVE essere 'it'"
+      ],
+      "balancedTags": ["div", "section", "header", "footer", "nav", "article", "aside", "main"],
+      "singletonTags": ["header", "footer", "main"]
+    },
+    
+    "PATHS": {
+      "description": "Regole per path relativi corretti",
+      "rules": [
+        "Da /pages/*.html: usare ../ per risorse root (css/, js/, images/, equipe/)",
+        "Da /laboratorio/*.html: usare ../ per risorse root",
+        "Da /equipe/*.html: usare ../ per risorse root",
+        "Da root: usare path diretti senza ../",
+        "MAI usare path assoluti come /equipe/ - SOLO relativi"
+      ],
+      "pathMappings": {
+        "pages/": {"css": "../css/", "js": "../js/", "images": "../images/", "equipe": "../equipe/"},
+        "laboratorio/": {"css": "../css/", "js": "../js/", "images": "../images/", "equipe": "../equipe/"},
+        "equipe/": {"css": "../css/", "js": "../js/", "images": "../images/"},
+        "root": {"css": "css/", "js": "js/", "images": "images/", "equipe": "equipe/"}
+      }
+    },
+    
+    "META": {
+      "description": "Regole per meta tags SEO",
+      "required": ["charset", "viewport", "description", "title"],
+      "formats": {
+        "title": "{Specialità/Pagina} | Bio-Clinic Sassari",
+        "description": "Max 160 caratteri, include telefono, specialisti, prestazioni"
+      }
+    },
+    
+    "JSON_LD": {
+      "description": "Regole per structured data",
+      "rules": [
+        "JSON-LD DEVE essere sintatticamente valido",
+        "NON devono esserci virgole finali",
+        "Tutti i blocchi devono avere @context e @type"
+      ]
+    },
+    
+    "FOOTER": {
+      "description": "Regole per il footer",
+      "required": true,
+      "elements": {
+        "logo": true,
+        "description": true,
+        "links": ["Percorsi", "Specialità", "Contatti"],
+        "copyright": "Bio Pharma S.r.l. - P.IVA 02869450904",
+        "legalLinks": ["Privacy", "Cookie"]
+      }
+    },
+    
+    "MOBILE": {
+      "description": "Regole per responsività mobile",
+      "rules": [
+        "Menu mobile DEVE esistere con id='mobile-nav'",
+        "Toggle button DEVE avere aria-controls='mobile-nav'",
+        "Overlay DEVE avere class='mobile-overlay'"
+      ]
+    }
+  },
+  
+  "validators": {
+    "pre-deploy": [
+      "validate-html-tags.py",
+      "validate-physician-links.py", 
+      "validate-menu-consistency.py",
+      "validate-paths.py",
+      "validate-json-ld.py"
+    ],
+    "post-update": [
+      "physician-autolink-v3.py",
+      "propagate-header.py",
+      "fix-header-tags.py"
+    ]
+  },
+  
+  "errorCodes": {
+    "E001": "Tag HTML non bilanciato",
+    "E002": "Header duplicato",
+    "E003": "Menu inconsistente tra pagine",
+    "E004": "Medico senza link al profilo",
+    "E005": "Path errato (assoluto invece di relativo)",
+    "E006": "Pagina équipe mancante per medico citato",
+    "E007": "JSON-LD sintatticamente errato",
+    "E008": "Meta description mancante o troppo lunga",
+    "E009": "Footer mancante o incompleto",
+    "E010": "Mobile nav mancante"
+  },
+  
+  "autoFix": {
+    "E001": "Esegui fix-header-tags.py && fix-orphan-content.py",
+    "E002": "Esegui fix-header-tags.py",
+    "E003": "Esegui propagate-header.py",
+    "E004": "Esegui physician-autolink-v3.py",
+    "E005": "Script fix-paths.py",
+    "E006": "Aggiungi medico in physicians-complete.json e genera pagina"
+  }
+}

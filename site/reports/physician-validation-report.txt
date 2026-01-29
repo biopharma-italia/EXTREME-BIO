@@ -1,0 +1,49 @@
+============================================================
+VALIDATION REPORT
+============================================================
+Timestamp: 2026-01-28T19:41:50.945138
+
+SUMMARY
+----------------------------------------
+Total Physicians:       53
+Pages Found:            53
+Pages Missing:          0
+Validation Passed:      53
+Validation Failed:      0
+Warnings:               0
+
+SCHEMA.ORG STATS
+----------------------------------------
+Physician Schema:       53
+FAQPage Schema:         53
+BreadcrumbList Schema:  53
+Pages with Citations:   15
+
+PHYSICIANS WITH VERIFIED PUBLICATIONS
+----------------------------------------
+  - angelo-deplano: 2 publications
+  - antonio-solinas: 3 publications
+  - carlo-burrai: 2 publications
+  - francesco-bussu: 4 publications
+  - francesco-tolu: 3 publications
+  - irene-aini: 2 publications
+  - luigi-podda: 3 publications
+  - marco-petrillo: 3 publications
+  - paola-dettori: 2 publications
+  - pietro-lisai: 3 publications
+  - pietro-pirina: 3 publications
+  - salvatore-dessole: 4 publications
+  - sebastiano-traccis: 2 publications
+  - sonia-bove: 3 publications
+  - stefano-dore: 3 publications
+
+SCORE DISTRIBUTION
+----------------------------------------
+  90-100%:  53 ██████████████████████████
+  70-89%:   0 
+  50-69%:   0 
+  0-49%:   0 
+
+============================================================
+OVERALL STATUS: ✓ EXCELLENT (100.0% success rate)
+============================================================

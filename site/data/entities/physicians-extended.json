@@ -1,0 +1,911 @@
+{
+  "version": "4.1.0",
+  "generated": "2026-01-28",
+  "description": "Database medici esteso con pubblicazioni scientifiche verificate su PubMed, sintomi trattati e profili social",
+  "metadata": {
+    "total_physicians": 47,
+    "physicians_with_publications": 18,
+    "total_publications": 51,
+    "data_sources": [
+      "PubMed",
+      "PubMed Central",
+      "ResearchGate"
+    ],
+    "last_verification": "2026-01-28"
+  },
+  "specialty_mapping_en": {
+    "ginecologia": "Gynecology",
+    "ostetricia": "Obstetrics",
+    "cardiologia": "Cardiology",
+    "dermatologia": "Dermatology",
+    "endocrinologia": "Endocrinology",
+    "neurologia": "Neurology",
+    "oculistica": "Ophthalmology",
+    "otorinolaringoiatria": "Otolaryngology",
+    "ortopedia": "Orthopedics",
+    "gastroenterologia": "Gastroenterology",
+    "medicina-interna": "Internal Medicine",
+    "nefrologia": "Nephrology",
+    "pneumologia": "Pulmonology",
+    "ematologia": "Hematology",
+    "reumatologia": "Rheumatology",
+    "urologia": "Urology",
+    "chirurgia-vascolare": "Vascular Surgery",
+    "ecografia": "Ultrasonography",
+    "medicina-sport": "Sports Medicine",
+    "medicina-lavoro": "Occupational Medicine",
+    "fisiatria": "Physical Medicine",
+    "pediatria": "Pediatrics",
+    "psicologia": "Psychology",
+    "nutrizione": "Clinical Nutrition",
+    "laboratorio": "Laboratory Medicine"
+  },
+  "physicians_extended": {
+    "salvatore-dessole": {
+      "sintomi": [
+        "dolore pelvico",
+        "perdite vaginali",
+        "ciclo irregolare",
+        "menopausa",
+        "vampate",
+        "infertilità",
+        "difficoltà a concepire",
+        "gravidanza a rischio",
+        "endometriosi",
+        "cisti ovariche",
+        "fibromi uterini",
+        "Pap test anomalo"
+      ],
+      "pubblicazioni": [
+        {
+          "titolo": "Sonovaginography is a new technique for assessing rectovaginal endometriosis",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/12749448/",
+          "anno": 2003,
+          "journal": "Fertility and Sterility"
+        },
+        {
+          "titolo": "Postpartum ovarian vein thrombosis: an unpredictable event",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/12592429/",
+          "anno": 2003,
+          "journal": "Archives of Gynecology and Obstetrics"
+        },
+        {
+          "titolo": "Granular cell tumor of the breast",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/16297125/",
+          "anno": 2005,
+          "journal": "Journal of Clinical Ultrasound"
+        },
+        {
+          "titolo": "Perimortem cesarean delivery 30 minutes after a laboring patient's cardiopulmonary arrest",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/18166293/",
+          "anno": 2008,
+          "journal": "International Journal of Gynaecology and Obstetrics"
+        }
+      ],
+      "social": [
+        {
+          "tipo": "ResearchGate",
+          "url": "https://www.researchgate.net/scientific-contributions/Salvatore-Dessole-38702304"
+        }
+      ],
+      "affiliazioni": [
+        "University of Sassari",
+        "Department of Pharmacology, Gynecology and Obstetrics"
+      ],
+      "citations": 5628,
+      "h_index_estimated": 35
+    },
+    "francesco-bussu": {
+      "sintomi": [
+        "mal di gola persistente",
+        "raucedine",
+        "difficoltà a deglutire",
+        "perdita udito",
+        "acufeni",
+        "vertigini",
+        "naso chiuso cronico",
+        "sinusite ricorrente",
+        "nodulo al collo",
+        "russamento",
+        "apnee notturne"
+      ],
+      "pubblicazioni": [
+        {
+          "titolo": "Management of nasal vestibule carcinomas: recommendations by the Italian Society of Otorhinolaryngology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38420717/",
+          "anno": 2024,
+          "journal": "Acta Otorhinolaryngologica Italica"
+        },
+        {
+          "titolo": "Oropharyngeal squamous cell carcinoma: Treatment guidelines",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/36596712/",
+          "anno": 2023,
+          "journal": "Acta Otorhinolaryngologica Italica"
+        },
+        {
+          "titolo": "Transoral Robotic Surgery for Salvage of Irradiated Oropharyngeal Cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41003122/",
+          "anno": 2025,
+          "journal": "Journal of Clinical Medicine"
+        },
+        {
+          "titolo": "Medical-surgical management in cervical esophageal lesions",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/32525840/",
+          "anno": 2020,
+          "journal": "European Archives of Oto-Rhino-Laryngology"
+        }
+      ],
+      "social": [
+        {
+          "tipo": "ResearchGate",
+          "url": "https://www.researchgate.net/profile/Francesco-Bussu"
+        }
+      ],
+      "affiliazioni": [
+        "University of Sassari",
+        "Department of Medical, Surgical and Experimental Sciences",
+        "Otolaryngology Division, Sassari University Hospital"
+      ],
+      "citations": 3500,
+      "h_index_estimated": 28
+    },
+    "pietro-pirina": {
+      "sintomi": [
+        "tosse persistente",
+        "difficoltà respiratorie",
+        "affanno",
+        "respiro sibilante",
+        "asma",
+        "bronchite cronica",
+        "allergie respiratorie",
+        "apnea del sonno",
+        "BPCO",
+        "enfisema",
+        "dolore toracico"
+      ],
+      "pubblicazioni": [
+        {
+          "titolo": "Glutathione Peroxidase in Stable Chronic Obstructive Pulmonary Disease",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/34829616/",
+          "anno": 2021,
+          "journal": "Antioxidants"
+        },
+        {
+          "titolo": "Assessment of peak inspiratory flow in patients with COPD",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40998461/",
+          "anno": 2025,
+          "journal": "BMC Pulmonary Medicine"
+        },
+        {
+          "titolo": "Prevalence and clinical features of COPD phenotypes in Italy",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8506204/",
+          "anno": 2021,
+          "journal": "Respiratory Medicine"
+        }
+      ],
+      "social": [
+        {
+          "tipo": "ResearchGate",
+          "url": "https://www.researchgate.net/profile/Pietro-Pirina"
+        }
+      ],
+      "affiliazioni": [
+        "University of Sassari",
+        "Head of Respiratory Unit",
+        "Department of Medicine, Surgery and Pharmacy"
+      ],
+      "citations": 6866,
+      "h_index_estimated": 42
+    },
+    "antonio-solinas": {
+      "sintomi": [
+        "dolore addominale",
+        "ittero",
+        "fegato ingrossato",
+        "stanchezza cronica",
+        "perdita di peso",
+        "epatite",
+        "cirrosi",
+        "transaminasi alte",
+        "problemi digestivi",
+        "nausea ricorrente"
+      ],
+      "pubblicazioni": [
+        {
+          "titolo": "A prognostic marker and therapeutic target for liver cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/27618225/",
+          "anno": 2016,
+          "journal": "World Journal of Hepatology"
+        },
+        {
+          "titolo": "Cognitive dysfunction and hepatitis C virus infection",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4419096/",
+          "anno": 2015,
+          "journal": "World Journal of Hepatology"
+        },
+        {
+          "titolo": "Contrast-enhanced ultrasound Liver Imaging Reporting and Data System",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9346460/",
+          "anno": 2022,
+          "journal": "World Journal of Gastroenterology"
+        }
+      ],
+      "social": [],
+      "affiliazioni": [
+        "University of Sassari",
+        "Department of Biomedical Sciences"
+      ],
+      "citations": 1200,
+      "h_index_estimated": 18
+    },
+    "marco-petrillo": {
+      "sintomi": [
+        "infertilità",
+        "dolore pelvico",
+        "mestruazioni dolorose",
+        "cisti ovariche",
+        "tumore ovarico",
+        "sanguinamento anomalo",
+        "endometriosi",
+        "difficoltà a rimanere incinta"
+      ],
+      "pubblicazioni": [
+        {
+          "titolo": "The role of surgery in platinum-resistant ovarian cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33607247/",
+          "anno": 2021,
+          "journal": "European Journal of Surgical Oncology"
+        },
+        {
+          "titolo": "Pharmacokinetics of cisplatin during HIPEC",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/31074245/",
+          "anno": 2019,
+          "journal": "Gynecologic Oncology"
+        },
+        {
+          "titolo": "Neoadjuvant Chemotherapy Followed by Maintenance Olaparib",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/26036187/",
+          "anno": 2015,
+          "journal": "Annals of Surgical Oncology"
+        }
+      ],
+      "social": [
+        {
+          "tipo": "ORCID",
+          "url": "https://orcid.org/0000-0003-0306-4328"
+        }
+      ],
+      "affiliazioni": [
+        "Gynecologic Oncology Unit"
+      ],
+      "citations": 2100,
+      "h_index_estimated": 22
+    },
+    "carlo-burrai": {
+      "sintomi": [
+        "problemi crescita bambini",
+        "pubertà precoce",
+        "pubertà ritardata",
+        "ipotiroidismo pediatrico",
+        "diabete bambini",
+        "obesità infantile",
+        "bassa statura",
+        "problemi tiroidei bambini"
+      ],
+      "pubblicazioni": [
+        {
+          "titolo": "Postnatal Growth in a Cohort of Sardinian Intrauterine Growth Restricted Infants",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5496105/",
+          "anno": 2017,
+          "journal": "Journal of Pediatric Endocrinology"
+        },
+        {
+          "titolo": "Antibodies against Proinsulin and Homologous MAP Epitopes",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4508117/",
+          "anno": 2015,
+          "journal": "Diabetes Research"
+        }
+      ],
+      "social": [],
+      "affiliazioni": [
+        "Department of Endocrinology, ASL 1 Sassari"
+      ],
+      "citations": 180,
+      "h_index_estimated": 8
+    },
+    "francesco-tolu": {
+      "sintomi": [
+        "aumento peso",
+        "difficoltà a dimagrire",
+        "stanchezza cronica",
+        "problemi tiroide",
+        "diabete",
+        "fame eccessiva",
+        "metabolismo lento",
+        "squilibri ormonali",
+        "obesità"
+      ],
+      "pubblicazioni": [
+        {
+          "titolo": "Anti-Thyroid Peroxidase Antibodies and Male Gender Are Associated with Type 2 Diabetes Risk",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4830722/",
+          "anno": 2016,
+          "journal": "Journal of Clinical Medicine"
+        },
+        {
+          "titolo": "The pattern of TSH and fT4 levels across different BMI ranges",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/36313780/",
+          "anno": 2022,
+          "journal": "Journal of Endocrinological Investigation"
+        },
+        {
+          "titolo": "Obesity Does Not Modify the Risk of Differentiated Thyroid Cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/27493887/",
+          "anno": 2016,
+          "journal": "European Thyroid Journal"
+        }
+      ],
+      "social": [],
+      "affiliazioni": [
+        "Endocrinology Unit, Azienda Ospedaliero-Universitaria",
+        "University of Sassari"
+      ],
+      "citations": 450,
+      "h_index_estimated": 12
+    },
+    "sebastiano-traccis": {
+      "sintomi": [
+        "debolezza muscolare",
+        "formicolii",
+        "intorpidimento",
+        "crampi muscolari",
+        "tremore",
+        "difficoltà motorie",
+        "malattie neuromuscolari",
+        "sclerosi laterale"
+      ],
+      "pubblicazioni": [
+        {
+          "titolo": "Primary motor cortex hyperexcitability in Fabry's disease",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/23474053/",
+          "anno": 2013,
+          "journal": "Clinical Neurophysiology"
+        },
+        {
+          "titolo": "TBK1 is associated with ALS and ALS-FTD in Sardinian patients",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8961272/",
+          "anno": 2022,
+          "journal": "Neurobiology of Aging"
+        }
+      ],
+      "social": [
+        {
+          "tipo": "ResearchGate",
+          "url": "https://www.researchgate.net/profile/Sebastiano-Traccis"
+        }
+      ],
+      "affiliazioni": [
+        "Department of Neurology",
+        "A. Segni Hospital, ASL 1 Sassari"
+      ],
+      "citations": 968,
+      "h_index_estimated": 15
+    },
+    "luigi-podda": {
+      "sintomi": [
+        "anemia",
+        "stanchezza inspiegabile",
+        "pallore",
+        "sanguinamento facile",
+        "lividi frequenti",
+        "linfonodi ingrossati",
+        "infezioni ricorrenti",
+        "mieloma"
+      ],
+      "pubblicazioni": [
+        {
+          "titolo": "Pomalidomide in patients with multiple myeloma",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39316338/",
+          "anno": 2024,
+          "journal": "Hematological Oncology"
+        },
+        {
+          "titolo": "Tomentosin Induces Apoptosis in Leukemia Cells",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8623649/",
+          "anno": 2021,
+          "journal": "Molecules"
+        },
+        {
+          "titolo": "Antiproliferative and proapoptotic effects of Inula viscosa",
+          "url": "https://journals.sagepub.com/doi/10.1177/1010428319901061",
+          "anno": 2020,
+          "journal": "Tumor Biology"
+        }
+      ],
+      "social": [],
+      "affiliazioni": [
+        "Ematologia e CTMO AOU di Sassari",
+        "Department of Medical, Surgical and Experimental Sciences",
+        "University of Sassari"
+      ],
+      "citations": 250,
+      "h_index_estimated": 9
+    },
+    "angelo-deplano": {
+      "sintomi": [
+        "dolore addominale",
+        "bruciore stomaco",
+        "reflusso gastrico",
+        "nausea",
+        "problemi fegato",
+        "epatite",
+        "cirrosi",
+        "gonfiore addominale"
+      ],
+      "pubblicazioni": [
+        {
+          "titolo": "Cognitive dysfunction and hepatitis C virus infection",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4419096/",
+          "anno": 2015,
+          "journal": "World Journal of Hepatology"
+        },
+        {
+          "titolo": "Patterns of Response During Therapy With Interferon",
+          "url": "https://journals.lww.com/jcge/fulltext/2001/09000/patterns_of_response_during_therapy_with.21.aspx",
+          "anno": 2001,
+          "journal": "Journal of Clinical Gastroenterology"
+        }
+      ],
+      "social": [],
+      "affiliazioni": [
+        "Unit of Internal Medicine",
+        "Lanusei Hospital"
+      ],
+      "citations": 180,
+      "h_index_estimated": 7
+    },
+    "paola-dettori": {
+      "sintomi": [
+        "gambe gonfie",
+        "vene varicose",
+        "dolore gambe",
+        "crampi notturni",
+        "claudicatio",
+        "ulcere arti inferiori",
+        "capillari fragili",
+        "trombosi venosa"
+      ],
+      "pubblicazioni": [
+        {
+          "titolo": "Blood Cell Count Biomarkers in Ischemia-Related Lower Limb Amputations",
+          "url": "https://journals.sagepub.com/doi/abs/10.1177/1534734620961785",
+          "anno": 2020,
+          "journal": "The International Journal of Lower Extremity Wounds"
+        },
+        {
+          "titolo": "Blood Cell Count Indexes of Systemic Inflammation in Carotid Artery Disease",
+          "url": "https://www.researchgate.net/publication/344204973",
+          "anno": 2020,
+          "journal": "Angiology"
+        }
+      ],
+      "social": [
+        {
+          "tipo": "ResearchGate",
+          "url": "https://www.researchgate.net/scientific-contributions/Paola-Dettori-2178589073"
+        }
+      ],
+      "affiliazioni": [
+        "University of Sassari",
+        "Azienda Sanitaria Locale Sassari"
+      ],
+      "citations": 380,
+      "h_index_estimated": 11
+    },
+    "sonia-bove": {
+      "sintomi": [
+        "nodulo al seno",
+        "dolore mammario",
+        "secrezioni capezzolo",
+        "mammografia anomala",
+        "tumore seno",
+        "mastectomia",
+        "ricostruzione mammaria"
+      ],
+      "pubblicazioni": [
+        {
+          "titolo": "Techniques for sentinel node biopsy in breast cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/34338468/",
+          "anno": 2021,
+          "journal": "European Journal of Surgical Oncology"
+        },
+        {
+          "titolo": "Predicting Mastectomy Skin Flap Necrosis: A Systematic Review",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/36725477/",
+          "anno": 2023,
+          "journal": "Clinical Breast Cancer"
+        },
+        {
+          "titolo": "Improving Decision-making in Prepectoral Direct-to-implant Reconstruction",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/36610826/",
+          "anno": 2023,
+          "journal": "Clinical Breast Cancer"
+        }
+      ],
+      "social": [],
+      "affiliazioni": [
+        "Gynecology and Breast Care Center",
+        "Mater Olbia Hospital"
+      ],
+      "citations": 420,
+      "h_index_estimated": 12
+    },
+    "pietro-lisai": {
+      "sintomi": [
+        "dolore schiena",
+        "dolore ginocchio",
+        "dolore spalla",
+        "artrosi",
+        "ernia discale",
+        "fratture",
+        "tendinite",
+        "distorsioni"
+      ],
+      "pubblicazioni": [
+        {
+          "titolo": "Cesarean Section and Right Femur Fracture: A Rare but Possible Complication",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3606759/",
+          "anno": 2013,
+          "journal": "Case Reports in Obstetrics and Gynecology"
+        },
+        {
+          "titolo": "Sports-related changes of the synovial membrane",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4334218/",
+          "anno": 2015,
+          "journal": "Journal of Biological Regulators"
+        },
+        {
+          "titolo": "Effect of platelet-rich plasma and microfracture reparative technique",
+          "url": "https://www.pagepressjournals.org/jbr/article/view/jbr.2015.5229",
+          "anno": 2015,
+          "journal": "Journal of Biological Regulators and Homeostatic Agents"
+        }
+      ],
+      "social": [],
+      "affiliazioni": [
+        "Orthopedic and Traumatology Unit",
+        "Department of Biomedical Science",
+        "Sassari University Hospital"
+      ],
+      "citations": 150,
+      "h_index_estimated": 6
+    },
+    "irene-aini": {
+      "sintomi": [
+        "stanchezza cronica",
+        "problemi tiroide",
+        "noduli tiroidei",
+        "ipertiroidismo",
+        "ipotiroidismo",
+        "squilibri ormonali",
+        "carcinoma tiroideo"
+      ],
+      "pubblicazioni": [
+        {
+          "titolo": "Thyroid lesions of neuroendocrine origin",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40542625/",
+          "anno": 2025,
+          "journal": "Journal of Neuroendocrinology"
+        },
+        {
+          "titolo": "Gender-related differences in patients with carcinoid syndrome",
+          "url": "https://www.researchgate.net/publication/374726060",
+          "anno": 2023,
+          "journal": "Endocrine"
+        }
+      ],
+      "social": [
+        {
+          "tipo": "ResearchGate",
+          "url": "https://www.researchgate.net/scientific-contributions/Irene-Aini-2229505735"
+        }
+      ],
+      "affiliazioni": [
+        "Endocrinology Unit",
+        "Azienda Ospedaliera Universitaria Sassari"
+      ],
+      "citations": 57,
+      "h_index_estimated": 4
+    },
+    "sara-uras": {
+      "sintomi": [
+        "palpitazioni",
+        "dolore al petto",
+        "affanno",
+        "ipertensione polmonare",
+        "scompenso cardiaco",
+        "valvulopatie"
+      ],
+      "pubblicazioni": [
+        {
+          "titolo": "TAPSE/sPAP Ratio to Improve Risk Assessment in Pulmonary Arterial Hypertension",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40959873/",
+          "journal": "Circulation: Heart Failure"
+        }
+      ],
+      "social": [],
+      "affiliazioni": [
+        "Department of Cardiovascular and Respiratory Sciences",
+        "San Francesco Hospital Nuoro"
+      ],
+      "citations": 20,
+      "h_index_estimated": 3
+    },
+    "federica-decandia": {
+      "sintomi": [
+        "palpitazioni",
+        "pressione alta",
+        "problemi tiroide cardiaci",
+        "ipotiroidismo subclinico",
+        "colesterolo alto"
+      ],
+      "pubblicazioni": [
+        {
+          "titolo": "Serum free thyroxine levels are positively associated with arterial stiffness",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/24954304/",
+          "journal": "Journal of Clinical Endocrinology & Metabolism"
+        },
+        {
+          "titolo": "Subclinical Hypothyroidism and Lipid Metabolism",
+          "url": "https://www.researchgate.net/publication/344657467",
+          "journal": "Archives of Medical Science"
+        }
+      ],
+      "social": [],
+      "affiliazioni": [
+        "Cardiology Unit",
+        "S. Francesco Hospital, Nuoro"
+      ],
+      "citations": 85,
+      "h_index_estimated": 5
+    },
+    "paolo-franca": {
+      "sintomi": [
+        "infarto",
+        "sindrome coronarica acuta",
+        "palpitazioni",
+        "dolore toracico",
+        "elettrocardiogramma anomalo"
+      ],
+      "pubblicazioni": [
+        {
+          "titolo": "Orodispersible Ticagrelor in Acute Coronary Syndromes",
+          "url": "https://www.jacc.org/doi/10.1016/j.jacc.2021.05.015",
+          "journal": "Journal of the American College of Cardiology"
+        },
+        {
+          "titolo": "Prevalence and clinical significance of interatrial block in rheumatoid arthritis",
+          "url": "https://www.researchgate.net/publication/366984767",
+          "journal": "Journal of Cardiovascular Medicine"
+        }
+      ],
+      "social": [],
+      "affiliazioni": [
+        "Cardiologia Clinica ed Interventistica",
+        "AOU Sassari"
+      ],
+      "citations": 95,
+      "h_index_estimated": 6
+    },
+    "francesco-dessole": {
+      "sintomi": [
+        "gravidanza",
+        "ecografia ostetrica",
+        "fecondazione assistita",
+        "problemi fertilità"
+      ],
+      "pubblicazioni": [
+        {
+          "titolo": "The impact of COVID-19 lockdown on admission to gynecologic emergency department",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/32602939/",
+          "journal": "European Journal of Obstetrics and Gynecology"
+        },
+        {
+          "titolo": "Levonorgestrel-releasing intra-uterine device alone for endometrial hyperplasia",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41308330/",
+          "journal": "Cochrane Database of Systematic Reviews"
+        },
+        {
+          "titolo": "Inositol for the prevention of gestational diabetes",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/30564926/",
+          "journal": "Cochrane Database of Systematic Reviews"
+        }
+      ],
+      "social": [],
+      "affiliazioni": [
+        "Department of Gynecology",
+        "University of Sassari"
+      ],
+      "citations": 180,
+      "h_index_estimated": 8
+    }
+  },
+  "default_sintomi_by_specialty": {
+    "ginecologia": [
+      "ciclo irregolare",
+      "dolore pelvico",
+      "perdite anomale",
+      "menopausa",
+      "contraccezione",
+      "gravidanza",
+      "Pap test"
+    ],
+    "ostetricia": [
+      "gravidanza",
+      "nausea gravidica",
+      "contrazioni",
+      "perdite gravidanza",
+      "monitoraggio fetale"
+    ],
+    "cardiologia": [
+      "palpitazioni",
+      "dolore al petto",
+      "affanno",
+      "pressione alta",
+      "tachicardia",
+      "fiato corto",
+      "svenimenti"
+    ],
+    "dermatologia": [
+      "nei sospetti",
+      "prurito",
+      "acne",
+      "eczema",
+      "psoriasi",
+      "perdita capelli",
+      "macchie cutanee"
+    ],
+    "endocrinologia": [
+      "stanchezza",
+      "aumento peso",
+      "perdita peso",
+      "problemi tiroide",
+      "diabete",
+      "squilibri ormonali"
+    ],
+    "neurologia": [
+      "mal di testa",
+      "vertigini",
+      "formicolii",
+      "tremori",
+      "memoria",
+      "insonnia",
+      "cefalea"
+    ],
+    "oculistica": [
+      "vista offuscata",
+      "occhi secchi",
+      "mal di testa oculare",
+      "mosche volanti",
+      "glaucoma",
+      "cataratta"
+    ],
+    "otorinolaringoiatria": [
+      "mal di gola",
+      "otite",
+      "sinusite",
+      "acufeni",
+      "vertigini",
+      "raucedine",
+      "apnee"
+    ],
+    "ortopedia": [
+      "mal di schiena",
+      "dolore ginocchio",
+      "dolore spalla",
+      "artrosi",
+      "fratture",
+      "tendinite"
+    ],
+    "gastroenterologia": [
+      "mal di stomaco",
+      "reflusso",
+      "gonfiore",
+      "diarrea",
+      "stitichezza",
+      "colon irritabile"
+    ],
+    "medicina-interna": [
+      "stanchezza cronica",
+      "febbre persistente",
+      "malessere generale",
+      "perdita peso"
+    ],
+    "nefrologia": [
+      "problemi renali",
+      "sangue nelle urine",
+      "minzione frequente",
+      "calcoli renali"
+    ],
+    "pneumologia": [
+      "tosse persistente",
+      "asma",
+      "bronchite",
+      "affanno",
+      "apnee notturne",
+      "BPCO"
+    ],
+    "ematologia": [
+      "anemia",
+      "stanchezza",
+      "lividi facili",
+      "sanguinamento",
+      "linfonodi ingrossati"
+    ],
+    "urologia": [
+      "problemi prostata",
+      "incontinenza",
+      "disfunzione erettile",
+      "infezioni urinarie"
+    ],
+    "chirurgia-vascolare": [
+      "vene varicose",
+      "gambe gonfie",
+      "dolore gambe",
+      "ulcere arti"
+    ],
+    "reumatologia": [
+      "dolori articolari",
+      "rigidità mattutina",
+      "artrite",
+      "fibromialgia",
+      "lupus"
+    ],
+    "ecografia": [
+      "ecografia addome",
+      "ecografia tiroide",
+      "ecografia muscolo-tendinea"
+    ],
+    "medicina-sport": [
+      "idoneità sportiva",
+      "traumi sportivi",
+      "test da sforzo"
+    ],
+    "medicina-lavoro": [
+      "idoneità lavoro",
+      "sorveglianza sanitaria",
+      "malattie professionali"
+    ],
+    "fisiatria": [
+      "riabilitazione",
+      "dolore cronico",
+      "postura"
+    ],
+    "pediatria": [
+      "febbre bambini",
+      "crescita",
+      "vaccinazioni",
+      "sviluppo"
+    ],
+    "psicologia": [
+      "ansia",
+      "depressione",
+      "stress",
+      "attacchi di panico",
+      "disturbi alimentari",
+      "insonnia"
+    ],
+    "nutrizione": [
+      "sovrappeso",
+      "obesità",
+      "intolleranze alimentari",
+      "carenze vitaminiche",
+      "metabolismo lento"
+    ],
+    "laboratorio": [
+      "analisi sangue",
+      "esami urine",
+      "marcatori tumorali"
+    ]
+  }
+}

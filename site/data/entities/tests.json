@@ -1,0 +1,836 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-01-27",
+  "total_tests": 1162,
+  "note": "Struttura base - esami principali. Elenco completo da integrare con dati clinici reali.",
+  "tests": [
+    {
+      "id": "emocromo-completo",
+      "code": "90.62.2",
+      "name": "Emocromo Completo",
+      "aliases": ["emocromo", "esame emocromocitometrico", "CBC", "complete blood count"],
+      "category_id": "ematologia",
+      "subcategory": "esami ematologici di base",
+      "body_system": "sangue",
+      "sample_type": "sangue_venoso",
+      "description_short": "Valutazione completa delle cellule del sangue",
+      "description_full": "L'emocromo completo misura globuli rossi, globuli bianchi, emoglobina, ematocrito e piastrine. Esame di screening fondamentale per anemia, infezioni e malattie ematologiche.",
+      "indications": ["anemia", "stanchezza", "infezioni", "screening"],
+      "preparation": {
+        "is_fasting_required": false,
+        "fasting_hours": 0,
+        "is_urine_sample": false,
+        "is_morning_only": false,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": false,
+        "notes": ""
+      },
+      "turnaround_time": "24h",
+      "turnaround_urgent": "4h",
+      "included_in_packs": ["checkup-base", "checkup-completo", "checkup-donna-over40", "checkup-uomo-over40"],
+      "primary_pack": "checkup-base",
+      "related_tests": ["ferritina", "sideremia", "transferrina", "reticolociti"],
+      "clinical_context": "Esame di primo livello per valutazione generale dello stato di salute",
+      "search_terms": ["globuli", "anemia", "piastrine", "leucociti", "emoglobina"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Analizzatore ematologico automatizzato"
+      }
+    },
+    {
+      "id": "tsh-ultrasensibile",
+      "code": "90.42.1",
+      "name": "TSH Ultrasensibile",
+      "aliases": ["TSH", "tireotropina", "ormone tireostimolante", "TSH reflex"],
+      "category_id": "endocrinologia",
+      "subcategory": "tiroide",
+      "body_system": "sistema_endocrino",
+      "sample_type": "sangue_venoso",
+      "description_short": "Dosaggio dell'ormone che regola la funzione tiroidea",
+      "description_full": "Il TSH (Thyroid Stimulating Hormone) è l'esame di prima linea per valutare la funzione tiroidea. Valori alterati indicano ipo o ipertiroidismo.",
+      "indications": ["tiroide", "stanchezza", "aumento peso", "tachicardia", "screening tiroideo"],
+      "preparation": {
+        "is_fasting_required": false,
+        "fasting_hours": 0,
+        "is_urine_sample": false,
+        "is_morning_only": true,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": false,
+        "notes": "Preferibile prelievo mattutino per valori più stabili"
+      },
+      "turnaround_time": "24h",
+      "turnaround_urgent": "4h",
+      "included_in_packs": ["checkup-tiroide", "checkup-donna-over40", "checkup-completo"],
+      "primary_pack": "checkup-tiroide",
+      "related_tests": ["ft3", "ft4", "anti-tpo", "anti-tg", "tireoglobulina"],
+      "clinical_context": "Esame di screening per patologie tiroidee",
+      "search_terms": ["tiroide", "ipotiroidismo", "ipertiroidismo", "tireotropina"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Immunoanalizzatore"
+      }
+    },
+    {
+      "id": "ft3",
+      "code": "90.43.2",
+      "name": "FT3 - Triiodotironina Libera",
+      "aliases": ["FT3", "T3 libero", "triiodotironina free"],
+      "category_id": "endocrinologia",
+      "subcategory": "tiroide",
+      "body_system": "sistema_endocrino",
+      "sample_type": "sangue_venoso",
+      "description_short": "Dosaggio dell'ormone tiroideo attivo",
+      "description_full": "L'FT3 è la forma attiva dell'ormone tiroideo. Insieme a TSH e FT4 permette una valutazione completa della funzione tiroidea.",
+      "indications": ["ipertiroidismo", "valutazione funzione tiroidea", "monitoraggio terapia"],
+      "preparation": {
+        "is_fasting_required": false,
+        "fasting_hours": 0,
+        "is_urine_sample": false,
+        "is_morning_only": true,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": false,
+        "notes": ""
+      },
+      "turnaround_time": "24h",
+      "turnaround_urgent": "4h",
+      "included_in_packs": ["checkup-tiroide"],
+      "primary_pack": "checkup-tiroide",
+      "related_tests": ["tsh-ultrasensibile", "ft4", "anti-tpo"],
+      "clinical_context": "Approfondimento per patologie tiroidee",
+      "search_terms": ["T3", "ormone tiroideo", "tiroide"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Immunoanalizzatore"
+      }
+    },
+    {
+      "id": "ft4",
+      "code": "90.44.1",
+      "name": "FT4 - Tiroxina Libera",
+      "aliases": ["FT4", "T4 libero", "tiroxina free"],
+      "category_id": "endocrinologia",
+      "subcategory": "tiroide",
+      "body_system": "sistema_endocrino",
+      "sample_type": "sangue_venoso",
+      "description_short": "Dosaggio dell'ormone tiroideo principale",
+      "description_full": "L'FT4 è l'ormone tiroideo principale prodotto dalla tiroide. Insieme al TSH è fondamentale per la diagnosi di ipo/ipertiroidismo.",
+      "indications": ["tiroide", "ipotiroidismo", "ipertiroidismo", "monitoraggio"],
+      "preparation": {
+        "is_fasting_required": false,
+        "fasting_hours": 0,
+        "is_urine_sample": false,
+        "is_morning_only": true,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": false,
+        "notes": ""
+      },
+      "turnaround_time": "24h",
+      "turnaround_urgent": "4h",
+      "included_in_packs": ["checkup-tiroide", "checkup-completo"],
+      "primary_pack": "checkup-tiroide",
+      "related_tests": ["tsh-ultrasensibile", "ft3", "anti-tpo"],
+      "clinical_context": "Approfondimento funzione tiroidea",
+      "search_terms": ["T4", "tiroxina", "tiroide"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Immunoanalizzatore"
+      }
+    },
+    {
+      "id": "anti-tpo",
+      "code": "90.48.3",
+      "name": "Anticorpi Anti-TPO",
+      "aliases": ["anti-TPO", "anticorpi anti-perossidasi", "Ab anti-tireoperossidasi"],
+      "category_id": "endocrinologia",
+      "subcategory": "tiroide",
+      "body_system": "sistema_endocrino",
+      "sample_type": "sangue_venoso",
+      "description_short": "Marcatore di autoimmunità tiroidea",
+      "description_full": "Gli anticorpi anti-TPO sono presenti nelle tiroiditi autoimmuni (Hashimoto, Graves). Utili per diagnosi e prognosi.",
+      "indications": ["tiroidite", "Hashimoto", "ipotiroidismo autoimmune"],
+      "preparation": {
+        "is_fasting_required": false,
+        "fasting_hours": 0,
+        "is_urine_sample": false,
+        "is_morning_only": false,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": false,
+        "notes": ""
+      },
+      "turnaround_time": "48h",
+      "turnaround_urgent": "24h",
+      "included_in_packs": ["checkup-tiroide"],
+      "primary_pack": "checkup-tiroide",
+      "related_tests": ["tsh-ultrasensibile", "ft4", "anti-tg"],
+      "clinical_context": "Diagnosi tiroiditi autoimmuni",
+      "search_terms": ["anticorpi tiroide", "tiroidite", "Hashimoto", "autoimmunità"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Immunoanalizzatore"
+      }
+    },
+    {
+      "id": "glicemia",
+      "code": "90.27.1",
+      "name": "Glicemia",
+      "aliases": ["glicemia a digiuno", "glucosio", "zucchero nel sangue", "blood glucose"],
+      "category_id": "metabolismo",
+      "subcategory": "diabete",
+      "body_system": "metabolismo",
+      "sample_type": "sangue_venoso",
+      "description_short": "Misurazione del livello di zucchero nel sangue",
+      "description_full": "La glicemia misura la concentrazione di glucosio nel sangue. Esame fondamentale per diagnosi e monitoraggio del diabete.",
+      "indications": ["diabete", "prediabete", "screening", "controllo metabolico"],
+      "preparation": {
+        "is_fasting_required": true,
+        "fasting_hours": 8,
+        "is_urine_sample": false,
+        "is_morning_only": true,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": false,
+        "notes": "Digiuno di almeno 8 ore"
+      },
+      "turnaround_time": "24h",
+      "turnaround_urgent": "1h",
+      "included_in_packs": ["checkup-base", "checkup-diabete", "checkup-completo", "checkup-cardiovascolare"],
+      "primary_pack": "checkup-diabete",
+      "related_tests": ["emoglobina-glicata", "curva-glicemica", "insulina"],
+      "clinical_context": "Screening e monitoraggio diabete",
+      "search_terms": ["zucchero", "diabete", "glucosio", "digiuno"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Analizzatore chimico-clinico"
+      }
+    },
+    {
+      "id": "emoglobina-glicata",
+      "code": "90.28.1",
+      "name": "Emoglobina Glicata",
+      "aliases": ["HbA1c", "glicata", "A1C", "glycated hemoglobin"],
+      "category_id": "metabolismo",
+      "subcategory": "diabete",
+      "body_system": "metabolismo",
+      "sample_type": "sangue_venoso",
+      "description_short": "Media della glicemia degli ultimi 2-3 mesi",
+      "description_full": "L'emoglobina glicata riflette la media glicemica degli ultimi 2-3 mesi. Gold standard per il monitoraggio del diabete.",
+      "indications": ["diabete", "controllo glicemico", "prediabete"],
+      "preparation": {
+        "is_fasting_required": false,
+        "fasting_hours": 0,
+        "is_urine_sample": false,
+        "is_morning_only": false,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": false,
+        "notes": "Non richiede digiuno"
+      },
+      "turnaround_time": "24h",
+      "turnaround_urgent": "4h",
+      "included_in_packs": ["checkup-diabete", "checkup-completo"],
+      "primary_pack": "checkup-diabete",
+      "related_tests": ["glicemia", "curva-glicemica", "insulina"],
+      "clinical_context": "Monitoraggio a lungo termine del diabete",
+      "search_terms": ["HbA1c", "diabete", "controllo glicemia", "glicata"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Analizzatore HPLC"
+      }
+    },
+    {
+      "id": "colesterolo-totale",
+      "code": "90.14.1",
+      "name": "Colesterolo Totale",
+      "aliases": ["colesterolo", "cholesterol"],
+      "category_id": "metabolismo",
+      "subcategory": "profilo lipidico",
+      "body_system": "metabolismo",
+      "sample_type": "sangue_venoso",
+      "description_short": "Misurazione del colesterolo nel sangue",
+      "description_full": "Il colesterolo totale è un indicatore del rischio cardiovascolare. Va interpretato insieme a HDL, LDL e trigliceridi.",
+      "indications": ["rischio cardiovascolare", "dislipidemia", "prevenzione", "screening"],
+      "preparation": {
+        "is_fasting_required": true,
+        "fasting_hours": 12,
+        "is_urine_sample": false,
+        "is_morning_only": true,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": false,
+        "notes": "Digiuno di 12 ore per profilo lipidico completo"
+      },
+      "turnaround_time": "24h",
+      "turnaround_urgent": "2h",
+      "included_in_packs": ["checkup-base", "checkup-cardiovascolare", "checkup-completo"],
+      "primary_pack": "checkup-cardiovascolare",
+      "related_tests": ["colesterolo-hdl", "colesterolo-ldl", "trigliceridi"],
+      "clinical_context": "Valutazione rischio cardiovascolare",
+      "search_terms": ["colesterolo", "grassi", "cuore", "arterie"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Analizzatore chimico-clinico"
+      }
+    },
+    {
+      "id": "colesterolo-hdl",
+      "code": "90.14.2",
+      "name": "Colesterolo HDL",
+      "aliases": ["HDL", "colesterolo buono", "high density lipoprotein"],
+      "category_id": "metabolismo",
+      "subcategory": "profilo lipidico",
+      "body_system": "metabolismo",
+      "sample_type": "sangue_venoso",
+      "description_short": "Colesterolo 'buono' - protettivo cardiovascolare",
+      "description_full": "L'HDL rimuove il colesterolo in eccesso dalle arterie. Valori elevati sono protettivi contro malattie cardiovascolari.",
+      "indications": ["rischio cardiovascolare", "dislipidemia", "screening"],
+      "preparation": {
+        "is_fasting_required": true,
+        "fasting_hours": 12,
+        "is_urine_sample": false,
+        "is_morning_only": true,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": false,
+        "notes": "Digiuno di 12 ore"
+      },
+      "turnaround_time": "24h",
+      "turnaround_urgent": "2h",
+      "included_in_packs": ["checkup-cardiovascolare", "checkup-completo"],
+      "primary_pack": "checkup-cardiovascolare",
+      "related_tests": ["colesterolo-totale", "colesterolo-ldl", "trigliceridi"],
+      "clinical_context": "Valutazione profilo lipidico",
+      "search_terms": ["HDL", "colesterolo buono", "protezione cuore"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Analizzatore chimico-clinico"
+      }
+    },
+    {
+      "id": "colesterolo-ldl",
+      "code": "90.14.3",
+      "name": "Colesterolo LDL",
+      "aliases": ["LDL", "colesterolo cattivo", "low density lipoprotein"],
+      "category_id": "metabolismo",
+      "subcategory": "profilo lipidico",
+      "body_system": "metabolismo",
+      "sample_type": "sangue_venoso",
+      "description_short": "Colesterolo 'cattivo' - rischio cardiovascolare",
+      "description_full": "L'LDL deposita colesterolo nelle arterie. Valori elevati aumentano il rischio di aterosclerosi e infarto.",
+      "indications": ["rischio cardiovascolare", "dislipidemia", "prevenzione infarto"],
+      "preparation": {
+        "is_fasting_required": true,
+        "fasting_hours": 12,
+        "is_urine_sample": false,
+        "is_morning_only": true,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": false,
+        "notes": "Digiuno di 12 ore"
+      },
+      "turnaround_time": "24h",
+      "turnaround_urgent": "2h",
+      "included_in_packs": ["checkup-cardiovascolare", "checkup-completo"],
+      "primary_pack": "checkup-cardiovascolare",
+      "related_tests": ["colesterolo-totale", "colesterolo-hdl", "trigliceridi"],
+      "clinical_context": "Target primario terapia ipocolesterolemizzante",
+      "search_terms": ["LDL", "colesterolo cattivo", "arterie", "aterosclerosi"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Analizzatore chimico-clinico"
+      }
+    },
+    {
+      "id": "trigliceridi",
+      "code": "90.43.1",
+      "name": "Trigliceridi",
+      "aliases": ["triglycerides", "TG"],
+      "category_id": "metabolismo",
+      "subcategory": "profilo lipidico",
+      "body_system": "metabolismo",
+      "sample_type": "sangue_venoso",
+      "description_short": "Grassi nel sangue - rischio cardiovascolare e metabolico",
+      "description_full": "I trigliceridi sono grassi nel sangue. Valori elevati aumentano il rischio cardiovascolare e di pancreatite.",
+      "indications": ["dislipidemia", "obesità", "diabete", "rischio cardiovascolare"],
+      "preparation": {
+        "is_fasting_required": true,
+        "fasting_hours": 12,
+        "is_urine_sample": false,
+        "is_morning_only": true,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": true,
+        "notes": "Digiuno 12 ore. Evitare alcol 24 ore prima"
+      },
+      "turnaround_time": "24h",
+      "turnaround_urgent": "2h",
+      "included_in_packs": ["checkup-cardiovascolare", "checkup-completo", "checkup-metabolico"],
+      "primary_pack": "checkup-cardiovascolare",
+      "related_tests": ["colesterolo-totale", "colesterolo-hdl", "colesterolo-ldl"],
+      "clinical_context": "Componente profilo lipidico completo",
+      "search_terms": ["trigliceridi", "grassi sangue", "dieta"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Analizzatore chimico-clinico"
+      }
+    },
+    {
+      "id": "creatinina",
+      "code": "90.16.3",
+      "name": "Creatinina",
+      "aliases": ["creatininemia", "creatinine"],
+      "category_id": "nefrologia",
+      "subcategory": "funzione renale",
+      "body_system": "reni",
+      "sample_type": "sangue_venoso",
+      "description_short": "Indicatore della funzione renale",
+      "description_full": "La creatinina è un prodotto del metabolismo muscolare eliminato dai reni. Valori elevati indicano ridotta funzione renale.",
+      "indications": ["funzione renale", "insufficienza renale", "controllo farmaci", "diabete"],
+      "preparation": {
+        "is_fasting_required": false,
+        "fasting_hours": 0,
+        "is_urine_sample": false,
+        "is_morning_only": false,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": false,
+        "notes": ""
+      },
+      "turnaround_time": "24h",
+      "turnaround_urgent": "1h",
+      "included_in_packs": ["checkup-base", "checkup-completo", "checkup-renale"],
+      "primary_pack": "checkup-renale",
+      "related_tests": ["azotemia", "egfr", "esame-urine"],
+      "clinical_context": "Screening e monitoraggio funzione renale",
+      "search_terms": ["reni", "funzione renale", "insufficienza renale"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Analizzatore chimico-clinico"
+      }
+    },
+    {
+      "id": "azotemia",
+      "code": "90.07.3",
+      "name": "Azotemia",
+      "aliases": ["urea", "BUN", "blood urea nitrogen"],
+      "category_id": "nefrologia",
+      "subcategory": "funzione renale",
+      "body_system": "reni",
+      "sample_type": "sangue_venoso",
+      "description_short": "Prodotto finale del metabolismo proteico",
+      "description_full": "L'azotemia misura l'urea nel sangue, prodotto del metabolismo proteico. Utile per valutare funzione renale e stato di idratazione.",
+      "indications": ["funzione renale", "disidratazione", "dieta iperproteica"],
+      "preparation": {
+        "is_fasting_required": false,
+        "fasting_hours": 0,
+        "is_urine_sample": false,
+        "is_morning_only": false,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": false,
+        "notes": ""
+      },
+      "turnaround_time": "24h",
+      "turnaround_urgent": "1h",
+      "included_in_packs": ["checkup-base", "checkup-renale", "checkup-completo"],
+      "primary_pack": "checkup-renale",
+      "related_tests": ["creatinina", "egfr", "esame-urine"],
+      "clinical_context": "Valutazione funzione renale e stato nutrizionale",
+      "search_terms": ["urea", "reni", "azoto"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Analizzatore chimico-clinico"
+      }
+    },
+    {
+      "id": "ast-got",
+      "code": "90.09.2",
+      "name": "AST (GOT)",
+      "aliases": ["transaminasi AST", "GOT", "aspartato aminotransferasi", "SGOT"],
+      "category_id": "epatologia",
+      "subcategory": "funzione epatica",
+      "body_system": "fegato",
+      "sample_type": "sangue_venoso",
+      "description_short": "Enzima epatico e cardiaco",
+      "description_full": "L'AST è un enzima presente in fegato, cuore e muscoli. Valori elevati indicano danno cellulare in questi organi.",
+      "indications": ["epatite", "danno epatico", "infarto", "miopatie"],
+      "preparation": {
+        "is_fasting_required": false,
+        "fasting_hours": 0,
+        "is_urine_sample": false,
+        "is_morning_only": false,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": false,
+        "notes": ""
+      },
+      "turnaround_time": "24h",
+      "turnaround_urgent": "1h",
+      "included_in_packs": ["checkup-epatico", "checkup-completo"],
+      "primary_pack": "checkup-epatico",
+      "related_tests": ["alt-gpt", "gamma-gt", "bilirubina"],
+      "clinical_context": "Screening danno epatico",
+      "search_terms": ["transaminasi", "fegato", "enzimi epatici", "GOT"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Analizzatore chimico-clinico"
+      }
+    },
+    {
+      "id": "alt-gpt",
+      "code": "90.04.5",
+      "name": "ALT (GPT)",
+      "aliases": ["transaminasi ALT", "GPT", "alanina aminotransferasi", "SGPT"],
+      "category_id": "epatologia",
+      "subcategory": "funzione epatica",
+      "body_system": "fegato",
+      "sample_type": "sangue_venoso",
+      "description_short": "Enzima specifico del fegato",
+      "description_full": "L'ALT è un enzima prevalentemente epatico. Valori elevati sono più specifici per danno epatico rispetto all'AST.",
+      "indications": ["epatite", "steatosi", "danno epatico", "farmaci epatotossici"],
+      "preparation": {
+        "is_fasting_required": false,
+        "fasting_hours": 0,
+        "is_urine_sample": false,
+        "is_morning_only": false,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": false,
+        "notes": ""
+      },
+      "turnaround_time": "24h",
+      "turnaround_urgent": "1h",
+      "included_in_packs": ["checkup-epatico", "checkup-completo"],
+      "primary_pack": "checkup-epatico",
+      "related_tests": ["ast-got", "gamma-gt", "bilirubina"],
+      "clinical_context": "Marker specifico di danno epatico",
+      "search_terms": ["transaminasi", "fegato", "enzimi epatici", "GPT"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Analizzatore chimico-clinico"
+      }
+    },
+    {
+      "id": "gamma-gt",
+      "code": "90.25.5",
+      "name": "Gamma GT",
+      "aliases": ["GGT", "gamma-glutamiltransferasi", "gamma glutamil transpeptidasi"],
+      "category_id": "epatologia",
+      "subcategory": "funzione epatica",
+      "body_system": "fegato",
+      "sample_type": "sangue_venoso",
+      "description_short": "Enzima sensibile a danno epatico e biliare",
+      "description_full": "La Gamma GT è elevata in patologie epatiche, biliari e con l'uso di alcol. Marker sensibile di danno epatico.",
+      "indications": ["epatopatia", "alcolismo", "colestasi", "farmaci"],
+      "preparation": {
+        "is_fasting_required": true,
+        "fasting_hours": 8,
+        "is_urine_sample": false,
+        "is_morning_only": false,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": true,
+        "notes": "Evitare alcol 24 ore prima"
+      },
+      "turnaround_time": "24h",
+      "turnaround_urgent": "1h",
+      "included_in_packs": ["checkup-epatico", "checkup-completo"],
+      "primary_pack": "checkup-epatico",
+      "related_tests": ["ast-got", "alt-gpt", "fosfatasi-alcalina"],
+      "clinical_context": "Marker sensibile di danno epatico e biliare",
+      "search_terms": ["GGT", "fegato", "alcol", "bile"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Analizzatore chimico-clinico"
+      }
+    },
+    {
+      "id": "psa-totale",
+      "code": "90.38.4",
+      "name": "PSA Totale",
+      "aliases": ["PSA", "antigene prostatico specifico", "prostate specific antigen"],
+      "category_id": "oncologia",
+      "subcategory": "marcatori tumorali",
+      "body_system": "prostata",
+      "sample_type": "sangue_venoso",
+      "description_short": "Marcatore per patologie prostatiche",
+      "description_full": "Il PSA è prodotto dalla prostata. Valori elevati possono indicare ipertrofia, prostatite o carcinoma prostatico.",
+      "indications": ["screening prostata", "ipertrofia prostatica", "tumore prostata"],
+      "preparation": {
+        "is_fasting_required": false,
+        "fasting_hours": 0,
+        "is_urine_sample": false,
+        "is_morning_only": false,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": true,
+        "notes": "Evitare rapporti sessuali, bicicletta ed esplorazione rettale 48 ore prima"
+      },
+      "turnaround_time": "24h",
+      "turnaround_urgent": "4h",
+      "included_in_packs": ["checkup-uomo-over40", "checkup-prostata"],
+      "primary_pack": "checkup-prostata",
+      "related_tests": ["psa-libero", "psa-ratio"],
+      "clinical_context": "Screening e monitoraggio patologie prostatiche",
+      "search_terms": ["prostata", "tumore prostata", "antigene prostatico"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Immunoanalizzatore"
+      }
+    },
+    {
+      "id": "vitamina-d",
+      "code": "90.41.4",
+      "name": "Vitamina D (25-OH)",
+      "aliases": ["vitamina D", "25-idrossivitamina D", "calcifediolo", "vitamin D"],
+      "category_id": "metabolismo",
+      "subcategory": "vitamine",
+      "body_system": "metabolismo",
+      "sample_type": "sangue_venoso",
+      "description_short": "Valutazione dello stato vitaminico D",
+      "description_full": "La vitamina D è essenziale per ossa, sistema immunitario e molte funzioni cellulari. La carenza è molto comune.",
+      "indications": ["osteoporosi", "stanchezza", "dolori ossei", "cadute frequenti"],
+      "preparation": {
+        "is_fasting_required": false,
+        "fasting_hours": 0,
+        "is_urine_sample": false,
+        "is_morning_only": false,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": false,
+        "notes": ""
+      },
+      "turnaround_time": "48h",
+      "turnaround_urgent": "24h",
+      "included_in_packs": ["checkup-donna-over40", "checkup-osteoporosi", "checkup-completo"],
+      "primary_pack": "checkup-osteoporosi",
+      "related_tests": ["calcio", "fosforo", "paratormone"],
+      "clinical_context": "Screening carenza vitaminica D",
+      "search_terms": ["vitamina D", "ossa", "osteoporosi", "sole"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Immunoanalizzatore"
+      }
+    },
+    {
+      "id": "ferritina",
+      "code": "90.23.5",
+      "name": "Ferritina",
+      "aliases": ["ferritina sierica", "depositi ferro", "ferritin"],
+      "category_id": "ematologia",
+      "subcategory": "metabolismo ferro",
+      "body_system": "sangue",
+      "sample_type": "sangue_venoso",
+      "description_short": "Riserve di ferro nell'organismo",
+      "description_full": "La ferritina indica le riserve di ferro. Valori bassi confermano carenza marziale, valori elevati possono indicare infiammazione o sovraccarico.",
+      "indications": ["anemia", "stanchezza", "caduta capelli", "screening ferro"],
+      "preparation": {
+        "is_fasting_required": true,
+        "fasting_hours": 8,
+        "is_urine_sample": false,
+        "is_morning_only": true,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": false,
+        "notes": "Prelievo mattutino a digiuno"
+      },
+      "turnaround_time": "24h",
+      "turnaround_urgent": "4h",
+      "included_in_packs": ["checkup-donna-over40", "checkup-anemia", "checkup-completo"],
+      "primary_pack": "checkup-anemia",
+      "related_tests": ["emocromo-completo", "sideremia", "transferrina", "tibc"],
+      "clinical_context": "Diagnosi e monitoraggio carenza marziale",
+      "search_terms": ["ferro", "anemia", "stanchezza", "capelli"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Immunoanalizzatore"
+      }
+    },
+    {
+      "id": "esame-urine-completo",
+      "code": "90.44.3",
+      "name": "Esame Urine Completo",
+      "aliases": ["esame urine", "urine", "analisi urine", "urinalysis"],
+      "category_id": "nefrologia",
+      "subcategory": "esame urine",
+      "body_system": "reni",
+      "sample_type": "urine",
+      "description_short": "Analisi chimico-fisica e microscopica delle urine",
+      "description_full": "L'esame urine valuta colore, pH, peso specifico, proteine, glucosio, sangue e sedimento. Utile per screening renale e urinario.",
+      "indications": ["infezione urinaria", "cistite", "calcoli", "diabete", "screening"],
+      "preparation": {
+        "is_fasting_required": false,
+        "fasting_hours": 0,
+        "is_urine_sample": true,
+        "is_morning_only": true,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": true,
+        "notes": "Raccogliere urine del primo mitto mattutino in contenitore sterile"
+      },
+      "turnaround_time": "24h",
+      "turnaround_urgent": "2h",
+      "included_in_packs": ["checkup-base", "checkup-renale", "checkup-completo"],
+      "primary_pack": "checkup-renale",
+      "related_tests": ["urinocoltura", "creatinina", "azotemia"],
+      "clinical_context": "Screening patologie renali e urinarie",
+      "search_terms": ["urine", "pipì", "cistite", "infezione urinaria", "reni"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Analizzatore urine automatizzato"
+      }
+    },
+    {
+      "id": "ves",
+      "code": "90.53.2",
+      "name": "VES",
+      "aliases": ["velocità di eritrosedimentazione", "ESR", "erythrocyte sedimentation rate"],
+      "category_id": "infiammazione",
+      "subcategory": "indici flogosi",
+      "body_system": "sangue",
+      "sample_type": "sangue_venoso",
+      "description_short": "Indice aspecifico di infiammazione",
+      "description_full": "La VES misura la velocità di sedimentazione dei globuli rossi. Aumenta in infezioni, infiammazioni e alcune neoplasie.",
+      "indications": ["infiammazione", "infezione", "malattie reumatiche", "febbre"],
+      "preparation": {
+        "is_fasting_required": false,
+        "fasting_hours": 0,
+        "is_urine_sample": false,
+        "is_morning_only": false,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": false,
+        "notes": ""
+      },
+      "turnaround_time": "24h",
+      "turnaround_urgent": "2h",
+      "included_in_packs": ["checkup-base", "checkup-completo"],
+      "primary_pack": "checkup-base",
+      "related_tests": ["pcr", "emocromo-completo"],
+      "clinical_context": "Marker aspecifico di infiammazione",
+      "search_terms": ["infiammazione", "VES", "sedimentazione"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Lettore VES"
+      }
+    },
+    {
+      "id": "pcr",
+      "code": "90.17.3",
+      "name": "Proteina C Reattiva (PCR)",
+      "aliases": ["PCR", "CRP", "C-reactive protein", "proteina C reattiva"],
+      "category_id": "infiammazione",
+      "subcategory": "indici flogosi",
+      "body_system": "sangue",
+      "sample_type": "sangue_venoso",
+      "description_short": "Marker sensibile di infiammazione acuta",
+      "description_full": "La PCR è un marker rapido e sensibile di infiammazione. Aumenta in infezioni batteriche, traumi e malattie infiammatorie.",
+      "indications": ["infezione", "infiammazione acuta", "appendicite", "polmonite"],
+      "preparation": {
+        "is_fasting_required": false,
+        "fasting_hours": 0,
+        "is_urine_sample": false,
+        "is_morning_only": false,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": false,
+        "notes": ""
+      },
+      "turnaround_time": "24h",
+      "turnaround_urgent": "1h",
+      "included_in_packs": ["checkup-completo", "checkup-cardiovascolare"],
+      "primary_pack": "checkup-cardiovascolare",
+      "related_tests": ["ves", "emocromo-completo", "procalcitonina"],
+      "clinical_context": "Marker di fase acuta dell'infiammazione",
+      "search_terms": ["infiammazione", "infezione", "proteina C", "CRP"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Analizzatore chimico-clinico"
+      }
+    },
+    {
+      "id": "beta-hcg",
+      "code": "90.54.1",
+      "name": "Beta HCG",
+      "aliases": ["test gravidanza", "HCG", "gonadotropina corionica", "pregnancy test"],
+      "category_id": "ginecologia",
+      "subcategory": "gravidanza",
+      "body_system": "apparato_riproduttivo",
+      "sample_type": "sangue_venoso",
+      "description_short": "Ormone della gravidanza",
+      "description_full": "La beta HCG è prodotta dalla placenta. Conferma la gravidanza già pochi giorni dopo il concepimento e permette la datazione.",
+      "indications": ["conferma gravidanza", "monitoraggio gravidanza", "sospetto aborto"],
+      "preparation": {
+        "is_fasting_required": false,
+        "fasting_hours": 0,
+        "is_urine_sample": false,
+        "is_morning_only": false,
+        "is_medication_suspension_required": false,
+        "is_special_preparation_required": false,
+        "notes": ""
+      },
+      "turnaround_time": "24h",
+      "turnaround_urgent": "2h",
+      "included_in_packs": [],
+      "primary_pack": null,
+      "related_tests": [],
+      "clinical_context": "Diagnosi e monitoraggio gravidanza",
+      "search_terms": ["gravidanza", "incinta", "test gravidanza", "HCG"],
+      "schema_org": {
+        "@type": "MedicalTest",
+        "usesDevice": "Immunoanalizzatore"
+      }
+    }
+  ],
+  "categories": {
+    "ematologia": {
+      "name": "Ematologia",
+      "icon": "🩸",
+      "description": "Esami del sangue e cellule ematiche"
+    },
+    "endocrinologia": {
+      "name": "Endocrinologia",
+      "icon": "⚗️",
+      "description": "Ormoni e ghiandole endocrine"
+    },
+    "metabolismo": {
+      "name": "Metabolismo",
+      "icon": "🔬",
+      "description": "Glicemia, lipidi, vitamine"
+    },
+    "nefrologia": {
+      "name": "Funzione Renale",
+      "icon": "💧",
+      "description": "Reni e vie urinarie"
+    },
+    "epatologia": {
+      "name": "Funzione Epatica",
+      "icon": "🫀",
+      "description": "Fegato e vie biliari"
+    },
+    "oncologia": {
+      "name": "Marcatori Tumorali",
+      "icon": "🎯",
+      "description": "Screening oncologico"
+    },
+    "infiammazione": {
+      "name": "Infiammazione",
+      "icon": "🌡️",
+      "description": "Indici infiammatori"
+    },
+    "ginecologia": {
+      "name": "Ginecologia",
+      "icon": "♀️",
+      "description": "Gravidanza e salute femminile"
+    }
+  },
+  "preparation_icons": {
+    "is_fasting_required": {
+      "icon": "🥐🚫",
+      "label": "Digiuno richiesto",
+      "priority": 1
+    },
+    "is_urine_sample": {
+      "icon": "💧",
+      "label": "Campione urine",
+      "priority": 2
+    },
+    "is_morning_only": {
+      "icon": "⏰",
+      "label": "Prelievo mattutino",
+      "priority": 3
+    },
+    "is_medication_suspension_required": {
+      "icon": "💊🚫",
+      "label": "Sospendere farmaci",
+      "priority": 4
+    },
+    "is_special_preparation_required": {
+      "icon": "⚠️",
+      "label": "Preparazione speciale",
+      "priority": 5
+    }
+  }
+}

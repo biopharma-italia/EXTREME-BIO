@@ -1,0 +1,274 @@
+/**
+ * BIO-CLINIC SEARCH FIX
+ * Correzioni per visualizzazione dropdown ricerca
+ * Versione: 1.0.0
+ */
+
+/* Fix: Hero search deve permettere overflow per dropdown */
+.hero-search {
+  overflow: visible !important;
+}
+
+/* Fix: Container deve permettere overflow */
+.hero-search .container {
+  overflow: visible !important;
+}
+
+/* Fix: Search box deve permettere overflow del dropdown */
+.search-box-hero {
+  overflow: visible !important;
+  position: relative;
+  z-index: 100;
+}
+
+.search-box-hero .search-input-wrapper {
+  overflow: visible !important;
+  border-radius: 50px;
+}
+
+/* Fix: Dropdown autocomplete - z-index e posizionamento */
+.search-autocomplete {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  margin-top: 0;
+  max-height: 70vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 9999 !important;
+}
+
+.search-autocomplete.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Fix: Bio-search dropdown per tutte le pagine */
+.bio-search-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  z-index: 9999 !important;
+  max-height: 70vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Fix: Header search dropdown */
+.header-search-container {
+  position: relative;
+  z-index: 1000;
+}
+
+.header-search-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  min-width: 400px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  z-index: 9999 !important;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+/* Fix: Scrollbar stilizzata */
+.search-autocomplete::-webkit-scrollbar,
+.bio-search-dropdown::-webkit-scrollbar,
+.header-search-dropdown::-webkit-scrollbar {
+  width: 8px;
+}
+
+.search-autocomplete::-webkit-scrollbar-track,
+.bio-search-dropdown::-webkit-scrollbar-track,
+.header-search-dropdown::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+.search-autocomplete::-webkit-scrollbar-thumb,
+.bio-search-dropdown::-webkit-scrollbar-thumb,
+.header-search-dropdown::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.search-autocomplete::-webkit-scrollbar-thumb:hover,
+.bio-search-dropdown::-webkit-scrollbar-thumb:hover,
+.header-search-dropdown::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+/* Fix: Mobile responsive */
+@media (max-width: 768px) {
+  .search-autocomplete,
+  .bio-search-dropdown {
+    max-height: 60vh;
+    border-radius: 12px;
+    left: -1rem;
+    right: -1rem;
+    width: calc(100% + 2rem);
+  }
+  
+  .header-search-dropdown {
+    min-width: 100%;
+    left: 0;
+    right: 0;
+  }
+}
+
+/* Fix: Assicura che le sezioni risultati siano sempre visibili */
+.bio-search-section,
+.search-result-item,
+.search-autocomplete-item {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Fix: Pack card nel dropdown */
+.bio-search-pack-card {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 12px;
+  border-radius: 8px;
+  margin: 4px 8px;
+  background: linear-gradient(135deg, #fef9e7 0%, #fff 100%);
+  border: 1px solid #f0e6d0;
+  transition: all 0.2s ease;
+}
+
+.bio-search-pack-card:hover {
+  background: linear-gradient(135deg, #fef3c7 0%, #fff 100%);
+  transform: translateX(4px);
+}
+
+/* Fix: Risultati medici */
+.bio-search-physician-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 12px;
+  transition: background 0.2s ease;
+}
+
+.bio-search-physician-item:hover {
+  background: #f8fafb;
+}
+
+/* Fix: Nessun risultato */
+.bio-search-no-results {
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+}
+
+.bio-search-no-results svg {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+/* =============================================
+   FIX CRITICO: Position relative per dropdown
+   ============================================= */
+
+/* Wrapper search deve essere relative per dropdown absolute */
+.search-box-hero,
+.search-box-hero .search-input-wrapper,
+.search-form {
+  position: relative !important;
+}
+
+/* Assicura che autocomplete sia visibile sopra tutto */
+#hero-autocomplete,
+#header-autocomplete,
+.bio-search-dropdown,
+.search-autocomplete {
+  z-index: 9999 !important;
+}
+
+/* Override per bio-search sections */
+.bio-search-section-items {
+  padding: 0 !important;
+}
+
+.bio-search-item {
+  padding: 12px 16px !important;
+  cursor: pointer;
+}
+
+.bio-search-item:hover,
+.bio-search-item.selected {
+  background: #f5f5f5 !important;
+}
+
+/* =============================================
+   FIX CRITICO: Combinazione classi dropdown
+   ============================================= */
+
+/* Quando search-autocomplete ha anche bio-search-dropdown */
+.search-autocomplete.bio-search-dropdown {
+  position: absolute !important;
+  top: calc(100% + 8px) !important;
+  left: 0 !important;
+  right: 0 !important;
+  background: white !important;
+  border-radius: 16px !important;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.05) !important;
+  z-index: 9999 !important;
+  max-height: 70vh !important;
+  overflow-y: auto !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(-10px) !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.search-autocomplete.bio-search-dropdown.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+/* Assicura che hero-search abbia position relative */
+.hero-search,
+.hero-search .container,
+.search-box-hero {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+.search-box-hero .search-input-wrapper {
+  position: relative !important;
+  overflow: visible !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+/* Il dropdown deve essere posizionato sotto il wrapper */
+#hero-autocomplete {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  margin-top: 8px !important;
+  z-index: 9999 !important;
+  width: 100% !important;
+}

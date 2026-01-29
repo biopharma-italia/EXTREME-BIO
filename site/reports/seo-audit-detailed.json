@@ -1,0 +1,2284 @@
+{
+  "summary": {
+    "average_score": 88.27272727272727,
+    "total_pages": 77,
+    "critical_issues": 59,
+    "grade": "B+ (MOLTO BUONO)",
+    "score_distribution": {
+      "90-100": 17,
+      "80-89": 57,
+      "70-79": 0,
+      "60-69": 1,
+      "<60": 2
+    }
+  },
+  "pages": [
+    {
+      "file": "index.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H2 -> H4"
+      ],
+      "performance": [
+        "Considera preconnect per domini esterni: 7 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 91.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 2.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 4
+    },
+    {
+      "file": "pages/slim-care.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H2 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 91.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 2.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 4
+    },
+    {
+      "file": "pages/contatti.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H2 -> H4"
+      ],
+      "performance": [
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [],
+      "score": 92.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 2.0
+      },
+      "total_issues": 3
+    },
+    {
+      "file": "pages/ginecologia.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "La pagina non inizia con H1",
+        "Gerarchia heading saltata: H2 -> H4"
+      ],
+      "performance": [
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 9.0,
+        "performance": 2.0
+      },
+      "total_issues": 4
+    },
+    {
+      "file": "pages/laboratorio.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "La pagina non inizia con H1",
+        "Gerarchia heading saltata: H2 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 86.0,
+      "deductions": {
+        "accessibility": 9.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 6
+    },
+    {
+      "file": "pages/chi-siamo.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "La pagina non inizia con H1",
+        "Gerarchia heading saltata: H2 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 8 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 86.0,
+      "deductions": {
+        "accessibility": 9.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 6
+    },
+    {
+      "file": "pages/cardiologia.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "La pagina non inizia con H1",
+        "Gerarchia heading saltata: H2 -> H4"
+      ],
+      "performance": [
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 9.0,
+        "performance": 2.0
+      },
+      "total_issues": 4
+    },
+    {
+      "file": "pages/pma-fertilita.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "La pagina non inizia con H1",
+        "Gerarchia heading saltata: H2 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 88.0,
+      "deductions": {
+        "accessibility": 9.0,
+        "performance": 2.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "pages/endocrinologia.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "La pagina non inizia con H1",
+        "Gerarchia heading saltata: H2 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 86.0,
+      "deductions": {
+        "accessibility": 9.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 6
+    },
+    {
+      "file": "pages/specialita.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H2 -> H4"
+      ],
+      "performance": [],
+      "internal_links": [],
+      "content_quality": [
+        "Possibile keyword stuffing: 'prestazioni' (24 volte)"
+      ],
+      "mobile_friendly": [],
+      "score": 93.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "content_quality": 1.0
+      },
+      "total_issues": 3
+    },
+    {
+      "file": "pages/privacy.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0"
+      ],
+      "performance": [],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [],
+      "score": 97.0,
+      "deductions": {
+        "accessibility": 3.0
+      },
+      "total_issues": 1
+    },
+    {
+      "file": "pages/cookie.html",
+      "html_validity": [],
+      "seo_meta": [
+        "Meta description troppo corta: 25 chars (min 120)"
+      ],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0"
+      ],
+      "performance": [],
+      "internal_links": [],
+      "content_quality": [
+        "Possibile keyword stuffing: 'cookie' (34 volte)"
+      ],
+      "mobile_friendly": [],
+      "score": 91.0,
+      "deductions": {
+        "seo_meta": 5.0,
+        "accessibility": 3.0,
+        "content_quality": 1.0
+      },
+      "total_issues": 3
+    },
+    {
+      "file": "pages/slim-care-donna.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H2 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "pages/dermatologia.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H2 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "pages/oculistica.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H2 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "pages/ortopedia.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H2 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "pages/neurologia.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H2 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "pages/checkup-cardiovascolare.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0"
+      ],
+      "performance": [],
+      "internal_links": [],
+      "content_quality": [
+        "Contenuto scarso: 44 parole (min 300)"
+      ],
+      "mobile_friendly": [],
+      "score": 96.0,
+      "deductions": {
+        "accessibility": 3.0,
+        "content_quality": 1.0
+      },
+      "total_issues": 2
+    },
+    {
+      "file": "pages/checkup-tiroide.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0"
+      ],
+      "performance": [],
+      "internal_links": [],
+      "content_quality": [
+        "Contenuto scarso: 46 parole (min 300)"
+      ],
+      "mobile_friendly": [],
+      "score": 96.0,
+      "deductions": {
+        "accessibility": 3.0,
+        "content_quality": 1.0
+      },
+      "total_issues": 2
+    },
+    {
+      "file": "equipe/index.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "La pagina non inizia con H1"
+      ],
+      "performance": [],
+      "internal_links": [],
+      "content_quality": [
+        "Possibile keyword stuffing: 'profilo' (46 volte)"
+      ],
+      "mobile_friendly": [],
+      "score": 93.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "content_quality": 1.0
+      },
+      "total_issues": 3
+    },
+    {
+      "file": "equipe/francesco-dessole.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 7 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/tonino-bullitta.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/salvatore-dessole.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 8 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/maddalena-pola.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/marco-petrillo.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 8 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/antonella-pruneddu.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/sonia-bove.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 7 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/margherita-dessole.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/angelica-fois.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/sara-uras.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 7 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/paolo-pischedda.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/paolo-franca.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 8 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/federica-decandia.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 8 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/giovanna-costa.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/alessandra-musinu.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/speranza-anedda.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/carlo-burrai.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 7 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/fabrizia-caucci.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/francesco-tolu.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 8 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/irene-aini.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 8 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/guido-marongiu.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/sebastiano-traccis.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 9 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/maria-pina-pintus.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/francesco-santoru.html",
+      "html_validity": [],
+      "seo_meta": [
+        "Meta description troppo lunga: 171 chars (max 160)"
+      ],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 84.0,
+      "deductions": {
+        "seo_meta": 5.0,
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 6
+    },
+    {
+      "file": "equipe/matteo-zucca.html",
+      "html_validity": [],
+      "seo_meta": [
+        "Meta description troppo lunga: 174 chars (max 160)"
+      ],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 84.0,
+      "deductions": {
+        "seo_meta": 5.0,
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 6
+    },
+    {
+      "file": "equipe/francesco-bussu.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 8 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/maria-laura-de-luca.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/andrea-donato.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/pietro-lisai.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 8 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/angelo-deplano.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 8 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/antonio-solinas.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 8 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/paolo-dessole.html",
+      "html_validity": [],
+      "seo_meta": [
+        "Meta description troppo lunga: 171 chars (max 160)"
+      ],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 84.0,
+      "deductions": {
+        "seo_meta": 5.0,
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 6
+    },
+    {
+      "file": "equipe/sergio-paolo-sotgia.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/pietro-pirina.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 9 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/luigi-podda.html",
+      "html_validity": [],
+      "seo_meta": [
+        "Meta description troppo lunga: 161 chars (max 160)"
+      ],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 9 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 84.0,
+      "deductions": {
+        "seo_meta": 5.0,
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 6
+    },
+    {
+      "file": "equipe/daniele-sabiu.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/niccolo-melis.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/carlos-manuel-cambara-zuniga.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/paola-dettori.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 8 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/roberto-mancino.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/antonio-michele-cavazzuti.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/giorgio-chiarelli.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/gianfranco-manchia.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/nicola-frau.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/mariolina-azara.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/alessia-piras.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H1 -> H4"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading",
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [
+        "Nessuna immagine responsive (srcset/sizes)"
+      ],
+      "score": 89.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 4.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 5
+    },
+    {
+      "file": "equipe/profilo.html",
+      "html_validity": [],
+      "seo_meta": [
+        "Meta description troppo corta: 79 chars (min 120)"
+      ],
+      "schema_markup": [
+        "Schema Physician: manca campo 'name'",
+        "Schema Physician: manca campo 'medicalSpecialty'",
+        "Schema Physician: nessun campo E-E-A-T (knowsAbout, alumniOf, hasCredential)"
+      ],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "La pagina non inizia con H1",
+        "Gerarchia heading saltata: H1 -> H3"
+      ],
+      "performance": [
+        "3 immagini senza lazy loading"
+      ],
+      "internal_links": [
+        "Link rotto: ${info.url}",
+        "Link rotto: profilo.html?id=${doc.slug}"
+      ],
+      "content_quality": [],
+      "mobile_friendly": [],
+      "score": 68.0,
+      "deductions": {
+        "seo_meta": 5.0,
+        "schema_markup": 12.0,
+        "accessibility": 9.0,
+        "performance": 2.0,
+        "internal_links": 4.0
+      },
+      "total_issues": 10
+    },
+    {
+      "file": "equipe/giuliana-guagnozzi.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0"
+      ],
+      "performance": [],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [],
+      "score": 97.0,
+      "deductions": {
+        "accessibility": 3.0
+      },
+      "total_issues": 1
+    },
+    {
+      "file": "equipe/alessandro-pandolfi.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0"
+      ],
+      "performance": [],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [],
+      "score": 97.0,
+      "deductions": {
+        "accessibility": 3.0
+      },
+      "total_issues": 1
+    },
+    {
+      "file": "equipe/antonella-galatino.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0"
+      ],
+      "performance": [],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [],
+      "score": 97.0,
+      "deductions": {
+        "accessibility": 3.0
+      },
+      "total_issues": 1
+    },
+    {
+      "file": "equipe/cinzia-guarino.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0"
+      ],
+      "performance": [],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [],
+      "score": 97.0,
+      "deductions": {
+        "accessibility": 3.0
+      },
+      "total_issues": 1
+    },
+    {
+      "file": "equipe/gloria-reggiani.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0"
+      ],
+      "performance": [],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [],
+      "score": 97.0,
+      "deductions": {
+        "accessibility": 3.0
+      },
+      "total_issues": 1
+    },
+    {
+      "file": "prestazioni/index.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H2 -> H4"
+      ],
+      "performance": [
+        "Considera preconnect per domini esterni: 6 trovati"
+      ],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [],
+      "score": 92.0,
+      "deductions": {
+        "accessibility": 6.0,
+        "performance": 2.0
+      },
+      "total_issues": 3
+    },
+    {
+      "file": "laboratorio/index.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [
+        "Manca Schema.org JSON-LD"
+      ],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0",
+        "Gerarchia heading saltata: H2 -> H4"
+      ],
+      "performance": [],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [],
+      "score": 90.0,
+      "deductions": {
+        "schema_markup": 4.0,
+        "accessibility": 6.0
+      },
+      "total_issues": 3
+    },
+    {
+      "file": "templates/master-header.html",
+      "html_validity": [
+        "Manca DOCTYPE",
+        "Manca tag: <html",
+        "Manca tag: <body",
+        "Manca tag: </html>",
+        "Manca tag: </head>",
+        "Manca tag: </body>",
+        "Manca charset declaration",
+        "Manca viewport meta tag"
+      ],
+      "seo_meta": [
+        "Manca tag <title>",
+        "Manca meta description",
+        "Manca canonical URL",
+        "Manca og:title",
+        "Manca og:description",
+        "Manca og:type",
+        "Manca og:url"
+      ],
+      "schema_markup": [
+        "Manca Schema.org JSON-LD"
+      ],
+      "accessibility": [
+        "Manca attributo lang su <html>",
+        "Potrebbe mancare skip link per accessibilit\u00e0"
+      ],
+      "performance": [
+        "Considera preconnect per domini esterni: 3 trovati"
+      ],
+      "internal_links": [
+        "Link rotto: {{ROOT}}index.html",
+        "Link rotto: {{ROOT}}index.html",
+        "Link rotto: {{ROOT}}index.html"
+      ],
+      "content_quality": [
+        "Contenuto scarso: 102 parole (min 300)"
+      ],
+      "mobile_friendly": [
+        "Manca viewport meta tag"
+      ],
+      "score": 45.0,
+      "deductions": {
+        "html_validity": 10,
+        "seo_meta": 25,
+        "schema_markup": 4.0,
+        "accessibility": 6.0,
+        "performance": 2.0,
+        "internal_links": 6.0,
+        "content_quality": 1.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 24
+    },
+    {
+      "file": "components/master-header.html",
+      "html_validity": [
+        "Manca DOCTYPE",
+        "Manca tag: <html",
+        "Manca tag: <body",
+        "Manca tag: </html>",
+        "Manca tag: </head>",
+        "Manca tag: </body>",
+        "Manca charset declaration",
+        "Manca viewport meta tag"
+      ],
+      "seo_meta": [
+        "Manca tag <title>",
+        "Manca meta description",
+        "Manca canonical URL",
+        "Manca og:title",
+        "Manca og:description",
+        "Manca og:type",
+        "Manca og:url"
+      ],
+      "schema_markup": [
+        "Manca Schema.org JSON-LD"
+      ],
+      "accessibility": [
+        "Manca attributo lang su <html>",
+        "Potrebbe mancare skip link per accessibilit\u00e0"
+      ],
+      "performance": [
+        "Considera preconnect per domini esterni: 2 trovati"
+      ],
+      "internal_links": [
+        "Link rotto: {{ROOT_PATH}}index.html",
+        "Link rotto: {{ROOT_PATH}}index.html",
+        "Link rotto: {{PAGES_PATH}}slim-care.html",
+        "Link rotto: {{PAGES_PATH}}slim-care-donna.html",
+        "Link rotto: {{PAGES_PATH}}ginecologia.html",
+        "Link rotto: {{PAGES_PATH}}pma-fertilita.html",
+        "Link rotto: {{PAGES_PATH}}cardiologia.html",
+        "Link rotto: {{PAGES_PATH}}endocrinologia.html",
+        "Link rotto: {{PAGES_PATH}}dermatologia.html",
+        "Link rotto: {{PAGES_PATH}}neurologia.html",
+        "Link rotto: {{PAGES_PATH}}oculistica.html",
+        "Link rotto: {{PAGES_PATH}}ortopedia.html",
+        "Link rotto: {{PAGES_PATH}}specialita.html",
+        "Link rotto: {{PAGES_PATH}}contatti.html",
+        "Link rotto: {{ROOT_PATH}}index.html",
+        "Link rotto: {{PAGES_PATH}}slim-care.html",
+        "Link rotto: {{PAGES_PATH}}slim-care-donna.html",
+        "Link rotto: {{PAGES_PATH}}ginecologia.html",
+        "Link rotto: {{PAGES_PATH}}pma-fertilita.html",
+        "Link rotto: {{PAGES_PATH}}cardiologia.html",
+        "Link rotto: {{PAGES_PATH}}endocrinologia.html",
+        "Link rotto: {{PAGES_PATH}}dermatologia.html",
+        "Link rotto: {{PAGES_PATH}}neurologia.html",
+        "Link rotto: {{PAGES_PATH}}oculistica.html",
+        "Link rotto: {{PAGES_PATH}}ortopedia.html",
+        "Link rotto: {{PAGES_PATH}}specialita.html",
+        "Link rotto: {{PAGES_PATH}}contatti.html"
+      ],
+      "content_quality": [
+        "Contenuto scarso: 112 parole (min 300)"
+      ],
+      "mobile_friendly": [
+        "Manca viewport meta tag"
+      ],
+      "score": 41.0,
+      "deductions": {
+        "html_validity": 10,
+        "seo_meta": 25,
+        "schema_markup": 4.0,
+        "accessibility": 6.0,
+        "performance": 2.0,
+        "internal_links": 10,
+        "content_quality": 1.0,
+        "mobile_friendly": 1.0
+      },
+      "total_issues": 48
+    },
+    {
+      "file": "shop/index.html",
+      "html_validity": [],
+      "seo_meta": [],
+      "schema_markup": [
+        "Manca Schema.org JSON-LD"
+      ],
+      "accessibility": [
+        "Potrebbe mancare skip link per accessibilit\u00e0"
+      ],
+      "performance": [],
+      "internal_links": [],
+      "content_quality": [],
+      "mobile_friendly": [],
+      "score": 93.0,
+      "deductions": {
+        "schema_markup": 4.0,
+        "accessibility": 3.0
+      },
+      "total_issues": 2
+    }
+  ],
+  "critical_issues": [
+    {
+      "file": "pages/cookie.html",
+      "category": "seo_meta",
+      "issue": "Meta description troppo corta: 25 chars (min 120)"
+    },
+    {
+      "file": "equipe/francesco-santoru.html",
+      "category": "seo_meta",
+      "issue": "Meta description troppo lunga: 171 chars (max 160)"
+    },
+    {
+      "file": "equipe/matteo-zucca.html",
+      "category": "seo_meta",
+      "issue": "Meta description troppo lunga: 174 chars (max 160)"
+    },
+    {
+      "file": "equipe/paolo-dessole.html",
+      "category": "seo_meta",
+      "issue": "Meta description troppo lunga: 171 chars (max 160)"
+    },
+    {
+      "file": "equipe/luigi-podda.html",
+      "category": "seo_meta",
+      "issue": "Meta description troppo lunga: 161 chars (max 160)"
+    },
+    {
+      "file": "equipe/profilo.html",
+      "category": "seo_meta",
+      "issue": "Meta description troppo corta: 79 chars (min 120)"
+    },
+    {
+      "file": "equipe/profilo.html",
+      "category": "schema_markup",
+      "issue": "Schema Physician: manca campo 'name'"
+    },
+    {
+      "file": "equipe/profilo.html",
+      "category": "schema_markup",
+      "issue": "Schema Physician: manca campo 'medicalSpecialty'"
+    },
+    {
+      "file": "equipe/profilo.html",
+      "category": "schema_markup",
+      "issue": "Schema Physician: nessun campo E-E-A-T (knowsAbout, alumniOf, hasCredential)"
+    },
+    {
+      "file": "equipe/profilo.html",
+      "category": "internal_links",
+      "issue": "Link rotto: ${info.url}"
+    },
+    {
+      "file": "equipe/profilo.html",
+      "category": "internal_links",
+      "issue": "Link rotto: profilo.html?id=${doc.slug}"
+    },
+    {
+      "file": "laboratorio/index.html",
+      "category": "schema_markup",
+      "issue": "Manca Schema.org JSON-LD"
+    },
+    {
+      "file": "templates/master-header.html",
+      "category": "seo_meta",
+      "issue": "Manca tag <title>"
+    },
+    {
+      "file": "templates/master-header.html",
+      "category": "seo_meta",
+      "issue": "Manca meta description"
+    },
+    {
+      "file": "templates/master-header.html",
+      "category": "seo_meta",
+      "issue": "Manca canonical URL"
+    },
+    {
+      "file": "templates/master-header.html",
+      "category": "seo_meta",
+      "issue": "Manca og:title"
+    },
+    {
+      "file": "templates/master-header.html",
+      "category": "seo_meta",
+      "issue": "Manca og:description"
+    },
+    {
+      "file": "templates/master-header.html",
+      "category": "seo_meta",
+      "issue": "Manca og:type"
+    },
+    {
+      "file": "templates/master-header.html",
+      "category": "seo_meta",
+      "issue": "Manca og:url"
+    },
+    {
+      "file": "templates/master-header.html",
+      "category": "schema_markup",
+      "issue": "Manca Schema.org JSON-LD"
+    },
+    {
+      "file": "templates/master-header.html",
+      "category": "internal_links",
+      "issue": "Link rotto: {{ROOT}}index.html"
+    },
+    {
+      "file": "templates/master-header.html",
+      "category": "internal_links",
+      "issue": "Link rotto: {{ROOT}}index.html"
+    },
+    {
+      "file": "templates/master-header.html",
+      "category": "internal_links",
+      "issue": "Link rotto: {{ROOT}}index.html"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "seo_meta",
+      "issue": "Manca tag <title>"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "seo_meta",
+      "issue": "Manca meta description"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "seo_meta",
+      "issue": "Manca canonical URL"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "seo_meta",
+      "issue": "Manca og:title"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "seo_meta",
+      "issue": "Manca og:description"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "seo_meta",
+      "issue": "Manca og:type"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "seo_meta",
+      "issue": "Manca og:url"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "schema_markup",
+      "issue": "Manca Schema.org JSON-LD"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "internal_links",
+      "issue": "Link rotto: {{ROOT_PATH}}index.html"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "internal_links",
+      "issue": "Link rotto: {{ROOT_PATH}}index.html"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "internal_links",
+      "issue": "Link rotto: {{PAGES_PATH}}slim-care.html"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "internal_links",
+      "issue": "Link rotto: {{PAGES_PATH}}slim-care-donna.html"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "internal_links",
+      "issue": "Link rotto: {{PAGES_PATH}}ginecologia.html"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "internal_links",
+      "issue": "Link rotto: {{PAGES_PATH}}pma-fertilita.html"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "internal_links",
+      "issue": "Link rotto: {{PAGES_PATH}}cardiologia.html"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "internal_links",
+      "issue": "Link rotto: {{PAGES_PATH}}endocrinologia.html"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "internal_links",
+      "issue": "Link rotto: {{PAGES_PATH}}dermatologia.html"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "internal_links",
+      "issue": "Link rotto: {{PAGES_PATH}}neurologia.html"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "internal_links",
+      "issue": "Link rotto: {{PAGES_PATH}}oculistica.html"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "internal_links",
+      "issue": "Link rotto: {{PAGES_PATH}}ortopedia.html"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "internal_links",
+      "issue": "Link rotto: {{PAGES_PATH}}specialita.html"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "internal_links",
+      "issue": "Link rotto: {{PAGES_PATH}}contatti.html"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "internal_links",
+      "issue": "Link rotto: {{ROOT_PATH}}index.html"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "internal_links",
+      "issue": "Link rotto: {{PAGES_PATH}}slim-care.html"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "internal_links",
+      "issue": "Link rotto: {{PAGES_PATH}}slim-care-donna.html"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "internal_links",
+      "issue": "Link rotto: {{PAGES_PATH}}ginecologia.html"
+    },
+    {
+      "file": "components/master-header.html",
+      "category": "internal_links",
+      "issue": "Link rotto: {{PAGES_PATH}}pma-fertilita.html"
+    }
+  ]
+}

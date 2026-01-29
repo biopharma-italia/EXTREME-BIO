@@ -1,0 +1,392 @@
+{
+  "meta": {
+    "project": "Bio-Clinic Sassari",
+    "version": "3.0.0",
+    "generated": "2026-01-28T13:40:05.737072",
+    "type": "static_website",
+    "domain": "bio-clinic.it"
+  },
+  "architecture": {
+    "type": "static",
+    "backend": null,
+    "database": "json_files",
+    "booking": "miodottore_widget",
+    "hosting": "static_web_server"
+  },
+  "directories": {
+    "root": "/",
+    "css": "/css/",
+    "js": "/js/",
+    "data": "/data/",
+    "entities": "/data/entities/",
+    "search": "/data/search/",
+    "equipe": "/equipe/",
+    "laboratorio": "/laboratorio/",
+    "pages": "/pages/",
+    "prestazioni": "/prestazioni/",
+    "images": "/images/",
+    "scripts": "/scripts/"
+  },
+  "files": {
+    "css": {
+      "style.css": {
+        "size": "24KB",
+        "desc": "Stili globali"
+      },
+      "search.css": {
+        "size": "17KB",
+        "desc": "Stili ricerca"
+      },
+      "physician.css": {
+        "size": "6KB",
+        "desc": "Stili pagine medici"
+      }
+    },
+    "js": {
+      "database.js": {
+        "size": "294KB",
+        "desc": "Grafo Conoscenza Clinica",
+        "api": "BioClinicDB"
+      },
+      "search.js": {
+        "size": "33KB",
+        "desc": "Motore ricerca semantica",
+        "api": "BioClinicSearch"
+      },
+      "header-search.js": {
+        "size": "6KB",
+        "desc": "Barra ricerca header"
+      },
+      "main.js": {
+        "size": "9KB",
+        "desc": "Utilities generali"
+      }
+    },
+    "json": {
+      "physicians-complete.json": {
+        "path": "/data/entities/",
+        "records": 47,
+        "desc": "Medici con widget MioDottore"
+      },
+      "specialties.json": {
+        "path": "/data/entities/",
+        "records": 31,
+        "desc": "Specialità mediche"
+      },
+      "procedures.json": {
+        "path": "/data/entities/",
+        "desc": "Prestazioni"
+      },
+      "tests.json": {
+        "path": "/data/entities/",
+        "desc": "Esami laboratorio"
+      },
+      "pathways.json": {
+        "path": "/data/entities/",
+        "desc": "Percorsi clinici"
+      },
+      "packs.json": {
+        "path": "/data/entities/",
+        "desc": "Pacchetti check-up"
+      },
+      "index.json": {
+        "path": "/data/search/",
+        "version": "2.1.0",
+        "terms": 251,
+        "desc": "Indice ricerca"
+      },
+      "synonyms.json": {
+        "path": "/data/search/",
+        "desc": "Sinonimi medici"
+      },
+      "listino-processed.json": {
+        "path": "/data/",
+        "records": 1136,
+        "desc": "Esami processati"
+      }
+    }
+  },
+  "apis": {
+    "BioClinicDB": {
+      "global": "window.BioClinicDB",
+      "alias": "window.db",
+      "version": "3.0.0",
+      "data": [
+        "pacchetti",
+        "listino",
+        "config",
+        "sintomiLabels",
+        "stats"
+      ],
+      "indices": [
+        "byCategory",
+        "bySymptom",
+        "byUpsell"
+      ],
+      "methods": [
+        "search",
+        "suggerisciPack",
+        "esamiPerSintomo",
+        "esamiPerCategoria",
+        "isUrgente",
+        "packPerEsame"
+      ],
+      "utilities": [
+        "getEsame",
+        "getPack",
+        "getCategorie",
+        "getSintomi"
+      ]
+    },
+    "BioClinicSearch": {
+      "global": "BioClinicSearch",
+      "config": {
+        "dataBasePath": "/data"
+      },
+      "methods": [
+        "search",
+        "loadIndex"
+      ]
+    }
+  },
+  "statistics": {
+    "esami_totali": 1136,
+    "pacchetti": 12,
+    "categorie": 21,
+    "sintomi_mappati": 19,
+    "esami_con_upsell": 193,
+    "medici": 47,
+    "specialita": 31,
+    "pagine_medici": 48,
+    "termini_ricerca": 251
+  },
+  "pacchetti": [
+    {
+      "id": "base",
+      "nome": "Check Up Base",
+      "prezzo": 55.0,
+      "esami": 18
+    },
+    {
+      "id": "donna-under40",
+      "nome": "Donna Under 40",
+      "prezzo": 97.0,
+      "esami": 17
+    },
+    {
+      "id": "donna-over40",
+      "nome": "Donna Over 40",
+      "prezzo": 75.0,
+      "esami": 20
+    },
+    {
+      "id": "uomo-under40",
+      "nome": "Uomo Under 40",
+      "prezzo": 75.0,
+      "esami": 14
+    },
+    {
+      "id": "uomo-over40",
+      "nome": "Uomo Over 40",
+      "prezzo": 124.99,
+      "esami": 17
+    },
+    {
+      "id": "bambino",
+      "nome": "Bambino",
+      "prezzo": 59.9,
+      "esami": 8
+    },
+    {
+      "id": "tiroide-base",
+      "nome": "Tiroide Base",
+      "prezzo": 29.0,
+      "esami": 3
+    },
+    {
+      "id": "tiroide-plus",
+      "nome": "Tiroide Plus",
+      "prezzo": 85.9,
+      "esami": 10
+    },
+    {
+      "id": "cardio-plus",
+      "nome": "Cardiologico Plus",
+      "prezzo": 125.0,
+      "esami": 15
+    },
+    {
+      "id": "renale",
+      "nome": "Profilo Renale",
+      "prezzo": 29.0,
+      "esami": 3
+    },
+    {
+      "id": "epatico",
+      "nome": "Profilo Epatologico",
+      "prezzo": 75.0,
+      "esami": 6
+    },
+    {
+      "id": "pre-gravidanza",
+      "nome": "Pre Gravidanza",
+      "prezzo": 185.0,
+      "esami": 19
+    }
+  ],
+  "categorie_esami": [
+    "Autoimmunità",
+    "Altro",
+    "Renale",
+    "Infettivologia",
+    "Epatico",
+    "Coagulazione",
+    "Ematologia",
+    "Genetica/Molecolare",
+    "Ormoni",
+    "Fecale",
+    "Vitamina/Minerali",
+    "Infiammazione",
+    "Glicemia/Diabete",
+    "Tumore/Markers",
+    "Tiroide",
+    "Lipidico",
+    "Cardiologico",
+    "Elettroliti",
+    "Urinario",
+    "Tossicologia",
+    "Allergologia"
+  ],
+  "sintomi_mappati": {
+    "stanchezza": "Stanchezza e affaticamento",
+    "perdita_capelli": "Perdita di capelli",
+    "aumento_peso": "Aumento di peso",
+    "anemia": "Anemia e pallore",
+    "infezioni": "Infezioni ricorrenti",
+    "colesterolo_alto": "Colesterolo alto",
+    "diabete": "Diabete o prediabete",
+    "tiroide": "Problemi tiroidei",
+    "fegato": "Problemi epatici",
+    "reni": "Problemi renali",
+    "cuore": "Problemi cardiaci",
+    "prostata": "Problemi alla prostata",
+    "menopausa": "Menopausa",
+    "infertilita": "Infertilità",
+    "gravidanza": "Gravidanza",
+    "infiammazione": "Infiammazione",
+    "coagulazione": "Problemi di coagulazione",
+    "ossa": "Problemi alle ossa",
+    "allergie": "Allergie"
+  },
+  "specialita_con_pagina": [
+    "ginecologia",
+    "cardiologia",
+    "endocrinologia",
+    "dermatologia",
+    "neurologia",
+    "oculistica",
+    "ortopedia",
+    "laboratorio"
+  ],
+  "specialita_senza_pagina": [
+    "otorinolaringoiatria",
+    "gastroenterologia",
+    "medicina-interna",
+    "nefrologia",
+    "pneumologia",
+    "ematologia",
+    "reumatologia",
+    "urologia",
+    "chirurgia-vascolare",
+    "ecografia",
+    "medicina-sport",
+    "medicina-lavoro",
+    "fisiatria",
+    "pediatria",
+    "psicologia",
+    "nutrizione"
+  ],
+  "percorsi_clinici": [
+    {
+      "id": "slim-care",
+      "nome": "Slim Care",
+      "pagina": "/pages/slim-care.html"
+    },
+    {
+      "id": "slim-care-donna",
+      "nome": "Slim Care Donna",
+      "pagina": "/pages/slim-care-donna.html"
+    },
+    {
+      "id": "pma-fertilita",
+      "nome": "PMA / Fertilità",
+      "pagina": "/pages/pma-fertilita.html"
+    },
+    {
+      "id": "checkup-cardiovascolare",
+      "nome": "Check-up Cardiovascolare",
+      "pagina": null
+    }
+  ],
+  "integrazioni": {
+    "miodottore": {
+      "nome": "MioDottore (DocPlanner)",
+      "tipo": "widget_prenotazione",
+      "script": "//platform.docplanner.com/js/widget.js",
+      "attributi": [
+        "data-zlw-doctor",
+        "data-zlw-type",
+        "data-zlw-opinion",
+        "data-zlw-hide-branding"
+      ]
+    },
+    "google_fonts": {
+      "fonts": [
+        "Inter:400,500,600,700",
+        "Poppins:600,700"
+      ]
+    },
+    "schema_org": {
+      "tipi": [
+        "Physician",
+        "MedicalClinic",
+        "MedicalProcedure",
+        "ItemList",
+        "BreadcrumbList"
+      ]
+    }
+  },
+  "contatti": {
+    "nome": "Bio-Clinic Sassari",
+    "indirizzo": "Via Renzo Mossa 23, 07100 Sassari (SS)",
+    "telefono": "+39 079 956 1332",
+    "email": "gestione@bio-clinic.it",
+    "orari": "Lun-Ven 07:00-21:00, Sab 08:00-14:00",
+    "piva": "02869450904",
+    "ragione_sociale": "Bio Pharma S.r.l.",
+    "facebook": "https://www.facebook.com/bioclinicss",
+    "instagram": "https://www.instagram.com/bioclinicss/"
+  },
+  "todo": {
+    "da_implementare": [
+      "Pagine specialità mancanti",
+      "Sistema prenotazione integrato",
+      "Foto medici",
+      "Pagina singola esami",
+      "Comparatore pack",
+      "Calcolatore preventivo",
+      "Sistema recensioni",
+      "Blog/news",
+      "Multi-lingua",
+      "PWA/Offline"
+    ],
+    "miglioramenti": [
+      "Lazy loading immagini",
+      "Service worker",
+      "Animazioni",
+      "Dark mode",
+      "WCAG 2.1 AA",
+      "Core Web Vitals"
+    ]
+  }
+}

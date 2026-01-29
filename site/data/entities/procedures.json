@@ -1,0 +1,669 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-01-27",
+  "total_procedures": 678,
+  "procedures": [
+    {
+      "id": "visita-ginecologica",
+      "name": "Visita Ginecologica",
+      "name_extended": "Visita Ginecologica Specialistica",
+      "specialty_id": "ginecologia",
+      "category": "visita",
+      "description_short": "Valutazione completa della salute ginecologica femminile",
+      "description_full": "La visita ginecologica comprende anamnesi, esame obiettivo, eventuale ecografia transvaginale e pap-test. Consigliata annualmente per la prevenzione.",
+      "indications": ["controllo periodico", "disturbi mestruali", "dolore pelvico", "screening oncologico"],
+      "duration_minutes": 30,
+      "physicians": ["salvatore-dessole", "francesco-dessole"],
+      "related_procedures": ["ecografia-transvaginale", "pap-test", "colposcopia"],
+      "pathways": ["pma-fertilita", "slim-care-donna"],
+      "search_terms": ["ginecologo", "visita donna", "controllo femminile", "pap test", "utero"],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "ecografia-transvaginale",
+      "name": "Ecografia Transvaginale",
+      "name_extended": "Ecografia Pelvica Transvaginale",
+      "specialty_id": "ginecologia",
+      "category": "diagnostica",
+      "description_short": "Esame ecografico per visualizzare utero, ovaie e strutture pelviche",
+      "description_full": "L'ecografia transvaginale permette una visualizzazione dettagliata degli organi pelvici femminili. Utilizzata per diagnosi, monitoraggio gravidanza e follow-up.",
+      "indications": ["monitoraggio ovarico", "studio endometrio", "cisti ovariche", "fibromi", "gravidanza iniziale"],
+      "duration_minutes": 20,
+      "physicians": ["salvatore-dessole", "francesco-dessole"],
+      "related_procedures": ["visita-ginecologica", "ecografia-mammaria"],
+      "pathways": ["pma-fertilita"],
+      "search_terms": ["eco transvaginale", "ecografia utero", "eco ovaie", "ecografia pelvica"],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/ImagingTest"
+      }
+    },
+    {
+      "id": "ecografia-mammaria",
+      "name": "Ecografia Mammaria",
+      "name_extended": "Ecografia Mammaria Bilaterale",
+      "specialty_id": "ginecologia",
+      "category": "diagnostica",
+      "description_short": "Esame ecografico del seno per screening e diagnosi",
+      "description_full": "L'ecografia mammaria è un esame non invasivo per valutare noduli, cisti e alterazioni del tessuto mammario. Complementare alla mammografia.",
+      "indications": ["screening seno", "noduli mammari", "dolore mammario", "controllo periodico"],
+      "duration_minutes": 20,
+      "physicians": ["salvatore-dessole", "francesco-dessole"],
+      "related_procedures": ["visita-senologica", "ecografia-transvaginale"],
+      "pathways": ["slim-care-donna"],
+      "search_terms": ["eco seno", "ecografia seno", "mammella", "nodulo seno"],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/ImagingTest"
+      }
+    },
+    {
+      "id": "pap-test",
+      "name": "Pap Test",
+      "name_extended": "Pap Test (Esame Citologico Cervicale)",
+      "specialty_id": "ginecologia",
+      "category": "esame",
+      "description_short": "Screening per la prevenzione del tumore della cervice uterina",
+      "description_full": "Il Pap test è un esame di screening fondamentale per la prevenzione del carcinoma cervicale. Consigliato ogni 3 anni dopo i 25 anni.",
+      "indications": ["screening oncologico", "prevenzione HPV", "controllo cervicale"],
+      "duration_minutes": 10,
+      "physicians": ["salvatore-dessole", "francesco-dessole"],
+      "related_procedures": ["visita-ginecologica", "colposcopia", "hpv-test"],
+      "pathways": [],
+      "search_terms": ["paptest", "striscio cervicale", "screening cervice", "prevenzione tumore utero"],
+      "booking_priority": "medium",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "colposcopia",
+      "name": "Colposcopia",
+      "name_extended": "Colposcopia Diagnostica",
+      "specialty_id": "ginecologia",
+      "category": "diagnostica",
+      "description_short": "Esame visivo approfondito della cervice uterina",
+      "description_full": "La colposcopia permette di visualizzare in dettaglio la cervice uterina per identificare lesioni sospette dopo un Pap test anomalo.",
+      "indications": ["pap test anomalo", "lesioni cervicali", "follow-up HPV"],
+      "duration_minutes": 20,
+      "physicians": ["salvatore-dessole", "francesco-dessole"],
+      "related_procedures": ["pap-test", "biopsia-cervicale"],
+      "pathways": [],
+      "search_terms": ["colposcopio", "esame cervice", "biopsia collo utero"],
+      "booking_priority": "medium",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "visita-ostetrica",
+      "name": "Visita Ostetrica",
+      "name_extended": "Visita Ostetrica in Gravidanza",
+      "specialty_id": "ostetricia",
+      "category": "visita",
+      "description_short": "Controllo periodico della gravidanza e del benessere materno-fetale",
+      "description_full": "La visita ostetrica comprende valutazione della gestante, monitoraggio della crescita fetale, controllo pressione e peso. Fondamentale per una gravidanza sicura.",
+      "indications": ["gravidanza", "monitoraggio fetale", "controllo gestazionale"],
+      "duration_minutes": 30,
+      "physicians": ["salvatore-dessole", "francesco-dessole"],
+      "related_procedures": ["ecografia-ostetrica", "morfologica", "translucenza-nucale"],
+      "pathways": [],
+      "search_terms": ["gravidanza", "controllo gravidanza", "visita incinta", "ostetrica"],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "ecografia-ostetrica",
+      "name": "Ecografia Ostetrica",
+      "name_extended": "Ecografia Ostetrica di Controllo",
+      "specialty_id": "ostetricia",
+      "category": "diagnostica",
+      "description_short": "Monitoraggio ecografico della gravidanza",
+      "description_full": "L'ecografia ostetrica permette di visualizzare il feto, valutare la crescita, la quantità di liquido amniotico e la posizione placentare.",
+      "indications": ["monitoraggio gravidanza", "crescita fetale", "controllo trimestrale"],
+      "duration_minutes": 20,
+      "physicians": ["salvatore-dessole", "francesco-dessole"],
+      "related_procedures": ["visita-ostetrica", "morfologica"],
+      "pathways": [],
+      "search_terms": ["eco gravidanza", "ecografia feto", "ecografia gestazionale"],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/ImagingTest"
+      }
+    },
+    {
+      "id": "ecografia-morfologica",
+      "name": "Ecografia Morfologica",
+      "name_extended": "Ecografia Morfologica (II Livello)",
+      "specialty_id": "ostetricia",
+      "category": "diagnostica",
+      "description_short": "Studio dettagliato dell'anatomia fetale tra la 19ª e 22ª settimana",
+      "description_full": "L'ecografia morfologica è l'esame più importante per valutare l'anatomia fetale, identificare eventuali malformazioni e confermare la normale crescita.",
+      "indications": ["screening malformazioni", "studio anatomia fetale", "20 settimane"],
+      "duration_minutes": 45,
+      "physicians": ["salvatore-dessole", "francesco-dessole"],
+      "related_procedures": ["translucenza-nucale", "ecografia-ostetrica"],
+      "pathways": [],
+      "search_terms": ["morfologica", "eco morfologica", "ecografia secondo trimestre", "anatomia feto"],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/ImagingTest"
+      }
+    },
+    {
+      "id": "translucenza-nucale",
+      "name": "Translucenza Nucale",
+      "name_extended": "Ecografia per Translucenza Nucale (NT)",
+      "specialty_id": "ostetricia",
+      "category": "diagnostica",
+      "description_short": "Screening del primo trimestre per anomalie cromosomiche",
+      "description_full": "La translucenza nucale misura lo spessore della plica nucale fetale tra l'11ª e la 14ª settimana. Combinata con il bitest, valuta il rischio di anomalie cromosomiche.",
+      "indications": ["screening sindrome di Down", "primo trimestre", "rischio cromosomico"],
+      "duration_minutes": 30,
+      "physicians": ["salvatore-dessole", "francesco-dessole"],
+      "related_procedures": ["bitest", "ecografia-ostetrica"],
+      "pathways": [],
+      "search_terms": ["NT", "plica nucale", "screening Down", "bitest"],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/ImagingTest"
+      }
+    },
+    {
+      "id": "visita-cardiologica",
+      "name": "Visita Cardiologica",
+      "name_extended": "Visita Cardiologica Specialistica",
+      "specialty_id": "cardiologia",
+      "category": "visita",
+      "description_short": "Valutazione completa della salute cardiovascolare",
+      "description_full": "La visita cardiologica comprende anamnesi, esame obiettivo, misurazione pressione e valutazione del rischio cardiovascolare. Spesso include ECG.",
+      "indications": ["ipertensione", "dolore toracico", "affanno", "palpitazioni", "prevenzione cardiovascolare"],
+      "duration_minutes": 30,
+      "physicians": ["tonino-bullitta", "sara-uras", "giuliana-guagnozzi", "paolo-pischedda", "paolo-franca"],
+      "related_procedures": ["ecg", "ecocardiogramma", "holter-ecg"],
+      "pathways": [],
+      "search_terms": ["cuore", "cardiologo", "pressione alta", "tachicardia", "aritmia"],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "ecg",
+      "name": "Elettrocardiogramma",
+      "name_extended": "Elettrocardiogramma (ECG) a Riposo",
+      "specialty_id": "cardiologia",
+      "category": "diagnostica",
+      "description_short": "Registrazione dell'attività elettrica del cuore",
+      "description_full": "L'ECG a riposo è un esame non invasivo che registra l'attività elettrica cardiaca. Utile per diagnosticare aritmie, ischemie e altre patologie cardiache.",
+      "indications": ["aritmie", "dolore toracico", "screening cardiaco", "pre-operatorio"],
+      "duration_minutes": 10,
+      "physicians": ["tonino-bullitta", "sara-uras", "giuliana-guagnozzi", "paolo-pischedda", "paolo-franca"],
+      "related_procedures": ["visita-cardiologica", "holter-ecg"],
+      "pathways": [],
+      "search_terms": ["elettrocardiogramma", "ecg", "cuore elettrico", "tracciato cardiaco"],
+      "booking_priority": "medium",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "ecocardiogramma",
+      "name": "Ecocardiogramma",
+      "name_extended": "Ecocardiogramma Color-Doppler",
+      "specialty_id": "cardiologia",
+      "category": "diagnostica",
+      "description_short": "Ecografia del cuore per valutare struttura e funzione cardiaca",
+      "description_full": "L'ecocardiogramma è un esame ecografico che visualizza le camere cardiache, le valvole e la funzione contrattile. Fondamentale per diagnosi di cardiomiopatie e valvulopatie.",
+      "indications": ["soffio cardiaco", "insufficienza cardiaca", "valvulopatie", "cardiomiopatie"],
+      "duration_minutes": 30,
+      "physicians": ["tonino-bullitta", "sara-uras", "giuliana-guagnozzi", "paolo-pischedda", "paolo-franca"],
+      "related_procedures": ["visita-cardiologica", "ecg"],
+      "pathways": [],
+      "search_terms": ["eco cuore", "ecografia cardiaca", "ecocardio", "valvole cuore"],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/ImagingTest"
+      }
+    },
+    {
+      "id": "holter-ecg",
+      "name": "Holter ECG 24h",
+      "name_extended": "Monitoraggio Holter ECG 24 Ore",
+      "specialty_id": "cardiologia",
+      "category": "diagnostica",
+      "description_short": "Registrazione continua dell'ECG per 24 ore",
+      "description_full": "L'Holter ECG registra l'attività cardiaca per 24-48 ore, permettendo di identificare aritmie intermittenti non rilevabili con l'ECG standard.",
+      "indications": ["aritmie intermittenti", "palpitazioni", "sincope", "controllo terapia"],
+      "duration_minutes": 15,
+      "physicians": ["tonino-bullitta"],
+      "related_procedures": ["ecg", "visita-cardiologica"],
+      "pathways": [],
+      "search_terms": ["holter", "monitoraggio cardiaco", "ECG 24 ore", "aritmie"],
+      "booking_priority": "medium",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "holter-pressorio",
+      "name": "Holter Pressorio 24h",
+      "name_extended": "Monitoraggio Pressorio Ambulatoriale 24 Ore (ABPM)",
+      "specialty_id": "cardiologia",
+      "category": "diagnostica",
+      "description_short": "Misurazione automatica della pressione arteriosa per 24 ore",
+      "description_full": "L'Holter pressorio misura automaticamente la pressione arteriosa ogni 15-30 minuti per 24 ore, fornendo un profilo pressorio completo.",
+      "indications": ["ipertensione", "ipertensione da camice bianco", "controllo terapia antipertensiva"],
+      "duration_minutes": 15,
+      "physicians": ["tonino-bullitta"],
+      "related_procedures": ["visita-cardiologica"],
+      "pathways": [],
+      "search_terms": ["pressione 24 ore", "ABPM", "monitoraggio pressione", "ipertensione"],
+      "booking_priority": "medium",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "visita-endocrinologica",
+      "name": "Visita Endocrinologica",
+      "name_extended": "Visita Endocrinologica Specialistica",
+      "specialty_id": "endocrinologia",
+      "category": "visita",
+      "description_short": "Valutazione delle ghiandole endocrine e del metabolismo",
+      "description_full": "La visita endocrinologica valuta il funzionamento di tiroide, ipofisi, surreni, pancreas e gonadi. Fondamentale per disturbi metabolici e ormonali.",
+      "indications": ["tiroide", "diabete", "obesità", "disturbi ormonali", "osteoporosi"],
+      "duration_minutes": 30,
+      "physicians": ["francesco-tolu", "irene-aini"],
+      "related_procedures": ["ecografia-tiroidea", "visita-diabetologica"],
+      "pathways": ["slim-care", "slim-care-donna"],
+      "search_terms": ["endocrinologo", "tiroide", "ormoni", "metabolismo", "diabete"],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "ecografia-tiroidea",
+      "name": "Ecografia Tiroidea",
+      "name_extended": "Ecografia della Tiroide",
+      "specialty_id": "endocrinologia",
+      "category": "diagnostica",
+      "description_short": "Esame ecografico per valutare morfologia e noduli tiroidei",
+      "description_full": "L'ecografia tiroidea visualizza la ghiandola tiroidea, identificando noduli, cisti e alterazioni strutturali. Esame di base per patologie tiroidee.",
+      "indications": ["noduli tiroidei", "gozzo", "tiroidite", "ipertiroidismo", "ipotiroidismo"],
+      "duration_minutes": 15,
+      "physicians": ["francesco-tolu", "irene-aini"],
+      "related_procedures": ["visita-endocrinologica", "agoaspirato-tiroide"],
+      "pathways": [],
+      "search_terms": ["eco tiroide", "ecografia collo", "nodulo tiroide"],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/ImagingTest"
+      }
+    },
+    {
+      "id": "visita-diabetologica",
+      "name": "Visita Diabetologica",
+      "name_extended": "Visita Diabetologica Specialistica",
+      "specialty_id": "endocrinologia",
+      "category": "visita",
+      "description_short": "Gestione e monitoraggio del diabete mellito",
+      "description_full": "La visita diabetologica comprende valutazione del compenso glicemico, gestione della terapia, educazione alimentare e prevenzione delle complicanze.",
+      "indications": ["diabete tipo 1", "diabete tipo 2", "prediabete", "glicemia alta"],
+      "duration_minutes": 30,
+      "physicians": ["francesco-tolu", "irene-aini"],
+      "related_procedures": ["visita-endocrinologica"],
+      "pathways": ["slim-care"],
+      "search_terms": ["diabete", "glicemia", "insulina", "zuccheri", "diabetologo"],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "visita-dermatologica",
+      "name": "Visita Dermatologica",
+      "name_extended": "Visita Dermatologica Specialistica",
+      "specialty_id": "dermatologia",
+      "category": "visita",
+      "description_short": "Valutazione delle patologie cutanee e degli annessi",
+      "description_full": "La visita dermatologica comprende l'esame della cute, dei nei, delle unghie e dei capelli. Fondamentale per screening oncologico cutaneo.",
+      "indications": ["nei sospetti", "acne", "psoriasi", "dermatiti", "alopecia"],
+      "duration_minutes": 20,
+      "physicians": ["giovanna-costa"],
+      "related_procedures": ["mappatura-nei", "dermatoscopia"],
+      "pathways": [],
+      "search_terms": ["dermatologo", "pelle", "nei", "macchie", "prurito", "eczema"],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "mappatura-nei",
+      "name": "Mappatura dei Nei",
+      "name_extended": "Mappatura Computerizzata dei Nei",
+      "specialty_id": "dermatologia",
+      "category": "diagnostica",
+      "description_short": "Controllo digitale dei nei per prevenzione melanoma",
+      "description_full": "La mappatura dei nei utilizza un dermatoscopio digitale per fotografare e archiviare i nei, permettendo il confronto nel tempo per identificare cambiamenti sospetti.",
+      "indications": ["prevenzione melanoma", "nei atipici", "familiarità tumori cutanei"],
+      "duration_minutes": 30,
+      "physicians": ["giovanna-costa"],
+      "related_procedures": ["visita-dermatologica", "dermatoscopia"],
+      "pathways": [],
+      "search_terms": ["controllo nei", "melanoma", "screening pelle", "dermatoscopia"],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "visita-neurologica",
+      "name": "Visita Neurologica",
+      "name_extended": "Visita Neurologica Specialistica",
+      "specialty_id": "neurologia",
+      "category": "visita",
+      "description_short": "Valutazione del sistema nervoso centrale e periferico",
+      "description_full": "La visita neurologica comprende anamnesi, esame obiettivo neurologico e valutazione di riflessi, sensibilità, coordinazione e funzioni cognitive.",
+      "indications": ["cefalea", "vertigini", "formicolii", "tremori", "disturbi memoria"],
+      "duration_minutes": 30,
+      "physicians": [],
+      "related_procedures": ["elettromiografia", "elettroencefalogramma"],
+      "pathways": [],
+      "search_terms": ["neurologo", "mal di testa", "emicrania", "nervi", "cervello"],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "elettromiografia",
+      "name": "Elettromiografia",
+      "name_extended": "Elettromiografia (EMG) ed Elettroneurografia",
+      "specialty_id": "neurologia",
+      "category": "diagnostica",
+      "description_short": "Studio della conduzione nervosa e dell'attività muscolare",
+      "description_full": "L'elettromiografia valuta la funzionalità dei nervi periferici e dei muscoli. Utile per diagnosticare neuropatie, radicolopatie e miopatie.",
+      "indications": ["tunnel carpale", "formicolii", "debolezza muscolare", "ernia discale"],
+      "duration_minutes": 45,
+      "physicians": [],
+      "related_procedures": ["visita-neurologica"],
+      "pathways": [],
+      "search_terms": ["EMG", "nervi", "tunnel carpale", "conduzione nervosa"],
+      "booking_priority": "medium",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "visita-oculistica",
+      "name": "Visita Oculistica",
+      "name_extended": "Visita Oculistica Completa",
+      "specialty_id": "oculistica",
+      "category": "visita",
+      "description_short": "Valutazione completa della salute degli occhi e della vista",
+      "description_full": "La visita oculistica comprende esame della vista, misurazione pressione oculare, esame del fondo oculare e valutazione della superficie oculare.",
+      "indications": ["calo visivo", "occhi stanchi", "glaucoma", "cataratta", "controllo periodico"],
+      "duration_minutes": 30,
+      "physicians": [],
+      "related_procedures": ["tonometria", "campo-visivo", "oct"],
+      "pathways": [],
+      "search_terms": ["oculista", "occhi", "vista", "miopia", "presbiopia", "glaucoma"],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "tonometria",
+      "name": "Tonometria",
+      "name_extended": "Misurazione Pressione Intraoculare",
+      "specialty_id": "oculistica",
+      "category": "diagnostica",
+      "description_short": "Misurazione della pressione all'interno dell'occhio",
+      "description_full": "La tonometria misura la pressione intraoculare, parametro fondamentale per la diagnosi e il monitoraggio del glaucoma.",
+      "indications": ["screening glaucoma", "ipertensione oculare", "familiarità glaucoma"],
+      "duration_minutes": 10,
+      "physicians": [],
+      "related_procedures": ["visita-oculistica", "campo-visivo"],
+      "pathways": [],
+      "search_terms": ["pressione occhio", "glaucoma", "IOP"],
+      "booking_priority": "medium",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "visita-ortopedica",
+      "name": "Visita Ortopedica",
+      "name_extended": "Visita Ortopedica Specialistica",
+      "specialty_id": "ortopedia",
+      "category": "visita",
+      "description_short": "Valutazione delle patologie muscolo-scheletriche",
+      "description_full": "La visita ortopedica comprende anamnesi, esame obiettivo dell'apparato locomotore e valutazione di articolazioni, ossa, muscoli e tendini.",
+      "indications": ["dolore articolare", "mal di schiena", "traumi", "artrosi", "tendiniti"],
+      "duration_minutes": 30,
+      "physicians": [],
+      "related_procedures": ["infiltrazioni", "ecografia-muscolo-tendinea"],
+      "pathways": [],
+      "search_terms": ["ortopedico", "ossa", "articolazioni", "ginocchio", "spalla", "schiena"],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "ecografia-muscolo-tendinea",
+      "name": "Ecografia Muscolo-Tendinea",
+      "name_extended": "Ecografia dell'Apparato Muscolo-Scheletrico",
+      "specialty_id": "ortopedia",
+      "category": "diagnostica",
+      "description_short": "Esame ecografico di muscoli, tendini e articolazioni",
+      "description_full": "L'ecografia muscolo-tendinea visualizza tendini, muscoli, borse e articolazioni per diagnosticare tendiniti, lesioni muscolari e versamenti articolari.",
+      "indications": ["tendinite", "strappo muscolare", "borsite", "cisti"],
+      "duration_minutes": 20,
+      "physicians": [],
+      "related_procedures": ["visita-ortopedica"],
+      "pathways": [],
+      "search_terms": ["eco tendini", "ecografia muscoli", "eco spalla", "eco ginocchio"],
+      "booking_priority": "medium",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/ImagingTest"
+      }
+    },
+    {
+      "id": "visita-nutrizionale",
+      "name": "Visita Nutrizionale",
+      "name_extended": "Visita Nutrizionale con Piano Alimentare Personalizzato",
+      "specialty_id": "nutrizione",
+      "category": "visita",
+      "description_short": "Valutazione nutrizionale e piano alimentare su misura",
+      "description_full": "La visita nutrizionale comprende anamnesi alimentare, valutazione antropometrica, analisi composizione corporea e definizione di un piano alimentare personalizzato.",
+      "indications": ["sovrappeso", "obesità", "disturbi alimentari", "sport", "patologie metaboliche"],
+      "duration_minutes": 45,
+      "physicians": [],
+      "related_procedures": ["bioimpedenziometria"],
+      "pathways": ["slim-care", "slim-care-donna"],
+      "search_terms": ["nutrizionista", "dieta", "alimentazione", "dimagrire", "peso"],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "bioimpedenziometria",
+      "name": "Bioimpedenziometria",
+      "name_extended": "Analisi Composizione Corporea (BIA)",
+      "specialty_id": "nutrizione",
+      "category": "diagnostica",
+      "description_short": "Misurazione della composizione corporea (massa grassa, magra, acqua)",
+      "description_full": "La bioimpedenziometria è un esame non invasivo che misura la percentuale di massa grassa, massa magra e acqua corporea. Fondamentale per monitorare i risultati di diete e allenamento.",
+      "indications": ["controllo peso", "sport", "dieta", "ritenzione idrica"],
+      "duration_minutes": 15,
+      "physicians": [],
+      "related_procedures": ["visita-nutrizionale"],
+      "pathways": ["slim-care", "slim-care-donna"],
+      "search_terms": ["BIA", "massa grassa", "composizione corporea", "grasso corporeo"],
+      "booking_priority": "medium",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "visita-medicina-sportiva",
+      "name": "Visita Medicina dello Sport",
+      "name_extended": "Visita per Idoneità Sportiva Agonistica e Non Agonistica",
+      "specialty_id": "medicina-sport",
+      "category": "visita",
+      "description_short": "Certificazione idoneità sportiva con ECG e spirometria",
+      "description_full": "La visita di medicina dello sport comprende anamnesi, esame obiettivo, ECG a riposo, spirometria e, per agonisti, test da sforzo. Rilascia certificato di idoneità.",
+      "indications": ["idoneità sportiva", "certificato sport", "attività agonistica"],
+      "duration_minutes": 45,
+      "physicians": [],
+      "related_procedures": ["ecg", "spirometria", "test-sforzo"],
+      "pathways": [],
+      "search_terms": ["certificato sport", "idoneità", "visita sportiva", "agonistica"],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "spirometria",
+      "name": "Spirometria",
+      "name_extended": "Spirometria Semplice",
+      "specialty_id": "medicina-sport",
+      "category": "diagnostica",
+      "description_short": "Misurazione della funzionalità respiratoria",
+      "description_full": "La spirometria misura i volumi e i flussi respiratori. Fondamentale per diagnosi di asma, BPCO e per la valutazione sportiva.",
+      "indications": ["asma", "affanno", "tosse cronica", "idoneità sportiva"],
+      "duration_minutes": 15,
+      "physicians": [],
+      "related_procedures": ["visita-medicina-sportiva", "visita-pneumologica"],
+      "pathways": [],
+      "search_terms": ["respiro", "polmoni", "capacità respiratoria", "fiato"],
+      "booking_priority": "medium",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "prelievo-sangue",
+      "name": "Prelievo Ematico",
+      "name_extended": "Prelievo di Sangue Venoso",
+      "specialty_id": "laboratorio",
+      "category": "prelievo",
+      "description_short": "Prelievo di sangue per esami di laboratorio",
+      "description_full": "Il prelievo ematico viene effettuato da personale specializzato. Necessario per tutti gli esami del sangue. Disponibile anche a domicilio.",
+      "indications": ["esami sangue", "analisi", "check-up"],
+      "duration_minutes": 10,
+      "physicians": [],
+      "related_procedures": [],
+      "pathways": [],
+      "search_terms": ["prelievo", "sangue", "analisi sangue", "esami sangue"],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "consulto-pma",
+      "name": "Consulto PMA",
+      "name_extended": "Consulto per Procreazione Medicalmente Assistita",
+      "specialty_id": "ginecologia",
+      "category": "visita",
+      "description_short": "Prima valutazione per percorsi di fertilità assistita",
+      "description_full": "Il consulto PMA è il primo passo per le coppie con difficoltà di concepimento. Comprende anamnesi, valutazione esami e definizione del percorso terapeutico.",
+      "indications": ["infertilità", "difficoltà concepimento", "PMA", "fecondazione"],
+      "duration_minutes": 45,
+      "physicians": ["salvatore-dessole", "francesco-dessole"],
+      "related_procedures": ["spermiogramma", "ecografia-transvaginale"],
+      "pathways": ["pma-fertilita"],
+      "search_terms": ["fertilità", "infertilità", "concepimento", "fecondazione assistita", "ICSI", "FIVET"],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "spermiogramma",
+      "name": "Spermiogramma",
+      "name_extended": "Esame del Liquido Seminale",
+      "specialty_id": "laboratorio",
+      "category": "esame",
+      "description_short": "Analisi della qualità e quantità degli spermatozoi",
+      "description_full": "Lo spermiogramma valuta concentrazione, motilità e morfologia degli spermatozoi. Esame fondamentale per la valutazione della fertilità maschile.",
+      "indications": ["infertilità maschile", "PMA", "varicocele"],
+      "duration_minutes": 5,
+      "physicians": [],
+      "related_procedures": ["consulto-pma"],
+      "pathways": ["pma-fertilita"],
+      "search_terms": ["sperma", "fertilità maschile", "spermatozoi", "seminale"],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      }
+    }
+  ],
+  "categories": {
+    "visita": {
+      "name": "Visite Specialistiche",
+      "icon": "🩺",
+      "priority": 1
+    },
+    "diagnostica": {
+      "name": "Diagnostica per Immagini",
+      "icon": "📊",
+      "priority": 2
+    },
+    "esame": {
+      "name": "Esami e Test",
+      "icon": "🔬",
+      "priority": 3
+    },
+    "prelievo": {
+      "name": "Prelievi",
+      "icon": "💉",
+      "priority": 4
+    }
+  }
+}

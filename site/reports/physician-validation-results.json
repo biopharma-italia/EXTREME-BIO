@@ -1,0 +1,1565 @@
+{
+  "timestamp": "2026-01-28T19:41:50.945138",
+  "total_physicians": 53,
+  "pages_found": 53,
+  "pages_missing": [],
+  "validation_passed": [
+    "francesco-dessole",
+    "salvatore-dessole",
+    "maddalena-pola",
+    "marco-petrillo",
+    "antonella-pruneddu",
+    "sonia-bove",
+    "margherita-dessole",
+    "angelica-fois",
+    "tonino-bullitta",
+    "sara-uras",
+    "paolo-pischedda",
+    "paolo-franca",
+    "federica-decandia",
+    "giovanna-costa",
+    "alessandra-musinu",
+    "speranza-anedda",
+    "carlo-burrai",
+    "fabrizia-caucci",
+    "francesco-tolu",
+    "irene-aini",
+    "guido-marongiu",
+    "sebastiano-traccis",
+    "stefano-dore",
+    "laura-dessole",
+    "maria-pina-pintus",
+    "francesco-santoru",
+    "matteo-zucca",
+    "francesco-bussu",
+    "maria-laura-de-luca",
+    "andrea-donato",
+    "pietro-lisai",
+    "angelo-deplano",
+    "antonio-solinas",
+    "paolo-dessole",
+    "sergio-paolo-sotgia",
+    "pietro-pirina",
+    "luigi-podda",
+    "daniele-sabiu",
+    "niccolo-melis",
+    "carlos-manuel-cambara-zuniga",
+    "paola-dettori",
+    "roberto-mancino",
+    "antonio-michele-cavazzuti",
+    "giorgio-chiarelli",
+    "gianfranco-manchia",
+    "nicola-frau",
+    "mariolina-azara",
+    "alessia-piras",
+    "giuliana-guagnozzi",
+    "alessandro-pandolfi",
+    "antonella-galatino",
+    "cinzia-guarino",
+    "gloria-reggiani"
+  ],
+  "validation_failed": [],
+  "warnings": [],
+  "schema_stats": {
+    "physician_schema": 53,
+    "faq_schema": 53,
+    "breadcrumb_schema": 53,
+    "citations": 15
+  },
+  "physicians_with_publications": [
+    "salvatore-dessole",
+    "marco-petrillo",
+    "sonia-bove",
+    "carlo-burrai",
+    "francesco-tolu",
+    "irene-aini",
+    "sebastiano-traccis",
+    "stefano-dore",
+    "francesco-bussu",
+    "pietro-lisai",
+    "angelo-deplano",
+    "antonio-solinas",
+    "pietro-pirina",
+    "luigi-podda",
+    "paola-dettori"
+  ],
+  "physicians_without_data": [
+    "maddalena-pola",
+    "antonella-pruneddu",
+    "margherita-dessole",
+    "angelica-fois",
+    "tonino-bullitta",
+    "paolo-pischedda",
+    "giovanna-costa",
+    "alessandra-musinu",
+    "speranza-anedda",
+    "fabrizia-caucci",
+    "guido-marongiu",
+    "laura-dessole",
+    "maria-pina-pintus",
+    "francesco-santoru",
+    "matteo-zucca",
+    "maria-laura-de-luca",
+    "andrea-donato",
+    "paolo-dessole",
+    "sergio-paolo-sotgia",
+    "daniele-sabiu",
+    "niccolo-melis",
+    "carlos-manuel-cambara-zuniga",
+    "roberto-mancino",
+    "antonio-michele-cavazzuti",
+    "giorgio-chiarelli",
+    "gianfranco-manchia",
+    "nicola-frau",
+    "mariolina-azara",
+    "alessia-piras",
+    "giuliana-guagnozzi",
+    "alessandro-pandolfi",
+    "antonella-galatino",
+    "cinzia-guarino",
+    "gloria-reggiani"
+  ],
+  "detailed_results": {
+    "francesco-dessole": {
+      "slug": "francesco-dessole",
+      "name": "Francesco Dessole",
+      "specialty": "ginecologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": true,
+      "publications_count": 3,
+      "symptoms_count": 4,
+      "issues": [],
+      "score": 100.0
+    },
+    "salvatore-dessole": {
+      "slug": "salvatore-dessole",
+      "name": "Salvatore Dessole",
+      "specialty": "ginecologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "has_citations",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": true,
+      "publications_count": 4,
+      "symptoms_count": 12,
+      "issues": [],
+      "score": 100.0
+    },
+    "maddalena-pola": {
+      "slug": "maddalena-pola",
+      "name": "Maddalena Pola",
+      "specialty": "ginecologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "marco-petrillo": {
+      "slug": "marco-petrillo",
+      "name": "Marco Petrillo",
+      "specialty": "ginecologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "has_citations",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": true,
+      "publications_count": 3,
+      "symptoms_count": 8,
+      "issues": [],
+      "score": 100.0
+    },
+    "antonella-pruneddu": {
+      "slug": "antonella-pruneddu",
+      "name": "Antonella Pruneddu",
+      "specialty": "ginecologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "sonia-bove": {
+      "slug": "sonia-bove",
+      "name": "Sonia Bove",
+      "specialty": "ginecologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "has_citations",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": true,
+      "publications_count": 3,
+      "symptoms_count": 7,
+      "issues": [],
+      "score": 100.0
+    },
+    "margherita-dessole": {
+      "slug": "margherita-dessole",
+      "name": "Margherita Dessole",
+      "specialty": "ginecologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "angelica-fois": {
+      "slug": "angelica-fois",
+      "name": "Angelica Fois",
+      "specialty": "ostetricia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "tonino-bullitta": {
+      "slug": "tonino-bullitta",
+      "name": "Tonino Bullitta",
+      "specialty": "cardiologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "sara-uras": {
+      "slug": "sara-uras",
+      "name": "Sara Uras",
+      "specialty": "cardiologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": true,
+      "publications_count": 1,
+      "symptoms_count": 6,
+      "issues": [],
+      "score": 100.0
+    },
+    "paolo-pischedda": {
+      "slug": "paolo-pischedda",
+      "name": "Paolo Pischedda",
+      "specialty": "cardiologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "paolo-franca": {
+      "slug": "paolo-franca",
+      "name": "Paolo Franca",
+      "specialty": "cardiologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": true,
+      "publications_count": 2,
+      "symptoms_count": 5,
+      "issues": [],
+      "score": 100.0
+    },
+    "federica-decandia": {
+      "slug": "federica-decandia",
+      "name": "Federica Decandia",
+      "specialty": "cardiologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": true,
+      "publications_count": 2,
+      "symptoms_count": 5,
+      "issues": [],
+      "score": 100.0
+    },
+    "giovanna-costa": {
+      "slug": "giovanna-costa",
+      "name": "Giovanna Costa",
+      "specialty": "dermatologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "alessandra-musinu": {
+      "slug": "alessandra-musinu",
+      "name": "Alessandra Musinu",
+      "specialty": "dermatologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "speranza-anedda": {
+      "slug": "speranza-anedda",
+      "name": "Speranza Anedda",
+      "specialty": "dermatologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "carlo-burrai": {
+      "slug": "carlo-burrai",
+      "name": "Carlo Burrai",
+      "specialty": "endocrinologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "has_citations",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": true,
+      "publications_count": 2,
+      "symptoms_count": 8,
+      "issues": [],
+      "score": 100.0
+    },
+    "fabrizia-caucci": {
+      "slug": "fabrizia-caucci",
+      "name": "Fabrizia Caucci",
+      "specialty": "endocrinologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "francesco-tolu": {
+      "slug": "francesco-tolu",
+      "name": "Francesco Tolu",
+      "specialty": "endocrinologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "has_citations",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": true,
+      "publications_count": 3,
+      "symptoms_count": 9,
+      "issues": [],
+      "score": 100.0
+    },
+    "irene-aini": {
+      "slug": "irene-aini",
+      "name": "Irene Aini",
+      "specialty": "endocrinologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "has_citations",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": true,
+      "publications_count": 2,
+      "symptoms_count": 7,
+      "issues": [],
+      "score": 100.0
+    },
+    "guido-marongiu": {
+      "slug": "guido-marongiu",
+      "name": "Guido Marongiu",
+      "specialty": "neurologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "sebastiano-traccis": {
+      "slug": "sebastiano-traccis",
+      "name": "Sebastiano Traccis",
+      "specialty": "neurologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "has_citations",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": true,
+      "publications_count": 2,
+      "symptoms_count": 8,
+      "issues": [],
+      "score": 100.0
+    },
+    "stefano-dore": {
+      "slug": "stefano-dore",
+      "name": "Stefano Dore",
+      "specialty": "oculistica",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "has_citations",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": true,
+      "publications_count": 3,
+      "symptoms_count": 9,
+      "issues": [],
+      "score": 100.0
+    },
+    "laura-dessole": {
+      "slug": "laura-dessole",
+      "name": "Laura Dessole",
+      "specialty": "oculistica",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "maria-pina-pintus": {
+      "slug": "maria-pina-pintus",
+      "name": "Maria Pina Pintus",
+      "specialty": "oculistica",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "francesco-santoru": {
+      "slug": "francesco-santoru",
+      "name": "Francesco Santoru",
+      "specialty": "oculistica",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "matteo-zucca": {
+      "slug": "matteo-zucca",
+      "name": "Matteo Zucca",
+      "specialty": "oculistica",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "francesco-bussu": {
+      "slug": "francesco-bussu",
+      "name": "Francesco Bussu",
+      "specialty": "otorinolaringoiatria",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "has_citations",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": true,
+      "publications_count": 4,
+      "symptoms_count": 11,
+      "issues": [],
+      "score": 100.0
+    },
+    "maria-laura-de-luca": {
+      "slug": "maria-laura-de-luca",
+      "name": "Maria Laura De Luca",
+      "specialty": "otorinolaringoiatria",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "andrea-donato": {
+      "slug": "andrea-donato",
+      "name": "Andrea Donato",
+      "specialty": "ortopedia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "pietro-lisai": {
+      "slug": "pietro-lisai",
+      "name": "Pietro Lisai",
+      "specialty": "ortopedia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "has_citations",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": true,
+      "publications_count": 3,
+      "symptoms_count": 8,
+      "issues": [],
+      "score": 100.0
+    },
+    "angelo-deplano": {
+      "slug": "angelo-deplano",
+      "name": "Angelo Deplano",
+      "specialty": "gastroenterologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "has_citations",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": true,
+      "publications_count": 2,
+      "symptoms_count": 8,
+      "issues": [],
+      "score": 100.0
+    },
+    "antonio-solinas": {
+      "slug": "antonio-solinas",
+      "name": "Antonio Solinas",
+      "specialty": "medicina-interna",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "has_citations",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": true,
+      "publications_count": 3,
+      "symptoms_count": 10,
+      "issues": [],
+      "score": 100.0
+    },
+    "paolo-dessole": {
+      "slug": "paolo-dessole",
+      "name": "Paolo Dessole",
+      "specialty": "nefrologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "sergio-paolo-sotgia": {
+      "slug": "sergio-paolo-sotgia",
+      "name": "Sergio Paolo Sotgia",
+      "specialty": "nefrologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "pietro-pirina": {
+      "slug": "pietro-pirina",
+      "name": "Pietro Pirina",
+      "specialty": "pneumologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "has_citations",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": true,
+      "publications_count": 3,
+      "symptoms_count": 11,
+      "issues": [],
+      "score": 100.0
+    },
+    "luigi-podda": {
+      "slug": "luigi-podda",
+      "name": "Luigi Podda",
+      "specialty": "ematologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "has_citations",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": true,
+      "publications_count": 3,
+      "symptoms_count": 8,
+      "issues": [],
+      "score": 100.0
+    },
+    "daniele-sabiu": {
+      "slug": "daniele-sabiu",
+      "name": "Daniele Sabiu",
+      "specialty": "ematologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "niccolo-melis": {
+      "slug": "niccolo-melis",
+      "name": "Niccolò Melis",
+      "specialty": "reumatologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "carlos-manuel-cambara-zuniga": {
+      "slug": "carlos-manuel-cambara-zuniga",
+      "name": "Carlos Manuel Cambara Zuniga",
+      "specialty": "urologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "paola-dettori": {
+      "slug": "paola-dettori",
+      "name": "Paola Dettori",
+      "specialty": "chirurgia-vascolare",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "has_citations",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": true,
+      "publications_count": 2,
+      "symptoms_count": 8,
+      "issues": [],
+      "score": 100.0
+    },
+    "roberto-mancino": {
+      "slug": "roberto-mancino",
+      "name": "Roberto Mancino",
+      "specialty": "chirurgia-vascolare",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "antonio-michele-cavazzuti": {
+      "slug": "antonio-michele-cavazzuti",
+      "name": "Antonio Michele Cavazzuti",
+      "specialty": "ecografia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "giorgio-chiarelli": {
+      "slug": "giorgio-chiarelli",
+      "name": "Giorgio Chiarelli",
+      "specialty": "medicina-sport",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "gianfranco-manchia": {
+      "slug": "gianfranco-manchia",
+      "name": "Gianfranco Manchia",
+      "specialty": "medicina-lavoro",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "nicola-frau": {
+      "slug": "nicola-frau",
+      "name": "Nicola Frau",
+      "specialty": "fisiatria",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "mariolina-azara": {
+      "slug": "mariolina-azara",
+      "name": "Mariolina Azara",
+      "specialty": "pediatria",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "alessia-piras": {
+      "slug": "alessia-piras",
+      "name": "Alessia Piras",
+      "specialty": "psicologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "miodottore_widget",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "giuliana-guagnozzi": {
+      "slug": "giuliana-guagnozzi",
+      "name": "Giuliana Guagnozzi",
+      "specialty": "cardiologia",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "alessandro-pandolfi": {
+      "slug": "alessandro-pandolfi",
+      "name": "Alessandro Pandolfi",
+      "specialty": "medicina-interna",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "antonella-galatino": {
+      "slug": "antonella-galatino",
+      "name": "Antonella Galatino",
+      "specialty": "nutrizione",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "cinzia-guarino": {
+      "slug": "cinzia-guarino",
+      "name": "Cinzia Guarino",
+      "specialty": "laboratorio",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    },
+    "gloria-reggiani": {
+      "slug": "gloria-reggiani",
+      "name": "Gloria Reggiani",
+      "specialty": "laboratorio",
+      "file_exists": true,
+      "validation": {
+        "checks_passed": [
+          "title_tag",
+          "meta_description",
+          "canonical_url",
+          "physician_schema",
+          "faq_schema",
+          "breadcrumb_schema",
+          "knows_about",
+          "bio_section",
+          "contact_phone"
+        ],
+        "issues": [],
+        "score": 100.0
+      },
+      "has_extended_data": false,
+      "publications_count": 0,
+      "symptoms_count": 0,
+      "issues": [],
+      "score": 100.0
+    }
+  }
+}

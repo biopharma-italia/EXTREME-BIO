@@ -1,0 +1,448 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-01-27",
+  "total_packs": 12,
+  "packs": [
+    {
+      "id": "checkup-base",
+      "name": "Check-up Base",
+      "slug": "checkup-base",
+      "category": "prevenzione",
+      "target_patient": "Tutti gli adulti",
+      "target_conditions": ["controllo annuale", "screening generale"],
+      "clinical_benefit": "Valutazione generale dello stato di salute con esami essenziali",
+      "clinical_rationale": "Esami fondamentali per screening di anemia, funzione renale, infiammazione e metabolismo glucidico",
+      "exams_included": [
+        "emocromo-completo",
+        "glicemia",
+        "creatinina",
+        "azotemia",
+        "colesterolo-totale",
+        "esame-urine-completo",
+        "ves"
+      ],
+      "exams_count": 7,
+      "value_proposition": "7 esami essenziali per un controllo completo",
+      "savings_percentage": 15,
+      "preparation_summary": {
+        "fasting_required": true,
+        "fasting_hours": 8,
+        "morning_only": true,
+        "special_notes": "Portare campione urine del primo mitto mattutino"
+      },
+      "priority_score": 100,
+      "cta_text": "Prenota Check-up Base",
+      "cta_url": "/prestazioni/checkup-base",
+      "schema_org": {
+        "@type": ["MedicalTest", "Product"],
+        "category": "DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "checkup-completo",
+      "name": "Check-up Completo",
+      "slug": "checkup-completo",
+      "category": "prevenzione",
+      "target_patient": "Adulti che desiderano un controllo approfondito",
+      "target_conditions": ["prevenzione completa", "screening approfondito"],
+      "clinical_benefit": "Valutazione completa di tutti gli organi e apparati principali",
+      "clinical_rationale": "Include funzione epatica, renale, tiroidea, profilo lipidico completo, indici infiammatori e vitamine essenziali",
+      "exams_included": [
+        "emocromo-completo",
+        "glicemia",
+        "emoglobina-glicata",
+        "creatinina",
+        "azotemia",
+        "colesterolo-totale",
+        "colesterolo-hdl",
+        "colesterolo-ldl",
+        "trigliceridi",
+        "ast-got",
+        "alt-gpt",
+        "gamma-gt",
+        "tsh-ultrasensibile",
+        "ft4",
+        "vitamina-d",
+        "ferritina",
+        "esame-urine-completo",
+        "ves",
+        "pcr"
+      ],
+      "exams_count": 19,
+      "value_proposition": "19 esami per una valutazione completa a 360°",
+      "savings_percentage": 25,
+      "preparation_summary": {
+        "fasting_required": true,
+        "fasting_hours": 12,
+        "morning_only": true,
+        "special_notes": "Digiuno 12 ore, evitare alcol 24h prima, portare urine primo mitto"
+      },
+      "priority_score": 95,
+      "cta_text": "Prenota Check-up Completo",
+      "cta_url": "/prestazioni/checkup-completo",
+      "schema_org": {
+        "@type": ["MedicalTest", "Product"],
+        "category": "DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "checkup-tiroide",
+      "name": "Profilo Tiroide Completo",
+      "slug": "checkup-tiroide",
+      "category": "endocrinologia",
+      "target_patient": "Persone con sintomi tiroidei o familiarità",
+      "target_conditions": ["ipotiroidismo", "ipertiroidismo", "tiroidite", "noduli tiroidei"],
+      "clinical_benefit": "Valutazione completa della funzione tiroidea e autoimmunità",
+      "clinical_rationale": "Include tutti gli ormoni tiroidei e gli anticorpi per diagnosi differenziale di patologie tiroidee",
+      "exams_included": [
+        "tsh-ultrasensibile",
+        "ft3",
+        "ft4",
+        "anti-tpo"
+      ],
+      "exams_count": 4,
+      "value_proposition": "Profilo tiroideo completo con screening autoimmunità",
+      "savings_percentage": 20,
+      "preparation_summary": {
+        "fasting_required": false,
+        "fasting_hours": 0,
+        "morning_only": true,
+        "special_notes": "Prelievo mattutino preferibile per valori più stabili"
+      },
+      "priority_score": 90,
+      "cta_text": "Prenota Profilo Tiroide",
+      "cta_url": "/prestazioni/checkup-tiroide",
+      "uplink_suggestion": "Per questo esame, il percorso più completo è il Profilo Tiroide Completo",
+      "schema_org": {
+        "@type": ["MedicalTest", "Product"],
+        "category": "DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "checkup-cardiovascolare",
+      "name": "Check-up Cardiovascolare",
+      "slug": "checkup-cardiovascolare",
+      "category": "cardiologia",
+      "target_patient": "Persone con fattori di rischio cardiovascolare",
+      "target_conditions": ["ipertensione", "dislipidemia", "diabete", "familiarità cardiovascolare"],
+      "clinical_benefit": "Valutazione completa del rischio cardiovascolare",
+      "clinical_rationale": "Profilo lipidico completo, glicemia, PCR ad alta sensibilità per stratificazione del rischio",
+      "exams_included": [
+        "colesterolo-totale",
+        "colesterolo-hdl",
+        "colesterolo-ldl",
+        "trigliceridi",
+        "glicemia",
+        "pcr"
+      ],
+      "exams_count": 6,
+      "value_proposition": "Profilo lipidico + marker infiammatori per il tuo cuore",
+      "savings_percentage": 18,
+      "preparation_summary": {
+        "fasting_required": true,
+        "fasting_hours": 12,
+        "morning_only": true,
+        "special_notes": "Digiuno 12 ore, evitare alcol 24h prima"
+      },
+      "priority_score": 88,
+      "cta_text": "Prenota Check-up Cuore",
+      "cta_url": "/prestazioni/checkup-cardiovascolare",
+      "schema_org": {
+        "@type": ["MedicalTest", "Product"],
+        "category": "DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "checkup-diabete",
+      "name": "Profilo Diabete",
+      "slug": "checkup-diabete",
+      "category": "metabolismo",
+      "target_patient": "Diabetici o persone a rischio",
+      "target_conditions": ["diabete tipo 2", "prediabete", "obesità", "familiarità diabete"],
+      "clinical_benefit": "Monitoraggio completo del compenso glicemico",
+      "clinical_rationale": "Glicemia a digiuno ed emoglobina glicata per diagnosi e monitoraggio del diabete",
+      "exams_included": [
+        "glicemia",
+        "emoglobina-glicata"
+      ],
+      "exams_count": 2,
+      "value_proposition": "Controllo glicemico a breve e lungo termine",
+      "savings_percentage": 10,
+      "preparation_summary": {
+        "fasting_required": true,
+        "fasting_hours": 8,
+        "morning_only": true,
+        "special_notes": "Digiuno almeno 8 ore"
+      },
+      "priority_score": 85,
+      "cta_text": "Prenota Profilo Diabete",
+      "cta_url": "/prestazioni/checkup-diabete",
+      "schema_org": {
+        "@type": ["MedicalTest", "Product"],
+        "category": "DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "checkup-epatico",
+      "name": "Profilo Epatico",
+      "slug": "checkup-epatico",
+      "category": "epatologia",
+      "target_patient": "Persone con sospetta epatopatia o uso farmaci",
+      "target_conditions": ["steatosi", "epatite", "cirrosi", "farmaci epatotossici"],
+      "clinical_benefit": "Valutazione completa della funzione epatica",
+      "clinical_rationale": "Transaminasi e GGT per screening e monitoraggio di patologie epatiche",
+      "exams_included": [
+        "ast-got",
+        "alt-gpt",
+        "gamma-gt"
+      ],
+      "exams_count": 3,
+      "value_proposition": "Controllo completo della salute del fegato",
+      "savings_percentage": 15,
+      "preparation_summary": {
+        "fasting_required": true,
+        "fasting_hours": 8,
+        "morning_only": false,
+        "special_notes": "Evitare alcol 24 ore prima"
+      },
+      "priority_score": 82,
+      "cta_text": "Prenota Profilo Epatico",
+      "cta_url": "/prestazioni/checkup-epatico",
+      "schema_org": {
+        "@type": ["MedicalTest", "Product"],
+        "category": "DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "checkup-renale",
+      "name": "Profilo Renale",
+      "slug": "checkup-renale",
+      "category": "nefrologia",
+      "target_patient": "Persone con ipertensione, diabete o familiarità",
+      "target_conditions": ["insufficienza renale", "nefropatia diabetica", "ipertensione"],
+      "clinical_benefit": "Valutazione completa della funzione renale",
+      "clinical_rationale": "Creatinina, azotemia e esame urine per screening nefropatia",
+      "exams_included": [
+        "creatinina",
+        "azotemia",
+        "esame-urine-completo"
+      ],
+      "exams_count": 3,
+      "value_proposition": "Controllo completo della funzione renale",
+      "savings_percentage": 12,
+      "preparation_summary": {
+        "fasting_required": false,
+        "fasting_hours": 0,
+        "morning_only": true,
+        "special_notes": "Portare campione urine primo mitto mattutino"
+      },
+      "priority_score": 80,
+      "cta_text": "Prenota Profilo Renale",
+      "cta_url": "/prestazioni/checkup-renale",
+      "schema_org": {
+        "@type": ["MedicalTest", "Product"],
+        "category": "DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "checkup-donna-over40",
+      "name": "Check-up Donna Over 40",
+      "slug": "checkup-donna-over40",
+      "category": "prevenzione",
+      "target_patient": "Donne oltre i 40 anni",
+      "target_conditions": ["menopausa", "osteoporosi", "anemia", "tiroide"],
+      "clinical_benefit": "Screening mirato per le esigenze della donna dopo i 40 anni",
+      "clinical_rationale": "Include tiroide, ferro, vitamina D e parametri metabolici specifici per la donna",
+      "exams_included": [
+        "emocromo-completo",
+        "tsh-ultrasensibile",
+        "ferritina",
+        "vitamina-d",
+        "colesterolo-totale",
+        "colesterolo-hdl",
+        "glicemia"
+      ],
+      "exams_count": 7,
+      "value_proposition": "7 esami mirati per la salute femminile dopo i 40",
+      "savings_percentage": 22,
+      "preparation_summary": {
+        "fasting_required": true,
+        "fasting_hours": 8,
+        "morning_only": true,
+        "special_notes": "Prelievo mattutino a digiuno"
+      },
+      "priority_score": 92,
+      "cta_text": "Prenota Check-up Donna Over 40",
+      "cta_url": "/prestazioni/checkup-donna-over40",
+      "schema_org": {
+        "@type": ["MedicalTest", "Product"],
+        "category": "DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "checkup-uomo-over40",
+      "name": "Check-up Uomo Over 40",
+      "slug": "checkup-uomo-over40",
+      "category": "prevenzione",
+      "target_patient": "Uomini oltre i 40 anni",
+      "target_conditions": ["prostata", "cardiovascolare", "metabolico"],
+      "clinical_benefit": "Screening mirato per le esigenze dell'uomo dopo i 40 anni",
+      "clinical_rationale": "Include PSA per prostata, profilo lipidico e metabolico per prevenzione cardiovascolare",
+      "exams_included": [
+        "emocromo-completo",
+        "psa-totale",
+        "colesterolo-totale",
+        "colesterolo-hdl",
+        "colesterolo-ldl",
+        "trigliceridi",
+        "glicemia"
+      ],
+      "exams_count": 7,
+      "value_proposition": "7 esami mirati per la salute maschile dopo i 40",
+      "savings_percentage": 22,
+      "preparation_summary": {
+        "fasting_required": true,
+        "fasting_hours": 12,
+        "morning_only": true,
+        "special_notes": "Digiuno 12 ore, evitare rapporti sessuali e bicicletta 48h prima"
+      },
+      "priority_score": 92,
+      "cta_text": "Prenota Check-up Uomo Over 40",
+      "cta_url": "/prestazioni/checkup-uomo-over40",
+      "schema_org": {
+        "@type": ["MedicalTest", "Product"],
+        "category": "DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "checkup-anemia",
+      "name": "Profilo Anemia",
+      "slug": "checkup-anemia",
+      "category": "ematologia",
+      "target_patient": "Persone con stanchezza, pallore o mestruazioni abbondanti",
+      "target_conditions": ["anemia sideropenica", "carenza ferro", "stanchezza cronica"],
+      "clinical_benefit": "Diagnosi completa delle cause di anemia",
+      "clinical_rationale": "Emocromo e assetto marziale per diagnosi differenziale dell'anemia",
+      "exams_included": [
+        "emocromo-completo",
+        "ferritina"
+      ],
+      "exams_count": 2,
+      "value_proposition": "Diagnosi completa di anemia e carenza di ferro",
+      "savings_percentage": 10,
+      "preparation_summary": {
+        "fasting_required": true,
+        "fasting_hours": 8,
+        "morning_only": true,
+        "special_notes": "Prelievo mattutino a digiuno"
+      },
+      "priority_score": 78,
+      "cta_text": "Prenota Profilo Anemia",
+      "cta_url": "/prestazioni/checkup-anemia",
+      "schema_org": {
+        "@type": ["MedicalTest", "Product"],
+        "category": "DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "checkup-prostata",
+      "name": "Profilo Prostata",
+      "slug": "checkup-prostata",
+      "category": "urologia",
+      "target_patient": "Uomini oltre i 50 anni o con familiarità",
+      "target_conditions": ["ipertrofia prostatica", "tumore prostata", "PSA elevato"],
+      "clinical_benefit": "Screening completo della salute prostatica",
+      "clinical_rationale": "PSA totale per screening tumore prostatico",
+      "exams_included": [
+        "psa-totale"
+      ],
+      "exams_count": 1,
+      "value_proposition": "Screening precoce per la salute della prostata",
+      "savings_percentage": 0,
+      "preparation_summary": {
+        "fasting_required": false,
+        "fasting_hours": 0,
+        "morning_only": false,
+        "special_notes": "Evitare rapporti sessuali, bicicletta, esplorazione rettale 48h prima"
+      },
+      "priority_score": 75,
+      "cta_text": "Prenota PSA",
+      "cta_url": "/prestazioni/checkup-prostata",
+      "schema_org": {
+        "@type": ["MedicalTest", "Product"],
+        "category": "DiagnosticProcedure"
+      }
+    },
+    {
+      "id": "checkup-osteoporosi",
+      "name": "Profilo Osteoporosi",
+      "slug": "checkup-osteoporosi",
+      "category": "metabolismo",
+      "target_patient": "Donne in menopausa o persone con fattori di rischio",
+      "target_conditions": ["osteoporosi", "osteopenia", "fratture da fragilità"],
+      "clinical_benefit": "Valutazione del metabolismo osseo",
+      "clinical_rationale": "Vitamina D e calcio per valutazione rischio osteoporosi",
+      "exams_included": [
+        "vitamina-d"
+      ],
+      "exams_count": 1,
+      "value_proposition": "Controllo della vitamina D per la salute delle ossa",
+      "savings_percentage": 0,
+      "preparation_summary": {
+        "fasting_required": false,
+        "fasting_hours": 0,
+        "morning_only": false,
+        "special_notes": "Nessuna preparazione richiesta"
+      },
+      "priority_score": 72,
+      "cta_text": "Prenota Vitamina D",
+      "cta_url": "/prestazioni/checkup-osteoporosi",
+      "schema_org": {
+        "@type": ["MedicalTest", "Product"],
+        "category": "DiagnosticProcedure"
+      }
+    }
+  ],
+  "categories": {
+    "prevenzione": {
+      "name": "Prevenzione",
+      "icon": "🛡️",
+      "description": "Check-up per la prevenzione generale"
+    },
+    "endocrinologia": {
+      "name": "Endocrinologia",
+      "icon": "⚗️",
+      "description": "Profili ormonali e tiroidei"
+    },
+    "cardiologia": {
+      "name": "Cardiologia",
+      "icon": "❤️",
+      "description": "Rischio cardiovascolare"
+    },
+    "metabolismo": {
+      "name": "Metabolismo",
+      "icon": "🔬",
+      "description": "Diabete e metabolismo"
+    },
+    "epatologia": {
+      "name": "Epatologia",
+      "icon": "🫀",
+      "description": "Funzione epatica"
+    },
+    "nefrologia": {
+      "name": "Nefrologia",
+      "icon": "💧",
+      "description": "Funzione renale"
+    },
+    "ematologia": {
+      "name": "Ematologia",
+      "icon": "🩸",
+      "description": "Sangue e anemia"
+    },
+    "urologia": {
+      "name": "Urologia",
+      "icon": "♂️",
+      "description": "Prostata e vie urinarie"
+    }
+  }
+}

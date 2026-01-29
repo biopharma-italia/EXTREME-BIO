@@ -1,0 +1,178 @@
+{
+  "version": "1.0.0",
+  "generated": "2026-01-27T10:00:00Z",
+  "description": "Dizionario sinonimi per ricerca clinica - Bio-Clinic",
+  "synonyms": {
+    "medici": {
+      "primary": "medici",
+      "alternatives": ["dottori", "specialisti", "professionisti", "equipe", "team medico"]
+    },
+    "visita": {
+      "primary": "visita",
+      "alternatives": ["controllo", "consulto", "appuntamento", "consultazione"]
+    },
+    "ecografia": {
+      "primary": "ecografia",
+      "alternatives": ["eco", "ultrasuoni", "ecografo"]
+    },
+    "esame": {
+      "primary": "esame",
+      "alternatives": ["test", "analisi", "accertamento", "indagine"]
+    },
+    "prenotare": {
+      "primary": "prenotare",
+      "alternatives": ["fissare", "prendere appuntamento", "booking"]
+    },
+    "tiroide": {
+      "primary": "tiroide",
+      "alternatives": ["ghiandola tiroidea", "collo"]
+    },
+    "cuore": {
+      "primary": "cuore",
+      "alternatives": ["cardiaco", "cardiovascolare", "petto"]
+    },
+    "stomaco": {
+      "primary": "stomaco",
+      "alternatives": ["gastrico", "addome", "pancia"]
+    },
+    "fegato": {
+      "primary": "fegato",
+      "alternatives": ["epatico", "transaminasi"]
+    },
+    "reni": {
+      "primary": "reni",
+      "alternatives": ["renale", "nefrologico", "urina"]
+    },
+    "sangue": {
+      "primary": "sangue",
+      "alternatives": ["ematico", "prelievo", "analisi del sangue"]
+    },
+    "gravidanza": {
+      "primary": "gravidanza",
+      "alternatives": ["incinta", "gestazione", "maternità", "aspettare un bambino"]
+    },
+    "dimagrire": {
+      "primary": "dimagrire",
+      "alternatives": ["perdere peso", "dieta", "snellire", "calare di peso"]
+    },
+    "stanchezza": {
+      "primary": "stanchezza",
+      "alternatives": ["affaticamento", "debolezza", "spossatezza", "astenia"]
+    },
+    "dolore": {
+      "primary": "dolore",
+      "alternatives": ["male", "fastidio", "sofferenza"]
+    },
+    "prevenzione": {
+      "primary": "prevenzione",
+      "alternatives": ["screening", "controllo periodico", "check-up"]
+    },
+    "anziano": {
+      "primary": "anziano",
+      "alternatives": ["over 60", "terza età", "senior"]
+    },
+    "bambino": {
+      "primary": "bambino",
+      "alternatives": ["pediatrico", "minore", "figlio", "bimbo"]
+    },
+    "donna": {
+      "primary": "donna",
+      "alternatives": ["femminile", "signora", "femmina"]
+    },
+    "uomo": {
+      "primary": "uomo",
+      "alternatives": ["maschile", "signore", "maschio"]
+    }
+  },
+  "abbreviations": {
+    "eco": "ecografia",
+    "ecg": "elettrocardiogramma",
+    "emg": "elettromiografia",
+    "rx": "radiografia",
+    "tac": "tomografia computerizzata",
+    "rm": "risonanza magnetica",
+    "moc": "mineralometria ossea",
+    "tsh": "ormone tireostimolante",
+    "ft3": "triiodotironina libera",
+    "ft4": "tiroxina libera",
+    "psa": "antigene prostatico specifico",
+    "hba1c": "emoglobina glicata",
+    "got": "aspartato aminotransferasi",
+    "gpt": "alanina aminotransferasi",
+    "ast": "aspartato aminotransferasi",
+    "alt": "alanina aminotransferasi",
+    "ggt": "gamma glutamil transferasi",
+    "ves": "velocità di eritrosedimentazione",
+    "pcr": "proteina c reattiva",
+    "hcg": "gonadotropina corionica",
+    "bun": "azoto ureico",
+    "hdl": "lipoproteine alta densità",
+    "ldl": "lipoproteine bassa densità",
+    "bia": "bioimpedenziometria",
+    "pma": "procreazione medicalmente assistita",
+    "ivf": "fecondazione in vitro",
+    "icsi": "iniezione intracitoplasmatica",
+    "fivet": "fecondazione in vitro",
+    "nt": "translucenza nucale"
+  },
+  "body_parts": {
+    "testa": ["cefalea", "mal di testa", "emicrania", "vertigini"],
+    "occhi": ["vista", "visione", "retina", "cornea", "glaucoma", "cataratta"],
+    "orecchie": ["udito", "otite", "acufeni"],
+    "naso": ["sinusite", "rinite", "allergia"],
+    "gola": ["tonsille", "faringite", "laringite"],
+    "collo": ["tiroide", "linfonodi", "cervicale"],
+    "petto": ["cuore", "polmoni", "seno", "mammella"],
+    "addome": ["stomaco", "intestino", "fegato", "milza", "pancreas"],
+    "schiena": ["colonna", "vertebre", "lombare", "dorsale"],
+    "braccia": ["spalla", "gomito", "polso", "mano"],
+    "gambe": ["anca", "ginocchio", "caviglia", "piede"],
+    "pelle": ["derma", "cute", "epidermide", "nei"]
+  },
+  "symptoms_to_specialty": {
+    "mal di testa": ["neurologia"],
+    "vertigini": ["neurologia", "oculistica"],
+    "stanchezza": ["endocrinologia", "ematologia"],
+    "dolore petto": ["cardiologia"],
+    "affanno": ["cardiologia", "pneumologia"],
+    "palpitazioni": ["cardiologia"],
+    "dolore addominale": ["gastroenterologia"],
+    "nausea": ["gastroenterologia"],
+    "prurito": ["dermatologia"],
+    "eruzione cutanea": ["dermatologia"],
+    "dolore articolare": ["ortopedia", "reumatologia"],
+    "formicolio": ["neurologia"],
+    "irregolarità mestruale": ["ginecologia"],
+    "difficoltà urinarie": ["urologia"],
+    "problemi vista": ["oculistica"]
+  },
+  "common_misspellings": {
+    "tiroyde": "tiroide",
+    "tiroidea": "tiroide",
+    "tirode": "tiroide",
+    "colestetolo": "colesterolo",
+    "colestrerolo": "colesterolo",
+    "glicemmia": "glicemia",
+    "emoglobinna": "emoglobina",
+    "cardiollogia": "cardiologia",
+    "gineccologia": "ginecologia",
+    "dermatologgia": "dermatologia",
+    "ecocolordoppler": "ecocardio color doppler",
+    "elettrocardiogramma": "ecg",
+    "elletrocardiogramma": "ecg",
+    "ecographia": "ecografia",
+    "echografia": "ecografia",
+    "paptest": "pap test",
+    "spermiograma": "spermiogramma",
+    "holterr": "holter",
+    "hoter": "holter",
+    "diabettes": "diabete",
+    "diabete": "diabete",
+    "anemmia": "anemia",
+    "anemía": "anemia",
+    "prostatta": "prostata",
+    "prosstata": "prostata",
+    "ferittina": "ferritina",
+    "feritina": "ferritina"
+  }
+}
