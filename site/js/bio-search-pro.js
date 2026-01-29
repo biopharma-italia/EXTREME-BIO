@@ -1126,7 +1126,8 @@ const BioSearchPro = (function() {
 // Auto-init on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
   // Init su hero search se presente
-  if (document.getElementById('hero-search-input')) {
+  const heroInput = document.getElementById('hero-search-input');
+  if (heroInput) {
     BioSearchPro.init('#hero-search-input', '#hero-autocomplete');
   }
   
@@ -1139,6 +1140,24 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('searchInput')) {
     BioSearchPro.init('#searchInput', null);
   }
+
+  // Handler per suggestion tags (Tiroide, Cardiologia, Slim Care, etc.)
+  document.querySelectorAll('[data-search-suggestion]').forEach(tag => {
+    tag.style.cursor = 'pointer';
+    tag.addEventListener('click', () => {
+      const query = tag.dataset.searchSuggestion;
+      const input = document.getElementById('hero-search-input') || 
+                    document.getElementById('header-search-input') ||
+                    document.getElementById('searchInput');
+      
+      if (input) {
+        input.value = query;
+        input.focus();
+        // Trigger input event to show dropdown
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+    });
+  });
 
   console.log('[BioSearchPro] v1.0.0 loaded');
 });
