@@ -954,8 +954,14 @@ const BioSearchPro = (function() {
       dropdownEl = document.createElement('div');
       dropdownEl.className = 'bio-search-dropdown';
       dropdownEl.id = inputSelector.replace('#', '') + '-dropdown';
-      input.parentNode.style.position = 'relative';
-      input.parentNode.appendChild(dropdownEl);
+      
+      // Append to .search-box-hero (avoids overflow:hidden in input-wrapper)
+      // Or fallback to parent's parent, then parent
+      const searchBox = input.closest('.search-box-hero') || 
+                        input.parentNode.parentNode || 
+                        input.parentNode;
+      searchBox.style.position = 'relative';
+      searchBox.appendChild(dropdownEl);
     } else {
       // Aggiungi classe bio-search-dropdown se manca
       if (!dropdownEl.classList.contains('bio-search-dropdown')) {
