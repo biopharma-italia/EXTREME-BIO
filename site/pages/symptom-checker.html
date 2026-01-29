@@ -421,11 +421,27 @@
 <script src="../js/symptom-checker.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        console.log('[SC DEBUG] DOMContentLoaded fired');
+        console.log('[SC DEBUG] SymptomChecker type:', typeof SymptomChecker);
+        
+        var container = document.getElementById('symptom-checker-widget');
+        console.log('[SC DEBUG] Container found:', container ? 'YES' : 'NO');
+        
         if (typeof SymptomChecker !== 'undefined') {
-            SymptomChecker.init('symptom-checker-widget');
+            console.log('[SC DEBUG] Initializing SymptomChecker...');
+            try {
+                SymptomChecker.init('symptom-checker-widget');
+                console.log('[SC DEBUG] SymptomChecker initialized successfully');
+                console.log('[SC DEBUG] Container HTML length after init:', container ? container.innerHTML.length : 0);
+            } catch(e) {
+                console.error('[SC DEBUG] Init error:', e.message);
+                console.error(e.stack);
+            }
         } else {
-            console.error('SymptomChecker not loaded');
-            document.getElementById('symptom-checker-widget').innerHTML = '<div style="text-align:center;padding:40px;background:#fef2f2;border-radius:12px;"><h3 style="color:#dc2626;">⚠️ Errore di caricamento</h3><p>Impossibile caricare il Symptom Checker. Riprova più tardi o <a href="tel:+390799561332">contattaci</a>.</p></div>';
+            console.error('[SC DEBUG] SymptomChecker NOT defined');
+            if (container) {
+                container.innerHTML = '<div style="text-align:center;padding:40px;background:#fef2f2;border-radius:12px;"><h3 style="color:#dc2626;">⚠️ Errore di caricamento</h3><p>Impossibile caricare il Symptom Checker. Riprova più tardi o <a href="tel:+390799561332">contattaci</a>.</p></div>';
+            }
         }
     });
 </script>
