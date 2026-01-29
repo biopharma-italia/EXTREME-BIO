@@ -1,0 +1,25 @@
+{
+  "procedure": "Procedure(id='ecografia-tiroidea', name='Ecografia Tiroidea', specialty_id='endocrinologia', category='diagnostica', page_type='A', status='active', name_extended='Ecografia della Tiroide', slug='ecografia-tiroidea', content={'description_short': 'Esame ecografico per valutare morfologia e noduli tiroidei', 'description_file': 'procedures/ecografia-tiroidea.md'}, clinical={'duration_minutes': 15, 'preparation': {'required': False, 'notes': 'Abbigliamento con scollatura ampia'}}, indications=['Noduli tiroidei', 'Gozzo', 'Tiroidite', 'Ipo/ipertiroidismo'], related_procedures=['visita-endocrinologica', 'agoaspirato-tiroide'], pathways=['checkup-tiroide'], faqs=[], pricing={}, upsell_pack=None, seo={}, schema_org={}, visibility={'has_dedicated_page': True, 'page_url': '/pages/ecografia-tiroidea.html', 'priority_order': 1}, page_url='/pages/ecografia-tiroidea.html', has_dedicated_page=True, physicians=[{'id': 'francesco-tolu', 'display_name': 'Dott. Francesco Tolu', 'page_url': '/equipe/francesco-tolu.html', 'image_url': 'images/team/default-avatar.webp', 'specialty_id': 'endocrinologia'}, {'id': 'irene-aini', 'display_name': 'Dott.ssa Irene Aini', 'page_url': '/equipe/irene-aini.html', 'image_url': 'images/team/default-avatar.webp', 'specialty_id': 'endocrinologia'}])",
+  "specialty": "Specialty(id='endocrinologia', name='Endocrinologia', slug='endocrinologia', status='active', name_extended='Endocrinologia e Malattie del Metabolismo', display={'icon': '🦋', 'color_primary': '#4A90A4', 'color_light': '#E3F2FD'}, content={'description_short': 'Centro Tiroide e Metabolismo: diagnosi e cura delle patologie endocrine'}, page_config={}, visibility={'show_in_menu': True, 'menu_order': 3, 'show_in_homepage': True}, page_url='/pages/endocrinologia.html', physicians=[{'id': 'francesco-tolu', 'display_name': 'Dott. Francesco Tolu', 'job_title': 'Endocrinologo', 'page_url': '/equipe/francesco-tolu.html', 'image_url': 'images/team/default-avatar.webp', 'role_badges': [], 'priority_order': 1}, {'id': 'irene-aini', 'display_name': 'Dott.ssa Irene Aini', 'job_title': 'Endocrinologa', 'page_url': '/equipe/irene-aini.html', 'image_url': 'images/team/default-avatar.webp', 'role_badges': [], 'priority_order': 2}], procedures=[{'id': 'ecografia-tiroidea', 'name': 'Ecografia Tiroidea', 'category': 'diagnostica', 'page_type': 'A', 'page_url': '/pages/ecografia-tiroidea.html', 'has_dedicated_page': True}, {'id': 'visita-endocrinologica', 'name': 'Visita Endocrinologica', 'category': 'visita', 'page_type': 'A', 'page_url': '/pages/visita-endocrinologica.html', 'has_dedicated_page': True}], physicians_count=2, procedures_count=2)",
+  "physicians": [
+    {
+      "id": "francesco-tolu",
+      "display_name": "Dott. Francesco Tolu",
+      "page_url": "/equipe/francesco-tolu.html",
+      "image_url": "images/team/default-avatar.webp",
+      "specialty_id": "endocrinologia"
+    },
+    {
+      "id": "irene-aini",
+      "display_name": "Dott.ssa Irene Aini",
+      "page_url": "/equipe/irene-aini.html",
+      "image_url": "images/team/default-avatar.webp",
+      "specialty_id": "endocrinologia"
+    }
+  ],
+  "schema_json": "{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"MedicalClinic\",\n      \"@id\": \"https://bio-clinic.it/#clinic\",\n      \"name\": \"Bio-Clinic Sassari\",\n      \"url\": \"https://bio-clinic.it\",\n      \"telephone\": \"+39 079 956 1332\",\n      \"address\": {\n        \"@type\": \"PostalAddress\",\n        \"streetAddress\": \"Via Renzo Mossa, 23\",\n        \"addressLocality\": \"Sassari\",\n        \"postalCode\": \"07100\",\n        \"addressCountry\": \"IT\"\n      }\n    },\n    {\n      \"@type\": \"MedicalProcedure\",\n      \"@id\": \"https://bio-clinic.it/pages/ecografia-tiroidea/#procedure\",\n      \"name\": \"Ecografia Tiroidea\",\n      \"alternateName\": \"Ecografia della Tiroide\",\n      \"description\": \"Esame ecografico per valutare morfologia e noduli tiroidei\",\n      \"procedureType\": null,\n      \"bodyLocation\": null,\n      \"howPerformed\": null,\n      \"preparation\": \"Abbigliamento con scollatura ampia\",\n      \"relevantSpecialty\": {\n        \"@type\": \"MedicalSpecialty\",\n        \"name\": \"Endocrinologia\"\n      },\n      \"provider\": {\n        \"@id\": \"https://bio-clinic.it/#clinic\"\n      }\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://bio-clinic.it/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Endocrinologia\",\n          \"item\": \"https://bio-clinic.it/pages/endocrinologia.html\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Ecografia Tiroidea\",\n          \"item\": \"https://bio-clinic.it/pages/ecografia-tiroidea.html\"\n        }\n      ]\n    }\n  ]\n}",
+  "site": {
+    "name": "Bio-Clinic Sassari",
+    "phone": "079 956 1332"
+  }
+}

@@ -1,0 +1,554 @@
+# ============================================================================
+# BIO-CLINIC PHYSICIANS v2.1
+# Source of Truth per tutti i medici
+# ============================================================================
+
+schema_version: "2.1"
+last_updated: "2026-01-29"
+
+physicians:
+
+  # ==========================================================================
+  # GINECOLOGIA E OSTETRICIA
+  # ==========================================================================
+  
+  - id: "salvatore-dessole"
+    
+    # --- Identità ---
+    title: "Prof."
+    first_name: "Salvatore"
+    last_name: "Dessole"
+    name: "Salvatore Dessole"
+    
+    # --- Ruolo ---
+    specialty_id: "ginecologia"
+    job_title: "Direttore Sanitario - Ginecologo Senior"
+    role_badges:
+      - "Direttore Sanitario"
+      - "Professore Emerito"
+    is_director: true
+    
+    # --- Competenze ---
+    procedures:
+      - "visita-ginecologica"
+      - "ecografia-ostetrica-3d"
+      - "consulto-pma"
+      - "ecografia-morfologica"
+    pathways:
+      - "pma-fertilita"
+      - "slim-care-donna"
+    
+    # --- Contenuto ---
+    bio_short: "Professore Emerito, fondatore di Bio-Clinic, oltre 40 anni di esperienza in ginecologia e ostetricia. Punto di riferimento per la medicina della riproduzione in Sardegna."
+    bio_file: "physicians/salvatore-dessole.md"
+    image: null  # Usa convenzione: images/team/salvatore-dessole.webp
+    
+    # --- Prenotazione ---
+    booking:
+      enabled: true
+      miodottore_id: "salvatore-dessole"
+      miodottore_url: "https://www.miodottore.it/salvatore-dessole/ginecologo/sassari"
+      direct_phone: true
+      online_booking: true
+    
+    # --- Disponibilità ---
+    availability: ["Lun", "Mar", "Mer", "Gio", "Ven"]
+    
+    # --- Pubblicazioni ---
+    publications:
+      - title: "Reproductive outcomes in Sardinian women"
+        url: "https://pubmed.ncbi.nlm.nih.gov/example1"
+        journal: "Journal of Reproductive Medicine"
+        year: 2020
+    
+    # --- Visibilità ---
+    visibility:
+      show_in_equipe: true
+      show_in_specialty_page: true
+      show_booking_widget: true
+      featured_on_homepage: true
+      priority_order: 1
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "francesco-dessole"
+    
+    title: "Dott."
+    first_name: "Francesco"
+    last_name: "Dessole"
+    name: "Francesco Dessole"
+    
+    specialty_id: "ginecologia"
+    job_title: "Ginecologo"
+    role_badges:
+      - "Medico Rif. Slim Care Donna"
+    
+    procedures:
+      - "visita-ginecologica"
+      - "ecografia-ginecologica"
+      - "ecografia-ostetrica-3d"
+      - "monitoraggio-follicolare"
+      - "colposcopia"
+    pathways:
+      - "pma-fertilita"
+      - "slim-care-donna"
+    
+    bio_short: "Ginecologo con esperienza in ecografia ostetrica e ginecologica, PMA e chirurgia mini-invasiva."
+    bio_file: "physicians/francesco-dessole.md"
+    
+    booking:
+      enabled: true
+      miodottore_id: "francesco-dessole"
+      miodottore_url: "https://www.miodottore.it/francesco-dessole/ginecologo/sassari"
+      direct_phone: true
+      online_booking: true
+    
+    availability: ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab"]
+    
+    visibility:
+      show_in_equipe: true
+      show_in_specialty_page: true
+      show_booking_widget: true
+      featured_on_homepage: false
+      priority_order: 2
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "margherita-dessole"
+    
+    title: "Dott.ssa"
+    first_name: "Margherita"
+    last_name: "Dessole"
+    name: "Margherita Dessole"
+    
+    specialty_id: "ginecologia"
+    job_title: "Ginecologa"
+    
+    procedures:
+      - "visita-ginecologica"
+      - "ecografia-ginecologica"
+      - "pap-test"
+    
+    bio_short: "Ginecologa con esperienza in ostetricia e ginecologia generale."
+    
+    booking:
+      enabled: true
+      miodottore_id: "margherita-dessole"
+      miodottore_url: "https://www.miodottore.it/margherita-dessole/ginecologo/sassari"
+    
+    visibility:
+      priority_order: 5
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "maddalena-pola"
+    
+    title: "Dott.ssa"
+    first_name: "Maddalena"
+    last_name: "Pola"
+    name: "Maddalena Pola"
+    
+    specialty_id: "ginecologia"
+    job_title: "Ginecologa"
+    
+    procedures:
+      - "visita-ginecologica"
+      - "ecografia-ginecologica"
+    
+    bio_short: "Ginecologa specializzata in diagnostica ginecologica."
+    
+    booking:
+      enabled: true
+      miodottore_id: "maddalena-pola"
+    
+    visibility:
+      priority_order: 6
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "marco-petrillo"
+    
+    title: "Prof."
+    first_name: "Marco"
+    last_name: "Petrillo"
+    name: "Marco Petrillo"
+    
+    specialty_id: "ginecologia"
+    job_title: "Ginecologo"
+    role_badges:
+      - "Professore"
+    
+    procedures:
+      - "visita-ginecologica"
+      - "isteroscopia"
+      - "chirurgia-ginecologica"
+    
+    bio_short: "Professore universitario, esperto in chirurgia ginecologica mini-invasiva."
+    
+    publications:
+      - title: "Minimally invasive surgery in gynecologic oncology"
+        url: "https://pubmed.ncbi.nlm.nih.gov/example2"
+        journal: "Gynecologic Oncology"
+        year: 2021
+    
+    booking:
+      enabled: true
+      miodottore_id: "marco-petrillo"
+    
+    visibility:
+      priority_order: 3
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "antonella-pruneddu"
+    
+    title: "Dott.ssa"
+    first_name: "Antonella"
+    last_name: "Pruneddu"
+    name: "Antonella Pruneddu"
+    
+    specialty_id: "ginecologia"
+    job_title: "Ginecologa"
+    
+    procedures:
+      - "visita-ginecologica"
+      - "ecografia-ginecologica"
+    
+    bio_short: "Ginecologa con esperienza in ginecologia generale e ostetricia."
+    
+    booking:
+      enabled: true
+      miodottore_id: "antonella-pruneddu"
+    
+    visibility:
+      priority_order: 7
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "paolo-dessole"
+    
+    title: "Dott."
+    first_name: "Paolo"
+    last_name: "Dessole"
+    name: "Paolo Dessole"
+    
+    specialty_id: "ginecologia"
+    job_title: "Ginecologo"
+    
+    procedures:
+      - "visita-ginecologica"
+      - "ecografia-ostetrica-3d"
+    
+    bio_short: "Ginecologo specializzato in ecografia ostetrica."
+    
+    booking:
+      enabled: true
+    
+    visibility:
+      priority_order: 4
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  # OSTETRICHE
+  # --------------------------------------------------------------------------
+  - id: "angelica-fois"
+    
+    title: "Dott.ssa"
+    first_name: "Angelica"
+    last_name: "Fois"
+    name: "Angelica Fois"
+    
+    specialty_id: "ostetricia"
+    job_title: "Ostetrica"
+    
+    procedures:
+      - "assistenza-ostetrica"
+      - "corso-preparto"
+    
+    bio_short: "Ostetrica dedicata all'accompagnamento della gravidanza e al supporto nel post-partum."
+    
+    booking:
+      enabled: true
+      miodottore_id: "angelica-fois"
+      miodottore_url: "https://www.miodottore.it/angelica-fois/ostetrica/sassari"
+    
+    visibility:
+      priority_order: 1
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "camilla-ruzzoli"
+    
+    title: "Dott.ssa"
+    first_name: "Camilla"
+    last_name: "Ruzzoli"
+    name: "Camilla Ruzzoli"
+    
+    specialty_id: "ostetricia"
+    job_title: "Ostetrica"
+    
+    procedures:
+      - "assistenza-ostetrica"
+      - "corso-preparto"
+      - "riabilitazione-pavimento-pelvico"
+    
+    bio_short: "Ostetrica specializzata in assistenza alla gravidanza e riabilitazione del pavimento pelvico."
+    
+    booking:
+      enabled: false  # Non ha profilo MioDottore
+    
+    visibility:
+      priority_order: 2
+    
+    status: "active"
+
+  # ==========================================================================
+  # CARDIOLOGIA
+  # ==========================================================================
+  
+  - id: "tonino-bullitta"
+    
+    title: "Dr."
+    first_name: "Tonino"
+    last_name: "Bullitta"
+    name: "Tonino Bullitta"
+    
+    specialty_id: "cardiologia"
+    job_title: "Cardiologo"
+    
+    procedures:
+      - "visita-cardiologica"
+      - "ecg"
+      - "ecocardiogramma"
+      - "holter-ecg"
+      - "holter-pressorio"
+    pathways:
+      - "checkup-cardiovascolare"
+    
+    bio_short: "Cardiologo con esperienza in diagnostica cardiologica non invasiva."
+    
+    booking:
+      enabled: true
+      miodottore_id: "tonino-bullitta"
+    
+    visibility:
+      priority_order: 1
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "sara-uras"
+    
+    title: "Dott.ssa"
+    first_name: "Sara"
+    last_name: "Uras"
+    name: "Sara Uras"
+    
+    specialty_id: "cardiologia"
+    job_title: "Cardiologa"
+    
+    procedures:
+      - "visita-cardiologica"
+      - "ecg"
+      - "ecocardiogramma"
+    
+    bio_short: "Cardiologa specializzata in ecocardiografia."
+    
+    booking:
+      enabled: true
+      miodottore_id: "sara-uras"
+    
+    visibility:
+      priority_order: 2
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "paolo-pischedda"
+    
+    title: "Dott."
+    first_name: "Paolo"
+    last_name: "Pischedda"
+    name: "Paolo Pischedda"
+    
+    specialty_id: "cardiologia"
+    job_title: "Cardiologo"
+    
+    procedures:
+      - "visita-cardiologica"
+      - "ecg"
+      - "ecocardiogramma"
+    
+    bio_short: "Cardiologo con esperienza in diagnostica cardiovascolare."
+    
+    booking:
+      enabled: true
+      miodottore_id: "paolo-pischedda"
+    
+    visibility:
+      priority_order: 3
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "paolo-franca"
+    
+    title: "Dott."
+    first_name: "Paolo"
+    last_name: "Franca"
+    name: "Paolo Franca"
+    
+    specialty_id: "cardiologia"
+    job_title: "Cardiologo"
+    
+    procedures:
+      - "visita-cardiologica"
+      - "ecg"
+      - "ecocardiogramma"
+    
+    bio_short: "Cardiologo interventista con esperienza in sindromi coronariche."
+    
+    publications:
+      - title: "Orodispersible Ticagrelor in Acute Coronary Syndromes"
+        url: "https://www.jacc.org/doi/10.1016/j.jacc.2021.05.015"
+        journal: "Journal of the American College of Cardiology"
+        year: 2021
+    
+    booking:
+      enabled: true
+      miodottore_id: "paolo-franca"
+    
+    visibility:
+      priority_order: 4
+    
+    status: "active"
+
+  # ==========================================================================
+  # ENDOCRINOLOGIA
+  # ==========================================================================
+  
+  - id: "francesco-tolu"
+    
+    title: "Dott."
+    first_name: "Francesco"
+    last_name: "Tolu"
+    name: "Francesco Tolu"
+    
+    specialty_id: "endocrinologia"
+    job_title: "Endocrinologo"
+    
+    procedures:
+      - "visita-endocrinologica"
+      - "ecografia-tiroidea"
+    pathways:
+      - "checkup-tiroide"
+      - "slim-care"
+    
+    bio_short: "Endocrinologo specializzato in patologie tiroidee e metaboliche."
+    
+    booking:
+      enabled: true
+      miodottore_id: "francesco-tolu"
+    
+    visibility:
+      priority_order: 1
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "irene-aini"
+    
+    title: "Dott.ssa"
+    first_name: "Irene"
+    last_name: "Aini"
+    name: "Irene Aini"
+    
+    specialty_id: "endocrinologia"
+    job_title: "Endocrinologa"
+    
+    procedures:
+      - "visita-endocrinologica"
+      - "ecografia-tiroidea"
+    pathways:
+      - "checkup-tiroide"
+    
+    bio_short: "Endocrinologa con esperienza in patologie tiroidee."
+    
+    booking:
+      enabled: true
+      miodottore_id: "irene-aini"
+    
+    visibility:
+      priority_order: 2
+    
+    status: "active"
+
+  # ==========================================================================
+  # DERMATOLOGIA
+  # ==========================================================================
+  
+  - id: "giovanna-costa"
+    
+    title: "Dott.ssa"
+    first_name: "Giovanna"
+    last_name: "Costa"
+    name: "Giovanna Costa"
+    
+    specialty_id: "dermatologia"
+    job_title: "Dermatologa"
+    
+    procedures:
+      - "visita-dermatologica"
+      - "mappatura-nevi"
+      - "dermatoscopia-digitale"
+    
+    bio_short: "Dermatologa specializzata in dermatoscopia e mappatura nevi."
+    
+    booking:
+      enabled: true
+      miodottore_id: "giovanna-costa-2"
+    
+    visibility:
+      priority_order: 1
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "alessandra-musinu"
+    
+    title: "Dott.ssa"
+    first_name: "Alessandra"
+    last_name: "Musinu"
+    name: "Alessandra Musinu"
+    
+    specialty_id: "dermatologia"
+    job_title: "Dermatologa"
+    
+    procedures:
+      - "visita-dermatologica"
+      - "mappatura-nevi"
+    
+    bio_short: "Dermatologa con esperienza in patologie cutanee."
+    
+    booking:
+      enabled: true
+      miodottore_id: "alessandra-musinu"
+    
+    visibility:
+      priority_order: 2
+    
+    status: "active"
+
+# ============================================================================
+# NOTE: Questo file contiene un subset dei medici per esempio.
+# Il file completo conterrà tutti i 48+ medici.
+# Ogni medico nuovo va aggiunto qui seguendo lo schema.
+# ============================================================================

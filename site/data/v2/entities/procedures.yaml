@@ -1,0 +1,559 @@
+# ============================================================================
+# BIO-CLINIC PROCEDURES v2.1
+# Source of Truth per tutte le prestazioni/servizi
+# ============================================================================
+
+schema_version: "2.1"
+last_updated: "2026-01-29"
+
+# PAGE_TYPE LEGEND:
+# A = Pagina dedicata (alto valore decisionale)
+# B = Hub aggregato (raggruppate per tema)
+# C = Vive nel percorso (utile solo in contesto percorso)
+# D = Solo database/listino (commodity, no contenuto editoriale)
+
+procedures:
+
+  # ==========================================================================
+  # GINECOLOGIA - VISITE
+  # ==========================================================================
+  
+  - id: "visita-ginecologica"
+    
+    # --- Identità ---
+    name: "Visita Ginecologica"
+    name_extended: "Visita Ginecologica Specialistica"
+    slug: "visita-ginecologica"
+    
+    # --- Classificazione ---
+    specialty_id: "ginecologia"
+    category: "visita"
+    page_type: "A"  # Pagina dedicata - gate di ingresso
+    
+    # --- Contenuto ---
+    content:
+      description_short: "Valutazione completa della salute ginecologica femminile"
+      description_file: "procedures/visita-ginecologica.md"
+    
+    # --- Info Cliniche ---
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: true
+        fasting: false
+        notes: "Evitare rapporti 24-48h prima. No lavande vaginali. Preferibile lontano dal ciclo."
+      follow_up: "Controllo annuale consigliato"
+    
+    # --- Indicazioni ---
+    indications:
+      - "Controllo periodico annuale"
+      - "Irregolarità mestruali"
+      - "Dolore pelvico"
+      - "Pianificazione gravidanza"
+      - "Contraccezione"
+      - "Screening oncologico"
+    
+    # --- Relazioni ---
+    related_procedures:
+      - "ecografia-transvaginale"
+      - "pap-test"
+      - "colposcopia"
+      - "ecografia-mammaria"
+    pathways:
+      - "pma-fertilita"
+      - "slim-care-donna"
+      - "checkup-donna-under40"
+      - "checkup-donna-over40"
+    
+    # --- FAQ ---
+    faqs:
+      - question: "Ogni quanto fare la visita ginecologica?"
+        answer: "Si consiglia una visita annuale per tutte le donne adulte. La frequenza può variare in base all'età e alla storia clinica."
+      - question: "La visita ginecologica è dolorosa?"
+        answer: "No, la visita non dovrebbe essere dolorosa. Può esserci un leggero fastidio durante l'esame con speculum."
+      - question: "Posso fare la visita durante il ciclo?"
+        answer: "È preferibile evitare il periodo mestruale, soprattutto se previsto il pap-test. In caso di urgenza, la visita può comunque essere effettuata."
+    
+    # --- Pricing & Upsell ---
+    pricing:
+      show_price: false
+      price: null
+    upsell_pack: "checkup-donna-under40"
+    is_stat: false
+    
+    # --- SEO ---
+    seo:
+      meta_title: "Visita Ginecologica Sassari | Quando Farla | Bio-Clinic"
+      meta_description: "Visita ginecologica a Sassari: quando è indicata, cosa comprende, come prepararsi. 7 ginecologi. Prenota: 079 956 1332"
+    
+    # --- Schema.org ---
+    schema_org:
+      type: "MedicalProcedure"
+      procedure_type: "DiagnosticProcedure"
+      body_location: "Apparato genitale femminile"
+    
+    # --- Visibilità ---
+    visibility:
+      has_dedicated_page: true
+      show_in_specialty_page: true
+      show_in_search: true
+      booking_enabled: true
+      priority_order: 1
+    
+    status: "active"
+
+  # ==========================================================================
+  # GINECOLOGIA - DIAGNOSTICA ECOGRAFICA
+  # ==========================================================================
+  
+  - id: "ecografia-transvaginale"
+    
+    name: "Ecografia Transvaginale"
+    name_extended: "Ecografia Pelvica Transvaginale"
+    slug: "ecografia-transvaginale"
+    
+    specialty_id: "ginecologia"
+    category: "diagnostica"
+    page_type: "A"  # Alto valore - confusione con eco pelvica
+    
+    content:
+      description_short: "Esame ecografico per visualizzare utero, ovaie e strutture pelviche"
+      description_file: "procedures/ecografia-transvaginale.md"
+    
+    clinical:
+      duration_minutes: 20
+      preparation:
+        required: true
+        fasting: false
+        notes: "Vescica vuota. No tamponi vaginali."
+    
+    indications:
+      - "Monitoraggio ovarico"
+      - "Studio endometrio"
+      - "Cisti ovariche"
+      - "Fibromi"
+      - "Gravidanza iniziale"
+    
+    related_procedures:
+      - "visita-ginecologica"
+      - "ecografia-mammaria"
+      - "monitoraggio-follicolare"
+    pathways:
+      - "pma-fertilita"
+    
+    faqs:
+      - question: "Che differenza c'è tra ecografia transvaginale e pelvica?"
+        answer: "L'ecografia transvaginale usa una sonda interna per immagini più dettagliate di utero e ovaie. L'ecografia pelvica addominale usa una sonda esterna sulla pancia."
+    
+    schema_org:
+      type: "MedicalProcedure"
+      procedure_type: "ImagingTest"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 2
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "ecografia-ostetrica-3d"
+    
+    name: "Ecografia Ostetrica 3D/4D"
+    name_extended: "Ecografia Ostetrica Tridimensionale"
+    slug: "ecografia-ostetrica-3d"
+    
+    specialty_id: "ginecologia"
+    category: "diagnostica"
+    page_type: "A"
+    
+    content:
+      description_short: "Ecografia avanzata per visualizzare il feto in 3D e 4D"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: false
+    
+    indications:
+      - "Visualizzazione fetale"
+      - "Screening anomalie"
+      - "Ricordo gravidanza"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 3
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "monitoraggio-follicolare"
+    
+    name: "Monitoraggio Follicolare"
+    name_extended: "Monitoraggio Ecografico dell'Ovulazione"
+    slug: "monitoraggio-follicolare"
+    
+    specialty_id: "ginecologia"
+    category: "diagnostica"
+    page_type: "C"  # Vive nel percorso PMA
+    
+    content:
+      description_short: "Serie di ecografie per monitorare la crescita follicolare"
+    
+    clinical:
+      duration_minutes: 15
+      preparation:
+        required: false
+      notes: "Esami ripetuti ogni 2-3 giorni durante stimolazione"
+    
+    pathways:
+      - "pma-fertilita"
+    
+    visibility:
+      has_dedicated_page: false  # Solo nel contesto PMA
+      show_in_specialty_page: true
+    
+    status: "active"
+
+  # ==========================================================================
+  # GINECOLOGIA - PREVENZIONE
+  # ==========================================================================
+  
+  - id: "pap-test"
+    
+    name: "Pap Test"
+    name_extended: "Pap Test (Esame Citologico Cervicale)"
+    slug: "pap-test"
+    
+    specialty_id: "ginecologia"
+    category: "esame"
+    page_type: "A"  # Screening oncologico
+    
+    content:
+      description_short: "Screening per la prevenzione del tumore della cervice uterina"
+    
+    clinical:
+      duration_minutes: 10
+      preparation:
+        required: true
+        notes: "No rapporti 48h prima. No lavande. Evitare periodo mestruale."
+    
+    indications:
+      - "Screening oncologico dai 25 anni"
+      - "Prevenzione HPV"
+      - "Controllo cervicale"
+    
+    related_procedures:
+      - "visita-ginecologica"
+      - "colposcopia"
+      - "hpv-test"
+    
+    faqs:
+      - question: "Ogni quanto fare il pap-test?"
+        answer: "Ogni 2-3 anni dai 25 ai 64 anni, in assenza di anomalie. Può essere associato al test HPV dai 30 anni."
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 4
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "colposcopia"
+    
+    name: "Colposcopia"
+    name_extended: "Colposcopia Diagnostica"
+    slug: "colposcopia"
+    
+    specialty_id: "ginecologia"
+    category: "diagnostica"
+    page_type: "A"  # Ansia paziente, preparazione importante
+    
+    content:
+      description_short: "Esame visivo approfondito della cervice uterina"
+    
+    clinical:
+      duration_minutes: 20
+      preparation:
+        required: true
+        notes: "Come per pap-test. Non necessario digiuno."
+    
+    indications:
+      - "Pap test anomalo"
+      - "Lesioni cervicali"
+      - "Follow-up HPV"
+    
+    related_procedures:
+      - "pap-test"
+      - "biopsia-cervicale"
+    
+    faqs:
+      - question: "La colposcopia è dolorosa?"
+        answer: "No, l'esame non è doloroso. Può esserci un leggero fastidio simile a quello del pap-test."
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 5
+    
+    status: "active"
+
+  # ==========================================================================
+  # GINECOLOGIA - TRATTAMENTI
+  # ==========================================================================
+  
+  - id: "radiofrequenza-vaginale"
+    
+    name: "Radiofrequenza Vaginale"
+    name_extended: "Radiofrequenza Vaginale per Ringiovanimento"
+    slug: "radiofrequenza-vaginale"
+    
+    specialty_id: "ginecologia"
+    category: "trattamento"
+    page_type: "B"  # Hub: Trattamenti Pavimento Pelvico
+    
+    content:
+      description_short: "Trattamento non chirurgico per atrofia e lassità vaginale"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: false
+      sessions: "3-5 sedute consigliate"
+    
+    indications:
+      - "Secchezza vaginale"
+      - "Lassità post-parto"
+      - "Sindrome genito-urinaria menopausa"
+    
+    related_procedures:
+      - "caress-flow"
+      - "visita-ginecologica"
+    
+    visibility:
+      has_dedicated_page: false  # Hub trattamenti-pavimento-pelvico
+      hub_page: "trattamenti-pavimento-pelvico"
+    
+    status: "active"
+
+  # ==========================================================================
+  # CARDIOLOGIA
+  # ==========================================================================
+  
+  - id: "visita-cardiologica"
+    
+    name: "Visita Cardiologica"
+    name_extended: "Visita Cardiologica con ECG"
+    slug: "visita-cardiologica-ecg"
+    
+    specialty_id: "cardiologia"
+    category: "visita"
+    page_type: "A"
+    
+    content:
+      description_short: "Valutazione completa della salute cardiovascolare con ECG incluso"
+      description_file: "procedures/visita-cardiologica-ecg.md"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: false
+        notes: "Portare eventuali esami precedenti ed elenco farmaci"
+    
+    indications:
+      - "Ipertensione"
+      - "Dolore toracico"
+      - "Affanno"
+      - "Palpitazioni"
+      - "Prevenzione cardiovascolare"
+    
+    related_procedures:
+      - "ecg"
+      - "ecocardiogramma"
+      - "holter-ecg"
+    pathways:
+      - "checkup-cardiovascolare"
+    
+    faqs:
+      - question: "Cosa comprende la visita cardiologica?"
+        answer: "Include anamnesi, esame obiettivo, misurazione pressione, auscultazione cardiaca e generalmente un ECG a riposo."
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 1
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "ecg"
+    
+    name: "Elettrocardiogramma"
+    name_extended: "Elettrocardiogramma (ECG) a Riposo"
+    slug: "ecg"
+    
+    specialty_id: "cardiologia"
+    category: "diagnostica"
+    page_type: "D"  # Commodity, spesso incluso in visita
+    
+    content:
+      description_short: "Registrazione dell'attività elettrica del cuore"
+    
+    clinical:
+      duration_minutes: 10
+      preparation:
+        required: false
+    
+    related_procedures:
+      - "visita-cardiologica"
+      - "holter-ecg"
+    
+    visibility:
+      has_dedicated_page: false
+      show_in_specialty_page: true
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "ecocardiogramma"
+    
+    name: "Ecocardiogramma"
+    name_extended: "Ecocardiogramma Color-Doppler"
+    slug: "ecocardiogramma"
+    
+    specialty_id: "cardiologia"
+    category: "diagnostica"
+    page_type: "A"
+    
+    content:
+      description_short: "Ecografia del cuore per valutare struttura e funzione cardiaca"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: false
+    
+    indications:
+      - "Soffio cardiaco"
+      - "Insufficienza cardiaca"
+      - "Valvulopatie"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 2
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "holter-ecg"
+    
+    name: "Holter ECG 24h"
+    name_extended: "Monitoraggio Holter ECG 24 Ore"
+    slug: "holter-ecg"
+    
+    specialty_id: "cardiologia"
+    category: "diagnostica"
+    page_type: "A"
+    
+    content:
+      description_short: "Registrazione continua dell'ECG per 24-48 ore"
+    
+    clinical:
+      duration_minutes: 15  # Applicazione
+      preparation:
+        required: false
+        notes: "Evitare doccia durante il monitoraggio"
+    
+    indications:
+      - "Aritmie intermittenti"
+      - "Palpitazioni"
+      - "Sincope"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 3
+    
+    status: "active"
+
+  # ==========================================================================
+  # ENDOCRINOLOGIA
+  # ==========================================================================
+  
+  - id: "ecografia-tiroidea"
+    
+    name: "Ecografia Tiroidea"
+    name_extended: "Ecografia della Tiroide"
+    slug: "ecografia-tiroidea"
+    
+    specialty_id: "endocrinologia"
+    category: "diagnostica"
+    page_type: "A"
+    
+    content:
+      description_short: "Esame ecografico per valutare morfologia e noduli tiroidei"
+      description_file: "procedures/ecografia-tiroidea.md"
+    
+    clinical:
+      duration_minutes: 15
+      preparation:
+        required: false
+        notes: "Abbigliamento con scollatura ampia"
+    
+    indications:
+      - "Noduli tiroidei"
+      - "Gozzo"
+      - "Tiroidite"
+      - "Ipo/ipertiroidismo"
+    
+    related_procedures:
+      - "visita-endocrinologica"
+      - "agoaspirato-tiroide"
+    pathways:
+      - "checkup-tiroide"
+    
+    visibility:
+      has_dedicated_page: true
+      page_url: "/pages/ecografia-tiroidea.html"
+      priority_order: 1
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "visita-endocrinologica"
+    
+    name: "Visita Endocrinologica"
+    name_extended: "Visita Endocrinologica Specialistica"
+    slug: "visita-endocrinologica"
+    
+    specialty_id: "endocrinologia"
+    category: "visita"
+    page_type: "A"
+    
+    content:
+      description_short: "Valutazione e gestione delle patologie endocrine e metaboliche"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: true
+        fasting: true
+        fasting_hours: 8
+        notes: "Portare esami precedenti"
+    
+    indications:
+      - "Patologie tiroidee"
+      - "Diabete"
+      - "Obesità"
+      - "Disturbi metabolici"
+    
+    pathways:
+      - "checkup-tiroide"
+      - "slim-care"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 2
+    
+    status: "active"
+
+# ============================================================================
+# NOTE: Questo file contiene un subset delle prestazioni per esempio.
+# Il file completo conterrà tutte le 200+ prestazioni.
+# ============================================================================

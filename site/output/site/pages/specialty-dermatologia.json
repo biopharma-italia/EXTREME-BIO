@@ -1,0 +1,29 @@
+{
+  "specialty": "Specialty(id='dermatologia', name='Dermatologia', slug='dermatologia', status='active', name_extended='Dermatologia', display={'icon': '🩺', 'color_primary': '#8E24AA', 'color_light': '#F3E5F5'}, content={'description_short': 'Dermatologia clinica ed estetica: mappatura nevi, dermatoscopia digitale'}, page_config={}, visibility={'show_in_menu': True, 'menu_order': 4, 'show_in_homepage': True}, page_url='/pages/dermatologia.html', physicians=[{'id': 'giovanna-costa', 'display_name': 'Dott.ssa Giovanna Costa', 'job_title': 'Dermatologa', 'page_url': '/equipe/giovanna-costa.html', 'image_url': 'images/team/default-avatar.webp', 'role_badges': [], 'priority_order': 1}, {'id': 'alessandra-musinu', 'display_name': 'Dott.ssa Alessandra Musinu', 'job_title': 'Dermatologa', 'page_url': '/equipe/alessandra-musinu.html', 'image_url': 'images/team/default-avatar.webp', 'role_badges': [], 'priority_order': 2}], procedures=[], physicians_count=2, procedures_count=0)",
+  "physicians": [
+    {
+      "id": "giovanna-costa",
+      "display_name": "Dott.ssa Giovanna Costa",
+      "job_title": "Dermatologa",
+      "page_url": "/equipe/giovanna-costa.html",
+      "image_url": "images/team/default-avatar.webp",
+      "role_badges": [],
+      "priority_order": 1
+    },
+    {
+      "id": "alessandra-musinu",
+      "display_name": "Dott.ssa Alessandra Musinu",
+      "job_title": "Dermatologa",
+      "page_url": "/equipe/alessandra-musinu.html",
+      "image_url": "images/team/default-avatar.webp",
+      "role_badges": [],
+      "priority_order": 2
+    }
+  ],
+  "procedures": [],
+  "schema_json": "{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"MedicalClinic\",\n      \"@id\": \"https://bio-clinic.it/#clinic\",\n      \"name\": \"Bio-Clinic Sassari\",\n      \"url\": \"https://bio-clinic.it\",\n      \"telephone\": \"+39 079 956 1332\",\n      \"address\": {\n        \"@type\": \"PostalAddress\",\n        \"streetAddress\": \"Via Renzo Mossa, 23\",\n        \"addressLocality\": \"Sassari\",\n        \"postalCode\": \"07100\",\n        \"addressCountry\": \"IT\"\n      }\n    },\n    {\n      \"@type\": \"MedicalSpecialty\",\n      \"@id\": \"https://bio-clinic.it/specialita/dermatologia/#specialty\",\n      \"name\": \"Dermatologia\",\n      \"description\": \"Dermatologia clinica ed estetica: mappatura nevi, dermatoscopia digitale\"\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://bio-clinic.it/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Specialità\",\n          \"item\": \"https://bio-clinic.it/specialita/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Dermatologia\",\n          \"item\": \"https://bio-clinic.it/pages/dermatologia.html\"\n        }\n      ]\n    }\n  ]\n}",
+  "site": {
+    "name": "Bio-Clinic Sassari",
+    "phone": "079 956 1332"
+  }
+}

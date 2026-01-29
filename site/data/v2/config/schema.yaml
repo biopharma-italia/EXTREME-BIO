@@ -1,0 +1,254 @@
+# ============================================================================
+# BIO-CLINIC DATA SCHEMA v2.1
+# Definizione formale dello schema dati per validazione
+# ============================================================================
+
+schema_version: "2.1"
+last_updated: "2026-01-29"
+author: "Bio-Clinic Architecture Team"
+
+# ============================================================================
+# ENTITY SCHEMAS
+# ============================================================================
+
+entities:
+
+  # --------------------------------------------------------------------------
+  # PHYSICIAN (Medico)
+  # --------------------------------------------------------------------------
+  physician:
+    required_fields:
+      - id              # slug univoco, es: "salvatore-dessole"
+      - name            # nome completo senza titolo
+      - title           # Prof. | Dott. | Dott.ssa
+      - specialty_id    # FK -> specialties.id
+      - status          # active | inactive | hidden
+    
+    optional_fields:
+      - first_name
+      - last_name
+      - job_title           # es: "Direttore Sanitario"
+      - role_badges         # array: ["Direttore Sanitario", "Professore Emerito"]
+      - procedures          # array FK -> procedures.id
+      - pathways            # array FK -> pathways.id
+      - bio_short           # max 200 char
+      - bio_file            # path a .md per bio lunga
+      - image               # path esplicito, default: images/team/{id}.webp
+      - booking             # oggetto con config prenotazione
+      - publications        # array pubblicazioni scientifiche
+      - availability        # array giorni: ["Mon", "Tue", "Wed"]
+      - seo                 # override meta tags
+      - visibility          # config visibilità
+      - priority_order      # int per ordinamento
+    
+    computed_fields:        # calcolati a build-time
+      - display_name        # {title} {name}
+      - page_url            # /equipe/{id}.html
+      - image_url           # risolto da convenzione o campo esplicito
+      - procedures_details  # oggetti completi da FK
+      - specialty_details   # oggetto completo da FK
+    
+    validation_rules:
+      - "specialty_id must exist in specialties"
+      - "procedures must all exist in procedures"
+      - "pathways must all exist in pathways"
+      - "id must be unique across all physicians"
+      - "id must be valid slug (lowercase, hyphens only)"
+
+  # --------------------------------------------------------------------------
+  # SPECIALTY (Specialità)
+  # --------------------------------------------------------------------------
+  specialty:
+    required_fields:
+      - id
+      - name
+      - slug
+      - status
+    
+    optional_fields:
+      - name_extended
+      - icon
+      - color_primary
+      - color_light
+      - description_short
+      - description_file
+      - page_sections       # config sezioni pagina
+      - visibility
+      - menu_order
+    
+    computed_fields:
+      - physicians          # tutti i medici con questa specialty_id
+      - procedures          # tutte le prestazioni con questa specialty_id
+      - physicians_count
+      - procedures_count
+      - page_url
+
+  # --------------------------------------------------------------------------
+  # PROCEDURE (Prestazione/Servizio)
+  # --------------------------------------------------------------------------
+  procedure:
+    required_fields:
+      - id
+      - name
+      - specialty_id
+      - category            # visita | diagnostica | esame | trattamento
+      - page_type           # A | B | C | D
+      - status
+    
+    optional_fields:
+      - name_extended
+      - slug
+      - description_short
+      - description_file
+      - clinical            # oggetto: duration, preparation, fasting, etc.
+      - indications         # array indicazioni cliniche
+      - contraindications   # array controindicazioni
+      - related_procedures  # array FK
+      - pathways            # array FK
+      - physicians_override # array FK se diverso da default specialty
+      - faqs                # array {question, answer}
+      - price               # decimal, per Schema.org
+      - is_stat             # bool, se urgenza
+      - upsell_pack         # FK -> pathways per upsell
+      - seo
+      - schema_org          # config Schema.org
+      - visibility
+    
+    computed_fields:
+      - physicians          # da specialty o override
+      - page_url            # se page_type = A
+      - has_dedicated_page  # bool da page_type
+
+  # --------------------------------------------------------------------------
+  # PATHWAY (Percorso Clinico / Pack)
+  # --------------------------------------------------------------------------
+  pathway:
+    required_fields:
+      - id
+      - name
+      - type                # clinical_pathway | checkup | program | pack
+      - status
+    
+    optional_fields:
+      - name_extended
+      - slug
+      - specialty_ids       # array FK
+      - tagline
+      - description_short
+      - description_file
+      - components          # struttura del percorso
+      - lead_physicians     # array FK
+      - procedures          # array FK prestazioni incluse
+      - tests               # array FK esami inclusi
+      - pricing             # config prezzi
+      - cta                 # config call-to-action
+      - seo
+      - visibility
+    
+    computed_fields:
+      - total_procedures
+      - total_tests
+      - physicians          # da lead + specialty
+      - page_url
+
+  # --------------------------------------------------------------------------
+  # TEST (Esame Laboratorio)
+  # --------------------------------------------------------------------------
+  test:
+    required_fields:
+      - id
+      - name
+      - category
+      - status
+    
+    optional_fields:
+      - name_extended
+      - code                # codice nomenclatore
+      - subcategory
+      - sample              # oggetto: type, tube, volume
+      - preparation         # oggetto: fasting, notes
+      - results             # oggetto: turnaround, reference_ranges
+      - related_tests       # array FK
+      - pathways            # array FK
+      - procedures          # array FK
+      - included_in_packs   # array FK -> pathways
+      - price
+      - visibility
+
+# ============================================================================
+# RELATION TYPES
+# ============================================================================
+
+relations:
+  
+  physician_procedure:
+    description: "Medico esegue prestazione"
+    from: physician
+    to: procedure
+    cardinality: "many-to-many"
+    attributes:
+      - role              # null | "referente" | "senior"
+      - badge             # testo badge speciale
+      - exclude           # bool, per override negativo
+  
+  procedure_pathway:
+    description: "Prestazione inclusa in percorso"
+    from: procedure
+    to: pathway
+    cardinality: "many-to-many"
+    attributes:
+      - phase             # "initial" | "monitoring" | "advanced"
+      - required          # bool
+  
+  test_pathway:
+    description: "Esame incluso in percorso/pack"
+    from: test
+    to: pathway
+    cardinality: "many-to-many"
+    attributes:
+      - quantity          # int, quante volte nel pack
+
+# ============================================================================
+# BUILD RULES
+# ============================================================================
+
+build:
+  
+  image_resolution:
+    strategy: "convention_first"
+    convention: "images/team/{id}.webp"
+    fallback: "images/team/default-avatar.webp"
+    auto_convert: true
+    formats: ["webp"]
+    sizes:
+      thumbnail: [80, 80]
+      card: [200, 200]
+      full: [400, 400]
+  
+  cross_linking:
+    enabled: true
+    rules:
+      - "procedure page lists all physicians who perform it"
+      - "physician page lists all procedures they perform"
+      - "specialty page lists all physicians and procedures"
+      - "pathway page lists all included procedures and tests"
+  
+  schema_org:
+    auto_generate: true
+    types:
+      physician: "Physician"
+      procedure: "MedicalProcedure"
+      specialty: "MedicalSpecialty"
+      pathway: "MedicalTherapy"
+      test: "MedicalTest"
+  
+  validation:
+    pre_build: true
+    fail_on_warning: false
+    fail_on_error: true
+    checks:
+      - "all FK references exist"
+      - "no duplicate IDs"
+      - "required fields present"
+      - "status is valid enum"
+      - "slugs are valid format"

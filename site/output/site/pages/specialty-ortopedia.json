@@ -1,0 +1,10 @@
+{
+  "specialty": "Specialty(id='ortopedia', name='Ortopedia', slug='ortopedia', status='active', name_extended='Ortopedia e Traumatologia', display={'icon': '🦴', 'color_primary': '#00897B', 'color_light': '#E0F2F1'}, content={'description_short': 'Ortopedia, traumatologia e medicina dello sport'}, page_config={}, visibility={'show_in_menu': True, 'menu_order': 6, 'show_in_homepage': False}, page_url='/pages/ortopedia.html', physicians=[], procedures=[], physicians_count=0, procedures_count=0)",
+  "physicians": [],
+  "procedures": [],
+  "schema_json": "{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"MedicalClinic\",\n      \"@id\": \"https://bio-clinic.it/#clinic\",\n      \"name\": \"Bio-Clinic Sassari\",\n      \"url\": \"https://bio-clinic.it\",\n      \"telephone\": \"+39 079 956 1332\",\n      \"address\": {\n        \"@type\": \"PostalAddress\",\n        \"streetAddress\": \"Via Renzo Mossa, 23\",\n        \"addressLocality\": \"Sassari\",\n        \"postalCode\": \"07100\",\n        \"addressCountry\": \"IT\"\n      }\n    },\n    {\n      \"@type\": \"MedicalSpecialty\",\n      \"@id\": \"https://bio-clinic.it/specialita/ortopedia/#specialty\",\n      \"name\": \"Ortopedia e Traumatologia\",\n      \"description\": \"Ortopedia, traumatologia e medicina dello sport\"\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://bio-clinic.it/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Specialità\",\n          \"item\": \"https://bio-clinic.it/specialita/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Ortopedia\",\n          \"item\": \"https://bio-clinic.it/pages/ortopedia.html\"\n        }\n      ]\n    }\n  ]\n}",
+  "site": {
+    "name": "Bio-Clinic Sassari",
+    "phone": "079 956 1332"
+  }
+}
