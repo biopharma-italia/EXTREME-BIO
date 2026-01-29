@@ -148,10 +148,223 @@
         .section-title p {
             color: #666;
         }
+        /* Disclaimer Popup Styles */
+        .disclaimer-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .disclaimer-popup-overlay.hidden {
+            display: none;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .disclaimer-popup {
+            background: white;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+            animation: slideUp 0.4s ease;
+            position: relative;
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .disclaimer-popup-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .disclaimer-popup h2 {
+            color: #c62828;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .disclaimer-popup-content {
+            background: #fff8e1;
+            border: 2px solid #ffb300;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .disclaimer-popup-content p {
+            color: #5d4037;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        .disclaimer-popup-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .disclaimer-popup-content strong {
+            color: #c62828;
+        }
+        
+        .disclaimer-popup-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+        
+        .disclaimer-popup-list li {
+            padding: 8px 0 8px 30px;
+            position: relative;
+            color: #5d4037;
+        }
+        
+        .disclaimer-popup-list li::before {
+            content: "⚠️";
+            position: absolute;
+            left: 0;
+        }
+        
+        .disclaimer-popup-emergency {
+            background: #ffebee;
+            border: 2px solid #ef5350;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        
+        .disclaimer-popup-emergency p {
+            color: #c62828;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .disclaimer-popup-btn {
+            background: linear-gradient(135deg, #00a651 0%, #008c44 100%);
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 166, 81, 0.3);
+        }
+        
+        .disclaimer-popup-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 166, 81, 0.4);
+        }
+        
+        .disclaimer-popup-footer {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #888;
+        }
+        
+        @media (max-width: 600px) {
+            .disclaimer-popup {
+                padding: 25px;
+            }
+            .disclaimer-popup-icon {
+                font-size: 4rem;
+            }
+            .disclaimer-popup h2 {
+                font-size: 1.4rem;
+            }
+            .disclaimer-popup-content {
+                padding: 18px;
+            }
+            .disclaimer-popup-btn {
+                width: 100%;
+                padding: 16px 30px;
+            }
+        }
     </style>
   <link rel="stylesheet" href="../css/search.css">
 </head>
 <body>
+
+<!-- DISCLAIMER POPUP - Informazioni Non Mediche -->
+<div class="disclaimer-popup-overlay" id="disclaimer-popup">
+    <div class="disclaimer-popup">
+        <span class="disclaimer-popup-icon">⚕️</span>
+        <h2>Avviso Importante</h2>
+        
+        <div class="disclaimer-popup-content">
+            <p>
+                <strong>Questo strumento fornisce informazioni generiche a scopo esclusivamente informativo.</strong>
+            </p>
+            <p>
+                I suggerimenti forniti dal Symptom Checker:
+            </p>
+            <ul class="disclaimer-popup-list">
+                <li><strong>NON sono supervisionati da un medico</strong></li>
+                <li><strong>NON sostituiscono una diagnosi medica</strong></li>
+                <li><strong>NON costituiscono un parere medico professionale</strong></li>
+                <li>Hanno valore <strong>meramente informativo e orientativo</strong></li>
+            </ul>
+            <p>
+                Per qualsiasi dubbio sulla tua salute, <strong>consulta sempre un medico</strong> o uno specialista qualificato.
+            </p>
+            
+            <div class="disclaimer-popup-emergency">
+                <p>🚨 In caso di emergenza, chiama immediatamente il <strong>118</strong> o recati al Pronto Soccorso.</p>
+            </div>
+        </div>
+        
+        <button class="disclaimer-popup-btn" onclick="acceptDisclaimer()">
+            Ho capito, continua
+        </button>
+        
+        <p class="disclaimer-popup-footer">
+            Cliccando "Ho capito, continua" confermi di aver letto e compreso questo avviso.
+        </p>
+    </div>
+</div>
+
+<script>
+function acceptDisclaimer() {
+    document.getElementById('disclaimer-popup').classList.add('hidden');
+    // Salva in sessionStorage per non mostrarlo di nuovo nella stessa sessione
+    sessionStorage.setItem('symptomCheckerDisclaimerAccepted', 'true');
+}
+
+// Controlla se il disclaimer è già stato accettato in questa sessione
+document.addEventListener('DOMContentLoaded', function() {
+    if (sessionStorage.getItem('symptomCheckerDisclaimerAccepted') === 'true') {
+        document.getElementById('disclaimer-popup').classList.add('hidden');
+    }
+});
+</script>
+
 <!-- HEADER PRINCIPALE -->
 <header class="header">
   <div class="container">
