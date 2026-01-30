@@ -1,0 +1,676 @@
+#!/usr/bin/env python3
+"""
+Bio-Clinic Procedure Page Generator
+Genera pagine prestazioni moderne con template Tailwind CSS
+"""
+
+import yaml
+import os
+from pathlib import Path
+
+# Colori delle specialità
+SPECIALTY_COLORS = {
+    "ginecologia": {"primary": "#E91E63", "dark": "#a31545", "light": "#FCE4EC", "icon": "👩‍⚕️", "name": "Ginecologia"},
+    "ostetricia": {"primary": "#E91E8C", "dark": "#a31562", "light": "#FCE4EC", "icon": "🤰", "name": "Ostetricia"},
+    "cardiologia": {"primary": "#E53935", "dark": "#a02725", "light": "#FFEBEE", "icon": "❤️", "name": "Cardiologia"},
+    "endocrinologia": {"primary": "#4A90A4", "dark": "#336472", "light": "#E3F2FD", "icon": "🦋", "name": "Endocrinologia"},
+    "dermatologia": {"primary": "#8E24AA", "dark": "#631976", "light": "#F3E5F5", "icon": "🩺", "name": "Dermatologia"},
+    "neurologia": {"primary": "#5C6BC0", "dark": "#404a86", "light": "#E8EAF6", "icon": "🧠", "name": "Neurologia"},
+    "ortopedia": {"primary": "#00897B", "dark": "#005f56", "light": "#E0F2F1", "icon": "🦴", "name": "Ortopedia"},
+    "oculistica": {"primary": "#0288D1", "dark": "#015f92", "light": "#E1F5FE", "icon": "👁️", "name": "Oculistica"},
+    "urologia": {"primary": "#FF7043", "dark": "#b24e2e", "light": "#FBE9E7", "icon": "🩻", "name": "Urologia"},
+    "pneumologia": {"primary": "#26A69A", "dark": "#1a746b", "light": "#E0F2F1", "icon": "🫁", "name": "Pneumologia"},
+    "otorinolaringoiatria": {"primary": "#7E57C2", "dark": "#583c87", "light": "#EDE7F6", "icon": "👂", "name": "Otorinolaringoiatria"},
+    "chirurgia-vascolare": {"primary": "#D32F2F", "dark": "#932020", "light": "#FFCDD2", "icon": "🩸", "name": "Chirurgia Vascolare"},
+    "medicina-interna": {"primary": "#455A64", "dark": "#303e46", "light": "#ECEFF1", "icon": "⚕️", "name": "Medicina Interna"},
+    "medicina-lavoro": {"primary": "#FF8F00", "dark": "#b26400", "light": "#FFF8E1", "icon": "👷", "name": "Medicina del Lavoro"},
+    "medicina-sport": {"primary": "#00C853", "dark": "#008c3a", "light": "#E8F5E9", "icon": "🏃", "name": "Medicina dello Sport"},
+    "nefrologia": {"primary": "#6D4C41", "dark": "#4c352d", "light": "#EFEBE9", "icon": "🫘", "name": "Nefrologia"},
+    "pediatria": {"primary": "#F06292", "dark": "#a84466", "light": "#FCE4EC", "icon": "👶", "name": "Pediatria"},
+    "psicologia": {"primary": "#9C27B0", "dark": "#6d1b7b", "light": "#F3E5F5", "icon": "🧠", "name": "Psicologia"},
+    "reumatologia": {"primary": "#795548", "dark": "#543b32", "light": "#EFEBE9", "icon": "🦴", "name": "Reumatologia"},
+    "ematologia": {"primary": "#C62828", "dark": "#8a1c1c", "light": "#FFEBEE", "icon": "🩸", "name": "Ematologia"},
+    "fisiatria": {"primary": "#00ACC1", "dark": "#007887", "light": "#E0F7FA", "icon": "🏥", "name": "Fisiatria"},
+    "gastroenterologia": {"primary": "#558B2F", "dark": "#3b6120", "light": "#F1F8E9", "icon": "🔬", "name": "Gastroenterologia"},
+    "dietologia": {"primary": "#8BC34A", "dark": "#618833", "light": "#F1F8E9", "icon": "🥗", "name": "Dietologia"},
+    "radiologia": {"primary": "#546E7A", "dark": "#3a4d55", "light": "#ECEFF1", "icon": "📷", "name": "Radiologia"},
+    "laboratorio": {"primary": "#43A047", "dark": "#2e7031", "light": "#E8F5E9", "icon": "🔬", "name": "Laboratorio"},
+}
+
+# Default colors
+DEFAULT_COLORS = {"primary": "#00704A", "dark": "#004d33", "light": "#E8F5E9", "icon": "🏥", "name": "Specialità"}
+
+def get_specialty_colors(specialty_id):
+    """Ritorna i colori per una specialità"""
+    return SPECIALTY_COLORS.get(specialty_id, DEFAULT_COLORS)
+
+def load_yaml(file_path):
+    """Carica un file YAML"""
+    with open(file_path, 'r', encoding='utf-8') as f:
+        return yaml.safe_load(f)
+
+def get_physicians_for_procedure(proc_id, physicians_data):
+    """Trova i medici che eseguono una certa procedura"""
+    result = []
+    for physician in physicians_data.get('physicians', []):
+        if physician.get('status') != 'active':
+            continue
+        procedures = physician.get('procedures', [])
+        if proc_id in procedures:
+            result.append(physician)
+    return result[:3]  # Max 3 medici
+
+def generate_procedure_page(proc, physicians, output_dir):
+    """Genera una pagina HTML per una procedura"""
+    
+    proc_id = proc['id']
+    proc_name = proc['name']
+    proc_slug = proc.get('slug', proc_id)
+    specialty_id = proc.get('specialty_id', 'medicina-interna')
+    
+    colors = get_specialty_colors(specialty_id)
+    
+    # Info base
+    description = proc.get('content', {}).get('description_short', f'Prestazione medica specialistica')
+    
+    # Info cliniche
+    clinical = proc.get('clinical', {})
+    duration = clinical.get('duration_minutes', 30)
+    preparation = clinical.get('preparation', {})
+    prep_notes = preparation.get('notes', 'Nessuna preparazione specifica richiesta.')
+    
+    # Indicazioni
+    indications = proc.get('indications', [])
+    
+    # FAQ
+    faqs = proc.get('faqs', [])
+    
+    # SEO
+    seo = proc.get('seo', {})
+    meta_title = seo.get('meta_title', f'{proc_name} Sassari | Bio-Clinic')
+    meta_description = seo.get('meta_description', f'{proc_name} a Sassari presso Bio-Clinic. Prenota: 079 956 1332')
+    
+    # Schema.org
+    schema_org = proc.get('schema_org', {})
+    procedure_type = schema_org.get('procedure_type', 'MedicalProcedure')
+    body_location = schema_org.get('body_location', '')
+    
+    # Related procedures
+    related = proc.get('related_procedures', [])[:4]
+    
+    # Genera HTML medici
+    physicians_html = ""
+    for doc in physicians:
+        doc_name = doc.get('name', f"{doc.get('first_name', '')} {doc.get('last_name', '')}")
+        doc_title = doc.get('title', 'Dott.')
+        doc_job = doc.get('job_title', 'Specialista')
+        doc_id = doc.get('id', '')
+        initials = "".join([n[0].upper() for n in doc_name.split()[:2]])
+        
+        physicians_html += f'''
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-lg transition">
+                            <div class="flex items-start gap-4">
+                                <div class="w-14 h-14 rounded-full flex items-center justify-center font-bold text-lg text-white" style="background: {colors['primary']};">
+                                    {initials}
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-bold text-gray-800">{doc_title} {doc_name}</h4>
+                                    <p class="text-sm text-gray-500">{doc_job}</p>
+                                    <a href="../equipe/{doc_id}.html" class="text-sm font-semibold hover:underline mt-2 inline-block" style="color: {colors['primary']};">
+                                        Visualizza Profilo →
+                                    </a>
+                                </div>
+                            </div>
+                        </div>'''
+    
+    if not physicians_html:
+        physicians_html = f'''
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                            <div class="flex items-start gap-4">
+                                <div class="w-14 h-14 rounded-full flex items-center justify-center font-bold text-lg text-white" style="background: {colors['primary']};">
+                                    BC
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-bold text-gray-800">Équipe Specialistica</h4>
+                                    <p class="text-sm text-gray-500">{colors['name']}</p>
+                                    <a href="../equipe/index.html" class="text-sm font-semibold hover:underline mt-2 inline-block" style="color: {colors['primary']};">
+                                        Visualizza Équipe →
+                                    </a>
+                                </div>
+                            </div>
+                        </div>'''
+    
+    # Indicazioni HTML
+    indications_html = ""
+    for ind in indications[:6]:
+        indications_html += f'<span class="px-3 py-1 rounded-full text-sm font-medium" style="background: {colors["light"]}; color: {colors["dark"]};">{ind}</span>\n                            '
+    
+    # FAQ HTML
+    faq_html = ""
+    for faq in faqs[:3]:
+        faq_html += f'''
+                        <details class="group bg-white rounded-xl border border-gray-200 overflow-hidden">
+                            <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-gray-50">
+                                <span class="font-semibold text-gray-800">{faq.get('question', '')}</span>
+                                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="px-5 pb-5 text-gray-600">
+                                {faq.get('answer', '')}
+                            </div>
+                        </details>'''
+    
+    # Related procedures HTML
+    related_html = ""
+    for rel in related:
+        rel_name = rel.replace('-', ' ').title()
+        related_html += f'''
+                        <a href="{rel}.html" class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 hover:shadow-md transition flex items-center gap-3">
+                            <span style="color: {colors['primary']};">{colors['icon']}</span>
+                            <span class="font-medium text-gray-700">{rel_name}</span>
+                        </a>'''
+    
+    # JSON-LD
+    json_ld = f'''{{
+      "@context": "https://schema.org",
+      "@graph": [
+        {{
+          "@type": "MedicalClinic",
+          "@id": "https://bio-clinic.it/#clinic",
+          "name": "Bio-Clinic Sassari",
+          "url": "https://bio-clinic.it",
+          "telephone": "+39 079 956 1332",
+          "address": {{
+            "@type": "PostalAddress",
+            "streetAddress": "Via Renzo Mossa, 23",
+            "addressLocality": "Sassari",
+            "postalCode": "07100",
+            "addressCountry": "IT"
+          }}
+        }},
+        {{
+          "@type": "MedicalProcedure",
+          "@id": "https://bio-clinic.it/pages/{proc_slug}/#procedure",
+          "name": "{proc_name}",
+          "description": "{description}",
+          "procedureType": "{procedure_type}",
+          "bodyLocation": "{body_location}",
+          "relevantSpecialty": {{
+            "@type": "MedicalSpecialty",
+            "name": "{colors['name']}"
+          }},
+          "provider": {{
+            "@id": "https://bio-clinic.it/#clinic"
+          }}
+        }},
+        {{
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bio-clinic.it/"}},
+            {{"@type": "ListItem", "position": 2, "name": "{colors['name']}", "item": "https://bio-clinic.it/pages/{specialty_id}.html"}},
+            {{"@type": "ListItem", "position": 3, "name": "{proc_name}", "item": "https://bio-clinic.it/pages/{proc_slug}.html"}}
+          ]
+        }}
+      ]
+    }}'''
+    
+    html_content = f'''<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{meta_title}</title>
+    <meta name="description" content="{meta_description}">
+    <link rel="canonical" href="https://bio-clinic.it/pages/{proc_slug}.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="{proc_name} | Bio-Clinic Sassari">
+    <meta property="og:description" content="{description}">
+    <meta property="og:url" content="https://bio-clinic.it/pages/{proc_slug}.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Bio-Clinic Sassari">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {json_ld}
+    </script>
+    
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/search.css">
+    <link rel="stylesheet" href="../css/search-fix.css">
+    <link rel="stylesheet" href="../css/header-spacing-fix.css">
+    
+    <!-- Tailwind CSS for page content -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Header Fix */
+        body {{ padding-top: 100px !important; margin: 0 !important; }}
+        .header {{ position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 9999 !important; background: #fff !important; box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important; }}
+        
+        /* Theme colors */
+        .theme-primary {{ color: {colors['primary']}; }}
+        .theme-bg-primary {{ background-color: {colors['primary']}; }}
+        .theme-bg-light {{ background-color: {colors['light']}; }}
+        .theme-border {{ border-color: {colors['primary']}; }}
+        .text-bio-green {{ color: #00704A; }}
+        .bg-bio-green {{ background-color: #00704A; }}
+        html {{ scroll-behavior: smooth; }}
+        
+        /* Main content area */
+        .page-content {{ font-family: 'Inter', sans-serif; }}
+    </style>
+</head>
+<body>
+    <!-- HEADER PRINCIPALE (Standard del sito) -->
+    <header class="header">
+      <div class="container">
+        <!-- Logo -->
+        <a href="../index.html" class="logo" title="Torna alla Homepage Bio-Clinic">
+          <img src="../images/logo-bioclinic.png" alt="Bio-Clinic Sassari - Poliambulatorio Medico" width="180" height="60" loading="eager">
+        </a>
+        
+        <!-- Navigazione Desktop -->
+        <nav class="nav" aria-label="Navigazione principale">
+          <ul class="nav-list">
+            <!-- HOME -->
+            <li class="nav-item">
+              <a href="../index.html" class="nav-link" title="Torna alla Homepage Bio-Clinic">Home</a>
+            </li>
+            
+            <!-- SLIM CARE MEDICAL -->
+            <li class="nav-item">
+              <a href="#" class="nav-link" title="Percorsi Slim Care" aria-haspopup="true" aria-expanded="false">Slim Care Medical</a>
+              <div class="nav-dropdown" role="menu">
+                <a href="slim-care.html" title="Slim Care - Percorso Dimagrimento" role="menuitem">
+                  <span style="color: #00A651;">💚</span> Slim Care
+                </a>
+                <a href="slim-care-donna.html" title="Slim Care Donna - Dimagrimento Femminile" role="menuitem">
+                  <span style="color: #E91E8C;">💗</span> Slim Care Donna
+                </a>
+              </div>
+            </li>
+            
+            <!-- LABORATORIO -->
+            <li class="nav-item">
+              <a href="../laboratorio/index.html" class="nav-link" title="Laboratorio Analisi - 1.136 Esami">Laboratorio</a>
+            </li>
+            
+            <!-- DONNA & PMA -->
+            <li class="nav-item">
+              <a href="#" class="nav-link" title="Salute Donna e PMA" aria-haspopup="true" aria-expanded="false">Donna & PMA</a>
+              <div class="nav-dropdown" role="menu">
+                <a href="ginecologia.html" title="Ginecologia e Ostetricia" role="menuitem">
+                  <span>👩‍⚕️</span> Ginecologia
+                </a>
+                <a href="pma-fertilita.html" title="PMA e Fertilità" role="menuitem">
+                  <span>👶</span> PMA / Fertilità
+                </a>
+              </div>
+            </li>
+            
+            <!-- SPECIALISTI -->
+            <li class="nav-item">
+              <a href="#" class="nav-link" title="Specialità Mediche" aria-haspopup="true" aria-expanded="false">Specialisti</a>
+              <div class="nav-dropdown nav-dropdown-wide" role="menu">
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; min-width: 320px;">
+                  <a href="cardiologia.html" title="Cardiologia" role="menuitem">❤️ Cardiologia</a>
+                  <a href="endocrinologia.html" title="Endocrinologia" role="menuitem">🦋 Endocrinologia</a>
+                  <a href="dermatologia.html" title="Dermatologia" role="menuitem">🩺 Dermatologia</a>
+                  <a href="neurologia.html" title="Neurologia" role="menuitem">🧠 Neurologia</a>
+                  <a href="oculistica.html" title="Oculistica" role="menuitem">👁️ Oculistica</a>
+                  <a href="ortopedia.html" title="Ortopedia" role="menuitem">🦴 Ortopedia</a>
+                </div>
+                <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
+                <a href="specialita.html" title="Tutte le Specialità" role="menuitem" style="font-weight: 600; color: var(--primary);">
+                  Tutte le Specialità →
+                </a>
+                <a href="../equipe/index.html" title="Équipe Medica" role="menuitem" style="font-weight: 600;">
+                  👨‍⚕️ Équipe Medica (51 Specialisti)
+                </a>
+              </div>
+            </li>
+            
+            <!-- MEDICAL SHOP -->
+            <li class="nav-item">
+              <a href="../shop/index.html" class="nav-link" title="Medical Shop - Dispositivi Medici">
+                Medical Shop
+                <span style="background: #E91E8C; color: white; font-size: 0.65rem; padding: 0.15rem 0.4rem; border-radius: 10px; margin-left: 0.3rem; vertical-align: middle;">NEW</span>
+              </a>
+            </li>
+            
+            <!-- CONTATTI -->
+            <li class="nav-item">
+              <a href="contatti.html" class="nav-link" title="Contatti e Orari">Contatti</a>
+            </li>
+          </ul>
+          
+          <!-- PULSANTE PRENOTA -->
+          <a href="tel:+390799561332" class="btn btn-primary nav-cta" title="Chiama per prenotare" style="background: #00704A; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; margin-left: 1rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            Prenota
+          </a>
+        </nav>
+        
+        <!-- Mobile Toggle -->
+        <button class="menu-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" aria-hidden="true"></div>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Menu mobile" aria-hidden="true">
+      <div class="mobile-nav-header">
+        <img src="../images/logo-bioclinic.png" alt="Bio-Clinic" width="140" height="47">
+        <button class="mobile-nav-close" aria-label="Chiudi menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <ul class="mobile-nav-list">
+        <li><a href="../index.html" title="Home">🏠 Home</a></li>
+        <li class="mobile-nav-section">
+          <span class="mobile-nav-section-title">Slim Care Medical</span>
+          <ul>
+            <li><a href="slim-care.html">💚 Slim Care</a></li>
+            <li><a href="slim-care-donna.html">💗 Slim Care Donna</a></li>
+          </ul>
+        </li>
+        <li><a href="../laboratorio/index.html" title="Laboratorio">🔬 Laboratorio Analisi</a></li>
+        <li class="mobile-nav-section">
+          <span class="mobile-nav-section-title">Donna & PMA</span>
+          <ul>
+            <li><a href="ginecologia.html">👩‍⚕️ Ginecologia</a></li>
+            <li><a href="pma-fertilita.html">👶 PMA / Fertilità</a></li>
+          </ul>
+        </li>
+        <li class="mobile-nav-section">
+          <span class="mobile-nav-section-title">Specialisti</span>
+          <ul>
+            <li><a href="cardiologia.html">❤️ Cardiologia</a></li>
+            <li><a href="endocrinologia.html">🦋 Endocrinologia</a></li>
+            <li><a href="specialita.html" style="font-weight: 600;">→ Tutte le Specialità</a></li>
+            <li><a href="../equipe/index.html" style="font-weight: 600;">👨‍⚕️ Équipe (51 Medici)</a></li>
+          </ul>
+        </li>
+        <li><a href="../shop/index.html" title="Medical Shop">🛒 Medical Shop <span style="background: #E91E8C; color: white; font-size: 0.65rem; padding: 0.1rem 0.3rem; border-radius: 8px;">NEW</span></a></li>
+        <li><a href="contatti.html" title="Contatti">📍 Contatti</a></li>
+      </ul>
+      <div class="mobile-nav-footer">
+        <a href="tel:+390799561332" class="btn btn-primary" style="width: 100%; justify-content: center; background: #00704A;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          Chiama: 079 956 1332
+        </a>
+      </div>
+    </nav>
+    <!-- END MASTER HEADER -->
+
+    <!-- PAGE CONTENT (Tailwind) -->
+    <main class="page-content">
+    
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden" style="background: linear-gradient(135deg, {colors['light']} 0%, white 100%);">
+        <div class="max-w-7xl mx-auto px-4 py-16 sm:py-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="inline-block px-4 py-1 rounded-full text-sm font-bold mb-4" style="background: {colors['primary']}; color: white;">
+                        {colors['icon']} {colors['name']}
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-6">
+                        {proc_name}
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8">
+                        {description}
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <span class="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border">
+                            <i class="far fa-clock" style="color: {colors['primary']};"></i>
+                            <span class="font-medium">{duration} Minuti</span>
+                        </span>
+                        <span class="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border">
+                            <i class="fas fa-file-medical" style="color: {colors['primary']};"></i>
+                            <span class="font-medium">Referto</span>
+                        </span>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#prenota" class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white font-semibold transition hover:opacity-90" style="background: {colors['primary']};">
+                            Prenota Ora
+                        </a>
+                        <a href="#info" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition border-2" style="border-color: {colors['primary']}; color: {colors['primary']};">
+                            Maggiori Info <i class="fas fa-arrow-down ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="aspect-w-4 aspect-h-3 rounded-2xl overflow-hidden shadow-xl">
+                        <div class="w-full h-64 lg:h-80 rounded-2xl flex items-center justify-center text-8xl" style="background: {colors['light']};">
+                            {colors['icon']}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INDICAZIONI SECTION -->
+    {'<section class="py-12 bg-white"><div class="max-w-5xl mx-auto px-4"><h2 class="text-2xl font-bold text-gray-800 mb-6">Indicazioni</h2><div class="flex flex-wrap gap-3">' + indications_html + '</div></div></section>' if indications else ''}
+
+    <!-- INFO SECTION -->
+    <section id="info" class="py-16 bg-gray-50 scroll-mt-28">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- PREPARAZIONE -->
+                <div class="bg-white rounded-2xl shadow-sm border p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-3">
+                        <i class="fas fa-info-circle" style="color: {colors['primary']};"></i>
+                        Informazioni Utili
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="font-bold text-gray-700 uppercase text-sm mb-2">Durata</h3>
+                            <p class="text-gray-600">{duration} minuti circa</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-700 uppercase text-sm mb-2">Preparazione</h3>
+                            <p class="text-gray-600">{prep_notes}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SPECIALISTI -->
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-3">
+                        <i class="fas fa-user-md" style="color: {colors['primary']};"></i>
+                        I Nostri Specialisti
+                    </h2>
+                    <div class="space-y-4">
+                        {physicians_html}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    {f'''<section class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Domande Frequenti</h2>
+            <div class="space-y-4">
+                {faq_html}
+            </div>
+        </div>
+    </section>''' if faq_html else ''}
+
+    <!-- CTA PRENOTA -->
+    <section id="prenota" class="py-16 scroll-mt-28" style="background: linear-gradient(135deg, {colors['dark']} 0%, {colors['primary']} 100%);">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Prenota {proc_name}</h2>
+            <p class="text-white/80 mb-8">Il nostro team è a disposizione per prenotazioni e informazioni</p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="tel:+390799561332" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white rounded-lg font-bold text-lg transition hover:bg-gray-100" style="color: {colors['dark']};">
+                    <i class="fas fa-phone"></i>
+                    079 956 1332
+                </a>
+                <a href="https://wa.me/390799561332" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-green-500 text-white rounded-lg font-bold text-lg transition hover:bg-green-600">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </a>
+            </div>
+            
+            <p class="text-white/70 mt-6 text-sm">
+                📍 Via Renzo Mossa, 23 - 07100 Sassari
+            </p>
+        </div>
+    </section>
+
+    <!-- PROCEDURE CORRELATE -->
+    {f'''<section class="py-12 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4">
+            <h3 class="text-xl font-bold text-gray-800 mb-6">Prestazioni Correlate</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {related_html}
+            </div>
+        </div>
+    </section>''' if related_html else ''}
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-info">
+            <a href="../index.html" class="footer-logo">
+              <img src="../images/logo-bioclinic.png" alt="Bio-Clinic Sassari" width="160" height="53">
+            </a>
+            <p>Poliambulatorio Medico d'eccellenza a Sassari dal 1990. 51 specialisti, oltre 60 prestazioni diagnostiche e terapeutiche.</p>
+          </div>
+          <div class="footer-links">
+            <h4>Contatti</h4>
+            <ul>
+              <li><a href="tel:+390799561332"><i class="fas fa-phone"></i> 079 956 1332</a></li>
+              <li><a href="mailto:gestione@bio-clinic.it"><i class="fas fa-envelope"></i> gestione@bio-clinic.it</a></li>
+              <li><i class="fas fa-map-marker-alt"></i> Via Renzo Mossa, 23 - 07100 Sassari</li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Orari</h4>
+            <ul>
+              <li>Lunedì - Venerdì: 07:00 - 21:00</li>
+              <li>Sabato: 08:00 - 14:00</li>
+              <li>Domenica: Chiuso</li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Link Utili</h4>
+            <ul>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="cookie.html">Cookie Policy</a></li>
+              <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Bio-Clinic Sassari. Tutti i diritti riservati. P.IVA 01234567890</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+    <script src="../js/search.js"></script>
+</body>
+</html>'''
+    
+    # Scrivi il file
+    output_path = os.path.join(output_dir, f'{proc_slug}.html')
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write(html_content)
+    
+    return proc_slug
+
+def main():
+    """Main function"""
+    # Percorsi
+    base_dir = Path('/home/user/webapp/site')
+    data_dir = base_dir / 'data' / 'v2' / 'entities'
+    output_dir = base_dir / 'pages'
+    
+    # Carica dati
+    print("Caricamento dati...")
+    procedures = load_yaml(data_dir / 'procedures.yaml')
+    physicians = load_yaml(data_dir / 'physicians.yaml')
+    
+    # Pagine da escludere (già fatte o non prestazioni)
+    exclude = [
+        'colposcopia', 'audiometria',  # Già create con template custom
+        'chi-siamo', 'contatti', 'cookie', 'privacy',  # Pagine info
+        'ginecologia', 'cardiologia', 'dermatologia', 'neurologia', 'ortopedia',  # Pagine specialità
+        'oculistica', 'urologia', 'pneumologia', 'otorinolaringoiatria', 'endocrinologia',
+        'reumatologia', 'ematologia', 'gastroenterologia', 'laboratorio', 'specialita',
+        'slim-care', 'slim-care-donna', 'pma-fertilita', 'prevenzione',  # Percorsi
+        'symptom-checker'  # Tool
+    ]
+    
+    # Filtra procedure con page_type A
+    procedures_to_generate = []
+    for proc in procedures.get('procedures', []):
+        proc_id = proc.get('id', '')
+        page_type = proc.get('page_type', '')
+        status = proc.get('status', 'active')
+        
+        if proc_id in exclude:
+            continue
+        if status != 'active':
+            continue
+        if page_type != 'A':
+            continue
+            
+        procedures_to_generate.append(proc)
+    
+    print(f"Trovate {len(procedures_to_generate)} procedure da generare")
+    
+    # Genera pagine
+    generated = []
+    for proc in procedures_to_generate:
+        proc_id = proc['id']
+        proc_physicians = get_physicians_for_procedure(proc_id, physicians)
+        
+        try:
+            slug = generate_procedure_page(proc, proc_physicians, output_dir)
+            generated.append(slug)
+            print(f"✓ Generata: {slug}")
+        except Exception as e:
+            print(f"✗ Errore {proc_id}: {e}")
+    
+    print(f"\nTotale pagine generate: {len(generated)}")
+    print("\nLink pagine:")
+    for slug in generated:
+        print(f"  - pages/{slug}.html")
+    
+    return generated
+
+if __name__ == '__main__':
+    main()
