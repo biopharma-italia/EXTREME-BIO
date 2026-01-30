@@ -1,0 +1,762 @@
+/**
+ * RESTORE CLEAN LAYOUT - Bio-Clinic Procedure Pages
+ * Ripristina il layout originale pulito mantenendo i contenuti migliorati
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+// Load data
+const pagesDir = path.join(__dirname, '..', 'pages');
+
+// Deep Dive data per specialty (mantenuto dai precedenti aggiornamenti)
+const DEEP_DATA = {
+  'ginecologia': {
+    color: '#E91E63',
+    colorDark: '#C2185B',
+    colorLight: '#FCE4EC',
+    icon: 'fa-venus',
+    title_main: 'Ginecologia',
+    title_accent: '& Ostetricia',
+    hero_desc: 'La salute femminile merita un\'attenzione speciale. Ecografi Voluson™ E10 4D, colposcopia digitale HD e un team di 7 ginecologi per accompagnarti in ogni fase della vita.',
+    durata: '20-30 minuti',
+    indicazioni: [
+      'Controllo periodico annuale',
+      'Ciclo irregolare o doloroso',
+      'Dolore pelvico cronico',
+      'Spotting intermestruale',
+      'Vampate e sudorazioni (menopausa)',
+      'Ricerca gravidanza / PMA',
+      'Screening HPV e Pap-Test',
+      'Contraccezione'
+    ],
+    preparazione: 'Evitare rapporti sessuali nelle 24-48h precedenti (se previsto Pap-Test). Non usare ovuli o lavande vaginali nei 2 giorni prima. Preferibilmente lontano dal ciclo mestruale. Portare referti ginecologici precedenti.',
+    tecnologia: [
+      { name: 'Ecografo Voluson™ E10 4D', desc: 'Imaging ginecologico e ostetrico di ultima generazione' },
+      { name: 'Videocolposcopio Digitale HD', desc: 'Ingrandimento fino a 40x per esame cervice' },
+      { name: 'Laboratorio Ormonale Integrato', desc: 'Dosaggi FSH, LH, Estradiolo, AMH in giornata' }
+    ],
+    faq: [
+      { q: 'Fate l\'ecografia durante la visita?', a: 'Sì, sempre. Ogni ambulatorio ginecologico è dotato di ecografo interno per la valutazione immediata transvaginale o sovrapubica.' },
+      { q: 'Posso venire durante il ciclo?', a: 'Per la visita semplice sì. Per il Pap-Test e la colposcopia è preferibile attendere la fine del ciclo mestruale.' },
+      { q: 'Offrite percorsi per la fertilità (PMA)?', a: 'Sì, abbiamo un team dedicato alla Procreazione Medicalmente Assistita con monitoraggi ecografici, dosaggi ormonali e consulenze specialistiche.' }
+    ],
+    specialists: [
+      { name: 'Prof. Salvatore Dessole', role: 'Direttore Sanitario', initials: 'SD', slug: 'salvatore-dessole' },
+      { name: 'Dott. Francesco Dessole', role: 'Ginecologo', initials: 'FD', slug: 'francesco-dessole' },
+      { name: 'Dott.ssa Margherita Dessole', role: 'Ginecologa', initials: 'MD', slug: 'margherita-dessole' },
+      { name: 'Dott.ssa Maddalena Pola', role: 'Ginecologa', initials: 'MP', slug: 'maddalena-pola' },
+      { name: 'Prof. Marco Petrillo', role: 'Ginecologo', initials: 'MP', slug: 'marco-petrillo' },
+      { name: 'Dott.ssa Antonella Pruneddu', role: 'Ginecologa', initials: 'AP', slug: 'antonella-pruneddu' },
+      { name: 'Dott. Paolo Dessole', role: 'Ginecologo', initials: 'PD', slug: 'paolo-dessole' },
+      { name: 'Dott.ssa Sonia Bove', role: 'Ginecologa', initials: 'SB', slug: 'sonia-bove' }
+    ]
+  },
+  'cardiologia': {
+    color: '#E53935',
+    colorDark: '#C62828',
+    colorLight: '#FFEBEE',
+    icon: 'fa-heartbeat',
+    title_main: 'Cardiologia',
+    title_accent: 'Clinica & Sportiva',
+    hero_desc: 'ECG 12 derivazioni, ecocardiogramma color-Doppler e test ergometrico in un\'unica seduta. Diagnosi cardiovascolare completa per prevenzione, sport e follow-up.',
+    durata: '30-45 minuti',
+    indicazioni: [
+      'Dolore toracico',
+      'Palpitazioni o aritmie',
+      'Affanno sotto sforzo',
+      'Ipertensione arteriosa',
+      'Gonfiore alle caviglie',
+      'Screening sportivo agonistico',
+      'Familiarità cardiovascolare',
+      'Check-up over 40'
+    ],
+    preparazione: 'Nessun digiuno richiesto. Portare lista farmaci in uso. Evitare caffeina 2h prima se previsto test da sforzo. Abbigliamento comodo.',
+    tecnologia: [
+      { name: 'ECG 12 derivazioni', desc: 'Tracciato elettrocardiografico standard con referto immediato' },
+      { name: 'Ecocardiogramma Color-Doppler', desc: 'Imaging cardiaco avanzato per studio valvole e funzione' },
+      { name: 'Test Ergometrico', desc: 'Valutazione sotto sforzo per cardiopatia ischemica e sport' }
+    ],
+    faq: [
+      { q: 'Quanto dura la visita cardiologica con ECG?', a: 'Circa 30-45 minuti, inclusi anamnesi, ECG, eventuale ecocardiogramma e refertazione.' },
+      { q: 'Serve il digiuno?', a: 'No, per la visita cardiologica standard non è richiesto il digiuno.' },
+      { q: 'Rilasciate certificati sportivi?', a: 'Sì, rilasciamo certificati per attività sportiva agonistica e non agonistica, incluso ECG sotto sforzo se necessario.' }
+    ],
+    specialists: [
+      { name: 'Dott. Tonino Bullitta', role: 'Cardiologo', initials: 'TB', slug: 'tonino-bullitta' }
+    ]
+  },
+  'dermatologia': {
+    color: '#8E24AA',
+    colorDark: '#6A1B9A',
+    colorLight: '#F3E5F5',
+    icon: 'fa-hand-dots',
+    title_main: 'Dermatologia',
+    title_accent: '& Mappatura Nei',
+    hero_desc: 'Videodermatoscopia digitale con intelligenza artificiale per la mappatura dei nei e diagnosi precoce del melanoma. Chirurgia ambulatoriale e trattamenti estetici.',
+    durata: '20-30 minuti',
+    indicazioni: [
+      'Nei sospetti o in evoluzione',
+      'Macchie cutanee nuove',
+      'Prurito persistente',
+      'Acne e cicatrici',
+      'Psoriasi ed eczemi',
+      'Alopecia e caduta capelli',
+      'Screening oncologico cutaneo',
+      'Controllo periodico nei'
+    ],
+    preparazione: 'Nessuna preparazione particolare. Evitare creme e trucco sulle zone da esaminare. Segnalare eventuali nei che hanno cambiato aspetto.',
+    tecnologia: [
+      { name: 'Videodermatoscopio Digitale', desc: 'Imaging ad alta risoluzione con ingrandimento 70x e archiviazione' },
+      { name: 'AI per Mappatura Nei', desc: 'Algoritmi di intelligenza artificiale per rilevamento precoce melanoma' },
+      { name: 'Chirurgia Ambulatoriale', desc: 'Rimozione nei, cisti, lipomi con esame istologico' }
+    ],
+    faq: [
+      { q: 'Ogni quanto controllare i nei?', a: 'Si consiglia un controllo annuale. Più frequente (ogni 6 mesi) in caso di familiarità per melanoma o pelle chiara con molti nei.' },
+      { q: 'La mappatura dei nei è dolorosa?', a: 'No, è un esame completamente indolore. Il dermatoscopio appoggia delicatamente sulla pelle.' },
+      { q: 'Fate anche trattamenti estetici?', a: 'Sì, offriamo trattamenti per acne, cicatrici, macchie, peeling e filler dermici.' }
+    ],
+    specialists: [
+      { name: 'Dott.ssa Paola Dettori', role: 'Dermatologa', initials: 'PD', slug: 'paola-dettori' }
+    ]
+  },
+  'urologia': {
+    color: '#1E88E5',
+    colorDark: '#1565C0',
+    colorLight: '#E3F2FD',
+    icon: 'fa-person',
+    title_main: 'Urologia',
+    title_accent: '& Andrologia',
+    hero_desc: 'Visita urologica completa con ecografia prostatica transrettale e uroflussometria. Diagnosi e cura di patologie urinarie e andrologiche.',
+    durata: '25-35 minuti',
+    indicazioni: [
+      'Difficoltà a urinare',
+      'Minzione frequente notturna',
+      'Sangue nelle urine',
+      'Dolore pelvico o perineale',
+      'PSA elevato',
+      'Disfunzione erettile',
+      'Infertilità maschile',
+      'Calcoli renali'
+    ],
+    preparazione: 'Vescica moderatamente piena per ecografia. Portare esami PSA recenti se disponibili. Elenco farmaci in uso.',
+    tecnologia: [
+      { name: 'Ecografia Prostatica Transrettale', desc: 'Imaging ad alta definizione della prostata' },
+      { name: 'Uroflussometria', desc: 'Misurazione computerizzata del flusso urinario' },
+      { name: 'Cistoscopia Flessibile', desc: 'Esplorazione endoscopica delle vie urinarie' }
+    ],
+    faq: [
+      { q: 'La visita urologica è dolorosa?', a: 'No, la visita standard non è dolorosa. L\'esplorazione rettale per la prostata può dare un leggero fastidio momentaneo.' },
+      { q: 'Devo fare il digiuno?', a: 'No, non è richiesto il digiuno. È consigliato arrivare con la vescica moderatamente piena.' },
+      { q: 'Ogni quanto controllare la prostata?', a: 'Dopo i 50 anni (o 45 con familiarità) si consiglia un controllo annuale con PSA e visita.' }
+    ],
+    specialists: [
+      { name: 'Dott. Daniele Sabiu', role: 'Urologo', initials: 'DS', slug: 'daniele-sabiu' }
+    ]
+  },
+  'oculistica': {
+    color: '#00ACC1',
+    colorDark: '#00838F',
+    colorLight: '#E0F7FA',
+    icon: 'fa-eye',
+    title_main: 'Oculistica',
+    title_accent: '& Ortottica',
+    hero_desc: 'Visita oculistica completa con OCT, campo visivo computerizzato e tonometria. Diagnosi precoce di glaucoma, maculopatia e patologie retiniche.',
+    durata: '30-40 minuti',
+    indicazioni: [
+      'Calo della vista',
+      'Visione offuscata',
+      'Mosche volanti',
+      'Occhi rossi o secchi',
+      'Pressione oculare alta',
+      'Familiarità per glaucoma',
+      'Diabete (screening retinopatia)',
+      'Controllo periodico'
+    ],
+    preparazione: 'Portare occhiali e/o lenti in uso. Non guidare se prevista dilatazione pupillare. Portare referti oculistici precedenti.',
+    tecnologia: [
+      { name: 'OCT Retina', desc: 'Tomografia ottica per studio macula e nervo ottico' },
+      { name: 'Campo Visivo Computerizzato', desc: 'Screening e monitoraggio glaucoma' },
+      { name: 'Tonometria', desc: 'Misurazione della pressione intraoculare' }
+    ],
+    faq: [
+      { q: 'Devo dilatare le pupille?', a: 'Dipende dalla visita. Per l\'esame del fondo oculare completo è necessaria la dilatazione (durata effetto 2-4 ore).' },
+      { q: 'Posso guidare dopo la visita?', a: 'Se viene eseguita la dilatazione pupillare, è sconsigliato guidare per 2-4 ore. Meglio farsi accompagnare.' },
+      { q: 'Ogni quanto fare il controllo oculistico?', a: 'Ogni 1-2 anni. Più frequente dopo i 40 anni, in caso di diabete o familiarità per glaucoma.' }
+    ],
+    specialists: [
+      { name: 'Dott. Roberto Mancino', role: 'Oculista', initials: 'RM', slug: 'roberto-mancino' },
+      { name: 'Dott.ssa Cinzia Guarino', role: 'Ortottista', initials: 'CG', slug: 'cinzia-guarino' }
+    ]
+  },
+  'ortopedia': {
+    color: '#FF7043',
+    colorDark: '#E64A19',
+    colorLight: '#FBE9E7',
+    icon: 'fa-bone',
+    title_main: 'Ortopedia',
+    title_accent: '& Traumatologia',
+    hero_desc: 'Visita ortopedica specialistica con ecografia muscolo-scheletrica e infiltrazioni eco-guidate. Diagnosi e cura di patologie articolari, ossee e sportive.',
+    durata: '25-35 minuti',
+    indicazioni: [
+      'Dolore articolare',
+      'Mal di schiena',
+      'Dolore al ginocchio',
+      'Spalla dolorosa',
+      'Tunnel carpale',
+      'Artrosi',
+      'Traumi sportivi',
+      'Osteoporosi'
+    ],
+    preparazione: 'Nessuna preparazione. Portare esami radiologici e referti precedenti. Abbigliamento comodo per esame obiettivo.',
+    tecnologia: [
+      { name: 'Ecografia Muscolo-Scheletrica', desc: 'Imaging in tempo reale di tendini, muscoli e articolazioni' },
+      { name: 'Infiltrazioni Eco-Guidate', desc: 'Precisione millimetrica per acido ialuronico e cortisone' },
+      { name: 'Onde d\'Urto', desc: 'Trattamento tendinopatie e calcificazioni' }
+    ],
+    faq: [
+      { q: 'Le infiltrazioni sono dolorose?', a: 'Viene utilizzato anestetico locale. Si può avvertire un leggero fastidio ma la procedura è ben tollerata.' },
+      { q: 'Servono esami prima della visita?', a: 'Non sono obbligatori, ma se disponibili portare radiografie o risonanze recenti.' },
+      { q: 'Quante infiltrazioni servono?', a: 'Dipende dalla patologia. Generalmente si eseguono cicli di 3-5 infiltrazioni a distanza di 1-2 settimane.' }
+    ],
+    specialists: [
+      { name: 'Dott. Pietro Lisai', role: 'Ortopedico', initials: 'PL', slug: 'pietro-lisai' }
+    ]
+  },
+  'neurologia': {
+    color: '#5C6BC0',
+    colorDark: '#3949AB',
+    colorLight: '#E8EAF6',
+    icon: 'fa-brain',
+    title_main: 'Neurologia',
+    title_accent: '& Diagnostica',
+    hero_desc: 'Visita neurologica completa con elettromiografia, EEG e Doppler TSA. Diagnosi di cefalee, neuropatie, epilessia e patologie cerebrovascolari.',
+    durata: '30-45 minuti',
+    indicazioni: [
+      'Cefalea persistente',
+      'Vertigini',
+      'Formicolii e parestesie',
+      'Debolezza muscolare',
+      'Tremori',
+      'Disturbi della memoria',
+      'Epilessia',
+      'Disturbi del sonno'
+    ],
+    preparazione: 'Elenco farmaci in uso. Per EEG: capelli puliti, evitare gel/lacca. Per EMG: evitare creme sulle zone da esaminare.',
+    tecnologia: [
+      { name: 'Elettromiografia (EMG)', desc: 'Studio della conduzione nervosa e muscolare' },
+      { name: 'Elettroencefalogramma (EEG)', desc: 'Registrazione dell\'attività elettrica cerebrale' },
+      { name: 'Doppler TSA', desc: 'Ecocolordoppler dei tronchi sovra-aortici' }
+    ],
+    faq: [
+      { q: 'L\'elettromiografia è dolorosa?', a: 'Può dare un leggero fastidio durante l\'inserimento degli aghi. La procedura è generalmente ben tollerata.' },
+      { q: 'Devo sospendere i farmaci?', a: 'No, continuare la terapia abituale. Segnalare tutti i farmaci in uso al neurologo.' },
+      { q: 'Quanto dura l\'EEG?', a: 'L\'esame standard dura circa 20-30 minuti, inclusa la preparazione.' }
+    ],
+    specialists: [
+      { name: 'Dott. Sebastiano Traccis', role: 'Neurologo', initials: 'ST', slug: 'sebastiano-traccis' }
+    ]
+  },
+  'pneumologia': {
+    color: '#26A69A',
+    colorDark: '#00897B',
+    colorLight: '#E0F2F1',
+    icon: 'fa-lungs',
+    title_main: 'Pneumologia',
+    title_accent: '& Allergologia',
+    hero_desc: 'Spirometria completa, test di broncodilatazione e prick test allergologici. Diagnosi e cura di asma, BPCO, allergie respiratorie.',
+    durata: '30-40 minuti',
+    indicazioni: [
+      'Tosse persistente',
+      'Difficoltà respiratorie',
+      'Respiro sibilante',
+      'Allergie respiratorie',
+      'Asma',
+      'BPCO',
+      'Apnee notturne',
+      'Fumatore (screening)'
+    ],
+    preparazione: 'Non fumare 4h prima. Evitare broncodilatatori (se possibile e d\'accordo col medico). Abbigliamento comodo.',
+    tecnologia: [
+      { name: 'Spirometria', desc: 'Misurazione completa della funzionalità respiratoria' },
+      { name: 'Test di Broncodilatazione', desc: 'Valutazione risposta ai broncodilatatori' },
+      { name: 'Prick Test', desc: 'Test cutanei per allergie a inalanti e alimenti' }
+    ],
+    faq: [
+      { q: 'La spirometria è faticosa?', a: 'Richiede alcune inspirazioni ed espirazioni profonde. È un esame semplice e non invasivo.' },
+      { q: 'Devo sospendere i farmaci per asma?', a: 'Consultare il medico. In genere si sospendono i broncodilatatori 6-12h prima, ma dipende dal tipo di esame.' },
+      { q: 'Quanto durano i prick test?', a: 'Circa 30 minuti complessivi, inclusa l\'attesa per la lettura dei risultati.' }
+    ],
+    specialists: [
+      { name: 'Prof. Pietro Pirina', role: 'Pneumologo', initials: 'PP', slug: 'pietro-pirina' }
+    ]
+  },
+  'endocrinologia': {
+    color: '#7CB342',
+    colorDark: '#558B2F',
+    colorLight: '#F1F8E9',
+    icon: 'fa-disease',
+    title_main: 'Endocrinologia',
+    title_accent: '& Tiroide',
+    hero_desc: 'Visita endocrinologica con ecografia tiroidea integrata. Diagnosi e cura di patologie tiroidee, diabete, obesità e disturbi ormonali.',
+    durata: '30-40 minuti',
+    indicazioni: [
+      'Noduli tiroidei',
+      'Ipo/ipertiroidismo',
+      'Diabete mellito',
+      'Obesità',
+      'Disturbi mestruali',
+      'Osteoporosi',
+      'Irsutismo',
+      'Stanchezza cronica'
+    ],
+    preparazione: 'Portare esami ormonali recenti se disponibili. Elenco farmaci in uso. Per ecografia: collo libero da collane.',
+    tecnologia: [
+      { name: 'Ecografia Tiroidea HD', desc: 'Imaging ad alta risoluzione di tiroide e paratiroidi' },
+      { name: 'Agoaspirato Eco-Guidato', desc: 'Citologia tiroidea per noduli sospetti' },
+      { name: 'MOC-DEXA', desc: 'Densitometria ossea per osteoporosi' }
+    ],
+    faq: [
+      { q: 'Devo essere a digiuno?', a: 'Per la visita endocrinologica standard no. Se previsti esami del sangue specifici, può essere richiesto il digiuno.' },
+      { q: 'L\'agoaspirato tiroideo è doloroso?', a: 'Viene eseguito con ago sottile, simile a un prelievo. Può dare un leggero fastidio momentaneo.' },
+      { q: 'Quanto durano i risultati della MOC?', a: 'Il referto è disponibile immediatamente dopo l\'esame.' }
+    ],
+    specialists: [
+      { name: 'Dott.ssa Maria Pina Pintus', role: 'Endocrinologa', initials: 'MP', slug: 'maria-pina-pintus' },
+      { name: 'Dott.ssa Maria Laura De Luca', role: 'Endocrinologa', initials: 'MD', slug: 'maria-laura-de-luca' }
+    ]
+  }
+};
+
+// Mapping file -> specialty
+const FILE_SPECIALTY_MAP = {
+  'visita-ginecologica.html': 'ginecologia',
+  'visita-cardiologica-ecg.html': 'cardiologia',
+  'visita-dermatologica.html': 'dermatologia',
+  'visita-urologica.html': 'urologia',
+  'visita-oculistica.html': 'oculistica',
+  'visita-ortopedica.html': 'ortopedia',
+  'visita-neurologica.html': 'neurologia',
+  'visita-pneumologica.html': 'pneumologia',
+  'visita-endocrinologica.html': 'endocrinologia',
+  'ecografia-transvaginale.html': 'ginecologia',
+  'ecografia-pelvica.html': 'ginecologia',
+  'ecografia-mammaria.html': 'ginecologia',
+  'ecografia-ostetrica-3d.html': 'ginecologia',
+  'ecografia-morfologica.html': 'ginecologia',
+  'pap-test.html': 'ginecologia',
+  'pap-test-hpv.html': 'ginecologia',
+  'colposcopia.html': 'ginecologia',
+  'isteroscopia.html': 'ginecologia',
+  'ecocardiogramma.html': 'cardiologia',
+  'holter-ecg.html': 'cardiologia',
+  'holter-pressorio.html': 'cardiologia',
+  'ecografia-prostatica.html': 'urologia',
+  'campo-visivo.html': 'oculistica',
+  'infiltrazioni-articolari.html': 'ortopedia',
+  'elettromiografia.html': 'neurologia',
+  'spirometria.html': 'pneumologia',
+  'ecografia-tiroidea.html': 'endocrinologia',
+  'mappatura-nevi.html': 'dermatologia',
+  'eco-doppler-arti.html': 'cardiologia',
+  'scleroterapia.html': 'cardiologia'
+};
+
+// Generate clean layout HTML
+function generateCleanPage(filename, data) {
+  const specialty = FILE_SPECIALTY_MAP[filename];
+  const config = DEEP_DATA[specialty] || DEEP_DATA['ginecologia'];
+  
+  // Extract procedure name from filename
+  const procName = filename.replace('.html', '').split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ').replace('Visita ', '').replace('Ecografia ', 'Ecografia ');
+  
+  return `<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${config.title_main} ${config.title_accent} Sassari | Bio-Clinic</title>
+    <meta name="description" content="${config.hero_desc}">
+    <meta name="keywords" content="${config.title_main.toLowerCase()} sassari, ${config.title_accent.toLowerCase()} sassari, visita ${config.title_main.toLowerCase()}, bio-clinic sassari">
+    <link rel="canonical" href="https://bio-clinic.it/pages/${filename}">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="${config.title_main} ${config.title_accent} Sassari | Bio-Clinic">
+    <meta property="og:description" content="${config.hero_desc}">
+    <meta property="og:url" content="https://bio-clinic.it/pages/${filename}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Bio-Clinic Sassari">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "MedicalClinic",
+          "@id": "https://bio-clinic.it/#clinic",
+          "name": "Bio-Clinic Sassari",
+          "telephone": "+39 079 956 1332",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Via Renzo Mossa, 23",
+            "addressLocality": "Sassari",
+            "postalCode": "07100",
+            "addressCountry": "IT"
+          }
+        },
+        {
+          "@type": "MedicalSpecialty",
+          "@id": "https://bio-clinic.it/pages/${filename}#specialty",
+          "name": "${config.title_main}",
+          "alternateName": "${config.title_main} ${config.title_accent}",
+          "description": "${config.hero_desc.replace(/"/g, '\\"')}"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bio-clinic.it/"},
+            {"@type": "ListItem", "position": 2, "name": "Specialità", "item": "https://bio-clinic.it/pages/specialita.html"},
+            {"@type": "ListItem", "position": 3, "name": "${config.title_main}", "item": "https://bio-clinic.it/pages/${filename}"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            ${config.faq.map(f => `{
+              "@type": "Question",
+              "name": "${f.q.replace(/"/g, '\\"')}",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "${f.a.replace(/"/g, '\\"')}"
+              }
+            }`).join(',\n            ')}
+          ]
+        }
+      ]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header-spacing-fix.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Critical Header Fix */
+        body { padding-top: 100px !important; font-family: 'Inter', sans-serif; margin: 0; }
+        .header { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 1000 !important; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        
+        /* Theme Colors */
+        :root {
+            --theme-primary: ${config.color};
+            --theme-dark: ${config.colorDark};
+            --theme-light: ${config.colorLight};
+        }
+        
+        /* Hero Section */
+        .service-hero {
+            background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-dark) 100%);
+            color: white;
+            padding: 60px 0 50px;
+            text-align: center;
+        }
+        .service-hero h1 { font-size: 2.5rem; margin-bottom: 0.75rem; font-weight: 700; }
+        .service-hero .subtitle { font-size: 1.15rem; opacity: 0.95; max-width: 650px; margin: 0 auto 1.5rem; line-height: 1.6; }
+        .service-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .service-badge { background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; }
+        
+        /* Content Sections */
+        .content-section { padding: 50px 0; }
+        .content-section:nth-child(even) { background: #f8f9fa; }
+        .section-header { margin-bottom: 30px; }
+        .section-header h2 { font-size: 1.75rem; color: #1a1a2e; margin-bottom: 0.5rem; }
+        .section-header p { color: #666; }
+        
+        /* Info Cards */
+        .info-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+        .info-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-left: 4px solid var(--theme-primary); }
+        .info-card h4 { color: var(--theme-dark); margin-bottom: 8px; font-size: 1rem; }
+        .info-card p { color: #555; font-size: 0.9rem; margin: 0; line-height: 1.5; }
+        
+        /* Tech Cards */
+        .tech-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .tech-card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .tech-card h4 { color: var(--theme-primary); margin-bottom: 8px; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
+        .tech-card h4::before { content: "✓"; background: var(--theme-light); color: var(--theme-primary); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; }
+        .tech-card p { color: #666; font-size: 0.9rem; margin: 0; }
+        
+        /* Preparation Box */
+        .prep-box { background: var(--theme-light); border-radius: 12px; padding: 24px; max-width: 800px; }
+        .prep-box h4 { color: var(--theme-dark); margin-bottom: 12px; }
+        .prep-box p { color: #555; line-height: 1.7; margin: 0; }
+        
+        /* Specialists Grid */
+        .specialists-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+        .specialist-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); display: flex; align-items: center; gap: 15px; text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s; }
+        .specialist-card:hover { transform: translateY(-3px); box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
+        .specialist-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--theme-primary), var(--theme-dark)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 1.1rem; flex-shrink: 0; }
+        .specialist-info h4 { margin: 0 0 4px; color: #333; font-size: 1rem; }
+        .specialist-info p { margin: 0; color: #666; font-size: 0.85rem; }
+        
+        /* FAQ Section */
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: white; border-radius: 12px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); overflow: hidden; border: 1px solid #eee; }
+        .faq-question { padding: 18px 24px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 500; color: #333; }
+        .faq-question:hover { background: var(--theme-light); }
+        .faq-answer { padding: 0 24px 20px; color: #555; line-height: 1.7; display: none; }
+        .faq-item.active .faq-answer { display: block; }
+        .faq-item.active .faq-question { background: var(--theme-light); color: var(--theme-dark); }
+        .faq-toggle { font-size: 1.3rem; color: var(--theme-primary); transition: transform 0.3s; }
+        .faq-item.active .faq-toggle { transform: rotate(45deg); }
+        
+        /* CTA Section */
+        .cta-section { background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-dark) 100%); color: white; padding: 60px 0; text-align: center; }
+        .cta-section h2 { font-size: 2rem; margin-bottom: 0.75rem; }
+        .cta-section p { opacity: 0.9; margin-bottom: 1.5rem; }
+        .cta-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .btn-cta { padding: 14px 32px; border-radius: 30px; font-weight: 600; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; font-size: 1rem; }
+        .btn-cta.primary { background: white; color: var(--theme-dark); }
+        .btn-cta.primary:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .btn-cta.whatsapp { background: #25D366; color: white; }
+        .btn-cta.whatsapp:hover { background: #128C7E; }
+        
+        /* Breadcrumb */
+        .breadcrumb { padding: 15px 0; background: #f8f9fa; border-bottom: 1px solid #eee; }
+        .breadcrumb-list { display: flex; gap: 8px; list-style: none; margin: 0; padding: 0; font-size: 0.9rem; flex-wrap: wrap; }
+        .breadcrumb-list a { color: var(--theme-primary); text-decoration: none; }
+        .breadcrumb-list a:hover { text-decoration: underline; }
+        
+        /* Footer */
+        .footer { background: #1a1a2e; color: #ccc; padding: 40px 0 20px; }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid #333; }
+        .footer a { color: var(--theme-primary); }
+        
+        /* Container */
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .service-hero h1 { font-size: 1.8rem; }
+            .service-hero { padding: 40px 0 35px; }
+            .content-section { padding: 35px 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
+                <a href="../index.html" class="logo">
+                    <img src="../images/logo-bioclinic.png" alt="Bio-Clinic Sassari" height="50">
+                </a>
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <a href="../index.html" style="color: #333; text-decoration: none;">Home</a>
+                    <a href="specialita.html" style="color: #333; text-decoration: none;">Specialità</a>
+                    <a href="../equipe/index.html" style="color: #333; text-decoration: none;">Équipe</a>
+                    <a href="../laboratorio/index.html" style="color: #333; text-decoration: none;">Laboratorio</a>
+                    <a href="contatti.html" style="color: #333; text-decoration: none;">Contatti</a>
+                    <a href="tel:+390799561332" style="background: var(--theme-primary); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: 600;">
+                        📞 079 956 1332
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li><a href="../index.html">Home</a></li>
+                <li><span>›</span></li>
+                <li><a href="specialita.html">Specialità</a></li>
+                <li><span>›</span></li>
+                <li><strong>${config.title_main}</strong></li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="service-hero">
+        <div class="container">
+            <h1>${config.title_main} <span style="opacity: 0.9">${config.title_accent}</span></h1>
+            <p class="subtitle">${config.hero_desc}</p>
+            <div class="service-badges">
+                <span class="service-badge">⏱️ ${config.durata}</span>
+                <span class="service-badge">📋 Referto immediato</span>
+                <span class="service-badge">📍 Via Renzo Mossa 23, Sassari</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Indications Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>📋 Quando è Indicato</h2>
+                <p>Se ti riconosci in una di queste situazioni, prenota una visita specialistica</p>
+            </div>
+            <div class="info-cards">
+                ${config.indicazioni.map(ind => `
+                <div class="info-card">
+                    <p>✓ ${ind}</p>
+                </div>
+                `).join('')}
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>🔬 Tecnologia & Strumentazione</h2>
+                <p>Apparecchiature di ultima generazione per diagnosi accurate</p>
+            </div>
+            <div class="tech-cards">
+                ${config.tecnologia.map(tech => `
+                <div class="tech-card">
+                    <h4>${tech.name}</h4>
+                    <p>${tech.desc}</p>
+                </div>
+                `).join('')}
+            </div>
+        </div>
+    </section>
+
+    <!-- Preparation Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>✅ Come Prepararsi</h2>
+            </div>
+            <div class="prep-box">
+                <p>${config.preparazione}</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialists Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>👨‍⚕️ I Nostri Specialisti</h2>
+                <p>Professionisti esperti per la tua salute</p>
+            </div>
+            <div class="specialists-grid">
+                ${config.specialists.map(spec => `
+                <a href="../equipe/${spec.slug}.html" class="specialist-card">
+                    <div class="specialist-avatar">${spec.initials}</div>
+                    <div class="specialist-info">
+                        <h4>${spec.name}</h4>
+                        <p>${spec.role}</p>
+                    </div>
+                </a>
+                `).join('')}
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <h2>❓ Domande Frequenti</h2>
+            </div>
+            <div class="faq-list">
+                ${config.faq.map((f, i) => `
+                <div class="faq-item${i === 0 ? ' active' : ''}">
+                    <div class="faq-question">
+                        ${f.q}
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        ${f.a}
+                    </div>
+                </div>
+                `).join('')}
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Prenota la tua visita</h2>
+            <p>I nostri specialisti sono a disposizione per te</p>
+            <div class="cta-buttons">
+                <a href="tel:+390799561332" class="btn-cta primary">📞 Chiama 079 956 1332</a>
+                <a href="https://wa.me/390799561332" class="btn-cta whatsapp">💬 WhatsApp</a>
+            </div>
+            <p style="margin-top: 20px; opacity: 0.8; font-size: 0.9rem;">📍 Via Renzo Mossa 23, 07100 Sassari | Lun-Ven 7:00-21:00, Sab 8:00-14:00</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2026 Bio-Clinic Sassari - Bio Pharma S.r.l. - P.IVA 02869450904</p>
+                <p><a href="privacy.html">Privacy Policy</a> | <a href="cookie.html">Cookie Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                const wasActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('active'));
+                if (!wasActive) item.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>`;
+}
+
+// Main execution
+function main() {
+  console.log('=' .repeat(60));
+  console.log('RESTORE CLEAN LAYOUT - Bio-Clinic');
+  console.log('=' .repeat(60));
+  
+  let updated = 0;
+  
+  // Process main specialty pages
+  const mainPages = [
+    'visita-ginecologica.html',
+    'visita-cardiologica-ecg.html',
+    'visita-dermatologica.html',
+    'visita-urologica.html',
+    'visita-oculistica.html',
+    'visita-ortopedica.html',
+    'visita-neurologica.html',
+    'visita-pneumologica.html',
+    'visita-endocrinologica.html'
+  ];
+  
+  for (const filename of mainPages) {
+    const filePath = path.join(pagesDir, filename);
+    
+    if (!fs.existsSync(filePath)) {
+      console.log(`⚠️ File non trovato: ${filename}`);
+      continue;
+    }
+    
+    const html = generateCleanPage(filename, {});
+    fs.writeFileSync(filePath, html);
+    console.log(`✅ Aggiornato: ${filename}`);
+    updated++;
+  }
+  
+  console.log('\n' + '=' .repeat(60));
+  console.log(`COMPLETATO! Pagine aggiornate: ${updated}`);
+  console.log('=' .repeat(60));
+}
+
+main();
