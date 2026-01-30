@@ -19,45 +19,67 @@
     {
       "@context": "https://schema.org",
       "@graph": [
-        {
-          "@type": "MedicalClinic",
-          "@id": "https://bio-clinic.it/#clinic",
-          "name": "Bio-Clinic Sassari",
-          "url": "https://bio-clinic.it",
-          "telephone": "+39 079 956 1332",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Via Renzo Mossa, 23",
-            "addressLocality": "Sassari",
-            "postalCode": "07100",
-            "addressCountry": "IT"
-          }
-        },
-        {
-          "@type": "MedicalProcedure",
-          "@id": "https://bio-clinic.it/pages/visita-medicina-lavoro/#procedure",
-          "name": "Visita Medicina del Lavoro",
-          "description": "Visita per valutazione idoneità al lavoro e sorveglianza sanitaria",
-          "procedureType": "MedicalProcedure",
-          "bodyLocation": "",
-          "relevantSpecialty": {
-            "@type": "MedicalSpecialty",
-            "name": "Medicina del Lavoro"
-          },
-          "provider": {
-            "@id": "https://bio-clinic.it/#clinic"
-          }
-        },
-        {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bio-clinic.it/"},
-            {"@type": "ListItem", "position": 2, "name": "Medicina del Lavoro", "item": "https://bio-clinic.it/pages/medicina-lavoro.html"},
-            {"@type": "ListItem", "position": 3, "name": "Visita Medicina del Lavoro", "item": "https://bio-clinic.it/pages/visita-medicina-lavoro.html"}
-          ]
-        }
+            {
+                  "@type": "MedicalClinic",
+                  "@id": "https://bio-clinic.it/#clinic",
+                  "name": "Bio-Clinic Sassari",
+                  "url": "https://bio-clinic.it",
+                  "telephone": "+39 079 956 1332",
+                  "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "Via Renzo Mossa, 23",
+                        "addressLocality": "Sassari",
+                        "postalCode": "07100",
+                        "addressCountry": "IT"
+                  }
+            },
+            {
+                  "@type": "MedicalProcedure",
+                  "@id": "https://bio-clinic.it/pages/visita-medicina-lavoro/#procedure",
+                  "name": "Visita Medicina del Lavoro",
+                  "description": "Visita per valutazione idoneità al lavoro e sorveglianza sanitaria",
+                  "procedureType": "MedicalProcedure",
+                  "bodyLocation": "",
+                  "relevantSpecialty": {
+                        "@type": "MedicalSpecialty",
+                        "name": "Medicina del Lavoro"
+                  },
+                  "provider": {
+                        "@id": "https://bio-clinic.it/#clinic"
+                  },
+                  "knowsAbout": [
+                        "Check-up generale",
+                        "Certificati medici",
+                        "Supporto psicologico",
+                        "Salute mentale",
+                        "Valutazione specialistica"
+                  ]
+            },
+            {
+                  "@type": "BreadcrumbList",
+                  "itemListElement": [
+                        {
+                              "@type": "ListItem",
+                              "position": 1,
+                              "name": "Home",
+                              "item": "https://bio-clinic.it/"
+                        },
+                        {
+                              "@type": "ListItem",
+                              "position": 2,
+                              "name": "Medicina del Lavoro",
+                              "item": "https://bio-clinic.it/pages/medicina-lavoro.html"
+                        },
+                        {
+                              "@type": "ListItem",
+                              "position": 3,
+                              "name": "Visita Medicina del Lavoro",
+                              "item": "https://bio-clinic.it/pages/visita-medicina-lavoro.html"
+                        }
+                  ]
+            }
       ]
-    }
+}
     </script>
     
     <!-- Fonts & CSS -->
@@ -294,6 +316,55 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- BLOCCO STRATEGICO AUTOMATIZZATO - Altre -->
+    <section class="py-12 bg-white border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-4">
+            
+            <!-- 1. SINTOMI (SEO SEMANTICA) -->
+            <div class="mb-10">
+                <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <i class="fas fa-user-injured" style="color: #455A64;"></i> Quando richiedere questa prestazione?
+                </h3>
+                <div class="flex flex-wrap gap-3">
+                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
+                    Check-up generale
+                </span>
+                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
+                    Certificati medici
+                </span>
+                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
+                    Supporto psicologico
+                </span>
+                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
+                    Salute mentale
+                </span>
+                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
+                    Valutazione specialistica
+                </span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 2. TECNOLOGIA (PROOF) -->
+                <div class="p-6 rounded-xl border-l-4" style="background: #ECEFF1; border-color: #455A64;">
+                    <h4 class="font-bold text-gray-800 mb-2 flex items-center gap-2">
+                        <i class="fas fa-microchip" style="color: #455A64;"></i> Dotazione Tecnologica
+                    </h4>
+                    <p class="text-sm text-gray-600">Strumentazione diagnostica multidisciplinare.</p>
+                </div>
+
+                <!-- 3. VANTAGGIO BIO-CLINIC (CROSS-SELL) -->
+                <div class="bg-green-50 p-6 rounded-xl border-l-4 border-green-500">
+                    <h4 class="font-bold text-gray-800 mb-2 flex items-center gap-2">
+                        <i class="fas fa-plus-circle text-green-600"></i> Perché Bio-Clinic?
+                    </h4>
+                    <p class="text-sm text-gray-600">Accesso prioritario a tutti i servizi della clinica.</p>
+                </div>
+            </div>
+
         </div>
     </section>
 

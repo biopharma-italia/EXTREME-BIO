@@ -19,45 +19,67 @@
     {
       "@context": "https://schema.org",
       "@graph": [
-        {
-          "@type": "MedicalClinic",
-          "@id": "https://bio-clinic.it/#clinic",
-          "name": "Bio-Clinic Sassari",
-          "url": "https://bio-clinic.it",
-          "telephone": "+39 079 956 1332",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Via Renzo Mossa, 23",
-            "addressLocality": "Sassari",
-            "postalCode": "07100",
-            "addressCountry": "IT"
-          }
-        },
-        {
-          "@type": "MedicalProcedure",
-          "@id": "https://bio-clinic.it/pages/visita-pneumologica/#procedure",
-          "name": "Visita Pneumologica",
-          "description": "Valutazione delle vie respiratorie e della funzione polmonare",
-          "procedureType": "MedicalProcedure",
-          "bodyLocation": "",
-          "relevantSpecialty": {
-            "@type": "MedicalSpecialty",
-            "name": "Pneumologia"
-          },
-          "provider": {
-            "@id": "https://bio-clinic.it/#clinic"
-          }
-        },
-        {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bio-clinic.it/"},
-            {"@type": "ListItem", "position": 2, "name": "Pneumologia", "item": "https://bio-clinic.it/pages/pneumologia.html"},
-            {"@type": "ListItem", "position": 3, "name": "Visita Pneumologica", "item": "https://bio-clinic.it/pages/visita-pneumologica.html"}
-          ]
-        }
+            {
+                  "@type": "MedicalClinic",
+                  "@id": "https://bio-clinic.it/#clinic",
+                  "name": "Bio-Clinic Sassari",
+                  "url": "https://bio-clinic.it",
+                  "telephone": "+39 079 956 1332",
+                  "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "Via Renzo Mossa, 23",
+                        "addressLocality": "Sassari",
+                        "postalCode": "07100",
+                        "addressCountry": "IT"
+                  }
+            },
+            {
+                  "@type": "MedicalProcedure",
+                  "@id": "https://bio-clinic.it/pages/visita-pneumologica/#procedure",
+                  "name": "Visita Pneumologica",
+                  "description": "Valutazione delle vie respiratorie e della funzione polmonare",
+                  "procedureType": "MedicalProcedure",
+                  "bodyLocation": "",
+                  "relevantSpecialty": {
+                        "@type": "MedicalSpecialty",
+                        "name": "Pneumologia"
+                  },
+                  "provider": {
+                        "@id": "https://bio-clinic.it/#clinic"
+                  },
+                  "knowsAbout": [
+                        "Tosse persistente",
+                        "Fiato corto",
+                        "Asma",
+                        "Apnee notturne",
+                        "Fumatore"
+                  ]
+            },
+            {
+                  "@type": "BreadcrumbList",
+                  "itemListElement": [
+                        {
+                              "@type": "ListItem",
+                              "position": 1,
+                              "name": "Home",
+                              "item": "https://bio-clinic.it/"
+                        },
+                        {
+                              "@type": "ListItem",
+                              "position": 2,
+                              "name": "Pneumologia",
+                              "item": "https://bio-clinic.it/pages/pneumologia.html"
+                        },
+                        {
+                              "@type": "ListItem",
+                              "position": 3,
+                              "name": "Visita Pneumologica",
+                              "item": "https://bio-clinic.it/pages/visita-pneumologica.html"
+                        }
+                  ]
+            }
       ]
-    }
+}
     </script>
     
     <!-- Fonts & CSS -->
@@ -294,6 +316,55 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- BLOCCO STRATEGICO AUTOMATIZZATO - Pneumologia -->
+    <section class="py-12 bg-white border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-4">
+            
+            <!-- 1. SINTOMI (SEO SEMANTICA) -->
+            <div class="mb-10">
+                <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <i class="fas fa-user-injured" style="color: #26A69A;"></i> Quando richiedere questa prestazione?
+                </h3>
+                <div class="flex flex-wrap gap-3">
+                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
+                    Tosse persistente
+                </span>
+                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
+                    Fiato corto
+                </span>
+                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
+                    Asma
+                </span>
+                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
+                    Apnee notturne
+                </span>
+                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
+                    Fumatore
+                </span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 2. TECNOLOGIA (PROOF) -->
+                <div class="p-6 rounded-xl border-l-4" style="background: #E0F2F1; border-color: #26A69A;">
+                    <h4 class="font-bold text-gray-800 mb-2 flex items-center gap-2">
+                        <i class="fas fa-microchip" style="color: #26A69A;"></i> Dotazione Tecnologica
+                    </h4>
+                    <p class="text-sm text-gray-600">Spirometro Computerizzato con Test di Reversibilità.</p>
+                </div>
+
+                <!-- 3. VANTAGGIO BIO-CLINIC (CROSS-SELL) -->
+                <div class="bg-green-50 p-6 rounded-xl border-l-4 border-green-500">
+                    <h4 class="font-bold text-gray-800 mb-2 flex items-center gap-2">
+                        <i class="fas fa-plus-circle text-green-600"></i> Perché Bio-Clinic?
+                    </h4>
+                    <p class="text-sm text-gray-600">Possibilità di RX Torace e test allergologici (RAST) in sede.</p>
+                </div>
+            </div>
+
         </div>
     </section>
 

@@ -19,45 +19,67 @@
     {
       "@context": "https://schema.org",
       "@graph": [
-        {
-          "@type": "MedicalClinic",
-          "@id": "https://bio-clinic.it/#clinic",
-          "name": "Bio-Clinic Sassari",
-          "url": "https://bio-clinic.it",
-          "telephone": "+39 079 956 1332",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Via Renzo Mossa, 23",
-            "addressLocality": "Sassari",
-            "postalCode": "07100",
-            "addressCountry": "IT"
-          }
-        },
-        {
-          "@type": "MedicalProcedure",
-          "@id": "https://bio-clinic.it/pages/visita-nefrologica/#procedure",
-          "name": "Visita Nefrologica",
-          "description": "Valutazione della funzione renale e delle patologie dei reni",
-          "procedureType": "MedicalProcedure",
-          "bodyLocation": "",
-          "relevantSpecialty": {
-            "@type": "MedicalSpecialty",
-            "name": "Nefrologia"
-          },
-          "provider": {
-            "@id": "https://bio-clinic.it/#clinic"
-          }
-        },
-        {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bio-clinic.it/"},
-            {"@type": "ListItem", "position": 2, "name": "Nefrologia", "item": "https://bio-clinic.it/pages/nefrologia.html"},
-            {"@type": "ListItem", "position": 3, "name": "Visita Nefrologica", "item": "https://bio-clinic.it/pages/visita-nefrologica.html"}
-          ]
-        }
+            {
+                  "@type": "MedicalClinic",
+                  "@id": "https://bio-clinic.it/#clinic",
+                  "name": "Bio-Clinic Sassari",
+                  "url": "https://bio-clinic.it",
+                  "telephone": "+39 079 956 1332",
+                  "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "Via Renzo Mossa, 23",
+                        "addressLocality": "Sassari",
+                        "postalCode": "07100",
+                        "addressCountry": "IT"
+                  }
+            },
+            {
+                  "@type": "MedicalProcedure",
+                  "@id": "https://bio-clinic.it/pages/visita-nefrologica/#procedure",
+                  "name": "Visita Nefrologica",
+                  "description": "Valutazione della funzione renale e delle patologie dei reni",
+                  "procedureType": "MedicalProcedure",
+                  "bodyLocation": "",
+                  "relevantSpecialty": {
+                        "@type": "MedicalSpecialty",
+                        "name": "Nefrologia"
+                  },
+                  "provider": {
+                        "@id": "https://bio-clinic.it/#clinic"
+                  },
+                  "knowsAbout": [
+                        "Difficoltà a urinare",
+                        "Bruciore o sangue",
+                        "Dolore lombare",
+                        "Disfunzione erettile",
+                        "Controllo PSA"
+                  ]
+            },
+            {
+                  "@type": "BreadcrumbList",
+                  "itemListElement": [
+                        {
+                              "@type": "ListItem",
+                              "position": 1,
+                              "name": "Home",
+                              "item": "https://bio-clinic.it/"
+                        },
+                        {
+                              "@type": "ListItem",
+                              "position": 2,
+                              "name": "Nefrologia",
+                              "item": "https://bio-clinic.it/pages/nefrologia.html"
+                        },
+                        {
+                              "@type": "ListItem",
+                              "position": 3,
+                              "name": "Visita Nefrologica",
+                              "item": "https://bio-clinic.it/pages/visita-nefrologica.html"
+                        }
+                  ]
+            }
       ]
-    }
+}
     </script>
     
     <!-- Fonts & CSS -->
@@ -294,6 +316,55 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- BLOCCO STRATEGICO AUTOMATIZZATO - Urologia -->
+    <section class="py-12 bg-white border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-4">
+            
+            <!-- 1. SINTOMI (SEO SEMANTICA) -->
+            <div class="mb-10">
+                <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <i class="fas fa-user-injured" style="color: #FF7043;"></i> Quando richiedere questa prestazione?
+                </h3>
+                <div class="flex flex-wrap gap-3">
+                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
+                    Difficoltà a urinare
+                </span>
+                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
+                    Bruciore o sangue
+                </span>
+                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
+                    Dolore lombare
+                </span>
+                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
+                    Disfunzione erettile
+                </span>
+                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
+                    Controllo PSA
+                </span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 2. TECNOLOGIA (PROOF) -->
+                <div class="p-6 rounded-xl border-l-4" style="background: #FBE9E7; border-color: #FF7043;">
+                    <h4 class="font-bold text-gray-800 mb-2 flex items-center gap-2">
+                        <i class="fas fa-microchip" style="color: #FF7043;"></i> Dotazione Tecnologica
+                    </h4>
+                    <p class="text-sm text-gray-600">Ecografo Prostatico Transrettale e Uroflussometro Wireless.</p>
+                </div>
+
+                <!-- 3. VANTAGGIO BIO-CLINIC (CROSS-SELL) -->
+                <div class="bg-green-50 p-6 rounded-xl border-l-4 border-green-500">
+                    <h4 class="font-bold text-gray-800 mb-2 flex items-center gap-2">
+                        <i class="fas fa-plus-circle text-green-600"></i> Perché Bio-Clinic?
+                    </h4>
+                    <p class="text-sm text-gray-600">Dosaggio PSA Totale/Libero e Urinocoltura eseguiti direttamente prima della visita.</p>
+                </div>
+            </div>
+
         </div>
     </section>
 

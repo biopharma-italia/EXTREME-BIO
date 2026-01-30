@@ -19,45 +19,67 @@
     {
       "@context": "https://schema.org",
       "@graph": [
-        {
-          "@type": "MedicalClinic",
-          "@id": "https://bio-clinic.it/#clinic",
-          "name": "Bio-Clinic Sassari",
-          "url": "https://bio-clinic.it",
-          "telephone": "+39 079 956 1332",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Via Renzo Mossa, 23",
-            "addressLocality": "Sassari",
-            "postalCode": "07100",
-            "addressCountry": "IT"
-          }
-        },
-        {
-          "@type": "MedicalProcedure",
-          "@id": "https://bio-clinic.it/pages/visita-endocrinologica/#procedure",
-          "name": "Visita Endocrinologica",
-          "description": "Valutazione e gestione delle patologie endocrine e metaboliche",
-          "procedureType": "MedicalProcedure",
-          "bodyLocation": "",
-          "relevantSpecialty": {
-            "@type": "MedicalSpecialty",
-            "name": "Endocrinologia"
-          },
-          "provider": {
-            "@id": "https://bio-clinic.it/#clinic"
-          }
-        },
-        {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bio-clinic.it/"},
-            {"@type": "ListItem", "position": 2, "name": "Endocrinologia", "item": "https://bio-clinic.it/pages/endocrinologia.html"},
-            {"@type": "ListItem", "position": 3, "name": "Visita Endocrinologica", "item": "https://bio-clinic.it/pages/visita-endocrinologica.html"}
-          ]
-        }
+            {
+                  "@type": "MedicalClinic",
+                  "@id": "https://bio-clinic.it/#clinic",
+                  "name": "Bio-Clinic Sassari",
+                  "url": "https://bio-clinic.it",
+                  "telephone": "+39 079 956 1332",
+                  "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "Via Renzo Mossa, 23",
+                        "addressLocality": "Sassari",
+                        "postalCode": "07100",
+                        "addressCountry": "IT"
+                  }
+            },
+            {
+                  "@type": "MedicalProcedure",
+                  "@id": "https://bio-clinic.it/pages/visita-endocrinologica/#procedure",
+                  "name": "Visita Endocrinologica",
+                  "description": "Valutazione e gestione delle patologie endocrine e metaboliche",
+                  "procedureType": "MedicalProcedure",
+                  "bodyLocation": "",
+                  "relevantSpecialty": {
+                        "@type": "MedicalSpecialty",
+                        "name": "Endocrinologia"
+                  },
+                  "provider": {
+                        "@id": "https://bio-clinic.it/#clinic"
+                  },
+                  "knowsAbout": [
+                        "Aumento di peso ingiustificato",
+                        "Stanchezza cronica",
+                        "Nodi alla gola",
+                        "Perdita di capelli",
+                        "Sete eccessiva"
+                  ]
+            },
+            {
+                  "@type": "BreadcrumbList",
+                  "itemListElement": [
+                        {
+                              "@type": "ListItem",
+                              "position": 1,
+                              "name": "Home",
+                              "item": "https://bio-clinic.it/"
+                        },
+                        {
+                              "@type": "ListItem",
+                              "position": 2,
+                              "name": "Endocrinologia",
+                              "item": "https://bio-clinic.it/pages/endocrinologia.html"
+                        },
+                        {
+                              "@type": "ListItem",
+                              "position": 3,
+                              "name": "Visita Endocrinologica",
+                              "item": "https://bio-clinic.it/pages/visita-endocrinologica.html"
+                        }
+                  ]
+            }
       ]
-    }
+}
     </script>
     
     <!-- Fonts & CSS -->
@@ -294,6 +316,55 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- BLOCCO STRATEGICO AUTOMATIZZATO - Endocrinologia -->
+    <section class="py-12 bg-white border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-4">
+            
+            <!-- 1. SINTOMI (SEO SEMANTICA) -->
+            <div class="mb-10">
+                <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <i class="fas fa-user-injured" style="color: #4A90A4;"></i> Quando richiedere questa prestazione?
+                </h3>
+                <div class="flex flex-wrap gap-3">
+                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
+                    Aumento di peso ingiustificato
+                </span>
+                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
+                    Stanchezza cronica
+                </span>
+                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
+                    Nodi alla gola
+                </span>
+                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
+                    Perdita di capelli
+                </span>
+                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
+                    Sete eccessiva
+                </span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 2. TECNOLOGIA (PROOF) -->
+                <div class="p-6 rounded-xl border-l-4" style="background: #E3F2FD; border-color: #4A90A4;">
+                    <h4 class="font-bold text-gray-800 mb-2 flex items-center gap-2">
+                        <i class="fas fa-microchip" style="color: #4A90A4;"></i> Dotazione Tecnologica
+                    </h4>
+                    <p class="text-sm text-gray-600">Ecografia Tiroidea ad alta frequenza e Body Scanner 3D Visbody.</p>
+                </div>
+
+                <!-- 3. VANTAGGIO BIO-CLINIC (CROSS-SELL) -->
+                <div class="bg-green-50 p-6 rounded-xl border-l-4 border-green-500">
+                    <h4 class="font-bold text-gray-800 mb-2 flex items-center gap-2">
+                        <i class="fas fa-plus-circle text-green-600"></i> Perché Bio-Clinic?
+                    </h4>
+                    <p class="text-sm text-gray-600">Dosaggio TSH Reflex, FT3, FT4 e Anticorpi in sede con referto rapido per calibrare la terapia.</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
