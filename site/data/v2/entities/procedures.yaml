@@ -831,7 +831,1008 @@ procedures:
     
     status: "active"
 
+  # ==========================================================================
+  # GINECOLOGIA - PROCEDURE MANCANTI (Risoluzione Warning)
+  # ==========================================================================
+  
+  - id: "consulto-pma"
+    
+    name: "Consulto PMA"
+    name_extended: "Consulto per Procreazione Medicalmente Assistita"
+    slug: "consulto-pma"
+    
+    specialty_id: "ginecologia"
+    category: "visita"
+    page_type: "C"  # Vive nel percorso PMA
+    
+    content:
+      description_short: "Prima valutazione per percorsi di fecondazione assistita"
+    
+    clinical:
+      duration_minutes: 45
+      preparation:
+        required: true
+        notes: "Portare esami precedenti di entrambi i partner. Preferibile presenza di coppia."
+    
+    indications:
+      - "Infertilità di coppia"
+      - "Età materna avanzata"
+      - "Fallimento concepimento naturale"
+      - "Patologie riproduttive note"
+    
+    related_procedures:
+      - "monitoraggio-follicolare"
+      - "spermiogramma"
+      - "isteroscopia"
+      - "consulto-fertilita"
+    
+    pathways:
+      - "pma-fertilita"
+    
+    visibility:
+      has_dedicated_page: false
+      show_in_specialty_page: true
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "ecografia-morfologica"
+    
+    name: "Ecografia Morfologica"
+    name_extended: "Ecografia Morfologica Fetale (20 settimane)"
+    slug: "ecografia-morfologica"
+    
+    specialty_id: "ginecologia"
+    category: "diagnostica"
+    page_type: "A"
+    
+    content:
+      description_short: "Esame ecografico dettagliato per valutare l'anatomia fetale"
+    
+    clinical:
+      duration_minutes: 45
+      preparation:
+        required: false
+        notes: "Eseguire tra 19-21 settimane di gravidanza"
+    
+    indications:
+      - "Screening anomalie fetali"
+      - "Valutazione anatomia fetale"
+      - "Controllo crescita"
+      - "Localizzazione placenta"
+    
+    related_procedures:
+      - "ecografia-ostetrica-3d"
+      - "translucenza-nucale"
+    
+    faqs:
+      - question: "Quando si fa l'ecografia morfologica?"
+        answer: "Si esegue tra la 19a e 21a settimana di gravidanza, periodo ideale per valutare l'anatomia fetale."
+      - question: "Quanto dura l'esame?"
+        answer: "L'esame dura circa 45 minuti, può richiedere più tempo se il feto è in posizione sfavorevole."
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 9
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "chirurgia-ginecologica"
+    
+    name: "Chirurgia Ginecologica"
+    name_extended: "Chirurgia Ginecologica Mini-Invasiva"
+    slug: "chirurgia-ginecologica"
+    
+    specialty_id: "ginecologia"
+    category: "trattamento"
+    page_type: "B"  # Hub chirurgia
+    
+    content:
+      description_short: "Interventi chirurgici ginecologici con tecniche mini-invasive"
+    
+    clinical:
+      duration_minutes: null  # Variabile
+      preparation:
+        required: true
+        notes: "Preparazione specifica in base all'intervento. Consulto pre-operatorio obbligatorio."
+    
+    indications:
+      - "Miomi uterini"
+      - "Endometriosi"
+      - "Cisti ovariche"
+      - "Prolasso"
+      - "Patologie oncologiche"
+    
+    related_procedures:
+      - "isteroscopia"
+      - "laparoscopia"
+      - "visita-ginecologica"
+    
+    visibility:
+      has_dedicated_page: false
+      hub_page: "chirurgia-ginecologica"
+      show_in_specialty_page: true
+    
+    status: "active"
+
+  # ==========================================================================
+  # OSTETRICIA
+  # ==========================================================================
+  
+  - id: "assistenza-ostetrica"
+    
+    name: "Assistenza Ostetrica"
+    name_extended: "Assistenza Ostetrica alla Gravidanza"
+    slug: "assistenza-ostetrica"
+    
+    specialty_id: "ostetricia"
+    category: "servizio"
+    page_type: "A"
+    
+    content:
+      description_short: "Accompagnamento personalizzato durante gravidanza, parto e post-partum"
+    
+    clinical:
+      duration_minutes: 60  # Prima visita
+      preparation:
+        required: false
+        notes: "Portare documentazione medica e libretto gravidanza"
+    
+    indications:
+      - "Gravidanza fisiologica"
+      - "Supporto emotivo"
+      - "Preparazione al parto"
+      - "Allattamento"
+      - "Post-partum"
+    
+    related_procedures:
+      - "corso-preparto"
+      - "ecografia-ostetrica-3d"
+      - "visita-ginecologica"
+    
+    faqs:
+      - question: "Quando iniziare il percorso con l'ostetrica?"
+        answer: "Si può iniziare fin dalla conferma della gravidanza. L'ostetrica accompagna tutto il percorso fino al post-partum."
+      - question: "Cosa fa l'ostetrica?"
+        answer: "L'ostetrica supporta la donna in gravidanza, prepara al parto, assiste nell'allattamento e nel recupero post-partum."
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 1
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "corso-preparto"
+    
+    name: "Corso Preparto"
+    name_extended: "Corso di Accompagnamento alla Nascita"
+    slug: "corso-preparto"
+    
+    specialty_id: "ostetricia"
+    category: "servizio"
+    page_type: "A"
+    
+    content:
+      description_short: "Percorso formativo per prepararsi al parto e all'accoglienza del neonato"
+    
+    clinical:
+      duration_minutes: 90  # Per incontro
+      preparation:
+        required: false
+        notes: "8-10 incontri a partire dal 7° mese. Possibile partecipazione partner."
+    
+    indications:
+      - "Preparazione al parto"
+      - "Tecniche di respirazione"
+      - "Gestione del dolore"
+      - "Cura del neonato"
+      - "Allattamento"
+    
+    related_procedures:
+      - "assistenza-ostetrica"
+      - "riabilitazione-pavimento-pelvico"
+    
+    faqs:
+      - question: "Quando iniziare il corso preparto?"
+        answer: "Generalmente si inizia intorno al 7° mese di gravidanza, ma è consigliabile prenotarsi prima."
+      - question: "Può partecipare il partner?"
+        answer: "Sì, la partecipazione del partner è incoraggiata per alcuni incontri del corso."
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 2
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "riabilitazione-pavimento-pelvico"
+    
+    name: "Riabilitazione Pavimento Pelvico"
+    name_extended: "Riabilitazione del Pavimento Pelvico"
+    slug: "riabilitazione-pavimento-pelvico"
+    
+    specialty_id: "ostetricia"
+    category: "trattamento"
+    page_type: "A"
+    
+    content:
+      description_short: "Percorso riabilitativo per rinforzare la muscolatura pelvica"
+    
+    clinical:
+      duration_minutes: 45
+      preparation:
+        required: false
+        notes: "Ciclo di 8-10 sedute. Vescica vuota prima della seduta."
+    
+    indications:
+      - "Post-partum"
+      - "Incontinenza urinaria"
+      - "Prolasso lieve"
+      - "Preparazione al parto"
+      - "Menopausa"
+      - "Disfunzioni sessuali"
+    
+    related_procedures:
+      - "assistenza-ostetrica"
+      - "radiofrequenza-vaginale"
+      - "visita-ginecologica"
+    
+    faqs:
+      - question: "Quando iniziare la riabilitazione dopo il parto?"
+        answer: "Si consiglia di iniziare 6-8 settimane dopo il parto, previo controllo ginecologico."
+      - question: "Quante sedute sono necessarie?"
+        answer: "Generalmente un ciclo di 8-10 sedute, con eventuale mantenimento."
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 3
+    
+    status: "active"
+
+  # ==========================================================================
+  # CARDIOLOGIA - PROCEDURE MANCANTI
+  # ==========================================================================
+  
+  - id: "holter-pressorio"
+    
+    name: "Holter Pressorio 24h"
+    name_extended: "Monitoraggio Pressorio Ambulatoriale 24 Ore (ABPM)"
+    slug: "holter-pressorio"
+    
+    specialty_id: "cardiologia"
+    category: "diagnostica"
+    page_type: "A"
+    
+    content:
+      description_short: "Misurazione automatica della pressione arteriosa per 24 ore"
+    
+    clinical:
+      duration_minutes: 15  # Applicazione
+      preparation:
+        required: false
+        notes: "Indossare abiti comodi con maniche larghe. Evitare attività fisica intensa durante il monitoraggio."
+    
+    indications:
+      - "Ipertensione da camice bianco"
+      - "Ipertensione mascherata"
+      - "Valutazione terapia antipertensiva"
+      - "Ipertensione resistente"
+      - "Ipotensione"
+    
+    related_procedures:
+      - "visita-cardiologica"
+      - "holter-ecg"
+    
+    pathways:
+      - "checkup-cardiovascolare"
+    
+    faqs:
+      - question: "Posso dormire con l'holter pressorio?"
+        answer: "Sì, il dispositivo è progettato per essere indossato anche di notte. Può disturbare leggermente il sonno per le misurazioni notturne."
+      - question: "Quante misurazioni vengono effettuate?"
+        answer: "Circa ogni 15-30 minuti di giorno e ogni 30-60 minuti di notte, per un totale di 50-80 misurazioni."
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 4
+    
+    status: "active"
+
+  # ==========================================================================
+  # DERMATOLOGIA
+  # ==========================================================================
+  
+  - id: "visita-dermatologica"
+    
+    name: "Visita Dermatologica"
+    name_extended: "Visita Dermatologica Specialistica"
+    slug: "visita-dermatologica"
+    
+    specialty_id: "dermatologia"
+    category: "visita"
+    page_type: "A"
+    
+    content:
+      description_short: "Valutazione completa della pelle e delle sue patologie"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: false
+        notes: "Evitare trucco nelle zone da esaminare. Rimuovere smalto se si esaminano le unghie."
+    
+    indications:
+      - "Nevi sospetti"
+      - "Eczema e dermatiti"
+      - "Acne"
+      - "Psoriasi"
+      - "Infezioni cutanee"
+      - "Perdita capelli"
+    
+    related_procedures:
+      - "mappatura-nevi"
+      - "dermatoscopia-digitale"
+      - "biopsia-cutanea"
+    
+    faqs:
+      - question: "Ogni quanto fare un controllo dermatologico?"
+        answer: "Si consiglia un controllo annuale, più frequente in caso di molti nei o storia familiare di melanoma."
+      - question: "Devo mostrare tutto il corpo?"
+        answer: "Per un controllo completo è consigliabile, ma si può discutere con il dermatologo in base alle esigenze."
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 1
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "mappatura-nevi"
+    
+    name: "Mappatura Nevi"
+    name_extended: "Mappatura dei Nevi con Videodermatoscopia"
+    slug: "mappatura-nevi"
+    
+    specialty_id: "dermatologia"
+    category: "diagnostica"
+    page_type: "A"
+    
+    content:
+      description_short: "Documentazione fotografica e monitoraggio digitale dei nei"
+    
+    clinical:
+      duration_minutes: 45
+      preparation:
+        required: false
+        notes: "Non applicare creme o oli sulle zone da esaminare"
+    
+    indications:
+      - "Numerosi nei"
+      - "Nei atipici"
+      - "Storia familiare melanoma"
+      - "Fototipo chiaro"
+      - "Precedenti ustioni solari"
+    
+    related_procedures:
+      - "visita-dermatologica"
+      - "dermatoscopia-digitale"
+    
+    faqs:
+      - question: "Ogni quanto ripetere la mappatura?"
+        answer: "Generalmente ogni 6-12 mesi, in base al rischio individuale valutato dal dermatologo."
+      - question: "È doloroso?"
+        answer: "No, è un esame completamente indolore basato su fotografie digitali."
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 2
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "dermatoscopia-digitale"
+    
+    name: "Dermatoscopia Digitale"
+    name_extended: "Dermatoscopia Digitale ad Alta Risoluzione"
+    slug: "dermatoscopia-digitale"
+    
+    specialty_id: "dermatologia"
+    category: "diagnostica"
+    page_type: "B"  # Spesso insieme a mappatura nevi
+    
+    content:
+      description_short: "Esame microscopico dei nei con strumentazione digitale"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: false
+        notes: "Come per mappatura nevi"
+    
+    indications:
+      - "Analisi dettagliata nei"
+      - "Screening melanoma"
+      - "Follow-up lesioni sospette"
+    
+    related_procedures:
+      - "mappatura-nevi"
+      - "visita-dermatologica"
+    
+    visibility:
+      has_dedicated_page: false
+      show_in_specialty_page: true
+      hub_page: "mappatura-nevi"
+    
+    status: "active"
+
+  # ==========================================================================
+  # NEUROLOGIA
+  # ==========================================================================
+  
+  - id: "visita-neurologica"
+    
+    name: "Visita Neurologica"
+    name_extended: "Visita Neurologica Specialistica"
+    slug: "visita-neurologica"
+    
+    specialty_id: "neurologia"
+    category: "visita"
+    page_type: "A"
+    
+    content:
+      description_short: "Valutazione delle funzioni del sistema nervoso centrale e periferico"
+    
+    clinical:
+      duration_minutes: 45
+      preparation:
+        required: false
+        notes: "Portare esami precedenti, RMN/TAC se disponibili, elenco farmaci"
+    
+    indications:
+      - "Cefalea cronica"
+      - "Vertigini"
+      - "Disturbi del sonno"
+      - "Formicolii e parestesie"
+      - "Disturbi della memoria"
+      - "Tremori"
+    
+    related_procedures:
+      - "elettromiografia"
+      - "elettroencefalogramma"
+    
+    faqs:
+      - question: "Cosa fa il neurologo durante la visita?"
+        answer: "Valuta i riflessi, la coordinazione, la sensibilità, la forza muscolare e le funzioni cognitive attraverso test specifici."
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 1
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "elettromiografia"
+    
+    name: "Elettromiografia"
+    name_extended: "Elettromiografia (EMG) ed Elettroneurografia"
+    slug: "elettromiografia"
+    
+    specialty_id: "neurologia"
+    category: "diagnostica"
+    page_type: "A"
+    
+    content:
+      description_short: "Esame per valutare la funzionalità di nervi e muscoli"
+    
+    clinical:
+      duration_minutes: 45
+      preparation:
+        required: false
+        notes: "Non applicare creme sugli arti. Evitare caffeina il giorno dell'esame"
+    
+    indications:
+      - "Tunnel carpale"
+      - "Ernie discali"
+      - "Neuropatie"
+      - "Debolezza muscolare"
+    
+    related_procedures:
+      - "visita-neurologica"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 2
+    
+    status: "active"
+
+  # ==========================================================================
+  # ORTOPEDIA
+  # ==========================================================================
+  
+  - id: "visita-ortopedica"
+    
+    name: "Visita Ortopedica"
+    name_extended: "Visita Ortopedica Specialistica"
+    slug: "visita-ortopedica"
+    
+    specialty_id: "ortopedia"
+    category: "visita"
+    page_type: "A"
+    
+    content:
+      description_short: "Valutazione dell'apparato muscolo-scheletrico"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: false
+        notes: "Portare eventuali radiografie o RMN. Indossare abiti comodi"
+    
+    indications:
+      - "Dolore articolare"
+      - "Traumi"
+      - "Mal di schiena"
+      - "Artrosi"
+      - "Problemi posturali"
+    
+    related_procedures:
+      - "infiltrazioni-articolari"
+      - "ecografia-muscolo-tendinea"
+    
+    faqs:
+      - question: "Devo portare le radiografie?"
+        answer: "Sì, è utile portare tutti gli esami strumentali precedenti (RX, RMN, TAC) per una valutazione completa."
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 1
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "infiltrazioni-articolari"
+    
+    name: "Infiltrazioni Articolari"
+    name_extended: "Infiltrazioni Articolari con Acido Ialuronico"
+    slug: "infiltrazioni-articolari"
+    
+    specialty_id: "ortopedia"
+    category: "trattamento"
+    page_type: "A"
+    
+    content:
+      description_short: "Iniezioni intra-articolari per il trattamento del dolore"
+    
+    clinical:
+      duration_minutes: 20
+      preparation:
+        required: false
+        notes: "Ciclo di 3-5 infiltrazioni. Evitare sforzi nelle 24h successive"
+    
+    indications:
+      - "Artrosi ginocchio"
+      - "Artrosi anca"
+      - "Artrosi spalla"
+      - "Tendiniti"
+    
+    related_procedures:
+      - "visita-ortopedica"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 2
+    
+    status: "active"
+
+  # ==========================================================================
+  # OCULISTICA
+  # ==========================================================================
+  
+  - id: "visita-oculistica"
+    
+    name: "Visita Oculistica"
+    name_extended: "Visita Oculistica Completa"
+    slug: "visita-oculistica"
+    
+    specialty_id: "oculistica"
+    category: "visita"
+    page_type: "A"
+    
+    content:
+      description_short: "Valutazione completa della salute degli occhi e della vista"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: false
+        notes: "Non indossare lenti a contatto il giorno dell'esame. Portare occhiali in uso"
+    
+    indications:
+      - "Controllo vista periodico"
+      - "Difetti di rifrazione"
+      - "Glaucoma"
+      - "Cataratta"
+      - "Retinopatia"
+    
+    related_procedures:
+      - "campo-visivo"
+      - "oct-retina"
+      - "tonometria"
+    
+    faqs:
+      - question: "Ogni quanto fare il controllo della vista?"
+        answer: "Si consiglia un controllo ogni 2 anni, annuale dopo i 50 anni o in presenza di patologie."
+      - question: "Posso guidare dopo la visita?"
+        answer: "Se vengono instillate gocce per dilatare la pupilla, è sconsigliato guidare per 2-3 ore."
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 1
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "campo-visivo"
+    
+    name: "Campo Visivo"
+    name_extended: "Esame del Campo Visivo Computerizzato"
+    slug: "campo-visivo"
+    
+    specialty_id: "oculistica"
+    category: "diagnostica"
+    page_type: "A"
+    
+    content:
+      description_short: "Mappatura computerizzata della visione periferica"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: false
+        notes: "Portare gli occhiali da vista se in uso"
+    
+    indications:
+      - "Glaucoma"
+      - "Patologie neurologiche"
+      - "Patologie retiniche"
+      - "Rinnovo patente"
+    
+    related_procedures:
+      - "visita-oculistica"
+      - "tonometria"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 2
+    
+    status: "active"
+
+  # ==========================================================================
+  # UROLOGIA
+  # ==========================================================================
+  
+  - id: "visita-urologica"
+    
+    name: "Visita Urologica"
+    name_extended: "Visita Urologica Specialistica"
+    slug: "visita-urologica"
+    
+    specialty_id: "urologia"
+    category: "visita"
+    page_type: "A"
+    
+    content:
+      description_short: "Valutazione delle vie urinarie e dell'apparato genitale maschile"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: false
+        notes: "Portare esami del PSA e urine se disponibili. Vescica moderatamente piena"
+    
+    indications:
+      - "Disturbi minzionali"
+      - "Ipertrofia prostatica"
+      - "Infezioni urinarie"
+      - "Calcolosi"
+      - "Disfunzione erettile"
+      - "Prevenzione tumore prostata"
+    
+    related_procedures:
+      - "ecografia-prostatica"
+      - "uroflussometria"
+    
+    faqs:
+      - question: "A che età iniziare i controlli?"
+        answer: "Si consiglia il primo controllo urologico a 50 anni, o a 45 in caso di familiarità per tumore prostatico."
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 1
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "ecografia-prostatica"
+    
+    name: "Ecografia Prostatica"
+    name_extended: "Ecografia Prostatica Transrettale"
+    slug: "ecografia-prostatica"
+    
+    specialty_id: "urologia"
+    category: "diagnostica"
+    page_type: "A"
+    
+    content:
+      description_short: "Esame ecografico per valutare la prostata"
+    
+    clinical:
+      duration_minutes: 20
+      preparation:
+        required: true
+        notes: "Clistere di pulizia 2 ore prima dell'esame"
+    
+    indications:
+      - "Ipertrofia prostatica"
+      - "PSA elevato"
+      - "Sospetto tumore"
+      - "Follow-up prostatico"
+    
+    related_procedures:
+      - "visita-urologica"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 2
+    
+    status: "active"
+
+  # ==========================================================================
+  # PNEUMOLOGIA
+  # ==========================================================================
+  
+  - id: "visita-pneumologica"
+    
+    name: "Visita Pneumologica"
+    name_extended: "Visita Pneumologica Specialistica"
+    slug: "visita-pneumologica"
+    
+    specialty_id: "pneumologia"
+    category: "visita"
+    page_type: "A"
+    
+    content:
+      description_short: "Valutazione delle vie respiratorie e della funzione polmonare"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: false
+        notes: "Portare radiografie del torace se disponibili. Non fumare prima dell'esame"
+    
+    indications:
+      - "Asma"
+      - "BPCO"
+      - "Tosse cronica"
+      - "Dispnea"
+      - "Apnee notturne"
+    
+    related_procedures:
+      - "spirometria"
+      - "polisonnografia"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 1
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "spirometria"
+    
+    name: "Spirometria"
+    name_extended: "Spirometria con Test di Broncodilatazione"
+    slug: "spirometria"
+    
+    specialty_id: "pneumologia"
+    category: "diagnostica"
+    page_type: "A"
+    
+    content:
+      description_short: "Test per misurare la capacità polmonare e il flusso d'aria"
+    
+    clinical:
+      duration_minutes: 20
+      preparation:
+        required: true
+        notes: "Non assumere broncodilatatori 12h prima. Non fumare il giorno dell'esame. Evitare pasti abbondanti"
+    
+    indications:
+      - "Diagnosi asma"
+      - "Diagnosi BPCO"
+      - "Monitoraggio malattie respiratorie"
+      - "Idoneità sportiva"
+    
+    related_procedures:
+      - "visita-pneumologica"
+    
+    faqs:
+      - question: "La spirometria è dolorosa?"
+        answer: "No, è un esame non invasivo. Richiede solo di soffiare forte in un boccaglio."
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 2
+    
+    status: "active"
+
+  # ==========================================================================
+  # OTORINOLARINGOIATRIA
+  # ==========================================================================
+  
+  - id: "visita-orl"
+    
+    name: "Visita Otorinolaringoiatrica"
+    name_extended: "Visita ORL Specialistica"
+    slug: "visita-orl"
+    
+    specialty_id: "otorinolaringoiatria"
+    category: "visita"
+    page_type: "A"
+    
+    content:
+      description_short: "Valutazione di orecchio, naso e gola"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: false
+        notes: "Nessuna preparazione particolare richiesta"
+    
+    indications:
+      - "Disturbi dell'udito"
+      - "Vertigini"
+      - "Sinusite"
+      - "Tonsilliti"
+      - "Russamento"
+      - "Acufeni"
+    
+    related_procedures:
+      - "audiometria"
+      - "impedenzometria"
+      - "fibroscopia-nasale"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 1
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "audiometria"
+    
+    name: "Audiometria"
+    name_extended: "Esame Audiometrico Tonale"
+    slug: "audiometria"
+    
+    specialty_id: "otorinolaringoiatria"
+    category: "diagnostica"
+    page_type: "A"
+    
+    content:
+      description_short: "Test per valutare la capacità uditiva"
+    
+    clinical:
+      duration_minutes: 20
+      preparation:
+        required: false
+        notes: "Evitare esposizione a rumori forti nelle 24h precedenti"
+    
+    indications:
+      - "Calo dell'udito"
+      - "Screening lavorativo"
+      - "Prescrizione protesi"
+      - "Follow-up ipoacusia"
+    
+    related_procedures:
+      - "visita-orl"
+      - "impedenzometria"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 2
+    
+    status: "active"
+
+  # ==========================================================================
+  # LABORATORIO ANALISI
+  # ==========================================================================
+  
+  - id: "prelievo-sangue"
+    
+    name: "Prelievo Sangue"
+    name_extended: "Prelievo Ematico per Analisi di Laboratorio"
+    slug: "prelievo-sangue"
+    
+    specialty_id: "laboratorio"
+    category: "esame"
+    page_type: "D"  # Commodity
+    
+    content:
+      description_short: "Prelievo venoso per esami del sangue"
+    
+    clinical:
+      duration_minutes: 10
+      preparation:
+        required: true
+        fasting: true
+        fasting_hours: 8
+        notes: "Digiuno 8-12 ore per glicemia e profilo lipidico. Acqua consentita"
+    
+    visibility:
+      has_dedicated_page: false
+      show_in_specialty_page: true
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "esame-urine"
+    
+    name: "Esame Urine"
+    name_extended: "Esame Completo delle Urine"
+    slug: "esame-urine"
+    
+    specialty_id: "laboratorio"
+    category: "esame"
+    page_type: "D"
+    
+    content:
+      description_short: "Analisi fisico-chimica e microscopica delle urine"
+    
+    clinical:
+      duration_minutes: 5
+      preparation:
+        required: true
+        notes: "Raccogliere le prime urine del mattino. Utilizzare contenitore sterile"
+    
+    visibility:
+      has_dedicated_page: false
+      show_in_specialty_page: true
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "tampone-vaginale"
+    
+    name: "Tampone Vaginale"
+    name_extended: "Tampone Vaginale con Antibiogramma"
+    slug: "tampone-vaginale"
+    
+    specialty_id: "laboratorio"
+    category: "esame"
+    page_type: "D"
+    
+    content:
+      description_short: "Esame microbiologico per infezioni vaginali"
+    
+    clinical:
+      duration_minutes: 10
+      preparation:
+        required: true
+        notes: "Evitare rapporti e lavande 24h prima. Non effettuare durante il ciclo"
+    
+    related_procedures:
+      - "visita-ginecologica"
+    
+    visibility:
+      has_dedicated_page: false
+      show_in_specialty_page: true
+    
+    status: "active"
+
 # ============================================================================
-# NOTE: Questo file contiene un subset delle prestazioni per esempio.
-# Il file completo conterrà tutte le 200+ prestazioni.
+# NOTE: File completo con 48+ procedure per 12 specialità
+# Ogni specialità ha almeno 2-3 procedure definite
 # ============================================================================

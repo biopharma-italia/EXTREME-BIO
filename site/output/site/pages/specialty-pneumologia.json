@@ -1,7 +1,24 @@
 {
-  "specialty": "Specialty(id='pneumologia', name='Pneumologia', slug='pneumologia', status='active', name_extended='Pneumologia', display={'icon': '🫁', 'color_primary': '#26A69A', 'color_light': '#E0F2F1'}, content={'description_short': 'Diagnosi e cura delle patologie respiratorie'}, page_config={}, visibility={'show_in_menu': True, 'menu_order': 9, 'show_in_homepage': False}, page_url='/pages/pneumologia.html', physicians=[], procedures=[], physicians_count=0, procedures_count=0)",
+  "specialty": "Specialty(id='pneumologia', name='Pneumologia', slug='pneumologia', status='active', name_extended='Pneumologia', display={'icon': '🫁', 'color_primary': '#26A69A', 'color_light': '#E0F2F1'}, content={'description_short': 'Diagnosi e cura delle patologie respiratorie'}, page_config={}, visibility={'show_in_menu': True, 'menu_order': 9, 'show_in_homepage': False}, page_url='/pages/pneumologia.html', physicians=[], procedures=[{'id': 'visita-pneumologica', 'name': 'Visita Pneumologica', 'category': 'visita', 'page_type': 'A', 'page_url': '/pages/visita-pneumologica.html', 'has_dedicated_page': True}, {'id': 'spirometria', 'name': 'Spirometria', 'category': 'diagnostica', 'page_type': 'A', 'page_url': '/pages/spirometria.html', 'has_dedicated_page': True}], physicians_count=0, procedures_count=2)",
   "physicians": [],
-  "procedures": [],
+  "procedures": [
+    {
+      "id": "visita-pneumologica",
+      "name": "Visita Pneumologica",
+      "category": "visita",
+      "page_type": "A",
+      "page_url": "/pages/visita-pneumologica.html",
+      "has_dedicated_page": true
+    },
+    {
+      "id": "spirometria",
+      "name": "Spirometria",
+      "category": "diagnostica",
+      "page_type": "A",
+      "page_url": "/pages/spirometria.html",
+      "has_dedicated_page": true
+    }
+  ],
   "schema_json": "{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"MedicalClinic\",\n      \"@id\": \"https://bio-clinic.it/#clinic\",\n      \"name\": \"Bio-Clinic Sassari\",\n      \"url\": \"https://bio-clinic.it\",\n      \"telephone\": \"+39 079 956 1332\",\n      \"address\": {\n        \"@type\": \"PostalAddress\",\n        \"streetAddress\": \"Via Renzo Mossa, 23\",\n        \"addressLocality\": \"Sassari\",\n        \"postalCode\": \"07100\",\n        \"addressCountry\": \"IT\"\n      }\n    },\n    {\n      \"@type\": \"MedicalSpecialty\",\n      \"@id\": \"https://bio-clinic.it/specialita/pneumologia/#specialty\",\n      \"name\": \"Pneumologia\",\n      \"description\": \"Diagnosi e cura delle patologie respiratorie\"\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://bio-clinic.it/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Specialità\",\n          \"item\": \"https://bio-clinic.it/specialita/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Pneumologia\",\n          \"item\": \"https://bio-clinic.it/pages/pneumologia.html\"\n        }\n      ]\n    }\n  ]\n}",
   "site": {
     "name": "Bio-Clinic Sassari",

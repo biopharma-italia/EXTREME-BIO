@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prevenzione e Check-Up Sassari | Esami di Controllo | Bio-Clinic</title>
+    <meta name="description" content="Prevenzione personalizzata a Sassari: check-up per uomo, donna, tiroide, cuore. Esami del sangue completi, pacchetti su misura. Scopri il check-up giusto per te.">
+    <meta name="keywords" content="prevenzione sassari, check-up sassari, esami del sangue, analisi cliniche, screening, controllo salute">
+    <link rel="canonical" href="https://bio-clinic.it/pages/prevenzione.html">
+    
+    <meta property="og:title" content="Prevenzione e Check-Up Sassari | Bio-Clinic">
+    <meta property="og:description" content="Prevenzione personalizzata: check-up per uomo, donna, tiroide, cuore. Esami completi a Sassari.">
+    <meta property="og:url" content="https://bio-clinic.it/pages/prevenzione.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Bio-Clinic Sassari">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "MedicalClinic",
+                "name": "Bio-Clinic Sassari",
+                "url": "https://bio-clinic.it",
+                "telephone": "+39 079 956 1332"
+            },
+            {
+                "@type": "WebPage",
+                "name": "Prevenzione e Check-Up",
+                "description": "Servizi di prevenzione e check-up personalizzati per la salute",
+                "url": "https://bio-clinic.it/pages/prevenzione.html"
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bio-clinic.it/"},
+                    {"@type": "ListItem", "position": 2, "name": "Prevenzione", "item": "https://bio-clinic.it/pages/prevenzione.html"}
+                ]
+            }
+        ]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header-spacing-fix.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body{padding-top:100px!important}
+        .header{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:1000!important}
+        .trust-bar{margin-top:15px!important}
+        
+        .page-hero {
+            background: linear-gradient(135deg, #00a651 0%, #00875a 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .page-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .prevention-intro {
+            padding: 60px 0;
+            text-align: center;
+        }
+        .prevention-intro h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .prevention-intro p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .age-selector {
+            padding: 40px 0 60px;
+            background: #f8f9fa;
+        }
+        .age-selector h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .age-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .age-btn {
+            padding: 20px 30px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
+            min-width: 180px;
+        }
+        .age-btn:hover {
+            border-color: #00a651;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,166,81,0.15);
+        }
+        .age-btn.active {
+            border-color: #00a651;
+            background: #f0fff4;
+        }
+        .age-btn .icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .age-btn .label {
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+        
+        .checkup-grid {
+            padding: 60px 0;
+        }
+        .checkup-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .checkup-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .checkup-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        .checkup-card.featured {
+            border: 2px solid #00a651;
+            position: relative;
+        }
+        .checkup-card.featured::before {
+            content: "CONSIGLIATO";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #00a651;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .checkup-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .checkup-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+        .checkup-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #00a651;
+            margin-bottom: 15px;
+        }
+        .checkup-includes {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px;
+            font-size: 0.9rem;
+        }
+        .checkup-includes li {
+            padding: 6px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .checkup-includes li::before {
+            content: "✓";
+            color: #00a651;
+            font-weight: bold;
+        }
+        .checkup-cta {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            background: #00a651;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .checkup-cta:hover {
+            background: #008c44;
+        }
+        
+        .specialist-checkups {
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+        .specialist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .specialist-item {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-decoration: none;
+            color: #1a1a2e;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .specialist-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .specialist-item .icon {
+            font-size: 2rem;
+        }
+        .specialist-item h4 {
+            margin: 0 0 5px;
+        }
+        .specialist-item p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        .symptom-checker-section {
+            padding: 60px 0;
+        }
+        
+        .prevention-tips {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+        }
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .tip-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+        }
+        .tip-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .tip-card h4 {
+            margin-bottom: 10px;
+            color: #1a1a2e;
+        }
+        .tip-card p {
+            font-size: 0.9rem;
+            color: #555;
+            margin: 0;
+        }
+        
+        .cta-section {
+            padding: 60px 0;
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+        }
+        .cta-section h2 {
+            margin-bottom: 1rem;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+        .cta-btn {
+            padding: 14px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta-btn.primary {
+            background: #00a651;
+            color: white;
+        }
+        .cta-btn.secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-title h2 {
+            font-size: 2rem;
+            color: #1a1a2e;
+            margin-bottom: 10px;
+        }
+        .section-title p {
+            color: #666;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 1.8rem;
+            }
+            .age-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .age-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+  <link rel="stylesheet" href="../css/search.css">
+</head>
+<body>
+<!-- HEADER PRINCIPALE -->
+<header class="header">
+  <div class="container">
+    <!-- Logo -->
+    <a href="../index.html" class="logo" title="Torna alla Homepage Bio-Clinic">
+      <img src="../images/logo-bioclinic.png" alt="Bio-Clinic Sassari - Poliambulatorio Medico" width="180" height="60" loading="eager">
+    </a>
+    
+    <!-- Navigazione Desktop -->
+    <nav class="nav" aria-label="Navigazione principale">
+      <ul class="nav-list">
+        <!-- HOME -->
+        <li class="nav-item">
+          <a href="../index.html" class="nav-link" title="Torna alla Homepage Bio-Clinic">Home</a>
+        </li>
+        
+        <!-- SLIM CARE MEDICAL -->
+        <li class="nav-item">
+          <a href="#" class="nav-link" title="Percorsi Slim Care" aria-haspopup="true" aria-expanded="false">Slim Care Medical</a>
+          <div class="nav-dropdown" role="menu">
+            <a href="slim-care.html" title="Slim Care - Percorso Dimagrimento" role="menuitem">
+              <span style="color: #00A651;">💚</span> Slim Care
+            </a>
+            <a href="slim-care-donna.html" title="Slim Care Donna - Dimagrimento Femminile" role="menuitem">
+              <span style="color: #E91E8C;">💗</span> Slim Care Donna
+            </a>
+          </div>
+        </li>
+        
+        <!-- LABORATORIO -->
+        <li class="nav-item">
+          <a href="../laboratorio/index.html" class="nav-link" title="Laboratorio Analisi - 1.136 Esami">Laboratorio</a>
+        </li>
+        
+        <!-- DONNA & PMA -->
+        <li class="nav-item">
+          <a href="#" class="nav-link" title="Salute Donna e PMA" aria-haspopup="true" aria-expanded="false">Donna & PMA</a>
+          <div class="nav-dropdown" role="menu">
+            <a href="ginecologia.html" title="Ginecologia e Ostetricia" role="menuitem">
+              <span>👩‍⚕️</span> Ginecologia
+            </a>
+            <a href="pma-fertilita.html" title="PMA e Fertilità" role="menuitem">
+              <span>👶</span> PMA / Fertilità
+            </a>
+          </div>
+        </li>
+        
+        <!-- SPECIALISTI -->
+        <li class="nav-item">
+          <a href="#" class="nav-link" title="Specialità Mediche" aria-haspopup="true" aria-expanded="false">Specialisti</a>
+          <div class="nav-dropdown nav-dropdown-wide" role="menu">
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; min-width: 320px;">
+              <a href="cardiologia.html" title="Cardiologia" role="menuitem">❤️ Cardiologia</a>
+              <a href="endocrinologia.html" title="Endocrinologia" role="menuitem">🦋 Endocrinologia</a>
+              <a href="dermatologia.html" title="Dermatologia" role="menuitem">🩺 Dermatologia</a>
+              <a href="neurologia.html" title="Neurologia" role="menuitem">🧠 Neurologia</a>
+              <a href="oculistica.html" title="Oculistica" role="menuitem">👁️ Oculistica</a>
+              <a href="ortopedia.html" title="Ortopedia" role="menuitem">🦴 Ortopedia</a>
+            </div>
+            <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
+            <a href="specialita.html" title="Tutte le Specialità" role="menuitem" style="font-weight: 600; color: var(--primary);">
+              Tutte le Specialità →
+            </a>
+            <a href="../equipe/index.html" title="Équipe Medica" role="menuitem" style="font-weight: 600;">
+              👨‍⚕️ Équipe Medica (48 Specialisti)
+            </a>
+          </div>
+        </li>
+        
+        <!-- MEDICAL SHOP -->
+        <li class="nav-item">
+          <a href="../shop/index.html" class="nav-link" title="Medical Shop - Dispositivi Medici">
+            Medical Shop
+            <span style="background: #E91E8C; color: white; font-size: 0.65rem; padding: 0.15rem 0.4rem; border-radius: 10px; margin-left: 0.3rem; vertical-align: middle;">NEW</span>
+          </a>
+        </li>
+        
+        <!-- CONTATTI -->
+        <li class="nav-item">
+          <a href="contatti.html" class="nav-link" title="Contatti e Orari">Contatti</a>
+        </li>
+      </ul>
+      
+      <!-- PULSANTE PRENOTA (Verde Scuro) -->
+      <a href="tel:+390799561332" class="btn btn-primary nav-cta" title="Chiama per prenotare" style="background: #00704A; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; margin-left: 1rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        Prenota
+      </a>
+    </nav>
+    
+    <!-- Mobile Toggle -->
+    <button class="menu-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Overlay -->
+<div class="mobile-overlay" aria-hidden="true"></div>
+
+<!-- Mobile Navigation -->
+<nav class="mobile-nav" id="mobile-nav" aria-label="Menu mobile" aria-hidden="true">
+  <div class="mobile-nav-header">
+    <img src="../images/logo-bioclinic.png" alt="Bio-Clinic" width="140" height="47">
+    <button class="mobile-nav-close" aria-label="Chiudi menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+  <ul class="mobile-nav-list">
+    <li><a href="../index.html" title="Home">🏠 Home</a></li>
+    <li class="mobile-nav-section">
+      <span class="mobile-nav-section-title">Slim Care Medical</span>
+      <ul>
+        <li><a href="slim-care.html">💚 Slim Care</a></li>
+        <li><a href="slim-care-donna.html">💗 Slim Care Donna</a></li>
+      </ul>
+    </li>
+    <li><a href="../laboratorio/index.html" title="Laboratorio">🔬 Laboratorio Analisi</a></li>
+    <li class="mobile-nav-section">
+      <span class="mobile-nav-section-title">Donna & PMA</span>
+      <ul>
+        <li><a href="ginecologia.html">👩‍⚕️ Ginecologia</a></li>
+        <li><a href="pma-fertilita.html">👶 PMA / Fertilità</a></li>
+      </ul>
+    </li>
+    <li class="mobile-nav-section">
+      <span class="mobile-nav-section-title">Specialisti</span>
+      <ul>
+        <li><a href="cardiologia.html">❤️ Cardiologia</a></li>
+        <li><a href="endocrinologia.html">🦋 Endocrinologia</a></li>
+        <li><a href="dermatologia.html">🩺 Dermatologia</a></li>
+        <li><a href="neurologia.html">🧠 Neurologia</a></li>
+        <li><a href="oculistica.html">👁️ Oculistica</a></li>
+        <li><a href="ortopedia.html">🦴 Ortopedia</a></li>
+        <li><a href="specialita.html" style="font-weight: 600;">→ Tutte le Specialità</a></li>
+        <li><a href="../equipe/index.html" style="font-weight: 600;">👨‍⚕️ Équipe (48 Medici)</a></li>
+      </ul>
+    </li>
+    <li><a href="../shop/index.html" title="Medical Shop">🛒 Medical Shop <span style="background: #E91E8C; color: white; font-size: 0.65rem; padding: 0.1rem 0.3rem; border-radius: 8px;">NEW</span></a></li>
+    <li><a href="contatti.html" title="Contatti">📍 Contatti</a></li>
+  </ul>
+  <div class="mobile-nav-footer">
+    <a href="tel:+390799561332" class="btn btn-primary" style="width: 100%; justify-content: center; background: #00704A;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+      Chiama: 079 956 1332
+    </a>
+  </div>
+</nav>
+<!-- END MASTER HEADER -->
+
+<main>
+        <!-- Hero -->
+        <section class="page-hero">
+            <div class="container">
+                <h1>🩺 Prevenzione Personalizzata</h1>
+                <p>Scopri il check-up giusto per te: età, esigenze, obiettivi. La prevenzione è il miglior investimento per la tua salute.</p>
+            </div>
+        </section>
+        
+        <!-- Trust Bar -->
+        <div class="trust-bar">
+            <div class="container">
+                <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; padding: 15px 0;">
+                    <span>🧪 <strong>1.136</strong> Esami disponibili</span>
+                    <span>📦 <strong>12</strong> Pacchetti Check-Up</span>
+                    <span>⏱️ Risultati in <strong>24-48h</strong></span>
+                    <span>🏥 Accesso <strong>diretto</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Intro -->
+        <section class="prevention-intro">
+            <div class="container">
+                <h2>Perché Fare Prevenzione?</h2>
+                <p>La diagnosi precoce salva vite. Molte patologie (diabete, ipertensione, tumori) possono essere individuate e trattate efficacemente se scoperte in tempo. I nostri check-up sono studiati per ogni fase della vita, con esami mirati e costi contenuti.</p>
+            </div>
+        </section>
+
+        <!-- Age Selector -->
+        <section class="age-selector">
+            <div class="container">
+                <h2>Seleziona la Tua Fascia d'Età</h2>
+                <div class="age-buttons">
+                    <button class="age-btn" data-target="under30">
+                        <span class="icon">👶</span>
+                        <span class="label">Under 30</span>
+                    </button>
+                    <button class="age-btn active" data-target="30-40">
+                        <span class="icon">🧑</span>
+                        <span class="label">30-40 anni</span>
+                    </button>
+                    <button class="age-btn" data-target="40-50">
+                        <span class="icon">👨</span>
+                        <span class="label">40-50 anni</span>
+                    </button>
+                    <button class="age-btn" data-target="over50">
+                        <span class="icon">👴</span>
+                        <span class="label">Over 50</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Check-Up Grid -->
+        <section class="checkup-grid">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Check-Up Consigliati</h2>
+                    <p>Pacchetti completi per la tua prevenzione</p>
+                </div>
+                
+                <div class="checkup-cards">
+                    <!-- Check-Up Base -->
+                    <div class="checkup-card">
+                        <div class="checkup-icon">🧪</div>
+                        <div class="checkup-title">Check-Up Base</div>
+                        <div class="checkup-price">€39</div>
+                        <ul class="checkup-includes">
+                            <li>Emocromo completo</li>
+                            <li>Glicemia</li>
+                            <li>Colesterolo e Trigliceridi</li>
+                            <li>Creatinina</li>
+                            <li>Transaminasi</li>
+                            <li>Esame urine</li>
+                        </ul>
+                        <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Primo controllo, screening annuale</p>
+                        <a href="../laboratorio/index.html#pack-check-up-base" class="checkup-cta">Prenota Ora</a>
+                    </div>
+                    
+                    <!-- Check-Up Donna -->
+                    <div class="checkup-card featured">
+                        <div class="checkup-icon">👩</div>
+                        <div class="checkup-title">Check-Up Donna</div>
+                        <div class="checkup-price">€89 - €129</div>
+                        <ul class="checkup-includes">
+                            <li>Emocromo + Sideremia + Ferritina</li>
+                            <li>TSH (tiroide)</li>
+                            <li>Profilo lipidico completo</li>
+                            <li>Vitamina D</li>
+                            <li>Glicemia</li>
+                            <li>Under 40 / Over 40 disponibili</li>
+                        </ul>
+                        <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Prevenzione femminile completa</p>
+                        <a href="../laboratorio/index.html#pack-check-up-donna-under-40" class="checkup-cta">Scegli il Tuo</a>
+                    </div>
+                    
+                    <!-- Check-Up Uomo -->
+                    <div class="checkup-card">
+                        <div class="checkup-icon">👨</div>
+                        <div class="checkup-title">Check-Up Uomo</div>
+                        <div class="checkup-price">€79 - €119</div>
+                        <ul class="checkup-includes">
+                            <li>Emocromo completo</li>
+                            <li>Profilo lipidico</li>
+                            <li>Glicemia + HbA1c (over 40)</li>
+                            <li>TSH (tiroide)</li>
+                            <li>PSA (over 40)</li>
+                            <li>Vitamina D</li>
+                        </ul>
+                        <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Prevenzione maschile completa</p>
+                        <a href="../laboratorio/index.html#pack-check-up-uomo-under-40" class="checkup-cta">Scegli il Tuo</a>
+                    </div>
+                    
+                    <!-- Check-Up Tiroide -->
+                    <div class="checkup-card">
+                        <div class="checkup-icon">🦋</div>
+                        <div class="checkup-title">Check-Up Tiroide</div>
+                        <div class="checkup-price">€29 - €59</div>
+                        <ul class="checkup-includes">
+                            <li>TSH</li>
+                            <li>FT3 e FT4</li>
+                            <li>Anti-TPO (Plus)</li>
+                            <li>Anti-TG (Plus)</li>
+                        </ul>
+                        <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Stanchezza, peso, capelli</p>
+                        <a href="checkup-tiroide.html" class="checkup-cta">Scopri di Più</a>
+                    </div>
+                    
+                    <!-- Check-Up Cardiologico -->
+                    <div class="checkup-card">
+                        <div class="checkup-icon">❤️</div>
+                        <div class="checkup-title">Check-Up Cardiovascolare</div>
+                        <div class="checkup-price">da €150</div>
+                        <ul class="checkup-includes">
+                            <li>Visita cardiologica</li>
+                            <li>Elettrocardiogramma (ECG)</li>
+                            <li>Ecocardiogramma (Plus)</li>
+                            <li>Esami del sangue</li>
+                        </ul>
+                        <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Over 40, fattori di rischio</p>
+                        <a href="checkup-cardiovascolare.html" class="checkup-cta">Scopri di Più</a>
+                    </div>
+                    
+                    <!-- Check-Up Pre-Gravidanza -->
+                    <div class="checkup-card">
+                        <div class="checkup-icon">🤰</div>
+                        <div class="checkup-title">Check-Up Pre-Gravidanza</div>
+                        <div class="checkup-price">€99</div>
+                        <ul class="checkup-includes">
+                            <li>Emocromo + Gruppo sanguigno</li>
+                            <li>Toxoplasma, Rosolia, CMV</li>
+                            <li>TSH</li>
+                            <li>Acido folico</li>
+                            <li>Vitamina D</li>
+                        </ul>
+                        <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Chi programma una gravidanza</p>
+                        <a href="../laboratorio/index.html#pack-check-up-pre-gravidanza" class="checkup-cta">Prenota Ora</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Specialist Check-ups -->
+        <section class="specialist-checkups">
+            <div class="container">
+                <div class="section-title">
+                    <h2>🔍 Check-Up Specialistici</h2>
+                    <p>Approfondimenti mirati per esigenze specifiche</p>
+                </div>
+                
+                <div class="specialist-grid">
+                    <a href="checkup-tiroide.html" class="specialist-item">
+                        <span class="icon">🦋</span>
+                        <div>
+                            <h4>Tiroide</h4>
+                            <p>TSH, FT3, FT4, Anticorpi</p>
+                        </div>
+                    </a>
+                    <a href="checkup-cardiovascolare.html" class="specialist-item">
+                        <span class="icon">❤️</span>
+                        <div>
+                            <h4>Cuore</h4>
+                            <p>ECG, Ecocardiogramma, Holter</p>
+                        </div>
+                    </a>
+                    <a href="../laboratorio/index.html#profilo-epatico" class="specialist-item">
+                        <span class="icon">🫀</span>
+                        <div>
+                            <h4>Fegato</h4>
+                            <p>Transaminasi, Bilirubina, GGT</p>
+                        </div>
+                    </a>
+                    <a href="../laboratorio/index.html#profilo-renale" class="specialist-item">
+                        <span class="icon">🫘</span>
+                        <div>
+                            <h4>Reni</h4>
+                            <p>Creatinina, Azotemia, Urine</p>
+                        </div>
+                    </a>
+                    <a href="dermatologia.html" class="specialist-item">
+                        <span class="icon">🔬</span>
+                        <div>
+                            <h4>Pelle e Nei</h4>
+                            <p>Mappatura dermatoscopica</p>
+                        </div>
+                    </a>
+                    <a href="oculistica.html" class="specialist-item">
+                        <span class="icon">👁️</span>
+                        <div>
+                            <h4>Vista</h4>
+                            <p>Visita + Tonometria + Fondo</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Symptom Checker Promo -->
+        <section class="symptom-checker-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>🏥 Non Sai Da Dove Iniziare?</h2>
+                    <p>Usa il nostro strumento per identificare il percorso giusto per te</p>
+                </div>
+                
+                <div style="text-align: center; padding: 40px; background: #f8f9fa; border-radius: 16px; max-width: 600px; margin: 0 auto;">
+                    <div style="font-size: 4rem; margin-bottom: 20px;">🩺</div>
+                    <h3 style="margin-bottom: 15px;">Symptom Checker</h3>
+                    <p style="color: #666; margin-bottom: 25px;">Descrivi i tuoi sintomi e ricevi suggerimenti personalizzati su esami, specialisti e percorsi.</p>
+                    <a href="symptom-checker.html" style="display: inline-block; padding: 14px 30px; background: #00a651; color: white; border-radius: 8px; text-decoration: none; font-weight: 600;">Inizia Ora →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prevention Tips -->
+        <section class="prevention-tips">
+            <div class="container">
+                <div class="section-title">
+                    <h2>💡 Consigli per la Prevenzione</h2>
+                    <p>Piccole abitudini che fanno la differenza</p>
+                </div>
+                
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <div class="icon">📅</div>
+                        <h4>Controlli Regolari</h4>
+                        <p>Esami del sangue annuali, visite specialistiche periodiche. La regolarità è fondamentale.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="icon">🥗</div>
+                        <h4>Alimentazione</h4>
+                        <p>Dieta mediterranea, poco sale, pochi zuccheri. La prevenzione inizia a tavola.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="icon">🏃</div>
+                        <h4>Attività Fisica</h4>
+                        <p>30 minuti al giorno di movimento. Camminata, nuoto, bici: scegli quello che ti piace.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="icon">🚭</div>
+                        <h4>No Fumo</h4>
+                        <p>Il fumo è il principale fattore di rischio evitabile. Mai troppo tardi per smettere.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Inizia il Tuo Percorso di Prevenzione</h2>
+                <p>Accesso diretto al laboratorio senza appuntamento, Lun-Ven 7:00-11:00</p>
+                <div class="cta-buttons">
+                    <a href="../laboratorio/index.html" class="cta-btn primary">🧪 Tutti i Check-Up</a>
+                    <a href="tel:+390799561332" class="cta-btn secondary">📞 Chiama 079 956 1332</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="../images/logo-bioclinic.png" alt="Bio-Clinic" style="height: 45px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;">
+        </div>
+        <p class="footer-description">
+          Poliambulatorio medico a Sassari. 31 specialità, 48 medici, 1.840 prestazioni.
+        </p>
+      </div>
+      <div>
+        <h4 class="footer-title">Percorsi</h4>
+        <ul class="footer-links">
+          <li><a href="slim-care.html" title="Scopri il percorso Slim Care">Slim Care</a></li>
+          <li><a href="pma-fertilita.html" title="Scopri il percorso PMA e Fertilità">PMA / Fertilità</a></li>
+          <li><a href="prevenzione.html" title="Prevenzione e Check-Up">Prevenzione</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Specialità</h4>
+        <ul class="footer-links">
+          <li><a href="ginecologia.html" title="Vai alla sezione Ginecologia">Ginecologia</a></li>
+          <li><a href="cardiologia.html" title="Vai alla sezione Cardiologia">Cardiologia</a></li>
+          <li><a href="../laboratorio/index.html" title="Vai al Laboratorio Analisi">Laboratorio</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Contatti</h4>
+        <ul class="footer-contact">
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <a href="tel:+390799561332" title="Chiama Bio-Clinic Sassari">079 956 1332</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Bio Pharma S.r.l. - P.IVA 02869450904</p>
+      <div><a href="privacy.html" title="Leggi la Privacy Policy">Privacy</a> | <a href="cookie.html" title="Leggi la Cookie Policy">Cookie</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script src="../js/search.js"></script>
+<script src="../js/header-search.js"></script>
+</body>
+</html>

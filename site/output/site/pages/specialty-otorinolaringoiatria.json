@@ -1,7 +1,24 @@
 {
-  "specialty": "Specialty(id='otorinolaringoiatria', name='Otorinolaringoiatria', slug='otorinolaringoiatria', status='active', name_extended='Otorinolaringoiatria', display={'icon': '👂', 'color_primary': '#7E57C2', 'color_light': '#EDE7F6'}, content={'description_short': 'ORL: orecchio, naso, gola e chirurgia cervico-facciale'}, page_config={}, visibility={'show_in_menu': True, 'menu_order': 10, 'show_in_homepage': False}, page_url='/pages/otorinolaringoiatria.html', physicians=[], procedures=[], physicians_count=0, procedures_count=0)",
+  "specialty": "Specialty(id='otorinolaringoiatria', name='Otorinolaringoiatria', slug='otorinolaringoiatria', status='active', name_extended='Otorinolaringoiatria', display={'icon': '👂', 'color_primary': '#7E57C2', 'color_light': '#EDE7F6'}, content={'description_short': 'ORL: orecchio, naso, gola e chirurgia cervico-facciale'}, page_config={}, visibility={'show_in_menu': True, 'menu_order': 10, 'show_in_homepage': False}, page_url='/pages/otorinolaringoiatria.html', physicians=[], procedures=[{'id': 'visita-orl', 'name': 'Visita Otorinolaringoiatrica', 'category': 'visita', 'page_type': 'A', 'page_url': '/pages/visita-orl.html', 'has_dedicated_page': True}, {'id': 'audiometria', 'name': 'Audiometria', 'category': 'diagnostica', 'page_type': 'A', 'page_url': '/pages/audiometria.html', 'has_dedicated_page': True}], physicians_count=0, procedures_count=2)",
   "physicians": [],
-  "procedures": [],
+  "procedures": [
+    {
+      "id": "visita-orl",
+      "name": "Visita Otorinolaringoiatrica",
+      "category": "visita",
+      "page_type": "A",
+      "page_url": "/pages/visita-orl.html",
+      "has_dedicated_page": true
+    },
+    {
+      "id": "audiometria",
+      "name": "Audiometria",
+      "category": "diagnostica",
+      "page_type": "A",
+      "page_url": "/pages/audiometria.html",
+      "has_dedicated_page": true
+    }
+  ],
   "schema_json": "{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"MedicalClinic\",\n      \"@id\": \"https://bio-clinic.it/#clinic\",\n      \"name\": \"Bio-Clinic Sassari\",\n      \"url\": \"https://bio-clinic.it\",\n      \"telephone\": \"+39 079 956 1332\",\n      \"address\": {\n        \"@type\": \"PostalAddress\",\n        \"streetAddress\": \"Via Renzo Mossa, 23\",\n        \"addressLocality\": \"Sassari\",\n        \"postalCode\": \"07100\",\n        \"addressCountry\": \"IT\"\n      }\n    },\n    {\n      \"@type\": \"MedicalSpecialty\",\n      \"@id\": \"https://bio-clinic.it/specialita/otorinolaringoiatria/#specialty\",\n      \"name\": \"Otorinolaringoiatria\",\n      \"description\": \"ORL: orecchio, naso, gola e chirurgia cervico-facciale\"\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://bio-clinic.it/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Specialità\",\n          \"item\": \"https://bio-clinic.it/specialita/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Otorinolaringoiatria\",\n          \"item\": \"https://bio-clinic.it/pages/otorinolaringoiatria.html\"\n        }\n      ]\n    }\n  ]\n}",
   "site": {
     "name": "Bio-Clinic Sassari",
