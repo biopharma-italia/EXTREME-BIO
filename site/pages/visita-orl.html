@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visita Otorinolaringoiatrica Sassari | Bio-Clinic</title>
-    <meta name="description" content="Visita Otorinolaringoiatrica a Sassari presso Bio-Clinic. Prenota: 079 956 1332">
+    <title>Otorinolaringoiatria (ORL) Sassari | Bio-Clinic</title>
+    <meta name="description" content="Orecchio, naso e gola: tre organi, uno specialista. Audiometria, impedenzometria e fibrolaringoscopia in sede per una diagnosi completa. Prenota: 079 956 1332">
+    <meta name="keywords" content="otorinolaringoiatria sassari, (orl) sassari, visita otorinolaringoiatria, bio-clinic sassari">
     <link rel="canonical" href="https://bio-clinic.it/pages/visita-orl.html">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Visita Otorinolaringoiatrica | Bio-Clinic Sassari">
-    <meta property="og:description" content="Valutazione di orecchio, naso e gola">
+    <meta property="og:title" content="Otorinolaringoiatria (ORL) Sassari | Bio-Clinic">
+    <meta property="og:description" content="Orecchio, naso e gola: tre organi, uno specialista. Audiometria, impedenzometria e fibrolaringoscopia in sede per una diagnosi completa.">
     <meta property="og:url" content="https://bio-clinic.it/pages/visita-orl.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Bio-Clinic Sassari">
@@ -19,67 +20,68 @@
     {
       "@context": "https://schema.org",
       "@graph": [
+        {
+          "@type": "MedicalClinic",
+          "@id": "https://bio-clinic.it/#clinic",
+          "name": "Bio-Clinic Sassari",
+          "telephone": "+39 079 956 1332",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Via Renzo Mossa, 23",
+            "addressLocality": "Sassari",
+            "postalCode": "07100",
+            "addressCountry": "IT"
+          }
+        },
+        {
+          "@type": "MedicalSpecialty",
+          "@id": "https://bio-clinic.it/pages/visita-orl.html#specialty",
+          "name": "Otorinolaringoiatria",
+          "alternateName": "Otorinolaringoiatria (ORL)",
+          "description": "Orecchio, naso e gola: tre organi, uno specialista. Audiometria, impedenzometria e fibrolaringoscopia in sede per una diagnosi completa.",
+          "relevantSpecialty": "Otorinolaringoiatria",
+          "availableService": ["Audiometria Tonale e Vocale","Impedenzometria","Fibrolaringoscopia"],
+          "knowsAbout": ["Calo dell'udito","Acufeni (fischi, ronzii)","Otiti ricorrenti","Sensazione di orecchio chiuso","Sinusite cronica","Rinite allergica","Polipi nasali","Russamento e apnee","Raucedine persistente","Mal di gola ricorrente","Difficoltà a deglutire","Sensazione di corpo estraneo"]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bio-clinic.it/"},
+            {"@type": "ListItem", "position": 2, "name": "Specialità", "item": "https://bio-clinic.it/pages/specialita.html"},
+            {"@type": "ListItem", "position": 3, "name": "Otorinolaringoiatria", "item": "https://bio-clinic.it/pages/visita-orl.html"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
             {
-                  "@type": "MedicalClinic",
-                  "@id": "https://bio-clinic.it/#clinic",
-                  "name": "Bio-Clinic Sassari",
-                  "url": "https://bio-clinic.it",
-                  "telephone": "+39 079 956 1332",
-                  "address": {
-                        "@type": "PostalAddress",
-                        "streetAddress": "Via Renzo Mossa, 23",
-                        "addressLocality": "Sassari",
-                        "postalCode": "07100",
-                        "addressCountry": "IT"
-                  }
+              "@type": "Question",
+              "name": "Fate l'audiometria in sede?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sì, disponiamo di cabina audiometrica professionale per esami dell'udito completi (audiometria tonale, vocale e impedenzometria)."
+              }
             },
             {
-                  "@type": "MedicalProcedure",
-                  "@id": "https://bio-clinic.it/pages/visita-orl/#procedure",
-                  "name": "Visita Otorinolaringoiatrica",
-                  "description": "Valutazione di orecchio, naso e gola",
-                  "procedureType": "MedicalProcedure",
-                  "bodyLocation": "",
-                  "relevantSpecialty": {
-                        "@type": "MedicalSpecialty",
-                        "name": "Otorinolaringoiatria"
-                  },
-                  "provider": {
-                        "@id": "https://bio-clinic.it/#clinic"
-                  },
-                  "knowsAbout": [
-                        "Otite o mal d'orecchio",
-                        "Vertigini",
-                        "Sinusite cronica",
-                        "Raucedine persistente",
-                        "Problemi di udito"
-                  ]
+              "@type": "Question",
+              "name": "Fate lavaggi auricolari?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sì, rimuoviamo tappi di cerume in sicurezza durante la visita con strumentazione dedicata."
+              }
             },
             {
-                  "@type": "BreadcrumbList",
-                  "itemListElement": [
-                        {
-                              "@type": "ListItem",
-                              "position": 1,
-                              "name": "Home",
-                              "item": "https://bio-clinic.it/"
-                        },
-                        {
-                              "@type": "ListItem",
-                              "position": 2,
-                              "name": "Otorinolaringoiatria",
-                              "item": "https://bio-clinic.it/pages/otorinolaringoiatria.html"
-                        },
-                        {
-                              "@type": "ListItem",
-                              "position": 3,
-                              "name": "Visita Otorinolaringoiatrica",
-                              "item": "https://bio-clinic.it/pages/visita-orl.html"
-                        }
-                  ]
+              "@type": "Question",
+              "name": "Trattate le vertigini?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sì, con esami vestibologici e manovre liberatorie per la vertigine parossistica posizionale (VPPB)."
+              }
             }
+          ]
+        }
       ]
-}
+    }
     </script>
     
     <!-- Fonts & CSS -->
@@ -91,227 +93,131 @@
     <link rel="stylesheet" href="../css/search-fix.css">
     <link rel="stylesheet" href="../css/header-spacing-fix.css">
     
-    <!-- Tailwind CSS for page content -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Header Fix */
-        body { padding-top: 100px !important; margin: 0 !important; }
+        body { padding-top: 100px !important; margin: 0 !important; font-family: 'Inter', sans-serif; }
         .header { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 9999 !important; background: #fff !important; box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important; }
-        
-        /* Theme colors */
-        .theme-primary { color: #7E57C2; }
-        .theme-bg-primary { background-color: #7E57C2; }
+        .theme-text { color: #7E57C2; }
+        .theme-bg { background-color: #7E57C2; }
         .theme-bg-light { background-color: #EDE7F6; }
         .theme-border { border-color: #7E57C2; }
         .text-bio-green { color: #00704A; }
         .bg-bio-green { background-color: #00704A; }
         html { scroll-behavior: smooth; }
-        
-        /* Main content area */
-        .page-content { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body>
-    <!-- HEADER PRINCIPALE (Standard del sito) -->
+<body class="bg-gray-50">
+    <!-- HEADER PRINCIPALE -->
     <header class="header">
       <div class="container">
-        <!-- Logo -->
         <a href="../index.html" class="logo" title="Torna alla Homepage Bio-Clinic">
-          <img src="../images/logo-bioclinic.png" alt="Bio-Clinic Sassari - Poliambulatorio Medico" width="180" height="60" loading="eager">
+          <img src="../images/logo-bioclinic.png" alt="Bio-Clinic Sassari" width="180" height="60" loading="eager">
         </a>
-        
-        <!-- Navigazione Desktop -->
         <nav class="nav" aria-label="Navigazione principale">
           <ul class="nav-list">
-            <!-- HOME -->
+            <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
             <li class="nav-item">
-              <a href="../index.html" class="nav-link" title="Torna alla Homepage Bio-Clinic">Home</a>
-            </li>
-            
-            <!-- SLIM CARE MEDICAL -->
-            <li class="nav-item">
-              <a href="#" class="nav-link" title="Percorsi Slim Care" aria-haspopup="true" aria-expanded="false">Slim Care Medical</a>
+              <a href="#" class="nav-link">Slim Care Medical</a>
               <div class="nav-dropdown" role="menu">
-                <a href="slim-care.html" title="Slim Care - Percorso Dimagrimento" role="menuitem">
-                  <span style="color: #00A651;">💚</span> Slim Care
-                </a>
-                <a href="slim-care-donna.html" title="Slim Care Donna - Dimagrimento Femminile" role="menuitem">
-                  <span style="color: #E91E8C;">💗</span> Slim Care Donna
-                </a>
+                <a href="slim-care.html" role="menuitem"><span style="color: #00A651;">💚</span> Slim Care</a>
+                <a href="slim-care-donna.html" role="menuitem"><span style="color: #E91E8C;">💗</span> Slim Care Donna</a>
               </div>
             </li>
-            
-            <!-- LABORATORIO -->
+            <li class="nav-item"><a href="../laboratorio/index.html" class="nav-link">Laboratorio</a></li>
             <li class="nav-item">
-              <a href="../laboratorio/index.html" class="nav-link" title="Laboratorio Analisi - 1.136 Esami">Laboratorio</a>
-            </li>
-            
-            <!-- DONNA & PMA -->
-            <li class="nav-item">
-              <a href="#" class="nav-link" title="Salute Donna e PMA" aria-haspopup="true" aria-expanded="false">Donna & PMA</a>
+              <a href="#" class="nav-link">Donna & PMA</a>
               <div class="nav-dropdown" role="menu">
-                <a href="ginecologia.html" title="Ginecologia e Ostetricia" role="menuitem">
-                  <span>👩‍⚕️</span> Ginecologia
-                </a>
-                <a href="pma-fertilita.html" title="PMA e Fertilità" role="menuitem">
-                  <span>👶</span> PMA / Fertilità
-                </a>
+                <a href="ginecologia.html" role="menuitem">👩‍⚕️ Ginecologia</a>
+                <a href="pma-fertilita.html" role="menuitem">👶 PMA / Fertilità</a>
               </div>
             </li>
-            
-            <!-- SPECIALISTI -->
             <li class="nav-item">
-              <a href="#" class="nav-link" title="Specialità Mediche" aria-haspopup="true" aria-expanded="false">Specialisti</a>
+              <a href="#" class="nav-link">Specialisti</a>
               <div class="nav-dropdown nav-dropdown-wide" role="menu">
                 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; min-width: 320px;">
-                  <a href="cardiologia.html" title="Cardiologia" role="menuitem">❤️ Cardiologia</a>
-                  <a href="endocrinologia.html" title="Endocrinologia" role="menuitem">🦋 Endocrinologia</a>
-                  <a href="dermatologia.html" title="Dermatologia" role="menuitem">🩺 Dermatologia</a>
-                  <a href="neurologia.html" title="Neurologia" role="menuitem">🧠 Neurologia</a>
-                  <a href="oculistica.html" title="Oculistica" role="menuitem">👁️ Oculistica</a>
-                  <a href="ortopedia.html" title="Ortopedia" role="menuitem">🦴 Ortopedia</a>
+                  <a href="cardiologia.html" role="menuitem">❤️ Cardiologia</a>
+                  <a href="endocrinologia.html" role="menuitem">🦋 Endocrinologia</a>
+                  <a href="dermatologia.html" role="menuitem">🩺 Dermatologia</a>
+                  <a href="neurologia.html" role="menuitem">🧠 Neurologia</a>
+                  <a href="oculistica.html" role="menuitem">👁️ Oculistica</a>
+                  <a href="ortopedia.html" role="menuitem">🦴 Ortopedia</a>
                 </div>
-                <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
-                <a href="specialita.html" title="Tutte le Specialità" role="menuitem" style="font-weight: 600; color: var(--primary);">
-                  Tutte le Specialità →
-                </a>
-                <a href="../equipe/index.html" title="Équipe Medica" role="menuitem" style="font-weight: 600;">
-                  👨‍⚕️ Équipe Medica (51 Specialisti)
-                </a>
+                <hr style="margin: 0.5rem 0; border-top: 1px solid #eee;">
+                <a href="specialita.html" style="font-weight: 600;">Tutte le Specialità →</a>
+                <a href="../equipe/index.html" style="font-weight: 600;">👨‍⚕️ Équipe (51 Medici)</a>
               </div>
             </li>
-            
-            <!-- MEDICAL SHOP -->
-            <li class="nav-item">
-              <a href="../shop/index.html" class="nav-link" title="Medical Shop - Dispositivi Medici">
-                Medical Shop
-                <span style="background: #E91E8C; color: white; font-size: 0.65rem; padding: 0.15rem 0.4rem; border-radius: 10px; margin-left: 0.3rem; vertical-align: middle;">NEW</span>
-              </a>
-            </li>
-            
-            <!-- CONTATTI -->
-            <li class="nav-item">
-              <a href="contatti.html" class="nav-link" title="Contatti e Orari">Contatti</a>
-            </li>
+            <li class="nav-item"><a href="../shop/index.html" class="nav-link">Medical Shop <span style="background: #E91E8C; color: white; font-size: 0.65rem; padding: 0.15rem 0.4rem; border-radius: 10px;">NEW</span></a></li>
+            <li class="nav-item"><a href="contatti.html" class="nav-link">Contatti</a></li>
           </ul>
-          
-          <!-- PULSANTE PRENOTA -->
-          <a href="tel:+390799561332" class="btn btn-primary nav-cta" title="Chiama per prenotare" style="background: #00704A; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; margin-left: 1rem;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
+          <a href="tel:+390799561332" class="btn btn-primary nav-cta" style="background: #00704A; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; margin-left: 1rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             Prenota
           </a>
         </nav>
-        
-        <!-- Mobile Toggle -->
-        <button class="menu-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="mobile-nav">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <button class="menu-toggle" aria-label="Apri menu"><span></span><span></span><span></span></button>
       </div>
     </header>
 
-    <!-- Mobile Overlay -->
     <div class="mobile-overlay" aria-hidden="true"></div>
-
-    <!-- Mobile Navigation -->
     <nav class="mobile-nav" id="mobile-nav" aria-label="Menu mobile" aria-hidden="true">
       <div class="mobile-nav-header">
-        <img src="../images/logo-bioclinic.png" alt="Bio-Clinic" width="140" height="47">
-        <button class="mobile-nav-close" aria-label="Chiudi menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
+        <img src="../images/logo-bioclinic.png" alt="Bio-Clinic" width="140">
+        <button class="mobile-nav-close" aria-label="Chiudi menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
       <ul class="mobile-nav-list">
-        <li><a href="../index.html" title="Home">🏠 Home</a></li>
-        <li class="mobile-nav-section">
-          <span class="mobile-nav-section-title">Slim Care Medical</span>
-          <ul>
-            <li><a href="slim-care.html">💚 Slim Care</a></li>
-            <li><a href="slim-care-donna.html">💗 Slim Care Donna</a></li>
-          </ul>
-        </li>
-        <li><a href="../laboratorio/index.html" title="Laboratorio">🔬 Laboratorio Analisi</a></li>
-        <li class="mobile-nav-section">
-          <span class="mobile-nav-section-title">Donna & PMA</span>
-          <ul>
-            <li><a href="ginecologia.html">👩‍⚕️ Ginecologia</a></li>
-            <li><a href="pma-fertilita.html">👶 PMA / Fertilità</a></li>
-          </ul>
-        </li>
-        <li class="mobile-nav-section">
-          <span class="mobile-nav-section-title">Specialisti</span>
-          <ul>
-            <li><a href="cardiologia.html">❤️ Cardiologia</a></li>
-            <li><a href="endocrinologia.html">🦋 Endocrinologia</a></li>
-            <li><a href="specialita.html" style="font-weight: 600;">→ Tutte le Specialità</a></li>
-            <li><a href="../equipe/index.html" style="font-weight: 600;">👨‍⚕️ Équipe (51 Medici)</a></li>
-          </ul>
-        </li>
-        <li><a href="../shop/index.html" title="Medical Shop">🛒 Medical Shop <span style="background: #E91E8C; color: white; font-size: 0.65rem; padding: 0.1rem 0.3rem; border-radius: 8px;">NEW</span></a></li>
-        <li><a href="contatti.html" title="Contatti">📍 Contatti</a></li>
+        <li><a href="../index.html">🏠 Home</a></li>
+        <li><a href="specialita.html">📋 Tutte le Specialità</a></li>
+        <li><a href="../equipe/index.html">👨‍⚕️ Équipe Medica</a></li>
+        <li><a href="contatti.html">📍 Contatti</a></li>
       </ul>
       <div class="mobile-nav-footer">
         <a href="tel:+390799561332" class="btn btn-primary" style="width: 100%; justify-content: center; background: #00704A;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-          </svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           Chiama: 079 956 1332
         </a>
       </div>
     </nav>
-    <!-- END MASTER HEADER -->
 
-    <!-- PAGE CONTENT (Tailwind) -->
-    <main class="page-content">
+    <main>
     
-    <!-- HERO SECTION -->
-    <section class="relative overflow-hidden" style="background: linear-gradient(135deg, #EDE7F6 0%, white 100%);">
-        <div class="max-w-7xl mx-auto px-4 py-16 sm:py-24">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <span class="inline-block px-4 py-1 rounded-full text-sm font-bold mb-4" style="background: #7E57C2; color: white;">
-                        👂 Otorinolaringoiatria
-                    </span>
-                    <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-6">
-                        Visita Otorinolaringoiatrica
+    <!-- HERO DEEP DIVE -->
+    <section class="relative bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto pb-16 pt-10 px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+                    <span class="theme-text font-bold tracking-wider uppercase text-xs">Eccellenza Medica Bio-Clinic</span>
+                    <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl mb-6">
+                        Otorinolaringoiatria
+                        <span class="block theme-text">(ORL)</span>
                     </h1>
-                    <p class="text-lg text-gray-600 mb-8">
-                        Valutazione di orecchio, naso e gola
+                    <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                        Orecchio, naso e gola: tre organi, uno specialista. Audiometria, impedenzometria e fibrolaringoscopia in sede per una diagnosi completa.
                     </p>
                     
-                    <div class="flex flex-wrap gap-4 mb-8">
-                        <span class="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border">
-                            <i class="far fa-clock" style="color: #7E57C2;"></i>
-                            <span class="font-medium">30 Minuti</span>
-                        </span>
-                        <span class="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border">
-                            <i class="fas fa-file-medical" style="color: #7E57C2;"></i>
-                            <span class="font-medium">Referto</span>
-                        </span>
+                    <div class="mt-6 flex items-center gap-4 text-sm text-gray-600 flex-wrap">
+                        <span class="flex items-center gap-2"><i class="far fa-clock theme-text"></i> 20-25 minuti</span>
+                        <span class="flex items-center gap-2"><i class="fas fa-file-medical theme-text"></i> Referto immediato</span>
                     </div>
                     
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#prenota" class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white font-semibold transition hover:opacity-90" style="background: #7E57C2;">
-                            Prenota Ora
+                    <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0 flex flex-col sm:flex-row gap-4">
+                        <a href="#prenota" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white theme-bg hover:opacity-90 shadow-lg transform transition hover:-translate-y-1">
+                            Prenota Visita
                         </a>
-                        <a href="#info" class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition border-2" style="border-color: #7E57C2; color: #7E57C2;">
-                            Maggiori Info <i class="fas fa-arrow-down ml-2"></i>
+                        <a href="#tecnologia" class="inline-flex items-center justify-center px-8 py-3 border-2 theme-border text-base font-medium rounded-lg theme-text hover:bg-gray-50 transition">
+                            Scopri di più <i class="fas fa-arrow-down ml-2"></i>
                         </a>
                     </div>
                 </div>
-                
-                <div class="relative">
-                    <div class="aspect-w-4 aspect-h-3 rounded-2xl overflow-hidden shadow-xl">
-                        <div class="w-full h-64 lg:h-80 rounded-2xl flex items-center justify-center text-8xl" style="background: #EDE7F6;">
-                            👂
+                <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
+                    <div class="relative mx-auto w-full rounded-2xl shadow-xl overflow-hidden theme-bg-light p-8 text-center">
+                        <i class="fas fa-ear-listen text-9xl theme-text opacity-30"></i>
+                        <div class="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 text-left">
+                            <p class="text-sm font-bold text-gray-800">Esame Audiometrico completo e Lavaggio Auricolare in sede. Collaborazione con Neurologia per vertigini centrali.</p>
                         </div>
                     </div>
                 </div>
@@ -319,280 +225,194 @@
         </div>
     </section>
 
-    <!-- BLOCCO STRATEGICO AUTOMATIZZATO - ORL -->
-    <section class="py-12 bg-white border-b border-gray-100">
+    <!-- SINTOMI GRID (SEO SEMANTICA) -->
+    <section class="py-16 bg-gray-50 border-y border-gray-200">
         <div class="max-w-6xl mx-auto px-4">
-            
-            <!-- 1. SINTOMI (SEO SEMANTICA) -->
-            <div class="mb-10">
-                <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    <i class="fas fa-user-injured" style="color: #7E57C2;"></i> Quando richiedere questa prestazione?
-                </h3>
-                <div class="flex flex-wrap gap-3">
-                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
-                    Otite o mal d'orecchio
-                </span>
-                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
-                    Vertigini
-                </span>
-                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
-                    Sinusite cronica
-                </span>
-                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
-                    Raucedine persistente
-                </span>
-                <span class="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-700 border border-gray-200 hover:border-green-500 transition cursor-default">
-                    Problemi di udito
-                </span>
+            <div class="text-center mb-12">
+                <span class="theme-text font-bold tracking-wider uppercase text-xs">Sintomi & Indicazioni</span>
+                <h2 class="text-3xl font-bold text-gray-800 mt-2">Quando Rivolgersi a Noi</h2>
+                <p class="text-gray-500 mt-2 max-w-2xl mx-auto">Se riconosci uno di questi sintomi, prenota una visita specialistica</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: #EDE7F6;">
+                            <i class="fas fa-ear-deaf" style="color: #7E57C2;"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-800">Orecchio & Udito</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-start gap-2 text-sm text-gray-600"><i class="fas fa-check text-green-500 mt-1 text-xs"></i> Calo dell'udito</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-600"><i class="fas fa-check text-green-500 mt-1 text-xs"></i> Acufeni (fischi, ronzii)</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-600"><i class="fas fa-check text-green-500 mt-1 text-xs"></i> Otiti ricorrenti</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-600"><i class="fas fa-check text-green-500 mt-1 text-xs"></i> Sensazione di orecchio chiuso</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: #EDE7F6;">
+                            <i class="fas fa-head-side-mask" style="color: #7E57C2;"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-800">Naso & Seni Paranasali</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-start gap-2 text-sm text-gray-600"><i class="fas fa-check text-green-500 mt-1 text-xs"></i> Sinusite cronica</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-600"><i class="fas fa-check text-green-500 mt-1 text-xs"></i> Rinite allergica</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-600"><i class="fas fa-check text-green-500 mt-1 text-xs"></i> Polipi nasali</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-600"><i class="fas fa-check text-green-500 mt-1 text-xs"></i> Russamento e apnee</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: #EDE7F6;">
+                            <i class="fas fa-comment" style="color: #7E57C2;"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-800">Gola & Voce</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-start gap-2 text-sm text-gray-600"><i class="fas fa-check text-green-500 mt-1 text-xs"></i> Raucedine persistente</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-600"><i class="fas fa-check text-green-500 mt-1 text-xs"></i> Mal di gola ricorrente</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-600"><i class="fas fa-check text-green-500 mt-1 text-xs"></i> Difficoltà a deglutire</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-600"><i class="fas fa-check text-green-500 mt-1 text-xs"></i> Sensazione di corpo estraneo</li>
+                    </ul>
                 </div>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- 2. TECNOLOGIA (PROOF) -->
-                <div class="p-6 rounded-xl border-l-4" style="background: #EDE7F6; border-color: #7E57C2;">
-                    <h4 class="font-bold text-gray-800 mb-2 flex items-center gap-2">
-                        <i class="fas fa-microchip" style="color: #7E57C2;"></i> Dotazione Tecnologica
-                    </h4>
-                    <p class="text-sm text-gray-600">Audiometro e Impedenzometro diagnostici.</p>
-                </div>
-
-                <!-- 3. VANTAGGIO BIO-CLINIC (CROSS-SELL) -->
-                <div class="bg-green-50 p-6 rounded-xl border-l-4 border-green-500">
-                    <h4 class="font-bold text-gray-800 mb-2 flex items-center gap-2">
-                        <i class="fas fa-plus-circle text-green-600"></i> Perché Bio-Clinic?
-                    </h4>
-                    <p class="text-sm text-gray-600">Esame Audiometrico completo e Lavaggio Auricolare in sede.</p>
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <!-- INDICAZIONI SECTION -->
-    <section class="py-12 bg-white"><div class="max-w-5xl mx-auto px-4"><h2 class="text-2xl font-bold text-gray-800 mb-6">Indicazioni</h2><div class="flex flex-wrap gap-3"><span class="px-3 py-1 rounded-full text-sm font-medium" style="background: #EDE7F6; color: #583c87;">Disturbi dell'udito</span>
-                            <span class="px-3 py-1 rounded-full text-sm font-medium" style="background: #EDE7F6; color: #583c87;">Vertigini</span>
-                            <span class="px-3 py-1 rounded-full text-sm font-medium" style="background: #EDE7F6; color: #583c87;">Sinusite</span>
-                            <span class="px-3 py-1 rounded-full text-sm font-medium" style="background: #EDE7F6; color: #583c87;">Tonsilliti</span>
-                            <span class="px-3 py-1 rounded-full text-sm font-medium" style="background: #EDE7F6; color: #583c87;">Russamento</span>
-                            <span class="px-3 py-1 rounded-full text-sm font-medium" style="background: #EDE7F6; color: #583c87;">Acufeni</span>
-                            </div></div></section>
-
-    <!-- INFO SECTION -->
-    <section id="info" class="py-16 bg-gray-50 scroll-mt-28">
+    <!-- TECNOLOGIA & PERCORSO -->
+    <section id="tecnologia" class="py-16 bg-white scroll-mt-28">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                
-                <!-- PREPARAZIONE -->
-                <div class="bg-white rounded-2xl shadow-sm border p-8">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-3">
-                        <i class="fas fa-info-circle" style="color: #7E57C2;"></i>
-                        Informazioni Utili
-                    </h2>
-                    
-                    <div class="space-y-6">
-                        <div>
-                            <h3 class="font-bold text-gray-700 uppercase text-sm mb-2">Durata</h3>
-                            <p class="text-gray-600">30 minuti circa</p>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-700 uppercase text-sm mb-2">Preparazione</h3>
-                            <p class="text-gray-600">Nessuna preparazione particolare richiesta</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- SPECIALISTI -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-3">
-                        <i class="fas fa-user-md" style="color: #7E57C2;"></i>
-                        I Nostri Specialisti
-                    </h2>
-                    <div class="space-y-4">
-                        
-                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-lg transition">
-                            <div class="flex items-start gap-4">
-                                <div class="w-14 h-14 rounded-full flex items-center justify-center font-bold text-lg text-white" style="background: #7E57C2;">
-                                    FB
-                                </div>
-                                <div class="flex-1">
-                                    <h4 class="text-lg font-bold text-gray-800">Prof. Francesco Bussu</h4>
-                                    <p class="text-sm text-gray-500">Otorinolaringoiatra</p>
-                                    <a href="../equipe/francesco-bussu.html" class="text-sm font-semibold hover:underline mt-2 inline-block" style="color: #7E57C2;">
-                                        Visualizza Profilo →
-                                    </a>
-                                </div>
+                    <span class="theme-text font-bold tracking-wider uppercase text-xs">Il Nostro Approccio</span>
+                    <h2 class="text-3xl font-bold text-gray-900 mt-2 mb-8">Tecnologia & Percorso Diagnostico</h2>
+                    <ul class="space-y-8">
+
+                        <li class="flex items-start gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg text-white" style="background: #7E57C2;">
+                                01
                             </div>
-                        </div>
-                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-lg transition">
-                            <div class="flex items-start gap-4">
-                                <div class="w-14 h-14 rounded-full flex items-center justify-center font-bold text-lg text-white" style="background: #7E57C2;">
-                                    ML
-                                </div>
-                                <div class="flex-1">
-                                    <h4 class="text-lg font-bold text-gray-800">Dott.ssa Maria Laura De Luca</h4>
-                                    <p class="text-sm text-gray-500">Otorinolaringoiatra</p>
-                                    <a href="../equipe/maria-laura-de-luca.html" class="text-sm font-semibold hover:underline mt-2 inline-block" style="color: #7E57C2;">
-                                        Visualizza Profilo →
-                                    </a>
-                                </div>
+                            <div>
+                                <strong class="block text-gray-800 text-lg">Audiometria Tonale e Vocale</strong>
+                                <span class="text-sm text-gray-500">Esame dell'udito in cabina silente. Misura la soglia uditiva per frequenze gravi e acute.</span>
                             </div>
+                        </li>
+
+                        <li class="flex items-start gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg text-white" style="background: #7E57C2;">
+                                02
+                            </div>
+                            <div>
+                                <strong class="block text-gray-800 text-lg">Impedenzometria</strong>
+                                <span class="text-sm text-gray-500">Valutazione della funzionalità del timpano e della catena ossiculare. Diagnosi di otiti medie e disfunzioni tubariche.</span>
+                            </div>
+                        </li>
+
+                        <li class="flex items-start gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg text-white" style="background: #7E57C2;">
+                                03
+                            </div>
+                            <div>
+                                <strong class="block text-gray-800 text-lg">Fibrolaringoscopia</strong>
+                                <span class="text-sm text-gray-500">Esplorazione endoscopica di laringe e corde vocali con fibra ottica flessibile. Diagnosi di noduli, polipi e lesioni.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="space-y-8">
+                    <!-- PREPARAZIONE -->
+                    <div class="bg-gray-50 border border-gray-200 p-8 rounded-2xl">
+                        <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+                            <i class="fas fa-clipboard-list theme-text"></i> Come Prepararsi
+                        </h3>
+                        <ul class="list-disc list-inside text-sm text-gray-600 space-y-2">
+                        <li>Portare eventuali audiometrie precedenti</li>
+                        <li>Segnalare esposizione professionale a rumori</li>
+                        <li>Non usare gocce auricolari il giorno dell'esame</li>
+                        <li>Annotare farmaci ototossici assunti</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- FAQ -->
+                    <div class="bg-white border border-gray-200 p-8 rounded-2xl">
+                        <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+                            <i class="fas fa-comments theme-text"></i> Domande Frequenti
+                        </h3>
+                        <div class="space-y-3">
+
+                        <details class="group bg-white rounded-lg border border-gray-200 overflow-hidden">
+                            <summary class="flex justify-between items-center p-4 cursor-pointer font-semibold text-gray-700 hover:text-green-600 transition list-none">
+                                <span>Fate l'audiometria in sede?</span>
+                                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="px-4 pb-4 text-gray-600 text-sm border-t border-gray-100 bg-gray-50/50">
+                                Sì, disponiamo di cabina audiometrica professionale per esami dell'udito completi (audiometria tonale, vocale e impedenzometria).
+                            </div>
+                        </details>
+
+                        <details class="group bg-white rounded-lg border border-gray-200 overflow-hidden">
+                            <summary class="flex justify-between items-center p-4 cursor-pointer font-semibold text-gray-700 hover:text-green-600 transition list-none">
+                                <span>Fate lavaggi auricolari?</span>
+                                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="px-4 pb-4 text-gray-600 text-sm border-t border-gray-100 bg-gray-50/50">
+                                Sì, rimuoviamo tappi di cerume in sicurezza durante la visita con strumentazione dedicata.
+                            </div>
+                        </details>
+
+                        <details class="group bg-white rounded-lg border border-gray-200 overflow-hidden">
+                            <summary class="flex justify-between items-center p-4 cursor-pointer font-semibold text-gray-700 hover:text-green-600 transition list-none">
+                                <span>Trattate le vertigini?</span>
+                                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="px-4 pb-4 text-gray-600 text-sm border-t border-gray-100 bg-gray-50/50">
+                                Sì, con esami vestibologici e manovre liberatorie per la vertigine parossistica posizionale (VPPB).
+                            </div>
+                        </details>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- FAQ SECTION -->
-    
 
     <!-- CTA PRENOTA -->
-    <section id="prenota" class="py-16 scroll-mt-28" style="background: linear-gradient(135deg, #583c87 0%, #7E57C2 100%);">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold text-white mb-4">Prenota Visita Otorinolaringoiatrica</h2>
-            <p class="text-white/80 mb-8">Il nostro team è a disposizione per prenotazioni e informazioni</p>
-            
+    <section id="prenota" class="py-16 text-white text-center scroll-mt-28" style="background: linear-gradient(135deg, #7E57C2 0%, #7E57C2dd 100%);">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-4">La tua salute al centro.</h2>
+            <p class="mb-8 opacity-90 text-lg">Prenota la tua visita specialistica senza attese.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="tel:+390799561332" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white rounded-lg font-bold text-lg transition hover:bg-gray-100" style="color: #583c87;">
-                    <i class="fas fa-phone"></i>
-                    079 956 1332
+                <a href="tel:+390799561332" class="inline-flex items-center justify-center gap-2 px-10 py-4 bg-white rounded-lg font-bold text-lg shadow-lg hover:bg-gray-100 transition transform hover:scale-105" style="color: #7E57C2;">
+                    <i class="fas fa-phone"></i> 079 956 1332
                 </a>
-                <a href="https://wa.me/390799561332" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-green-500 text-white rounded-lg font-bold text-lg transition hover:bg-green-600">
-                    <i class="fab fa-whatsapp"></i>
-                    WhatsApp
+                <a href="https://wa.me/390799561332" class="inline-flex items-center justify-center gap-2 px-10 py-4 bg-green-500 text-white rounded-lg font-bold text-lg shadow-lg hover:bg-green-600 transition transform hover:scale-105">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
             </div>
-            
-            <p class="text-white/70 mt-6 text-sm">
-                📍 Via Renzo Mossa, 23 - 07100 Sassari
-            </p>
-        </div>
-    </section>
-
-    <!-- PROCEDURE CORRELATE -->
-    <section class="py-12 bg-gray-50">
-        <div class="max-w-5xl mx-auto px-4">
-            <h3 class="text-xl font-bold text-gray-800 mb-6">Prestazioni Correlate</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                
-                        <a href="audiometria.html" class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 hover:shadow-md transition flex items-center gap-3">
-                            <span style="color: #7E57C2;">👂</span>
-                            <span class="font-medium text-gray-700">Audiometria</span>
-                        </a>
-                        <a href="impedenzometria.html" class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 hover:shadow-md transition flex items-center gap-3">
-                            <span style="color: #7E57C2;">👂</span>
-                            <span class="font-medium text-gray-700">Impedenzometria</span>
-                        </a>
-                        <a href="fibroscopia-nasale.html" class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 hover:shadow-md transition flex items-center gap-3">
-                            <span style="color: #7E57C2;">👂</span>
-                            <span class="font-medium text-gray-700">Fibroscopia Nasale</span>
-                        </a>
-            </div>
+            <p class="mt-8 opacity-70 text-sm">📍 Via Renzo Mossa, 23 - 07100 Sassari | Lun-Ven 07:00-21:00, Sab 08:00-14:00</p>
         </div>
     </section>
 
     </main>
 
     <!-- FOOTER -->
-    
-    <!-- SEZIONE INFO CLINICHE AGGIUNTIVE - ORL -->
-    <section class="py-16 bg-gray-50 border-t border-gray-200">
-        <div class="max-w-4xl mx-auto px-4">
-            
-            <!-- TABELLA RIASSUNTIVA -->
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8 mb-12">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div class="flex items-center gap-4">
-                        <div class="w-14 h-14 rounded-full flex items-center justify-center text-xl" style="background: #7E57C215; color: #7E57C2;">
-                            <i class="far fa-clock"></i>
-                        </div>
-                        <div>
-                            <p class="text-xs text-gray-500 uppercase font-bold tracking-wide">Durata Media</p>
-                            <p class="font-bold text-gray-800 text-lg">20-25 minuti</p>
-                        </div>
-                    </div>
-                    <div class="w-px h-16 bg-gray-200 hidden md:block"></div>
-                    <div class="flex items-center gap-4">
-                        <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-xl">
-                            <i class="fas fa-clipboard-check"></i>
-                        </div>
-                        <div class="max-w-xs">
-                            <p class="text-xs text-gray-500 uppercase font-bold tracking-wide">Preparazione</p>
-                            <p class="font-medium text-gray-700 text-sm">Nessuna particolare. Portare eventuali audiometrie precedenti.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FAQ ACCORDION -->
-            <h3 class="text-2xl font-bold text-center mb-8 text-gray-800">
-                <i class="fas fa-comments text-gray-400 mr-2"></i>
-                Domande Frequenti
-            </h3>
-            <div class="space-y-4">
-
-            <details class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden group">
-                <summary class="flex justify-between items-center p-5 cursor-pointer list-none font-semibold text-gray-700 hover:text-green-600 transition">
-                    <span>Fate l'audiometria in sede?</span>
-                    <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-gray-400"></i></span>
-                </summary>
-                <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed border-t border-gray-100 bg-gray-50/50">
-                    Sì, disponiamo di cabina audiometrica per esami dell'udito completi.
-                </div>
-            </details>
-
-            <details class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden group">
-                <summary class="flex justify-between items-center p-5 cursor-pointer list-none font-semibold text-gray-700 hover:text-green-600 transition">
-                    <span>Fate lavaggi auricolari?</span>
-                    <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-gray-400"></i></span>
-                </summary>
-                <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed border-t border-gray-100 bg-gray-50/50">
-                    Sì, rimuoviamo tappi di cerume in sicurezza durante la visita.
-                </div>
-            </details>
-
-            <details class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden group">
-                <summary class="flex justify-between items-center p-5 cursor-pointer list-none font-semibold text-gray-700 hover:text-green-600 transition">
-                    <span>Trattate le vertigini?</span>
-                    <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-gray-400"></i></span>
-                </summary>
-                <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed border-t border-gray-100 bg-gray-50/50">
-                    Sì, con esami vestibologici e manovre liberatorie per la vertigine posizionale.
-                </div>
-            </details>
-            </div>
-
-            <!-- CTA FINALE -->
-            <div class="mt-12 text-center bg-white rounded-xl p-8 border border-gray-100 shadow-sm">
-                <p class="text-gray-600 mb-4">Hai ancora dubbi? Il nostro team è a tua disposizione.</p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="tel:+390799561332" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition">
-                        <i class="fas fa-phone"></i> Chiama 079 956 1332
-                    </a>
-                    <a href="https://wa.me/390799561332" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-100 text-gray-700 rounded-lg font-semibold hover:bg-gray-200 transition">
-                        <i class="fab fa-whatsapp text-green-500"></i> WhatsApp
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
     <footer class="footer">
       <div class="container">
         <div class="footer-grid">
           <div class="footer-info">
-            <a href="../index.html" class="footer-logo">
-              <img src="../images/logo-bioclinic.png" alt="Bio-Clinic Sassari" width="160" height="53">
-            </a>
-            <p>Poliambulatorio Medico d'eccellenza a Sassari dal 1990. 51 specialisti, oltre 60 prestazioni diagnostiche e terapeutiche.</p>
+            <a href="../index.html" class="footer-logo"><img src="../images/logo-bioclinic.png" alt="Bio-Clinic Sassari" width="160"></a>
+            <p>Poliambulatorio Medico d'eccellenza a Sassari dal 1990. 51 specialisti, oltre 60 prestazioni.</p>
           </div>
           <div class="footer-links">
             <h4>Contatti</h4>
             <ul>
               <li><a href="tel:+390799561332"><i class="fas fa-phone"></i> 079 956 1332</a></li>
               <li><a href="mailto:gestione@bio-clinic.it"><i class="fas fa-envelope"></i> gestione@bio-clinic.it</a></li>
-              <li><i class="fas fa-map-marker-alt"></i> Via Renzo Mossa, 23 - 07100 Sassari</li>
+              <li><i class="fas fa-map-marker-alt"></i> Via Renzo Mossa, 23 - Sassari</li>
             </ul>
           </div>
           <div class="footer-links">
@@ -600,7 +420,6 @@
             <ul>
               <li>Lunedì - Venerdì: 07:00 - 21:00</li>
               <li>Sabato: 08:00 - 14:00</li>
-              <li>Domenica: Chiuso</li>
             </ul>
           </div>
           <div class="footer-links">
@@ -608,17 +427,13 @@
             <ul>
               <li><a href="privacy.html">Privacy Policy</a></li>
               <li><a href="cookie.html">Cookie Policy</a></li>
-              <li><a href="contatti.html">Contatti</a></li>
             </ul>
           </div>
         </div>
-        <div class="footer-bottom">
-          <p>&copy; 2025 Bio-Clinic Sassari. Tutti i diritti riservati. P.IVA 01234567890</p>
-        </div>
+        <div class="footer-bottom"><p>&copy; 2025 Bio-Clinic Sassari. Tutti i diritti riservati.</p></div>
       </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="../js/main.js"></script>
     <script src="../js/search.js"></script>
 </body>
