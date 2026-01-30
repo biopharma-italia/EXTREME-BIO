@@ -1,6 +1,34 @@
 {
-  "specialty": "Specialty(id='oculistica', name='Oculistica', slug='oculistica', status='active', name_extended='Oculistica', display={'icon': '👁️', 'color_primary': '#0288D1', 'color_light': '#E1F5FE'}, content={'description_short': 'Visite oculistiche e diagnostica della vista'}, page_config={}, visibility={'show_in_menu': True, 'menu_order': 7, 'show_in_homepage': False}, page_url='/pages/oculistica.html', physicians=[], procedures=[{'id': 'visita-oculistica', 'name': 'Visita Oculistica', 'category': 'visita', 'page_type': 'A', 'page_url': '/pages/visita-oculistica.html', 'has_dedicated_page': True}, {'id': 'campo-visivo', 'name': 'Campo Visivo', 'category': 'diagnostica', 'page_type': 'A', 'page_url': '/pages/campo-visivo.html', 'has_dedicated_page': True}], physicians_count=0, procedures_count=2)",
-  "physicians": [],
+  "specialty": "Specialty(id='oculistica', name='Oculistica', slug='oculistica', status='active', name_extended='Oculistica', display={'icon': '👁️', 'color_primary': '#0288D1', 'color_light': '#E1F5FE'}, content={'description_short': 'Visite oculistiche e diagnostica della vista'}, page_config={}, visibility={'show_in_menu': True, 'menu_order': 7, 'show_in_homepage': False}, page_url='/pages/oculistica.html', physicians=[{'id': 'francesco-santoru', 'display_name': 'Dott. Francesco Santoru', 'job_title': 'Oculista', 'page_url': '/equipe/francesco-santoru.html', 'image_url': 'images/team/default-avatar.webp', 'role_badges': [], 'priority_order': 1}, {'id': 'maria-pina-pintus', 'display_name': 'Dott.ssa Maria Pina Pintus', 'job_title': 'Oculista', 'page_url': '/equipe/maria-pina-pintus.html', 'image_url': 'images/team/default-avatar.webp', 'role_badges': [], 'priority_order': 2}, {'id': 'matteo-zucca', 'display_name': 'Dott. Matteo Zucca', 'job_title': 'Oculista', 'page_url': '/equipe/matteo-zucca.html', 'image_url': 'images/team/default-avatar.webp', 'role_badges': [], 'priority_order': 3}], procedures=[{'id': 'visita-oculistica', 'name': 'Visita Oculistica', 'category': 'visita', 'page_type': 'A', 'page_url': '/pages/visita-oculistica.html', 'has_dedicated_page': True}, {'id': 'campo-visivo', 'name': 'Campo Visivo', 'category': 'diagnostica', 'page_type': 'A', 'page_url': '/pages/campo-visivo.html', 'has_dedicated_page': True}], physicians_count=3, procedures_count=2)",
+  "physicians": [
+    {
+      "id": "francesco-santoru",
+      "display_name": "Dott. Francesco Santoru",
+      "job_title": "Oculista",
+      "page_url": "/equipe/francesco-santoru.html",
+      "image_url": "images/team/default-avatar.webp",
+      "role_badges": [],
+      "priority_order": 1
+    },
+    {
+      "id": "maria-pina-pintus",
+      "display_name": "Dott.ssa Maria Pina Pintus",
+      "job_title": "Oculista",
+      "page_url": "/equipe/maria-pina-pintus.html",
+      "image_url": "images/team/default-avatar.webp",
+      "role_badges": [],
+      "priority_order": 2
+    },
+    {
+      "id": "matteo-zucca",
+      "display_name": "Dott. Matteo Zucca",
+      "job_title": "Oculista",
+      "page_url": "/equipe/matteo-zucca.html",
+      "image_url": "images/team/default-avatar.webp",
+      "role_badges": [],
+      "priority_order": 3
+    }
+  ],
   "procedures": [
     {
       "id": "visita-oculistica",

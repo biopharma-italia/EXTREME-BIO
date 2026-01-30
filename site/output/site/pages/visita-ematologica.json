@@ -1,0 +1,25 @@
+{
+  "procedure": "Procedure(id='visita-ematologica', name='Visita Ematologica', specialty_id='ematologia', category='visita', page_type='A', status='active', name_extended='Visita Ematologica Specialistica', slug='visita-ematologica', content={'description_short': 'Valutazione delle malattie del sangue e degli organi emopoietici'}, clinical={'duration_minutes': 30, 'preparation': {'required': False, 'notes': 'Portare emocromo e esami precedenti'}}, indications=['Anemia', 'Leucemia', 'Linfomi', 'Disturbi della coagulazione', 'Trombocitopenia'], related_procedures=[], pathways=[], faqs=[], pricing={}, upsell_pack=None, seo={}, schema_org={}, visibility={'has_dedicated_page': True, 'priority_order': 1}, page_url='/pages/visita-ematologica.html', has_dedicated_page=True, physicians=[{'id': 'daniele-sabiu', 'display_name': 'Dr. Daniele Sabiu', 'page_url': '/equipe/daniele-sabiu.html', 'image_url': 'images/team/default-avatar.webp', 'specialty_id': 'ematologia'}, {'id': 'luigi-podda', 'display_name': 'Dott. Luigi Podda', 'page_url': '/equipe/luigi-podda.html', 'image_url': 'images/team/default-avatar.webp', 'specialty_id': 'ematologia'}])",
+  "specialty": null,
+  "physicians": [
+    {
+      "id": "daniele-sabiu",
+      "display_name": "Dr. Daniele Sabiu",
+      "page_url": "/equipe/daniele-sabiu.html",
+      "image_url": "images/team/default-avatar.webp",
+      "specialty_id": "ematologia"
+    },
+    {
+      "id": "luigi-podda",
+      "display_name": "Dott. Luigi Podda",
+      "page_url": "/equipe/luigi-podda.html",
+      "image_url": "images/team/default-avatar.webp",
+      "specialty_id": "ematologia"
+    }
+  ],
+  "schema_json": "{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"MedicalClinic\",\n      \"@id\": \"https://bio-clinic.it/#clinic\",\n      \"name\": \"Bio-Clinic Sassari\",\n      \"url\": \"https://bio-clinic.it\",\n      \"telephone\": \"+39 079 956 1332\",\n      \"address\": {\n        \"@type\": \"PostalAddress\",\n        \"streetAddress\": \"Via Renzo Mossa, 23\",\n        \"addressLocality\": \"Sassari\",\n        \"postalCode\": \"07100\",\n        \"addressCountry\": \"IT\"\n      }\n    },\n    {\n      \"@type\": \"MedicalProcedure\",\n      \"@id\": \"https://bio-clinic.it/pages/visita-ematologica/#procedure\",\n      \"name\": \"Visita Ematologica\",\n      \"alternateName\": \"Visita Ematologica Specialistica\",\n      \"description\": \"Valutazione delle malattie del sangue e degli organi emopoietici\",\n      \"procedureType\": null,\n      \"bodyLocation\": null,\n      \"howPerformed\": null,\n      \"preparation\": \"Portare emocromo e esami precedenti\",\n      \"relevantSpecialty\": null,\n      \"provider\": {\n        \"@id\": \"https://bio-clinic.it/#clinic\"\n      }\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://bio-clinic.it/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Prestazioni\",\n          \"item\": \"#\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Visita Ematologica\",\n          \"item\": \"https://bio-clinic.it/pages/visita-ematologica.html\"\n        }\n      ]\n    }\n  ]\n}",
+  "site": {
+    "name": "Bio-Clinic Sassari",
+    "phone": "079 956 1332"
+  }
+}

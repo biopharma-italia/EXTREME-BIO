@@ -1832,7 +1832,593 @@ procedures:
     
     status: "active"
 
+  # ==========================================================================
+  # CHIRURGIA VASCOLARE
+  # ==========================================================================
+  
+  - id: "visita-chirurgia-vascolare"
+    
+    name: "Visita Chirurgia Vascolare"
+    name_extended: "Visita Chirurgia Vascolare Specialistica"
+    slug: "visita-chirurgia-vascolare"
+    
+    specialty_id: "chirurgia-vascolare"
+    category: "visita"
+    page_type: "A"
+    
+    content:
+      description_short: "Valutazione delle patologie vascolari arteriose e venose"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: false
+        notes: "Portare esami precedenti e elenco farmaci"
+    
+    indications:
+      - "Varici"
+      - "Insufficienza venosa"
+      - "Arteriopatie"
+      - "Trombosi"
+      - "Aneurismi"
+    
+    related_procedures:
+      - "eco-doppler-arti"
+      - "scleroterapia"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 1
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "eco-doppler-arti"
+    
+    name: "Eco-Doppler Arti"
+    name_extended: "Eco-Doppler Arterioso e Venoso degli Arti"
+    slug: "eco-doppler-arti"
+    
+    specialty_id: "chirurgia-vascolare"
+    category: "diagnostica"
+    page_type: "A"
+    
+    content:
+      description_short: "Esame ecografico per valutare la circolazione arteriosa e venosa"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: false
+    
+    indications:
+      - "Insufficienza venosa"
+      - "Trombosi venosa"
+      - "Arteriopatia periferica"
+      - "Varici"
+    
+    related_procedures:
+      - "visita-chirurgia-vascolare"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 2
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "scleroterapia"
+    
+    name: "Scleroterapia"
+    name_extended: "Scleroterapia per Varici e Capillari"
+    slug: "scleroterapia"
+    
+    specialty_id: "chirurgia-vascolare"
+    category: "trattamento"
+    page_type: "A"
+    
+    content:
+      description_short: "Trattamento mini-invasivo per varici e capillari"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: false
+        notes: "Evitare esposizione solare 2 settimane prima e dopo"
+    
+    indications:
+      - "Varici"
+      - "Teleangectasie"
+      - "Capillari"
+    
+    related_procedures:
+      - "visita-chirurgia-vascolare"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 3
+    
+    status: "active"
+
+  # ==========================================================================
+  # EMATOLOGIA
+  # ==========================================================================
+  
+  - id: "visita-ematologica"
+    
+    name: "Visita Ematologica"
+    name_extended: "Visita Ematologica Specialistica"
+    slug: "visita-ematologica"
+    
+    specialty_id: "ematologia"
+    category: "visita"
+    page_type: "A"
+    
+    content:
+      description_short: "Valutazione delle malattie del sangue e degli organi emopoietici"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: false
+        notes: "Portare emocromo e esami precedenti"
+    
+    indications:
+      - "Anemia"
+      - "Leucemia"
+      - "Linfomi"
+      - "Disturbi della coagulazione"
+      - "Trombocitopenia"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 1
+    
+    status: "active"
+
+  # ==========================================================================
+  # FISIATRIA
+  # ==========================================================================
+  
+  - id: "visita-fisiatrica"
+    
+    name: "Visita Fisiatrica"
+    name_extended: "Visita Fisiatrica Specialistica"
+    slug: "visita-fisiatrica"
+    
+    specialty_id: "fisiatria"
+    category: "visita"
+    page_type: "A"
+    
+    content:
+      description_short: "Valutazione per riabilitazione e medicina fisica"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: false
+        notes: "Portare esami diagnostici e documentazione medica"
+    
+    indications:
+      - "Mal di schiena"
+      - "Cervicalgia"
+      - "Post-intervento"
+      - "Post-trauma"
+      - "Disabilità motorie"
+    
+    related_procedures:
+      - "infiltrazioni-articolari"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 1
+    
+    status: "active"
+
+  # ==========================================================================
+  # GASTROENTEROLOGIA
+  # ==========================================================================
+  
+  - id: "visita-gastroenterologica"
+    
+    name: "Visita Gastroenterologica"
+    name_extended: "Visita Gastroenterologica Specialistica"
+    slug: "visita-gastroenterologica"
+    
+    specialty_id: "gastroenterologia"
+    category: "visita"
+    page_type: "A"
+    
+    content:
+      description_short: "Valutazione delle patologie dell'apparato digerente"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: false
+        notes: "Portare esami precedenti"
+    
+    indications:
+      - "Reflusso gastroesofageo"
+      - "Gastrite"
+      - "Colon irritabile"
+      - "Malattie infiammatorie intestinali"
+      - "Epatopatie"
+    
+    related_procedures:
+      - "ecografia-addominale"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 1
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "ecografia-addominale"
+    
+    name: "Ecografia Addominale"
+    name_extended: "Ecografia Addominale Completa"
+    slug: "ecografia-addominale"
+    
+    specialty_id: "gastroenterologia"
+    category: "diagnostica"
+    page_type: "A"
+    
+    content:
+      description_short: "Esame ecografico degli organi addominali"
+    
+    clinical:
+      duration_minutes: 20
+      preparation:
+        required: true
+        fasting: true
+        fasting_hours: 6
+        notes: "Digiuno da almeno 6 ore"
+    
+    indications:
+      - "Dolore addominale"
+      - "Patologie epatiche"
+      - "Calcolosi biliare"
+      - "Patologie renali"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 2
+    
+    status: "active"
+
+  # ==========================================================================
+  # DIETOLOGIA
+  # ==========================================================================
+  
+  - id: "visita-nutrizionale"
+    
+    name: "Visita Nutrizionale"
+    name_extended: "Visita Nutrizionale e Dietologica"
+    slug: "visita-nutrizionale"
+    
+    specialty_id: "dietologia"
+    category: "visita"
+    page_type: "A"
+    
+    content:
+      description_short: "Valutazione dello stato nutrizionale e piano alimentare personalizzato"
+    
+    clinical:
+      duration_minutes: 45
+      preparation:
+        required: false
+        notes: "Portare esami del sangue recenti se disponibili"
+    
+    indications:
+      - "Sovrappeso"
+      - "Obesità"
+      - "Disturbi alimentari"
+      - "Intolleranze"
+      - "Patologie metaboliche"
+    
+    pathways:
+      - "slim-care"
+      - "slim-care-donna"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 1
+    
+    status: "active"
+
+# ==========================================================================
+  # MEDICINA INTERNA
+  # ==========================================================================
+  
+  - id: "visita-internistica"
+    
+    name: "Visita Internistica"
+    name_extended: "Visita Internistica Specialistica"
+    slug: "visita-internistica"
+    
+    specialty_id: "medicina-interna"
+    category: "visita"
+    page_type: "A"
+    
+    content:
+      description_short: "Valutazione medica internistica per patologie complesse e multiorgano"
+    
+    clinical:
+      duration_minutes: 45
+      preparation:
+        required: false
+        notes: "Portare esami precedenti, elenco farmaci e documentazione medica"
+    
+    indications:
+      - "Patologie multiorgano"
+      - "Febbri di origine sconosciuta"
+      - "Stanchezza cronica"
+      - "Perdita di peso inspiegata"
+      - "Patologie sistemiche"
+    
+    faqs:
+      - question: "Quando rivolgersi all'internista?"
+        answer: "L'internista è indicato per patologie complesse che coinvolgono più organi o quando è necessaria una visione d'insieme."
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 1
+    
+    status: "active"
+
+  # ==========================================================================
+  # MEDICINA DEL LAVORO
+  # ==========================================================================
+  
+  - id: "visita-medicina-lavoro"
+    
+    name: "Visita Medicina del Lavoro"
+    name_extended: "Visita Medica per Idoneità Lavorativa"
+    slug: "visita-medicina-lavoro"
+    
+    specialty_id: "medicina-lavoro"
+    category: "visita"
+    page_type: "A"
+    
+    content:
+      description_short: "Visita per valutazione idoneità al lavoro e sorveglianza sanitaria"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: false
+        notes: "Portare documento di identità e documentazione sanitaria pregressa"
+    
+    indications:
+      - "Visita preassuntiva"
+      - "Visita periodica"
+      - "Visita su richiesta"
+      - "Visita al rientro dopo malattia"
+      - "Sorveglianza sanitaria"
+    
+    faqs:
+      - question: "Ogni quanto fare la visita del lavoro?"
+        answer: "La periodicità dipende dal tipo di mansione e dai rischi lavorativi, generalmente annuale."
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 1
+    
+    status: "active"
+
+  # ==========================================================================
+  # MEDICINA DELLO SPORT
+  # ==========================================================================
+  
+  - id: "visita-medicina-sport"
+    
+    name: "Visita Medicina dello Sport"
+    name_extended: "Visita Medico Sportiva per Idoneità"
+    slug: "visita-medicina-sport"
+    
+    specialty_id: "medicina-sport"
+    category: "visita"
+    page_type: "A"
+    
+    content:
+      description_short: "Certificazione di idoneità alla pratica sportiva agonistica e non"
+    
+    clinical:
+      duration_minutes: 45
+      preparation:
+        required: false
+        notes: "Portare documento di identità, certificato di nascita o tessera sanitaria, esami del sangue e urine recenti"
+    
+    indications:
+      - "Certificato sportivo non agonistico"
+      - "Certificato sportivo agonistico"
+      - "Valutazione performance atletica"
+      - "Rientro dopo infortunio"
+    
+    related_procedures:
+      - "ecg"
+      - "spirometria"
+    
+    faqs:
+      - question: "Quanto dura il certificato medico sportivo?"
+        answer: "Il certificato non agonistico ha validità annuale, quello agonistico varia in base allo sport (1 anno nella maggior parte dei casi)."
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 1
+    
+    status: "active"
+
+  # ==========================================================================
+  # NEFROLOGIA
+  # ==========================================================================
+  
+  - id: "visita-nefrologica"
+    
+    name: "Visita Nefrologica"
+    name_extended: "Visita Nefrologica Specialistica"
+    slug: "visita-nefrologica"
+    
+    specialty_id: "nefrologia"
+    category: "visita"
+    page_type: "A"
+    
+    content:
+      description_short: "Valutazione della funzione renale e delle patologie dei reni"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: false
+        notes: "Portare esami del sangue (creatinina, azotemia) e urine recenti"
+    
+    indications:
+      - "Insufficienza renale"
+      - "Calcolosi renale"
+      - "Proteinuria"
+      - "Infezioni urinarie ricorrenti"
+      - "Ipertensione nefrogena"
+      - "Glomerulonefriti"
+    
+    faqs:
+      - question: "Quando consultare il nefrologo?"
+        answer: "Quando gli esami del sangue mostrano alterazioni della creatinina o dell'azotemia, o in presenza di sangue/proteine nelle urine."
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 1
+    
+    status: "active"
+
+  # ==========================================================================
+  # PEDIATRIA
+  # ==========================================================================
+  
+  - id: "visita-pediatrica"
+    
+    name: "Visita Pediatrica"
+    name_extended: "Visita Pediatrica Specialistica"
+    slug: "visita-pediatrica"
+    
+    specialty_id: "pediatria"
+    category: "visita"
+    page_type: "A"
+    
+    content:
+      description_short: "Valutazione della salute e dello sviluppo di neonati, bambini e adolescenti"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: false
+        notes: "Portare libretto pediatrico, certificato vaccinale e eventuali esami precedenti"
+    
+    indications:
+      - "Controlli periodici"
+      - "Patologie acute"
+      - "Disturbi della crescita"
+      - "Problemi alimentari"
+      - "Disturbi del sonno"
+      - "Vaccinazioni"
+    
+    faqs:
+      - question: "Ogni quanto portare il bambino dal pediatra?"
+        answer: "I bilanci di salute sono previsti a scadenze regolari nel primo anno, poi annualmente o secondo necessità."
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 1
+    
+    status: "active"
+
+  # ==========================================================================
+  # PSICOLOGIA
+  # ==========================================================================
+  
+  - id: "colloquio-psicologico"
+    
+    name: "Colloquio Psicologico"
+    name_extended: "Colloquio Psicologico Clinico"
+    slug: "colloquio-psicologico"
+    
+    specialty_id: "psicologia"
+    category: "visita"
+    page_type: "A"
+    
+    content:
+      description_short: "Colloquio di valutazione psicologica e supporto"
+    
+    clinical:
+      duration_minutes: 50
+      preparation:
+        required: false
+        notes: "Nessuna preparazione particolare richiesta"
+    
+    indications:
+      - "Ansia"
+      - "Depressione"
+      - "Stress"
+      - "Disturbi del comportamento alimentare"
+      - "Problemi relazionali"
+      - "Elaborazione del lutto"
+      - "Supporto nei cambiamenti di vita"
+    
+    faqs:
+      - question: "Quanto dura un percorso psicologico?"
+        answer: "La durata è variabile in base alle esigenze individuali. Può essere un intervento breve o un percorso più lungo."
+      - question: "Qual è la differenza tra psicologo e psicoterapeuta?"
+        answer: "Lo psicologo offre consulenza e supporto, lo psicoterapeuta può svolgere percorsi terapeutici più strutturati."
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 1
+    
+    status: "active"
+
+  # ==========================================================================
+  # REUMATOLOGIA
+  # ==========================================================================
+  
+  - id: "visita-reumatologica"
+    
+    name: "Visita Reumatologica"
+    name_extended: "Visita Reumatologica Specialistica"
+    slug: "visita-reumatologica"
+    
+    specialty_id: "reumatologia"
+    category: "visita"
+    page_type: "A"
+    
+    content:
+      description_short: "Valutazione delle patologie reumatiche e autoimmuni"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: false
+        notes: "Portare esami del sangue recenti (VES, PCR, fattore reumatoide) e referti imaging"
+    
+    indications:
+      - "Artrite reumatoide"
+      - "Artrosi"
+      - "Lupus"
+      - "Fibromialgia"
+      - "Spondilite anchilosante"
+      - "Gotta"
+      - "Connettiviti"
+    
+    faqs:
+      - question: "Come capire se ho una malattia reumatica?"
+        answer: "I sintomi principali sono dolore articolare, rigidità mattutina, gonfiore delle articolazioni e affaticamento."
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 1
+    
+    status: "active"
+
 # ============================================================================
-# NOTE: File completo con 48+ procedure per 12 specialità
-# Ogni specialità ha almeno 2-3 procedure definite
+# TOTALE: 60+ procedure per 24+ specialità
 # ============================================================================

@@ -298,6 +298,327 @@ specialties:
     status: "active"
 
   # ==========================================================================
+  # CHIRURGIA VASCOLARE
+  # ==========================================================================
+  - id: "chirurgia-vascolare"
+    name: "Chirurgia Vascolare"
+    name_extended: "Chirurgia Vascolare"
+    slug: "chirurgia-vascolare"
+    
+    display:
+      icon: "🩸"
+      color_primary: "#D32F2F"
+      color_light: "#FFCDD2"
+    
+    content:
+      description_short: "Diagnosi e trattamento delle patologie vascolari arteriose e venose"
+    
+    visibility:
+      show_in_menu: true
+      menu_order: 11
+      show_in_homepage: false
+    
+    status: "active"
+
+  # ==========================================================================
+  # MEDICINA INTERNA
+  # ==========================================================================
+  - id: "medicina-interna"
+    name: "Medicina Interna"
+    name_extended: "Medicina Interna"
+    slug: "medicina-interna"
+    
+    display:
+      icon: "⚕️"
+      color_primary: "#455A64"
+      color_light: "#ECEFF1"
+    
+    content:
+      description_short: "Diagnosi e cura delle patologie internistiche complesse"
+    
+    visibility:
+      show_in_menu: true
+      menu_order: 12
+      show_in_homepage: false
+    
+    status: "active"
+
+  # ==========================================================================
+  # MEDICINA DEL LAVORO
+  # ==========================================================================
+  - id: "medicina-lavoro"
+    name: "Medicina del Lavoro"
+    name_extended: "Medicina del Lavoro"
+    slug: "medicina-lavoro"
+    
+    display:
+      icon: "👷"
+      color_primary: "#FF8F00"
+      color_light: "#FFF8E1"
+    
+    content:
+      description_short: "Visite e certificazioni per idoneità lavorativa"
+    
+    visibility:
+      show_in_menu: true
+      menu_order: 13
+      show_in_homepage: false
+    
+    status: "active"
+
+  # ==========================================================================
+  # MEDICINA DELLO SPORT
+  # ==========================================================================
+  - id: "medicina-sport"
+    name: "Medicina dello Sport"
+    name_extended: "Medicina dello Sport"
+    slug: "medicina-sport"
+    
+    display:
+      icon: "🏃"
+      color_primary: "#00C853"
+      color_light: "#E8F5E9"
+    
+    content:
+      description_short: "Certificazioni sportive e valutazione atleti"
+    
+    visibility:
+      show_in_menu: true
+      menu_order: 14
+      show_in_homepage: false
+    
+    status: "active"
+
+  # ==========================================================================
+  # MEDICINA SPORTIVA (alias medicina-sport)
+  # ==========================================================================
+  - id: "medicina-sportiva"
+    name: "Medicina Sportiva"
+    name_extended: "Medicina Sportiva"
+    slug: "medicina-sportiva"
+    
+    display:
+      icon: "🏃"
+      color_primary: "#00C853"
+      color_light: "#E8F5E9"
+    
+    content:
+      description_short: "Certificazioni sportive e valutazione atleti"
+    
+    visibility:
+      show_in_menu: false
+      show_in_homepage: false
+    
+    status: "active"
+
+  # ==========================================================================
+  # NEFROLOGIA
+  # ==========================================================================
+  - id: "nefrologia"
+    name: "Nefrologia"
+    name_extended: "Nefrologia"
+    slug: "nefrologia"
+    
+    display:
+      icon: "🫘"
+      color_primary: "#6D4C41"
+      color_light: "#EFEBE9"
+    
+    content:
+      description_short: "Diagnosi e cura delle patologie renali"
+    
+    visibility:
+      show_in_menu: true
+      menu_order: 15
+      show_in_homepage: false
+    
+    status: "active"
+
+  # ==========================================================================
+  # PEDIATRIA
+  # ==========================================================================
+  - id: "pediatria"
+    name: "Pediatria"
+    name_extended: "Pediatria"
+    slug: "pediatria"
+    
+    display:
+      icon: "👶"
+      color_primary: "#F06292"
+      color_light: "#FCE4EC"
+    
+    content:
+      description_short: "Assistenza medica per neonati, bambini e adolescenti"
+    
+    visibility:
+      show_in_menu: true
+      menu_order: 16
+      show_in_homepage: false
+    
+    status: "active"
+
+  # ==========================================================================
+  # PSICOLOGIA
+  # ==========================================================================
+  - id: "psicologia"
+    name: "Psicologia"
+    name_extended: "Psicologia e Psicoterapia"
+    slug: "psicologia"
+    
+    display:
+      icon: "🧠"
+      color_primary: "#9C27B0"
+      color_light: "#F3E5F5"
+    
+    content:
+      description_short: "Supporto psicologico e percorsi di psicoterapia"
+    
+    visibility:
+      show_in_menu: true
+      menu_order: 17
+      show_in_homepage: false
+    
+    status: "active"
+
+  # ==========================================================================
+  # REUMATOLOGIA
+  # ==========================================================================
+  - id: "reumatologia"
+    name: "Reumatologia"
+    name_extended: "Reumatologia"
+    slug: "reumatologia"
+    
+    display:
+      icon: "🦴"
+      color_primary: "#795548"
+      color_light: "#EFEBE9"
+    
+    content:
+      description_short: "Diagnosi e cura delle malattie reumatiche"
+    
+    visibility:
+      show_in_menu: true
+      menu_order: 18
+      show_in_homepage: false
+    
+    status: "active"
+
+  # ==========================================================================
+  # EMATOLOGIA
+  # ==========================================================================
+  - id: "ematologia"
+    name: "Ematologia"
+    name_extended: "Ematologia"
+    slug: "ematologia"
+    
+    display:
+      icon: "🩸"
+      color_primary: "#C62828"
+      color_light: "#FFEBEE"
+    
+    content:
+      description_short: "Diagnosi e cura delle malattie del sangue"
+    
+    visibility:
+      show_in_menu: true
+      menu_order: 19
+      show_in_homepage: false
+    
+    status: "active"
+
+  # ==========================================================================
+  # FISIATRIA
+  # ==========================================================================
+  - id: "fisiatria"
+    name: "Fisiatria"
+    name_extended: "Fisiatria e Riabilitazione"
+    slug: "fisiatria"
+    
+    display:
+      icon: "🏥"
+      color_primary: "#00ACC1"
+      color_light: "#E0F7FA"
+    
+    content:
+      description_short: "Medicina fisica e riabilitazione"
+    
+    visibility:
+      show_in_menu: true
+      menu_order: 20
+      show_in_homepage: false
+    
+    status: "active"
+
+  # ==========================================================================
+  # GASTROENTEROLOGIA
+  # ==========================================================================
+  - id: "gastroenterologia"
+    name: "Gastroenterologia"
+    name_extended: "Gastroenterologia"
+    slug: "gastroenterologia"
+    
+    display:
+      icon: "🔬"
+      color_primary: "#558B2F"
+      color_light: "#F1F8E9"
+    
+    content:
+      description_short: "Diagnosi e cura delle patologie digestive"
+    
+    visibility:
+      show_in_menu: true
+      menu_order: 21
+      show_in_homepage: false
+    
+    status: "active"
+
+  # ==========================================================================
+  # DIETOLOGIA
+  # ==========================================================================
+  - id: "dietologia"
+    name: "Dietologia"
+    name_extended: "Dietologia e Nutrizione"
+    slug: "dietologia"
+    
+    display:
+      icon: "🥗"
+      color_primary: "#8BC34A"
+      color_light: "#F1F8E9"
+    
+    content:
+      description_short: "Consulenze nutrizionali e diete personalizzate"
+    
+    visibility:
+      show_in_menu: true
+      menu_order: 22
+      show_in_homepage: false
+    
+    status: "active"
+
+  # ==========================================================================
+  # RADIOLOGIA
+  # ==========================================================================
+  - id: "radiologia"
+    name: "Radiologia"
+    name_extended: "Radiologia e Diagnostica per Immagini"
+    slug: "radiologia"
+    
+    display:
+      icon: "📷"
+      color_primary: "#546E7A"
+      color_light: "#ECEFF1"
+    
+    content:
+      description_short: "Diagnostica per immagini: ecografia, radiologia, TAC"
+    
+    visibility:
+      show_in_menu: true
+      menu_order: 23
+      show_in_homepage: false
+    
+    status: "active"
+
+  # ==========================================================================
   # LABORATORIO ANALISI
   # ==========================================================================
   - id: "laboratorio"

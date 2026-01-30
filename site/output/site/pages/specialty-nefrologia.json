@@ -1,0 +1,29 @@
+{
+  "specialty": "Specialty(id='nefrologia', name='Nefrologia', slug='nefrologia', status='active', name_extended='Nefrologia', display={'icon': '🫘', 'color_primary': '#6D4C41', 'color_light': '#EFEBE9'}, content={'description_short': 'Diagnosi e cura delle patologie renali'}, page_config={}, visibility={'show_in_menu': True, 'menu_order': 15, 'show_in_homepage': False}, page_url='/pages/nefrologia.html', physicians=[{'id': 'sergio-paolo-sotgia', 'display_name': 'Dott. Sergio Paolo Sotgia', 'job_title': 'Nefrologo', 'page_url': '/equipe/sergio-paolo-sotgia.html', 'image_url': 'images/team/default-avatar.webp', 'role_badges': [], 'priority_order': 1}], procedures=[{'id': 'visita-nefrologica', 'name': 'Visita Nefrologica', 'category': 'visita', 'page_type': 'A', 'page_url': '/pages/visita-nefrologica.html', 'has_dedicated_page': True}], physicians_count=1, procedures_count=1)",
+  "physicians": [
+    {
+      "id": "sergio-paolo-sotgia",
+      "display_name": "Dott. Sergio Paolo Sotgia",
+      "job_title": "Nefrologo",
+      "page_url": "/equipe/sergio-paolo-sotgia.html",
+      "image_url": "images/team/default-avatar.webp",
+      "role_badges": [],
+      "priority_order": 1
+    }
+  ],
+  "procedures": [
+    {
+      "id": "visita-nefrologica",
+      "name": "Visita Nefrologica",
+      "category": "visita",
+      "page_type": "A",
+      "page_url": "/pages/visita-nefrologica.html",
+      "has_dedicated_page": true
+    }
+  ],
+  "schema_json": "{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"MedicalClinic\",\n      \"@id\": \"https://bio-clinic.it/#clinic\",\n      \"name\": \"Bio-Clinic Sassari\",\n      \"url\": \"https://bio-clinic.it\",\n      \"telephone\": \"+39 079 956 1332\",\n      \"address\": {\n        \"@type\": \"PostalAddress\",\n        \"streetAddress\": \"Via Renzo Mossa, 23\",\n        \"addressLocality\": \"Sassari\",\n        \"postalCode\": \"07100\",\n        \"addressCountry\": \"IT\"\n      }\n    },\n    {\n      \"@type\": \"MedicalSpecialty\",\n      \"@id\": \"https://bio-clinic.it/specialita/nefrologia/#specialty\",\n      \"name\": \"Nefrologia\",\n      \"description\": \"Diagnosi e cura delle patologie renali\"\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://bio-clinic.it/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Specialità\",\n          \"item\": \"https://bio-clinic.it/specialita/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Nefrologia\",\n          \"item\": \"https://bio-clinic.it/pages/nefrologia.html\"\n        }\n      ]\n    }\n  ]\n}",
+  "site": {
+    "name": "Bio-Clinic Sassari",
+    "phone": "079 956 1332"
+  }
+}

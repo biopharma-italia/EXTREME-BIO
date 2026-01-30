@@ -1,6 +1,16 @@
 {
-  "specialty": "Specialty(id='urologia', name='Urologia', slug='urologia', status='active', name_extended='Urologia', display={'icon': '🩻', 'color_primary': '#FF7043', 'color_light': '#FBE9E7'}, content={'description_short': 'Diagnosi e cura delle patologie urologiche maschili e femminili'}, page_config={}, visibility={'show_in_menu': True, 'menu_order': 8, 'show_in_homepage': False}, page_url='/pages/urologia.html', physicians=[], procedures=[{'id': 'visita-urologica', 'name': 'Visita Urologica', 'category': 'visita', 'page_type': 'A', 'page_url': '/pages/visita-urologica.html', 'has_dedicated_page': True}, {'id': 'ecografia-prostatica', 'name': 'Ecografia Prostatica', 'category': 'diagnostica', 'page_type': 'A', 'page_url': '/pages/ecografia-prostatica.html', 'has_dedicated_page': True}], physicians_count=0, procedures_count=2)",
-  "physicians": [],
+  "specialty": "Specialty(id='urologia', name='Urologia', slug='urologia', status='active', name_extended='Urologia', display={'icon': '🩻', 'color_primary': '#FF7043', 'color_light': '#FBE9E7'}, content={'description_short': 'Diagnosi e cura delle patologie urologiche maschili e femminili'}, page_config={}, visibility={'show_in_menu': True, 'menu_order': 8, 'show_in_homepage': False}, page_url='/pages/urologia.html', physicians=[{'id': 'carlos-manuel-cambara-zuniga', 'display_name': 'Dott. Carlos Manuel Cambara Zuniga', 'job_title': 'Urologo - Andrologo', 'page_url': '/equipe/carlos-manuel-cambara-zuniga.html', 'image_url': 'images/team/default-avatar.webp', 'role_badges': [], 'priority_order': 1}], procedures=[{'id': 'visita-urologica', 'name': 'Visita Urologica', 'category': 'visita', 'page_type': 'A', 'page_url': '/pages/visita-urologica.html', 'has_dedicated_page': True}, {'id': 'ecografia-prostatica', 'name': 'Ecografia Prostatica', 'category': 'diagnostica', 'page_type': 'A', 'page_url': '/pages/ecografia-prostatica.html', 'has_dedicated_page': True}], physicians_count=1, procedures_count=2)",
+  "physicians": [
+    {
+      "id": "carlos-manuel-cambara-zuniga",
+      "display_name": "Dott. Carlos Manuel Cambara Zuniga",
+      "job_title": "Urologo - Andrologo",
+      "page_url": "/equipe/carlos-manuel-cambara-zuniga.html",
+      "image_url": "images/team/default-avatar.webp",
+      "role_badges": [],
+      "priority_order": 1
+    }
+  ],
   "procedures": [
     {
       "id": "visita-urologica",

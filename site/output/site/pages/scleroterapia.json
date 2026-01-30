@@ -1,0 +1,18 @@
+{
+  "procedure": "Procedure(id='scleroterapia', name='Scleroterapia', specialty_id='chirurgia-vascolare', category='trattamento', page_type='A', status='active', name_extended='Scleroterapia per Varici e Capillari', slug='scleroterapia', content={'description_short': 'Trattamento mini-invasivo per varici e capillari'}, clinical={'duration_minutes': 30, 'preparation': {'required': False, 'notes': 'Evitare esposizione solare 2 settimane prima e dopo'}}, indications=['Varici', 'Teleangectasie', 'Capillari'], related_procedures=['visita-chirurgia-vascolare'], pathways=[], faqs=[], pricing={}, upsell_pack=None, seo={}, schema_org={}, visibility={'has_dedicated_page': True, 'priority_order': 3}, page_url='/pages/scleroterapia.html', has_dedicated_page=True, physicians=[{'id': 'paola-dettori', 'display_name': 'Dott.ssa Paola Dettori', 'page_url': '/equipe/paola-dettori.html', 'image_url': 'images/team/default-avatar.webp', 'specialty_id': 'chirurgia-vascolare'}])",
+  "specialty": null,
+  "physicians": [
+    {
+      "id": "paola-dettori",
+      "display_name": "Dott.ssa Paola Dettori",
+      "page_url": "/equipe/paola-dettori.html",
+      "image_url": "images/team/default-avatar.webp",
+      "specialty_id": "chirurgia-vascolare"
+    }
+  ],
+  "schema_json": "{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"MedicalClinic\",\n      \"@id\": \"https://bio-clinic.it/#clinic\",\n      \"name\": \"Bio-Clinic Sassari\",\n      \"url\": \"https://bio-clinic.it\",\n      \"telephone\": \"+39 079 956 1332\",\n      \"address\": {\n        \"@type\": \"PostalAddress\",\n        \"streetAddress\": \"Via Renzo Mossa, 23\",\n        \"addressLocality\": \"Sassari\",\n        \"postalCode\": \"07100\",\n        \"addressCountry\": \"IT\"\n      }\n    },\n    {\n      \"@type\": \"MedicalProcedure\",\n      \"@id\": \"https://bio-clinic.it/pages/scleroterapia/#procedure\",\n      \"name\": \"Scleroterapia\",\n      \"alternateName\": \"Scleroterapia per Varici e Capillari\",\n      \"description\": \"Trattamento mini-invasivo per varici e capillari\",\n      \"procedureType\": null,\n      \"bodyLocation\": null,\n      \"howPerformed\": null,\n      \"preparation\": \"Evitare esposizione solare 2 settimane prima e dopo\",\n      \"relevantSpecialty\": null,\n      \"provider\": {\n        \"@id\": \"https://bio-clinic.it/#clinic\"\n      }\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://bio-clinic.it/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Prestazioni\",\n          \"item\": \"#\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Scleroterapia\",\n          \"item\": \"https://bio-clinic.it/pages/scleroterapia.html\"\n        }\n      ]\n    }\n  ]\n}",
+  "site": {
+    "name": "Bio-Clinic Sassari",
+    "phone": "079 956 1332"
+  }
+}

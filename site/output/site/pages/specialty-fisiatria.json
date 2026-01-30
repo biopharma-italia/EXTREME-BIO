@@ -1,0 +1,29 @@
+{
+  "specialty": "Specialty(id='fisiatria', name='Fisiatria', slug='fisiatria', status='active', name_extended='Fisiatria e Riabilitazione', display={'icon': '🏥', 'color_primary': '#00ACC1', 'color_light': '#E0F7FA'}, content={'description_short': 'Medicina fisica e riabilitazione'}, page_config={}, visibility={'show_in_menu': True, 'menu_order': 20, 'show_in_homepage': False}, page_url='/pages/fisiatria.html', physicians=[{'id': 'nicola-frau', 'display_name': 'Dott. Nicola Frau', 'job_title': 'Fisiatra', 'page_url': '/equipe/nicola-frau.html', 'image_url': 'images/team/default-avatar.webp', 'role_badges': [], 'priority_order': 1}], procedures=[{'id': 'visita-fisiatrica', 'name': 'Visita Fisiatrica', 'category': 'visita', 'page_type': 'A', 'page_url': '/pages/visita-fisiatrica.html', 'has_dedicated_page': True}], physicians_count=1, procedures_count=1)",
+  "physicians": [
+    {
+      "id": "nicola-frau",
+      "display_name": "Dott. Nicola Frau",
+      "job_title": "Fisiatra",
+      "page_url": "/equipe/nicola-frau.html",
+      "image_url": "images/team/default-avatar.webp",
+      "role_badges": [],
+      "priority_order": 1
+    }
+  ],
+  "procedures": [
+    {
+      "id": "visita-fisiatrica",
+      "name": "Visita Fisiatrica",
+      "category": "visita",
+      "page_type": "A",
+      "page_url": "/pages/visita-fisiatrica.html",
+      "has_dedicated_page": true
+    }
+  ],
+  "schema_json": "{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"MedicalClinic\",\n      \"@id\": \"https://bio-clinic.it/#clinic\",\n      \"name\": \"Bio-Clinic Sassari\",\n      \"url\": \"https://bio-clinic.it\",\n      \"telephone\": \"+39 079 956 1332\",\n      \"address\": {\n        \"@type\": \"PostalAddress\",\n        \"streetAddress\": \"Via Renzo Mossa, 23\",\n        \"addressLocality\": \"Sassari\",\n        \"postalCode\": \"07100\",\n        \"addressCountry\": \"IT\"\n      }\n    },\n    {\n      \"@type\": \"MedicalSpecialty\",\n      \"@id\": \"https://bio-clinic.it/specialita/fisiatria/#specialty\",\n      \"name\": \"Fisiatria e Riabilitazione\",\n      \"description\": \"Medicina fisica e riabilitazione\"\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://bio-clinic.it/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Specialità\",\n          \"item\": \"https://bio-clinic.it/specialita/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Fisiatria\",\n          \"item\": \"https://bio-clinic.it/pages/fisiatria.html\"\n        }\n      ]\n    }\n  ]\n}",
+  "site": {
+    "name": "Bio-Clinic Sassari",
+    "phone": "079 956 1332"
+  }
+}

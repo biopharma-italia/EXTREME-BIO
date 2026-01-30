@@ -1,0 +1,32 @@
+{
+  "procedure": "Procedure(id='ecografia-addominale', name='Ecografia Addominale', specialty_id='gastroenterologia', category='diagnostica', page_type='A', status='active', name_extended='Ecografia Addominale Completa', slug='ecografia-addominale', content={'description_short': 'Esame ecografico degli organi addominali'}, clinical={'duration_minutes': 20, 'preparation': {'required': True, 'fasting': True, 'fasting_hours': 6, 'notes': 'Digiuno da almeno 6 ore'}}, indications=['Dolore addominale', 'Patologie epatiche', 'Calcolosi biliare', 'Patologie renali'], related_procedures=[], pathways=[], faqs=[], pricing={}, upsell_pack=None, seo={}, schema_org={}, visibility={'has_dedicated_page': True, 'priority_order': 2}, page_url='/pages/ecografia-addominale.html', has_dedicated_page=True, physicians=[{'id': 'angelo-deplano', 'display_name': 'Dott. Angelo Deplano', 'page_url': '/equipe/angelo-deplano.html', 'image_url': 'images/team/default-avatar.webp', 'specialty_id': 'gastroenterologia'}, {'id': 'antonio-solinas', 'display_name': 'Prof. Antonio Solinas', 'page_url': '/equipe/antonio-solinas.html', 'image_url': 'images/team/default-avatar.webp', 'specialty_id': 'medicina-interna'}, {'id': 'antonio-michele-cavazzuti', 'display_name': 'Dott. Antonio Michele Cavazzuti', 'page_url': '/equipe/antonio-michele-cavazzuti.html', 'image_url': 'images/team/default-avatar.webp', 'specialty_id': 'radiologia'}])",
+  "specialty": null,
+  "physicians": [
+    {
+      "id": "angelo-deplano",
+      "display_name": "Dott. Angelo Deplano",
+      "page_url": "/equipe/angelo-deplano.html",
+      "image_url": "images/team/default-avatar.webp",
+      "specialty_id": "gastroenterologia"
+    },
+    {
+      "id": "antonio-solinas",
+      "display_name": "Prof. Antonio Solinas",
+      "page_url": "/equipe/antonio-solinas.html",
+      "image_url": "images/team/default-avatar.webp",
+      "specialty_id": "medicina-interna"
+    },
+    {
+      "id": "antonio-michele-cavazzuti",
+      "display_name": "Dott. Antonio Michele Cavazzuti",
+      "page_url": "/equipe/antonio-michele-cavazzuti.html",
+      "image_url": "images/team/default-avatar.webp",
+      "specialty_id": "radiologia"
+    }
+  ],
+  "schema_json": "{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"MedicalClinic\",\n      \"@id\": \"https://bio-clinic.it/#clinic\",\n      \"name\": \"Bio-Clinic Sassari\",\n      \"url\": \"https://bio-clinic.it\",\n      \"telephone\": \"+39 079 956 1332\",\n      \"address\": {\n        \"@type\": \"PostalAddress\",\n        \"streetAddress\": \"Via Renzo Mossa, 23\",\n        \"addressLocality\": \"Sassari\",\n        \"postalCode\": \"07100\",\n        \"addressCountry\": \"IT\"\n      }\n    },\n    {\n      \"@type\": \"MedicalProcedure\",\n      \"@id\": \"https://bio-clinic.it/pages/ecografia-addominale/#procedure\",\n      \"name\": \"Ecografia Addominale\",\n      \"alternateName\": \"Ecografia Addominale Completa\",\n      \"description\": \"Esame ecografico degli organi addominali\",\n      \"procedureType\": null,\n      \"bodyLocation\": null,\n      \"howPerformed\": null,\n      \"preparation\": \"Digiuno da almeno 6 ore\",\n      \"relevantSpecialty\": null,\n      \"provider\": {\n        \"@id\": \"https://bio-clinic.it/#clinic\"\n      }\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://bio-clinic.it/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Prestazioni\",\n          \"item\": \"#\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Ecografia Addominale\",\n          \"item\": \"https://bio-clinic.it/pages/ecografia-addominale.html\"\n        }\n      ]\n    }\n  ]\n}",
+  "site": {
+    "name": "Bio-Clinic Sassari",
+    "phone": "079 956 1332"
+  }
+}

@@ -1,6 +1,25 @@
 {
-  "specialty": "Specialty(id='neurologia', name='Neurologia', slug='neurologia', status='active', name_extended='Neurologia', display={'icon': '🧠', 'color_primary': '#5C6BC0', 'color_light': '#E8EAF6'}, content={'description_short': 'Diagnosi e cura delle patologie neurologiche'}, page_config={}, visibility={'show_in_menu': True, 'menu_order': 5, 'show_in_homepage': False}, page_url='/pages/neurologia.html', physicians=[], procedures=[{'id': 'visita-neurologica', 'name': 'Visita Neurologica', 'category': 'visita', 'page_type': 'A', 'page_url': '/pages/visita-neurologica.html', 'has_dedicated_page': True}, {'id': 'elettromiografia', 'name': 'Elettromiografia', 'category': 'diagnostica', 'page_type': 'A', 'page_url': '/pages/elettromiografia.html', 'has_dedicated_page': True}], physicians_count=0, procedures_count=2)",
-  "physicians": [],
+  "specialty": "Specialty(id='neurologia', name='Neurologia', slug='neurologia', status='active', name_extended='Neurologia', display={'icon': '🧠', 'color_primary': '#5C6BC0', 'color_light': '#E8EAF6'}, content={'description_short': 'Diagnosi e cura delle patologie neurologiche'}, page_config={}, visibility={'show_in_menu': True, 'menu_order': 5, 'show_in_homepage': False}, page_url='/pages/neurologia.html', physicians=[{'id': 'guido-marongiu', 'display_name': 'Dott. Guido Marongiu', 'job_title': 'Neurologo', 'page_url': '/equipe/guido-marongiu.html', 'image_url': 'images/team/default-avatar.webp', 'role_badges': [], 'priority_order': 1}, {'id': 'sebastiano-traccis', 'display_name': 'Dott. Sebastiano Traccis', 'job_title': 'Neurologo', 'page_url': '/equipe/sebastiano-traccis.html', 'image_url': 'images/team/default-avatar.webp', 'role_badges': [], 'priority_order': 2}], procedures=[{'id': 'visita-neurologica', 'name': 'Visita Neurologica', 'category': 'visita', 'page_type': 'A', 'page_url': '/pages/visita-neurologica.html', 'has_dedicated_page': True}, {'id': 'elettromiografia', 'name': 'Elettromiografia', 'category': 'diagnostica', 'page_type': 'A', 'page_url': '/pages/elettromiografia.html', 'has_dedicated_page': True}], physicians_count=2, procedures_count=2)",
+  "physicians": [
+    {
+      "id": "guido-marongiu",
+      "display_name": "Dott. Guido Marongiu",
+      "job_title": "Neurologo",
+      "page_url": "/equipe/guido-marongiu.html",
+      "image_url": "images/team/default-avatar.webp",
+      "role_badges": [],
+      "priority_order": 1
+    },
+    {
+      "id": "sebastiano-traccis",
+      "display_name": "Dott. Sebastiano Traccis",
+      "job_title": "Neurologo",
+      "page_url": "/equipe/sebastiano-traccis.html",
+      "image_url": "images/team/default-avatar.webp",
+      "role_badges": [],
+      "priority_order": 2
+    }
+  ],
   "procedures": [
     {
       "id": "visita-neurologica",

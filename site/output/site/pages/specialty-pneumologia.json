@@ -1,6 +1,16 @@
 {
-  "specialty": "Specialty(id='pneumologia', name='Pneumologia', slug='pneumologia', status='active', name_extended='Pneumologia', display={'icon': '🫁', 'color_primary': '#26A69A', 'color_light': '#E0F2F1'}, content={'description_short': 'Diagnosi e cura delle patologie respiratorie'}, page_config={}, visibility={'show_in_menu': True, 'menu_order': 9, 'show_in_homepage': False}, page_url='/pages/pneumologia.html', physicians=[], procedures=[{'id': 'visita-pneumologica', 'name': 'Visita Pneumologica', 'category': 'visita', 'page_type': 'A', 'page_url': '/pages/visita-pneumologica.html', 'has_dedicated_page': True}, {'id': 'spirometria', 'name': 'Spirometria', 'category': 'diagnostica', 'page_type': 'A', 'page_url': '/pages/spirometria.html', 'has_dedicated_page': True}], physicians_count=0, procedures_count=2)",
-  "physicians": [],
+  "specialty": "Specialty(id='pneumologia', name='Pneumologia', slug='pneumologia', status='active', name_extended='Pneumologia', display={'icon': '🫁', 'color_primary': '#26A69A', 'color_light': '#E0F2F1'}, content={'description_short': 'Diagnosi e cura delle patologie respiratorie'}, page_config={}, visibility={'show_in_menu': True, 'menu_order': 9, 'show_in_homepage': False}, page_url='/pages/pneumologia.html', physicians=[{'id': 'pietro-pirina', 'display_name': 'Prof. Pietro Pirina', 'job_title': 'Pneumologo', 'page_url': '/equipe/pietro-pirina.html', 'image_url': 'images/team/default-avatar.webp', 'role_badges': [], 'priority_order': 1}], procedures=[{'id': 'visita-pneumologica', 'name': 'Visita Pneumologica', 'category': 'visita', 'page_type': 'A', 'page_url': '/pages/visita-pneumologica.html', 'has_dedicated_page': True}, {'id': 'spirometria', 'name': 'Spirometria', 'category': 'diagnostica', 'page_type': 'A', 'page_url': '/pages/spirometria.html', 'has_dedicated_page': True}], physicians_count=1, procedures_count=2)",
+  "physicians": [
+    {
+      "id": "pietro-pirina",
+      "display_name": "Prof. Pietro Pirina",
+      "job_title": "Pneumologo",
+      "page_url": "/equipe/pietro-pirina.html",
+      "image_url": "images/team/default-avatar.webp",
+      "role_badges": [],
+      "priority_order": 1
+    }
+  ],
   "procedures": [
     {
       "id": "visita-pneumologica",

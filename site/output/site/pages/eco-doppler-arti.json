@@ -1,0 +1,25 @@
+{
+  "procedure": "Procedure(id='eco-doppler-arti', name='Eco-Doppler Arti', specialty_id='chirurgia-vascolare', category='diagnostica', page_type='A', status='active', name_extended='Eco-Doppler Arterioso e Venoso degli Arti', slug='eco-doppler-arti', content={'description_short': 'Esame ecografico per valutare la circolazione arteriosa e venosa'}, clinical={'duration_minutes': 30, 'preparation': {'required': False}}, indications=['Insufficienza venosa', 'Trombosi venosa', 'Arteriopatia periferica', 'Varici'], related_procedures=['visita-chirurgia-vascolare'], pathways=[], faqs=[], pricing={}, upsell_pack=None, seo={}, schema_org={}, visibility={'has_dedicated_page': True, 'priority_order': 2}, page_url='/pages/eco-doppler-arti.html', has_dedicated_page=True, physicians=[{'id': 'paola-dettori', 'display_name': 'Dott.ssa Paola Dettori', 'page_url': '/equipe/paola-dettori.html', 'image_url': 'images/team/default-avatar.webp', 'specialty_id': 'chirurgia-vascolare'}, {'id': 'roberto-mancino', 'display_name': 'Dott. Roberto Mancino', 'page_url': '/equipe/roberto-mancino.html', 'image_url': 'images/team/default-avatar.webp', 'specialty_id': 'chirurgia-vascolare'}])",
+  "specialty": null,
+  "physicians": [
+    {
+      "id": "paola-dettori",
+      "display_name": "Dott.ssa Paola Dettori",
+      "page_url": "/equipe/paola-dettori.html",
+      "image_url": "images/team/default-avatar.webp",
+      "specialty_id": "chirurgia-vascolare"
+    },
+    {
+      "id": "roberto-mancino",
+      "display_name": "Dott. Roberto Mancino",
+      "page_url": "/equipe/roberto-mancino.html",
+      "image_url": "images/team/default-avatar.webp",
+      "specialty_id": "chirurgia-vascolare"
+    }
+  ],
+  "schema_json": "{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"MedicalClinic\",\n      \"@id\": \"https://bio-clinic.it/#clinic\",\n      \"name\": \"Bio-Clinic Sassari\",\n      \"url\": \"https://bio-clinic.it\",\n      \"telephone\": \"+39 079 956 1332\",\n      \"address\": {\n        \"@type\": \"PostalAddress\",\n        \"streetAddress\": \"Via Renzo Mossa, 23\",\n        \"addressLocality\": \"Sassari\",\n        \"postalCode\": \"07100\",\n        \"addressCountry\": \"IT\"\n      }\n    },\n    {\n      \"@type\": \"MedicalProcedure\",\n      \"@id\": \"https://bio-clinic.it/pages/eco-doppler-arti/#procedure\",\n      \"name\": \"Eco-Doppler Arti\",\n      \"alternateName\": \"Eco-Doppler Arterioso e Venoso degli Arti\",\n      \"description\": \"Esame ecografico per valutare la circolazione arteriosa e venosa\",\n      \"procedureType\": null,\n      \"bodyLocation\": null,\n      \"howPerformed\": null,\n      \"preparation\": null,\n      \"relevantSpecialty\": null,\n      \"provider\": {\n        \"@id\": \"https://bio-clinic.it/#clinic\"\n      }\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://bio-clinic.it/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Prestazioni\",\n          \"item\": \"#\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Eco-Doppler Arti\",\n          \"item\": \"https://bio-clinic.it/pages/eco-doppler-arti.html\"\n        }\n      ]\n    }\n  ]\n}",
+  "site": {
+    "name": "Bio-Clinic Sassari",
+    "phone": "079 956 1332"
+  }
+}

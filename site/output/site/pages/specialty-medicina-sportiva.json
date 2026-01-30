@@ -1,0 +1,20 @@
+{
+  "specialty": "Specialty(id='medicina-sportiva', name='Medicina Sportiva', slug='medicina-sportiva', status='active', name_extended='Medicina Sportiva', display={'icon': '🏃', 'color_primary': '#00C853', 'color_light': '#E8F5E9'}, content={'description_short': 'Certificazioni sportive e valutazione atleti'}, page_config={}, visibility={'show_in_menu': False, 'show_in_homepage': False}, page_url='/pages/medicina-sportiva.html', physicians=[{'id': 'giorgio-chiarelli', 'display_name': 'Dr. Giorgio Chiarelli', 'job_title': 'Medico dello Sport', 'page_url': '/equipe/giorgio-chiarelli.html', 'image_url': 'images/team/default-avatar.webp', 'role_badges': [], 'priority_order': 1}], procedures=[], physicians_count=1, procedures_count=0)",
+  "physicians": [
+    {
+      "id": "giorgio-chiarelli",
+      "display_name": "Dr. Giorgio Chiarelli",
+      "job_title": "Medico dello Sport",
+      "page_url": "/equipe/giorgio-chiarelli.html",
+      "image_url": "images/team/default-avatar.webp",
+      "role_badges": [],
+      "priority_order": 1
+    }
+  ],
+  "procedures": [],
+  "schema_json": "{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"MedicalClinic\",\n      \"@id\": \"https://bio-clinic.it/#clinic\",\n      \"name\": \"Bio-Clinic Sassari\",\n      \"url\": \"https://bio-clinic.it\",\n      \"telephone\": \"+39 079 956 1332\",\n      \"address\": {\n        \"@type\": \"PostalAddress\",\n        \"streetAddress\": \"Via Renzo Mossa, 23\",\n        \"addressLocality\": \"Sassari\",\n        \"postalCode\": \"07100\",\n        \"addressCountry\": \"IT\"\n      }\n    },\n    {\n      \"@type\": \"MedicalSpecialty\",\n      \"@id\": \"https://bio-clinic.it/specialita/medicina-sportiva/#specialty\",\n      \"name\": \"Medicina Sportiva\",\n      \"description\": \"Certificazioni sportive e valutazione atleti\"\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://bio-clinic.it/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Specialità\",\n          \"item\": \"https://bio-clinic.it/specialita/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Medicina Sportiva\",\n          \"item\": \"https://bio-clinic.it/pages/medicina-sportiva.html\"\n        }\n      ]\n    }\n  ]\n}",
+  "site": {
+    "name": "Bio-Clinic Sassari",
+    "phone": "079 956 1332"
+  }
+}

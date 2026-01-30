@@ -1,0 +1,40 @@
+{
+  "specialty": "Specialty(id='medicina-interna', name='Medicina Interna', slug='medicina-interna', status='active', name_extended='Medicina Interna', display={'icon': '⚕️', 'color_primary': '#455A64', 'color_light': '#ECEFF1'}, content={'description_short': 'Diagnosi e cura delle patologie internistiche complesse'}, page_config={}, visibility={'show_in_menu': True, 'menu_order': 12, 'show_in_homepage': False}, page_url='/pages/medicina-interna.html', physicians=[{'id': 'alessandro-pandolfi', 'display_name': 'Dott. Alessandro Pandolfi', 'job_title': 'Medico Internista', 'page_url': '/equipe/alessandro-pandolfi.html', 'image_url': 'images/team/default-avatar.webp', 'role_badges': ['Team Slim Care'], 'priority_order': 1}, {'id': 'antonio-solinas', 'display_name': 'Prof. Antonio Solinas', 'job_title': 'Internista - Epatologo', 'page_url': '/equipe/antonio-solinas.html', 'image_url': 'images/team/default-avatar.webp', 'role_badges': [], 'priority_order': 2}], procedures=[{'id': 'visita-internistica', 'name': 'Visita Internistica', 'category': 'visita', 'page_type': 'A', 'page_url': '/pages/visita-internistica.html', 'has_dedicated_page': True}], physicians_count=2, procedures_count=1)",
+  "physicians": [
+    {
+      "id": "alessandro-pandolfi",
+      "display_name": "Dott. Alessandro Pandolfi",
+      "job_title": "Medico Internista",
+      "page_url": "/equipe/alessandro-pandolfi.html",
+      "image_url": "images/team/default-avatar.webp",
+      "role_badges": [
+        "Team Slim Care"
+      ],
+      "priority_order": 1
+    },
+    {
+      "id": "antonio-solinas",
+      "display_name": "Prof. Antonio Solinas",
+      "job_title": "Internista - Epatologo",
+      "page_url": "/equipe/antonio-solinas.html",
+      "image_url": "images/team/default-avatar.webp",
+      "role_badges": [],
+      "priority_order": 2
+    }
+  ],
+  "procedures": [
+    {
+      "id": "visita-internistica",
+      "name": "Visita Internistica",
+      "category": "visita",
+      "page_type": "A",
+      "page_url": "/pages/visita-internistica.html",
+      "has_dedicated_page": true
+    }
+  ],
+  "schema_json": "{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"MedicalClinic\",\n      \"@id\": \"https://bio-clinic.it/#clinic\",\n      \"name\": \"Bio-Clinic Sassari\",\n      \"url\": \"https://bio-clinic.it\",\n      \"telephone\": \"+39 079 956 1332\",\n      \"address\": {\n        \"@type\": \"PostalAddress\",\n        \"streetAddress\": \"Via Renzo Mossa, 23\",\n        \"addressLocality\": \"Sassari\",\n        \"postalCode\": \"07100\",\n        \"addressCountry\": \"IT\"\n      }\n    },\n    {\n      \"@type\": \"MedicalSpecialty\",\n      \"@id\": \"https://bio-clinic.it/specialita/medicina-interna/#specialty\",\n      \"name\": \"Medicina Interna\",\n      \"description\": \"Diagnosi e cura delle patologie internistiche complesse\"\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://bio-clinic.it/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Specialità\",\n          \"item\": \"https://bio-clinic.it/specialita/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Medicina Interna\",\n          \"item\": \"https://bio-clinic.it/pages/medicina-interna.html\"\n        }\n      ]\n    }\n  ]\n}",
+  "site": {
+    "name": "Bio-Clinic Sassari",
+    "phone": "079 956 1332"
+  }
+}

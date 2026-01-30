@@ -1,0 +1,37 @@
+{
+  "specialty": "Specialty(id='gastroenterologia', name='Gastroenterologia', slug='gastroenterologia', status='active', name_extended='Gastroenterologia', display={'icon': '🔬', 'color_primary': '#558B2F', 'color_light': '#F1F8E9'}, content={'description_short': 'Diagnosi e cura delle patologie digestive'}, page_config={}, visibility={'show_in_menu': True, 'menu_order': 21, 'show_in_homepage': False}, page_url='/pages/gastroenterologia.html', physicians=[{'id': 'angelo-deplano', 'display_name': 'Dott. Angelo Deplano', 'job_title': 'Gastroenterologo - Epatologo', 'page_url': '/equipe/angelo-deplano.html', 'image_url': 'images/team/default-avatar.webp', 'role_badges': [], 'priority_order': 1}], procedures=[{'id': 'visita-gastroenterologica', 'name': 'Visita Gastroenterologica', 'category': 'visita', 'page_type': 'A', 'page_url': '/pages/visita-gastroenterologica.html', 'has_dedicated_page': True}, {'id': 'ecografia-addominale', 'name': 'Ecografia Addominale', 'category': 'diagnostica', 'page_type': 'A', 'page_url': '/pages/ecografia-addominale.html', 'has_dedicated_page': True}], physicians_count=1, procedures_count=2)",
+  "physicians": [
+    {
+      "id": "angelo-deplano",
+      "display_name": "Dott. Angelo Deplano",
+      "job_title": "Gastroenterologo - Epatologo",
+      "page_url": "/equipe/angelo-deplano.html",
+      "image_url": "images/team/default-avatar.webp",
+      "role_badges": [],
+      "priority_order": 1
+    }
+  ],
+  "procedures": [
+    {
+      "id": "visita-gastroenterologica",
+      "name": "Visita Gastroenterologica",
+      "category": "visita",
+      "page_type": "A",
+      "page_url": "/pages/visita-gastroenterologica.html",
+      "has_dedicated_page": true
+    },
+    {
+      "id": "ecografia-addominale",
+      "name": "Ecografia Addominale",
+      "category": "diagnostica",
+      "page_type": "A",
+      "page_url": "/pages/ecografia-addominale.html",
+      "has_dedicated_page": true
+    }
+  ],
+  "schema_json": "{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"MedicalClinic\",\n      \"@id\": \"https://bio-clinic.it/#clinic\",\n      \"name\": \"Bio-Clinic Sassari\",\n      \"url\": \"https://bio-clinic.it\",\n      \"telephone\": \"+39 079 956 1332\",\n      \"address\": {\n        \"@type\": \"PostalAddress\",\n        \"streetAddress\": \"Via Renzo Mossa, 23\",\n        \"addressLocality\": \"Sassari\",\n        \"postalCode\": \"07100\",\n        \"addressCountry\": \"IT\"\n      }\n    },\n    {\n      \"@type\": \"MedicalSpecialty\",\n      \"@id\": \"https://bio-clinic.it/specialita/gastroenterologia/#specialty\",\n      \"name\": \"Gastroenterologia\",\n      \"description\": \"Diagnosi e cura delle patologie digestive\"\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://bio-clinic.it/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Specialità\",\n          \"item\": \"https://bio-clinic.it/specialita/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Gastroenterologia\",\n          \"item\": \"https://bio-clinic.it/pages/gastroenterologia.html\"\n        }\n      ]\n    }\n  ]\n}",
+  "site": {
+    "name": "Bio-Clinic Sassari",
+    "phone": "079 956 1332"
+  }
+}

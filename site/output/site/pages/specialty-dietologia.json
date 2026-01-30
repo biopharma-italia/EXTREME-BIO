@@ -1,0 +1,31 @@
+{
+  "specialty": "Specialty(id='dietologia', name='Dietologia', slug='dietologia', status='active', name_extended='Dietologia e Nutrizione', display={'icon': '🥗', 'color_primary': '#8BC34A', 'color_light': '#F1F8E9'}, content={'description_short': 'Consulenze nutrizionali e diete personalizzate'}, page_config={}, visibility={'show_in_menu': True, 'menu_order': 22, 'show_in_homepage': False}, page_url='/pages/dietologia.html', physicians=[{'id': 'antonella-galatino', 'display_name': 'Dott.ssa Antonella Galatino', 'job_title': 'Nutrizionista', 'page_url': '/equipe/antonella-galatino.html', 'image_url': 'images/team/default-avatar.webp', 'role_badges': ['Team Slim Care'], 'priority_order': 1}], procedures=[{'id': 'visita-nutrizionale', 'name': 'Visita Nutrizionale', 'category': 'visita', 'page_type': 'A', 'page_url': '/pages/visita-nutrizionale.html', 'has_dedicated_page': True}], physicians_count=1, procedures_count=1)",
+  "physicians": [
+    {
+      "id": "antonella-galatino",
+      "display_name": "Dott.ssa Antonella Galatino",
+      "job_title": "Nutrizionista",
+      "page_url": "/equipe/antonella-galatino.html",
+      "image_url": "images/team/default-avatar.webp",
+      "role_badges": [
+        "Team Slim Care"
+      ],
+      "priority_order": 1
+    }
+  ],
+  "procedures": [
+    {
+      "id": "visita-nutrizionale",
+      "name": "Visita Nutrizionale",
+      "category": "visita",
+      "page_type": "A",
+      "page_url": "/pages/visita-nutrizionale.html",
+      "has_dedicated_page": true
+    }
+  ],
+  "schema_json": "{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"MedicalClinic\",\n      \"@id\": \"https://bio-clinic.it/#clinic\",\n      \"name\": \"Bio-Clinic Sassari\",\n      \"url\": \"https://bio-clinic.it\",\n      \"telephone\": \"+39 079 956 1332\",\n      \"address\": {\n        \"@type\": \"PostalAddress\",\n        \"streetAddress\": \"Via Renzo Mossa, 23\",\n        \"addressLocality\": \"Sassari\",\n        \"postalCode\": \"07100\",\n        \"addressCountry\": \"IT\"\n      }\n    },\n    {\n      \"@type\": \"MedicalSpecialty\",\n      \"@id\": \"https://bio-clinic.it/specialita/dietologia/#specialty\",\n      \"name\": \"Dietologia e Nutrizione\",\n      \"description\": \"Consulenze nutrizionali e diete personalizzate\"\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://bio-clinic.it/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Specialità\",\n          \"item\": \"https://bio-clinic.it/specialita/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Dietologia\",\n          \"item\": \"https://bio-clinic.it/pages/dietologia.html\"\n        }\n      ]\n    }\n  ]\n}",
+  "site": {
+    "name": "Bio-Clinic Sassari",
+    "phone": "079 956 1332"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "procedure": "Procedure(id='visita-nutrizionale', name='Visita Nutrizionale', specialty_id='dietologia', category='visita', page_type='A', status='active', name_extended='Visita Nutrizionale e Dietologica', slug='visita-nutrizionale', content={'description_short': 'Valutazione dello stato nutrizionale e piano alimentare personalizzato'}, clinical={'duration_minutes': 45, 'preparation': {'required': False, 'notes': 'Portare esami del sangue recenti se disponibili'}}, indications=['Sovrappeso', 'Obesità', 'Disturbi alimentari', 'Intolleranze', 'Patologie metaboliche'], related_procedures=[], pathways=['slim-care', 'slim-care-donna'], faqs=[], pricing={}, upsell_pack=None, seo={}, schema_org={}, visibility={'has_dedicated_page': True, 'priority_order': 1}, page_url='/pages/visita-nutrizionale.html', has_dedicated_page=True, physicians=[{'id': 'antonella-galatino', 'display_name': 'Dott.ssa Antonella Galatino', 'page_url': '/equipe/antonella-galatino.html', 'image_url': 'images/team/default-avatar.webp', 'specialty_id': 'dietologia'}])",
+  "specialty": null,
+  "physicians": [
+    {
+      "id": "antonella-galatino",
+      "display_name": "Dott.ssa Antonella Galatino",
+      "page_url": "/equipe/antonella-galatino.html",
+      "image_url": "images/team/default-avatar.webp",
+      "specialty_id": "dietologia"
+    }
+  ],
+  "schema_json": "{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"MedicalClinic\",\n      \"@id\": \"https://bio-clinic.it/#clinic\",\n      \"name\": \"Bio-Clinic Sassari\",\n      \"url\": \"https://bio-clinic.it\",\n      \"telephone\": \"+39 079 956 1332\",\n      \"address\": {\n        \"@type\": \"PostalAddress\",\n        \"streetAddress\": \"Via Renzo Mossa, 23\",\n        \"addressLocality\": \"Sassari\",\n        \"postalCode\": \"07100\",\n        \"addressCountry\": \"IT\"\n      }\n    },\n    {\n      \"@type\": \"MedicalProcedure\",\n      \"@id\": \"https://bio-clinic.it/pages/visita-nutrizionale/#procedure\",\n      \"name\": \"Visita Nutrizionale\",\n      \"alternateName\": \"Visita Nutrizionale e Dietologica\",\n      \"description\": \"Valutazione dello stato nutrizionale e piano alimentare personalizzato\",\n      \"procedureType\": null,\n      \"bodyLocation\": null,\n      \"howPerformed\": null,\n      \"preparation\": \"Portare esami del sangue recenti se disponibili\",\n      \"relevantSpecialty\": null,\n      \"provider\": {\n        \"@id\": \"https://bio-clinic.it/#clinic\"\n      }\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://bio-clinic.it/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Prestazioni\",\n          \"item\": \"#\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Visita Nutrizionale\",\n          \"item\": \"https://bio-clinic.it/pages/visita-nutrizionale.html\"\n        }\n      ]\n    }\n  ]\n}",
+  "site": {
+    "name": "Bio-Clinic Sassari",
+    "phone": "079 956 1332"
+  }
+}
