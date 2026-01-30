@@ -851,3 +851,29 @@ details[open] .group-open\:rotate-180 { transform: rotate(180deg); }
 
 /* Border-y (top and bottom) */
 .border-y { border-top-width: 1px; border-bottom-width: 1px; }
+
+/* ============================================================================
+   FIX: Gradient stops for avatar backgrounds
+   ============================================================================ */
+/* Fix gradient to properly show colors */
+.bg-gradient-to-br.from-pink-400.to-pink-600 {
+  background-image: linear-gradient(to bottom right, #f472b6, #db2777);
+}
+.bg-gradient-to-br.from-blue-400.to-blue-600 {
+  background-image: linear-gradient(to bottom right, #60a5fa, #2563eb);
+}
+.bg-gradient-to-br.from-green-400.to-green-600 {
+  background-image: linear-gradient(to bottom right, #4ade80, #16a34a);
+}
+.bg-gradient-to-br.from-purple-400.to-purple-600 {
+  background-image: linear-gradient(to bottom right, #c084fc, #9333ea);
+}
+.bg-gradient-to-br.from-red-400.to-red-600 {
+  background-image: linear-gradient(to bottom right, #f87171, #dc2626);
+}
+
+/* Ensure flex-shrink-0 for avatars */
+.w-32.h-32 { flex-shrink: 0; }
+
+/* Fix group-hover for border color */
+.group:hover .group-hover\:border-bio-pink { border-color: #db2777; }
