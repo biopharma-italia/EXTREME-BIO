@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visita Oculistica Sassari | Bio-Clinic</title>
-    <meta name="description" content="Visita Oculistica a Sassari presso Bio-Clinic. Prenota: 079 956 1332">
+    <title>Visita Oculistica Sassari | OCT, Campo Visivo, Glaucoma | Bio-Clinic</title>
+    <meta name="description" content="Visita Oculistica a Sassari: OCT Tomografia, Campo Visivo Computerizzato, Tonometria. Diagnosi precoce Glaucoma, Cataratta, Retinopatia Diabetica. Prenota: 079 956 1332">
+    <meta name="keywords" content="visita oculistica sassari, oculista sassari, OCT retina, campo visivo, glaucoma, cataratta, retinopatia diabetica, mosche volanti, tonometria, bio-clinic">
     <link rel="canonical" href="https://bio-clinic.it/pages/visita-oculistica.html">
     
     <!-- Open Graph -->
@@ -14,7 +15,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Bio-Clinic Sassari">
     
-    <!-- Schema.org JSON-LD -->
+    <!-- Schema.org JSON-LD Arricchito -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -31,22 +32,50 @@
             "addressLocality": "Sassari",
             "postalCode": "07100",
             "addressCountry": "IT"
-          }
+          },
+          "availableService": [
+            {"@type": "MedicalTest", "name": "OCT - Tomografia a Coerenza Ottica"},
+            {"@type": "MedicalTest", "name": "Campo Visivo Computerizzato"},
+            {"@type": "MedicalTest", "name": "Tonometria a soffio e a contatto"}
+          ]
         },
         {
           "@type": "MedicalProcedure",
           "@id": "https://bio-clinic.it/pages/visita-oculistica/#procedure",
-          "name": "Visita Oculistica",
-          "description": "Valutazione completa della salute degli occhi e della vista",
-          "procedureType": "MedicalProcedure",
-          "bodyLocation": "",
+          "name": "Visita Oculistica Completa",
+          "alternateName": "Controllo della Vista",
+          "description": "Valutazione completa della salute degli occhi con OCT, Campo Visivo Computerizzato e Tonometria. Diagnosi precoce Glaucoma, Cataratta e Retinopatia.",
+          "procedureType": "DiagnosticProcedure",
+          "bodyLocation": "Occhio",
           "relevantSpecialty": {
             "@type": "MedicalSpecialty",
             "name": "Oculistica"
           },
+          "howPerformed": "Esame visivo con strumentazione avanzata: OCT Tomografia, Campo Visivo Computerizzato, Tonometria",
+          "usesDevice": [
+            {"@type": "MedicalDevice", "name": "OCT - Tomografo a Coerenza Ottica"},
+            {"@type": "MedicalDevice", "name": "Campimetro Computerizzato"},
+            {"@type": "MedicalDevice", "name": "Tonometro a soffio e a contatto"}
+          ],
           "provider": {
             "@id": "https://bio-clinic.it/#clinic"
-          }
+          },
+          "knowsAbout": [
+            "Mosche volanti (Miodesopsie)",
+            "Lampi di luce (Fotopsie)",
+            "Calo vista notturna",
+            "Occhio rosso",
+            "Occhio secco",
+            "Visione distorta",
+            "Linee storte (Metamorfopsie)",
+            "Glaucoma",
+            "Cataratta",
+            "Retinopatia diabetica",
+            "Degenerazione maculare",
+            "OCT Tomografia",
+            "Campo Visivo",
+            "Tonometria"
+          ]
         },
         {
           "@type": "BreadcrumbList",
@@ -54,6 +83,27 @@
             {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bio-clinic.it/"},
             {"@type": "ListItem", "position": 2, "name": "Oculistica", "item": "https://bio-clinic.it/pages/oculistica.html"},
             {"@type": "ListItem", "position": 3, "name": "Visita Oculistica", "item": "https://bio-clinic.it/pages/visita-oculistica.html"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Cosa sono le mosche volanti?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Le mosche volanti (miodesopsie) sono ombre nel campo visivo causate da opacità nel vitreo. In Bio-Clinic valutiamo con OCT se sono un segnale di distacco retinico."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Come si diagnostica il glaucoma?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Il glaucoma si diagnostica con tonometria (misurazione pressione oculare), campo visivo computerizzato e OCT del nervo ottico. Tutti esami disponibili in Bio-Clinic."
+              }
+            }
           ]
         }
       ]
@@ -262,7 +312,7 @@
                         Visita Oculistica
                     </h1>
                     <p class="text-lg text-gray-600 mb-8">
-                        Valutazione completa della salute degli occhi e della vista
+                        Valutazione completa della salute degli occhi con strumentazione diagnostica avanzata: <strong>OCT (Tomografia)</strong>, <strong>Campo Visivo Computerizzato</strong> e <strong>Tonometria</strong>.
                     </p>
                     
                     <div class="flex flex-wrap gap-4 mb-8">
@@ -287,10 +337,101 @@
                 </div>
                 
                 <div class="relative">
-                    <div class="aspect-w-4 aspect-h-3 rounded-2xl overflow-hidden shadow-xl">
-                        <div class="w-full h-64 lg:h-80 rounded-2xl flex items-center justify-center text-8xl" style="background: #E1F5FE;">
-                            👁️
+                    <div class="bg-white rounded-2xl shadow-xl border p-6">
+                        <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+                            <i class="fas fa-microscope" style="color: #0288D1;"></i>
+                            Strumentazione Diagnostica
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3 p-3 rounded-lg" style="background: #E1F5FE;">
+                                <i class="fas fa-eye text-xl mt-1" style="color: #0288D1;"></i>
+                                <div>
+                                    <strong class="text-gray-800">OCT - Tomografia Ottica</strong>
+                                    <p class="text-sm text-gray-600">Scansione 3D della retina e nervo ottico</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3 p-3 rounded-lg" style="background: #E1F5FE;">
+                                <i class="fas fa-bullseye text-xl mt-1" style="color: #0288D1;"></i>
+                                <div>
+                                    <strong class="text-gray-800">Campo Visivo Computerizzato</strong>
+                                    <p class="text-sm text-gray-600">Mappatura completa della visione periferica</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3 p-3 rounded-lg" style="background: #E1F5FE;">
+                                <i class="fas fa-tachometer-alt text-xl mt-1" style="color: #0288D1;"></i>
+                                <div>
+                                    <strong class="text-gray-800">Tonometria</strong>
+                                    <p class="text-sm text-gray-600">Misurazione pressione oculare (soffio e contatto)</p>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SINTOMI UTENTE (SEO) -->
+    <section class="py-12 bg-white border-b">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">Riconosci i Tuoi Sintomi?</h2>
+            <p class="text-gray-500 mb-6">Se hai uno di questi disturbi, prenota un controllo</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-gray-50 rounded-xl p-4 text-center hover:shadow-md transition border border-gray-100">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full flex items-center justify-center" style="background: #E1F5FE;">
+                        <i class="fas fa-bug" style="color: #0288D1;"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 text-sm">Mosche Volanti</h3>
+                    <p class="text-xs text-gray-500 mt-1">Lampi di luce</p>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-4 text-center hover:shadow-md transition border border-gray-100">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full flex items-center justify-center" style="background: #E1F5FE;">
+                        <i class="fas fa-moon" style="color: #0288D1;"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 text-sm">Calo Vista Notturna</h3>
+                    <p class="text-xs text-gray-500 mt-1">Difficoltà al buio</p>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-4 text-center hover:shadow-md transition border border-gray-100">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full flex items-center justify-center" style="background: #E1F5FE;">
+                        <i class="fas fa-tint" style="color: #0288D1;"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 text-sm">Occhio Rosso o Secco</h3>
+                    <p class="text-xs text-gray-500 mt-1">Bruciore, lacrimazione</p>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-4 text-center hover:shadow-md transition border border-gray-100">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full flex items-center justify-center" style="background: #E1F5FE;">
+                        <i class="fas fa-wave-square" style="color: #0288D1;"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 text-sm">Visione Distorta</h3>
+                    <p class="text-xs text-gray-500 mt-1">Linee storte</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VANTAGGIO BIO-CLINIC (CROSS-SELLING) -->
+    <section class="py-10 bg-gradient-to-r from-blue-50 to-cyan-50">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="bg-white rounded-2xl shadow-lg border-l-4 p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start" style="border-color: #0288D1;">
+                <div class="flex-shrink-0">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center" style="background: #E1F5FE;">
+                        <i class="fas fa-shield-alt text-2xl" style="color: #0288D1;"></i>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <span class="text-xs font-bold uppercase tracking-wider" style="color: #0288D1;">Il Vantaggio Bio-Clinic</span>
+                    <h3 class="text-xl font-bold text-gray-800 mt-1 mb-3">Prevenzione Retinopatia Integrata</h3>
+                    <p class="text-gray-600 mb-4">
+                        In Bio-Clinic la visita oculistica è <strong>integrata con i percorsi Diabetologico e Cardiologico</strong>. 
+                        Se hai diabete o ipertensione, eseguiamo il <strong>Fondo Oculare</strong> per individuare precocemente la Retinopatia Diabetica e i danni da ipertensione.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="visita-endocrinologica.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition" style="background: #E1F5FE; color: #015f92;">
+                            <i class="fas fa-link"></i> Percorso Diabete
+                        </a>
+                        <a href="visita-cardiologica-ecg.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition" style="background: #FFEBEE; color: #a02725;">
+                            <i class="fas fa-heartbeat"></i> Percorso Ipertensione
+                        </a>
                     </div>
                 </div>
             </div>
@@ -302,7 +443,9 @@
                             <span class="px-3 py-1 rounded-full text-sm font-medium" style="background: #E1F5FE; color: #015f92;">Difetti di rifrazione</span>
                             <span class="px-3 py-1 rounded-full text-sm font-medium" style="background: #E1F5FE; color: #015f92;">Glaucoma</span>
                             <span class="px-3 py-1 rounded-full text-sm font-medium" style="background: #E1F5FE; color: #015f92;">Cataratta</span>
-                            <span class="px-3 py-1 rounded-full text-sm font-medium" style="background: #E1F5FE; color: #015f92;">Retinopatia</span>
+                            <span class="px-3 py-1 rounded-full text-sm font-medium" style="background: #E1F5FE; color: #015f92;">Retinopatia Diabetica</span>
+                            <span class="px-3 py-1 rounded-full text-sm font-medium" style="background: #E1F5FE; color: #015f92;">Degenerazione Maculare</span>
+                            <span class="px-3 py-1 rounded-full text-sm font-medium" style="background: #E1F5FE; color: #015f92;">Distacco Retinico</span>
                             </div></div></section>
 
     <!-- INFO SECTION -->
@@ -407,6 +550,33 @@
                             </summary>
                             <div class="px-5 pb-5 text-gray-600">
                                 Se vengono instillate gocce per dilatare la pupilla, è sconsigliato guidare per 2-3 ore.
+                            </div>
+                        </details>
+                        <details class="group bg-white rounded-xl border border-gray-200 overflow-hidden">
+                            <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-gray-50">
+                                <span class="font-semibold text-gray-800">Cosa sono le mosche volanti?</span>
+                                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="px-5 pb-5 text-gray-600">
+                                Le "mosche volanti" (miodesopsie) sono ombre che si muovono nel campo visivo, causate da opacità nel vitreo. In Bio-Clinic valutiamo con l'OCT se sono un segnale di distacco retinico o altre patologie.
+                            </div>
+                        </details>
+                        <details class="group bg-white rounded-xl border border-gray-200 overflow-hidden">
+                            <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-gray-50">
+                                <span class="font-semibold text-gray-800">Come si diagnostica il glaucoma?</span>
+                                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="px-5 pb-5 text-gray-600">
+                                Il glaucoma si diagnostica con tre esami: <strong>tonometria</strong> (misurazione pressione oculare), <strong>campo visivo computerizzato</strong> e <strong>OCT del nervo ottico</strong>. Tutti disponibili in sede presso Bio-Clinic.
+                            </div>
+                        </details>
+                        <details class="group bg-white rounded-xl border border-gray-200 overflow-hidden">
+                            <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-gray-50">
+                                <span class="font-semibold text-gray-800">Ho il diabete: devo fare controlli oculistici?</span>
+                                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="px-5 pb-5 text-gray-600">
+                                Sì, è fondamentale. La <strong>retinopatia diabetica</strong> è una delle principali cause di cecità prevenibile. In Bio-Clinic integriamo la visita oculistica con il percorso diabetologico per un controllo completo.
                             </div>
                         </details>
             </div>
