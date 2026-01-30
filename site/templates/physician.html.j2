@@ -30,9 +30,9 @@
         .header{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:1000!important}
         
         :root {
-            --theme-primary: {{ specialty.display.color_primary if specialty else '#7CBA3D' }};
-            --theme-dark: {{ specialty.display.color_dark if specialty else '#008238' }};
-            --theme-light: {{ specialty.display.color_light if specialty else '#f0f7e6' }};
+            --theme-primary: {{ specialty.display.color_primary if specialty and specialty.display else '#7CBA3D' }};
+            --theme-dark: {{ specialty.display.color_dark if specialty and specialty.display and specialty.display.color_dark else (specialty.display.color_primary if specialty and specialty.display else '#008238') }};
+            --theme-light: {{ specialty.display.color_light if specialty and specialty.display else '#f0f7e6' }};
         }
         
         /* Physician Hero */
@@ -110,20 +110,37 @@
     <!-- Header -->
     <header class="header">
         <div class="container">
-            <nav class="nav">
-                <a href="../index.html" class="logo">
-                    <img src="../images/logo.svg" alt="Bio-Clinic Sassari" height="50">
-                </a>
-                <ul class="nav-menu">
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="../specialita.html">Specialità</a></li>
-                    <li><a href="./" class="active">Équipe</a></li>
-                    <li><a href="../contatti.html">Contatti</a></li>
+            <!-- Logo -->
+            <a href="../index.html" class="logo" title="Torna alla Homepage Bio-Clinic">
+                <img src="../images/logo-bioclinic.png" alt="Bio-Clinic Sassari" width="180" height="60" loading="eager">
+            </a>
+            
+            <!-- Navigazione Desktop -->
+            <nav class="nav" aria-label="Navigazione principale">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link" title="Home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../pages/specialita.html" class="nav-link" title="Specialità">Specialità</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./" class="nav-link active" title="Équipe Medica">Équipe</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../pages/ginecologia.html" class="nav-link" title="Ginecologia">Ginecologia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../pages/contatti.html" class="nav-link" title="Contatti">Contatti</a>
+                    </li>
                 </ul>
-                <a href="tel:+39{{ site.phone|replace(' ', '') }}" class="btn-phone">
-                    <span>📞</span> {{ site.phone }}
-                </a>
             </nav>
+            
+            <!-- CTA Telefono -->
+            <a href="tel:+39{{ site.phone|replace(' ', '') }}" class="btn-phone" title="Chiama Bio-Clinic">
+                <span class="phone-icon">📞</span>
+                <span class="phone-text">{{ site.phone }}</span>
+            </a>
         </div>
     </header>
 
@@ -226,8 +243,34 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <img src="../images/logo-bioclinic.png" alt="Bio-Clinic" style="height: 45px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;">
+                    </div>
+                    <p class="footer-description">
+                        Poliambulatorio medico a Sassari. 31 specialità, 67 medici, 1.840 prestazioni.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Specialità</h4>
+                    <ul class="footer-links">
+                        <li><a href="../pages/ginecologia.html">Ginecologia</a></li>
+                        <li><a href="../pages/cardiologia.html">Cardiologia</a></li>
+                        <li><a href="../pages/laboratorio.html">Laboratorio</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contatti</h4>
+                    <ul class="footer-contact">
+                        <li>📍 Via Renzo Mossa, 23 - Sassari</li>
+                        <li>📞 <a href="tel:+39{{ site.phone|replace(' ', '') }}">{{ site.phone }}</a></li>
+                        <li>⏰ Lun-Ven 07:00-21:00 | Sab 08:00-14:00</li>
+                    </ul>
+                </div>
+            </div>
             <div class="footer-bottom">
-                <p>© 2024 {{ site.name }}. Tutti i diritti riservati.</p>
+                <p>© 2024 {{ site.name }}. Tutti i diritti riservati. | <a href="../pages/privacy.html">Privacy</a> | <a href="../pages/cookie.html">Cookie</a></p>
             </div>
         </div>
     </footer>
