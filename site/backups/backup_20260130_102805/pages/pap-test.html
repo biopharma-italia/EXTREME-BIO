@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pap Test Sassari | Bio-Clinic</title>
+    <meta name="description" content="Screening per la prevenzione del tumore della cervice uterina">
+    <meta name="keywords" content="pap test, sassari, ginecologia">
+    <link rel="canonical" href="https://bio-clinic.it/pages/pap-test.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Pap Test Sassari | Bio-Clinic">
+    <meta property="og:description" content="Screening per la prevenzione del tumore della cervice uterina">
+    <meta property="og:url" content="https://bio-clinic.it/pages/pap-test.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Bio-Clinic Sassari">
+    
+    <!-- Schema.org JSON-LD (Auto-generated) -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalClinic",
+      "@id": "https://bio-clinic.it/#clinic",
+      "name": "Bio-Clinic Sassari",
+      "url": "https://bio-clinic.it",
+      "telephone": "+39 079 956 1332",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Renzo Mossa, 23",
+        "addressLocality": "Sassari",
+        "postalCode": "07100",
+        "addressCountry": "IT"
+      }
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://bio-clinic.it/pages/pap-test/#procedure",
+      "name": "Pap Test",
+      "alternateName": "Pap Test (Esame Citologico Cervicale)",
+      "description": "Screening per la prevenzione del tumore della cervice uterina",
+      "procedureType": null,
+      "bodyLocation": null,
+      "howPerformed": null,
+      "preparation": "No rapporti 48h prima. No lavande. Evitare periodo mestruale.",
+      "relevantSpecialty": {
+        "@type": "MedicalSpecialty",
+        "name": "Ginecologia"
+      },
+      "provider": {
+        "@id": "https://bio-clinic.it/#clinic"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bio-clinic.it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Ginecologia",
+          "item": "https://bio-clinic.it/pages/ginecologia.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Pap Test",
+          "item": "https://bio-clinic.it/pages/pap-test.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Ogni quanto fare il pap-test?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ogni 2-3 anni dai 25 ai 64 anni, in assenza di anomalie. Può essere associato al test HPV dai 30 anni."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header-spacing-fix.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Critical Header Fix */
+        body{padding-top:100px!important}
+        .header{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:1000!important}
+        
+        /* Theme Colors from Specialty */
+        :root {
+            --theme-primary: #E91E63;
+            --theme-dark: #a31545;
+            --theme-light: #FCE4EC;
+        }
+        
+        /* Service Hero */
+        .service-hero {
+            background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-dark) 100%);
+            color: white;
+            padding: 60px 0 50px;
+            text-align: center;
+        }
+        .service-hero h1 { font-size: 2.2rem; margin-bottom: 0.75rem; font-weight: 700; }
+        .service-hero .subtitle { font-size: 1.15rem; opacity: 0.95; max-width: 600px; margin: 0 auto 1.5rem; }
+        .service-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .service-badge { background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; }
+        
+        /* Content Sections */
+        .content-section { padding: 50px 0; }
+        .content-section:nth-child(even) { background: #f8f9fa; }
+        .section-header { margin-bottom: 30px; }
+        .section-header h2 { font-size: 1.75rem; color: #1a1a2e; margin-bottom: 0.5rem; }
+        
+        /* Info Cards */
+        .info-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .info-card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-left: 4px solid var(--theme-primary); }
+        .info-card h4 { color: var(--theme-dark); margin-bottom: 10px; font-size: 1.1rem; }
+        .info-card p { color: #666; font-size: 0.95rem; margin: 0; }
+        
+        /* Specialists Grid */
+        .specialists-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .specialist-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); display: flex; align-items: center; gap: 15px; text-decoration: none; color: inherit; transition: transform 0.2s; }
+        .specialist-card:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .specialist-avatar { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--theme-primary), var(--theme-dark)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 1.2rem; }
+        .specialist-info h4 { margin: 0 0 4px; color: #333; }
+        .specialist-info p { margin: 0; color: #666; font-size: 0.85rem; }
+        
+        /* FAQ Section */
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: white; border-radius: 12px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); overflow: hidden; }
+        .faq-question { padding: 20px 24px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 500; }
+        .faq-question:hover { background: var(--theme-light); }
+        .faq-answer { padding: 0 24px 20px; color: #666; line-height: 1.7; display: none; }
+        .faq-item.active .faq-answer { display: block; }
+        .faq-item.active .faq-question { background: var(--theme-light); color: var(--theme-dark); }
+        .faq-toggle { font-size: 1.5rem; color: var(--theme-primary); transition: transform 0.3s; }
+        .faq-item.active .faq-toggle { transform: rotate(45deg); }
+        
+        /* CTA Section */
+        .cta-section { background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-dark) 100%); color: white; padding: 60px 0; text-align: center; }
+        .cta-section h2 { font-size: 2rem; margin-bottom: 1rem; }
+        .cta-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .btn-cta { padding: 15px 35px; border-radius: 30px; font-weight: 600; text-decoration: none; transition: all 0.3s; }
+        .btn-cta.primary { background: white; color: var(--theme-dark); }
+        .btn-cta.secondary { background: transparent; color: white; border: 2px solid white; }
+        
+        /* Breadcrumb */
+        .breadcrumb { padding: 15px 0; background: #f8f9fa; border-bottom: 1px solid #eee; }
+        .breadcrumb-list { display: flex; gap: 8px; list-style: none; margin: 0; padding: 0; font-size: 0.9rem; }
+        .breadcrumb-list a { color: var(--theme-primary); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.html" class="logo">
+                    <img src="../images/logo.svg" alt="Bio-Clinic Sassari" height="50">
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../specialita.html">Specialità</a></li>
+                    <li><a href="../equipe/">Équipe</a></li>
+                    
+                    <li><a href="../pages/ginecologia.html">Ginecologia</a></li>
+                    
+                    <li><a href="../contatti.html">Contatti</a></li>
+                </ul>
+                <a href="tel:+390799561332" class="btn-phone">
+                    <span>📞</span> 079 956 1332
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li><a href="../index.html">Home</a></li>
+                <li><span>›</span></li>
+                
+                <li><a href="ginecologia.html">Ginecologia</a></li>
+                <li><span>›</span></li>
+                
+                <li><strong>Pap Test</strong></li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="service-hero">
+        <div class="container">
+            <h1>Pap Test</h1>
+            <p class="subtitle">Screening per la prevenzione del tumore della cervice uterina</p>
+            <div class="service-badges">
+                
+                <span class="service-badge">⏱️ 10 minuti</span>
+                
+                
+                <span class="service-badge">📋 Risultati immediati</span>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Indications Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>📋 Quando è Indicato</h2>
+            </div>
+            <div class="info-cards">
+                
+                <div class="info-card">
+                    <p>Screening oncologico dai 25 anni</p>
+                </div>
+                
+                <div class="info-card">
+                    <p>Prevenzione HPV</p>
+                </div>
+                
+                <div class="info-card">
+                    <p>Controllo cervicale</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+
+    
+    <!-- Preparation Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>✅ Preparazione</h2>
+            </div>
+            <div class="info-card" style="max-width: 800px;">
+                
+                <p>No rapporti 48h prima. No lavande. Evitare periodo mestruale.</p>
+                
+                
+            </div>
+        </div>
+    </section>
+    
+
+    
+    <!-- Specialists Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>👩‍⚕️ I Nostri Specialisti</h2>
+                <p>Medici che eseguono Pap Test</p>
+            </div>
+            <div class="specialists-grid">
+                
+                <a href="../equipe/margherita-dessole.html" class="specialist-card">
+                    <div class="specialist-avatar">DO</div>
+                    <div class="specialist-info">
+                        <h4>Dott.ssa Margherita Dessole</h4>
+                        <p>Ginecologia</p>
+                    </div>
+                </a>
+                
+            </div>
+        </div>
+    </section>
+    
+
+    
+    <!-- FAQ Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <h2>❓ Domande Frequenti</h2>
+            </div>
+            <div class="faq-list">
+                
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        Ogni quanto fare il pap-test?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Ogni 2-3 anni dai 25 ai 64 anni, in assenza di anomalie. Può essere associato al test HPV dai 30 anni.
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Prenota Pap Test</h2>
+            <p>I nostri specialisti sono a disposizione per pap test.</p>
+            <div class="cta-buttons">
+                <a href="tel:+390799561332" class="btn-cta primary">📞 Chiama 079 956 1332</a>
+                <a href="../contatti.html" class="btn-cta secondary">✉️ Richiedi informazioni</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2024 Bio-Clinic Sassari. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                const wasActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('active'));
+                if (!wasActive) item.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
