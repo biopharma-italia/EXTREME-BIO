@@ -718,3 +718,136 @@ details[open] .group-open\:rotate-180 { transform: rotate(180deg); }
 .backdrop-blur-sm { backdrop-filter: blur(4px); }
 .backdrop-blur { backdrop-filter: blur(8px); }
 .backdrop-blur-lg { backdrop-filter: blur(16px); }
+
+/* ============================================================================
+   MISSING CLASSES FOR NON-VISITA PAGES (colposcopia, ecografia, etc.)
+   Added 2026-01-30
+   ============================================================================ */
+
+/* Height utilities */
+.h-14 { height: 3.5rem; }
+.h-56 { height: 14rem; }
+.h-fit { height: fit-content; }
+
+/* Width utilities */
+.w-14 { width: 3.5rem; }
+.w-px { width: 1px; }
+
+/* Bio-Clinic custom colors */
+.text-bio-pink { color: #db2777; }
+.text-bio-blue { color: #2563eb; }
+.bg-bio-pink { background-color: #db2777; }
+.bg-bio-blue { background-color: #2563eb; }
+.border-bio-pink { border-color: #db2777; }
+.border-bio-blue { border-color: #2563eb; }
+.border-pink-50 { border-color: #fdf2f8; }
+.border-green-500 { border-color: #22c55e; }
+.border-l-8 { border-left-width: 8px; }
+.bg-primary-light { background-color: #e8f5e9; }
+
+/* Pink color variants */
+.text-pink-100 { color: #fce7f3; }
+.text-pink-200 { color: #fbcfe8; }
+.hover\:bg-pink-50:hover { background-color: #fdf2f8; }
+.hover\:bg-pink-100:hover { background-color: #fce7f3; }
+.hover\:bg-pink-700:hover { background-color: #be185d; }
+.hover\:bg-bio-pink:hover { background-color: #be185d; }
+
+/* Blue color variants */
+.text-blue-100 { color: #dbeafe; }
+.text-blue-200 { color: #bfdbfe; }
+.hover\:bg-blue-50:hover { background-color: #eff6ff; }
+.hover\:bg-blue-100:hover { background-color: #dbeafe; }
+.hover\:bg-blue-700:hover { background-color: #1d4ed8; }
+.hover\:bg-bio-blue:hover { background-color: #1d4ed8; }
+.hover\:bg-green-700:hover { background-color: #15803d; }
+.hover\:border-green-500:hover { border-color: #22c55e; }
+
+/* White text with opacity */
+.text-white\/70 { color: rgb(255 255 255 / 0.7); }
+.text-white\/80 { color: rgb(255 255 255 / 0.8); }
+.bg-white\/20 { background-color: rgb(255 255 255 / 0.2); }
+
+/* Gradient utilities */
+.from-pink-400 { --tw-gradient-from: #f472b6; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(244 114 182 / 0)); }
+.from-pink-600 { --tw-gradient-from: #db2777; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(219 39 119 / 0)); }
+.to-pink-600 { --tw-gradient-to: #db2777; }
+.to-pink-700 { --tw-gradient-to: #be185d; }
+.from-blue-400 { --tw-gradient-from: #60a5fa; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(96 165 250 / 0)); }
+.from-blue-600 { --tw-gradient-from: #2563eb; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(37 99 235 / 0)); }
+.to-blue-600 { --tw-gradient-to: #2563eb; }
+.to-blue-700 { --tw-gradient-to: #1d4ed8; }
+
+/* Group hover for custom colors */
+.group:hover .group-hover\:text-bio-pink { color: #db2777; }
+.group:hover .group-hover\:text-bio-blue { color: #2563eb; }
+.group:hover .group-hover\:bg-bio-pink { background-color: #db2777; }
+.group:hover .group-hover\:bg-bio-blue { background-color: #2563eb; }
+.group:hover .group-hover\:border-bio-pink { border-color: #db2777; }
+.group:hover .group-hover\:border-bio-blue { border-color: #2563eb; }
+
+/* Flex utilities */
+.flex-grow { flex-grow: 1; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+
+/* Aspect ratio (legacy @tailwindcss/aspect-ratio) */
+.aspect-w-4 { position: relative; padding-bottom: calc(3 / 4 * 100%); }
+.aspect-h-3 { position: absolute; inset: 0; }
+
+/* Small screen (640px) responsive */
+@media (min-width: 640px) {
+  .sm\:h-72 { height: 18rem; }
+  .sm\:pb-16 { padding-bottom: 4rem; }
+  .sm\:mt-0 { margin-top: 0; }
+  .sm\:mt-8 { margin-top: 2rem; }
+  .sm\:mt-12 { margin-top: 3rem; }
+  .sm\:ml-3 { margin-left: 0.75rem; }
+  .sm\:flex { display: flex; }
+  .sm\:justify-center { justify-content: center; }
+  .sm\:py-24 { padding-top: 6rem; padding-bottom: 6rem; }
+  .sm\:text-5xl { font-size: 3rem; line-height: 1; }
+  .sm\:text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+  .sm\:max-w-xl { max-width: 36rem; }
+  .sm\:mx-auto { margin-left: auto; margin-right: auto; }
+}
+
+/* Medium screen (768px) responsive */
+@media (min-width: 768px) {
+  .md\:h-96 { height: 24rem; }
+  .md\:pb-20 { padding-bottom: 5rem; }
+  .md\:mt-0 { margin-top: 0; }
+  .md\:mt-16 { margin-top: 4rem; }
+  .md\:py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+  .md\:text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+  .md\:text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+  .md\:text-6xl { font-size: 3.75rem; line-height: 1; }
+  .md\:text-left { text-align: left; }
+  .md\:block { display: block; }
+}
+
+/* Large screen (1024px) responsive */
+@media (min-width: 1024px) {
+  .lg\:h-80 { height: 20rem; }
+  .lg\:h-full { height: 100%; }
+  .lg\:w-full { width: 100%; }
+  .lg\:w-1\/2 { width: 50%; }
+  .lg\:max-w-2xl { max-width: 42rem; }
+  .lg\:pb-28 { padding-bottom: 7rem; }
+  .lg\:mt-20 { margin-top: 5rem; }
+  .lg\:mx-0 { margin-left: 0; margin-right: 0; }
+  .lg\:px-8 { padding-left: 2rem; padding-right: 2rem; }
+  .lg\:absolute { position: absolute; }
+  .lg\:inset-y-0 { top: 0; bottom: 0; }
+  .lg\:right-0 { right: 0; }
+  .lg\:justify-start { justify-content: flex-start; }
+}
+
+/* Extra large screen (1280px) responsive */
+@media (min-width: 1280px) {
+  .xl\:pb-32 { padding-bottom: 8rem; }
+  .xl\:mt-28 { margin-top: 7rem; }
+  .xl\:inline { display: inline; }
+}
+
+/* Border-y (top and bottom) */
+.border-y { border-top-width: 1px; border-bottom-width: 1px; }
