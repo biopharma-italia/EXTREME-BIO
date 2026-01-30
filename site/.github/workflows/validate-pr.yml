@@ -1,0 +1,133 @@
+# ============================================================================
+# BIO-CLINIC PR Validation
+# Valida le Pull Request prima del merge
+# ============================================================================
+
+name: Validate PR
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  validate:
+    name: Validate Changes
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml jinja2
+      
+      - name: Validate YAML syntax
+        working-directory: site
+        run: |
+          echo "📋 Validating YAML files..."
+          python -c "
+          import yaml
+          from pathlib import Path
+          
+          yaml_files = list(Path('data').rglob('*.yaml')) + list(Path('data').rglob('*.yml'))
+          errors = []
+          
+          for f in yaml_files:
+              try:
+                  with open(f) as file:
+                      yaml.safe_load(file)
+                  print(f'✅ {f}')
+              except Exception as e:
+                  errors.append(f'❌ {f}: {e}')
+                  print(f'❌ {f}: {e}')
+          
+          if errors:
+              exit(1)
+          print(f'\\n✅ All {len(yaml_files)} YAML files valid')
+          "
+      
+      - name: Run Generator (dry-run)
+        working-directory: site
+        run: |
+          echo "🏗️ Testing build..."
+          python build/generator.py
+      
+      - name: Check for regressions
+        working-directory: site
+        run: |
+          echo "🔍 Checking for regressions..."
+          
+          # Count generated pages
+          PHYSICIAN_COUNT=$(ls -1 output/site/equipe/*.html 2>/dev/null | wc -l || echo 0)
+          PROCEDURE_COUNT=$(ls -1 output/site/pages/*.html 2>/dev/null | wc -l || echo 0)
+          
+          echo "Generated pages:"
+          echo "  - Physicians: $PHYSICIAN_COUNT"
+          echo "  - Procedures: $PROCEDURE_COUNT"
+          
+          # Fail if counts are too low (regression)
+          if [ "$PHYSICIAN_COUNT" -lt 50 ]; then
+            echo "::error::Regression detected: Only $PHYSICIAN_COUNT physician pages generated (expected 50+)"
+            exit 1
+          fi
+          
+          if [ "$PROCEDURE_COUNT" -lt 40 ]; then
+            echo "::error::Regression detected: Only $PROCEDURE_COUNT procedure pages generated (expected 40+)"
+            exit 1
+          fi
+          
+          echo "✅ No regressions detected"
+      
+      - name: Validate Schema.org
+        working-directory: site
+        run: |
+          echo "🔍 Validating Schema.org..."
+          python build/validate_schema.py || true  # Don't fail on warnings
+      
+      - name: PR Comment Summary
+        uses: actions/github-script@v7
+        if: always()
+        with:
+          script: |
+            const { execSync } = require('child_process');
+            
+            let summary = '## 🔍 PR Validation Results\n\n';
+            
+            try {
+              const output = execSync('cd site && python build/generator.py 2>&1', { encoding: 'utf8' });
+              
+              // Extract stats
+              const specialties = output.match(/Loaded (\d+) specialties/)?.[1] || '?';
+              const physicians = output.match(/Loaded (\d+) physicians/)?.[1] || '?';
+              const procedures = output.match(/Loaded (\d+) procedures/)?.[1] || '?';
+              
+              summary += '| Metric | Count |\n';
+              summary += '|--------|-------|\n';
+              summary += `| Specialties | ${specialties} |\n`;
+              summary += `| Physicians | ${physicians} |\n`;
+              summary += `| Procedures | ${procedures} |\n`;
+              summary += '\n✅ Build successful!\n';
+              
+            } catch (error) {
+              summary += '❌ Build failed. Check logs for details.\n';
+            }
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: summary
+            });
