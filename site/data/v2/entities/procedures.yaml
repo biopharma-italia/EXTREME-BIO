@@ -296,6 +296,284 @@ procedures:
     
     status: "active"
 
+  # --------------------------------------------------------------------------
+  - id: "ecografia-pelvica"
+    
+    name: "Ecografia Pelvica"
+    name_extended: "Ecografia Pelvica Addominale"
+    slug: "ecografia-pelvica"
+    
+    specialty_id: "ginecologia"
+    category: "diagnostica"
+    page_type: "A"
+    
+    content:
+      description_short: "Esame ecografico non invasivo per visualizzare utero, ovaie e vescica"
+    
+    clinical:
+      duration_minutes: 20
+      preparation:
+        required: true
+        fasting: false
+        notes: "Vescica PIENA. Bere 1 litro d'acqua 1 ora prima. Non urinare."
+    
+    indications:
+      - "Ragazze e adolescenti"
+      - "Donne non sessualmente attive"
+      - "Screening iniziale"
+      - "Masse pelviche voluminose"
+    
+    related_procedures:
+      - "ecografia-transvaginale"
+      - "visita-ginecologica"
+    
+    faqs:
+      - question: "Che differenza c'è con l'ecografia transvaginale?"
+        answer: "L'ecografia pelvica usa una sonda esterna sulla pancia e richiede vescica piena. La transvaginale usa una sonda interna e dà immagini più dettagliate."
+    
+    schema_org:
+      type: "MedicalProcedure"
+      procedure_type: "ImagingTest"
+      body_location: "Pelvi"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 6
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "ecografia-mammaria"
+    
+    name: "Ecografia Mammaria"
+    name_extended: "Ecografia Mammaria Bilaterale"
+    slug: "ecografia-mammaria"
+    
+    specialty_id: "ginecologia"
+    category: "diagnostica"
+    page_type: "A"
+    
+    content:
+      description_short: "Esame ecografico non invasivo per lo screening e diagnosi del seno"
+    
+    clinical:
+      duration_minutes: 20
+      preparation:
+        required: false
+        notes: "Evitare creme e deodoranti sulla zona del seno il giorno dell'esame"
+    
+    indications:
+      - "Screening senologico"
+      - "Nodulo palpabile"
+      - "Seni densi"
+      - "Complemento mammografia"
+      - "Gravidanza e allattamento"
+    
+    related_procedures:
+      - "visita-ginecologica"
+      - "ecografia-transvaginale"
+    
+    faqs:
+      - question: "Che differenza c'è con la mammografia?"
+        answer: "L'ecografia usa ultrasuoni ed è ideale per seni densi e donne giovani. La mammografia usa raggi X ed è lo standard dai 50 anni. Sono complementari."
+    
+    schema_org:
+      type: "MedicalProcedure"
+      procedure_type: "ImagingTest"
+      body_location: "Mammella"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 7
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "hpv-test"
+    
+    name: "HPV Test"
+    name_extended: "Test per Papilloma Virus (HPV DNA)"
+    slug: "hpv-test"
+    
+    specialty_id: "ginecologia"
+    category: "esame"
+    page_type: "B"  # Insieme al Pap Test nella pagina pap-test-hpv
+    
+    content:
+      description_short: "Test per rilevare la presenza del Papilloma Virus"
+    
+    clinical:
+      duration_minutes: 10
+      preparation:
+        required: true
+        notes: "Come per il Pap Test: no rapporti 48h, no lavande, evitare ciclo"
+    
+    indications:
+      - "Screening oncologico dai 30 anni"
+      - "Triage dopo Pap Test ASCUS"
+      - "Follow-up dopo trattamento"
+    
+    related_procedures:
+      - "pap-test"
+      - "colposcopia"
+    
+    visibility:
+      has_dedicated_page: false
+      hub_page: "pap-test-hpv"
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "isteroscopia"
+    
+    name: "Isteroscopia"
+    name_extended: "Isteroscopia Diagnostica e Operativa"
+    slug: "isteroscopia"
+    
+    specialty_id: "ginecologia"
+    category: "diagnostica"
+    page_type: "A"
+    
+    content:
+      description_short: "Esame endoscopico per visualizzare l'interno dell'utero"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: true
+        notes: "Eseguire nella prima metà del ciclo. Può essere richiesto digiuno se operativa."
+    
+    indications:
+      - "Sanguinamenti anomali"
+      - "Polipi endometriali"
+      - "Miomi sottomucosi"
+      - "Infertilità"
+      - "Malformazioni uterine"
+    
+    related_procedures:
+      - "visita-ginecologica"
+      - "ecografia-transvaginale"
+    
+    faqs:
+      - question: "L'isteroscopia è dolorosa?"
+        answer: "L'isteroscopia diagnostica può causare fastidio simile a crampi mestruali. Quella operativa viene generalmente eseguita in anestesia."
+    
+    pathways:
+      - "pma-fertilita"
+    
+    visibility:
+      has_dedicated_page: true
+      priority_order: 8
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "consulto-fertilita"
+    
+    name: "Consulto Fertilità Coppia"
+    name_extended: "Consulto per Fertilità di Coppia"
+    slug: "consulto-fertilita-coppia"
+    
+    specialty_id: "ginecologia"
+    category: "visita"
+    page_type: "C"  # Vive nel percorso PMA
+    
+    content:
+      description_short: "Prima valutazione della fertilità per la coppia"
+    
+    clinical:
+      duration_minutes: 45
+      preparation:
+        required: true
+        notes: "Portare esami precedenti di entrambi i partner"
+    
+    indications:
+      - "Ricerca gravidanza >12 mesi"
+      - "Età materna avanzata"
+      - "Aborti ricorrenti"
+      - "Patologie note"
+    
+    related_procedures:
+      - "monitoraggio-follicolare"
+      - "spermiogramma"
+      - "isteroscopia"
+    
+    pathways:
+      - "pma-fertilita"
+    
+    visibility:
+      has_dedicated_page: false
+      show_in_specialty_page: true
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "spermiogramma"
+    
+    name: "Spermiogramma"
+    name_extended: "Esame del Liquido Seminale (Spermiogramma)"
+    slug: "spermiogramma"
+    
+    specialty_id: "ginecologia"
+    category: "esame"
+    page_type: "C"  # Vive nel percorso PMA
+    
+    content:
+      description_short: "Analisi del liquido seminale per valutare la fertilità maschile"
+    
+    clinical:
+      duration_minutes: 30
+      preparation:
+        required: true
+        notes: "Astinenza sessuale 2-5 giorni. Non assumere farmaci se non concordato."
+    
+    indications:
+      - "Studio infertilità di coppia"
+      - "Controllo post-vasectomia"
+      - "Crioconservazione"
+    
+    related_procedures:
+      - "consulto-fertilita"
+    
+    pathways:
+      - "pma-fertilita"
+    
+    visibility:
+      has_dedicated_page: false
+      show_in_specialty_page: true
+    
+    status: "active"
+
+  # --------------------------------------------------------------------------
+  - id: "ecografia-ginecologica"
+    
+    name: "Ecografia Ginecologica"
+    name_extended: "Ecografia Ginecologica Completa"
+    slug: "ecografia-ginecologica"
+    
+    specialty_id: "ginecologia"
+    category: "diagnostica"
+    page_type: "D"  # Generic, rimanda a transvaginale o pelvica
+    
+    content:
+      description_short: "Termine generico per ecografia pelvica (transvaginale o addominale)"
+    
+    clinical:
+      duration_minutes: 20
+      preparation:
+        required: true
+        notes: "Preparazione varia in base alla metodica scelta"
+    
+    related_procedures:
+      - "ecografia-transvaginale"
+      - "ecografia-pelvica"
+    
+    visibility:
+      has_dedicated_page: false
+      show_in_specialty_page: true
+    
+    status: "active"
+
   # ==========================================================================
   # GINECOLOGIA - TRATTAMENTI
   # ==========================================================================

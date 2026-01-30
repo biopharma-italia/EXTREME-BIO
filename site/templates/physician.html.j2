@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ physician.display_name }} | {{ specialty.name if specialty else 'Specialista' }} | Bio-Clinic Sassari</title>
+    <meta name="description" content="{{ physician.bio_short or physician.display_name ~ ' - ' ~ (physician.job_title or 'Specialista') ~ ' presso Bio-Clinic Sassari. Prenota una visita.' }}">
+    <link rel="canonical" href="https://bio-clinic.it/equipe/{{ physician.id }}.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ physician.display_name }} | Bio-Clinic Sassari">
+    <meta property="og:description" content="{{ physician.bio_short or physician.job_title }}">
+    <meta property="og:url" content="https://bio-clinic.it/equipe/{{ physician.id }}.html">
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Bio-Clinic Sassari">
+    
+    <!-- Schema.org JSON-LD (Auto-generated) -->
+    <script type="application/ld+json">
+    {{ schema_json|safe }}
+    </script>
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header-spacing-fix.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body{padding-top:100px!important}
+        .header{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:1000!important}
+        
+        :root {
+            --theme-primary: {{ specialty.display.color_primary if specialty else '#7CBA3D' }};
+            --theme-dark: {{ specialty.display.color_dark if specialty else '#008238' }};
+            --theme-light: {{ specialty.display.color_light if specialty else '#f0f7e6' }};
+        }
+        
+        /* Physician Hero */
+        .physician-hero {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 60px 0;
+        }
+        .physician-card {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .physician-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 16px;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--theme-primary), var(--theme-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .physician-info h1 { font-size: 2rem; margin-bottom: 8px; color: #1a1a2e; }
+        .physician-info .job-title { font-size: 1.2rem; color: var(--theme-primary); margin-bottom: 8px; font-weight: 500; }
+        .physician-info .specialty { color: #666; margin-bottom: 20px; }
+        .physician-bio { color: #555; line-height: 1.7; }
+        
+        .role-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+        .role-badge { background: var(--theme-light); color: var(--theme-dark); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; }
+        
+        /* Sections */
+        .content-section { padding: 50px 0; }
+        .content-section:nth-child(even) { background: #f8f9fa; }
+        .section-header { margin-bottom: 30px; }
+        .section-header h2 { font-size: 1.75rem; color: #1a1a2e; }
+        
+        /* Procedures Grid */
+        .procedures-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .procedure-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); text-decoration: none; color: inherit; border-left: 4px solid var(--theme-primary); transition: transform 0.2s; }
+        .procedure-card:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(0,0,0,0.12); }
+        .procedure-card h4 { color: var(--theme-dark); margin: 0 0 8px; }
+        .procedure-card .link { color: var(--theme-primary); font-size: 0.9rem; font-weight: 500; }
+        
+        /* CTA Section */
+        .cta-section { background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-dark) 100%); color: white; padding: 60px 0; text-align: center; }
+        .cta-section h2 { font-size: 2rem; margin-bottom: 1rem; }
+        .cta-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .btn-cta { padding: 15px 35px; border-radius: 30px; font-weight: 600; text-decoration: none; transition: all 0.3s; }
+        .btn-cta.primary { background: white; color: var(--theme-dark); }
+        .btn-cta.secondary { background: transparent; color: white; border: 2px solid white; }
+        
+        /* Breadcrumb */
+        .breadcrumb { padding: 15px 0; background: #f8f9fa; border-bottom: 1px solid #eee; }
+        .breadcrumb-list { display: flex; gap: 8px; list-style: none; margin: 0; padding: 0; font-size: 0.9rem; }
+        .breadcrumb-list a { color: var(--theme-primary); text-decoration: none; }
+        
+        @media (max-width: 768px) {
+            .physician-card { flex-direction: column; align-items: center; text-align: center; padding: 30px; }
+            .physician-photo { width: 150px; height: 150px; font-size: 3rem; }
+            .role-badges { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.html" class="logo">
+                    <img src="../images/logo.svg" alt="Bio-Clinic Sassari" height="50">
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../specialita.html">Specialità</a></li>
+                    <li><a href="./" class="active">Équipe</a></li>
+                    <li><a href="../contatti.html">Contatti</a></li>
+                </ul>
+                <a href="tel:+39{{ site.phone|replace(' ', '') }}" class="btn-phone">
+                    <span>📞</span> {{ site.phone }}
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li><a href="../index.html">Home</a></li>
+                <li><span>›</span></li>
+                <li><a href="./">Équipe</a></li>
+                <li><span>›</span></li>
+                <li><strong>{{ physician.display_name }}</strong></li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Physician Hero -->
+    <section class="physician-hero">
+        <div class="container">
+            <div class="physician-card">
+                {% if physician.image_url and physician.image_url != 'images/team/default-avatar.webp' %}
+                <img src="../{{ physician.image_url }}" alt="{{ physician.display_name }}" class="physician-photo">
+                {% else %}
+                <div class="physician-photo">{{ physician.display_name[:2]|upper }}</div>
+                {% endif %}
+                <div class="physician-info">
+                    <h1>{{ physician.display_name }}</h1>
+                    {% if physician.job_title %}
+                    <p class="job-title">{{ physician.job_title }}</p>
+                    {% endif %}
+                    {% if specialty %}
+                    <p class="specialty">{{ specialty.name }}</p>
+                    {% endif %}
+                    
+                    {% if physician.role_badges %}
+                    <div class="role-badges">
+                        {% for badge in physician.role_badges %}
+                        <span class="role-badge">{{ badge }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    
+                    {% if physician.bio_short %}
+                    <p class="physician-bio">{{ physician.bio_short }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% if physician.procedures_details %}
+    <!-- Procedures Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>🩺 Prestazioni</h2>
+            </div>
+            <div class="procedures-grid">
+                {% for proc in physician.procedures_details %}
+                <a href="../pages/{{ proc.id }}.html" class="procedure-card">
+                    <h4>{{ proc.name }}</h4>
+                    <span class="link">Scopri di più →</span>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if physician.availability %}
+    <!-- Availability Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>📅 Disponibilità</h2>
+            </div>
+            <div class="info-cards">
+                <div class="info-card">
+                    <p>{{ physician.display_name }} riceve nei giorni: <strong>{{ physician.availability|join(', ') }}</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Prenota una visita con {{ physician.display_name }}</h2>
+            <p>Contatta la segreteria per fissare un appuntamento.</p>
+            <div class="cta-buttons">
+                <a href="tel:+39{{ site.phone|replace(' ', '') }}" class="btn-cta primary">📞 Chiama {{ site.phone }}</a>
+                {% if physician.booking and physician.booking.miodottore_url %}
+                <a href="{{ physician.booking.miodottore_url }}" target="_blank" class="btn-cta secondary">🗓️ Prenota Online</a>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2024 {{ site.name }}. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
