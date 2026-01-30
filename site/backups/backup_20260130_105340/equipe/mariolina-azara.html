@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dott.ssa Mariolina Azara | Pediatria | Bio-Clinic Sassari</title>
+    <meta name="description" content="Pediatra specializzata nella cura dei bambini e degli adolescenti.">
+    <link rel="canonical" href="https://bio-clinic.it/equipe/mariolina-azara.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Dott.ssa Mariolina Azara | Bio-Clinic Sassari">
+    <meta property="og:description" content="Pediatra specializzata nella cura dei bambini e degli adolescenti.">
+    <meta property="og:url" content="https://bio-clinic.it/equipe/mariolina-azara.html">
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Bio-Clinic Sassari">
+    
+    <!-- Schema.org JSON-LD (Auto-generated) -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalClinic",
+      "@id": "https://bio-clinic.it/#clinic",
+      "name": "Bio-Clinic Sassari",
+      "url": "https://bio-clinic.it",
+      "telephone": "+39 079 956 1332",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Renzo Mossa, 23",
+        "addressLocality": "Sassari",
+        "postalCode": "07100",
+        "addressCountry": "IT"
+      }
+    },
+    {
+      "@type": "Physician",
+      "@id": "https://bio-clinic.it/equipe/mariolina-azara/#physician",
+      "name": "Dott.ssa Mariolina Azara",
+      "givenName": "Mariolina",
+      "familyName": "Azara",
+      "jobTitle": "Pediatra",
+      "description": "Pediatra specializzata nella cura dei bambini e degli adolescenti.",
+      "medicalSpecialty": "Pediatria",
+      "worksFor": {
+        "@id": "https://bio-clinic.it/#clinic"
+      },
+      "availableService": null
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bio-clinic.it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Équipe",
+          "item": "https://bio-clinic.it/equipe/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Dott.ssa Mariolina Azara",
+          "item": "https://bio-clinic.it/equipe/mariolina-azara.html"
+        }
+      ]
+    }
+  ]
+}
+    </script>
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header-spacing-fix.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --theme-primary: #F06292;
+            --theme-dark: #a84466;
+            --theme-light: #FCE4EC;
+        }
+        
+        /* Physician Hero */
+        .physician-hero {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 60px 0;
+        }
+        .physician-card {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .physician-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 16px;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--theme-primary), var(--theme-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .physician-info h1 { font-size: 2rem; margin-bottom: 8px; color: #1a1a2e; }
+        .physician-info .job-title { font-size: 1.2rem; color: var(--theme-primary); margin-bottom: 8px; font-weight: 500; }
+        .physician-info .specialty { color: #666; margin-bottom: 20px; }
+        .physician-bio { color: #555; line-height: 1.7; }
+        
+        .role-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+        .role-badge { background: var(--theme-light); color: var(--theme-dark); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; }
+        
+        /* Sections */
+        .content-section { padding: 50px 0; }
+        .content-section:nth-child(even) { background: #f8f9fa; }
+        .section-header { margin-bottom: 30px; }
+        .section-header h2 { font-size: 1.75rem; color: #1a1a2e; }
+        
+        /* Procedures Grid */
+        .procedures-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .procedure-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); text-decoration: none; color: inherit; border-left: 4px solid var(--theme-primary); transition: transform 0.2s; }
+        .procedure-card:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(0,0,0,0.12); }
+        .procedure-card h4 { color: var(--theme-dark); margin: 0 0 8px; }
+        .procedure-card .link { color: var(--theme-primary); font-size: 0.9rem; font-weight: 500; }
+        
+        /* CTA Section */
+        .cta-section { background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-dark) 100%); color: white; padding: 60px 0; text-align: center; }
+        .cta-section h2 { font-size: 2rem; margin-bottom: 1rem; }
+        .cta-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .btn-cta { padding: 15px 35px; border-radius: 30px; font-weight: 600; text-decoration: none; transition: all 0.3s; }
+        .btn-cta.primary { background: white; color: var(--theme-dark); }
+        .btn-cta.secondary { background: transparent; color: white; border: 2px solid white; }
+        
+        /* Page Breadcrumb */
+        .page-breadcrumb { padding: 15px 0; background: #f8f9fa; border-bottom: 1px solid #eee; }
+        .page-breadcrumb-list { display: flex; gap: 8px; list-style: none; margin: 0; padding: 0; font-size: 0.9rem; }
+        .page-breadcrumb-list a { color: var(--theme-primary); text-decoration: none; }
+        
+        @media (max-width: 768px) {
+            .physician-card { flex-direction: column; align-items: center; text-align: center; padding: 30px; }
+            .physician-photo { width: 150px; height: 150px; font-size: 3rem; }
+            .role-badges { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER PRINCIPALE -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container flex-between">
+                <div class="flex" style="gap: 1.5rem;">
+                    <a href="tel:+390799561332" class="header-top-link" title="Chiama Bio-Clinic Sassari">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        <span>079 956 1332</span>
+                    </a>
+                    <span class="header-top-info hide-mobile">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        <span>Lun-Ven 07:00-21:00 | Sab 08:00-14:00</span>
+                    </span>
+                </div>
+                <div class="flex" style="gap: 1rem;">
+                    <a href="https://www.facebook.com/bioclinicss" target="_blank" rel="noopener" class="header-social" aria-label="Facebook" title="Seguici su Facebook">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/bioclinicss/" target="_blank" rel="noopener" class="header-social" aria-label="Instagram" title="Seguici su Instagram">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-main">
+            <div class="container header-content">
+                <!-- Logo -->
+                <a href="../index.html" class="logo" title="Bio-Clinic Sassari - Torna alla Home">
+                    <img src="../images/logo-bioclinic.png" alt="Bio-Clinic Sassari" style="height: 50px; width: auto;">
+                </a>
+                
+                <!-- Navigation -->
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <!-- Home -->
+                        <li class="nav-item">
+                            <a href="../index.html" class="nav-link" title="Home Bio-Clinic">Home</a>
+                        </li>
+                        
+                        <!-- Slim Care -->
+                        <li class="nav-item nav-dropdown-trigger">
+                            <a href="../pages/slim-care.html" class="nav-link" title="Slim Care - Percorso Dimagrimento Medico">
+                                Slim Care
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="nav-arrow">
+                                    <polyline points="6 9 12 15 18 9"/>
+                                </svg>
+                            </a>
+                            <div class="nav-dropdown">
+                                <a href="../pages/slim-care.html" title="Slim Care con Wegovy e Mounjaro">
+                                    <span class="nav-dropdown-icon">🎯</span>
+                                    Slim Care - Dimagrimento
+                                </a>
+                                <a href="../pages/slim-care-donna.html" title="Slim Care specifico per donne">
+                                    <span class="nav-dropdown-icon">👩</span>
+                                    Slim Care Donna
+                                </a>
+                            </div>
+                        </li>
+                        
+                        <!-- Laboratorio -->
+                        <li class="nav-item">
+                            <a href="../laboratorio/" class="nav-link" title="Laboratorio Analisi - Oltre 1.100 Esami">Laboratorio</a>
+                        </li>
+                        
+                        <!-- Donna & PMA -->
+                        <li class="nav-item nav-dropdown-trigger">
+                            <a href="../pages/ginecologia.html" class="nav-link" title="Ginecologia e PMA">
+                                Donna & PMA
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="nav-arrow">
+                                    <polyline points="6 9 12 15 18 9"/>
+                                </svg>
+                            </a>
+                            <div class="nav-dropdown">
+                                <a href="../pages/ginecologia.html" title="Ginecologia e Ostetricia">
+                                    <span class="nav-dropdown-icon">👩‍⚕️</span>
+                                    Ginecologia
+                                </a>
+                                <a href="../pages/pma-fertilita.html" title="PMA e Fertilità">
+                                    <span class="nav-dropdown-icon">👶</span>
+                                    PMA / Fertilità
+                                </a>
+                            </div>
+                        </li>
+                        
+                        <!-- Specialisti -->
+                        <li class="nav-item nav-dropdown-trigger">
+                            <a href="../equipe/" class="nav-link active" title="I Nostri Specialisti">
+                                Specialisti
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="nav-arrow">
+                                    <polyline points="6 9 12 15 18 9"/>
+                                </svg>
+                            </a>
+                            <div class="nav-dropdown nav-dropdown-wide">
+                                <div class="nav-dropdown-section">
+                                    <div class="nav-dropdown-title">Specialità Principali</div>
+                                    <a href="../pages/cardiologia.html" title="Cardiologia">
+                                        <span class="nav-dropdown-icon">❤️</span>
+                                        Cardiologia
+                                    </a>
+                                    <a href="../pages/endocrinologia.html" title="Endocrinologia">
+                                        <span class="nav-dropdown-icon">🦋</span>
+                                        Endocrinologia
+                                    </a>
+                                    <a href="../pages/dermatologia.html" title="Dermatologia">
+                                        <span class="nav-dropdown-icon">🔬</span>
+                                        Dermatologia
+                                    </a>
+                                    <a href="../pages/neurologia.html" title="Neurologia">
+                                        <span class="nav-dropdown-icon">🧠</span>
+                                        Neurologia
+                                    </a>
+                                </div>
+                                <div class="nav-dropdown-section">
+                                    <div class="nav-dropdown-title">Équipe</div>
+                                    <a href="../equipe/" title="Tutti i medici">
+                                        <span class="nav-dropdown-icon">👨‍⚕️</span>
+                                        Tutti i Medici (51)
+                                    </a>
+                                    <a href="../pages/specialita.html" title="Tutte le specialità">
+                                        <span class="nav-dropdown-icon">📋</span>
+                                        Tutte le Specialità
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <!-- CTA Prenota -->
+                    <a href="tel:+390799561332" class="btn btn-primary btn-header-cta" title="Chiama per prenotare">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        <span>Prenota</span>
+                    </a>
+                </nav>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="menu-toggle" aria-label="Apri menu di navigazione">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-overlay"></div>
+    <nav class="mobile-nav">
+        <div class="mobile-nav-header">
+            <img src="../images/logo-bioclinic.png" alt="Bio-Clinic" style="height: 40px; width: auto;">
+            <button class="mobile-nav-close" aria-label="Chiudi menu">&times;</button>
+        </div>
+        
+        <ul class="mobile-nav-list">
+            <li><a href="../index.html" title="Home">🏠 Home</a></li>
+            <li class="mobile-nav-divider">Percorsi</li>
+            <li><a href="../pages/slim-care.html" title="Slim Care">🎯 Slim Care - Dimagrimento</a></li>
+            <li><a href="../pages/slim-care-donna.html" title="Slim Care Donna">👩 Slim Care Donna</a></li>
+            <li><a href="../pages/pma-fertilita.html" title="PMA Fertilità">👶 PMA / Fertilità</a></li>
+            <li class="mobile-nav-divider">Servizi</li>
+            <li><a href="../laboratorio/" title="Laboratorio">🧪 Laboratorio Analisi</a></li>
+            <li><a href="../pages/ginecologia.html" title="Ginecologia">👩‍⚕️ Ginecologia</a></li>
+            <li><a href="../pages/cardiologia.html" title="Cardiologia">❤️ Cardiologia</a></li>
+            <li><a href="../pages/endocrinologia.html" title="Endocrinologia">🦋 Endocrinologia</a></li>
+            <li class="mobile-nav-divider">Info</li>
+            <li><a href="../equipe/" title="Équipe">👨‍⚕️ I Nostri Medici</a></li>
+            <li><a href="../pages/specialita.html" title="Specialità">📋 Tutte le Specialità</a></li>
+            <li><a href="../pages/contatti.html" title="Contatti">📍 Contatti</a></li>
+        </ul>
+        
+        <div class="mobile-nav-cta">
+            <a href="tel:+390799561332" class="btn btn-primary" style="width: 100%;">
+                📞 Chiama: 079 956 1332
+            </a>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <nav class="page-breadcrumb">
+        <div class="container">
+            <ol class="page-breadcrumb-list">
+                <li><a href="../index.html">Home</a></li>
+                <li><span>›</span></li>
+                <li><a href="./">Équipe</a></li>
+                <li><span>›</span></li>
+                <li><strong>Dott.ssa Mariolina Azara</strong></li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Physician Hero -->
+    <section class="physician-hero">
+        <div class="container">
+            <div class="physician-card">
+                
+                <div class="physician-photo">DO</div>
+                
+                <div class="physician-info">
+                    <h1>Dott.ssa Mariolina Azara</h1>
+                    
+                    <p class="job-title">Pediatra</p>
+                    
+                    
+                    <p class="specialty">Pediatria</p>
+                    
+                    
+                    
+                    
+                    
+                    <p class="physician-bio">Pediatra specializzata nella cura dei bambini e degli adolescenti.</p>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Procedures Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>🩺 Prestazioni</h2>
+            </div>
+            <div class="procedures-grid">
+                
+                <a href="../pages/visita-pediatrica.html" class="procedure-card">
+                    <h4>Visita Pediatrica</h4>
+                    <span class="link">Scopri di più →</span>
+                </a>
+                
+            </div>
+        </div>
+    </section>
+    
+
+    
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Prenota una visita con Dott.ssa Mariolina Azara</h2>
+            <p>Contatta la segreteria per fissare un appuntamento.</p>
+            <div class="cta-buttons">
+                <a href="tel:+390799561332" class="btn-cta primary">📞 Chiama 079 956 1332</a>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <img src="../images/logo-bioclinic.png" alt="Bio-Clinic" style="height: 45px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;">
+                    </div>
+                    <p class="footer-description">
+                        Poliambulatorio medico a Sassari. 26 specialità, 51 medici, 60 prestazioni.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Percorsi</h4>
+                    <ul class="footer-links">
+                        <li><a href="../pages/slim-care.html" title="Scopri il percorso Slim Care">Slim Care</a></li>
+                        <li><a href="../pages/pma-fertilita.html" title="Scopri il percorso PMA e Fertilità">PMA / Fertilità</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Specialità</h4>
+                    <ul class="footer-links">
+                        <li><a href="../pages/ginecologia.html" title="Vai alla sezione Ginecologia">Ginecologia</a></li>
+                        <li><a href="../pages/cardiologia.html" title="Vai alla sezione Cardiologia">Cardiologia</a></li>
+                        <li><a href="../pages/laboratorio.html" title="Vai al Laboratorio Analisi">Laboratorio</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contatti</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <a href="tel:+390799561332" title="Chiama Bio-Clinic Sassari">079 956 1332</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Bio Pharma S.r.l. - P.IVA 02869450904</p>
+                <div><a href="../pages/privacy.html" title="Leggi la Privacy Policy">Privacy</a> | <a href="../pages/cookie.html" title="Leggi la Cookie Policy">Cookie</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

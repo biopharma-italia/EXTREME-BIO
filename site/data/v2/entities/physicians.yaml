@@ -1,1568 +1,1080 @@
-# ============================================================================
-# BIO-CLINIC PHYSICIANS v2.1
-# Source of Truth per tutti i medici
-# ============================================================================
-
-schema_version: "2.1"
-last_updated: "2026-01-29"
-
+schema_version: '2.1'
+last_updated: '2026-01-29'
 physicians:
-
-  # ==========================================================================
-  # GINECOLOGIA E OSTETRICIA
-  # ==========================================================================
-  
-  - id: "salvatore-dessole"
-    
-    # --- Identità ---
-    title: "Prof."
-    first_name: "Salvatore"
-    last_name: "Dessole"
-    name: "Salvatore Dessole"
-    
-    # --- Ruolo ---
-    specialty_id: "ginecologia"
-    job_title: "Direttore Sanitario - Ginecologo Senior"
-    role_badges:
-      - "Direttore Sanitario"
-      - "Professore Emerito"
-    is_director: true
-    
-    # --- Competenze ---
-    procedures:
-      - "visita-ginecologica"
-      - "ecografia-ostetrica-3d"
-      - "consulto-pma"
-      - "ecografia-morfologica"
-    pathways:
-      - "pma-fertilita"
-      - "slim-care-donna"
-    
-    # --- Contenuto ---
-    bio_short: "Professore Emerito, fondatore di Bio-Clinic, oltre 40 anni di esperienza in ginecologia e ostetricia. Punto di riferimento per la medicina della riproduzione in Sardegna."
-    bio_file: "physicians/salvatore-dessole.md"
-    image: null  # Usa convenzione: images/team/salvatore-dessole.webp
-    
-    # --- Prenotazione ---
-    booking:
-      enabled: true
-      miodottore_id: "salvatore-dessole"
-      miodottore_url: "https://www.miodottore.it/salvatore-dessole/ginecologo/sassari"
-      direct_phone: true
-      online_booking: true
-    
-    # --- Disponibilità ---
-    availability: ["Lun", "Mar", "Mer", "Gio", "Ven"]
-    
-    # --- Pubblicazioni ---
-    publications:
-      - title: "Reproductive outcomes in Sardinian women"
-        url: "https://pubmed.ncbi.nlm.nih.gov/example1"
-        journal: "Journal of Reproductive Medicine"
-        year: 2020
-    
-    # --- Visibilità ---
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      show_booking_widget: true
-      featured_on_homepage: true
-      priority_order: 1
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-  - id: "francesco-dessole"
-    
-    title: "Dott."
-    first_name: "Francesco"
-    last_name: "Dessole"
-    name: "Francesco Dessole"
-    
-    specialty_id: "ginecologia"
-    job_title: "Ginecologo"
-    role_badges:
-      - "Medico Rif. Slim Care Donna"
-    
-    procedures:
-      - "visita-ginecologica"
-      - "ecografia-ginecologica"
-      - "ecografia-ostetrica-3d"
-      - "monitoraggio-follicolare"
-      - "colposcopia"
-    pathways:
-      - "pma-fertilita"
-      - "slim-care-donna"
-    
-    bio_short: "Ginecologo con esperienza in ecografia ostetrica e ginecologica, PMA e chirurgia mini-invasiva."
-    bio_file: "physicians/francesco-dessole.md"
-    
-    booking:
-      enabled: true
-      miodottore_id: "francesco-dessole"
-      miodottore_url: "https://www.miodottore.it/francesco-dessole/ginecologo/sassari"
-      direct_phone: true
-      online_booking: true
-    
-    availability: ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab"]
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      show_booking_widget: true
-      featured_on_homepage: false
-      priority_order: 2
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-  - id: "margherita-dessole"
-    
-    title: "Dott.ssa"
-    first_name: "Margherita"
-    last_name: "Dessole"
-    name: "Margherita Dessole"
-    
-    specialty_id: "ginecologia"
-    job_title: "Ginecologa"
-    
-    procedures:
-      - "visita-ginecologica"
-      - "ecografia-ginecologica"
-      - "pap-test"
-    
-    bio_short: "Ginecologa con esperienza in ostetricia e ginecologia generale."
-    
-    booking:
-      enabled: true
-      miodottore_id: "margherita-dessole"
-      miodottore_url: "https://www.miodottore.it/margherita-dessole/ginecologo/sassari"
-    
-    visibility:
-      priority_order: 5
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-  - id: "maddalena-pola"
-    
-    title: "Dott.ssa"
-    first_name: "Maddalena"
-    last_name: "Pola"
-    name: "Maddalena Pola"
-    
-    specialty_id: "ginecologia"
-    job_title: "Ginecologa"
-    
-    procedures:
-      - "visita-ginecologica"
-      - "ecografia-ginecologica"
-    
-    bio_short: "Ginecologa specializzata in diagnostica ginecologica."
-    
-    booking:
-      enabled: true
-      miodottore_id: "maddalena-pola"
-    
-    visibility:
-      priority_order: 6
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-  - id: "marco-petrillo"
-    
-    title: "Prof."
-    first_name: "Marco"
-    last_name: "Petrillo"
-    name: "Marco Petrillo"
-    
-    specialty_id: "ginecologia"
-    job_title: "Ginecologo"
-    role_badges:
-      - "Professore"
-    
-    procedures:
-      - "visita-ginecologica"
-      - "isteroscopia"
-      - "chirurgia-ginecologica"
-    
-    bio_short: "Professore universitario, esperto in chirurgia ginecologica mini-invasiva."
-    
-    publications:
-      - title: "Minimally invasive surgery in gynecologic oncology"
-        url: "https://pubmed.ncbi.nlm.nih.gov/example2"
-        journal: "Gynecologic Oncology"
-        year: 2021
-    
-    booking:
-      enabled: true
-      miodottore_id: "marco-petrillo"
-    
-    visibility:
-      priority_order: 3
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-  - id: "antonella-pruneddu"
-    
-    title: "Dott.ssa"
-    first_name: "Antonella"
-    last_name: "Pruneddu"
-    name: "Antonella Pruneddu"
-    
-    specialty_id: "ginecologia"
-    job_title: "Ginecologa"
-    
-    procedures:
-      - "visita-ginecologica"
-      - "ecografia-ginecologica"
-    
-    bio_short: "Ginecologa con esperienza in ginecologia generale e ostetricia."
-    
-    booking:
-      enabled: true
-      miodottore_id: "antonella-pruneddu"
-    
-    visibility:
-      priority_order: 7
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-  - id: "paolo-dessole"
-    
-    title: "Dott."
-    first_name: "Paolo"
-    last_name: "Dessole"
-    name: "Paolo Dessole"
-    
-    specialty_id: "ginecologia"
-    job_title: "Ginecologo"
-    
-    procedures:
-      - "visita-ginecologica"
-      - "ecografia-ostetrica-3d"
-    
-    bio_short: "Ginecologo specializzato in ecografia ostetrica."
-    
-    booking:
-      enabled: true
-    
-    visibility:
-      priority_order: 4
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-  # OSTETRICHE
-  # --------------------------------------------------------------------------
-  - id: "angelica-fois"
-    
-    title: "Dott.ssa"
-    first_name: "Angelica"
-    last_name: "Fois"
-    name: "Angelica Fois"
-    
-    specialty_id: "ostetricia"
-    job_title: "Ostetrica"
-    
-    procedures:
-      - "assistenza-ostetrica"
-      - "corso-preparto"
-    
-    bio_short: "Ostetrica dedicata all'accompagnamento della gravidanza e al supporto nel post-partum."
-    
-    booking:
-      enabled: true
-      miodottore_id: "angelica-fois"
-      miodottore_url: "https://www.miodottore.it/angelica-fois/ostetrica/sassari"
-    
-    visibility:
-      priority_order: 1
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-  - id: "camilla-ruzzoli"
-    
-    title: "Dott.ssa"
-    first_name: "Camilla"
-    last_name: "Ruzzoli"
-    name: "Camilla Ruzzoli"
-    
-    specialty_id: "ostetricia"
-    job_title: "Ostetrica"
-    
-    procedures:
-      - "assistenza-ostetrica"
-      - "corso-preparto"
-      - "riabilitazione-pavimento-pelvico"
-    
-    bio_short: "Ostetrica specializzata in assistenza alla gravidanza e riabilitazione del pavimento pelvico."
-    
-    booking:
-      enabled: false  # Non ha profilo MioDottore
-    
-    visibility:
-      priority_order: 2
-    
-    status: "active"
-
-  # ==========================================================================
-  # CARDIOLOGIA
-  # ==========================================================================
-  
-  - id: "tonino-bullitta"
-    
-    title: "Dr."
-    first_name: "Tonino"
-    last_name: "Bullitta"
-    name: "Tonino Bullitta"
-    
-    specialty_id: "cardiologia"
-    job_title: "Cardiologo"
-    
-    procedures:
-      - "visita-cardiologica"
-      - "ecg"
-      - "ecocardiogramma"
-      - "holter-ecg"
-      - "holter-pressorio"
-    pathways:
-      - "checkup-cardiovascolare"
-    
-    bio_short: "Cardiologo con esperienza in diagnostica cardiologica non invasiva."
-    
-    booking:
-      enabled: true
-      miodottore_id: "tonino-bullitta"
-    
-    visibility:
-      priority_order: 1
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-  - id: "sara-uras"
-    
-    title: "Dott.ssa"
-    first_name: "Sara"
-    last_name: "Uras"
-    name: "Sara Uras"
-    
-    specialty_id: "cardiologia"
-    job_title: "Cardiologa"
-    
-    procedures:
-      - "visita-cardiologica"
-      - "ecg"
-      - "ecocardiogramma"
-    
-    bio_short: "Cardiologa specializzata in ecocardiografia."
-    
-    booking:
-      enabled: true
-      miodottore_id: "sara-uras"
-    
-    visibility:
-      priority_order: 2
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-  - id: "paolo-pischedda"
-    
-    title: "Dott."
-    first_name: "Paolo"
-    last_name: "Pischedda"
-    name: "Paolo Pischedda"
-    
-    specialty_id: "cardiologia"
-    job_title: "Cardiologo"
-    
-    procedures:
-      - "visita-cardiologica"
-      - "ecg"
-      - "ecocardiogramma"
-    
-    bio_short: "Cardiologo con esperienza in diagnostica cardiovascolare."
-    
-    booking:
-      enabled: true
-      miodottore_id: "paolo-pischedda"
-    
-    visibility:
-      priority_order: 3
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-  - id: "paolo-franca"
-    
-    title: "Dott."
-    first_name: "Paolo"
-    last_name: "Franca"
-    name: "Paolo Franca"
-    
-    specialty_id: "cardiologia"
-    job_title: "Cardiologo"
-    
-    procedures:
-      - "visita-cardiologica"
-      - "ecg"
-      - "ecocardiogramma"
-    
-    bio_short: "Cardiologo interventista con esperienza in sindromi coronariche."
-    
-    publications:
-      - title: "Orodispersible Ticagrelor in Acute Coronary Syndromes"
-        url: "https://www.jacc.org/doi/10.1016/j.jacc.2021.05.015"
-        journal: "Journal of the American College of Cardiology"
-        year: 2021
-    
-    booking:
-      enabled: true
-      miodottore_id: "paolo-franca"
-    
-    visibility:
-      priority_order: 4
-    
-    status: "active"
-
-  # ==========================================================================
-  # ENDOCRINOLOGIA
-  # ==========================================================================
-  
-  - id: "francesco-tolu"
-    
-    title: "Dott."
-    first_name: "Francesco"
-    last_name: "Tolu"
-    name: "Francesco Tolu"
-    
-    specialty_id: "endocrinologia"
-    job_title: "Endocrinologo"
-    
-    procedures:
-      - "visita-endocrinologica"
-      - "ecografia-tiroidea"
-    pathways:
-      - "checkup-tiroide"
-      - "slim-care"
-    
-    bio_short: "Endocrinologo specializzato in patologie tiroidee e metaboliche."
-    
-    booking:
-      enabled: true
-      miodottore_id: "francesco-tolu"
-    
-    visibility:
-      priority_order: 1
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-  - id: "irene-aini"
-    
-    title: "Dott.ssa"
-    first_name: "Irene"
-    last_name: "Aini"
-    name: "Irene Aini"
-    
-    specialty_id: "endocrinologia"
-    job_title: "Endocrinologa"
-    
-    procedures:
-      - "visita-endocrinologica"
-      - "ecografia-tiroidea"
-    pathways:
-      - "checkup-tiroide"
-    
-    bio_short: "Endocrinologa con esperienza in patologie tiroidee."
-    
-    booking:
-      enabled: true
-      miodottore_id: "irene-aini"
-    
-    visibility:
-      priority_order: 2
-    
-    status: "active"
-
-  # ==========================================================================
-  # DERMATOLOGIA
-  # ==========================================================================
-  
-  - id: "giovanna-costa"
-    
-    title: "Dott.ssa"
-    first_name: "Giovanna"
-    last_name: "Costa"
-    name: "Giovanna Costa"
-    
-    specialty_id: "dermatologia"
-    job_title: "Dermatologa"
-    
-    procedures:
-      - "visita-dermatologica"
-      - "mappatura-nevi"
-      - "dermatoscopia-digitale"
-    
-    bio_short: "Dermatologa specializzata in dermatoscopia e mappatura nevi."
-    
-    booking:
-      enabled: true
-      miodottore_id: "giovanna-costa-2"
-    
-    visibility:
-      priority_order: 1
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-  - id: "alessandra-musinu"
-    
-    title: "Dott.ssa"
-    first_name: "Alessandra"
-    last_name: "Musinu"
-    name: "Alessandra Musinu"
-    
-    specialty_id: "dermatologia"
-    job_title: "Dermatologa"
-    
-    procedures:
-      - "visita-dermatologica"
-      - "mappatura-nevi"
-    
-    bio_short: "Dermatologa con esperienza in patologie cutanee."
-    
-    booking:
-      enabled: true
-      miodottore_id: "alessandra-musinu"
-    
-    visibility:
-      priority_order: 2
-    
-    status: "active"
-
-  # ==========================================================================
-  # CARDIOLOGIA - NUOVI
-  # ==========================================================================
-
-  - id: "giuliana-guagnozzi"
-    
-    title: "Dott.ssa"
-    first_name: "Giuliana"
-    last_name: "Guagnozzi"
-    name: "Giuliana Guagnozzi"
-    
-    specialty_id: "cardiologia"
-    job_title: "Cardiologa"
-    
-    procedures:
-      - "visita-cardiologica"
-      - "ecg"
-      - "ecocardiogramma"
-    
-    bio_short: "Cardiologa specializzata in diagnosi e cura delle patologie cardiovascolari."
-    
-    booking:
-      enabled: false
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 5
-    
-    status: "active"
-
-  # ==========================================================================
-  # CHIRURGIA VASCOLARE
-  # ==========================================================================
-
-  - id: "paola-dettori"
-    
-    title: "Dott.ssa"
-    first_name: "Paola"
-    last_name: "Dettori"
-    name: "Paola Dettori"
-    
-    specialty_id: "chirurgia-vascolare"
-    job_title: "Chirurgo Vascolare"
-    
-    procedures:
-      - "visita-chirurgia-vascolare"
-      - "eco-doppler-arti"
-      - "scleroterapia"
-    
-    bio_short: "Chirurgo Vascolare specializzata in patologie vascolari e venose."
-    
-    booking:
-      enabled: true
-      miodottore_id: "paola-dettori"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 1
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-
-  - id: "roberto-mancino"
-    
-    title: "Dott."
-    first_name: "Roberto"
-    last_name: "Mancino"
-    name: "Roberto Mancino"
-    
-    specialty_id: "chirurgia-vascolare"
-    job_title: "Chirurgo Vascolare"
-    
-    procedures:
-      - "visita-chirurgia-vascolare"
-      - "eco-doppler-arti"
-    
-    bio_short: "Chirurgo Vascolare specializzato in patologie vascolari."
-    
-    booking:
-      enabled: true
-      miodottore_id: "roberto-mancino"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 2
-    
-    status: "active"
-
-  # ==========================================================================
-  # DERMATOLOGIA - NUOVI
-  # ==========================================================================
-
-  - id: "speranza-anedda"
-    
-    title: "Dott.ssa"
-    first_name: "Speranza"
-    last_name: "Anedda"
-    name: "Speranza Anedda"
-    
-    specialty_id: "dermatologia"
-    job_title: "Dermatologa"
-    
-    procedures:
-      - "visita-dermatologica"
-      - "mappatura-nevi"
-    
-    bio_short: "Dermatologa specializzata in patologie cutanee."
-    
-    booking:
-      enabled: true
-      miodottore_id: "speranza-anedda"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 3
-    
-    status: "active"
-
-  # ==========================================================================
-  # DIETOLOGIA
-  # ==========================================================================
-
-  - id: "antonella-galatino"
-    
-    title: "Dott.ssa"
-    first_name: "Antonella"
-    last_name: "Galatino"
-    name: "Antonella Galatino"
-    
-    specialty_id: "dietologia"
-    job_title: "Nutrizionista"
-    role_badges:
-      - "Team Slim Care"
-    
-    procedures:
-      - "visita-nutrizionale"
-    
-    bio_short: "Nutrizionista clinica del team Slim Care."
-    
-    booking:
-      enabled: false
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 1
-    
-    status: "active"
-
-  # ==========================================================================
-  # EMATOLOGIA
-  # ==========================================================================
-
-  - id: "daniele-sabiu"
-    
-    title: "Dr."
-    first_name: "Daniele"
-    last_name: "Sabiu"
-    name: "Daniele Sabiu"
-    
-    specialty_id: "ematologia"
-    job_title: "Ematologo"
-    
-    procedures:
-      - "visita-ematologica"
-    
-    bio_short: "Ematologo con esperienza in patologie ematologiche."
-    
-    booking:
-      enabled: true
-      miodottore_id: "daniele-sabiu"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 1
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-
-  - id: "luigi-podda"
-    
-    title: "Dott."
-    first_name: "Luigi"
-    last_name: "Podda"
-    name: "Luigi Podda"
-    
-    specialty_id: "ematologia"
-    job_title: "Ematologo"
-    
-    procedures:
-      - "visita-ematologica"
-    
-    bio_short: "Ematologo specializzato in patologie del sangue."
-    
-    booking:
-      enabled: true
-      miodottore_id: "luigi-podda"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 2
-    
-    status: "active"
-
-  # ==========================================================================
-  # ENDOCRINOLOGIA - NUOVI
-  # ==========================================================================
-
-  - id: "carlo-burrai"
-    
-    title: "Dr."
-    first_name: "Carlo"
-    last_name: "Burrai"
-    name: "Carlo Burrai"
-    
-    specialty_id: "endocrinologia"
-    job_title: "Endocrinologo - Pediatra"
-    
-    procedures:
-      - "visita-endocrinologica"
-      - "ecografia-tiroidea"
-    
-    bio_short: "Endocrinologo e Pediatra specializzato in patologie tiroidee e metaboliche pediatriche."
-    
-    booking:
-      enabled: true
-      miodottore_id: "carlo-burrai"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 3
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-
-  - id: "fabrizia-caucci"
-    
-    title: "Dott.ssa"
-    first_name: "Fabrizia"
-    last_name: "Caucci"
-    name: "Fabrizia Caucci"
-    
-    specialty_id: "endocrinologia"
-    job_title: "Diabetologa - Endocrinologa"
-    
-    procedures:
-      - "visita-endocrinologica"
-      - "ecografia-tiroidea"
-    
-    bio_short: "Diabetologa ed Endocrinologa specializzata in diabete e patologie metaboliche."
-    
-    booking:
-      enabled: true
-      miodottore_id: "fabrizia-caucci"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 4
-    
-    status: "active"
-
-  # ==========================================================================
-  # FISIATRIA
-  # ==========================================================================
-
-  - id: "nicola-frau"
-    
-    title: "Dott."
-    first_name: "Nicola"
-    last_name: "Frau"
-    name: "Nicola Frau"
-    
-    specialty_id: "fisiatria"
-    job_title: "Fisiatra"
-    
-    procedures:
-      - "visita-fisiatrica"
-    
-    bio_short: "Fisiatra specializzato in riabilitazione e medicina fisica."
-    
-    booking:
-      enabled: true
-      miodottore_id: "nicola-frau"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 1
-    
-    status: "active"
-
-  # ==========================================================================
-  # GASTROENTEROLOGIA
-  # ==========================================================================
-
-  - id: "angelo-deplano"
-    
-    title: "Dott."
-    first_name: "Angelo"
-    last_name: "Deplano"
-    name: "Angelo Deplano"
-    
-    specialty_id: "gastroenterologia"
-    job_title: "Gastroenterologo - Epatologo"
-    
-    procedures:
-      - "visita-gastroenterologica"
-      - "ecografia-addominale"
-    
-    bio_short: "Gastroenterologo ed Epatologo specializzato in patologie dell'apparato digerente e del fegato."
-    
-    booking:
-      enabled: true
-      miodottore_id: "angelo-deplano"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 1
-    
-    status: "active"
-
-  # ==========================================================================
-  # GINECOLOGIA - NUOVI
-  # ==========================================================================
-
-  - id: "sonia-bove"
-    
-    title: "Dott.ssa"
-    first_name: "Sonia"
-    last_name: "Bove"
-    name: "Sonia Bove"
-    
-    specialty_id: "ginecologia"
-    job_title: "Ginecologa - Senologa"
-    
-    procedures:
-      - "visita-ginecologica"
-      - "ecografia-mammaria"
-    
-    bio_short: "Ginecologa e Senologa specializzata nella prevenzione e diagnosi delle patologie mammarie."
-    
-    booking:
-      enabled: true
-      miodottore_id: "sonia-bove"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 8
-    
-    status: "active"
-
-  # ==========================================================================
-  # LABORATORIO - NUOVI
-  # ==========================================================================
-
-  - id: "cinzia-guarino"
-    
-    title: "Dott.ssa"
-    first_name: "Cinzia"
-    last_name: "Guarino"
-    name: "Cinzia Guarino"
-    
-    specialty_id: "laboratorio"
-    job_title: "Biologa - Laboratorio Analisi"
-    
-    bio_short: "Biologa del Laboratorio Analisi Bio-Clinic."
-    
-    booking:
-      enabled: false
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 1
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-
-  - id: "gloria-reggiani"
-    
-    title: "Dott.ssa"
-    first_name: "Gloria"
-    last_name: "Reggiani"
-    name: "Gloria Reggiani"
-    
-    specialty_id: "laboratorio"
-    job_title: "Biologa - Laboratorio Analisi"
-    
-    bio_short: "Biologa del Laboratorio Analisi Bio-Clinic."
-    
-    booking:
-      enabled: false
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 2
-    
-    status: "active"
-
-  # ==========================================================================
-  # MEDICINA INTERNA
-  # ==========================================================================
-
-  - id: "alessandro-pandolfi"
-    
-    title: "Dott."
-    first_name: "Alessandro"
-    last_name: "Pandolfi"
-    name: "Alessandro Pandolfi"
-    
-    specialty_id: "medicina-interna"
-    job_title: "Medico Internista"
-    role_badges:
-      - "Team Slim Care"
-    
-    procedures:
-      - "visita-internistica"
-    
-    bio_short: "Medico internista del team Slim Care."
-    
-    booking:
-      enabled: false
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 1
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-
-  - id: "antonio-solinas"
-    
-    title: "Prof."
-    first_name: "Antonio"
-    last_name: "Solinas"
-    name: "Antonio Solinas"
-    
-    specialty_id: "medicina-interna"
-    job_title: "Internista - Epatologo"
-    
-    procedures:
-      - "visita-internistica"
-      - "ecografia-addominale"
-    
-    bio_short: "Internista ed Epatologo specializzato in medicina interna e patologie epatiche."
-    
-    booking:
-      enabled: true
-      miodottore_id: "antonio-solinas-3"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 2
-    
-    status: "active"
-
-  # ==========================================================================
-  # MEDICINA DEL LAVORO
-  # ==========================================================================
-
-  - id: "gianfranco-manchia"
-    
-    title: "Dott."
-    first_name: "Gianfranco"
-    last_name: "Manchia"
-    name: "Gianfranco Manchia"
-    
-    specialty_id: "medicina-lavoro"
-    job_title: "Medico Competente"
-    
-    procedures:
-      - "visita-medicina-lavoro"
-    
-    bio_short: "Medico Competente specializzato in medicina del lavoro e sorveglianza sanitaria."
-    
-    booking:
-      enabled: true
-      miodottore_id: "gianfranco-manchia"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 1
-    
-    status: "active"
-
-  # ==========================================================================
-  # MEDICINA SPORTIVA
-  # ==========================================================================
-
-  - id: "giorgio-chiarelli"
-    
-    title: "Dr."
-    first_name: "Giorgio"
-    last_name: "Chiarelli"
-    name: "Giorgio Chiarelli"
-    
-    specialty_id: "medicina-sportiva"
-    job_title: "Medico dello Sport"
-    
-    procedures:
-      - "visita-medicina-sport"
-    
-    bio_short: "Medico dello Sport specializzato in certificazioni sportive e valutazioni atletiche."
-    
-    booking:
-      enabled: true
-      miodottore_id: "giorgio-chiarelli-2"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 1
-    
-    status: "active"
-
-  # ==========================================================================
-  # NEFROLOGIA
-  # ==========================================================================
-
-  - id: "sergio-paolo-sotgia"
-    
-    title: "Dott."
-    first_name: "Sergio Paolo"
-    last_name: "Sotgia"
-    name: "Sergio Paolo Sotgia"
-    
-    specialty_id: "nefrologia"
-    job_title: "Nefrologo"
-    
-    procedures:
-      - "visita-nefrologica"
-    
-    bio_short: "Nefrologo con esperienza in patologie renali."
-    
-    booking:
-      enabled: true
-      miodottore_id: "sergio-paolo-sotgia"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 1
-    
-    status: "active"
-
-  # ==========================================================================
-  # NEUROLOGIA - NUOVI
-  # ==========================================================================
-
-  - id: "guido-marongiu"
-    
-    title: "Dott."
-    first_name: "Guido"
-    last_name: "Marongiu"
-    name: "Guido Marongiu"
-    
-    specialty_id: "neurologia"
-    job_title: "Neurologo"
-    
-    procedures:
-      - "visita-neurologica"
-      - "elettromiografia"
-    
-    bio_short: "Neurologo specializzato in patologie neurologiche e cefalee."
-    
-    booking:
-      enabled: true
-      miodottore_id: "guido-marongiu"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 1
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-
-  - id: "sebastiano-traccis"
-    
-    title: "Dott."
-    first_name: "Sebastiano"
-    last_name: "Traccis"
-    name: "Sebastiano Traccis"
-    
-    specialty_id: "neurologia"
-    job_title: "Neurologo"
-    
-    procedures:
-      - "visita-neurologica"
-      - "elettromiografia"
-    
-    bio_short: "Neurologo con esperienza in patologie neurologiche."
-    
-    booking:
-      enabled: true
-      miodottore_id: "sebastiano-traccis"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 2
-    
-    status: "active"
-
-  # ==========================================================================
-  # OCULISTICA - NUOVI
-  # ==========================================================================
-
-  - id: "francesco-santoru"
-    
-    title: "Dott."
-    first_name: "Francesco"
-    last_name: "Santoru"
-    name: "Francesco Santoru"
-    
-    specialty_id: "oculistica"
-    job_title: "Oculista"
-    
-    procedures:
-      - "visita-oculistica"
-      - "campo-visivo"
-    
-    bio_short: "Oculista specializzato in patologie oculari."
-    
-    booking:
-      enabled: true
-      miodottore_id: "francesco-santoru"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 1
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-
-  - id: "maria-pina-pintus"
-    
-    title: "Dott.ssa"
-    first_name: "Maria Pina"
-    last_name: "Pintus"
-    name: "Maria Pina Pintus"
-    
-    specialty_id: "oculistica"
-    job_title: "Oculista"
-    
-    procedures:
-      - "visita-oculistica"
-      - "campo-visivo"
-    
-    bio_short: "Oculista con esperienza in patologie oculari."
-    
-    booking:
-      enabled: true
-      miodottore_id: "maria-pina-pintus"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 2
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-
-  - id: "matteo-zucca"
-    
-    title: "Dott."
-    first_name: "Matteo"
-    last_name: "Zucca"
-    name: "Matteo Zucca"
-    
-    specialty_id: "oculistica"
-    job_title: "Oculista"
-    
-    procedures:
-      - "visita-oculistica"
-      - "campo-visivo"
-    
-    bio_short: "Oculista specializzato."
-    
-    booking:
-      enabled: true
-      miodottore_id: "matteo-zucca"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 3
-    
-    status: "active"
-
-  # ==========================================================================
-  # ORTOPEDIA - NUOVI
-  # ==========================================================================
-
-  - id: "andrea-donato"
-    
-    title: "Dott."
-    first_name: "Andrea"
-    last_name: "Donato"
-    name: "Andrea Donato"
-    
-    specialty_id: "ortopedia"
-    job_title: "Ortopedico"
-    
-    procedures:
-      - "visita-ortopedica"
-      - "infiltrazioni-articolari"
-    
-    bio_short: "Ortopedico specializzato in patologie muscolo-scheletriche."
-    
-    booking:
-      enabled: true
-      miodottore_id: "andrea-donato-2"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 1
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-
-  - id: "pietro-lisai"
-    
-    title: "Dott."
-    first_name: "Pietro"
-    last_name: "Lisai"
-    name: "Pietro Lisai"
-    
-    specialty_id: "ortopedia"
-    job_title: "Ortopedico"
-    
-    procedures:
-      - "visita-ortopedica"
-      - "infiltrazioni-articolari"
-    
-    bio_short: "Ortopedico specializzato in patologie muscolo-scheletriche e traumatologia."
-    
-    booking:
-      enabled: true
-      miodottore_id: "pietro-lisai"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 2
-    
-    status: "active"
-
-  # ==========================================================================
-  # OTORINOLARINGOIATRIA - NUOVI
-  # ==========================================================================
-
-  - id: "francesco-bussu"
-    
-    title: "Prof."
-    first_name: "Francesco"
-    last_name: "Bussu"
-    name: "Francesco Bussu"
-    
-    specialty_id: "otorinolaringoiatria"
-    job_title: "Otorinolaringoiatra"
-    
-    procedures:
-      - "visita-orl"
-      - "audiometria"
-    
-    bio_short: "Otorinolaringoiatra specializzato in patologie ORL e chirurgia."
-    
-    booking:
-      enabled: true
-      miodottore_id: "francesco-bussu"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 1
-    
-    status: "active"
-
-  # --------------------------------------------------------------------------
-
-  - id: "maria-laura-de-luca"
-    
-    title: "Dott.ssa"
-    first_name: "Maria Laura"
-    last_name: "De Luca"
-    name: "Maria Laura De Luca"
-    
-    specialty_id: "otorinolaringoiatria"
-    job_title: "Otorinolaringoiatra"
-    
-    procedures:
-      - "visita-orl"
-      - "audiometria"
-    
-    bio_short: "Otorinolaringoiatra specializzata in patologie ORL."
-    
-    booking:
-      enabled: true
-      miodottore_id: "maria-laura-de-luca"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 2
-    
-    status: "active"
-
-  # ==========================================================================
-  # PEDIATRIA
-  # ==========================================================================
-
-  - id: "mariolina-azara"
-    
-    title: "Dott.ssa"
-    first_name: "Mariolina"
-    last_name: "Azara"
-    name: "Mariolina Azara"
-    
-    specialty_id: "pediatria"
-    job_title: "Pediatra"
-    
-    procedures:
-      - "visita-pediatrica"
-    
-    bio_short: "Pediatra specializzata nella cura dei bambini e degli adolescenti."
-    
-    booking:
-      enabled: true
-      miodottore_id: "mariolina-azara"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 1
-    
-    status: "active"
-
-  # ==========================================================================
-  # PNEUMOLOGIA - NUOVI
-  # ==========================================================================
-
-  - id: "pietro-pirina"
-    
-    title: "Prof."
-    first_name: "Pietro"
-    last_name: "Pirina"
-    name: "Pietro Pirina"
-    
-    specialty_id: "pneumologia"
-    job_title: "Pneumologo"
-    
-    procedures:
-      - "visita-pneumologica"
-      - "spirometria"
-    
-    bio_short: "Pneumologo specializzato in patologie respiratorie."
-    
-    booking:
-      enabled: true
-      miodottore_id: "pietro-pirina"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 1
-    
-    status: "active"
-
-  # ==========================================================================
-  # PSICOLOGIA
-  # ==========================================================================
-
-  - id: "alessia-piras"
-    
-    title: "Dott.ssa"
-    first_name: "Alessia"
-    last_name: "Piras"
-    name: "Alessia Piras"
-    
-    specialty_id: "psicologia"
-    job_title: "Psicoterapeuta"
-    
-    procedures:
-      - "colloquio-psicologico"
-    
-    bio_short: "Psicoterapeuta specializzata in psicoterapia individuale e di coppia."
-    
-    booking:
-      enabled: true
-      miodottore_id: "alessia-piras"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 1
-    
-    status: "active"
-
-  # ==========================================================================
-  # RADIOLOGIA
-  # ==========================================================================
-
-  - id: "antonio-michele-cavazzuti"
-    
-    title: "Dott."
-    first_name: "Antonio Michele"
-    last_name: "Cavazzuti"
-    name: "Antonio Michele Cavazzuti"
-    
-    specialty_id: "radiologia"
-    job_title: "Ecografista"
-    
-    procedures:
-      - "ecografia-addominale"
-      - "ecografia-tiroidea"
-    
-    bio_short: "Ecografista specializzato in diagnostica per immagini ecografiche."
-    
-    booking:
-      enabled: true
-      miodottore_id: "antonio-michele-cavazzuti"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 1
-    
-    status: "active"
-
-  # ==========================================================================
-  # REUMATOLOGIA
-  # ==========================================================================
-
-  - id: "niccolo-melis"
-    
-    title: "Dott."
-    first_name: "Niccolò"
-    last_name: "Melis"
-    name: "Niccolò Melis"
-    
-    specialty_id: "reumatologia"
-    job_title: "Reumatologo"
-    
-    procedures:
-      - "visita-reumatologica"
-    
-    bio_short: "Reumatologo specializzato in malattie reumatiche e autoimmuni."
-    
-    booking:
-      enabled: true
-      miodottore_id: "niccolo-melis"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 1
-    
-    status: "active"
-
-  # ==========================================================================
-  # UROLOGIA - NUOVI
-  # ==========================================================================
-
-  - id: "carlos-manuel-cambara-zuniga"
-    
-    title: "Dott."
-    first_name: "Carlos Manuel"
-    last_name: "Cambara Zuniga"
-    name: "Carlos Manuel Cambara Zuniga"
-    
-    specialty_id: "urologia"
-    job_title: "Urologo - Andrologo"
-    
-    procedures:
-      - "visita-urologica"
-      - "ecografia-prostatica"
-    
-    bio_short: "Urologo e Andrologo specializzato in patologie urologiche e andrologiche."
-    
-    booking:
-      enabled: true
-      miodottore_id: "carlos-manuel-cambara-zuniga"
-    
-    visibility:
-      show_in_equipe: true
-      show_in_specialty_page: true
-      priority_order: 1
-    
-    status: "active"
-
-# ============================================================================
-# TOTALE: 51 medici (17 esistenti + 34 nuovi)
-# ============================================================================
+- id: salvatore-dessole
+  title: Prof.
+  first_name: Salvatore
+  last_name: Dessole
+  name: Salvatore Dessole
+  specialty_id: ginecologia
+  job_title: Direttore Sanitario - Ginecologo Senior
+  role_badges:
+  - Direttore Sanitario
+  - Professore Emerito
+  is_director: true
+  procedures:
+  - visita-ginecologica
+  - ecografia-ostetrica-3d
+  - consulto-pma
+  - ecografia-morfologica
+  pathways:
+  - pma-fertilita
+  - slim-care-donna
+  bio_short: Professore Emerito, fondatore di Bio-Clinic, oltre 40 anni di esperienza
+    in ginecologia e ostetricia. Punto di riferimento per la medicina della riproduzione
+    in Sardegna.
+  bio_file: physicians/salvatore-dessole.md
+  image: null
+  booking:
+    enabled: true
+    miodottore_id: salvatore-dessole
+    miodottore_specialty: ginecologo
+    miodottore_url: https://www.miodottore.it/salvatore-dessole/ginecologo/sassari
+    direct_phone: true
+    online_booking: true
+  availability:
+  - Lun
+  - Mar
+  - Mer
+  - Gio
+  - Ven
+  symptoms:
+  - dolore pelvico
+  - perdite vaginali
+  - ciclo irregolare
+  - menopausa
+  - vampate
+  - infertilità
+  - difficoltà a concepire
+  - gravidanza a rischio
+  - endometriosi
+  - cisti ovariche
+  - fibromi uterini
+  - Pap test anomalo
+  publications:
+  - name: Sonovaginography is a new technique for assessing rectovaginal endometriosis
+    url: https://pubmed.ncbi.nlm.nih.gov/12749448/
+    publisher: Fertility and Sterility
+  - name: 'Postpartum ovarian vein thrombosis: an unpredictable event'
+    url: https://pubmed.ncbi.nlm.nih.gov/12592429/
+    publisher: Archives of Gynecology and Obstetrics
+  - name: Granular cell tumor of the breast
+    url: https://pubmed.ncbi.nlm.nih.gov/16297125/
+    publisher: Journal of Clinical Ultrasound
+  - name: Perimortem cesarean delivery 30 minutes after a laboring patient's cardiopulmonary
+      arrest
+    url: https://pubmed.ncbi.nlm.nih.gov/18166293/
+    publisher: International Journal of Gynaecology and Obstetrics
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    show_booking_widget: true
+    featured_on_homepage: true
+    priority_order: 1
+  status: active
+- id: francesco-dessole
+  title: Dott.
+  first_name: Francesco
+  last_name: Dessole
+  name: Francesco Dessole
+  specialty_id: ginecologia
+  job_title: Ginecologo
+  role_badges:
+  - Medico Rif. Slim Care Donna
+  procedures:
+  - visita-ginecologica
+  - ecografia-ginecologica
+  - ecografia-ostetrica-3d
+  - monitoraggio-follicolare
+  - colposcopia
+  pathways:
+  - pma-fertilita
+  - slim-care-donna
+  bio_short: Ginecologo con esperienza in ecografia ostetrica e ginecologica, PMA
+    e chirurgia mini-invasiva.
+  bio_file: physicians/francesco-dessole.md
+  booking:
+    enabled: true
+    miodottore_id: francesco-dessole
+    miodottore_specialty: ginecologo
+    miodottore_url: https://www.miodottore.it/francesco-dessole/ginecologo/sassari
+    direct_phone: true
+    online_booking: true
+  availability:
+  - Lun
+  - Mar
+  - Mer
+  - Gio
+  - Ven
+  - Sab
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    show_booking_widget: true
+    featured_on_homepage: false
+    priority_order: 2
+  status: active
+- id: margherita-dessole
+  title: Dott.ssa
+  first_name: Margherita
+  last_name: Dessole
+  name: Margherita Dessole
+  specialty_id: ginecologia
+  job_title: Ginecologa
+  procedures:
+  - visita-ginecologica
+  - ecografia-ginecologica
+  - pap-test
+  bio_short: Ginecologa con esperienza in ostetricia e ginecologia generale.
+  booking:
+    enabled: true
+    miodottore_id: margherita-dessole
+    miodottore_url: https://www.miodottore.it/margherita-dessole/ginecologo/sassari
+    miodottore_specialty: ginecologo
+  visibility:
+    priority_order: 5
+  status: active
+- id: maddalena-pola
+  title: Dott.ssa
+  first_name: Maddalena
+  last_name: Pola
+  name: Maddalena Pola
+  specialty_id: ginecologia
+  job_title: Ginecologa
+  procedures:
+  - visita-ginecologica
+  - ecografia-ginecologica
+  bio_short: Ginecologa specializzata in diagnostica ginecologica.
+  booking:
+    enabled: true
+    miodottore_id: maddalena-pola
+    miodottore_specialty: ginecologo
+  visibility:
+    priority_order: 6
+  status: active
+- id: marco-petrillo
+  title: Prof.
+  first_name: Marco
+  last_name: Petrillo
+  name: Marco Petrillo
+  specialty_id: ginecologia
+  job_title: Ginecologo
+  role_badges:
+  - Professore
+  procedures:
+  - visita-ginecologica
+  - isteroscopia
+  - chirurgia-ginecologica
+  bio_short: Professore universitario, esperto in chirurgia ginecologica mini-invasiva.
+  publications:
+  - title: Minimally invasive surgery in gynecologic oncology
+    url: https://pubmed.ncbi.nlm.nih.gov/example2
+    journal: Gynecologic Oncology
+    year: 2021
+  booking:
+    enabled: true
+    miodottore_id: marco-petrillo
+    miodottore_specialty: ginecologo
+  visibility:
+    priority_order: 3
+  status: active
+- id: antonella-pruneddu
+  title: Dott.ssa
+  first_name: Antonella
+  last_name: Pruneddu
+  name: Antonella Pruneddu
+  specialty_id: ginecologia
+  job_title: Ginecologa
+  procedures:
+  - visita-ginecologica
+  - ecografia-ginecologica
+  bio_short: Ginecologa con esperienza in ginecologia generale e ostetricia.
+  booking:
+    enabled: true
+    miodottore_id: antonella-pruneddu
+    miodottore_specialty: ginecologo
+  visibility:
+    priority_order: 7
+  status: active
+- id: paolo-dessole
+  title: Dott.
+  first_name: Paolo
+  last_name: Dessole
+  name: Paolo Dessole
+  specialty_id: ginecologia
+  job_title: Ginecologo
+  procedures:
+  - visita-ginecologica
+  - ecografia-ostetrica-3d
+  bio_short: Ginecologo specializzato in ecografia ostetrica.
+  booking:
+    enabled: true
+  visibility:
+    priority_order: 4
+  status: active
+- id: angelica-fois
+  title: Dott.ssa
+  first_name: Angelica
+  last_name: Fois
+  name: Angelica Fois
+  specialty_id: ostetricia
+  job_title: Ostetrica
+  procedures:
+  - assistenza-ostetrica
+  - corso-preparto
+  bio_short: Ostetrica dedicata all'accompagnamento della gravidanza e al supporto
+    nel post-partum.
+  booking:
+    enabled: true
+    miodottore_id: angelica-fois
+    miodottore_url: https://www.miodottore.it/angelica-fois/ostetrica/sassari
+    miodottore_specialty: medico
+  visibility:
+    priority_order: 1
+  status: active
+- id: camilla-ruzzoli
+  title: Dott.ssa
+  first_name: Camilla
+  last_name: Ruzzoli
+  name: Camilla Ruzzoli
+  specialty_id: ostetricia
+  job_title: Ostetrica
+  procedures:
+  - assistenza-ostetrica
+  - corso-preparto
+  - riabilitazione-pavimento-pelvico
+  bio_short: Ostetrica specializzata in assistenza alla gravidanza e riabilitazione
+    del pavimento pelvico.
+  booking:
+    enabled: false
+  visibility:
+    priority_order: 2
+  status: active
+- id: tonino-bullitta
+  title: Dr.
+  first_name: Tonino
+  last_name: Bullitta
+  name: Tonino Bullitta
+  specialty_id: cardiologia
+  job_title: Cardiologo
+  procedures:
+  - visita-cardiologica
+  - ecg
+  - ecocardiogramma
+  - holter-ecg
+  - holter-pressorio
+  pathways:
+  - checkup-cardiovascolare
+  bio_short: Cardiologo con esperienza in diagnostica cardiologica non invasiva.
+  booking:
+    enabled: true
+    miodottore_id: tonino-bullitta
+    miodottore_specialty: cardiologo
+  visibility:
+    priority_order: 1
+  status: active
+- id: sara-uras
+  title: Dott.ssa
+  first_name: Sara
+  last_name: Uras
+  name: Sara Uras
+  specialty_id: cardiologia
+  job_title: Cardiologa
+  procedures:
+  - visita-cardiologica
+  - ecg
+  - ecocardiogramma
+  bio_short: Cardiologa specializzata in ecocardiografia.
+  booking:
+    enabled: true
+    miodottore_id: sara-uras
+    miodottore_specialty: cardiologo
+  visibility:
+    priority_order: 2
+  status: active
+- id: paolo-pischedda
+  title: Dott.
+  first_name: Paolo
+  last_name: Pischedda
+  name: Paolo Pischedda
+  specialty_id: cardiologia
+  job_title: Cardiologo
+  procedures:
+  - visita-cardiologica
+  - ecg
+  - ecocardiogramma
+  bio_short: Cardiologo con esperienza in diagnostica cardiovascolare.
+  booking:
+    enabled: true
+    miodottore_id: paolo-pischedda
+    miodottore_specialty: cardiologo
+  visibility:
+    priority_order: 3
+  status: active
+- id: paolo-franca
+  title: Dott.
+  first_name: Paolo
+  last_name: Franca
+  name: Paolo Franca
+  specialty_id: cardiologia
+  job_title: Cardiologo
+  procedures:
+  - visita-cardiologica
+  - ecg
+  - ecocardiogramma
+  bio_short: Cardiologo interventista con esperienza in sindromi coronariche.
+  publications:
+  - title: Orodispersible Ticagrelor in Acute Coronary Syndromes
+    url: https://www.jacc.org/doi/10.1016/j.jacc.2021.05.015
+    journal: Journal of the American College of Cardiology
+    year: 2021
+  booking:
+    enabled: true
+    miodottore_id: paolo-franca
+    miodottore_specialty: cardiologo
+  visibility:
+    priority_order: 4
+  status: active
+- id: francesco-tolu
+  title: Dott.
+  first_name: Francesco
+  last_name: Tolu
+  name: Francesco Tolu
+  specialty_id: endocrinologia
+  job_title: Endocrinologo
+  procedures:
+  - visita-endocrinologica
+  - ecografia-tiroidea
+  pathways:
+  - checkup-tiroide
+  - slim-care
+  bio_short: Endocrinologo specializzato in patologie tiroidee e metaboliche.
+  booking:
+    enabled: true
+    miodottore_id: francesco-tolu
+    miodottore_specialty: endocrinologo
+  visibility:
+    priority_order: 1
+  status: active
+- id: irene-aini
+  title: Dott.ssa
+  first_name: Irene
+  last_name: Aini
+  name: Irene Aini
+  specialty_id: endocrinologia
+  job_title: Endocrinologa
+  procedures:
+  - visita-endocrinologica
+  - ecografia-tiroidea
+  pathways:
+  - checkup-tiroide
+  bio_short: Endocrinologa con esperienza in patologie tiroidee.
+  booking:
+    enabled: true
+    miodottore_id: irene-aini
+    miodottore_specialty: endocrinologo
+  visibility:
+    priority_order: 2
+  status: active
+- id: giovanna-costa
+  title: Dott.ssa
+  first_name: Giovanna
+  last_name: Costa
+  name: Giovanna Costa
+  specialty_id: dermatologia
+  job_title: Dermatologa
+  procedures:
+  - visita-dermatologica
+  - mappatura-nevi
+  - dermatoscopia-digitale
+  bio_short: Dermatologa specializzata in dermatoscopia e mappatura nevi.
+  booking:
+    enabled: true
+    miodottore_id: giovanna-costa-2
+    miodottore_specialty: dermatologo
+  visibility:
+    priority_order: 1
+  status: active
+- id: alessandra-musinu
+  title: Dott.ssa
+  first_name: Alessandra
+  last_name: Musinu
+  name: Alessandra Musinu
+  specialty_id: dermatologia
+  job_title: Dermatologa
+  procedures:
+  - visita-dermatologica
+  - mappatura-nevi
+  bio_short: Dermatologa con esperienza in patologie cutanee.
+  booking:
+    enabled: true
+    miodottore_id: alessandra-musinu
+    miodottore_specialty: dermatologo
+  visibility:
+    priority_order: 2
+  status: active
+- id: giuliana-guagnozzi
+  title: Dott.ssa
+  first_name: Giuliana
+  last_name: Guagnozzi
+  name: Giuliana Guagnozzi
+  specialty_id: cardiologia
+  job_title: Cardiologa
+  procedures:
+  - visita-cardiologica
+  - ecg
+  - ecocardiogramma
+  bio_short: Cardiologa specializzata in diagnosi e cura delle patologie cardiovascolari.
+  booking:
+    enabled: false
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 5
+  status: active
+- id: paola-dettori
+  title: Dott.ssa
+  first_name: Paola
+  last_name: Dettori
+  name: Paola Dettori
+  specialty_id: chirurgia-vascolare
+  job_title: Chirurgo Vascolare
+  procedures:
+  - visita-chirurgia-vascolare
+  - eco-doppler-arti
+  - scleroterapia
+  bio_short: Chirurgo Vascolare specializzata in patologie vascolari e venose.
+  booking:
+    enabled: true
+    miodottore_id: paola-dettori
+    miodottore_specialty: chirurgo-vascolare
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 1
+  status: active
+- id: roberto-mancino
+  title: Dott.
+  first_name: Roberto
+  last_name: Mancino
+  name: Roberto Mancino
+  specialty_id: chirurgia-vascolare
+  job_title: Chirurgo Vascolare
+  procedures:
+  - visita-chirurgia-vascolare
+  - eco-doppler-arti
+  bio_short: Chirurgo Vascolare specializzato in patologie vascolari.
+  booking:
+    enabled: true
+    miodottore_id: roberto-mancino
+    miodottore_specialty: chirurgo-vascolare
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 2
+  status: active
+- id: speranza-anedda
+  title: Dott.ssa
+  first_name: Speranza
+  last_name: Anedda
+  name: Speranza Anedda
+  specialty_id: dermatologia
+  job_title: Dermatologa
+  procedures:
+  - visita-dermatologica
+  - mappatura-nevi
+  bio_short: Dermatologa specializzata in patologie cutanee.
+  booking:
+    enabled: true
+    miodottore_id: speranza-anedda
+    miodottore_specialty: dermatologo
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 3
+  status: active
+- id: antonella-galatino
+  title: Dott.ssa
+  first_name: Antonella
+  last_name: Galatino
+  name: Antonella Galatino
+  specialty_id: dietologia
+  job_title: Nutrizionista
+  role_badges:
+  - Team Slim Care
+  procedures:
+  - visita-nutrizionale
+  bio_short: Nutrizionista clinica del team Slim Care.
+  booking:
+    enabled: false
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 1
+  status: active
+- id: daniele-sabiu
+  title: Dr.
+  first_name: Daniele
+  last_name: Sabiu
+  name: Daniele Sabiu
+  specialty_id: ematologia
+  job_title: Ematologo
+  procedures:
+  - visita-ematologica
+  bio_short: Ematologo con esperienza in patologie ematologiche.
+  booking:
+    enabled: true
+    miodottore_id: daniele-sabiu
+    miodottore_specialty: ematologo
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 1
+  status: active
+- id: luigi-podda
+  title: Dott.
+  first_name: Luigi
+  last_name: Podda
+  name: Luigi Podda
+  specialty_id: ematologia
+  job_title: Ematologo
+  procedures:
+  - visita-ematologica
+  bio_short: Ematologo specializzato in patologie del sangue.
+  booking:
+    enabled: true
+    miodottore_id: luigi-podda
+    miodottore_specialty: ematologo
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 2
+  status: active
+- id: carlo-burrai
+  title: Dr.
+  first_name: Carlo
+  last_name: Burrai
+  name: Carlo Burrai
+  specialty_id: endocrinologia
+  job_title: Endocrinologo - Pediatra
+  procedures:
+  - visita-endocrinologica
+  - ecografia-tiroidea
+  bio_short: Endocrinologo e Pediatra specializzato in patologie tiroidee e metaboliche
+    pediatriche.
+  booking:
+    enabled: true
+    miodottore_id: carlo-burrai
+    miodottore_specialty: endocrinologo
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 3
+  status: active
+- id: fabrizia-caucci
+  title: Dott.ssa
+  first_name: Fabrizia
+  last_name: Caucci
+  name: Fabrizia Caucci
+  specialty_id: endocrinologia
+  job_title: Diabetologa - Endocrinologa
+  procedures:
+  - visita-endocrinologica
+  - ecografia-tiroidea
+  bio_short: Diabetologa ed Endocrinologa specializzata in diabete e patologie metaboliche.
+  booking:
+    enabled: true
+    miodottore_id: fabrizia-caucci
+    miodottore_specialty: endocrinologo
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 4
+  status: active
+- id: nicola-frau
+  title: Dott.
+  first_name: Nicola
+  last_name: Frau
+  name: Nicola Frau
+  specialty_id: fisiatria
+  job_title: Fisiatra
+  procedures:
+  - visita-fisiatrica
+  bio_short: Fisiatra specializzato in riabilitazione e medicina fisica.
+  booking:
+    enabled: true
+    miodottore_id: nicola-frau
+    miodottore_specialty: fisiatra
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 1
+  status: active
+- id: angelo-deplano
+  title: Dott.
+  first_name: Angelo
+  last_name: Deplano
+  name: Angelo Deplano
+  specialty_id: gastroenterologia
+  job_title: Gastroenterologo - Epatologo
+  procedures:
+  - visita-gastroenterologica
+  - ecografia-addominale
+  bio_short: Gastroenterologo ed Epatologo specializzato in patologie dell'apparato
+    digerente e del fegato.
+  booking:
+    enabled: true
+    miodottore_id: angelo-deplano
+    miodottore_specialty: gastroenterologo
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 1
+  status: active
+- id: sonia-bove
+  title: Dott.ssa
+  first_name: Sonia
+  last_name: Bove
+  name: Sonia Bove
+  specialty_id: ginecologia
+  job_title: Ginecologa - Senologa
+  procedures:
+  - visita-ginecologica
+  - ecografia-mammaria
+  bio_short: Ginecologa e Senologa specializzata nella prevenzione e diagnosi delle
+    patologie mammarie.
+  booking:
+    enabled: true
+    miodottore_id: sonia-bove
+    miodottore_specialty: ginecologo
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 8
+  status: active
+- id: cinzia-guarino
+  title: Dott.ssa
+  first_name: Cinzia
+  last_name: Guarino
+  name: Cinzia Guarino
+  specialty_id: laboratorio
+  job_title: Biologa - Laboratorio Analisi
+  bio_short: Biologa del Laboratorio Analisi Bio-Clinic.
+  booking:
+    enabled: false
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 1
+  status: active
+- id: gloria-reggiani
+  title: Dott.ssa
+  first_name: Gloria
+  last_name: Reggiani
+  name: Gloria Reggiani
+  specialty_id: laboratorio
+  job_title: Biologa - Laboratorio Analisi
+  bio_short: Biologa del Laboratorio Analisi Bio-Clinic.
+  booking:
+    enabled: false
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 2
+  status: active
+- id: alessandro-pandolfi
+  title: Dott.
+  first_name: Alessandro
+  last_name: Pandolfi
+  name: Alessandro Pandolfi
+  specialty_id: medicina-interna
+  job_title: Medico Internista
+  role_badges:
+  - Team Slim Care
+  procedures:
+  - visita-internistica
+  bio_short: Medico internista del team Slim Care.
+  booking:
+    enabled: false
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 1
+  status: active
+- id: antonio-solinas
+  title: Prof.
+  first_name: Antonio
+  last_name: Solinas
+  name: Antonio Solinas
+  specialty_id: medicina-interna
+  job_title: Internista - Epatologo
+  procedures:
+  - visita-internistica
+  - ecografia-addominale
+  bio_short: Internista ed Epatologo specializzato in medicina interna e patologie
+    epatiche.
+  booking:
+    enabled: true
+    miodottore_id: antonio-solinas-3
+    miodottore_specialty: medico-internista
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 2
+  status: active
+- id: gianfranco-manchia
+  title: Dott.
+  first_name: Gianfranco
+  last_name: Manchia
+  name: Gianfranco Manchia
+  specialty_id: medicina-lavoro
+  job_title: Medico Competente
+  procedures:
+  - visita-medicina-lavoro
+  bio_short: Medico Competente specializzato in medicina del lavoro e sorveglianza
+    sanitaria.
+  booking:
+    enabled: true
+    miodottore_id: gianfranco-manchia
+    miodottore_specialty: medico
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 1
+  status: active
+- id: giorgio-chiarelli
+  title: Dr.
+  first_name: Giorgio
+  last_name: Chiarelli
+  name: Giorgio Chiarelli
+  specialty_id: medicina-sportiva
+  job_title: Medico dello Sport
+  procedures:
+  - visita-medicina-sport
+  bio_short: Medico dello Sport specializzato in certificazioni sportive e valutazioni
+    atletiche.
+  booking:
+    enabled: true
+    miodottore_id: giorgio-chiarelli-2
+    miodottore_specialty: medico-sportivo
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 1
+  status: active
+- id: sergio-paolo-sotgia
+  title: Dott.
+  first_name: Sergio Paolo
+  last_name: Sotgia
+  name: Sergio Paolo Sotgia
+  specialty_id: nefrologia
+  job_title: Nefrologo
+  procedures:
+  - visita-nefrologica
+  bio_short: Nefrologo con esperienza in patologie renali.
+  booking:
+    enabled: true
+    miodottore_id: sergio-paolo-sotgia
+    miodottore_specialty: nefrologo
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 1
+  status: active
+- id: guido-marongiu
+  title: Dott.
+  first_name: Guido
+  last_name: Marongiu
+  name: Guido Marongiu
+  specialty_id: neurologia
+  job_title: Neurologo
+  procedures:
+  - visita-neurologica
+  - elettromiografia
+  bio_short: Neurologo specializzato in patologie neurologiche e cefalee.
+  booking:
+    enabled: true
+    miodottore_id: guido-marongiu
+    miodottore_specialty: neurologo
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 1
+  status: active
+- id: sebastiano-traccis
+  title: Dott.
+  first_name: Sebastiano
+  last_name: Traccis
+  name: Sebastiano Traccis
+  specialty_id: neurologia
+  job_title: Neurologo
+  procedures:
+  - visita-neurologica
+  - elettromiografia
+  bio_short: Neurologo con esperienza in patologie neurologiche.
+  booking:
+    enabled: true
+    miodottore_id: sebastiano-traccis
+    miodottore_specialty: neurologo
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 2
+  status: active
+- id: francesco-santoru
+  title: Dott.
+  first_name: Francesco
+  last_name: Santoru
+  name: Francesco Santoru
+  specialty_id: oculistica
+  job_title: Oculista
+  procedures:
+  - visita-oculistica
+  - campo-visivo
+  bio_short: Oculista specializzato in patologie oculari.
+  booking:
+    enabled: true
+    miodottore_id: francesco-santoru
+    miodottore_specialty: oculista
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 1
+  status: active
+- id: maria-pina-pintus
+  title: Dott.ssa
+  first_name: Maria Pina
+  last_name: Pintus
+  name: Maria Pina Pintus
+  specialty_id: oculistica
+  job_title: Oculista
+  procedures:
+  - visita-oculistica
+  - campo-visivo
+  bio_short: Oculista con esperienza in patologie oculari.
+  booking:
+    enabled: true
+    miodottore_id: maria-pina-pintus
+    miodottore_specialty: oculista
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 2
+  status: active
+- id: matteo-zucca
+  title: Dott.
+  first_name: Matteo
+  last_name: Zucca
+  name: Matteo Zucca
+  specialty_id: oculistica
+  job_title: Oculista
+  procedures:
+  - visita-oculistica
+  - campo-visivo
+  bio_short: Oculista specializzato.
+  booking:
+    enabled: true
+    miodottore_id: matteo-zucca
+    miodottore_specialty: oculista
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 3
+  status: active
+- id: andrea-donato
+  title: Dott.
+  first_name: Andrea
+  last_name: Donato
+  name: Andrea Donato
+  specialty_id: ortopedia
+  job_title: Ortopedico
+  procedures:
+  - visita-ortopedica
+  - infiltrazioni-articolari
+  bio_short: Ortopedico specializzato in patologie muscolo-scheletriche.
+  booking:
+    enabled: true
+    miodottore_id: andrea-donato-2
+    miodottore_specialty: ortopedico
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 1
+  status: active
+- id: pietro-lisai
+  title: Dott.
+  first_name: Pietro
+  last_name: Lisai
+  name: Pietro Lisai
+  specialty_id: ortopedia
+  job_title: Ortopedico
+  procedures:
+  - visita-ortopedica
+  - infiltrazioni-articolari
+  bio_short: Ortopedico specializzato in patologie muscolo-scheletriche e traumatologia.
+  booking:
+    enabled: true
+    miodottore_id: pietro-lisai
+    miodottore_specialty: ortopedico
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 2
+  status: active
+- id: francesco-bussu
+  title: Prof.
+  first_name: Francesco
+  last_name: Bussu
+  name: Francesco Bussu
+  specialty_id: otorinolaringoiatria
+  job_title: Otorinolaringoiatra
+  procedures:
+  - visita-orl
+  - audiometria
+  bio_short: Otorinolaringoiatra specializzato in patologie ORL e chirurgia.
+  booking:
+    enabled: true
+    miodottore_id: francesco-bussu
+    miodottore_specialty: otorinolaringoiatra
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 1
+  status: active
+- id: maria-laura-de-luca
+  title: Dott.ssa
+  first_name: Maria Laura
+  last_name: De Luca
+  name: Maria Laura De Luca
+  specialty_id: otorinolaringoiatria
+  job_title: Otorinolaringoiatra
+  procedures:
+  - visita-orl
+  - audiometria
+  bio_short: Otorinolaringoiatra specializzata in patologie ORL.
+  booking:
+    enabled: true
+    miodottore_id: maria-laura-de-luca
+    miodottore_specialty: otorinolaringoiatra
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 2
+  status: active
+- id: mariolina-azara
+  title: Dott.ssa
+  first_name: Mariolina
+  last_name: Azara
+  name: Mariolina Azara
+  specialty_id: pediatria
+  job_title: Pediatra
+  procedures:
+  - visita-pediatrica
+  bio_short: Pediatra specializzata nella cura dei bambini e degli adolescenti.
+  booking:
+    enabled: true
+    miodottore_id: mariolina-azara
+    miodottore_specialty: pediatra
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 1
+  status: active
+- id: pietro-pirina
+  title: Prof.
+  first_name: Pietro
+  last_name: Pirina
+  name: Pietro Pirina
+  specialty_id: pneumologia
+  job_title: Pneumologo
+  procedures:
+  - visita-pneumologica
+  - spirometria
+  bio_short: Pneumologo specializzato in patologie respiratorie.
+  booking:
+    enabled: true
+    miodottore_id: pietro-pirina
+    miodottore_specialty: pneumologo
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 1
+  status: active
+- id: alessia-piras
+  title: Dott.ssa
+  first_name: Alessia
+  last_name: Piras
+  name: Alessia Piras
+  specialty_id: psicologia
+  job_title: Psicoterapeuta
+  procedures:
+  - colloquio-psicologico
+  bio_short: Psicoterapeuta specializzata in psicoterapia individuale e di coppia.
+  booking:
+    enabled: true
+    miodottore_id: alessia-piras
+    miodottore_specialty: psicologo
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 1
+  status: active
+- id: antonio-michele-cavazzuti
+  title: Dott.
+  first_name: Antonio Michele
+  last_name: Cavazzuti
+  name: Antonio Michele Cavazzuti
+  specialty_id: radiologia
+  job_title: Ecografista
+  procedures:
+  - ecografia-addominale
+  - ecografia-tiroidea
+  bio_short: Ecografista specializzato in diagnostica per immagini ecografiche.
+  booking:
+    enabled: true
+    miodottore_id: antonio-michele-cavazzuti
+    miodottore_specialty: radiologo
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 1
+  status: active
+- id: niccolo-melis
+  title: Dott.
+  first_name: Niccolò
+  last_name: Melis
+  name: Niccolò Melis
+  specialty_id: reumatologia
+  job_title: Reumatologo
+  procedures:
+  - visita-reumatologica
+  bio_short: Reumatologo specializzato in malattie reumatiche e autoimmuni.
+  booking:
+    enabled: true
+    miodottore_id: niccolo-melis
+    miodottore_specialty: reumatologo
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 1
+  status: active
+- id: carlos-manuel-cambara-zuniga
+  title: Dott.
+  first_name: Carlos Manuel
+  last_name: Cambara Zuniga
+  name: Carlos Manuel Cambara Zuniga
+  specialty_id: urologia
+  job_title: Urologo - Andrologo
+  procedures:
+  - visita-urologica
+  - ecografia-prostatica
+  bio_short: Urologo e Andrologo specializzato in patologie urologiche e andrologiche.
+  booking:
+    enabled: true
+    miodottore_id: carlos-manuel-cambara-zuniga
+    miodottore_specialty: urologo
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 1
+  status: active
