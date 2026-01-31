@@ -176,12 +176,14 @@
     .service-title { font-size: 1.25rem; font-weight: 700; color: #1e3a5f; margin-bottom: 0.5rem; }
     .service-desc { color: #64748b; font-size: 0.95rem; line-height: 1.6; }
     
-    .pricing-card { background: linear-gradient(135deg, #f8fafc, #f1f5f9); border: 2px solid #e5e7eb; border-radius: 20px; padding: 2.5rem; text-align: center; transition: all 0.3s; }
-    .pricing-card:hover { border-color: #3b82f6; }
+    .pricing-card { background: #ffffff; border: 2px solid #e5e7eb; border-radius: 20px; padding: 2.5rem; text-align: center; transition: all 0.3s; }
+    .pricing-card:hover { border-color: #3b82f6; box-shadow: 0 10px 30px rgba(59,130,246,0.15); }
     .pricing-card.featured { background: linear-gradient(135deg, #1e40af, #3b82f6); color: white; border-color: transparent; }
-    .pricing-card.featured .pricing-label { color: rgba(255,255,255,0.8); }
-    .pricing-value { font-size: 3.5rem; font-weight: 700; }
-    .pricing-unit { font-size: 1rem; opacity: 0.8; }
+    .pricing-card.featured .pricing-label { color: rgba(255,255,255,0.9); }
+    .pricing-card.featured .pricing-unit { color: rgba(255,255,255,0.9); }
+    .pricing-value { font-size: 3.5rem; font-weight: 700; color: #1e3a5f; }
+    .pricing-card.featured .pricing-value { color: #ffffff; }
+    .pricing-unit { font-size: 1rem; color: #64748b; }
     .pricing-label { font-size: 0.9rem; color: #64748b; margin-top: 0.5rem; }
     .pricing-features { text-align: left; margin: 2rem 0; }
     .pricing-features li { padding: 0.5rem 0; display: flex; align-items: center; gap: 0.75rem; }
@@ -404,7 +406,7 @@
           <!-- Base -->
           <div class="pricing-card">
             <h3 style="font-size: 1.3rem; font-weight: 600; color: #64748b; margin-bottom: 1rem;">BASE</h3>
-            <div class="pricing-value" style="color: #1e40af;">€49</div>
+            <div class="pricing-value" style="color: #1e40af;">€49<sup style="font-size: 1rem; vertical-align: super;">*</sup></div>
             <div class="pricing-unit">/ dipendente</div>
             <div class="pricing-label">Solo visita medica</div>
             <ul class="pricing-features">
@@ -423,7 +425,7 @@
           <div class="pricing-card featured">
             <div style="background: #fbbf24; color: #1e3a5f; padding: 0.35rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin-bottom: 1rem;">PIÙ SCELTO</div>
             <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem;">STANDARD</h3>
-            <div class="pricing-value">€79</div>
+            <div class="pricing-value">€79<sup style="font-size: 1rem; vertical-align: super;">*</sup></div>
             <div class="pricing-unit">/ dipendente</div>
             <div class="pricing-label">Pacchetto completo</div>
             <ul class="pricing-features">
@@ -442,7 +444,7 @@
           <!-- Premium -->
           <div class="pricing-card">
             <h3 style="font-size: 1.3rem; font-weight: 600; color: #64748b; margin-bottom: 1rem;">PREMIUM</h3>
-            <div class="pricing-value" style="color: #1e40af;">€129</div>
+            <div class="pricing-value" style="color: #1e40af;">€129<sup style="font-size: 1rem; vertical-align: super;">*</sup></div>
             <div class="pricing-unit">/ dipendente</div>
             <div class="pricing-label">Tutto incluso + drug test</div>
             <ul class="pricing-features">
@@ -458,10 +460,26 @@
           </div>
         </div>
         
-        <p style="text-align: center; margin-top: 2rem; color: #64748b; font-size: 0.9rem;">
-          * Prezzi indicativi. Il costo finale dipende dal numero di dipendenti e dai rischi specifici. 
-          <a href="tel:+390799561332" style="color: #3b82f6; font-weight: 500;">Richiedi un preventivo personalizzato</a>.
-        </p>
+        <div style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: #fffbeb; border: 1px solid #fcd34d; border-radius: 12px;">
+          <p style="color: #92400e; font-size: 0.95rem; font-weight: 500; margin-bottom: 0.5rem;">
+            <i class="fas fa-info-circle" style="margin-right: 0.5rem;"></i>
+            * I prezzi dipendono dal DVR (Documento di Valutazione Rischi) di ciascuna impresa.
+          </p>
+          <p style="color: #78350f; font-size: 0.9rem;">
+            Per una <strong>quotazione precisa e veloce</strong>, contattaci via:
+          </p>
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem;">
+            <a href="mailto:gestione@bio-clinic.it?subject=Preventivo Medicina del Lavoro" style="color: #1e40af; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-envelope"></i> Email
+            </a>
+            <a href="https://wa.me/390799561332" style="color: #25d366; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="tel:+390799561332" style="color: #1e40af; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-phone"></i> 079 956 1332
+            </a>
+          </div>
+        </div>
       </section>
       
       <!-- Come Funziona -->
