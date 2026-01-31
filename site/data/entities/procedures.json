@@ -1237,7 +1237,11 @@
         "ceppi hpv",
         "alto rischio",
         "test molecolare"
-      ]
+      ],
+      "price_options": {
+        "sola_lettura": 60,
+        "esecuzione_lettura": 80
+      }
     },
     {
       "id": "duopap",
