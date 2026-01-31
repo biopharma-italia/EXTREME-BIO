@@ -11810,6 +11810,65 @@ const BioClinicDB = (function() {
   }
 
   // =============================================
+  // 11. PROCEDURE DIAGNOSTICHE SPECIALISTICHE
+  // =============================================
+  
+  const procedureDiagnostiche = [
+    {
+      id: 'isteroscopia',
+      nome: 'Isteroscopia Diagnostica',
+      categoria: 'ginecologia',
+      url: 'pages/isteroscopia.html',
+      bookingType: 'direct',
+      descrizione: 'Visualizzazione diretta della cavità uterina per diagnosi di polipi, miomi, malformazioni e aderenze.',
+      durata: '15-20 minuti',
+      preparazione: 'Ciclo mestruale terminato, digiuno non necessario',
+      medico: {
+        nome: 'Prof. Salvatore Dessole',
+        slug: 'salvatore-dessole'
+      },
+      keywords: ['isteroscopia', 'cavità uterina', 'polipi', 'miomi', 'infertilità', 'pma', 'fertilità'],
+      correlati: ['isterosalpingografia', 'pma-fertilita', 'visita-ginecologica']
+    },
+    {
+      id: 'isterosalpingografia',
+      nome: 'Isterosalpingografia (HSG)',
+      categoria: 'ginecologia',
+      url: 'pages/isterosalpingografia.html',
+      bookingType: 'direct',
+      descrizione: 'Esame radiologico per valutare la pervietà delle tube di Falloppio e la morfologia uterina.',
+      durata: '20-30 minuti',
+      preparazione: 'Post-ciclo, digiuno da 4 ore',
+      medico: {
+        nome: 'Prof. Salvatore Dessole',
+        slug: 'salvatore-dessole'
+      },
+      keywords: ['isterosalpingografia', 'hsg', 'tube', 'pervietà tubarica', 'infertilità', 'pma', 'fertilità', 'sterilità'],
+      correlati: ['isteroscopia', 'pma-fertilita', 'visita-ginecologica']
+    }
+  ];
+
+  // Funzione per ottenere procedure diagnostiche
+  function getProcedureDiagnostiche() {
+    return procedureDiagnostiche;
+  }
+
+  // Funzione per cercare procedure per keyword
+  function searchProcedure(query) {
+    const q = query.toLowerCase().trim();
+    return procedureDiagnostiche.filter(p => 
+      p.nome.toLowerCase().includes(q) ||
+      p.keywords.some(k => k.includes(q)) ||
+      p.descrizione.toLowerCase().includes(q)
+    );
+  }
+
+  // Funzione per ottenere procedura per ID
+  function getProcedura(id) {
+    return procedureDiagnostiche.find(p => p.id === id);
+  }
+
+  // =============================================
   // 9. API PUBBLICA
   // =============================================
   
@@ -11821,6 +11880,7 @@ const BioClinicDB = (function() {
     sintomiLabels,
     stats,
     physiciansWithPublications,
+    procedureDiagnostiche,
     
     // Indici
     byCategory,
@@ -11836,6 +11896,8 @@ const BioClinicDB = (function() {
     packPerEsame,
     getPhysiciansWithPublications,
     findPhysicianBySymptom,
+    getProcedureDiagnostiche,
+    searchProcedure,
     
     // Utilities
     getEsame: (id) => listino.find(e => e.id === id),
@@ -11843,10 +11905,11 @@ const BioClinicDB = (function() {
     getCategorie: () => Object.keys(byCategory),
     getSintomi: () => Object.keys(sintomiLabels),
     getPhysician: (slug) => physiciansWithPublications.find(p => p.slug === slug),
+    getProcedura,
     
     // Versione
-    version: '3.1.0',
-    generated: '2026-01-28T18:55:00'
+    version: '3.2.0',
+    generated: '2026-01-31T12:00:00'
   };
 
 })();
