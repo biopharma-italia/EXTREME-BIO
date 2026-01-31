@@ -11425,6 +11425,186 @@ const BioClinicDB = (function() {
         "cat": "Altro",
         "sintomi": [],
         "referto": "48-72h"
+    },
+    {
+        "id": "nipt-fetal-dna-standard",
+        "nome": "Fetal DNA Test Standard (NIPT)",
+        "prezzo": 290.0,
+        "cat": "Genetica",
+        "sintomi": ["gravidanza"],
+        "referto": "7-10gg",
+        "url": "pages/genetica.html",
+        "descrizione": "Test prenatale non invasivo per screening trisomie 21, 18, 13"
+    },
+    {
+        "id": "nipt-fetal-dna-plus",
+        "nome": "Fetal DNA Test Plus (NIPT Avanzato)",
+        "prezzo": 390.0,
+        "cat": "Genetica",
+        "sintomi": ["gravidanza"],
+        "referto": "7-10gg",
+        "url": "pages/genetica.html",
+        "descrizione": "NIPT esteso con microdelezioni e aneuploidie sessuali"
+    },
+    {
+        "id": "prenatal-advance",
+        "nome": "PrenatalAdvance (NIPT Premium)",
+        "prezzo": 690.0,
+        "cat": "Genetica",
+        "sintomi": ["gravidanza"],
+        "referto": "7-10gg",
+        "url": "pages/genetica.html",
+        "descrizione": "Test prenatale più completo: trisomie + microdelezioni + 50 sindromi genetiche"
+    },
+    {
+        "id": "rh-fetale",
+        "nome": "Determinazione Rh Fetale",
+        "prezzo": 200.0,
+        "cat": "Genetica",
+        "sintomi": ["gravidanza"],
+        "referto": "5-7gg",
+        "url": "pages/genetica.html",
+        "descrizione": "Determinazione del fattore Rh fetale da sangue materno"
+    },
+    {
+        "id": "carrier-screening-base",
+        "nome": "Carrier Screening Base",
+        "prezzo": 350.0,
+        "cat": "Genetica",
+        "sintomi": ["infertilita", "gravidanza"],
+        "referto": "15-20gg",
+        "url": "pages/genetica.html",
+        "descrizione": "Pannello portatori per fibrosi cistica, talassemie e altre malattie recessive"
+    },
+    {
+        "id": "carrier-screening-plus",
+        "nome": "Carrier Screening Plus (300+ geni)",
+        "prezzo": 490.0,
+        "cat": "Genetica",
+        "sintomi": ["infertilita", "gravidanza"],
+        "referto": "15-20gg",
+        "url": "pages/genetica.html",
+        "descrizione": "Screening portatori esteso su oltre 300 geni per malattie recessive"
+    },
+    {
+        "id": "brca-plus",
+        "nome": "BRCA Plus (Oncogenetica)",
+        "prezzo": 590.0,
+        "cat": "Genetica",
+        "sintomi": [],
+        "referto": "20-25gg",
+        "url": "pages/genetica.html",
+        "descrizione": "Test mutazioni BRCA1/BRCA2 per rischio tumori seno e ovaio"
+    },
+    {
+        "id": "onco-panel-hereditary",
+        "nome": "Pannello Oncogenetico Ereditario",
+        "prezzo": 990.0,
+        "cat": "Genetica",
+        "sintomi": [],
+        "referto": "25-30gg",
+        "url": "pages/genetica.html",
+        "descrizione": "Analisi 30+ geni per tumori ereditari (seno, ovaio, colon, prostata)"
+    },
+    {
+        "id": "endotest-endometriosi",
+        "nome": "EndoTest (Endometriosi)",
+        "prezzo": 990.0,
+        "cat": "Genetica",
+        "sintomi": ["infertilita"],
+        "referto": "15-20gg",
+        "url": "pages/genetica.html",
+        "descrizione": "Test salivare per diagnosi endometriosi basato su microRNA"
+    },
+    {
+        "id": "emma-test",
+        "nome": "EMMA Test (Microbioma Endometriale)",
+        "prezzo": 490.0,
+        "cat": "Genetica",
+        "sintomi": ["infertilita"],
+        "referto": "10-15gg",
+        "url": "pages/genetica.html",
+        "descrizione": "Analisi microbiota endometriale per ottimizzare transfer embrionario"
+    },
+    {
+        "id": "era-test",
+        "nome": "ERA Test (Recettività Endometriale)",
+        "prezzo": 730.0,
+        "cat": "Genetica",
+        "sintomi": ["infertilita"],
+        "referto": "10-15gg",
+        "url": "pages/genetica.html",
+        "descrizione": "Test per identificare finestra impianto personalizzata in PMA"
+    },
+    {
+        "id": "alice-test",
+        "nome": "ALICE Test (Endometrite Cronica)",
+        "prezzo": 350.0,
+        "cat": "Genetica",
+        "sintomi": ["infertilita"],
+        "referto": "10-15gg",
+        "url": "pages/genetica.html",
+        "descrizione": "Diagnosi endometrite cronica per fallimenti impianto"
+    },
+    {
+        "id": "trio-test-emma-era-alice",
+        "nome": "EndomeTRIO (EMMA + ERA + ALICE)",
+        "prezzo": 1290.0,
+        "cat": "Genetica",
+        "sintomi": ["infertilita"],
+        "referto": "15-20gg",
+        "url": "pages/genetica.html",
+        "descrizione": "Pacchetto completo per studio endometriale in PMA"
+    },
+    {
+        "id": "nutrigenetica-base",
+        "nome": "Nutrigenetica Base",
+        "prezzo": 195.0,
+        "cat": "Genetica",
+        "sintomi": ["aumento_peso"],
+        "referto": "15-20gg",
+        "url": "pages/genetica.html",
+        "descrizione": "Profilo genetico per metabolismo nutrienti e dieta personalizzata"
+    },
+    {
+        "id": "nutrigenetica-plus",
+        "nome": "Nutrigenetica Plus (50+ varianti)",
+        "prezzo": 350.0,
+        "cat": "Genetica",
+        "sintomi": ["aumento_peso"],
+        "referto": "15-20gg",
+        "url": "pages/genetica.html",
+        "descrizione": "Analisi completa 50+ varianti per nutrizione personalizzata"
+    },
+    {
+        "id": "cariotipo-sangue",
+        "nome": "Cariotipo (Sangue Periferico)",
+        "prezzo": 230.0,
+        "cat": "Genetica",
+        "sintomi": ["infertilita"],
+        "referto": "15-20gg",
+        "url": "pages/genetica.html",
+        "descrizione": "Analisi cromosomica per infertilità e aborti ricorrenti"
+    },
+    {
+        "id": "pannello-trombofilia",
+        "nome": "Pannello Trombofilia Genetica",
+        "prezzo": 180.0,
+        "cat": "Genetica",
+        "sintomi": ["gravidanza", "infertilita"],
+        "referto": "7-10gg",
+        "url": "pages/genetica.html",
+        "descrizione": "Mutazioni Fattore V Leiden, Protrombina, MTHFR"
+    },
+    {
+        "id": "celiachia-genetica",
+        "nome": "Predisposizione Genetica Celiachia",
+        "prezzo": 120.0,
+        "cat": "Genetica",
+        "sintomi": ["problemi_digestivi"],
+        "referto": "7-10gg",
+        "url": "pages/genetica.html",
+        "descrizione": "Analisi HLA-DQ2/DQ8 per predisposizione celiachia"
     }
 ];
 
