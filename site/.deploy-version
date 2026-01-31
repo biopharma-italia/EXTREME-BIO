@@ -1,0 +1,8 @@
+# Bio-Clinic Deploy Version
+version: 2026.01.31.1825
+timestamp: 2026-01-31T18:27:16Z
+changes:
+  - Unified Clinical Search Engine v1.0
+  - 1136 esami integrati
+  - 138 pagine aggiornate
+  - Pannello risultati categorizzato
