@@ -82,7 +82,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/ImagingTest"
-      }
+      },
+      "page_url": "/pages/ecografia-transvaginale.html"
     },
     {
       "id": "ecografia-mammaria",
@@ -120,7 +121,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/ImagingTest"
-      }
+      },
+      "page_url": "/pages/ecografia-mammaria.html"
     },
     {
       "id": "pap-test",
@@ -156,7 +158,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
-      }
+      },
+      "page_url": "/pages/pap-test.html"
     },
     {
       "id": "colposcopia",
@@ -190,7 +193,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
-      }
+      },
+      "page_url": "/pages/colposcopia.html"
     },
     {
       "id": "visita-ostetrica",
@@ -226,7 +230,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
-      }
+      },
+      "page_url": "/pages/ginecologia.html"
     },
     {
       "id": "ecografia-ostetrica",
@@ -260,7 +265,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/ImagingTest"
-      }
+      },
+      "page_url": "/pages/ginecologia.html"
     },
     {
       "id": "ecografia-morfologica",
@@ -295,7 +301,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/ImagingTest"
-      }
+      },
+      "page_url": "/pages/ecografia-morfologica.html"
     },
     {
       "id": "translucenza-nucale",
@@ -330,7 +337,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/ImagingTest"
-      }
+      },
+      "page_url": "/pages/ginecologia.html"
     },
     {
       "id": "visita-cardiologica",
@@ -416,7 +424,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
-      }
+      },
+      "page_url": "/pages/visita-cardiologica-ecg.html"
     },
     {
       "id": "ecocardiogramma",
@@ -455,7 +464,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/ImagingTest"
-      }
+      },
+      "page_url": "/pages/ecocardiogramma.html"
     },
     {
       "id": "holter-ecg",
@@ -490,7 +500,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
-      }
+      },
+      "page_url": "/pages/holter-ecg.html"
     },
     {
       "id": "holter-pressorio",
@@ -523,7 +534,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
-      }
+      },
+      "page_url": "/pages/holter-pressorio.html"
     },
     {
       "id": "visita-endocrinologica",
@@ -564,7 +576,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
-      }
+      },
+      "page_url": "/pages/visita-endocrinologica.html"
     },
     {
       "id": "ecografia-tiroidea",
@@ -645,7 +658,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
-      }
+      },
+      "page_url": "/pages/endocrinologia.html"
     },
     {
       "id": "visita-dermatologica",
@@ -683,7 +697,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
-      }
+      },
+      "page_url": "/pages/visita-dermatologica.html"
     },
     {
       "id": "mappatura-nei",
@@ -717,7 +732,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
-      }
+      },
+      "page_url": "/pages/visita-dermatologica.html"
     },
     {
       "id": "visita-neurologica",
@@ -752,7 +768,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
-      }
+      },
+      "page_url": "/pages/visita-neurologica.html"
     },
     {
       "id": "elettromiografia",
@@ -784,7 +801,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
-      }
+      },
+      "page_url": "/pages/elettromiografia.html"
     },
     {
       "id": "visita-oculistica",
@@ -821,7 +839,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
-      }
+      },
+      "page_url": "/pages/visita-oculistica.html"
     },
     {
       "id": "tonometria",
@@ -852,7 +871,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
-      }
+      },
+      "page_url": "/pages/visita-oculistica.html"
     },
     {
       "id": "visita-ortopedica",
@@ -888,7 +908,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
-      }
+      },
+      "page_url": "/pages/visita-ortopedica.html"
     },
     {
       "id": "ecografia-muscolo-tendinea",
@@ -920,7 +941,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/ImagingTest"
-      }
+      },
+      "page_url": "/pages/visita-ortopedica.html"
     },
     {
       "id": "visita-nutrizionale",
@@ -957,7 +979,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
-      }
+      },
+      "page_url": "/pages/visita-nutrizionale.html"
     },
     {
       "id": "bioimpedenziometria",
@@ -992,7 +1015,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
-      }
+      },
+      "page_url": "/pages/visita-nutrizionale.html"
     },
     {
       "id": "visita-medicina-sportiva",
@@ -1025,7 +1049,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
-      }
+      },
+      "page_url": "/pages/visita-medicina-sport.html"
     },
     {
       "id": "spirometria",
@@ -1058,7 +1083,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
-      }
+      },
+      "page_url": "/pages/spirometria.html"
     },
     {
       "id": "prelievo-sangue",
@@ -1087,7 +1113,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
-      }
+      },
+      "page_url": "/laboratorio/index.html"
     },
     {
       "id": "consulto-pma",
@@ -1127,7 +1154,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
-      }
+      },
+      "page_url": "/pages/pma-fertilita.html"
     },
     {
       "id": "spermiogramma",
@@ -1160,7 +1188,8 @@
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
-      }
+      },
+      "page_url": "/pages/pma-fertilita.html"
     }
   ],
   "categories": {

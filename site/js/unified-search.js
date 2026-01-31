@@ -386,7 +386,7 @@ const BioClinicUnifiedSearch = (function() {
             physicians: proc.physicians || [],
             pathways: proc.pathways || [],
             relatedProcedures: proc.related_procedures || [],
-            pageUrl: proc.page_url || `/prestazioni/${proc.id}`,
+            pageUrl: proc.page_url || `/pages/${proc.id}.html`,
             duration: proc.duration_minutes,
             priority: proc.booking_priority === 'high' ? 90 : 70
           });
@@ -407,7 +407,7 @@ const BioClinicUnifiedSearch = (function() {
             includedInPacks: test.included_in_packs || [],
             primaryPack: test.primary_pack,
             relatedTests: test.related_tests || [],
-            pageUrl: `/laboratorio/${test.id}`,
+            pageUrl: `/laboratorio/index.html#${test.id}`,
             preparation: test.preparation,
             turnaround: test.turnaround_time,
             priority: test.primary_pack ? 80 : 60
