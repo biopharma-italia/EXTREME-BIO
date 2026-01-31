@@ -1,3 +1,9 @@
+# Cloudflare Pages Redirects
+# Docs: https://developers.cloudflare.com/pages/platform/redirects
+
+# Static HTML pages - serve directly (no fallback)
+/pages/*.html /pages/:splat.html 200
+
 # Redirect da /prestazioni/ a /pages/
 /prestazioni/:procedure /pages/:procedure.html 301
 
@@ -7,3 +13,7 @@
 
 # Redirect laboratorio
 /laboratorio/:test /laboratorio/index.html#:test 301
+
+# Genetica & Preparazione Esami - Explicit routes
+/pages/genetica.html /pages/genetica.html 200
+/pages/preparazione-esami.html /pages/preparazione-esami.html 200
