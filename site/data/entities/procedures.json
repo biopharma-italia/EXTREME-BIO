@@ -139,27 +139,38 @@
       ],
       "duration_minutes": 10,
       "physicians": [
-        "salvatore-dessole",
-        "francesco-dessole"
+        "angelica-fois",
+        "camilla-ruzzoli"
       ],
       "related_procedures": [
-        "visita-ginecologica",
+        "hpv-dna-test",
+        "duopap",
         "colposcopia",
-        "hpv-test"
+        "visita-ginecologica"
       ],
       "pathways": [],
       "search_terms": [
+        "pap test",
         "paptest",
+        "pap-test",
+        "test papanicolaou",
         "striscio cervicale",
         "screening cervice",
-        "prevenzione tumore utero"
+        "prevenzione tumore utero",
+        "citologico"
       ],
       "booking_priority": "medium",
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/pap-test.html"
+      "page_url": "/pages/pap-test.html",
+      "description": "Esame citologico per la prevenzione del tumore della cervice uterina. Rileva cellule anomale prima che diventino cancerose. Referto in 7 giorni, tra i più rapidi.",
+      "price_options": {
+        "sola_lettura": 30,
+        "esecuzione_lettura": 50
+      },
+      "turnaround_days": 7
     },
     {
       "id": "colposcopia",
@@ -1190,6 +1201,84 @@
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
       "page_url": "/pages/pma-fertilita.html"
+    },
+    {
+      "id": "hpv-dna-test",
+      "name": "HPV DNA Test",
+      "name_extended": "Test Molecolare per Papillomavirus Umano",
+      "description": "Test molecolare che ricerca il DNA dei ceppi di HPV ad alto rischio oncogeno (16, 18, 31, 33, 45, 52, 58). Più sensibile del Pap Test nell'identificare il rischio di sviluppare lesioni cervicali.",
+      "category": "esame",
+      "specialty_id": "ginecologia",
+      "duration_minutes": 10,
+      "price": 60,
+      "turnaround_days": 7,
+      "booking_priority": "high",
+      "physicians": [
+        "angelica-fois",
+        "camilla-ruzzoli"
+      ],
+      "related_procedures": [
+        "pap-test",
+        "duopap",
+        "colposcopia",
+        "visita-ginecologica"
+      ],
+      "pathways": [
+        "prevenzione-donna"
+      ],
+      "page_url": "/pages/hpv-dna-test.html",
+      "search_terms": [
+        "hpv",
+        "papillomavirus",
+        "virus hpv",
+        "test hpv",
+        "hpv dna",
+        "hpv positivo",
+        "ceppi hpv",
+        "alto rischio",
+        "test molecolare"
+      ]
+    },
+    {
+      "id": "duopap",
+      "name": "DuoPap",
+      "name_extended": "Co-Testing Cervicale (Pap Test + HPV DNA Test)",
+      "description": "Combinazione di Pap Test e HPV DNA Test eseguiti con un unico prelievo. Offre la massima sensibilità per la prevenzione del tumore della cervice uterina.",
+      "category": "esame",
+      "specialty_id": "ginecologia",
+      "duration_minutes": 10,
+      "price": 110,
+      "price_breakdown": {
+        "pap_test_lettura": 30,
+        "hpv_dna_test": 60,
+        "esecuzione_ostetrica": 20
+      },
+      "turnaround_days": 7,
+      "booking_priority": "high",
+      "physicians": [
+        "angelica-fois",
+        "camilla-ruzzoli"
+      ],
+      "related_procedures": [
+        "pap-test",
+        "hpv-dna-test",
+        "colposcopia",
+        "visita-ginecologica"
+      ],
+      "pathways": [
+        "prevenzione-donna"
+      ],
+      "page_url": "/pages/duopap.html",
+      "search_terms": [
+        "duopap",
+        "duo pap",
+        "co-testing",
+        "cotesting",
+        "pap hpv insieme",
+        "doppio test",
+        "screening completo",
+        "prevenzione cervice"
+      ]
     }
   ],
   "categories": {
