@@ -877,3 +877,7 @@ details[open] .group-open\:rotate-180 { transform: rotate(180deg); }
 
 /* Fix group-hover for border color */
 .group:hover .group-hover\:border-bio-pink { border-color: #db2777; }
+
+/* Additional Tailwind utilities for PMA page */
+.text-pink-800 { color: #9d174d; }
+.md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
