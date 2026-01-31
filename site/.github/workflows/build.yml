@@ -12,6 +12,12 @@ on:
       - 'site/data/**'
       - 'site/build/**'
       - 'site/templates/**'
+      - 'site/js/**'
+      - 'site/css/**'
+      - 'site/index.html'
+      - 'site/pages/**'
+      - 'site/equipe/**'
+      - 'site/laboratorio/**'
   pull_request:
     branches: [main]
   workflow_dispatch:  # Manual trigger
