@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Unified Search - Bio-Clinic</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/unified-search.css?v=20260131">
+  <style>
+    body { padding: 2rem; font-family: Inter, sans-serif; }
+    .test-container { max-width: 900px; margin: 0 auto; }
+    h1 { color: #00704A; }
+    .test-grid { display: grid; gap: 1rem; margin: 2rem 0; }
+    .test-query {
+      background: #f8f9fa;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .test-query:hover { background: #e8f5f0; border-color: #00704A; }
+    .test-query.active { background: #00704A; color: white; }
+    .query-label { font-weight: 600; font-size: 1.1rem; }
+    .query-expected { font-size: 0.85rem; color: #666; margin-top: 0.25rem; }
+    .test-query.active .query-expected { color: rgba(255,255,255,0.8); }
+    .results-panel {
+      background: white;
+      border: 2px solid #00704A;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      min-height: 300px;
+    }
+    .results-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .results-title { font-size: 1.2rem; font-weight: 600; color: #00704A; }
+    .results-count { background: #00704A; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.85rem; }
+    .result-section { margin: 1rem 0; padding: 1rem; background: #f8f9fa; border-radius: 8px; }
+    .result-section h4 { margin: 0 0 0.5rem; color: #333; font-size: 0.9rem; }
+    .result-item { padding: 0.5rem 0; border-bottom: 1px solid #eee; }
+    .result-item:last-child { border-bottom: none; }
+    .result-name { font-weight: 500; }
+    .result-type { font-size: 0.75rem; color: #666; background: #e0e0e0; padding: 2px 6px; border-radius: 4px; margin-left: 0.5rem; }
+    .result-url { font-size: 0.8rem; color: #00704A; }
+    .no-results { text-align: center; padding: 3rem; color: #666; }
+    .search-input-test {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.1rem;
+      border: 2px solid #00704A;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .legend { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0; font-size: 0.85rem; }
+    .legend-item { display: flex; align-items: center; gap: 0.25rem; }
+    .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .legend-dot.specialty { background: #00704A; }
+    .legend-dot.procedure { background: #1976d2; }
+    .legend-dot.test { background: #7b1fa2; }
+    .legend-dot.pathway { background: #e65100; }
+    .legend-dot.pack { background: #ff9800; }
+    .legend-dot.physician { background: #c2185b; }
+  </style>
+</head>
+<body>
+  <div class="test-container">
+    <h1>🔍 Test Unified Search - Bio-Clinic</h1>
+    <p>Clicca su una query per testare il sistema di ricerca unificata.</p>
+    
+    <input type="text" class="search-input-test" id="manual-search" placeholder="Oppure digita una query personalizzata...">
+    
+    <div class="legend">
+      <div class="legend-item"><span class="legend-dot specialty"></span> Specialità</div>
+      <div class="legend-item"><span class="legend-dot procedure"></span> Prestazione</div>
+      <div class="legend-item"><span class="legend-dot test"></span> Esame</div>
+      <div class="legend-item"><span class="legend-dot pathway"></span> Percorso</div>
+      <div class="legend-item"><span class="legend-dot pack"></span> Pack</div>
+      <div class="legend-item"><span class="legend-dot physician"></span> Medico</div>
+    </div>
+    
+    <div class="test-grid">
+      <div class="test-query" data-query="ginecologo">
+        <div class="query-label">🔍 "ginecologo"</div>
+        <div class="query-expected">Atteso: Ginecologia (specialità) + medici ginecologi</div>
+      </div>
+      <div class="test-query" data-query="tsh">
+        <div class="query-label">🔍 "tsh"</div>
+        <div class="query-expected">Atteso: Esame TSH + Profilo Tiroide (pack) + Endocrinologia</div>
+      </div>
+      <div class="test-query" data-query="dimagrire">
+        <div class="query-label">🔍 "dimagrire"</div>
+        <div class="query-expected">Atteso: Slim Care (percorso) + Endocrinologia + Nutrizionista</div>
+      </div>
+      <div class="test-query" data-query="visita cuore">
+        <div class="query-label">🔍 "visita cuore"</div>
+        <div class="query-expected">Atteso: Cardiologia + Visita Cardiologica + ECG</div>
+      </div>
+      <div class="test-query" data-query="eco">
+        <div class="query-label">🔍 "eco"</div>
+        <div class="query-expected">Atteso: Tutte le ecografie (addominale, tiroidea, pelvica...)</div>
+      </div>
+      <div class="test-query" data-query="pap test">
+        <div class="query-label">🔍 "pap test"</div>
+        <div class="query-expected">Atteso: Pap Test (esame/prestazione) + Ginecologia</div>
+      </div>
+      <div class="test-query" data-query="tiroide">
+        <div class="query-label">🔍 "tiroide"</div>
+        <div class="query-expected">Atteso: Endocrinologia + Ecografia Tiroidea + Profilo Tiroide</div>
+      </div>
+      <div class="test-query" data-query="dessole">
+        <div class="query-label">🔍 "dessole"</div>
+        <div class="query-expected">Atteso: Prof. Salvatore Dessole + altri Dessole (medici)</div>
+      </div>
+      <div class="test-query" data-query="check up donna">
+        <div class="query-label">🔍 "check up donna"</div>
+        <div class="query-expected">Atteso: Check-up Donna Under 40/Over 40 (pack)</div>
+      </div>
+      <div class="test-query" data-query="mal di testa">
+        <div class="query-label">🔍 "mal di testa"</div>
+        <div class="query-expected">Atteso: Neurologia + Visita Neurologica</div>
+      </div>
+    </div>
+    
+    <div class="results-panel" id="results-panel">
+      <div class="results-header">
+        <span class="results-title">Risultati</span>
+        <span class="results-count" id="results-count">0</span>
+      </div>
+      <div id="results-content">
+        <div class="no-results">Seleziona una query per vedere i risultati</div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="js/database.js"></script>
+  <script src="js/unified-search.js?v=20260131"></script>
+  <script>
+    // Wait for search engine to be ready
+    document.addEventListener('DOMContentLoaded', async () => {
+      await BioClinicUnifiedSearch.init();
+      console.log('✅ Search engine ready for testing');
+      
+      // Auto-run all tests
+      console.log('\n========== AUTO TEST SUITE ==========\n');
+      const testQueries = [
+        { q: 'ginecologo', expect: 'ginecologia specialty' },
+        { q: 'tsh', expect: 'TSH test + tiroide' },
+        { q: 'dimagrire', expect: 'slim care pathway' },
+        { q: 'visita cuore', expect: 'cardiologia' },
+        { q: 'eco', expect: 'ecografie' },
+        { q: 'tiroide', expect: 'endocrinologia + ecografia tiroidea' },
+        { q: 'check up donna', expect: 'donna packs' },
+        { q: 'mal di testa', expect: 'neurologia' }
+      ];
+      
+      testQueries.forEach(({ q, expect }) => {
+        const result = BioClinicUnifiedSearch.search(q);
+        // Debug: vedi struttura risultato
+        const allResults = result.results || [];
+        const types = [...new Set(allResults.map(r => r.type))];
+        console.log(`✅ "${q}" → ${allResults.length} risultati [${types.join(', ')}] (atteso: ${expect})`);
+        // Mostra top 3 risultati
+        allResults.slice(0, 3).forEach((r, i) => {
+          console.log(`   ${i+1}. ${r.name} (${r.type}) → ${r.pageUrl || r.url || 'no-url'}`);
+        });
+      });
+      
+      console.log('\n========== END AUTO TEST ==========\n');
+      
+      // Test ricerca esami specifici
+      console.log('\n========== TEST ESAMI SPECIFICI ==========\n');
+      const examQueries = ['emocromo', 'glicemia', 'colesterolo', 'ferritina', 'vitamina d'];
+      examQueries.forEach(q => {
+        const result = BioClinicUnifiedSearch.search(q);
+        const tests = (result.results || []).filter(r => r.type === 'test');
+        console.log(`🧪 "${q}" → ${tests.length} esami trovati`);
+        if (tests.length > 0) {
+          console.log(`   Top: ${tests[0].name} (€${tests[0].price || 'N/A'})`);
+        }
+      });
+      console.log('\n========== END ESAMI TEST ==========\n');
+      
+      // Test query click handlers
+      document.querySelectorAll('.test-query').forEach(el => {
+        el.addEventListener('click', () => {
+          const query = el.dataset.query;
+          runTest(query);
+          
+          // Visual feedback
+          document.querySelectorAll('.test-query').forEach(q => q.classList.remove('active'));
+          el.classList.add('active');
+        });
+      });
+      
+      // Manual search
+      const manualInput = document.getElementById('manual-search');
+      manualInput.addEventListener('input', (e) => {
+        if (e.target.value.length >= 2) {
+          runTest(e.target.value);
+        }
+      });
+    });
+    
+    function runTest(query) {
+      console.log(`\n🔍 Testing: "${query}"`);
+      
+      const result = BioClinicUnifiedSearch.search(query);
+      console.log('Result:', result);
+      
+      renderResults(query, result);
+    }
+    
+    function renderResults(query, result) {
+      const content = document.getElementById('results-content');
+      const count = document.getElementById('results-count');
+      
+      count.textContent = result.totalCount || 0;
+      
+      if (!result.allResults || result.allResults.length === 0) {
+        content.innerHTML = `
+          <div class="no-results">
+            <p>Nessun risultato per "<strong>${query}</strong>"</p>
+            ${result.fallback ? `<p>${result.fallback.message}</p>` : ''}
+          </div>
+        `;
+        return;
+      }
+      
+      // Group by type
+      const grouped = {};
+      result.allResults.forEach(item => {
+        const type = item.type || 'other';
+        if (!grouped[type]) grouped[type] = [];
+        grouped[type].push(item);
+      });
+      
+      const typeLabels = {
+        specialty: '🏥 Specialità',
+        procedure: '📋 Prestazioni',
+        test: '🧪 Esami',
+        pathway: '📍 Percorsi',
+        pack: '📦 Pacchetti',
+        physician: '👨‍⚕️ Medici'
+      };
+      
+      const typeOrder = ['pathway', 'specialty', 'procedure', 'test', 'physician', 'pack'];
+      
+      let html = '';
+      typeOrder.forEach(type => {
+        if (grouped[type] && grouped[type].length > 0) {
+          html += `
+            <div class="result-section">
+              <h4>${typeLabels[type] || type} (${grouped[type].length})</h4>
+              ${grouped[type].slice(0, 5).map(item => `
+                <div class="result-item">
+                  <span class="result-name">${item.name}</span>
+                  <span class="result-type">${item.type}</span>
+                  ${item.url ? `<div class="result-url">→ ${item.url}</div>` : ''}
+                </div>
+              `).join('')}
+              ${grouped[type].length > 5 ? `<div style="font-size:0.8rem;color:#666;">...e altri ${grouped[type].length - 5}</div>` : ''}
+            </div>
+          `;
+        }
+      });
+      
+      content.innerHTML = html || '<div class="no-results">Nessun risultato</div>';
+    }
+  </script>
+</body>
+</html>

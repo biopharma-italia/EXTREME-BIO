@@ -479,6 +479,9 @@ const BioClinicUnifiedSearch = (function() {
         }
       }
 
+      // Integra dati da BioClinicDB (database.js) se disponibile
+      await integrateFromBioClinicDB();
+
       console.log('[UnifiedSearch] Data loaded:', {
         specialties: UNIFIED_INDEX.specialties.size,
         procedures: UNIFIED_INDEX.procedures.size,
@@ -492,6 +495,140 @@ const BioClinicUnifiedSearch = (function() {
     } catch (error) {
       console.error('[UnifiedSearch] Error loading data:', error);
       return false;
+    }
+  }
+
+  /**
+   * Integra dati dal database BioClinicDB (database.js)
+   * Aggiunge 1136 esami, 13 pack e procedure diagnostiche
+   */
+  async function integrateFromBioClinicDB() {
+    // Verifica che BioClinicDB sia disponibile
+    if (typeof BioClinicDB === 'undefined') {
+      console.log('[UnifiedSearch] BioClinicDB non disponibile, skip integrazione');
+      return;
+    }
+
+    try {
+      // 1. Integra ESAMI dal listino (1136 esami)
+      if (BioClinicDB.listino && Array.isArray(BioClinicDB.listino)) {
+        for (const esame of BioClinicDB.listino) {
+          // Evita duplicati (controlla se già esiste)
+          if (UNIFIED_INDEX.tests.has(esame.id)) continue;
+          
+          UNIFIED_INDEX.tests.set(esame.id, {
+            id: esame.id,
+            type: 'test',
+            name: esame.nome,
+            category: esame.cat,
+            price: esame.prezzo,
+            synonyms: [...(esame.sintomi || []), esame.nome.toLowerCase()],
+            symptoms: esame.sintomi || [],
+            turnaround: esame.referto,
+            preparation: esame.prep,
+            upsellPack: esame.upsell,
+            pageUrl: `/laboratorio/index.html#${esame.id}`,
+            priority: esame.upsell ? 65 : 55 // Esami con pack suggerito hanno priorità leggermente maggiore
+          });
+        }
+        console.log(`[UnifiedSearch] Integrati ${BioClinicDB.listino.length} esami da BioClinicDB`);
+      }
+
+      // 2. Integra PACCHETTI (13 pack)
+      if (BioClinicDB.pacchetti && Array.isArray(BioClinicDB.pacchetti)) {
+        for (const pack of BioClinicDB.pacchetti) {
+          // Aggiorna o aggiungi
+          const existing = UNIFIED_INDEX.packs.get(pack.id);
+          UNIFIED_INDEX.packs.set(pack.id, {
+            id: pack.id,
+            type: 'pack',
+            name: pack.nome,
+            price: pack.prezzo,
+            description: pack.descrizione,
+            target: pack.target || [],
+            synonyms: [...(pack.tags || []), ...(pack.target || [])],
+            examsIncluded: pack.esami_chiave || [],
+            examsCount: pack.esami_count,
+            savings: pack.risparmio,
+            icon: pack.icona,
+            pageUrl: existing?.pageUrl || `/laboratorio/index.html#pack-${pack.id}`,
+            priority: 70
+          });
+        }
+        console.log(`[UnifiedSearch] Integrati ${BioClinicDB.pacchetti.length} pacchetti da BioClinicDB`);
+      }
+
+      // 3. Integra MEDICI con pubblicazioni
+      if (BioClinicDB.physiciansWithPublications && Array.isArray(BioClinicDB.physiciansWithPublications)) {
+        for (const doc of BioClinicDB.physiciansWithPublications) {
+          // Aggiorna medici esistenti con info pubblicazioni
+          const existing = UNIFIED_INDEX.physicians.get(doc.slug);
+          if (existing) {
+            existing.citations = doc.citations;
+            existing.publications = doc.publications;
+            existing.knowsAbout = doc.knowsAbout;
+            existing.synonyms = [...(existing.synonyms || []), ...(doc.knowsAbout || [])];
+            existing.priority = 90; // Medici con pubblicazioni hanno priorità maggiore
+          } else {
+            UNIFIED_INDEX.physicians.set(doc.slug, {
+              id: doc.slug,
+              type: 'physician',
+              name: doc.name,
+              specialty: doc.specialty,
+              synonyms: [doc.name.toLowerCase(), ...(doc.knowsAbout || [])],
+              citations: doc.citations,
+              publications: doc.publications,
+              knowsAbout: doc.knowsAbout,
+              pageUrl: `/equipe/${doc.slug}.html`,
+              priority: 90
+            });
+          }
+        }
+      }
+
+      // 4. Integra PROCEDURE DIAGNOSTICHE
+      if (BioClinicDB.procedureDiagnostiche && Array.isArray(BioClinicDB.procedureDiagnostiche)) {
+        for (const proc of BioClinicDB.procedureDiagnostiche) {
+          // Aggiorna o aggiungi
+          const existing = UNIFIED_INDEX.procedures.get(proc.id);
+          if (existing) {
+            existing.synonyms = [...new Set([...(existing.synonyms || []), ...(proc.keywords || [])])];
+            existing.correlati = proc.correlati;
+          } else {
+            UNIFIED_INDEX.procedures.set(proc.id, {
+              id: proc.id,
+              type: 'procedure',
+              name: proc.nome,
+              description: proc.descrizione,
+              specialtyId: proc.specialty_id,
+              synonyms: proc.keywords || [],
+              correlati: proc.correlati || [],
+              duration: proc.durata,
+              preparation: proc.preparazione,
+              price: proc.prezzo,
+              pageUrl: proc.page_url || `/pages/${proc.id}.html`,
+              priority: 85
+            });
+          }
+        }
+      }
+
+      // 5. Indicizza per SINTOMI (ricerca sintomatica)
+      if (BioClinicDB.bySymptom) {
+        // bySymptom è un indice { sintomo: [esami] }
+        // Lo usiamo per arricchire i sinonimi dei test
+        Object.entries(BioClinicDB.bySymptom).forEach(([sintomo, esami]) => {
+          esami.forEach(esame => {
+            const test = UNIFIED_INDEX.tests.get(esame.id);
+            if (test && !test.synonyms.includes(sintomo)) {
+              test.synonyms.push(sintomo);
+            }
+          });
+        });
+      }
+
+    } catch (error) {
+      console.error('[UnifiedSearch] Errore integrazione BioClinicDB:', error);
     }
   }
 
