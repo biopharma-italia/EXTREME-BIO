@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pap Test HPV Sassari | Bio-Clinic</title>
+    <meta name="description" content="Pap Test e HPV Test a Sassari: screening oncologico cervicale, quando farlo, preparazione, differenze. Prevenzione tumore cervice uterina. Prenota: 079 956 1332.">
+    <meta name="keywords" content="pap test sassari, hpv test sassari, screening cervicale, prevenzione tumore cervice, papilloma virus test">
+    <link rel="canonical" href="https://bio-clinic.it/pages/pap-test-hpv.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Pap Test e HPV Test Sassari | Bio-Clinic">
+    <meta property="og:description" content="Pap Test e HPV Test: screening oncologico per la prevenzione del tumore della cervice uterina. Guida completa.">
+    <meta property="og:url" content="https://bio-clinic.it/pages/pap-test-hpv.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Bio-Clinic Sassari">
+    
+    <!-- Schema.org MedicalProcedure -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "MedicalClinic",
+                "@id": "https://bio-clinic.it/#clinic",
+                "name": "Bio-Clinic Sassari",
+                "url": "https://bio-clinic.it",
+                "telephone": "+39 079 956 1332",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Via Renzo Mossa, 23",
+                    "addressLocality": "Sassari",
+                    "postalCode": "07100",
+                    "addressCountry": "IT"
+                }
+            },
+            {
+                "@type": "MedicalProcedure",
+                "@id": "https://bio-clinic.it/pages/pap-test-hpv.html#procedure",
+                "name": "Pap Test e HPV Test",
+                "alternateName": ["Pap Test", "HPV Test", "Screening Cervicale", "Test Papanicolaou"],
+                "description": "Il Pap Test è un esame citologico che analizza le cellule del collo dell'utero per identificare alterazioni pre-cancerose. L'HPV Test rileva la presenza del Papilloma Virus Umano, principale causa del tumore cervicale. Insieme costituiscono lo screening più efficace per la prevenzione del cancro cervicale.",
+                "procedureType": "https://schema.org/DiagnosticProcedure",
+                "howPerformed": "Durante la visita ginecologica, il medico preleva delicatamente cellule dalla cervice usando una spatola e uno spazzolino (cytobrush). Il campione viene analizzato in laboratorio. Per l'HPV Test, lo stesso campione può essere testato per la presenza del virus.",
+                "preparation": "Non avere rapporti sessuali nelle 48 ore precedenti. Non utilizzare lavande vaginali, ovuli o creme vaginali nei 2 giorni prima. Evitare il periodo mestruale. Non è necessario il digiuno.",
+                "followup": "I risultati sono disponibili in 7-10 giorni. In caso di Pap Test anomalo, può essere indicata una colposcopia. Per HPV positivo ad alto rischio con Pap Test negativo, si programma un controllo a 12 mesi.",
+                "bodyLocation": "Cervice uterina",
+                "relevantSpecialty": {
+                    "@type": "MedicalSpecialty",
+                    "name": "Ginecologia"
+                },
+                "availableService": {
+                    "@type": "MedicalClinic",
+                    "@id": "https://bio-clinic.it/#clinic"
+                },
+                "provider": {"@id": "https://bio-clinic.it/#clinic"}
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://bio-clinic.it/pages/pap-test-hpv.html#faq",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Ogni quanto fare il Pap Test?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Le linee guida raccomandano: dai 25 ai 30 anni Pap Test ogni 3 anni; dai 30 ai 64 anni HPV Test ogni 5 anni (o Pap Test ogni 3 anni); dopo i 64 anni lo screening può essere sospeso se gli ultimi test erano negativi."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Che differenza c'è tra Pap Test e HPV Test?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Il Pap Test analizza le cellule cervicali cercando alterazioni anomale (lesioni pre-cancerose). L'HPV Test cerca la presenza del virus HPV, causa del 99% dei tumori cervicali. L'HPV Test è più sensibile e rileva il rischio prima che si sviluppino lesioni."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Il Pap Test è doloroso?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "No, il Pap Test non è doloroso. Può causare un leggero fastidio o sensazione di pressione durante il prelievo, che dura pochi secondi. Rilassarsi aiuta a rendere l'esame più confortevole."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Posso fare il Pap Test durante il ciclo?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "No, è preferibile evitare il periodo mestruale perché il sangue può interferire con la lettura del campione. Idealmente, programmare l'esame 10-20 giorni dopo l'inizio dell'ultimo ciclo."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Cosa significa HPV positivo?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Significa che è presente un'infezione da Papilloma Virus. L'HPV è molto comune e nella maggior parte dei casi l'organismo lo elimina spontaneamente. Solo l'infezione persistente da ceppi ad alto rischio (16, 18) può, nel tempo, causare alterazioni cellulari. Per questo si eseguono controlli regolari."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Se sono vaccinata contro l'HPV devo fare comunque il Pap Test?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Sì, il vaccino protegge dai ceppi HPV più pericolosi ma non da tutti. Lo screening rimane importante anche per le donne vaccinate, anche se il rischio è significativamente ridotto."
+                        }
+                    }
+                ]
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bio-clinic.it/"},
+                    {"@type": "ListItem", "position": 2, "name": "Ginecologia", "item": "https://bio-clinic.it/pages/ginecologia.html"},
+                    {"@type": "ListItem", "position": 3, "name": "Pap Test e HPV Test", "item": "https://bio-clinic.it/pages/pap-test-hpv.html"}
+                ]
+            }
+        ]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header-spacing-fix.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CRITICAL FIX - Header Layout */
+        body{padding-top:100px!important}
+        .header{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:1000!important}
+        
+        /* Gynecology Theme Colors */
+        :root {
+            --gyn-primary: #e91e63;
+            --gyn-secondary: #f8bbd9;
+            --gyn-dark: #880e4f;
+            --gyn-light: #fce4ec;
+            --gyn-accent: #ad1457;
+            --prevention-green: #4caf50;
+            --prevention-light: #e8f5e9;
+        }
+        
+        /* Service Page Template Styles */
+        .service-hero {
+            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 50%, #1b5e20 100%);
+            color: white;
+            padding: 60px 0 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+        .service-hero .container { position: relative; z-index: 1; }
+        .service-hero h1 { font-size: 2.2rem; margin-bottom: 0.75rem; font-weight: 700; }
+        .service-hero .subtitle { font-size: 1.15rem; opacity: 0.95; max-width: 650px; margin: 0 auto 1.5rem; }
+        .service-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .service-badge { background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; }
+        
+        /* Content Sections */
+        .content-section { padding: 50px 0; }
+        .content-section:nth-child(even) { background: #f8f9fa; }
+        .section-header { margin-bottom: 30px; }
+        .section-header h2 { font-size: 1.75rem; color: #1a1a2e; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 12px; }
+        .section-header p { color: #666; font-size: 1.05rem; }
+        
+        /* Comparison Cards */
+        .comparison-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .comparison-card { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .comparison-card.pap { border-top: 4px solid var(--gyn-primary); }
+        .comparison-card.hpv { border-top: 4px solid #9c27b0; }
+        .comparison-card h3 { font-size: 1.4rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .comparison-card .badge { font-size: 0.75rem; padding: 4px 10px; border-radius: 12px; font-weight: 600; }
+        .comparison-card.pap .badge { background: var(--gyn-light); color: var(--gyn-dark); }
+        .comparison-card.hpv .badge { background: #f3e5f5; color: #7b1fa2; }
+        .comparison-card ul { list-style: none; padding: 0; margin: 15px 0; }
+        .comparison-card li { padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: flex-start; gap: 10px; }
+        .comparison-card li:last-child { border-bottom: none; }
+        .comparison-card li strong { min-width: 120px; color: #333; }
+        
+        /* Screening Timeline */
+        .timeline { max-width: 800px; margin: 0 auto; }
+        .timeline-item { display: flex; gap: 20px; margin-bottom: 25px; }
+        .timeline-marker { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--prevention-green), #2e7d32); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; text-align: center; flex-shrink: 0; }
+        .timeline-content { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); flex: 1; }
+        .timeline-content h4 { margin: 0 0 8px; color: #333; }
+        .timeline-content p { margin: 0; color: #666; }
+        
+        /* Alert Box */
+        .alert-box { padding: 25px; border-radius: 12px; margin: 25px 0; }
+        .alert-box.warning { background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-left: 4px solid #ff9800; }
+        .alert-box.success { background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-left: 4px solid #4caf50; }
+        .alert-box.info { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-left: 4px solid #2196f3; }
+        .alert-box h4 { margin: 0 0 10px; display: flex; align-items: center; gap: 8px; }
+        .alert-box p { margin: 0; }
+        
+        /* Preparation Box */
+        .preparation-box { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .prep-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px; }
+        .prep-item { display: flex; align-items: flex-start; gap: 12px; padding: 15px; background: #f8f9fa; border-radius: 10px; }
+        .prep-item.do { background: #e8f5e9; border-left: 3px solid #4caf50; }
+        .prep-item.dont { background: #ffebee; border-left: 3px solid #f44336; }
+        .prep-icon { font-size: 1.5rem; flex-shrink: 0; }
+        .prep-content h4 { margin: 0 0 4px; font-size: 1rem; color: #333; }
+        .prep-content p { margin: 0; font-size: 0.9rem; color: #666; }
+        
+        /* Specialists Section */
+        .specialists-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .specialist-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); display: flex; align-items: center; gap: 15px; transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; color: inherit; }
+        .specialist-card:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .specialist-avatar { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--prevention-green), #2e7d32); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 1.2rem; flex-shrink: 0; }
+        .specialist-info h4 { margin: 0 0 4px; color: #333; font-size: 1rem; }
+        .specialist-info p { margin: 0; color: #666; font-size: 0.85rem; }
+        .specialist-info .role { color: var(--prevention-green); font-weight: 500; }
+        
+        /* FAQ Section */
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: white; border-radius: 12px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); overflow: hidden; }
+        .faq-question { padding: 20px 24px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 500; color: #333; transition: background 0.2s; }
+        .faq-question:hover { background: #e8f5e9; }
+        .faq-answer { padding: 0 24px 20px; color: #666; line-height: 1.7; display: none; }
+        .faq-item.active .faq-answer { display: block; }
+        .faq-item.active .faq-question { background: var(--prevention-light); color: #1b5e20; }
+        .faq-toggle { font-size: 1.5rem; color: var(--prevention-green); transition: transform 0.3s; }
+        .faq-item.active .faq-toggle { transform: rotate(45deg); }
+        
+        /* Related Services */
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .related-card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s; border-top: 3px solid var(--gyn-primary); }
+        .related-card:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(0,0,0,0.12); }
+        .related-card h4 { color: var(--gyn-dark); margin: 0 0 8px; font-size: 1.1rem; }
+        .related-card p { color: #666; font-size: 0.9rem; margin: 0 0 12px; }
+        .related-link { color: var(--gyn-primary); font-weight: 500; font-size: 0.9rem; }
+        
+        /* CTA Section */
+        .cta-section { background: linear-gradient(135deg, var(--prevention-green) 0%, #1b5e20 100%); color: white; padding: 60px 0; text-align: center; }
+        .cta-section h2 { font-size: 2rem; margin-bottom: 1rem; }
+        .cta-section p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .cta-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .btn-cta { padding: 15px 35px; border-radius: 30px; font-weight: 600; text-decoration: none; transition: all 0.3s; }
+        .btn-cta.primary { background: white; color: #1b5e20; }
+        .btn-cta.primary:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+        .btn-cta.secondary { background: transparent; color: white; border: 2px solid white; }
+        .btn-cta.secondary:hover { background: white; color: #1b5e20; }
+        
+        /* Breadcrumb */
+        .breadcrumb { padding: 15px 0; background: #f8f9fa; border-bottom: 1px solid #eee; }
+        .breadcrumb-list { display: flex; align-items: center; gap: 8px; list-style: none; margin: 0; padding: 0; font-size: 0.9rem; }
+        .breadcrumb-list a { color: var(--prevention-green); text-decoration: none; }
+        .breadcrumb-list a:hover { text-decoration: underline; }
+        .breadcrumb-list span { color: #999; }
+        
+        @media (max-width: 768px) {
+            .service-hero h1 { font-size: 1.8rem; }
+            .comparison-cards { grid-template-columns: 1fr; }
+            .timeline-item { flex-direction: column; align-items: flex-start; }
+            .timeline-marker { margin-bottom: -10px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.html" class="logo">
+                    <img src="../images/logo-bioclinic.png" alt="Bio-Clinic Sassari" height="50">
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../specialita.html">Specialità</a></li>
+                    <li><a href="../equipe/">Équipe</a></li>
+                    <li><a href="../pages/ginecologia.html" class="active">Ginecologia</a></li>
+                    <li><a href="../contatti.html">Contatti</a></li>
+                </ul>
+                <a href="tel:+390799561332" class="btn-phone">
+                    <span>📞</span> 079 956 1332
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li><a href="../index.html">Home</a></li>
+                <li><span>›</span></li>
+                <li><a href="ginecologia.html">Ginecologia</a></li>
+                <li><span>›</span></li>
+                <li><strong>Pap Test e HPV Test</strong></li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="service-hero">
+        <div class="container">
+            <h1>Pap Test e HPV Test</h1>
+            <p class="subtitle">Screening oncologico per la prevenzione del tumore della cervice uterina. La prevenzione salva la vita: il 99% dei tumori cervicali è prevenibile con lo screening regolare.</p>
+            <div class="service-badges">
+                <span class="service-badge">🛡️ Prevenzione oncologica</span>
+                <span class="service-badge">⏱️ 5-10 minuti</span>
+                <span class="service-badge">📋 Risultati in 7-10 giorni</span>
+                <span class="service-badge">💚 Non doloroso</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>🔬 Pap Test vs HPV Test</h2>
+                <p>Due esami complementari con obiettivi diversi</p>
+            </div>
+            
+            <div class="comparison-cards">
+                <div class="comparison-card pap">
+                    <h3>Pap Test <span class="badge">Citologia</span></h3>
+                    <ul>
+                        <li><strong>Cosa rileva:</strong> Alterazioni cellulari già presenti</li>
+                        <li><strong>Come funziona:</strong> Analizza le cellule prelevate dalla cervice</li>
+                        <li><strong>Sensibilità:</strong> ~70% (può non rilevare lesioni iniziali)</li>
+                        <li><strong>Risultato:</strong> Normale / ASCUS / LSIL / HSIL</li>
+                        <li><strong>Frequenza:</strong> Ogni 3 anni (25-30 anni)</li>
+                        <li><strong>Vantaggio:</strong> Identifica lesioni già sviluppate</li>
+                    </ul>
+                </div>
+                
+                <div class="comparison-card hpv">
+                    <h3>HPV Test <span class="badge">Virologia</span></h3>
+                    <ul>
+                        <li><strong>Cosa rileva:</strong> Presenza del virus HPV</li>
+                        <li><strong>Come funziona:</strong> Cerca il DNA virale nel campione</li>
+                        <li><strong>Sensibilità:</strong> ~95% (più sensibile)</li>
+                        <li><strong>Risultato:</strong> Negativo / Positivo (+ genotipo)</li>
+                        <li><strong>Frequenza:</strong> Ogni 5 anni (dai 30 anni)</li>
+                        <li><strong>Vantaggio:</strong> Rileva il rischio PRIMA delle lesioni</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="alert-box info" style="margin-top: 30px;">
+                <h4>💡 Quale scegliere?</h4>
+                <p><strong>Dai 25 ai 30 anni:</strong> Pap Test ogni 3 anni (l'HPV è molto comune a questa età e spesso si risolve spontaneamente).<br>
+                <strong>Dai 30 ai 64 anni:</strong> HPV Test ogni 5 anni (o Pap Test ogni 3 anni). L'HPV Test è oggi considerato il test primario.<br>
+                <strong>Co-testing:</strong> In alcuni casi si eseguono entrambi per la massima sicurezza.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screening Timeline -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>📅 Calendario dello Screening</h2>
+                <p>Le raccomandazioni per età secondo le linee guida italiane</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">25-29<br>anni</div>
+                    <div class="timeline-content">
+                        <h4>Pap Test ogni 3 anni</h4>
+                        <p>Lo screening inizia a 25 anni. A questa età l'HPV è molto diffuso ma nella maggior parte dei casi l'organismo lo elimina spontaneamente. Il Pap Test è sufficiente.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">30-64<br>anni</div>
+                    <div class="timeline-content">
+                        <h4>HPV Test ogni 5 anni</h4>
+                        <p>Dai 30 anni l'HPV Test diventa il test primario. Se negativo, il rischio di sviluppare lesioni nei 5 anni successivi è bassissimo. Se positivo, si esegue il Pap Test di triage.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">65+<br>anni</div>
+                    <div class="timeline-content">
+                        <h4>Valutazione individuale</h4>
+                        <p>Se gli ultimi 3 Pap Test o 2 HPV Test erano negativi, lo screening può essere sospeso. In caso di storia di anomalie, continuare i controlli secondo indicazione medica.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert-box warning">
+                <h4>⚠️ Casi particolari</h4>
+                <p><strong>Immunodepressione:</strong> screening più frequente. <strong>Storia di lesioni:</strong> follow-up personalizzato. <strong>Isterectomia totale per patologia benigna:</strong> screening non più necessario (se cervice rimossa).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preparation Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>✅ Preparazione all'Esame</h2>
+                <p>Cosa fare (e non fare) prima del Pap Test / HPV Test</p>
+            </div>
+            
+            <div class="preparation-box">
+                <div class="prep-grid">
+                    <div class="prep-item dont">
+                        <span class="prep-icon">❌</span>
+                        <div class="prep-content">
+                            <h4>No rapporti sessuali</h4>
+                            <p>Evitare nelle 48 ore precedenti l'esame</p>
+                        </div>
+                    </div>
+                    <div class="prep-item dont">
+                        <span class="prep-icon">❌</span>
+                        <div class="prep-content">
+                            <h4>No lavande vaginali</h4>
+                            <p>Non utilizzare nei 2 giorni prima</p>
+                        </div>
+                    </div>
+                    <div class="prep-item dont">
+                        <span class="prep-icon">❌</span>
+                        <div class="prep-content">
+                            <h4>No ovuli/creme vaginali</h4>
+                            <p>Sospendere 48 ore prima</p>
+                        </div>
+                    </div>
+                    <div class="prep-item dont">
+                        <span class="prep-icon">❌</span>
+                        <div class="prep-content">
+                            <h4>Evitare il ciclo mestruale</h4>
+                            <p>Programmare 10-20 giorni dopo l'inizio</p>
+                        </div>
+                    </div>
+                    <div class="prep-item do">
+                        <span class="prep-icon">✅</span>
+                        <div class="prep-content">
+                            <h4>Igiene esterna normale</h4>
+                            <p>Doccia normale, no saponi intimi aggressivi</p>
+                        </div>
+                    </div>
+                    <div class="prep-item do">
+                        <span class="prep-icon">ℹ️</span>
+                        <div class="prep-content">
+                            <h4>No digiuno</h4>
+                            <p>Puoi mangiare e bere normalmente</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Happens Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>🩺 Come si Svolge l'Esame</h2>
+                <p>Procedura semplice e veloce, eseguita durante la visita ginecologica</p>
+            </div>
+            
+            <div class="comparison-cards">
+                <div class="comparison-card" style="border-top-color: var(--prevention-green);">
+                    <h3>1️⃣ Posizionamento</h3>
+                    <p>Ti sdrai sul lettino ginecologico nella posizione abituale per la visita. Il medico inserisce delicatamente uno speculum per visualizzare la cervice.</p>
+                </div>
+                <div class="comparison-card" style="border-top-color: var(--prevention-green);">
+                    <h3>2️⃣ Prelievo del campione</h3>
+                    <p>Con una piccola spatola e uno spazzolino (cytobrush), il medico preleva delicatamente alcune cellule dalla superficie della cervice. La procedura dura pochi secondi.</p>
+                </div>
+                <div class="comparison-card" style="border-top-color: var(--prevention-green);">
+                    <h3>3️⃣ Invio al laboratorio</h3>
+                    <p>Il campione viene posto in un contenitore con liquido conservante e inviato al laboratorio per l'analisi citologica (Pap Test) e/o la ricerca del DNA virale (HPV Test).</p>
+                </div>
+            </div>
+            
+            <div class="alert-box success" style="margin-top: 30px;">
+                <h4>💚 È doloroso?</h4>
+                <p>No, l'esame <strong>non è doloroso</strong>. Può causare un leggero fastidio o sensazione di pressione durante il prelievo, che dura pochi secondi. Rilassarsi e respirare profondamente aiuta a rendere l'esame più confortevole. È normale avere piccole perdite di sangue nelle ore successive.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>📊 Interpretazione dei Risultati</h2>
+                <p>Cosa significano i possibili esiti del Pap Test e HPV Test</p>
+            </div>
+            
+            <div class="comparison-cards" style="grid-template-columns: 1fr;">
+                <div class="comparison-card" style="border-top: none; border-left: 4px solid #4caf50;">
+                    <h3 style="color: #2e7d32;">✅ Pap Test NEGATIVO + HPV NEGATIVO</h3>
+                    <p><strong>Ottima notizia!</strong> Non ci sono alterazioni cellulari né infezione da HPV. Ripetere lo screening secondo le tempistiche standard (Pap Test ogni 3 anni o HPV Test ogni 5 anni).</p>
+                </div>
+                <div class="comparison-card" style="border-top: none; border-left: 4px solid #ff9800;">
+                    <h3 style="color: #e65100;">⚠️ HPV POSITIVO + Pap Test NEGATIVO</h3>
+                    <p><strong>Situazione comune.</strong> Il virus è presente ma non ha causato alterazioni cellulari. Nella maggior parte dei casi il sistema immunitario eliminerà il virus. Controllo a 12 mesi. Se HPV persiste, colposcopia.</p>
+                </div>
+                <div class="comparison-card" style="border-top: none; border-left: 4px solid #f44336;">
+                    <h3 style="color: #c62828;">🔴 Pap Test ANOMALO (ASCUS, LSIL, HSIL)</h3>
+                    <p><strong>Richiede approfondimento.</strong> Sono state rilevate alterazioni cellulari. Il passo successivo è la <a href="colposcopia.html">colposcopia</a> per visualizzare la cervice ingrandita e, se necessario, eseguire una biopsia.</p>
+                </div>
+            </div>
+            
+            <div class="alert-box info" style="margin-top: 25px;">
+                <h4>💡 HPV: non è una condanna</h4>
+                <p>L'HPV è il virus sessualmente trasmesso più comune al mondo. L'80% delle persone lo contrae almeno una volta nella vita. Nella maggior parte dei casi l'organismo lo elimina spontaneamente in 1-2 anni. Solo l'infezione persistente da ceppi ad alto rischio (16, 18) può, negli anni, portare a lesioni pre-cancerose. Ecco perché lo screening regolare è fondamentale.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialists Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>👩‍⚕️ I Nostri Specialisti</h2>
+                <p>Ginecologi che eseguono Pap Test e HPV Test</p>
+            </div>
+            
+            <div class="specialists-grid">
+                <a href="../equipe/salvatore-dessole.html" class="specialist-card">
+                    <div class="specialist-avatar">SD</div>
+                    <div class="specialist-info">
+                        <h4>Prof. Salvatore Dessole</h4>
+                        <p class="role">Responsabile Ginecologia</p>
+                        <p>Colposcopia, patologia cervicale</p>
+                    </div>
+                </a>
+                <a href="../equipe/francesco-dessole.html" class="specialist-card">
+                    <div class="specialist-avatar">FD</div>
+                    <div class="specialist-info">
+                        <h4>Dott. Francesco Dessole</h4>
+                        <p class="role">Ginecologo</p>
+                        <p>Prevenzione oncologica</p>
+                    </div>
+                </a>
+                <a href="../equipe/margherita-dessole.html" class="specialist-card">
+                    <div class="specialist-avatar">MD</div>
+                    <div class="specialist-info">
+                        <h4>Dott.ssa Margherita Dessole</h4>
+                        <p class="role">Ginecologa</p>
+                        <p>Screening e prevenzione</p>
+                    </div>
+                </a>
+                <a href="../equipe/maddalena-pola.html" class="specialist-card">
+                    <div class="specialist-avatar">MP</div>
+                    <div class="specialist-info">
+                        <h4>Dott.ssa Maddalena Pola</h4>
+                        <p class="role">Ginecologa</p>
+                        <p>Pap Test, consulenza HPV</p>
+                    </div>
+                </a>
+                <a href="../equipe/antonella-pruneddu.html" class="specialist-card">
+                    <div class="specialist-avatar">AP</div>
+                    <div class="specialist-info">
+                        <h4>Dott.ssa Antonella Pruneddu</h4>
+                        <p class="role">Ginecologa</p>
+                        <p>Screening oncologico</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <h2>❓ Domande Frequenti</h2>
+                <p>Le risposte alle domande più comuni su Pap Test e HPV Test</p>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        Ogni quanto fare il Pap Test?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Le linee guida raccomandano: <strong>dai 25 ai 30 anni</strong> Pap Test ogni 3 anni; <strong>dai 30 ai 64 anni</strong> HPV Test ogni 5 anni (o Pap Test ogni 3 anni); <strong>dopo i 65 anni</strong> lo screening può essere sospeso se gli ultimi test erano negativi e non c'è storia di anomalie.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Che differenza c'è tra Pap Test e HPV Test?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Il <strong>Pap Test</strong> analizza le cellule cervicali cercando alterazioni anomale (lesioni pre-cancerose). L'<strong>HPV Test</strong> cerca la presenza del virus HPV, causa del 99% dei tumori cervicali. L'HPV Test è più sensibile e rileva il rischio <strong>prima</strong> che si sviluppino lesioni.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Il Pap Test è doloroso?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <strong>No</strong>, il Pap Test non è doloroso. Può causare un leggero fastidio o sensazione di pressione durante il prelievo, che dura pochi secondi. Rilassarsi e respirare profondamente aiuta a rendere l'esame più confortevole.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Posso fare il Pap Test durante il ciclo?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <strong>No</strong>, è preferibile evitare il periodo mestruale perché il sangue può interferire con la lettura del campione. Idealmente, programmare l'esame <strong>10-20 giorni dopo l'inizio dell'ultimo ciclo</strong>.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Cosa significa HPV positivo?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Significa che è presente un'infezione da Papilloma Virus. L'HPV è <strong>molto comune</strong> e nella maggior parte dei casi l'organismo lo elimina spontaneamente in 1-2 anni. Solo l'infezione persistente da ceppi ad alto rischio (16, 18) può, nel tempo, causare alterazioni cellulari. Per questo si eseguono controlli regolari.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Se sono vaccinata contro l'HPV devo fare comunque il Pap Test?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <strong>Sì</strong>, il vaccino protegge dai ceppi HPV più pericolosi (16, 18 e altri nel vaccino 9-valente) ma non da tutti i ceppi potenzialmente oncogeni. Lo screening rimane importante anche per le donne vaccinate, anche se il rischio è significativamente ridotto.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Services -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>🔗 Esami Correlati</h2>
+                <p>Altri esami di prevenzione ginecologica</p>
+            </div>
+            
+            <div class="related-grid">
+                <a href="colposcopia.html" class="related-card">
+                    <h4>Colposcopia</h4>
+                    <p>Esame di approfondimento dopo Pap Test anomalo o HPV positivo persistente</p>
+                    <span class="related-link">Scopri di più →</span>
+                </a>
+                <a href="visita-ginecologica.html" class="related-card">
+                    <h4>Visita Ginecologica</h4>
+                    <p>Controllo annuale completo che include il Pap Test</p>
+                    <span class="related-link">Scopri di più →</span>
+                </a>
+                <a href="ecografia-transvaginale.html" class="related-card">
+                    <h4>Ecografia Transvaginale</h4>
+                    <p>Completa la valutazione ginecologica con lo studio di utero e ovaie</p>
+                    <span class="related-link">Scopri di più →</span>
+                </a>
+                <a href="ecografia-mammaria.html" class="related-card">
+                    <h4>Ecografia Mammaria</h4>
+                    <p>Screening senologico, altro pilastro della prevenzione oncologica femminile</p>
+                    <span class="related-link">Scopri di più →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>La Prevenzione Salva la Vita</h2>
+            <p>Il tumore della cervice è quasi completamente prevenibile con lo screening regolare. Non rimandare: prenota il tuo Pap Test o HPV Test.</p>
+            <div class="cta-buttons">
+                <a href="tel:+390799561332" class="btn-cta primary">📞 Chiama 079 956 1332</a>
+                <a href="../contatti.html" class="btn-cta secondary">✉️ Richiedi informazioni</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    
+        <!-- SEZIONE SPECIALISTI DI RIFERIMENTO -->
+        <section class="py-12" style="background-color: #FCE4EC">
+          <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-10">
+              <h2 class="text-3xl font-bold text-gray-900 mb-3">
+                <i class="fas fa-user-md mr-3" style="color: #E91E63"></i>
+                I Nostri Specialisti
+              </h2>
+              <p class="text-gray-600 max-w-2xl mx-auto">
+                Professionisti esperti, aggiornamento continuo e tecnologie all'avanguardia per la tua salute.
+              </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+
+              <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <div class="p-6">
+                  <div class="flex items-center gap-4 mb-4">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-xl font-bold" style="background-color: #E91E63">
+                      SD
+                    </div>
+                    <div>
+                      <h3 class="font-semibold text-gray-900">Prof. Salvatore Dessole</h3>
+                      <p class="text-sm text-gray-500">Direttore Sanitario - Ginecologo Senior</p>
+                    </div>
+                  </div>
+                  <p class="text-sm text-gray-600 mb-4">Professore Emerito, fondatore di Bio-Clinic, oltre 40 anni di esperienza in ginecologia e ostetricia. Punto di riferimento per la medicina della riproduzione in Sardegna.</p>
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="inline-block bg-white/20 text-white text-xs px-2 py-0.5 rounded-full">Direttore Sanitario</span><span class="inline-block bg-white/20 text-white text-xs px-2 py-0.5 rounded-full">Professore Emerito</span>
+                  </div>
+                  <a href="https://www.miodottore.it/salvatore-dessole/ginecologo/sassari" target="_blank" rel="noopener" 
+                     class="inline-flex items-center gap-2 text-sm font-medium hover:underline" style="color: #E91E63">
+                    <i class="fas fa-calendar-check"></i> Prenota con questo specialista
+                  </a>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <div class="p-6">
+                  <div class="flex items-center gap-4 mb-4">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-xl font-bold" style="background-color: #E91E63">
+                      FD
+                    </div>
+                    <div>
+                      <h3 class="font-semibold text-gray-900">Dott. Francesco Dessole</h3>
+                      <p class="text-sm text-gray-500">Ginecologo</p>
+                    </div>
+                  </div>
+                  <p class="text-sm text-gray-600 mb-4">Ginecologo con esperienza in ecografia ostetrica e ginecologica, PMA e chirurgia mini-invasiva.</p>
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="inline-block bg-white/20 text-white text-xs px-2 py-0.5 rounded-full">Medico Rif. Slim Care Donna</span>
+                  </div>
+                  <a href="https://www.miodottore.it/francesco-dessole/ginecologo/sassari" target="_blank" rel="noopener" 
+                     class="inline-flex items-center gap-2 text-sm font-medium hover:underline" style="color: #E91E63">
+                    <i class="fas fa-calendar-check"></i> Prenota con questo specialista
+                  </a>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <div class="p-6">
+                  <div class="flex items-center gap-4 mb-4">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-xl font-bold" style="background-color: #E91E63">
+                      MD
+                    </div>
+                    <div>
+                      <h3 class="font-semibold text-gray-900">Dott.ssa Margherita Dessole</h3>
+                      <p class="text-sm text-gray-500">Ginecologa</p>
+                    </div>
+                  </div>
+                  <p class="text-sm text-gray-600 mb-4">Ginecologa con esperienza in ostetricia e ginecologia generale.</p>
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    
+                  </div>
+                  <a href="https://www.miodottore.it/margherita-dessole/ginecologo/sassari" target="_blank" rel="noopener" 
+                     class="inline-flex items-center gap-2 text-sm font-medium hover:underline" style="color: #E91E63">
+                    <i class="fas fa-calendar-check"></i> Prenota con questo specialista
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- FINE SEZIONE SPECIALISTI -->
+
+<footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="../images/logo-bioclinic.png" alt="Bio-Clinic" height="40">
+                    <p>Poliambulatorio specialistico a Sassari. Eccellenza in Ginecologia, Cardiologia, Dermatologia e oltre 20 specialità mediche.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Prevenzione Donna</h4>
+                    <ul>
+                        <li><a href="ginecologia.html">Hub Ginecologia</a></li>
+                        <li><a href="pap-test-hpv.html">Pap Test e HPV Test</a></li>
+                        <li><a href="colposcopia.html">Colposcopia</a></li>
+                        <li><a href="ecografia-mammaria.html">Ecografia Mammaria</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contatti</h4>
+                    <p>📍 Via Renzo Mossa, 23 - 07100 Sassari</p>
+                    <p>📞 <a href="tel:+390799561332">079 956 1332</a></p>
+                    <p>📧 <a href="mailto:info@bio-clinic.it">info@bio-clinic.it</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Bio-Clinic Sassari. Tutti i diritti riservati. | <a href="../privacy.html">Privacy Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const wasActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(faq => faq.classList.remove('active'));
+                if (!wasActive) item.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
