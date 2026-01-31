@@ -695,16 +695,141 @@
     }, 100);
   }
 
+  // ===== INIEZIONE PANNELLO DINAMICO =====
+  
+  /**
+   * Inietta il pannello risultati se non esiste nella pagina
+   * Questo permette di non dover aggiungere HTML a tutte le pagine
+   */
+  function injectPanelIfNeeded() {
+    // Controlla se il pannello esiste già
+    if (document.getElementById('unified-search-panel')) {
+      return; // Pannello già presente
+    }
+    
+    // HTML del pannello da iniettare
+    const panelHTML = `
+      <div id="unified-search-overlay" class="unified-search-overlay"></div>
+      <div id="unified-search-panel" class="unified-search-panel">
+        <div class="unified-search-panel-header">
+          <div class="unified-search-panel-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+              <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+            </svg>
+            <h3>Risultati per "<span id="unified-search-query-display"></span>"</h3>
+          </div>
+          <button id="unified-search-close" class="unified-search-close" aria-label="Chiudi pannello">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+        <div id="unified-search-content" class="unified-search-content">
+          <div id="unified-search-fallback" class="unified-search-fallback" style="display:none;">
+            <div class="unified-fallback-icon">🔍</div>
+            <p class="unified-fallback-text"></p>
+            <div class="unified-fallback-suggestions"></div>
+          </div>
+          <section id="unified-results-pathways" class="unified-results-section" data-section="pathways" style="display:none;">
+            <h4 class="unified-section-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+              Percorsi Consigliati
+            </h4>
+            <div class="unified-section-items"></div>
+          </section>
+          <section id="unified-results-specialties" class="unified-results-section" data-section="specialties" style="display:none;">
+            <h4 class="unified-section-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              </svg>
+              Specialità
+            </h4>
+            <div class="unified-section-items"></div>
+          </section>
+          <section id="unified-results-procedures" class="unified-results-section" data-section="procedures" style="display:none;">
+            <h4 class="unified-section-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+              </svg>
+              Prestazioni
+            </h4>
+            <div class="unified-section-items"></div>
+          </section>
+          <section id="unified-results-tests" class="unified-results-section" data-section="tests" style="display:none;">
+            <h4 class="unified-section-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <path d="M14.5 4h-5l-.5.67V9l-4.9 7.35A2 2 0 0 0 5.77 20h12.46a2 2 0 0 0 1.66-3.65L15 9V4.67L14.5 4z"/>
+              </svg>
+              Esami di Laboratorio
+            </h4>
+            <div class="unified-section-items"></div>
+          </section>
+          <section id="unified-results-physicians" class="unified-results-section" data-section="physicians" style="display:none;">
+            <h4 class="unified-section-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+              I Nostri Specialisti
+            </h4>
+            <div class="unified-section-items"></div>
+          </section>
+          <section id="unified-results-packs" class="unified-results-section" data-section="packs" style="display:none;">
+            <h4 class="unified-section-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <line x1="9" y1="3" x2="9" y2="21"/>
+              </svg>
+              Check-up e Pacchetti
+              <span class="unified-section-badge">Risparmio</span>
+            </h4>
+            <div class="unified-section-items"></div>
+          </section>
+        </div>
+        <div class="unified-search-panel-footer">
+          <span class="unified-results-count">0 risultati trovati</span>
+          <a href="tel:+390799561332" class="unified-cta-call">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            Non trovi? Chiama: 079 956 1332
+          </a>
+        </div>
+      </div>
+    `;
+    
+    // Inietta prima di </body>
+    document.body.insertAdjacentHTML('beforeend', panelHTML);
+    
+    // Aggiorna i riferimenti agli elementi
+    unifiedPanel = document.getElementById('unified-search-panel');
+    unifiedOverlay = document.getElementById('unified-search-overlay');
+    queryDisplay = document.getElementById('unified-search-query-display');
+    resultsCount = document.querySelector('.unified-results-count');
+    fallbackContainer = document.getElementById('unified-search-fallback');
+    resultsContainer = document.getElementById('unified-search-content');
+    
+    // Bind eventi del nuovo pannello
+    bindUnifiedPanelEvents();
+    
+    console.log('[SearchController] Pannello iniettato dinamicamente');
+  }
+
   // ===== INIZIALIZZAZIONE =====
 
   // Auto-init
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
+      injectPanelIfNeeded();
       init();
       integrateWithHeader();
       handleSearchResultsPage();
     });
   } else {
+    injectPanelIfNeeded();
     init();
     integrateWithHeader();
     handleSearchResultsPage();
