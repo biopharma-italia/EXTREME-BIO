@@ -417,6 +417,41 @@ const BioClinicDB = (function() {
         "esami_count": 17,
         "risparmio": "Risparmi il 55% rispetto agli esami singoli",
         "icona": "🤰"
+    },
+    {
+        "id": "medicina-lavoro",
+        "nome": "Medicina del Lavoro (Aziende)",
+        "prezzo": 79.00,
+        "descrizione": "Servizio completo per aziende. Nomina medico competente, visite e idoneità in un'unica sede.",
+        "target": [
+            "aziende",
+            "dipendenti",
+            "b2b"
+        ],
+        "tags": [
+            "medicina del lavoro",
+            "visita aziendale",
+            "medico competente",
+            "idoneità",
+            "sicurezza sul lavoro",
+            "sorveglianza sanitaria",
+            "lavoro",
+            "azienda"
+        ],
+        "esami_chiave": [
+            "visita-medica",
+            "audiometria",
+            "spirometria",
+            "visiotest",
+            "esami-sangue",
+            "ecg",
+            "drug-test"
+        ],
+        "esami_count": 7,
+        "risparmio": "Prezzo per dipendente",
+        "icona": "🏭",
+        "url": "pages/medicina-lavoro.html",
+        "bookingType": "direct"
     }
 ];
 
