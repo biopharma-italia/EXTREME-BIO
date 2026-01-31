@@ -1,0 +1,88 @@
+# Cloudflare Pages Redirects
+# Docs: https://developers.cloudflare.com/pages/platform/redirects
+
+# ===========================================
+# DOMAIN CANONICALIZATION (SEO)
+# Redirect .online to .it (301 permanent)
+# ===========================================
+https://bio-clinic.online/* https://bio-clinic.it/:splat 301
+https://www.bio-clinic.online/* https://bio-clinic.it/:splat 301
+
+# WWW to non-WWW
+https://www.bio-clinic.it/* https://bio-clinic.it/:splat 301
+
+# ===========================================
+# SEO-FRIENDLY URLs
+# Clean URLs without /pages/ and .html
+# ===========================================
+
+# Homepage
+/home /index.html 200
+
+# Main Services
+/convenzioni/* /pages/convenzioni.html 200
+/convenzioni /pages/convenzioni.html 200
+/screening-inps-sardegna/* /pages/screening-inps-sardegna.html 200
+/screening-inps-sardegna /pages/screening-inps-sardegna.html 200
+/screening-inps/* /pages/screening-inps-sardegna.html 200
+/screening-inps /pages/screening-inps-sardegna.html 200
+
+# Slim Care
+/slim-care/* /pages/slim-care.html 200
+/slim-care /pages/slim-care.html 200
+/slim-care-donna/* /pages/slim-care-donna.html 200
+/slim-care-donna /pages/slim-care-donna.html 200
+
+# Ginecologia & PMA
+/ginecologia/* /pages/ginecologia.html 200
+/ginecologia /pages/ginecologia.html 200
+/pma-fertilita/* /pages/pma-fertilita.html 200
+/pma-fertilita /pages/pma-fertilita.html 200
+/pma/* /pages/pma-fertilita.html 200
+/fertilita/* /pages/pma-fertilita.html 200
+/isteroscopia/* /pages/isteroscopia.html 200
+/isteroscopia /pages/isteroscopia.html 200
+/isterosalpingografia/* /pages/isterosalpingografia.html 200
+/isterosalpingografia /pages/isterosalpingografia.html 200
+
+# Specialità
+/cardiologia/* /pages/cardiologia.html 200
+/cardiologia /pages/cardiologia.html 200
+/dermatologia/* /pages/dermatologia.html 200
+/dermatologia /pages/dermatologia.html 200
+/endocrinologia/* /pages/endocrinologia.html 200
+/endocrinologia /pages/endocrinologia.html 200
+/neurologia/* /pages/neurologia.html 200
+/neurologia /pages/neurologia.html 200
+/oculistica/* /pages/oculistica.html 200
+/oculistica /pages/oculistica.html 200
+/ortopedia/* /pages/ortopedia.html 200
+/ortopedia /pages/ortopedia.html 200
+/urologia/* /pages/urologia.html 200
+/urologia /pages/urologia.html 200
+
+# Contatti e Info
+/contatti/* /pages/contatti.html 200
+/contatti /pages/contatti.html 200
+/chi-siamo/* /pages/chi-siamo.html 200
+/chi-siamo /pages/chi-siamo.html 200
+/privacy/* /pages/privacy.html 200
+/privacy /pages/privacy.html 200
+/cookie/* /pages/cookie.html 200
+/cookie /pages/cookie.html 200
+/specialita/* /pages/specialita.html 200
+/specialita /pages/specialita.html 200
+
+# Laboratorio
+/laboratorio/* /laboratorio/index.html 200
+/laboratorio /laboratorio/index.html 200
+/analisi/* /laboratorio/index.html 200
+
+# Equipe
+/equipe/* /equipe/index.html 200
+/equipe /equipe/index.html 200
+/medici/* /equipe/index.html 200
+
+# Shop
+/shop/* /shop/index.html 200
+/shop /shop/index.html 200
