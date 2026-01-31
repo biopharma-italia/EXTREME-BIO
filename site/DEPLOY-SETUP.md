@@ -82,10 +82,12 @@ URL di produzione: **https://bio-clinic.pages.dev**
 ## Configurazione Attuale
 
 ```yaml
-Project Name: project-9c397b80
+Project Name: bio-clinic
+Account ID: e40ec532ef28e0718e095d21bf508847
 Branch: main
 Directory: site/
-URL: https://bio-clinic.pages.dev
+Production URL: https://bio-clinic.pages.dev
+Custom Domains: bio-clinic.online, www.bio-clinic.online
 ```
 
 ## Riferimenti

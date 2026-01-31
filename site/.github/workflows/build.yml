@@ -25,7 +25,7 @@ on:
 
 env:
   PYTHON_VERSION: '3.11'
-  CLOUDFLARE_PROJECT_NAME: 'project-9c397b80'
+  CLOUDFLARE_PROJECT_NAME: 'bio-clinic'
 
 jobs:
   # ===========================================================================
