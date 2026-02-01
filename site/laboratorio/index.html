@@ -741,56 +741,100 @@ body{padding-top:100px!important;margin:0!important}
       container.innerHTML = exams.slice(0, 50).map(e => renderExamCard(e)).join('');
     }
 
-    // Ricerca
-    function performSearch() {
+    // Ricerca UNIFICATA - usa lo stesso motore della Home
+    async function performSearch() {
       const query = document.getElementById('searchInput').value.trim();
-      if (!query) return;
+      if (!query || query.length < 2) return;
       
-      const results = BioClinicDB.search(query);
+      // Assicura che il motore sia inizializzato
+      if (typeof BioClinicSearchEngine !== 'undefined') {
+        await BioClinicSearchEngine.init();
+      }
+      
+      // USA IL MOTORE UNIFICATO (stesso della Home)
+      let results;
+      if (typeof BioClinicSearchEngine !== 'undefined') {
+        results = BioClinicSearchEngine.search(query);
+      } else {
+        // Fallback a BioClinicDB (legacy)
+        const legacyResults = BioClinicDB.search(query);
+        results = {
+          groups: {
+            tests: legacyResults.esami || [],
+            packs: legacyResults.pacchetti || []
+          },
+          stats: { total: (legacyResults.esami?.length || 0) + (legacyResults.pacchetti?.length || 0) }
+        };
+      }
       
       // Mostra sezione risultati
       document.getElementById('resultsSection').classList.add('active');
       document.getElementById('packSection').style.display = 'none';
       
-      // Pack suggerito
+      // Pack suggerito (dalla ricerca unificata)
       const packContainer = document.getElementById('packSuggestion');
-      if (results.packSuggerito) {
-        const p = results.packSuggerito;
+      const packs = results.groups?.packs || [];
+      
+      if (packs.length > 0) {
+        const p = packs[0];
+        const packName = p.name || p.nome;
+        const packDesc = p.description || p.descrizione || '';
+        const packPrice = p.price || p.prezzo;
+        const packIcon = p.icon || p.icona || '📦';
+        const packSavings = p.savings || p.risparmio || '';
+        
         packContainer.innerHTML = `
           <div class="pack-suggestion">
-            <span class="pack-icon">${p.icona}</span>
+            <span class="pack-icon">${packIcon}</span>
             <div class="pack-info">
-              <h3>💡 Ti consigliamo: ${p.nome}</h3>
-              <p>${p.descrizione}</p>
-              <p><span class="pack-price">€${p.prezzo.toFixed(2)}</span> <span class="pack-savings">${p.risparmio}</span></p>
+              <h3>💡 Ti consigliamo: ${packName}</h3>
+              <p>${packDesc}</p>
+              <p><span class="pack-price">€${typeof packPrice === 'number' ? packPrice.toFixed(2) : packPrice}</span> ${packSavings ? `<span class="pack-savings">${packSavings}</span>` : ''}</p>
             </div>
             <a href="tel:+390799561332" class="btn btn-primary">Prenota Pack</a>
-          </div>
-        `;
-      } else if (results.pacchetti.length > 0) {
-        const p = results.pacchetti[0];
-        packContainer.innerHTML = `
-          <div class="pack-suggestion">
-            <span class="pack-icon">${p.icona}</span>
-            <div class="pack-info">
-              <h3>📦 ${p.nome}</h3>
-              <p>${p.descrizione}</p>
-              <p><span class="pack-price">€${p.prezzo.toFixed(2)}</span></p>
-            </div>
-            <a href="tel:+390799561332" class="btn btn-primary">Prenota</a>
           </div>
         `;
       } else {
         packContainer.innerHTML = '';
       }
       
+      // Esami dal motore unificato
+      const tests = results.groups?.tests || [];
+      
       // Titolo risultati
       document.getElementById('resultsTitle').textContent = 
-        `${results.esami.length} esami trovati per "${query}"`;
+        `${tests.length} esami trovati per "${query}"`;
       
-      // Esami
+      // Esami - adatta al formato del motore unificato
       document.getElementById('examResults').innerHTML = 
-        results.esami.map(e => renderExamCard(e)).join('');
+        tests.map(e => {
+          // Normalizza campi tra formato unificato e legacy
+          const examData = {
+            nome: e.name || e.nome,
+            prezzo: e.price || e.prezzo,
+            cat: e.category || e.cat,
+            prep: e.preparation || e.prep,
+            referto: e.turnaround || e.referto,
+            urgente: e.urgent || e.urgente
+          };
+          return renderExamCard(examData);
+        }).join('');
+      
+      // Mostra anche procedure correlate (se presenti - nuovo!)
+      const procedures = results.groups?.procedures || [];
+      if (procedures.length > 0) {
+        const procHtml = `
+          <div class="related-procedures" style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+            <h4 style="margin-bottom: 0.5rem;">🩺 Prestazioni correlate</h4>
+            ${procedures.slice(0, 3).map(p => `
+              <a href="${p.url || '#'}" style="display: inline-block; margin: 0.25rem; padding: 0.5rem 1rem; background: white; border-radius: 4px; text-decoration: none; color: #333;">
+                ${p.name || p.nome}
+              </a>
+            `).join('')}
+          </div>
+        `;
+        document.getElementById('examResults').insertAdjacentHTML('beforeend', procHtml);
+      }
     }
 
     // Helper per ricerca da tag
@@ -865,9 +909,10 @@ body{padding-top:100px!important;margin:0!important}
       };
     }
   </script>
+  <!-- UNIFIED SEARCH ENGINE v2.0 - Single source of truth -->
+  <script src="../js/bio-clinic-search-engine.js?v=20260201"></script>
+  <script src="../js/search-ui-adapter.js?v=20260201"></script>
+  <!-- Legacy support -->
   <script src="../js/bio-search-pro.js"></script>
-  <!-- Unified Clinical Search System v1.0 -->
-  <script src="../js/unified-search.js?v=20260131"></script>
-  <script src="../js/search-controller.js?v=20260131"></script>
 </body>
 </html>
