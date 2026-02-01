@@ -1125,7 +1125,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/laboratorio/index.html"
+      "page_url": "/laboratorio/"
     },
     {
       "id": "consulto-pma",

@@ -126,6 +126,8 @@ const BioClinicUnifiedSearch = (function() {
     'bia': { canonical: 'bioimpedenziometria', type: 'procedure' },
     
     // ===== SINTOMI → SPECIALITÀ/PERCORSI =====
+    'slim care': { canonical: 'slim-care', type: 'pathway', specialty: 'endocrinologia' },
+    'slimcare': { canonical: 'slim-care', type: 'pathway', specialty: 'endocrinologia' },
     'dimagrire': { canonical: 'slim-care', type: 'pathway', specialty: 'endocrinologia' },
     'perdere peso': { canonical: 'slim-care', type: 'pathway', specialty: 'endocrinologia' },
     'obesità': { canonical: 'slim-care', type: 'pathway', specialty: 'endocrinologia' },
