@@ -3,13 +3,13 @@
   "generated": "2026-01-28T01:45:09.786770",
   "description": "Indice di ricerca unificato Bio-Clinic - Clinical Knowledge Search Engine",
   "stats": {
-    "total_terms": 251,
+    "total_terms": 320,
     "pathways": 4,
-    "procedures": 33,
-    "tests": 24,
+    "procedures": 45,
+    "tests": 65,
     "physicians": 48,
-    "specialties": 11,
-    "packs": 12
+    "specialties": 13,
+    "packs": 13
   },
   "terms": {
     "tiroide": {
@@ -3170,6 +3170,389 @@
         "psicologia"
       ],
       "priority": "specialty:psicologia"
+    },
+    "nipt": {
+      "tests": [
+        "nipt-fetal-dna-standard",
+        "nipt-fetal-dna-plus",
+        "prenataladvance"
+      ],
+      "procedures": [
+        "test-prenatale"
+      ],
+      "specialties": [
+        "genetica",
+        "ostetricia"
+      ],
+      "physicians": [
+        "salvatore-dessole",
+        "francesco-dessole"
+      ],
+      "priority": "test:nipt-fetal-dna-standard",
+      "clinical_context": "Test prenatale non invasivo per screening cromosomico"
+    },
+    "fetal dna": {
+      "tests": [
+        "nipt-fetal-dna-standard",
+        "nipt-fetal-dna-plus"
+      ],
+      "specialties": [
+        "genetica",
+        "ostetricia"
+      ],
+      "priority": "test:nipt-fetal-dna-standard"
+    },
+    "test prenatale": {
+      "tests": [
+        "nipt-fetal-dna-standard",
+        "nipt-fetal-dna-plus",
+        "bi-test",
+        "translucenza-nucale"
+      ],
+      "procedures": [
+        "ecografia-morfologica",
+        "translucenza-nucale"
+      ],
+      "specialties": [
+        "ostetricia"
+      ],
+      "priority": "test:nipt-fetal-dna-standard"
+    },
+    "caressflow": {
+      "procedures": [
+        "caressflow"
+      ],
+      "physicians": [
+        "francesco-dessole"
+      ],
+      "specialties": [
+        "ginecologia"
+      ],
+      "priority": "procedure:caressflow",
+      "clinical_context": "Trattamento intimo per benessere femminile"
+    },
+    "caress flow": {
+      "procedures": [
+        "caressflow"
+      ],
+      "physicians": [
+        "francesco-dessole"
+      ],
+      "specialties": [
+        "ginecologia"
+      ],
+      "priority": "procedure:caressflow"
+    },
+    "radiofrequenza vaginale": {
+      "procedures": [
+        "radiofrequenza-vaginale"
+      ],
+      "physicians": [
+        "francesco-dessole"
+      ],
+      "specialties": [
+        "ginecologia"
+      ],
+      "priority": "procedure:radiofrequenza-vaginale",
+      "clinical_context": "Trattamento rigenerativo per atrofia vaginale"
+    },
+    "radiofrequenza": {
+      "procedures": [
+        "radiofrequenza-vaginale"
+      ],
+      "physicians": [
+        "francesco-dessole"
+      ],
+      "specialties": [
+        "ginecologia"
+      ],
+      "priority": "procedure:radiofrequenza-vaginale"
+    },
+    "atrofia vaginale": {
+      "procedures": [
+        "radiofrequenza-vaginale",
+        "caressflow"
+      ],
+      "physicians": [
+        "francesco-dessole"
+      ],
+      "pathways": [
+        "slim-care-donna"
+      ],
+      "priority": "procedure:radiofrequenza-vaginale"
+    },
+    "secchezza vaginale": {
+      "procedures": [
+        "caressflow",
+        "radiofrequenza-vaginale"
+      ],
+      "physicians": [
+        "francesco-dessole"
+      ],
+      "priority": "procedure:caressflow"
+    },
+    "esame urine": {
+      "tests": [
+        "esame-urine-completo"
+      ],
+      "packs": [
+        "checkup-base",
+        "checkup-renale"
+      ],
+      "priority": "test:esame-urine-completo"
+    },
+    "urine completo": {
+      "tests": [
+        "esame-urine-completo"
+      ],
+      "packs": [
+        "checkup-base"
+      ],
+      "priority": "test:esame-urine-completo"
+    },
+    "bilirubina": {
+      "tests": [
+        "bilirubina-totale",
+        "bilirubina-diretta"
+      ],
+      "packs": [
+        "checkup-epatico"
+      ],
+      "priority": "test:bilirubina-totale"
+    },
+    "esame feci": {
+      "tests": [
+        "sangue-occulto-feci",
+        "calprotectina-fecale"
+      ],
+      "priority": "test:sangue-occulto-feci"
+    },
+    "sangue occulto": {
+      "tests": [
+        "sangue-occulto-feci"
+      ],
+      "priority": "test:sangue-occulto-feci"
+    },
+    "calprotectina": {
+      "tests": [
+        "calprotectina-fecale"
+      ],
+      "priority": "test:calprotectina-fecale"
+    },
+    "coagulazione": {
+      "tests": [
+        "pt-tempo-protrombina",
+        "ptt-aptt",
+        "fibrinogeno",
+        "d-dimero"
+      ],
+      "priority": "test:pt-tempo-protrombina"
+    },
+    "pt": {
+      "tests": [
+        "pt-tempo-protrombina"
+      ],
+      "priority": "test:pt-tempo-protrombina"
+    },
+    "inr": {
+      "tests": [
+        "pt-tempo-protrombina"
+      ],
+      "priority": "test:pt-tempo-protrombina"
+    },
+    "ptt": {
+      "tests": [
+        "ptt-aptt"
+      ],
+      "priority": "test:ptt-aptt"
+    },
+    "d-dimero": {
+      "tests": [
+        "d-dimero"
+      ],
+      "priority": "test:d-dimero"
+    },
+    "transaminasi": {
+      "tests": [
+        "ast-got",
+        "alt-gpt"
+      ],
+      "packs": [
+        "checkup-epatico"
+      ],
+      "priority": "test:ast-got"
+    },
+    "ast": {
+      "tests": [
+        "ast-got"
+      ],
+      "packs": [
+        "checkup-epatico"
+      ],
+      "priority": "test:ast-got"
+    },
+    "alt": {
+      "tests": [
+        "alt-gpt"
+      ],
+      "packs": [
+        "checkup-epatico"
+      ],
+      "priority": "test:alt-gpt"
+    },
+    "genetica": {
+      "tests": [
+        "nipt-fetal-dna-standard",
+        "brca-plus",
+        "pannello-oncogenetico",
+        "carrier-screening"
+      ],
+      "specialties": [
+        "genetica"
+      ],
+      "priority": "specialty:genetica",
+      "clinical_context": "Test genetici avanzati e oncogenetici"
+    },
+    "brca": {
+      "tests": [
+        "brca-plus"
+      ],
+      "specialties": [
+        "genetica"
+      ],
+      "priority": "test:brca-plus"
+    },
+    "oncogenetica": {
+      "tests": [
+        "pannello-oncogenetico",
+        "brca-plus"
+      ],
+      "specialties": [
+        "genetica"
+      ],
+      "priority": "test:pannello-oncogenetico"
+    },
+    "carrier screening": {
+      "tests": [
+        "carrier-screening"
+      ],
+      "specialties": [
+        "genetica"
+      ],
+      "priority": "test:carrier-screening"
+    },
+    "endometrio": {
+      "tests": [
+        "era-test",
+        "emma-test",
+        "alice-test",
+        "trio-test-emma-era-alice"
+      ],
+      "procedures": [
+        "isteroscopia"
+      ],
+      "specialties": [
+        "ginecologia"
+      ],
+      "priority": "test:era-test"
+    },
+    "era test": {
+      "tests": [
+        "era-test"
+      ],
+      "specialties": [
+        "genetica"
+      ],
+      "pathways": [
+        "pma-fertilita"
+      ],
+      "priority": "test:era-test"
+    },
+    "emma test": {
+      "tests": [
+        "emma-test"
+      ],
+      "specialties": [
+        "genetica"
+      ],
+      "pathways": [
+        "pma-fertilita"
+      ],
+      "priority": "test:emma-test"
+    },
+    "alice test": {
+      "tests": [
+        "alice-test"
+      ],
+      "specialties": [
+        "genetica"
+      ],
+      "pathways": [
+        "pma-fertilita"
+      ],
+      "priority": "test:alice-test"
+    },
+    "endometrio": {
+      "tests": [
+        "trio-test-emma-era-alice"
+      ],
+      "pathways": [
+        "pma-fertilita"
+      ],
+      "priority": "test:trio-test-emma-era-alice"
+    },
+    "laboratorio": {
+      "tests": [
+        "emocromo-completo",
+        "glicemia",
+        "colesterolo-totale",
+        "esame-urine-completo"
+      ],
+      "packs": [
+        "checkup-base",
+        "checkup-completo"
+      ],
+      "specialties": [
+        "laboratorio"
+      ],
+      "priority": "specialty:laboratorio",
+      "clinical_context": "Laboratorio analisi Bio-Clinic"
+    },
+    "analisi sangue": {
+      "tests": [
+        "emocromo-completo"
+      ],
+      "packs": [
+        "checkup-base"
+      ],
+      "specialties": [
+        "laboratorio"
+      ],
+      "priority": "pack:checkup-base"
+    },
+    "esami sangue": {
+      "tests": [
+        "emocromo-completo"
+      ],
+      "packs": [
+        "checkup-base"
+      ],
+      "specialties": [
+        "laboratorio"
+      ],
+      "priority": "pack:checkup-base"
+    },
+    "prelievo": {
+      "tests": [
+        "emocromo-completo"
+      ],
+      "packs": [
+        "checkup-base"
+      ],
+      "specialties": [
+        "laboratorio"
+      ],
+      "priority": "pack:checkup-base"
     }
   },
   "aliases": {
@@ -3190,7 +3573,28 @@
     "bun": "azotemia",
     "hdl": "colesterolo buono",
     "ldl": "colesterolo cattivo",
-    "bia": "bioimpedenziometria"
+    "bia": "bioimpedenziometria",
+    "nipt": "fetal dna test",
+    "dna fetale": "nipt",
+    "prenataladvance": "nipt",
+    "caress": "caressflow",
+    "rf vaginale": "radiofrequenza vaginale",
+    "urine": "esame urine",
+    "urinocoltura": "esame urine",
+    "creatininemia": "creatinina",
+    "azoto ureico": "azotemia",
+    "bil": "bilirubina",
+    "plt": "piastrine",
+    "wbc": "globuli bianchi",
+    "rbc": "globuli rossi",
+    "hb": "emoglobina",
+    "hct": "ematocrito",
+    "inr": "pt",
+    "aptt": "ptt",
+    "emma": "emma test",
+    "era": "era test",
+    "alice": "alice test",
+    "endometrio": "trio test"
   },
   "physicians": []
 }

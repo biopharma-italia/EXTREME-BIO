@@ -1283,6 +1283,155 @@
         "screening completo",
         "prevenzione cervice"
       ]
+    },
+    {
+      "id": "caressflow",
+      "name": "Caressflow",
+      "name_extended": "Trattamento Caressflow per Benessere Intimo",
+      "specialty_id": "ginecologia",
+      "category": "trattamento",
+      "description_short": "Trattamento innovativo per il benessere intimo femminile",
+      "description_full": "Il Caressflow è un trattamento non invasivo che utilizza tecnologie avanzate per stimolare la rigenerazione tissutale, migliorare la tonicità e l'idratazione intima. Indicato per secchezza vaginale, atrofia e lassità.",
+      "indications": [
+        "secchezza vaginale",
+        "atrofia vaginale",
+        "menopausa",
+        "lassità vaginale",
+        "benessere intimo"
+      ],
+      "duration_minutes": 30,
+      "booking_priority": "high",
+      "physicians": [
+        "francesco-dessole"
+      ],
+      "related_procedures": [
+        "radiofrequenza-vaginale",
+        "visita-ginecologica"
+      ],
+      "pathways": [
+        "slim-care-donna"
+      ],
+      "page_url": "/pages/caressflow.html",
+      "search_terms": [
+        "caressflow",
+        "caress flow",
+        "benessere intimo",
+        "secchezza vaginale",
+        "atrofia",
+        "ringiovanimento vaginale",
+        "trattamento intimo"
+      ]
+    },
+    {
+      "id": "radiofrequenza-vaginale",
+      "name": "Radiofrequenza Vaginale",
+      "name_extended": "Trattamento Radiofrequenza per Rigenerazione Vaginale",
+      "specialty_id": "ginecologia",
+      "category": "trattamento",
+      "description_short": "Trattamento rigenerativo per atrofia e lassità vaginale",
+      "description_full": "La radiofrequenza vaginale è un trattamento non chirurgico che utilizza onde radio per stimolare la produzione di collagene, migliorando tono, elasticità e lubrificazione. Efficace per sintomi della menopausa.",
+      "indications": [
+        "atrofia vaginale",
+        "lassità vaginale post-parto",
+        "menopausa",
+        "incontinenza lieve",
+        "dispareunia"
+      ],
+      "duration_minutes": 25,
+      "booking_priority": "high",
+      "physicians": [
+        "francesco-dessole"
+      ],
+      "related_procedures": [
+        "caressflow",
+        "visita-ginecologica"
+      ],
+      "pathways": [
+        "slim-care-donna"
+      ],
+      "page_url": "/pages/radiofrequenza-vaginale.html",
+      "search_terms": [
+        "radiofrequenza vaginale",
+        "rf vaginale",
+        "rigenerazione vaginale",
+        "atrofia vaginale",
+        "menopausa trattamento",
+        "lassità post parto"
+      ]
+    },
+    {
+      "id": "isteroscopia",
+      "name": "Isteroscopia Diagnostica",
+      "name_extended": "Isteroscopia Diagnostica Ambulatoriale",
+      "specialty_id": "ginecologia",
+      "category": "diagnostica",
+      "description_short": "Visualizzazione diretta della cavità uterina per diagnosi di patologie",
+      "description_full": "L'isteroscopia diagnostica permette la visualizzazione diretta dell'interno dell'utero mediante un sottile strumento ottico. Usata per diagnosi di polipi, miomi, malformazioni e aderenze.",
+      "indications": [
+        "sanguinamento anomalo",
+        "infertilità",
+        "polipi endometriali",
+        "miomi sottomucosi",
+        "aderenze uterine"
+      ],
+      "duration_minutes": 20,
+      "booking_priority": "high",
+      "physicians": [
+        "salvatore-dessole",
+        "francesco-dessole"
+      ],
+      "related_procedures": [
+        "isterosalpingografia",
+        "visita-ginecologica"
+      ],
+      "pathways": [
+        "pma-fertilita"
+      ],
+      "page_url": "/pages/isteroscopia.html",
+      "search_terms": [
+        "isteroscopia",
+        "cavità uterina",
+        "polipi",
+        "miomi",
+        "infertilità diagnosi"
+      ]
+    },
+    {
+      "id": "isterosalpingografia",
+      "name": "Isterosalpingografia",
+      "name_extended": "Isterosalpingografia (HSG) - Pervietà Tubarica",
+      "specialty_id": "ginecologia",
+      "category": "diagnostica",
+      "description_short": "Esame radiologico per valutare pervietà delle tube e morfologia uterina",
+      "description_full": "L'isterosalpingografia (HSG) è un esame radiologico con mezzo di contrasto che permette di valutare la pervietà delle tube di Falloppio e la morfologia della cavità uterina. Fondamentale nello studio dell'infertilità.",
+      "indications": [
+        "infertilità",
+        "sterilità tubarica",
+        "malformazioni uterine",
+        "aborti ricorrenti"
+      ],
+      "duration_minutes": 30,
+      "booking_priority": "high",
+      "physicians": [
+        "salvatore-dessole",
+        "francesco-dessole"
+      ],
+      "related_procedures": [
+        "isteroscopia",
+        "consulto-pma"
+      ],
+      "pathways": [
+        "pma-fertilita"
+      ],
+      "page_url": "/pages/isterosalpingografia.html",
+      "search_terms": [
+        "isterosalpingografia",
+        "hsg",
+        "tube pervietà",
+        "tubarica",
+        "infertilità diagnosi",
+        "sterilità"
+      ]
     }
   ],
   "categories": {
