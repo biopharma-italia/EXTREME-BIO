@@ -39,27 +39,98 @@
         "postalCode": "07100",
         "addressCountry": "IT"
       },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 40.7267,
-            "longitude": 8.5592
-          },,
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5",
-            "reviewCount": "3214",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.7267,
+        "longitude": 8.5592
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "3214",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
       "telephone": "+39 079 956 1332"
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bio-clinic.it/"},
-        {"@type": "ListItem", "position": 2, "name": "Specialità", "item": "https://bio-clinic.it/specialita/"},
-        {"@type": "ListItem", "position": 3, "name": "Gastroenterologia", "item": "https://bio-clinic.it/gastroenterologia/"}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bio-clinic.it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Specialità",
+          "item": "https://bio-clinic.it/specialita/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Gastroenterologia",
+          "item": "https://bio-clinic.it/gastroenterologia/"
+        }
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quando consultare un gastroenterologo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Si consiglia una visita gastroenterologica per bruciore di stomaco, reflusso, dolori addominali, alterazioni dell'alvo (diarrea/stipsi), sangue nelle feci, gonfiore, difficoltà digestive, celiachia o intolleranze."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto costa una visita gastroenterologica a Sassari?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Bio-Clinic la visita gastroenterologica costa da €90. L'ecografia addominale è disponibile a €60. Il test per Helicobacter pylori costa €30."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cos'è il test per Helicobacter pylori?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'Helicobacter pylori è un batterio che causa gastrite e ulcera. Il test del respiro (breath test) è il metodo più semplice e non invasivo per diagnosticarlo. A Bio-Clinic il risultato è disponibile in giornata."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quando fare la gastroscopia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La gastroscopia è indicata per reflusso persistente, difficoltà a deglutire, anemia da carenza di ferro, sospetta celiachia, screening Barrett. Bio-Clinic può indirizzare verso centri convenzionati per l'esame."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Physician",
+      "@id": "https://bio-clinic.it/equipe/angelo-deplano.html#physician",
+      "name": "Dott. Angelo Ferruccio Ferruccio Ferruccio Ferruccio Ferruccio Deplano",
+      "jobTitle": "Gastroenterologo",
+      "worksFor": {
+        "@id": "https://bio-clinic.it/#clinic"
+      }
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://bio-clinic.it/pages/gastroenterologia.html",
+      "name": "Centro di Gastroenterologia Bio-Clinic Sassari",
+      "description": "Pagina informativa del servizio di Gastroenterologia di Bio-Clinic Sassari.",
+      "specialty": "Gastroenterology",
+      "lastReviewed": "2026-02-01",
+      "dateModified": "2026-02-01",
+      "inLanguage": "it-IT"
     }
   ]
 }
@@ -289,6 +360,18 @@ body{padding-top:100px!important;margin:0!important}
       </div>
     </div>
   </section>
+  <!-- Hero Title -->
+  <section class="section" style="padding-top: 2rem; padding-bottom: 1rem;">
+    <div class="container">
+      <h1 class="text-4xl md:text-5xl font-bold text-center text-primary" style="color: var(--primary); font-size: 2.5rem; font-weight: 700; text-align: center; margin-bottom: 0.5rem;">
+        Gastroenterologia a Sassari
+      </h1>
+      <p class="text-lg text-gray-600 text-center" style="color: var(--gray-600); text-align: center; font-size: 1.125rem;">
+        Specialisti dell'Apparato Digerente | Bio-Clinic
+      </p>
+    </div>
+  </section>
+
 
   <!-- Prestazioni -->
   <section class="section" id="prestazioni">
@@ -360,7 +443,59 @@ body{padding-top:100px!important;margin:0!important}
   </section>
 
   <!-- CTA -->
-  <section class="cta">
+  
+  <!-- FAQ Section -->
+  <section class="section" id="faq" style="background: var(--gray-50);">
+    <div class="container">
+      <div class="section-header" data-animate>
+        <span class="section-badge">Domande Frequenti</span>
+        <h2 class="section-title">FAQ Gastroenterologia</h2>
+        <p class="section-description">Le risposte alle domande più comuni dei nostri pazienti</p>
+      </div>
+      
+      <div class="faq-list" style="max-width: 800px; margin: 0 auto;">
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Quando consultare un gastroenterologo?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            Si consiglia una visita gastroenterologica per bruciore di stomaco, reflusso, dolori addominali, alterazioni dell'alvo (diarrea/stipsi), sangue nelle feci, gonfiore, difficoltà digestive, celiachia o intolleranze.
+          </p>
+        </div>
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Quanto costa una visita gastroenterologica a Sassari?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            A Bio-Clinic la visita gastroenterologica costa da €90. L'ecografia addominale è disponibile a €60. Il test per Helicobacter pylori costa €30.
+          </p>
+        </div>
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Cos'è il test per Helicobacter pylori?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            L'Helicobacter pylori è un batterio che causa gastrite e ulcera. Il test del respiro (breath test) è il metodo più semplice e non invasivo per diagnosticarlo. A Bio-Clinic il risultato è disponibile in giornata.
+          </p>
+        </div>
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Quando fare la gastroscopia?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            La gastroscopia è indicata per reflusso persistente, difficoltà a deglutire, anemia da carenza di ferro, sospetta celiachia, screening Barrett. Bio-Clinic può indirizzare verso centri convenzionati per l'esame.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<section class="cta">
     <div class="container">
       <h2 class="cta-title" data-animate>Prenota la Tua Visita di Gastroenterologia</h2>
       <p class="cta-description" data-animate data-delay="100">

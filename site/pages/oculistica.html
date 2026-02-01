@@ -39,27 +39,116 @@
         "postalCode": "07100",
         "addressCountry": "IT"
       },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 40.7267,
-            "longitude": 8.5592
-          },,
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5",
-            "reviewCount": "3214",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.7267,
+        "longitude": 8.5592
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "3214",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
       "telephone": "+39 079 956 1332"
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bio-clinic.it/"},
-        {"@type": "ListItem", "position": 2, "name": "Specialità", "item": "https://bio-clinic.it/specialita/"},
-        {"@type": "ListItem", "position": 3, "name": "Oculistica", "item": "https://bio-clinic.it/oculistica/"}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bio-clinic.it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Specialità",
+          "item": "https://bio-clinic.it/specialita/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Oculistica",
+          "item": "https://bio-clinic.it/oculistica/"
+        }
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Ogni quanto fare una visita oculistica?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Si consiglia una visita oculistica ogni 1-2 anni dopo i 40 anni per screening glaucoma e cataratta. Prima dei 40 anni ogni 2-3 anni, o prima in caso di familiarità o sintomi come visione offuscata, mal di testa."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto costa una visita oculistica a Sassari?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Bio-Clinic la visita oculistica completa costa da €70. La misurazione della pressione oculare è inclusa. Il campo visivo computerizzato costa €40."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cos'è il glaucoma e come si diagnostica?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Il glaucoma è una malattia che danneggia il nervo ottico, spesso legata a pressione oculare elevata. Si diagnostica con tonometria (misura pressione), esame del fondo oculare e campo visivo computerizzato."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quando operare la cataratta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La cataratta si opera quando compromette significativamente la vista e la qualità di vita. L'oculista valuta l'opacità del cristallino e i sintomi per consigliare il momento migliore per l'intervento."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Physician",
+      "@id": "https://bio-clinic.it/equipe/francesco-santoru.html#physician",
+      "name": "Dott. Francesco Santoru",
+      "jobTitle": "Oculista",
+      "worksFor": {
+        "@id": "https://bio-clinic.it/#clinic"
+      }
+    },
+    {
+      "@type": "Physician",
+      "@id": "https://bio-clinic.it/equipe/maria-pina-pintus.html#physician",
+      "name": "Dott.ssa Maria Pina Pintus",
+      "jobTitle": "Oculista",
+      "worksFor": {
+        "@id": "https://bio-clinic.it/#clinic"
+      }
+    },
+    {
+      "@type": "Physician",
+      "@id": "https://bio-clinic.it/equipe/matteo-zucca.html#physician",
+      "name": "Dott. Matteo Zucca",
+      "jobTitle": "Oculista",
+      "worksFor": {
+        "@id": "https://bio-clinic.it/#clinic"
+      }
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://bio-clinic.it/pages/oculistica.html",
+      "name": "Centro di Oculistica Bio-Clinic Sassari",
+      "description": "Pagina informativa del servizio di Oculistica di Bio-Clinic Sassari.",
+      "specialty": "Ophthalmology",
+      "lastReviewed": "2026-02-01",
+      "dateModified": "2026-02-01",
+      "inLanguage": "it-IT"
     }
   ]
 }
@@ -289,6 +378,18 @@ body{padding-top:100px!important;margin:0!important}
       </div>
     </div>
   </section>
+  <!-- Hero Title -->
+  <section class="section" style="padding-top: 2rem; padding-bottom: 1rem;">
+    <div class="container">
+      <h1 class="text-4xl md:text-5xl font-bold text-center text-primary" style="color: var(--primary); font-size: 2.5rem; font-weight: 700; text-align: center; margin-bottom: 0.5rem;">
+        Oculistica a Sassari
+      </h1>
+      <p class="text-lg text-gray-600 text-center" style="color: var(--gray-600); text-align: center; font-size: 1.125rem;">
+        Specialisti della Vista | Bio-Clinic
+      </p>
+    </div>
+  </section>
+
 
   <!-- Prestazioni -->
   <section class="section" id="prestazioni">
@@ -379,7 +480,59 @@ body{padding-top:100px!important;margin:0!important}
   </section>
 
   <!-- CTA -->
-  <section class="cta">
+  
+  <!-- FAQ Section -->
+  <section class="section" id="faq" style="background: var(--gray-50);">
+    <div class="container">
+      <div class="section-header" data-animate>
+        <span class="section-badge">Domande Frequenti</span>
+        <h2 class="section-title">FAQ Oculistica</h2>
+        <p class="section-description">Le risposte alle domande più comuni dei nostri pazienti</p>
+      </div>
+      
+      <div class="faq-list" style="max-width: 800px; margin: 0 auto;">
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Ogni quanto fare una visita oculistica?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            Si consiglia una visita oculistica ogni 1-2 anni dopo i 40 anni per screening glaucoma e cataratta. Prima dei 40 anni ogni 2-3 anni, o prima in caso di familiarità o sintomi come visione offuscata, mal di testa.
+          </p>
+        </div>
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Quanto costa una visita oculistica a Sassari?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            A Bio-Clinic la visita oculistica completa costa da €70. La misurazione della pressione oculare è inclusa. Il campo visivo computerizzato costa €40.
+          </p>
+        </div>
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Cos'è il glaucoma e come si diagnostica?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            Il glaucoma è una malattia che danneggia il nervo ottico, spesso legata a pressione oculare elevata. Si diagnostica con tonometria (misura pressione), esame del fondo oculare e campo visivo computerizzato.
+          </p>
+        </div>
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Quando operare la cataratta?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            La cataratta si opera quando compromette significativamente la vista e la qualità di vita. L'oculista valuta l'opacità del cristallino e i sintomi per consigliare il momento migliore per l'intervento.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<section class="cta">
     <div class="container">
       <h2 class="cta-title" data-animate>Prenota la Tua Visita di Oculistica</h2>
       <p class="cta-description" data-animate data-delay="100">

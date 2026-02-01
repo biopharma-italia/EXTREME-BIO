@@ -86,6 +86,98 @@
           "item": "https://bio-clinic.it/specialita/cardiologia/"
         }
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quando fare una visita cardiologica?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Si consiglia una visita cardiologica a partire dai 40 anni come screening, o prima in caso di familiarità per malattie cardiovascolari, ipertensione, diabete, colesterolo alto, fumo, obesità o sintomi come dolore toracico, affanno, palpitazioni."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto costa una visita cardiologica a Sassari?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Bio-Clinic Sassari la visita cardiologica con ECG costa da €80. Il pacchetto completo con ecocardiogramma è disponibile a €150. Accettiamo le principali convenzioni e fondi sanitari."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cos'è l'ecocardiogramma e quando serve?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'ecocardiogramma è un'ecografia del cuore che permette di valutare la struttura e la funzione cardiaca. È indicato per valvulopatie, scompenso cardiaco, ipertensione, dopo infarto, o come screening in pazienti a rischio cardiovascolare."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A cosa serve l'Holter ECG 24 ore?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'Holter ECG registra il battito cardiaco per 24-48 ore per identificare aritmie, extrasistoli, fibrillazione atriale o altre alterazioni del ritmo che potrebbero non essere rilevate durante un ECG standard."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Physician",
+      "@id": "https://bio-clinic.it/equipe/tonino-bullitta.html#physician",
+      "name": "Dott. Tonino Bullitta",
+      "jobTitle": "Cardiologo",
+      "worksFor": {
+        "@id": "https://bio-clinic.it/#clinic"
+      }
+    },
+    {
+      "@type": "Physician",
+      "@id": "https://bio-clinic.it/equipe/sara-uras.html#physician",
+      "name": "Dott.ssa Sara Uras",
+      "jobTitle": "Cardiologa",
+      "worksFor": {
+        "@id": "https://bio-clinic.it/#clinic"
+      }
+    },
+    {
+      "@type": "Physician",
+      "@id": "https://bio-clinic.it/equipe/giuliana-guagnozzi.html#physician",
+      "name": "Dott.ssa Giuliana Guagnozzi",
+      "jobTitle": "Cardiologa",
+      "worksFor": {
+        "@id": "https://bio-clinic.it/#clinic"
+      }
+    },
+    {
+      "@type": "Physician",
+      "@id": "https://bio-clinic.it/equipe/paolo-pischedda.html#physician",
+      "name": "Dott. Paolo Pischedda",
+      "jobTitle": "Cardiologo",
+      "worksFor": {
+        "@id": "https://bio-clinic.it/#clinic"
+      }
+    },
+    {
+      "@type": "Physician",
+      "@id": "https://bio-clinic.it/equipe/paolo-franca.html#physician",
+      "name": "Dott. Paolo Franca",
+      "jobTitle": "Cardiologo",
+      "worksFor": {
+        "@id": "https://bio-clinic.it/#clinic"
+      }
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://bio-clinic.it/pages/cardiologia.html",
+      "name": "Centro di Cardiologia Bio-Clinic Sassari",
+      "description": "Pagina informativa del servizio di Cardiologia di Bio-Clinic Sassari.",
+      "specialty": "Cardiology",
+      "lastReviewed": "2026-02-01",
+      "dateModified": "2026-02-01",
+      "inLanguage": "it-IT"
     }
   ]
 }
@@ -346,6 +438,18 @@ body{padding-top:100px!important;margin:0!important}
       </div>
     </div>
   </section>
+  <!-- Hero Title -->
+  <section class="section" style="padding-top: 2rem; padding-bottom: 1rem;">
+    <div class="container">
+      <h1 class="text-4xl md:text-5xl font-bold text-center text-primary" style="color: var(--primary); font-size: 2.5rem; font-weight: 700; text-align: center; margin-bottom: 0.5rem;">
+        Cardiologia a Sassari
+      </h1>
+      <p class="text-lg text-gray-600 text-center" style="color: var(--gray-600); text-align: center; font-size: 1.125rem;">
+        5 Cardiologi Specialisti | Bio-Clinic
+      </p>
+    </div>
+  </section>
+
 
   <!-- Prestazioni -->
   <section class="section" id="prestazioni">
@@ -549,7 +653,59 @@ body{padding-top:100px!important;margin:0!important}
   </section>
 
   <!-- CTA -->
-  <section class="cta">
+  
+  <!-- FAQ Section -->
+  <section class="section" id="faq" style="background: var(--gray-50);">
+    <div class="container">
+      <div class="section-header" data-animate>
+        <span class="section-badge">Domande Frequenti</span>
+        <h2 class="section-title">FAQ Cardiologia</h2>
+        <p class="section-description">Le risposte alle domande più comuni dei nostri pazienti</p>
+      </div>
+      
+      <div class="faq-list" style="max-width: 800px; margin: 0 auto;">
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Quando fare una visita cardiologica?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            Si consiglia una visita cardiologica a partire dai 40 anni come screening, o prima in caso di familiarità per malattie cardiovascolari, ipertensione, diabete, colesterolo alto, fumo, obesità o sintomi come dolore toracico, affanno, palpitazioni.
+          </p>
+        </div>
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Quanto costa una visita cardiologica a Sassari?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            A Bio-Clinic Sassari la visita cardiologica con ECG costa da €80. Il pacchetto completo con ecocardiogramma è disponibile a €150. Accettiamo le principali convenzioni e fondi sanitari.
+          </p>
+        </div>
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Cos'è l'ecocardiogramma e quando serve?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            L'ecocardiogramma è un'ecografia del cuore che permette di valutare la struttura e la funzione cardiaca. È indicato per valvulopatie, scompenso cardiaco, ipertensione, dopo infarto, o come screening in pazienti a rischio cardiovascolare.
+          </p>
+        </div>
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            A cosa serve l'Holter ECG 24 ore?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            L'Holter ECG registra il battito cardiaco per 24-48 ore per identificare aritmie, extrasistoli, fibrillazione atriale o altre alterazioni del ritmo che potrebbero non essere rilevate durante un ECG standard.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<section class="cta">
     <div class="container">
       <h2 class="cta-title" data-animate>Prenota la Tua Visita Cardiologica</h2>
       <p class="cta-description" data-animate data-delay="100">

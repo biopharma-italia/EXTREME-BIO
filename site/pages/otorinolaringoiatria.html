@@ -39,27 +39,107 @@
         "postalCode": "07100",
         "addressCountry": "IT"
       },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 40.7267,
-            "longitude": 8.5592
-          },,
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5",
-            "reviewCount": "3214",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.7267,
+        "longitude": 8.5592
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "3214",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
       "telephone": "+39 079 956 1332"
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bio-clinic.it/"},
-        {"@type": "ListItem", "position": 2, "name": "Specialità", "item": "https://bio-clinic.it/specialita/"},
-        {"@type": "ListItem", "position": 3, "name": "Otorinolaringoiatria", "item": "https://bio-clinic.it/otorinolaringoiatria/"}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bio-clinic.it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Specialità",
+          "item": "https://bio-clinic.it/specialita/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Otorinolaringoiatria",
+          "item": "https://bio-clinic.it/otorinolaringoiatria/"
+        }
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quando consultare un otorino?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Si consiglia una visita ORL per mal di gola frequenti, problemi di udito, vertigini, acufeni (fischi nelle orecchie), sinusite, rinite, russamento, apnee notturne, noduli alle corde vocali."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto costa una visita ORL a Sassari?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Bio-Clinic la visita otorinolaringoiatrica costa da €80. L'audiometria è disponibile a €30. L'esame vestibolare per vertigini costa €60."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cos'è l'audiometria e quando farla?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'audiometria è il test dell'udito che misura la capacità di percepire suoni a diverse frequenze e intensità. È indicata per calo dell'udito, acufeni, vertigini, medicina del lavoro, idoneità alla guida."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come si curano le vertigini?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Le vertigini richiedono prima una diagnosi corretta (vertigine periferica vs centrale). L'otorino esegue esame vestibolare e manovre diagnostiche. Il trattamento può includere farmaci, manovre liberatorie o riabilitazione."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Physician",
+      "@id": "https://bio-clinic.it/equipe/francesco-bussu.html#physician",
+      "name": "Prof. Francesco Bussu",
+      "jobTitle": "Otorinolaringoiatra",
+      "worksFor": {
+        "@id": "https://bio-clinic.it/#clinic"
+      }
+    },
+    {
+      "@type": "Physician",
+      "@id": "https://bio-clinic.it/equipe/maria-laura-de-luca.html#physician",
+      "name": "Dott.ssa Maria Laura De Luca",
+      "jobTitle": "Otorinolaringoiatra",
+      "worksFor": {
+        "@id": "https://bio-clinic.it/#clinic"
+      }
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://bio-clinic.it/pages/otorinolaringoiatria.html",
+      "name": "Centro di Otorinolaringoiatria Bio-Clinic Sassari",
+      "description": "Pagina informativa del servizio di Otorinolaringoiatria di Bio-Clinic Sassari.",
+      "specialty": "Otorhinolaryngology",
+      "lastReviewed": "2026-02-01",
+      "dateModified": "2026-02-01",
+      "inLanguage": "it-IT"
     }
   ]
 }
@@ -289,6 +369,18 @@ body{padding-top:100px!important;margin:0!important}
       </div>
     </div>
   </section>
+  <!-- Hero Title -->
+  <section class="section" style="padding-top: 2rem; padding-bottom: 1rem;">
+    <div class="container">
+      <h1 class="text-4xl md:text-5xl font-bold text-center text-primary" style="color: var(--primary); font-size: 2.5rem; font-weight: 700; text-align: center; margin-bottom: 0.5rem;">
+        Otorinolaringoiatria a Sassari
+      </h1>
+      <p class="text-lg text-gray-600 text-center" style="color: var(--gray-600); text-align: center; font-size: 1.125rem;">
+        Specialisti di Orecchio, Naso, Gola | Bio-Clinic
+      </p>
+    </div>
+  </section>
+
 
   <!-- Prestazioni -->
   <section class="section" id="prestazioni">
@@ -371,7 +463,59 @@ body{padding-top:100px!important;margin:0!important}
   </section>
 
   <!-- CTA -->
-  <section class="cta">
+  
+  <!-- FAQ Section -->
+  <section class="section" id="faq" style="background: var(--gray-50);">
+    <div class="container">
+      <div class="section-header" data-animate>
+        <span class="section-badge">Domande Frequenti</span>
+        <h2 class="section-title">FAQ Otorinolaringoiatria</h2>
+        <p class="section-description">Le risposte alle domande più comuni dei nostri pazienti</p>
+      </div>
+      
+      <div class="faq-list" style="max-width: 800px; margin: 0 auto;">
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Quando consultare un otorino?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            Si consiglia una visita ORL per mal di gola frequenti, problemi di udito, vertigini, acufeni (fischi nelle orecchie), sinusite, rinite, russamento, apnee notturne, noduli alle corde vocali.
+          </p>
+        </div>
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Quanto costa una visita ORL a Sassari?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            A Bio-Clinic la visita otorinolaringoiatrica costa da €80. L'audiometria è disponibile a €30. L'esame vestibolare per vertigini costa €60.
+          </p>
+        </div>
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Cos'è l'audiometria e quando farla?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            L'audiometria è il test dell'udito che misura la capacità di percepire suoni a diverse frequenze e intensità. È indicata per calo dell'udito, acufeni, vertigini, medicina del lavoro, idoneità alla guida.
+          </p>
+        </div>
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Come si curano le vertigini?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            Le vertigini richiedono prima una diagnosi corretta (vertigine periferica vs centrale). L'otorino esegue esame vestibolare e manovre diagnostiche. Il trattamento può includere farmaci, manovre liberatorie o riabilitazione.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<section class="cta">
     <div class="container">
       <h2 class="cta-title" data-animate>Prenota la Tua Visita di Otorinolaringoiatria</h2>
       <p class="cta-description" data-animate data-delay="100">

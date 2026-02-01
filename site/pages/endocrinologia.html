@@ -47,6 +47,71 @@
           "item": "https://bio-clinic.it/specialita/endocrinologia/"
         }
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quando consultare un endocrinologo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Si consiglia una visita endocrinologica in caso di problemi alla tiroide (noduli, ipo/ipertiroidismo), diabete, obesità, disturbi ormonali, osteoporosi, problemi di crescita, irsutismo, alterazioni del ciclo mestruale o menopausa."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto costa una visita endocrinologica a Sassari?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Bio-Clinic la visita endocrinologica costa da €90. Il pacchetto tiroide completo (visita + ecografia + TSH) è disponibile a €120."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cos'è l'ecografia tiroidea e quando farla?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'ecografia tiroidea è un esame indolore che valuta dimensioni, struttura e presenza di noduli alla tiroide. È indicata per noduli palpabili, alterazioni degli ormoni tiroidei, familiarità per patologie tiroidee."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come si diagnostica il diabete?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Il diabete si diagnostica con glicemia a digiuno ≥126 mg/dl, emoglobina glicata (HbA1c) ≥6.5%, o curva da carico di glucosio (OGTT). Bio-Clinic offre tutti questi esami con referto in giornata."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Physician",
+      "@id": "https://bio-clinic.it/equipe/francesco-tolu.html#physician",
+      "name": "Dott. Francesco Tolu",
+      "jobTitle": "Endocrinologo",
+      "worksFor": {
+        "@id": "https://bio-clinic.it/#clinic"
+      }
+    },
+    {
+      "@type": "Physician",
+      "@id": "https://bio-clinic.it/equipe/irene-aini.html#physician",
+      "name": "Dott.ssa Irene Aini",
+      "jobTitle": "Endocrinologa",
+      "worksFor": {
+        "@id": "https://bio-clinic.it/#clinic"
+      }
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://bio-clinic.it/pages/endocrinologia.html",
+      "name": "Centro di Endocrinologia Bio-Clinic Sassari",
+      "description": "Pagina informativa del servizio di Endocrinologia di Bio-Clinic Sassari.",
+      "specialty": "Endocrinology",
+      "lastReviewed": "2026-02-01",
+      "dateModified": "2026-02-01",
+      "inLanguage": "it-IT"
     }
   ]
 }
@@ -306,6 +371,18 @@ body{padding-top:100px!important;margin:0!important}
       </div>
     </div>
   </section>
+  <!-- Hero Title -->
+  <section class="section" style="padding-top: 2rem; padding-bottom: 1rem;">
+    <div class="container">
+      <h1 class="text-4xl md:text-5xl font-bold text-center text-primary" style="color: var(--primary); font-size: 2.5rem; font-weight: 700; text-align: center; margin-bottom: 0.5rem;">
+        Endocrinologia a Sassari
+      </h1>
+      <p class="text-lg text-gray-600 text-center" style="color: var(--gray-600); text-align: center; font-size: 1.125rem;">
+        Specialisti in Tiroide, Diabete, Metabolismo | Bio-Clinic
+      </p>
+    </div>
+  </section>
+
 
   <!-- Prestazioni -->
   <section class="section" id="prestazioni">
@@ -428,7 +505,59 @@ body{padding-top:100px!important;margin:0!important}
   </section>
 
   <!-- CTA -->
-  <section class="cta">
+  
+  <!-- FAQ Section -->
+  <section class="section" id="faq" style="background: var(--gray-50);">
+    <div class="container">
+      <div class="section-header" data-animate>
+        <span class="section-badge">Domande Frequenti</span>
+        <h2 class="section-title">FAQ Endocrinologia</h2>
+        <p class="section-description">Le risposte alle domande più comuni dei nostri pazienti</p>
+      </div>
+      
+      <div class="faq-list" style="max-width: 800px; margin: 0 auto;">
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Quando consultare un endocrinologo?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            Si consiglia una visita endocrinologica in caso di problemi alla tiroide (noduli, ipo/ipertiroidismo), diabete, obesità, disturbi ormonali, osteoporosi, problemi di crescita, irsutismo, alterazioni del ciclo mestruale o menopausa.
+          </p>
+        </div>
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Quanto costa una visita endocrinologica a Sassari?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            A Bio-Clinic la visita endocrinologica costa da €90. Il pacchetto tiroide completo (visita + ecografia + TSH) è disponibile a €120.
+          </p>
+        </div>
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Cos'è l'ecografia tiroidea e quando farla?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            L'ecografia tiroidea è un esame indolore che valuta dimensioni, struttura e presenza di noduli alla tiroide. È indicata per noduli palpabili, alterazioni degli ormoni tiroidei, familiarità per patologie tiroidee.
+          </p>
+        </div>
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Come si diagnostica il diabete?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            Il diabete si diagnostica con glicemia a digiuno ≥126 mg/dl, emoglobina glicata (HbA1c) ≥6.5%, o curva da carico di glucosio (OGTT). Bio-Clinic offre tutti questi esami con referto in giornata.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<section class="cta">
     <div class="container">
       <h2 class="cta-title" data-animate>Prenota la Tua Visita Endocrinologica</h2>
       <p class="cta-description" data-animate data-delay="100">

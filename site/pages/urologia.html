@@ -39,27 +39,98 @@
         "postalCode": "07100",
         "addressCountry": "IT"
       },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 40.7267,
-            "longitude": 8.5592
-          },,
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5",
-            "reviewCount": "3214",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.7267,
+        "longitude": 8.5592
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "3214",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
       "telephone": "+39 079 956 1332"
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bio-clinic.it/"},
-        {"@type": "ListItem", "position": 2, "name": "Specialità", "item": "https://bio-clinic.it/specialita/"},
-        {"@type": "ListItem", "position": 3, "name": "Urologia e Andrologia", "item": "https://bio-clinic.it/urologia/"}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bio-clinic.it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Specialità",
+          "item": "https://bio-clinic.it/specialita/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Urologia e Andrologia",
+          "item": "https://bio-clinic.it/urologia/"
+        }
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quando consultare un urologo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Si consiglia una visita urologica per disturbi urinari (minzione frequente, bruciore, sangue nelle urine), problemi prostatici, calcoli renali, disfunzione erettile, infertilità maschile o per screening del PSA dopo i 50 anni."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto costa una visita urologica a Sassari?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Bio-Clinic la visita urologica costa da €90. L'ecografia prostatica transrettale è disponibile a €80. Il PSA con referto in giornata costa €15."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cos'è il PSA e quando controllarlo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Il PSA (Antigene Prostatico Specifico) è un marker per la prostata. Si consiglia lo screening a partire dai 50 anni, o dai 45 in caso di familiarità per tumore prostatico. A Bio-Clinic il referto è disponibile in giornata."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come si diagnostica l'ipertrofia prostatica?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'ipertrofia prostatica si diagnostica con visita urologica, ecografia prostatica, PSA ed eventualmente uroflussometria. Bio-Clinic offre un percorso completo per la diagnosi e il follow-up."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Physician",
+      "@id": "https://bio-clinic.it/equipe/carlos-manuel-cambara-zuniga.html#physician",
+      "name": "Dott. Carlos Manuel Cambara Zuniga",
+      "jobTitle": "Urologo",
+      "worksFor": {
+        "@id": "https://bio-clinic.it/#clinic"
+      }
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://bio-clinic.it/pages/urologia.html",
+      "name": "Centro di Urologia Bio-Clinic Sassari",
+      "description": "Pagina informativa del servizio di Urologia di Bio-Clinic Sassari.",
+      "specialty": "Urology",
+      "lastReviewed": "2026-02-01",
+      "dateModified": "2026-02-01",
+      "inLanguage": "it-IT"
     }
   ]
 }
@@ -289,6 +360,18 @@ body{padding-top:100px!important;margin:0!important}
       </div>
     </div>
   </section>
+  <!-- Hero Title -->
+  <section class="section" style="padding-top: 2rem; padding-bottom: 1rem;">
+    <div class="container">
+      <h1 class="text-4xl md:text-5xl font-bold text-center text-primary" style="color: var(--primary); font-size: 2.5rem; font-weight: 700; text-align: center; margin-bottom: 0.5rem;">
+        Urologia a Sassari
+      </h1>
+      <p class="text-lg text-gray-600 text-center" style="color: var(--gray-600); text-align: center; font-size: 1.125rem;">
+        Specialisti in Apparato Urinario e Genitale Maschile | Bio-Clinic
+      </p>
+    </div>
+  </section>
+
 
   <!-- Prestazioni -->
   <section class="section" id="prestazioni">
@@ -375,7 +458,59 @@ body{padding-top:100px!important;margin:0!important}
   </section>
 
   <!-- CTA -->
-  <section class="cta">
+  
+  <!-- FAQ Section -->
+  <section class="section" id="faq" style="background: var(--gray-50);">
+    <div class="container">
+      <div class="section-header" data-animate>
+        <span class="section-badge">Domande Frequenti</span>
+        <h2 class="section-title">FAQ Urologia</h2>
+        <p class="section-description">Le risposte alle domande più comuni dei nostri pazienti</p>
+      </div>
+      
+      <div class="faq-list" style="max-width: 800px; margin: 0 auto;">
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Quando consultare un urologo?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            Si consiglia una visita urologica per disturbi urinari (minzione frequente, bruciore, sangue nelle urine), problemi prostatici, calcoli renali, disfunzione erettile, infertilità maschile o per screening del PSA dopo i 50 anni.
+          </p>
+        </div>
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Quanto costa una visita urologica a Sassari?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            A Bio-Clinic la visita urologica costa da €90. L'ecografia prostatica transrettale è disponibile a €80. Il PSA con referto in giornata costa €15.
+          </p>
+        </div>
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Cos'è il PSA e quando controllarlo?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            Il PSA (Antigene Prostatico Specifico) è un marker per la prostata. Si consiglia lo screening a partire dai 50 anni, o dai 45 in caso di familiarità per tumore prostatico. A Bio-Clinic il referto è disponibile in giornata.
+          </p>
+        </div>
+
+        <div class="faq-item" style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h3 style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">
+            Come si diagnostica l'ipertrofia prostatica?
+          </h3>
+          <p style="color: var(--gray-600); line-height: 1.7; margin: 0;">
+            L'ipertrofia prostatica si diagnostica con visita urologica, ecografia prostatica, PSA ed eventualmente uroflussometria. Bio-Clinic offre un percorso completo per la diagnosi e il follow-up.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<section class="cta">
     <div class="container">
       <h2 class="cta-title" data-animate>Prenota la Tua Visita Urologica o Andrologica</h2>
       <p class="cta-description" data-animate data-delay="100">
