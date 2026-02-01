@@ -12,7 +12,7 @@
   const CONFIG = {
     debounceMs: 200,
     minQueryLength: 2,
-    searchInputSelector: '#hero-search-input, #header-search-input, #search-input, .search-input, [data-search-input]',
+    searchInputSelector: '#hero-search-input, #header-search-input, #search-input, #searchInput, .search-input, [data-search-input]',
     resultsContainerSelector: '#unified-search-content, .search-results-container, [data-search-results]',
     autocompleteSelector: '#hero-autocomplete, .search-autocomplete, .autocomplete-dropdown, [data-autocomplete]',
     // Nuovi selettori per il pannello unificato
