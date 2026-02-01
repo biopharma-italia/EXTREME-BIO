@@ -396,6 +396,7 @@ const BioSearchPro = (function() {
 
   /**
    * Esegui ricerca con ranking
+   * INTEGRATO con BioClinicSearchEngine per copertura completa
    */
   function search(query) {
     if (!query || query.length < CONFIG.limits.minQueryLength) {
@@ -408,31 +409,80 @@ const BioSearchPro = (function() {
     // Check Red Flags
     const hasRedFlag = CONFIG.redFlags.some(flag => q.includes(flag));
 
-    // Get all items
+    // Get all items from BioSearchPro
     const allItems = getAllSearchableItems();
 
-    // Score and filter
+    // Score and filter local items
     const scored = allItems
       .map(item => ({
         ...item,
         score: calculateScore(item, q, queryWords)
       }))
-      .filter(item => item.score > CONFIG.weights[item.type]) // Deve avere match
+      .filter(item => item.score > CONFIG.weights[item.type])
       .sort((a, b) => b.score - a.score);
+
+    // INTEGRAZIONE: Usa BioClinicSearchEngine per esami e procedure
+    let unifiedResults = { groups: { tests: [], procedures: [], packs: [], specialties: [] } };
+    if (typeof BioClinicSearchEngine !== 'undefined') {
+      try {
+        unifiedResults = BioClinicSearchEngine.search(query);
+      } catch (e) {
+        console.warn('[BioSearchPro] Unified engine error:', e);
+      }
+    }
+
+    // Converti risultati unificati in formato BioSearchPro
+    const unifiedExams = (unifiedResults.groups?.tests || []).map(t => ({
+      type: 'exam',
+      id: t.id,
+      name: t.name || t.nome,
+      description: t.category || t.cat || '',
+      price: t.price || t.prezzo,
+      icon: '🔬',
+      tags: [],
+      keywords: [t.name?.toLowerCase() || ''],
+      url: '/laboratorio/',
+      bookingType: 'direct',
+      score: t._score || 50
+    }));
+
+    const unifiedProcedures = (unifiedResults.groups?.procedures || []).map(p => ({
+      type: 'specialist',
+      id: p.id,
+      name: p.name || p.nome,
+      description: p.description_short || '',
+      icon: '🩺',
+      tags: [],
+      keywords: [p.name?.toLowerCase() || ''],
+      url: p.url || p.page_url || '#',
+      bookingType: 'direct',
+      score: p._score || 60
+    }));
+
+    // Combina risultati
+    const combinedResults = [...scored, ...unifiedExams, ...unifiedProcedures];
+    
+    // Rimuovi duplicati per ID
+    const uniqueResults = combinedResults.filter((item, index, self) =>
+      index === self.findIndex(t => t.id === item.id)
+    );
+
+    // Ordina per score
+    uniqueResults.sort((a, b) => (b.score || 0) - (a.score || 0));
 
     // Raggruppa per tipo
     const grouped = {
-      packs: scored.filter(i => i.type === 'pack' || i.type === 'pathway'),
-      specialists: scored.filter(i => i.type === 'specialist'),
-      exams: scored.filter(i => i.type === 'exam')
+      packs: uniqueResults.filter(i => i.type === 'pack' || i.type === 'pathway'),
+      specialists: uniqueResults.filter(i => i.type === 'specialist'),
+      exams: uniqueResults.filter(i => i.type === 'exam')
     };
 
     return {
-      results: scored.slice(0, CONFIG.limits.maxResults),
+      results: uniqueResults.slice(0, CONFIG.limits.maxResults),
       grouped: grouped,
       hasRedFlag: hasRedFlag,
       query: query,
-      total: scored.length
+      total: uniqueResults.length
     };
   }
 
