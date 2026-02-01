@@ -193,16 +193,19 @@
   </script>
   
   <style>
-    /* Layout fix - stesso stile di ginecologia.html che funziona */
-    body { padding-top: 100px !important; margin: 0 !important; }
+    /* Layout - Header fixed */
+    body { margin: 0 !important; }
     .header { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 9999 !important; background: #fff !important; box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important; }
+    
+    /* Breadcrumb - spazio per header fixed */
+    .breadcrumb-nav { margin-top: 80px; }
     
     /* Hero Section */
     .genetic-hero { background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%); color: white; padding: 4rem 0; }
     .genetic-hero h1 { color: white !important; }
     .genetic-hero p { color: rgba(255,255,255,0.95) !important; }
     .genetic-badge { background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; color: white; }
-    .genetic-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2rem; }
+    .genetic-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
     .genetic-stat { text-align: center; padding: 1rem; background: rgba(255,255,255,0.15); border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); }
     .genetic-stat-value { font-size: 2rem; font-weight: 700; color: #4ade80; }
     .genetic-stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.9); margin-top: 0.25rem; }
@@ -336,7 +339,8 @@
         i migliori laboratori di genomica.
       </p>
 
-      <div class="genetic-stat">
+      <div class="genetic-stats">
+        <div class="genetic-stat">
           <div class="genetic-stat-value">7-20gg</div>
           <div class="genetic-stat-label">Tempo Referto</div>
         </div>

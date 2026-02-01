@@ -179,14 +179,17 @@
   </script>
   
   <style>
-    /* Layout fix - stesso stile di ginecologia.html che funziona */
-    body { padding-top: 100px !important; margin: 0 !important; }
+    /* Layout - Header fixed */
+    body { margin: 0 !important; }
     .header { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 9999 !important; background: #fff !important; box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important; }
+    
+    /* Breadcrumb - spazio per header fixed */
+    .breadcrumb-nav { margin-top: 80px; }
     
     /* Hero Section */
     .work-hero { background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); color: white; padding: 4rem 0; }
     .work-badge { background: rgba(255,255,255,0.15); padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
-    .work-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2rem; }
+    .work-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
     .work-stat { text-align: center; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 12px; }
     .work-stat-value { font-size: 2rem; font-weight: 700; color: #fbbf24; }
     .work-stat-label { font-size: 0.85rem; opacity: 0.9; margin-top: 0.25rem; }
@@ -327,7 +330,8 @@
         in conformità al D.Lgs 81/08.
       </p>
 
-      <div class="work-stat">
+      <div class="work-stats">
+        <div class="work-stat">
           <div class="work-stat-value">150+</div>
           <div class="work-stat-label">Aziende Clienti</div>
         </div>
