@@ -55,7 +55,7 @@
             "@type": "GeoCoordinates",
             "latitude": 40.7267,
             "longitude": 8.5592
-          },,
+          },
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "5",
@@ -115,6 +115,92 @@
           {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bio-clinic.it/"},
           {"@type": "ListItem", "position": 2, "name": "Laboratorio", "item": "https://bio-clinic.it/laboratorio/"},
           {"@type": "ListItem", "position": 3, "name": "Preparazione Esami", "item": "https://bio-clinic.it/pages/preparazione-esami.html"}
+        ]
+      },
+      {
+        "@type": "HowTo",
+        "@id": "https://bio-clinic.it/pages/preparazione-esami.html#howto-sangue",
+        "name": "Come prepararsi alle analisi del sangue",
+        "description": "Guida passo-passo per prepararsi correttamente agli esami del sangue e ottenere risultati accurati",
+        "totalTime": "PT12H",
+        "supply": [
+          {"@type": "HowToSupply", "name": "Tessera sanitaria"},
+          {"@type": "HowToSupply", "name": "Richiesta medica o prescrizione"}
+        ],
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Digiuno dalla sera precedente",
+            "text": "Inizia il digiuno alle 20:00 o 21:00 della sera precedente. È consentito bere acqua naturale (non gassata). Evita alcolici nelle 24-48 ore prima."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Evita attività fisica intensa",
+            "text": "Non fare attività fisica intensa il giorno prima del prelievo. Lo sforzo può alterare alcuni valori come CPK e transaminasi."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Segnala i farmaci",
+            "text": "Non sospendere autonomamente i farmaci. Comunica al personale tutti i farmaci che assumi, inclusi integratori e prodotti erboristici."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "Presentati al prelievo",
+            "text": "Presentati a Bio-Clinic Sassari (Via Renzo Mossa 23) tra le 7:00 e le 11:00. Porta tessera sanitaria e richiesta medica. Non è necessaria prenotazione per i prelievi."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 5,
+            "name": "Dopo il prelievo",
+            "text": "Mantieni il cerotto per almeno 15 minuti. Puoi fare colazione subito dopo. I referti sono disponibili in giornata per molti esami, o entro 24-48 ore."
+          }
+        ]
+      },
+      {
+        "@type": "HowTo",
+        "@id": "https://bio-clinic.it/pages/preparazione-esami.html#howto-urine24h",
+        "name": "Come raccogliere le urine delle 24 ore",
+        "description": "Istruzioni complete per la raccolta delle urine delle 24 ore per esami specifici",
+        "totalTime": "PT24H",
+        "supply": [
+          {"@type": "HowToSupply", "name": "Contenitore per urine 24 ore (2-3 litri)"},
+          {"@type": "HowToSupply", "name": "Frigorifero per conservazione"}
+        ],
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Inizia la mattina",
+            "text": "Al risveglio, svuota completamente la vescica nel water. Questa prima urina NON va raccolta. Annota l'ora esatta di inizio."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Raccogli tutte le urine successive",
+            "text": "Da questo momento, raccogli TUTTE le urine delle 24 ore successive nel contenitore apposito, incluse quelle notturne."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Conserva in frigorifero",
+            "text": "Conserva il contenitore in frigorifero tra una minzione e l'altra. Non congelare."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "Ultima raccolta",
+            "text": "Il mattino successivo, alla stessa ora di inizio, svuota la vescica nel contenitore. Questa è l'ultima urina da raccogliere."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 5,
+            "name": "Consegna al laboratorio",
+            "text": "Porta il contenitore a Bio-Clinic entro 2 ore dalla fine della raccolta. Comunica il volume totale raccolto."
+          }
         ]
       }
     ]
@@ -212,6 +298,20 @@
         Una corretta preparazione garantisce risultati accurati. Segui le nostre istruzioni 
         per ogni tipo di esame. In caso di dubbi, contattaci.
       </p>
+
+      <!-- E-E-A-T Badge: Reviewed by Medical Professional -->
+      <div class="medical-review-badge" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 4px solid #22c55e; border-radius: 8px; margin-bottom: 1.5rem; font-size: 0.9rem;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        <span style="color: #166534;">
+          <strong>Revisionato da équipe medica Bio-Clinic</strong> • 
+          Aggiornato: 01/02/2026 •
+          <a href="../equipe/salvatore-dessole.html" style="color: #166534; text-decoration: underline;">Dir. Sanitario: Prof. S. Dessole</a>
+        </span>
+      </div>
+
     </div>
   </section>
 
