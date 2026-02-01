@@ -11,8 +11,10 @@
 /prestazioni/visita-cardiologica /pages/visita-cardiologica-ecg.html 301
 /prestazioni/ecg /pages/visita-cardiologica-ecg.html 301
 
-# Redirect laboratorio
-/laboratorio/:test /laboratorio/index.html#:test 301
+# Redirect laboratorio - solo per deep links esami (escludi index.html)
+# Nota: evita match su index.html per prevenire loop
+/laboratorio/esame-* /laboratorio/#:splat 301
+/laboratorio/pack-* /laboratorio/#:splat 301
 
 # Genetica & Preparazione Esami - Explicit routes
 /pages/genetica.html /pages/genetica.html 200

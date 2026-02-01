@@ -665,3 +665,4 @@ if (typeof module !== 'undefined' && module.exports) {
 }
 
 console.log('[BioClinicSearchEngine] v' + BioClinicSearchEngine.version + ' loaded');
+/* Deploy Sun Feb  1 15:52:32 UTC 2026 */
