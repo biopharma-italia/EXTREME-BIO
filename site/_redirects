@@ -18,3 +18,8 @@
 /pages/genetica.html /pages/genetica.html 200
 /pages/preparazione-esami.html /pages/preparazione-esami.html 200
 
+# SEO: Consolidazione cannibalizzazione Pap Test
+# pap-test-hpv.html -> duopap.html (stesso contenuto, DuoPap più completo)
+/pages/pap-test-hpv.html /pages/duopap.html 301
+/pages/pap-test-hpv /pages/duopap.html 301
+

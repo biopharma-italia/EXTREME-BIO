@@ -17,7 +17,7 @@ INCLUDE_DIRS = ['pages/', 'equipe/', 'laboratorio/', 'prestazioni/', 'shop/']
 INCLUDE_ROOT_FILES = ['index.html', 'listino-completo.html']
 
 # File specifici da ESCLUDERE
-EXCLUDE_FILES = ['404.html', 'profilo.html', 'css-test.html']
+EXCLUDE_FILES = ['404.html', 'profilo.html', 'css-test.html', 'pap-test-hpv.html']  # pap-test-hpv.html redirected to duopap.html
 
 # Directory da escludere dal walk
 EXCLUDE_DIRS = ['node_modules', 'output', 'backups', 'backup', 'build', 'components', 'data', 'templates', '.git']
