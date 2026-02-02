@@ -1,66 +1,82 @@
 /**
- * BIO-CLINIC LAYOUT & SEARCH CSS v3.0.0
+ * BIO-CLINIC LAYOUT & SEARCH CSS v3.1.0
  * ======================================
  * Consolidated CSS for header, search, and layout
- * Replaces: header-spacing-fix.css, search-fix.css, unified-search.css
  * 
- * CONTENTS:
- * 1. Header Layout (fixed header with proper spacing)
- * 2. Search Components (hero, header, lab modes)
- * 3. Breadcrumb Navigation
- * 4. Page Content Spacing
- * 5. Mobile Responsiveness
+ * Z-INDEX SCALE (consistent hierarchy):
+ * - Header: 1000
+ * - Mobile nav overlay: 900
+ * - Search dropdowns: 800
+ * - Hero content: 1-10
+ * - Modals: 1100+
  * 
- * @version 3.0.0
+ * @version 3.1.0
  * @date 2026-02-02
  */
+
+/* ============================================
+   Z-INDEX VARIABLES (for consistency)
+   ============================================ */
+:root {
+    --z-header: 1000;
+    --z-mobile-nav: 900;
+    --z-search-dropdown: 800;
+    --z-modal: 1100;
+}
 
 /* ============================================
    1. HEADER LAYOUT
    ============================================ */
 
-/* Fixed header at top - MUST have white background */
+/* ============================================
+   HEADER - Fixed at top with white background
+   ============================================ */
 .header {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    z-index: 9999 !important;
-    background-color: #ffffff !important;
-    background: #ffffff !important;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
-    transition: box-shadow 200ms ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-header, 1000);
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    height: 80px;
 }
 
-.header.scrolled {
-    box-shadow: var(--shadow-md, 0 4px 6px -1px rgb(0 0 0 / 0.1));
-}
-
-/* Header container layout */
 .header .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: var(--header-height, 80px);
-    max-width: var(--container-max, 1280px);
+    height: 100%;
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 0 var(--container-padding, 1.5rem);
+    padding: 0 1.5rem;
 }
 
-/* Body spacing - exact header height (80px) */
+/* ============================================
+   BODY & MAIN WRAPPER - Correct spacing
+   ============================================ */
 body {
-    padding-top: 80px !important;
-    margin: 0 !important;
+    margin: 0;
+    padding: 0; /* NO padding on body */
 }
 
-/* Mobile header adjustments */
+/* Main content wrapper - THIS gets the padding */
+.site-main,
+main.site-main {
+    padding-top: 80px; /* Exact header height */
+}
+
+/* ============================================
+   MOBILE ADJUSTMENTS
+   ============================================ */
 @media (max-width: 768px) {
-    .header .container {
+    .header {
         height: 70px;
     }
     
-    body {
-        padding-top: 70px !important;
+    .site-main,
+    main.site-main {
+        padding-top: 70px;
     }
 }
 
@@ -103,11 +119,19 @@ body {
     pointer-events: none;
 }
 
-/* === 2.2 Hero Search (Home Page) === */
-.hero-search,
+/* === 2.2 Hero Search Section (Home Page) === */
+/* Section is full-width, inner content is centered */
+section.hero-search {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    z-index: 1; /* Below header */
+}
+
+/* Search box inside hero - THIS is centered */
 .search-box-hero {
     position: relative;
-    max-width: 600px;
+    max-width: 680px;
     margin: 0 auto;
 }
 
@@ -140,7 +164,7 @@ body {
     box-shadow: var(--shadow-xl);
     max-height: 450px;
     overflow-y: auto;
-    z-index: 100;
+    z-index: var(--z-search-dropdown, 800);
 }
 
 /* === 2.3 Header Search (Compact) === */
@@ -180,7 +204,7 @@ body {
     box-shadow: var(--shadow-xl);
     max-height: 350px;
     overflow-y: auto;
-    z-index: 9999;
+    z-index: var(--z-search-dropdown, 800);
     display: none;
 }
 
@@ -221,7 +245,7 @@ body {
     box-shadow: var(--shadow-xl);
     max-height: 500px;
     overflow-y: auto;
-    z-index: 100;
+    z-index: var(--z-search-dropdown, 800);
 }
 
 /* ============================================
