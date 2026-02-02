@@ -246,6 +246,12 @@ p {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+  flex-shrink: 0;
+}
+
+.logo img {
+  max-height: 45px;
+  width: auto;
 }
 
 .logo-text {
@@ -268,15 +274,16 @@ p {
   .nav {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    flex-shrink: 0;
+    gap: 0;
+    flex-shrink: 1;
+    min-width: 0;
   }
 }
 
 .nav-list {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0;
   flex-wrap: nowrap;
   list-style: none;
   margin: 0;
@@ -286,10 +293,10 @@ p {
 .nav-link {
   font-weight: 500;
   color: var(--gray-700);
-  padding: 0.5rem 0.4rem;
+  padding: 0.5rem 0.6rem;
   position: relative;
   white-space: nowrap;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .nav-link:hover,
@@ -518,6 +525,12 @@ p {
 .btn-primary:hover {
   background: var(--primary-dark);
   color: var(--white);
+}
+
+/* Header button - more compact */
+.header .btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
 }
 
 .btn-secondary {

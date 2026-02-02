@@ -7,7 +7,7 @@
 /* ===== HERO SEARCH (Homepage) ===== */
 .hero-search {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  padding: 3rem 0 4rem;
+  padding: calc(80px + 3rem) 0 4rem; /* 80px for fixed header + 3rem top padding */
   text-align: center;
   position: relative;
   z-index: 1; /* Below header (z-index: 1000) */
@@ -803,7 +803,7 @@
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .hero-search {
-    padding: 2.5rem 1rem 3rem;
+    padding: calc(70px + 2rem) 1rem 3rem; /* 70px mobile header + 2rem */
   }
   
   .hero-search-title {
