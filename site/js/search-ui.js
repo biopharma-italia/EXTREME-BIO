@@ -668,14 +668,17 @@
             activeAdapter = autoAdapter;
         }
 
-        // Bind suggestion tags (Tiroide, Cardiologia, etc.)
-        bindSuggestionTags(activeAdapter);
+        // Bind suggestion tags (Tiroide, Cardiologia, etc.) after a short delay
+        // to ensure adapters are fully initialized
+        setTimeout(() => {
+            bindSuggestionTags();
+        }, 500);
     }
 
     /**
      * Bind click handlers to suggestion tags
      */
-    function bindSuggestionTags(adapter) {
+    function bindSuggestionTags() {
         const tags = document.querySelectorAll('[data-search-suggestion], .search-suggestion-tag[data-search-suggestion]');
         
         tags.forEach(tag => {
@@ -690,16 +693,19 @@
                     input.value = query;
                     input.focus();
                     
-                    // Trigger search via adapter if available
-                    if (adapter && adapter._performSearch) {
+                    // Get the active adapter from global
+                    const adapter = global.bioClinicSearchHome || global.bioClinicSearchLab || global.bioClinicSearchHeader || global.bioClinicSearchAuto;
+                    
+                    // Trigger search via adapter if available and ready
+                    if (adapter && typeof adapter._performSearch === 'function') {
+                        console.log('[SearchUI] Triggering search via adapter for:', query);
                         adapter._performSearch(query);
                     } else {
                         // Fallback: dispatch input event
+                        console.log('[SearchUI] Fallback: dispatching input event for:', query);
                         input.dispatchEvent(new Event('input', { bubbles: true }));
                     }
                 }
-                
-                console.log('[SearchUI] Suggestion clicked:', query);
             });
         });
         
