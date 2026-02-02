@@ -1173,45 +1173,12 @@ const BioSearchPro = (function() {
 
 })();
 
-// Auto-init on DOM ready
-document.addEventListener('DOMContentLoaded', () => {
-  // Init su hero search se presente
-  const heroInput = document.getElementById('hero-search-input');
-  if (heroInput) {
-    BioSearchPro.init('#hero-search-input', '#hero-autocomplete');
-  }
-  
-  // Init su header search se presente
-  if (document.getElementById('header-search-input')) {
-    BioSearchPro.init('#header-search-input', '#header-autocomplete');
-  }
+// DEPRECATED: Auto-init DISABLED - Use bio-clinic-search.js + search-ui.js instead
+// This file is kept for backward compatibility but no longer auto-initializes
 
-  // Init su lab search se presente
-  if (document.getElementById('searchInput')) {
-    BioSearchPro.init('#searchInput', null);
-  }
+// Manual init only - call BioSearchPro.init() explicitly if needed
+console.log('[BioSearchPro] v1.0.0 loaded (AUTO-INIT DISABLED - use BioClinicSearch)');
 
-  // Handler per suggestion tags (Tiroide, Cardiologia, Slim Care, etc.)
-  document.querySelectorAll('[data-search-suggestion]').forEach(tag => {
-    tag.style.cursor = 'pointer';
-    tag.addEventListener('click', () => {
-      const query = tag.dataset.searchSuggestion;
-      const input = document.getElementById('hero-search-input') || 
-                    document.getElementById('header-search-input') ||
-                    document.getElementById('searchInput');
-      
-      if (input) {
-        input.value = query;
-        input.focus();
-        // Trigger input event to show dropdown
-        input.dispatchEvent(new Event('input', { bubbles: true }));
-      }
-    });
-  });
-
-  console.log('[BioSearchPro] v1.0.0 loaded');
-});
-
-// Export globale
+// Export globale (for backward compatibility)
 window.BioSearchPro = BioSearchPro;
 /* Deploy Sun Feb  1 15:52:32 UTC 2026 */
