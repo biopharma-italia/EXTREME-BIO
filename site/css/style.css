@@ -207,9 +207,11 @@ p {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: var(--white);
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--transition-base);
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: box-shadow 200ms ease;
+  height: 80px;
 }
 
 .header.scrolled {
