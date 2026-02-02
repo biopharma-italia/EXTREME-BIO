@@ -22,6 +22,17 @@
       --lab-secondary: #26A69A;
     }
     
+    /* Fix for fixed header - add padding to main content */
+    main.section {
+      padding-top: 100px; /* 80px header + 20px spacing */
+    }
+    
+    @media (max-width: 768px) {
+      main.section {
+        padding-top: 90px; /* 70px mobile header + 20px spacing */
+      }
+    }
+    
     .lab-hero {
       background: linear-gradient(135deg, var(--lab-primary) 0%, var(--lab-secondary) 100%);
       color: white;
