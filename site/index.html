@@ -32,11 +32,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   
   <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css?v=1770030522">
-  <link rel="stylesheet" href="css/bio-clinic-layout.css?v=1770030522">
-  <!-- Search Styles -->
-  <link rel="stylesheet" href="css/search.css?v=1769997148">
-  <!-- bio-clinic-layout.css includes all triage styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/bio-clinic-layout.css?v=20260202-triage">
+  <!-- Search Styles (legacy + new unified) -->
+  <link rel="stylesheet" href="css/search.css">
+  <link rel="stylesheet" href="css/bio-search-pro.css?v=1769644194">
+  <link rel="stylesheet" href="css/unified-search.css?v=20260131">
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/favicon.png">
@@ -204,7 +205,7 @@
       <ul class="nav-list">
         <!-- HOME -->
         <li class="nav-item">
-          <a href="index.html" class="nav-link" title="Torna alla Homepage Bio-Clinic">Home</a>
+          <a href="index.html" class="nav-link active" title="Torna alla Homepage Bio-Clinic">Home</a>
         </li>
         
         <!-- SLIM CARE MEDICAL -->
@@ -395,8 +396,7 @@
 </nav>
 <!-- END MASTER HEADER -->
 
-<!-- MAIN CONTENT WRAPPER - padding-top for fixed header -->
-<main class="site-main" id="main-content">
+<!-- END MASTER HEADER -->
 
 <section class="hero-search">
     <div class="container">
@@ -1043,15 +1043,15 @@
     <div id="search-results-content" class="search-results-content"></div>
   </div>
 
-</main>
-<!-- END MAIN CONTENT WRAPPER -->
-
   <!-- Scripts -->
-  <script src="js/nav-active-state.js"></script>
   <script src="js/main.js"></script>
   <script src="js/database.js"></script>
-  <!-- UNIFIED SEARCH ENGINE v3.1 - Clinical TRIAGE -->
-  <script src="js/bio-clinic-search.js?v=1769995637"></script>
-  <script src="js/search-ui.js?v=1769995637"></script>
+  <!-- UNIFIED SEARCH ENGINE v3.0 - Entity-based search -->
+  <script src="js/bio-clinic-search.js?v=20260202-triage"></script>
+  <script src="js/search-ui.js?v=20260202-triage"></script>
+  <!-- Legacy support (to be removed after validation) -->
+  <script src="js/bio-clinic-search-engine.js?v=20260201b"></script>
+  <script src="js/search-ui-adapter.js?v=20260201b"></script>
+  <script src="js/bio-search-pro.js"></script>
 </body>
 </html>

@@ -23,9 +23,8 @@
         selectors: {
             home: {
                 input: '.hero-search-input, #hero-search-input, [data-search="home"]',
-                results: '#search-results-content, .hero-search-results, #hero-search-results',
-                container: '#search-results-panel, .hero-search, .search-box-hero',
-                panel: '#search-results-panel'
+                results: '.hero-search-results, #hero-search-results',
+                container: '.hero-search, .search-box-hero'
             },
             header: {
                 input: '.header-search-input, #header-search-input, [data-search="header"]',
@@ -144,27 +143,6 @@
             }
             
             document.addEventListener('click', this._boundOnClickOutside);
-            
-            // Bind close button for search panel (home mode)
-            if (this.mode === 'home') {
-                const closeBtn = document.querySelector('#search-results-close');
-                if (closeBtn) {
-                    closeBtn.addEventListener('click', () => this._closeResults());
-                }
-                
-                // Bind suggestion tags (e.g., "Tiroide", "Cardiologia", etc.)
-                const suggestionTags = document.querySelectorAll('[data-search-suggestion]');
-                suggestionTags.forEach(tag => {
-                    tag.addEventListener('click', (e) => {
-                        const suggestion = tag.dataset.searchSuggestion;
-                        if (suggestion && this.input) {
-                            this.input.value = suggestion;
-                            this.input.focus();
-                            this._performSearch(suggestion);
-                        }
-                    });
-                });
-            }
         }
 
         _ensureResultsContainer() {
@@ -293,24 +271,12 @@
         }
 
         _renderResults(searchResult) {
-            if (!this.resultsContainer) {
-                console.warn('[SearchUI] No results container found');
-                return;
-            }
+            if (!this.resultsContainer) return;
 
             const { grouped, query, triage, hasTriage } = searchResult;
             
-            console.log('[SearchUI] Rendering results:', { 
-                hasTriage, 
-                triagePresent: !!triage,
-                primaryName: triage?.primary?.name,
-                relatedCount: triage?.related?.length,
-                mode: this.mode
-            });
-            
             // Use TRIAGE renderer if available
             if (hasTriage && triage && this.mode !== 'header') {
-                console.log('[SearchUI] Using TRIAGE renderer');
                 this.resultsContainer.innerHTML = this._renderTriageResults(triage, query);
                 this._bindResultClicks();
                 this._bindAccordions();
@@ -595,35 +561,16 @@
         // ===========================================
         _openResults() {
             if (this.resultsContainer) {
+                this.resultsContainer.style.display = 'block';
                 this.isOpen = true;
-                
-                // Show the panel (home mode uses slide-in animation)
-                if (this.mode === 'home') {
-                    const panel = document.querySelector('#search-results-panel');
-                    if (panel) {
-                        panel.classList.add('active');
-                        // Panel uses transform animation, not display
-                    }
-                } else {
-                    this.resultsContainer.style.display = 'block';
-                }
             }
         }
 
         _closeResults() {
             if (this.resultsContainer) {
+                this.resultsContainer.style.display = 'none';
                 this.isOpen = false;
                 this.selectedIndex = -1;
-                
-                // Hide the panel (home mode uses slide-out animation)
-                if (this.mode === 'home') {
-                    const panel = document.querySelector('#search-results-panel');
-                    if (panel) {
-                        panel.classList.remove('active');
-                    }
-                } else {
-                    this.resultsContainer.style.display = 'none';
-                }
             }
         }
 
