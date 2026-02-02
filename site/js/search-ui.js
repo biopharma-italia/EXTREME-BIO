@@ -23,8 +23,9 @@
         selectors: {
             home: {
                 input: '.hero-search-input, #hero-search-input, [data-search="home"]',
-                results: '.hero-search-results, #hero-search-results',
-                container: '.hero-search, .search-box-hero'
+                results: '#search-results-content, .hero-search-results, #hero-search-results',
+                container: '#search-results-panel, .hero-search, .search-box-hero',
+                panel: '#search-results-panel'
             },
             header: {
                 input: '.header-search-input, #header-search-input, [data-search="header"]',
@@ -143,6 +144,27 @@
             }
             
             document.addEventListener('click', this._boundOnClickOutside);
+            
+            // Bind close button for search panel (home mode)
+            if (this.mode === 'home') {
+                const closeBtn = document.querySelector('#search-results-close');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', () => this._closeResults());
+                }
+                
+                // Bind suggestion tags (e.g., "Tiroide", "Cardiologia", etc.)
+                const suggestionTags = document.querySelectorAll('[data-search-suggestion]');
+                suggestionTags.forEach(tag => {
+                    tag.addEventListener('click', (e) => {
+                        const suggestion = tag.dataset.searchSuggestion;
+                        if (suggestion && this.input) {
+                            this.input.value = suggestion;
+                            this.input.focus();
+                            this._performSearch(suggestion);
+                        }
+                    });
+                });
+            }
         }
 
         _ensureResultsContainer() {
@@ -563,6 +585,15 @@
             if (this.resultsContainer) {
                 this.resultsContainer.style.display = 'block';
                 this.isOpen = true;
+                
+                // Show the panel if it exists (home mode)
+                if (this.mode === 'home') {
+                    const panel = document.querySelector('#search-results-panel');
+                    if (panel) {
+                        panel.classList.add('active');
+                        panel.style.display = 'block';
+                    }
+                }
             }
         }
 
@@ -571,6 +602,15 @@
                 this.resultsContainer.style.display = 'none';
                 this.isOpen = false;
                 this.selectedIndex = -1;
+                
+                // Hide the panel if it exists (home mode)
+                if (this.mode === 'home') {
+                    const panel = document.querySelector('#search-results-panel');
+                    if (panel) {
+                        panel.classList.remove('active');
+                        panel.style.display = 'none';
+                    }
+                }
             }
         }
 
