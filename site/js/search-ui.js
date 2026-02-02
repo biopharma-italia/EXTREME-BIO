@@ -273,7 +273,15 @@
         _renderResults(searchResult) {
             if (!this.resultsContainer) return;
 
-            const { grouped, query } = searchResult;
+            const { grouped, query, triage, hasTriage } = searchResult;
+            
+            // Use TRIAGE renderer if available
+            if (hasTriage && triage && this.mode !== 'header') {
+                this.resultsContainer.innerHTML = this._renderTriageResults(triage, query);
+                this._bindResultClicks();
+                this._bindAccordions();
+                return;
+            }
             
             // Use mode-specific renderer
             switch (this.mode) {
@@ -290,6 +298,110 @@
 
             // Bind click handlers
             this._bindResultClicks();
+        }
+
+        /**
+         * TRIAGE RENDERER - Hierarchical clinical results
+         */
+        _renderTriageResults(triage, query) {
+            const { primary, related, packSuggestion } = triage;
+            
+            return `
+                <div class="search-triage-results">
+                    ${primary ? this._renderPrimaryResult(primary) : ''}
+                    ${related.length > 0 ? this._renderRelatedSection(related) : ''}
+                    ${packSuggestion ? this._renderPackSuggestion(packSuggestion) : ''}
+                </div>
+            `;
+        }
+
+        /**
+         * PRIMARY RESULT - Large card, prominent CTA
+         */
+        _renderPrimaryResult(result) {
+            return `
+                <div class="triage-primary">
+                    <div class="triage-primary-badge">
+                        <i class="fas fa-check-circle"></i> Risultato principale
+                    </div>
+                    <a href="${result.url}" class="triage-primary-card" data-index="0" data-id="${result.id}" data-type="${result.type}">
+                        <div class="triage-primary-header">
+                            <span class="triage-type-badge triage-type-${result.type}">${this._getTypeLabel(result.type)}</span>
+                            ${result.price ? `<span class="triage-primary-price">€${typeof result.price === 'number' ? result.price.toFixed(2) : result.price}</span>` : ''}
+                        </div>
+                        <h3 class="triage-primary-name">${result.name}</h3>
+                        ${result.description ? `<p class="triage-primary-desc">${result.description}</p>` : ''}
+                        ${result.meta?.duration_minutes ? `<span class="triage-meta"><i class="fas fa-clock"></i> ${result.meta.duration_minutes} min</span>` : ''}
+                        <div class="triage-primary-cta">
+                            <span class="triage-cta-btn">Scopri di più <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                </div>
+            `;
+        }
+
+        /**
+         * RELATED SECTION - Collapsed accordion
+         */
+        _renderRelatedSection(related) {
+            return `
+                <div class="triage-related">
+                    <button class="triage-related-toggle" aria-expanded="false">
+                        <span><i class="fas fa-layer-group"></i> Altri esami correlati (${related.length})</span>
+                        <i class="fas fa-chevron-down triage-toggle-icon"></i>
+                    </button>
+                    <div class="triage-related-content" hidden>
+                        ${related.map((result, idx) => `
+                            <a href="${result.url}" class="triage-related-item" data-index="${idx + 1}" data-id="${result.id}">
+                                <span class="triage-related-name">${result.name}</span>
+                                ${result.price ? `<span class="triage-related-price">€${typeof result.price === 'number' ? result.price.toFixed(2) : result.price}</span>` : ''}
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        /**
+         * PACK SUGGESTION - Always at bottom
+         */
+        _renderPackSuggestion(pack) {
+            return `
+                <div class="triage-suggestion">
+                    <div class="triage-suggestion-label">
+                        <i class="fas fa-tags"></i> Risparmia con il pacchetto
+                    </div>
+                    <a href="${pack.url}" class="triage-suggestion-card" data-id="${pack.id}" data-type="pack">
+                        <div class="triage-suggestion-info">
+                            <span class="triage-suggestion-name">${pack.name}</span>
+                            ${pack.meta?.description ? `<span class="triage-suggestion-desc">${this._truncate(pack.meta.description, 80)}</span>` : ''}
+                        </div>
+                        ${pack.price ? `<span class="triage-suggestion-price">€${typeof pack.price === 'number' ? pack.price.toFixed(2) : pack.price}</span>` : ''}
+                    </a>
+                </div>
+            `;
+        }
+
+        /**
+         * Bind accordion toggle for related section
+         */
+        _bindAccordions() {
+            const toggles = this.resultsContainer?.querySelectorAll('.triage-related-toggle');
+            toggles?.forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const content = toggle.nextElementSibling;
+                    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                    
+                    toggle.setAttribute('aria-expanded', !isExpanded);
+                    content.hidden = isExpanded;
+                    
+                    // Rotate chevron
+                    const icon = toggle.querySelector('.triage-toggle-icon');
+                    if (icon) {
+                        icon.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
+                    }
+                });
+            });
         }
 
         _renderHomeResults(grouped, query) {

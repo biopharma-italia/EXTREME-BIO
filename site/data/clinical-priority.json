@@ -1,0 +1,276 @@
+{
+  "version": "1.0.0",
+  "description": "Clinical triage priorities for search results - defines PRIMARY result for each query",
+  "last_updated": "2026-02-02",
+  
+  "primary_mappings": {
+    "tsh": {
+      "primary_id": "ormone-tireotropo-tsh",
+      "primary_type": "exam",
+      "related_ids": ["tsh-reflex", "anticorpi-anti-recettori-tsh", "ft3", "ft4"],
+      "pack_suggestion": "checkup-tiroide",
+      "specialty_context": "endocrinologia"
+    },
+    "tiroide": {
+      "primary_id": "checkup-tiroide",
+      "primary_type": "pack",
+      "related_ids": ["ormone-tireotropo-tsh", "ft3", "ft4", "anti-tpo", "tireoglobulina"],
+      "procedure_suggestion": "ecografia-tiroidea",
+      "specialty_context": "endocrinologia"
+    },
+    "ft3": {
+      "primary_id": "ft3",
+      "primary_type": "exam",
+      "related_ids": ["ft4", "ormone-tireotropo-tsh"],
+      "pack_suggestion": "checkup-tiroide",
+      "specialty_context": "endocrinologia"
+    },
+    "ft4": {
+      "primary_id": "ft4",
+      "primary_type": "exam",
+      "related_ids": ["ft3", "ormone-tireotropo-tsh"],
+      "pack_suggestion": "checkup-tiroide",
+      "specialty_context": "endocrinologia"
+    },
+    "emocromo": {
+      "primary_id": "emocromo-completo",
+      "primary_type": "exam",
+      "related_ids": ["formula-leucocitaria", "reticolociti"],
+      "pack_suggestion": "checkup-base",
+      "specialty_context": "laboratorio"
+    },
+    "glicemia": {
+      "primary_id": "glicemia",
+      "primary_type": "exam",
+      "related_ids": ["emoglobina-glicata", "curva-glicemica", "insulina"],
+      "pack_suggestion": "checkup-diabete",
+      "specialty_context": "endocrinologia"
+    },
+    "diabete": {
+      "primary_id": "checkup-diabete",
+      "primary_type": "pack",
+      "related_ids": ["glicemia", "emoglobina-glicata", "insulina"],
+      "procedure_suggestion": "visita-diabetologica",
+      "specialty_context": "endocrinologia"
+    },
+    "colesterolo": {
+      "primary_id": "colesterolo-totale",
+      "primary_type": "exam",
+      "related_ids": ["colesterolo-hdl", "colesterolo-ldl", "trigliceridi"],
+      "pack_suggestion": "checkup-cardiovascolare",
+      "specialty_context": "cardiologia"
+    },
+    "psa": {
+      "primary_id": "psa-totale",
+      "primary_type": "exam",
+      "related_ids": ["psa-libero", "rapporto-psa"],
+      "pack_suggestion": "checkup-prostata",
+      "specialty_context": "urologia"
+    },
+    "prostata": {
+      "primary_id": "checkup-prostata",
+      "primary_type": "pack",
+      "related_ids": ["psa-totale", "psa-libero"],
+      "procedure_suggestion": "ecografia-prostatica",
+      "specialty_context": "urologia"
+    },
+    "pap test": {
+      "primary_id": "pap-test",
+      "primary_type": "procedure",
+      "related_ids": ["hpv-dna-test", "duopap", "colposcopia"],
+      "pack_suggestion": null,
+      "specialty_context": "ginecologia"
+    },
+    "paptest": {
+      "primary_id": "pap-test",
+      "primary_type": "procedure",
+      "related_ids": ["hpv-dna-test", "duopap", "colposcopia"],
+      "pack_suggestion": null,
+      "specialty_context": "ginecologia"
+    },
+    "hpv": {
+      "primary_id": "hpv-dna-test",
+      "primary_type": "procedure",
+      "related_ids": ["pap-test", "duopap", "colposcopia"],
+      "pack_suggestion": null,
+      "specialty_context": "ginecologia"
+    },
+    "nipt": {
+      "primary_id": "nipt-fetal-dna-standard",
+      "primary_type": "exam",
+      "related_ids": ["nipt-fetal-dna-plus", "bi-test"],
+      "pack_suggestion": null,
+      "specialty_context": "ginecologia"
+    },
+    "ecg": {
+      "primary_id": "ecg",
+      "primary_type": "procedure",
+      "related_ids": ["ecocardiogramma", "holter-ecg"],
+      "pack_suggestion": "checkup-cardiovascolare",
+      "specialty_context": "cardiologia"
+    },
+    "cuore": {
+      "primary_id": "visita-cardiologica",
+      "primary_type": "procedure",
+      "related_ids": ["ecg", "ecocardiogramma", "holter-ecg"],
+      "pack_suggestion": "checkup-cardiovascolare",
+      "specialty_context": "cardiologia"
+    },
+    "holter": {
+      "primary_id": "holter-ecg",
+      "primary_type": "procedure",
+      "related_ids": ["holter-pressorio", "ecg"],
+      "pack_suggestion": null,
+      "specialty_context": "cardiologia"
+    },
+    "ecocardiogramma": {
+      "primary_id": "ecocardiogramma",
+      "primary_type": "procedure",
+      "related_ids": ["visita-cardiologica", "ecg"],
+      "pack_suggestion": null,
+      "specialty_context": "cardiologia"
+    },
+    "ginecologia": {
+      "primary_id": "ginecologia",
+      "primary_type": "specialty",
+      "related_ids": ["visita-ginecologica", "ecografia-transvaginale", "pap-test"],
+      "pack_suggestion": null,
+      "specialty_context": "ginecologia"
+    },
+    "ginecologo": {
+      "primary_id": "visita-ginecologica",
+      "primary_type": "procedure",
+      "related_ids": ["ecografia-transvaginale", "pap-test", "ecografia-mammaria"],
+      "pack_suggestion": null,
+      "specialty_context": "ginecologia"
+    },
+    "cardiologia": {
+      "primary_id": "cardiologia",
+      "primary_type": "specialty",
+      "related_ids": ["visita-cardiologica", "ecg", "ecocardiogramma"],
+      "pack_suggestion": "checkup-cardiovascolare",
+      "specialty_context": "cardiologia"
+    },
+    "cardiologo": {
+      "primary_id": "visita-cardiologica",
+      "primary_type": "procedure",
+      "related_ids": ["ecg", "ecocardiogramma", "holter-ecg"],
+      "pack_suggestion": "checkup-cardiovascolare",
+      "specialty_context": "cardiologia"
+    },
+    "endocrinologia": {
+      "primary_id": "endocrinologia",
+      "primary_type": "specialty",
+      "related_ids": ["visita-endocrinologica", "ecografia-tiroidea"],
+      "pack_suggestion": "checkup-tiroide",
+      "specialty_context": "endocrinologia"
+    },
+    "dermatologia": {
+      "primary_id": "dermatologia",
+      "primary_type": "specialty",
+      "related_ids": ["visita-dermatologica", "mappatura-nei"],
+      "pack_suggestion": null,
+      "specialty_context": "dermatologia"
+    },
+    "nei": {
+      "primary_id": "mappatura-nei",
+      "primary_type": "procedure",
+      "related_ids": ["visita-dermatologica", "dermatoscopia"],
+      "pack_suggestion": null,
+      "specialty_context": "dermatologia"
+    },
+    "slim care": {
+      "primary_id": "slim-care",
+      "primary_type": "pathway",
+      "related_ids": ["slim-care-donna", "visita-endocrinologica", "visita-nutrizionale"],
+      "pack_suggestion": null,
+      "specialty_context": "endocrinologia"
+    },
+    "dimagrire": {
+      "primary_id": "slim-care",
+      "primary_type": "pathway",
+      "related_ids": ["visita-nutrizionale", "bioimpedenziometria"],
+      "pack_suggestion": null,
+      "specialty_context": "nutrizione"
+    },
+    "wegovy": {
+      "primary_id": "slim-care",
+      "primary_type": "pathway",
+      "related_ids": ["visita-endocrinologica"],
+      "pack_suggestion": null,
+      "specialty_context": "endocrinologia"
+    },
+    "fertilità": {
+      "primary_id": "pma-fertilita",
+      "primary_type": "pathway",
+      "related_ids": ["consulto-pma", "spermiogramma"],
+      "pack_suggestion": null,
+      "specialty_context": "ginecologia"
+    },
+    "pma": {
+      "primary_id": "pma-fertilita",
+      "primary_type": "pathway",
+      "related_ids": ["consulto-pma", "spermiogramma", "ecografia-transvaginale"],
+      "pack_suggestion": null,
+      "specialty_context": "ginecologia"
+    },
+    "check up": {
+      "primary_id": "checkup-base",
+      "primary_type": "pack",
+      "related_ids": ["checkup-completo", "emocromo-completo"],
+      "pack_suggestion": null,
+      "specialty_context": "laboratorio"
+    },
+    "checkup": {
+      "primary_id": "checkup-base",
+      "primary_type": "pack",
+      "related_ids": ["checkup-completo", "emocromo-completo"],
+      "pack_suggestion": null,
+      "specialty_context": "laboratorio"
+    },
+    "analisi sangue": {
+      "primary_id": "emocromo-completo",
+      "primary_type": "exam",
+      "related_ids": ["glicemia", "creatinina"],
+      "pack_suggestion": "checkup-base",
+      "specialty_context": "laboratorio"
+    },
+    "esami sangue": {
+      "primary_id": "emocromo-completo",
+      "primary_type": "exam",
+      "related_ids": ["glicemia", "creatinina"],
+      "pack_suggestion": "checkup-base",
+      "specialty_context": "laboratorio"
+    }
+  },
+  
+  "type_priority_order": {
+    "exam": 100,
+    "procedure": 90,
+    "specialty": 80,
+    "pathway": 70,
+    "pack": 60,
+    "physician": 50
+  },
+  
+  "rendering_rules": {
+    "primary_card": {
+      "max_count": 1,
+      "style": "large",
+      "show_cta": true,
+      "show_price": true,
+      "show_description": true
+    },
+    "related_section": {
+      "collapsed_by_default": true,
+      "max_visible": 3,
+      "style": "compact",
+      "no_highlight": true
+    },
+    "pack_suggestion": {
+      "position": "after_related",
+      "style": "suggestion",
+      "label": "Risparmia con il pacchetto"
+    }
+  }
+}

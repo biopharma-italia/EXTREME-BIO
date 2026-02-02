@@ -1,17 +1,22 @@
 /**
- * BIO-CLINIC UNIFIED SEARCH ENGINE v3.0.0
- * ==========================================
- * Entity-based search with semantic fallback
+ * BIO-CLINIC UNIFIED SEARCH ENGINE v3.1.0 - CLINICAL TRIAGE
+ * ===========================================================
+ * Entity-based search with CLINICAL TRIAGE ranking
  * Single source of truth for all search interfaces
  * 
  * FEATURES:
+ * - CLINICAL TRIAGE: ONE primary result per query
+ * - Hierarchical results: Primary → Related → Pack suggestion
  * - Entity-based search (not keyword matching)
  * - Semantic synonym resolution
- * - Hierarchical fallback (exam → specialty → pathway)
  * - Lab exams integration (1136+ tests)
- * - Works with minimal dependencies (vanilla JS)
  * 
- * @version 3.0.0
+ * TRIAGE RULES:
+ * - Each query has ONE definitive primary result
+ * - Related exams are grouped and collapsed
+ * - Packs are ALWAYS shown AFTER primary result
+ * 
+ * @version 3.1.0
  * @date 2026-02-02
  * @author Bio-Clinic Engineering
  */
@@ -26,7 +31,8 @@
         paths: {
             entities: '/data/unified-entities.json',
             synonyms: '/data/synonyms.json',
-            labExams: '/data/listino-processed.json'
+            labExams: '/data/listino-processed.json',
+            clinicalPriority: '/data/clinical-priority.json'
         },
         search: {
             minQueryLength: 2,
@@ -54,6 +60,7 @@
     let entities = [];
     let synonymsMap = {};
     let labExams = [];
+    let clinicalPriority = {};
     let searchIndex = new Map();
 
     // ===========================================
@@ -73,14 +80,15 @@
         }
 
         isInitializing = true;
-        console.log('[BioClinicSearch] Initializing v3.0.0...');
+        console.log('[BioClinicSearch] Initializing v3.1.0 (Clinical Triage)...');
 
         try {
             // Load data in parallel
-            const [entitiesData, synonymsData, labData] = await Promise.all([
+            const [entitiesData, synonymsData, labData, priorityData] = await Promise.all([
                 fetchJSON(CONFIG.paths.entities),
                 fetchJSON(CONFIG.paths.synonyms),
-                fetchJSON(CONFIG.paths.labExams).catch(() => ({ esami: [] }))
+                fetchJSON(CONFIG.paths.labExams).catch(() => ({ esami: [] })),
+                fetchJSON(CONFIG.paths.clinicalPriority).catch(() => ({}))
             ]);
 
             // Process entities
@@ -101,6 +109,12 @@
                 if (Array.isArray(labExams)) {
                     console.log(`[BioClinicSearch] Loaded ${labExams.length} lab exams`);
                 }
+            }
+
+            // Process clinical priority mappings
+            if (priorityData && priorityData.primary_mappings) {
+                clinicalPriority = priorityData;
+                console.log(`[BioClinicSearch] Loaded ${Object.keys(priorityData.primary_mappings).length} clinical priority mappings`);
             }
 
             // Build search index
@@ -237,31 +251,172 @@
     }
 
     // ===========================================
-    // SEARCH FUNCTIONS
+    // SEARCH FUNCTIONS - CLINICAL TRIAGE
     // ===========================================
+    
+    /**
+     * TRIAGE SEARCH - Returns hierarchical clinical results
+     * 
+     * Structure:
+     * - primary: ONE definitive result (the answer)
+     * - related: Collapsed section of related exams/procedures
+     * - packSuggestion: Optional pack suggestion (ALWAYS last)
+     */
     function search(query, options = {}) {
         if (!isInitialized) {
             console.warn('[BioClinicSearch] Not initialized, call init() first');
-            return { results: [], query: query };
+            return { results: [], query: query, triage: null };
         }
 
         const normalizedQuery = normalize(query);
         if (normalizedQuery.length < CONFIG.search.minQueryLength) {
-            return { results: [], query: query };
+            return { results: [], query: query, triage: null };
         }
 
         const {
             maxResults = CONFIG.search.maxResults,
-            types = null,  // Filter by type: ['specialty', 'procedure', 'exam']
-            includeLabExams = true
+            types = null,
+            includeLabExams = true,
+            triageMode = true  // Enable clinical triage by default
         } = options;
 
+        // ===========================================
+        // STEP 1: Check for clinical priority mapping
+        // ===========================================
+        const priorityMapping = getClinicalPriority(normalizedQuery);
+        
+        if (priorityMapping && triageMode) {
+            // Use TRIAGE mode - structured clinical results
+            return buildTriageResults(normalizedQuery, priorityMapping, query);
+        }
+
+        // ===========================================
+        // STEP 2: Fallback to standard search (no mapping found)
+        // ===========================================
+        return standardSearch(query, normalizedQuery, { maxResults, types, includeLabExams });
+    }
+
+    /**
+     * Get clinical priority mapping for a query
+     */
+    function getClinicalPriority(normalizedQuery) {
+        if (!clinicalPriority.primary_mappings) return null;
+        
+        // Exact match first
+        if (clinicalPriority.primary_mappings[normalizedQuery]) {
+            return clinicalPriority.primary_mappings[normalizedQuery];
+        }
+        
+        // Check if query is contained in any mapping key
+        for (const [key, mapping] of Object.entries(clinicalPriority.primary_mappings)) {
+            if (normalizedQuery.includes(key) || key.includes(normalizedQuery)) {
+                return mapping;
+            }
+        }
+        
+        return null;
+    }
+
+    /**
+     * Build TRIAGE results - hierarchical clinical structure
+     */
+    function buildTriageResults(normalizedQuery, mapping, originalQuery) {
+        const triage = {
+            primary: null,
+            related: [],
+            packSuggestion: null,
+            specialtyContext: null
+        };
+
+        // 1. Find PRIMARY result
+        const primaryResult = findResultById(mapping.primary_id, mapping.primary_type);
+        if (primaryResult) {
+            primaryResult.isPrimary = true;
+            primaryResult.triageLevel = 1;
+            triage.primary = primaryResult;
+        }
+
+        // 2. Find RELATED results (collapsed)
+        if (mapping.related_ids && Array.isArray(mapping.related_ids)) {
+            mapping.related_ids.forEach(relatedId => {
+                const related = findResultById(relatedId);
+                if (related && related.id !== mapping.primary_id) {
+                    related.isPrimary = false;
+                    related.triageLevel = 2;
+                    related.noHighlight = true;  // Don't highlight in related
+                    triage.related.push(related);
+                }
+            });
+        }
+
+        // 3. Add PACK SUGGESTION (always last)
+        if (mapping.pack_suggestion) {
+            const pack = findResultById(`pack-${mapping.pack_suggestion}`, 'pack') ||
+                        findResultById(mapping.pack_suggestion, 'pack');
+            if (pack) {
+                pack.isPrimary = false;
+                pack.triageLevel = 3;
+                pack.isSuggestion = true;
+                triage.packSuggestion = pack;
+            }
+        }
+
+        // 4. Set specialty context
+        if (mapping.specialty_context) {
+            triage.specialtyContext = mapping.specialty_context;
+        }
+
+        // Build flat results array (for compatibility)
+        const results = [];
+        if (triage.primary) results.push(triage.primary);
+        results.push(...triage.related);
+        if (triage.packSuggestion) results.push(triage.packSuggestion);
+
+        return {
+            results: results,
+            grouped: groupResultsByType(results),
+            query: originalQuery,
+            count: results.length,
+            triage: triage,  // NEW: Structured triage data
+            hasTriage: true
+        };
+    }
+
+    /**
+     * Find a result by ID across all data sources
+     */
+    function findResultById(id, preferredType = null) {
+        if (!id) return null;
+
+        // Search in entities
+        const entity = entities.find(e => e.id === id);
+        if (entity) {
+            return formatResult({ type: 'entity', entity }, 100, '');
+        }
+
+        // Search in lab exams
+        const exam = labExams.find(e => 
+            e.id === id || 
+            slugify(e.nome || e.name) === id ||
+            (e.codice && e.codice.toLowerCase() === id.toLowerCase())
+        );
+        if (exam) {
+            return formatResult({ type: 'lab_exam', exam }, 100, '');
+        }
+
+        return null;
+    }
+
+    /**
+     * Standard search (fallback when no clinical mapping exists)
+     */
+    function standardSearch(query, normalizedQuery, options) {
+        const { maxResults, types, includeLabExams } = options;
         const scores = new Map();
         const queryTokens = tokenize(query);
 
         // 1. Direct token matching
         queryTokens.forEach(token => {
-            // Exact token match
             if (searchIndex.has(token)) {
                 searchIndex.get(token).forEach(item => {
                     const key = getItemKey(item);
@@ -292,26 +447,14 @@
             applySemanticBoost(scores, synonymResult);
         }
 
-        // 3. Full-text contains (for multi-word queries)
-        if (queryTokens.length > 1) {
-            const fullQuery = normalizedQuery;
-            entities.forEach(entity => {
-                const nameNorm = normalize(entity.name || '');
-                if (nameNorm.includes(fullQuery)) {
-                    const key = `entity:${entity.id}`;
-                    const currentScore = scores.get(key) || { item: { type: 'entity', entity }, score: 0, matches: [] };
-                    currentScore.score += CONFIG.weights.wordBoundary;
-                    currentScore.matches.push({ type: 'fulltext', token: fullQuery });
-                    scores.set(key, currentScore);
-                }
-            });
-        }
-
-        // 4. Convert scores to results
+        // 3. Convert scores to results
         let results = Array.from(scores.values())
             .filter(s => s.score > 0)
             .sort((a, b) => b.score - a.score)
             .map(s => formatResult(s.item, s.score, query));
+
+        // 4. Apply type priority to promote exams over packs
+        results = applyTypePriority(results);
 
         // 5. Filter by type if specified
         if (types && Array.isArray(types)) {
@@ -325,22 +468,55 @@
 
         // 7. Semantic fallback if no results
         if (results.length === 0) {
-            const fallbackResults = getSemanticFallback(normalizedQuery);
-            results = fallbackResults;
+            results = getSemanticFallback(normalizedQuery);
         }
 
         // 8. Limit results
         results = results.slice(0, maxResults);
 
-        // 9. Group by type for UI
-        const grouped = groupResultsByType(results);
+        // 9. Mark first result as primary
+        if (results.length > 0) {
+            results[0].isPrimary = true;
+            results[0].triageLevel = 1;
+            results.slice(1).forEach(r => {
+                r.isPrimary = false;
+                r.triageLevel = 2;
+            });
+        }
 
         return {
             results: results,
-            grouped: grouped,
+            grouped: groupResultsByType(results),
             query: query,
-            count: results.length
+            count: results.length,
+            triage: null,
+            hasTriage: false
         };
+    }
+
+    /**
+     * Apply type priority to ensure exams come before packs
+     */
+    function applyTypePriority(results) {
+        const typePriority = clinicalPriority.type_priority_order || {
+            exam: 100,
+            procedure: 90,
+            specialty: 80,
+            pathway: 70,
+            pack: 60,
+            physician: 50
+        };
+
+        return results.sort((a, b) => {
+            // First by score
+            const scoreDiff = b.score - a.score;
+            if (Math.abs(scoreDiff) > 20) return scoreDiff;
+            
+            // Then by type priority
+            const aPriority = typePriority[a.type] || 0;
+            const bPriority = typePriority[b.type] || 0;
+            return bPriority - aPriority;
+        });
     }
 
     function getItemKey(item) {
@@ -744,7 +920,7 @@
         }),
         
         // Version
-        version: '3.0.0'
+        version: '3.1.0'
     };
 
     // Export
