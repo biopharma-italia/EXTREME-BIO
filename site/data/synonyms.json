@@ -1,0 +1,158 @@
+{
+  "version": "1.0.0",
+  "description": "Mappature sinonimi per search entity-based",
+  "last_updated": "2026-02-02",
+  
+  "synonyms": {
+    "specialists_to_specialty": {
+      "ginecologo": "ginecologia",
+      "ginecologa": "ginecologia",
+      "ginecologi": "ginecologia",
+      "cardiologo": "cardiologia",
+      "cardiologi": "cardiologia",
+      "endocrinologo": "endocrinologia",
+      "endocrinologi": "endocrinologia",
+      "dermatologo": "dermatologia",
+      "dermatologi": "dermatologia",
+      "neurologo": "neurologia",
+      "oculista": "oculistica",
+      "ortopedico": "ortopedia",
+      "urologo": "urologia",
+      "otorino": "otorinolaringoiatria",
+      "nutrizionista": "nutrizione",
+      "dietologo": "nutrizione"
+    },
+    
+    "colloquial_to_clinical": {
+      "visita cuore": { "specialty": "cardiologia", "procedure": "visita-cardiologica" },
+      "controllo cuore": { "specialty": "cardiologia", "procedure": "visita-cardiologica" },
+      "visita donna": { "specialty": "ginecologia", "procedure": "visita-ginecologica" },
+      "visita tiroide": { "specialty": "endocrinologia", "procedure": "visita-endocrinologica" },
+      "controllo tiroide": { "specialty": "endocrinologia", "exam": "tsh-ultrasensibile" },
+      "visita pelle": { "specialty": "dermatologia", "procedure": "visita-dermatologica" },
+      "controllo nei": { "specialty": "dermatologia", "procedure": "mappatura-nei" }
+    },
+    
+    "exam_abbreviations": {
+      "tsh": { "exam": "tsh-ultrasensibile", "pack": "checkup-tiroide" },
+      "ft3": { "exam": "ft3", "pack": "checkup-tiroide" },
+      "ft4": { "exam": "ft4", "pack": "checkup-tiroide" },
+      "psa": { "exam": "psa-totale", "pack": "checkup-uomo-over40" },
+      "hba1c": { "exam": "emoglobina-glicata", "pack": "checkup-diabete" },
+      "glicata": { "exam": "emoglobina-glicata", "pack": "checkup-diabete" },
+      "got": { "exam": "got-ast" },
+      "gpt": { "exam": "gpt-alt" },
+      "ast": { "exam": "got-ast" },
+      "alt": { "exam": "gpt-alt" },
+      "ggt": { "exam": "gamma-gt" },
+      "gamma gt": { "exam": "gamma-gt" },
+      "ves": { "exam": "ves" },
+      "pcr": { "exam": "proteina-c-reattiva" },
+      "hcg": { "exam": "beta-hcg" },
+      "beta hcg": { "exam": "beta-hcg" },
+      "emocromo": { "exam": "emocromo-completo", "pack": "checkup-base" },
+      "esame sangue": { "exam": "emocromo-completo" },
+      "analisi sangue": { "exam": "emocromo-completo" },
+      "esame urine": { "exam": "esame-urine-completo" },
+      "urine": { "exam": "esame-urine-completo" },
+      "analisi urine": { "exam": "esame-urine-completo" }
+    },
+    
+    "genetic_prenatal": {
+      "nipt": { "exam": "nipt-fetal-dna-standard", "specialty": "ginecologia" },
+      "fetal dna": { "exam": "nipt-fetal-dna-standard" },
+      "test prenatale": { "exam": "nipt-fetal-dna-standard" },
+      "screening prenatale": { "exam": "nipt-fetal-dna-standard" },
+      "dna fetale": { "exam": "nipt-fetal-dna-standard" }
+    },
+    
+    "procedures": {
+      "colposcopia": { "procedure": "colposcopia", "specialty": "ginecologia" },
+      "videocolposcopia": { "procedure": "colposcopia" },
+      "pap test": { "procedure": "pap-test", "specialty": "ginecologia" },
+      "paptest": { "procedure": "pap-test" },
+      "ecg": { "procedure": "elettrocardiogramma" },
+      "elettrocardiogramma": { "procedure": "elettrocardiogramma" },
+      "ecocardiogramma": { "procedure": "ecocardiogramma" },
+      "eco cuore": { "procedure": "ecocardiogramma" },
+      "holter": { "procedure": "holter-ecg" },
+      "holter pressorio": { "procedure": "holter-pressorio" },
+      "eco tiroide": { "procedure": "ecografia-tiroidea" },
+      "ecografia tiroide": { "procedure": "ecografia-tiroidea" },
+      "eco transvaginale": { "procedure": "ecografia-transvaginale" },
+      "ecografia transvaginale": { "procedure": "ecografia-transvaginale" },
+      "eco mammaria": { "procedure": "ecografia-mammaria" },
+      "ecografia seno": { "procedure": "ecografia-mammaria" },
+      "isteroscopia": { "procedure": "isteroscopia", "specialty": "ginecologia" },
+      "isterosalpingografia": { "procedure": "isterosalpingografia" },
+      "hsg": { "procedure": "isterosalpingografia" }
+    },
+    
+    "device_therapies": {
+      "caressflow": { "procedure": "caressflow", "specialty": "ginecologia" },
+      "caress flow": { "procedure": "caressflow" },
+      "radiofrequenza": { "procedure": "radiofrequenza-vaginale", "specialty": "ginecologia" },
+      "radiofrequenza vaginale": { "procedure": "radiofrequenza-vaginale" },
+      "rf vaginale": { "procedure": "radiofrequenza-vaginale" }
+    },
+    
+    "symptoms_to_entities": {
+      "secchezza vaginale": { "procedure": "caressflow", "symptom": true },
+      "atrofia vaginale": { "procedure": "radiofrequenza-vaginale", "symptom": true },
+      "lassità vaginale": { "procedure": "caressflow", "symptom": true },
+      "stanchezza": { "specialty": "endocrinologia", "exams": ["tsh-ultrasensibile", "emocromo-completo", "ferritina"] },
+      "anemia": { "specialty": "ematologia", "exams": ["emocromo-completo", "ferritina", "sideremia"] },
+      "colesterolo alto": { "specialty": "cardiologia", "pack": "checkup-cardiovascolare" },
+      "diabete": { "specialty": "endocrinologia", "pack": "checkup-diabete" },
+      "tiroide": { "specialty": "endocrinologia", "pack": "checkup-tiroide" },
+      "gravidanza": { "specialty": "ginecologia", "exam": "beta-hcg" },
+      "prostata": { "specialty": "urologia", "exam": "psa-totale" }
+    },
+    
+    "pathways": {
+      "slim care": { "pathway": "slim-care", "specialty": "endocrinologia" },
+      "slimcare": { "pathway": "slim-care" },
+      "dimagrire": { "pathway": "slim-care" },
+      "perdere peso": { "pathway": "slim-care" },
+      "obesità": { "pathway": "slim-care" },
+      "sovrappeso": { "pathway": "slim-care" },
+      "wegovy": { "pathway": "slim-care" },
+      "ozempic": { "pathway": "slim-care" },
+      "pma": { "pathway": "pma-fertilita", "specialty": "ginecologia" },
+      "fertilità": { "pathway": "pma-fertilita" },
+      "infertilità": { "pathway": "pma-fertilita" },
+      "fecondazione": { "pathway": "pma-fertilita" }
+    },
+    
+    "packs": {
+      "check up": { "pack": "checkup-base" },
+      "check-up": { "pack": "checkup-base" },
+      "checkup": { "pack": "checkup-base" },
+      "controllo annuale": { "pack": "checkup-base" },
+      "profilo tiroide": { "pack": "checkup-tiroide" },
+      "check up donna": { "pack": "checkup-donna-over40" },
+      "check up uomo": { "pack": "checkup-uomo-over40" }
+    },
+    
+    "typo_corrections": {
+      "tiroyde": { "specialty": "endocrinologia" },
+      "ginecologgia": { "specialty": "ginecologia" },
+      "emocormo": { "exam": "emocromo-completo" },
+      "colposcpoia": { "procedure": "colposcopia" }
+    }
+  },
+  
+  "semantic_groups": {
+    "tiroide": ["tsh", "ft3", "ft4", "ecografia-tiroidea", "checkup-tiroide", "endocrinologia"],
+    "gravidanza": ["nipt", "ecografia-morfologica", "bi-test", "beta-hcg", "ginecologia"],
+    "cuore": ["ecg", "ecocardiogramma", "holter-ecg", "holter-pressorio", "cardiologia"],
+    "donna": ["visita-ginecologica", "pap-test", "ecografia-mammaria", "ecografia-transvaginale", "ginecologia"],
+    "uomo": ["psa-totale", "ecografia-prostatica", "urologia"]
+  },
+  
+  "fallback_suggestions": [
+    { "id": "ginecologia", "type": "specialty", "label": "Ginecologia" },
+    { "id": "cardiologia", "type": "specialty", "label": "Cardiologia" },
+    { "id": "laboratorio", "type": "page", "label": "Laboratorio Analisi", "url": "/laboratorio/" }
+  ]
+}

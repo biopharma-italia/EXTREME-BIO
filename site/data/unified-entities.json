@@ -1,0 +1,2843 @@
+{
+  "version": "1.0.0",
+  "generated": "2026-02-02T00:21:34.573Z",
+  "total_entities": 96,
+  "by_type": {
+    "specialty": 11,
+    "procedure": 38,
+    "pack": 12,
+    "pathway": 12,
+    "physician": 23
+  },
+  "entities": [
+    {
+      "id": "ginecologia",
+      "type": "specialty",
+      "name": "Ginecologia e Ostetricia",
+      "name_search": [
+        "Ginecologia e Ostetricia"
+      ],
+      "category": "medical",
+      "page_url": "/pages/ginecologia.html",
+      "bookable": true,
+      "schema_type": "MedicalSpecialty",
+      "relations": {
+        "physicians": [
+          "salvatore-dessole",
+          "francesco-dessole",
+          "margherita-dessole",
+          "maddalena-pola",
+          "marco-petrillo",
+          "antonella-pruneddu"
+        ],
+        "related_procedures": []
+      },
+      "meta": {
+        "icon": "female",
+        "description": "Visite ginecologiche, ecografie, PMA, diagnostica prenatale, trattamenti rigenerativi"
+      }
+    },
+    {
+      "id": "cardiologia",
+      "type": "specialty",
+      "name": "Cardiologia",
+      "name_search": [
+        "Cardiologia"
+      ],
+      "category": "medical",
+      "page_url": "/pages/cardiologia.html",
+      "bookable": true,
+      "schema_type": "MedicalSpecialty",
+      "relations": {
+        "physicians": [
+          "tonino-bullitta",
+          "sara-uras",
+          "giuliana-guagnozzi",
+          "paolo-pischedda",
+          "paolo-franca"
+        ],
+        "related_procedures": []
+      },
+      "meta": {
+        "icon": "heart",
+        "description": "ECG, ecocardiogramma, Holter, ecocolordoppler, test da sforzo, check-up cardiovascolare"
+      }
+    },
+    {
+      "id": "endocrinologia",
+      "type": "specialty",
+      "name": "Endocrinologia",
+      "name_search": [
+        "Endocrinologia"
+      ],
+      "category": "medical",
+      "page_url": "/pages/endocrinologia.html",
+      "bookable": true,
+      "schema_type": "MedicalSpecialty",
+      "relations": {
+        "physicians": [
+          "francesco-tolu",
+          "irene-aini"
+        ],
+        "related_procedures": []
+      },
+      "meta": {
+        "icon": "thyroid",
+        "description": "Tiroide, diabete, obesità, metabolismo, Slim Care con Wegovy e Mounjaro"
+      }
+    },
+    {
+      "id": "dermatologia",
+      "type": "specialty",
+      "name": "Dermatologia e Venereologia",
+      "name_search": [
+        "Dermatologia e Venereologia"
+      ],
+      "category": "medical",
+      "page_url": "/pages/dermatologia.html",
+      "bookable": true,
+      "schema_type": "MedicalSpecialty",
+      "relations": {
+        "physicians": [
+          "giovanna-costa"
+        ],
+        "related_procedures": []
+      },
+      "meta": {
+        "icon": "skin",
+        "description": "Visite dermatologiche, mappatura nevi, dermatoscopia digitale, patologie cutanee"
+      }
+    },
+    {
+      "id": "laboratorio",
+      "type": "specialty",
+      "name": "Laboratorio Analisi",
+      "name_search": [
+        "Laboratorio Analisi"
+      ],
+      "category": "medical",
+      "page_url": "/pages/laboratorio.html",
+      "bookable": true,
+      "schema_type": "MedicalSpecialty",
+      "relations": {
+        "physicians": [
+          "cinzia-guarino",
+          "gloria-reggiani",
+          "sara-meloni",
+          "gabriele-delogu"
+        ],
+        "related_procedures": []
+      },
+      "meta": {
+        "icon": "lab",
+        "description": "Oltre 1.162 esami, analisi del sangue, esami allergologici, test genetici, marcatori tumorali"
+      }
+    },
+    {
+      "id": "neurologia",
+      "type": "specialty",
+      "name": "Neurologia",
+      "name_search": [
+        "Neurologia"
+      ],
+      "category": "medical",
+      "page_url": "/pages/neurologia.html",
+      "bookable": true,
+      "schema_type": "MedicalSpecialty",
+      "relations": {
+        "physicians": [],
+        "related_procedures": []
+      },
+      "meta": {
+        "icon": "brain",
+        "description": "Visite neurologiche, elettromiografia, elettroencefalogramma, cefalee, neuropatie"
+      }
+    },
+    {
+      "id": "oculistica",
+      "type": "specialty",
+      "name": "Oculistica",
+      "name_search": [
+        "Oculistica"
+      ],
+      "category": "medical",
+      "page_url": "/pages/oculistica.html",
+      "bookable": true,
+      "schema_type": "MedicalSpecialty",
+      "relations": {
+        "physicians": [],
+        "related_procedures": []
+      },
+      "meta": {
+        "icon": "eye",
+        "description": "Visite oculistiche, OCT, campo visivo, tonometria, fondo oculare"
+      }
+    },
+    {
+      "id": "ortopedia",
+      "type": "specialty",
+      "name": "Ortopedia e Traumatologia",
+      "name_search": [
+        "Ortopedia e Traumatologia"
+      ],
+      "category": "medical",
+      "page_url": "/pages/ortopedia.html",
+      "bookable": true,
+      "schema_type": "MedicalSpecialty",
+      "relations": {
+        "physicians": [
+          "giorgio-chiarelli"
+        ],
+        "related_procedures": []
+      },
+      "meta": {
+        "icon": "bone",
+        "description": "Visite ortopediche, ecografia muscolo-tendinea, infiltrazioni, medicina dello sport"
+      }
+    },
+    {
+      "id": "nutrizione",
+      "type": "specialty",
+      "name": "Nutrizione Clinica",
+      "name_search": [
+        "Nutrizione Clinica"
+      ],
+      "category": "medical",
+      "page_url": "/pages/nutrizione.html",
+      "bookable": true,
+      "schema_type": "MedicalSpecialty",
+      "relations": {
+        "physicians": [
+          "antonella-galatino",
+          "alessandro-pandolfi"
+        ],
+        "related_procedures": []
+      },
+      "meta": {
+        "icon": "nutrition",
+        "description": "Visite nutrizionali, piani alimentari personalizzati, composizione corporea"
+      }
+    },
+    {
+      "id": "medicina-sport",
+      "type": "specialty",
+      "name": "Medicina dello Sport",
+      "name_search": [
+        "Medicina dello Sport"
+      ],
+      "category": "medical",
+      "page_url": "/pages/medicina-sport.html",
+      "bookable": true,
+      "schema_type": "MedicalSpecialty",
+      "relations": {
+        "physicians": [
+          "giorgio-chiarelli"
+        ],
+        "related_procedures": []
+      },
+      "meta": {
+        "icon": "sport",
+        "description": "Certificati medico-sportivi, test da sforzo, valutazione atletica"
+      }
+    },
+    {
+      "id": "ostetricia",
+      "type": "specialty",
+      "name": "Ostetricia",
+      "name_search": [
+        "Ostetricia"
+      ],
+      "category": "medical",
+      "page_url": "/pages/ginecologia.html",
+      "bookable": true,
+      "schema_type": "MedicalSpecialty",
+      "relations": {
+        "physicians": [
+          "angelica-fois",
+          "camilla-ruzzoli"
+        ],
+        "related_procedures": []
+      },
+      "meta": {
+        "icon": "baby",
+        "description": "Assistenza gravidanza, ecografie ostetriche, corsi preparto, monitoraggio fetale"
+      }
+    },
+    {
+      "id": "visita-ginecologica",
+      "type": "procedure",
+      "name": "Visita Ginecologica",
+      "name_search": [
+        "Visita Ginecologica",
+        "Visita Ginecologica Specialistica",
+        "ginecologo",
+        "visita donna",
+        "controllo femminile",
+        "pap test",
+        "utero"
+      ],
+      "specialty_parent": "ginecologia",
+      "category": "visita",
+      "page_url": "/pages/visita-ginecologica.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "salvatore-dessole",
+          "francesco-dessole"
+        ],
+        "related_procedures": [
+          "ecografia-transvaginale",
+          "pap-test",
+          "colposcopia"
+        ],
+        "pathways": [
+          "pma-fertilita",
+          "slim-care-donna"
+        ]
+      },
+      "meta": {
+        "duration_minutes": 30,
+        "indications": [
+          "controllo periodico",
+          "disturbi mestruali",
+          "dolore pelvico",
+          "screening oncologico"
+        ],
+        "description": "Valutazione completa della salute ginecologica femminile"
+      }
+    },
+    {
+      "id": "ecografia-transvaginale",
+      "type": "procedure",
+      "name": "Ecografia Transvaginale",
+      "name_search": [
+        "Ecografia Transvaginale",
+        "Ecografia Pelvica Transvaginale",
+        "eco transvaginale",
+        "ecografia utero",
+        "eco ovaie",
+        "ecografia pelvica"
+      ],
+      "specialty_parent": "ginecologia",
+      "category": "diagnostica",
+      "page_url": "/pages/ecografia-transvaginale.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "salvatore-dessole",
+          "francesco-dessole"
+        ],
+        "related_procedures": [
+          "visita-ginecologica",
+          "ecografia-mammaria"
+        ],
+        "pathways": [
+          "pma-fertilita"
+        ]
+      },
+      "meta": {
+        "duration_minutes": 20,
+        "indications": [
+          "monitoraggio ovarico",
+          "studio endometrio",
+          "cisti ovariche",
+          "fibromi",
+          "gravidanza iniziale"
+        ],
+        "description": "Esame ecografico per visualizzare utero, ovaie e strutture pelviche"
+      }
+    },
+    {
+      "id": "ecografia-mammaria",
+      "type": "procedure",
+      "name": "Ecografia Mammaria",
+      "name_search": [
+        "Ecografia Mammaria",
+        "Ecografia Mammaria Bilaterale",
+        "eco seno",
+        "ecografia seno",
+        "mammella",
+        "nodulo seno"
+      ],
+      "specialty_parent": "ginecologia",
+      "category": "diagnostica",
+      "page_url": "/pages/ecografia-mammaria.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "salvatore-dessole",
+          "francesco-dessole"
+        ],
+        "related_procedures": [
+          "visita-senologica",
+          "ecografia-transvaginale"
+        ],
+        "pathways": [
+          "slim-care-donna"
+        ]
+      },
+      "meta": {
+        "duration_minutes": 20,
+        "indications": [
+          "screening seno",
+          "noduli mammari",
+          "dolore mammario",
+          "controllo periodico"
+        ],
+        "description": "Esame ecografico del seno per screening e diagnosi"
+      }
+    },
+    {
+      "id": "pap-test",
+      "type": "procedure",
+      "name": "Pap Test",
+      "name_search": [
+        "Pap Test",
+        "Pap Test (Esame Citologico Cervicale)",
+        "pap test",
+        "paptest",
+        "pap-test",
+        "test papanicolaou",
+        "striscio cervicale",
+        "screening cervice",
+        "prevenzione tumore utero",
+        "citologico"
+      ],
+      "specialty_parent": "ginecologia",
+      "category": "esame",
+      "page_url": "/pages/pap-test.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "angelica-fois",
+          "camilla-ruzzoli"
+        ],
+        "related_procedures": [
+          "hpv-dna-test",
+          "duopap",
+          "colposcopia",
+          "visita-ginecologica"
+        ],
+        "pathways": []
+      },
+      "meta": {
+        "duration_minutes": 10,
+        "indications": [
+          "screening oncologico",
+          "prevenzione HPV",
+          "controllo cervicale"
+        ],
+        "description": "Screening per la prevenzione del tumore della cervice uterina"
+      }
+    },
+    {
+      "id": "colposcopia",
+      "type": "procedure",
+      "name": "Colposcopia",
+      "name_search": [
+        "Colposcopia",
+        "Colposcopia Diagnostica",
+        "colposcopio",
+        "esame cervice",
+        "biopsia collo utero"
+      ],
+      "specialty_parent": "ginecologia",
+      "category": "diagnostica",
+      "page_url": "/pages/colposcopia.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "salvatore-dessole",
+          "francesco-dessole"
+        ],
+        "related_procedures": [
+          "pap-test",
+          "biopsia-cervicale"
+        ],
+        "pathways": []
+      },
+      "meta": {
+        "duration_minutes": 20,
+        "indications": [
+          "pap test anomalo",
+          "lesioni cervicali",
+          "follow-up HPV"
+        ],
+        "description": "Esame visivo approfondito della cervice uterina"
+      }
+    },
+    {
+      "id": "visita-ostetrica",
+      "type": "procedure",
+      "name": "Visita Ostetrica",
+      "name_search": [
+        "Visita Ostetrica",
+        "Visita Ostetrica in Gravidanza",
+        "gravidanza",
+        "controllo gravidanza",
+        "visita incinta",
+        "ostetrica"
+      ],
+      "specialty_parent": "ostetricia",
+      "category": "visita",
+      "page_url": "/pages/ginecologia.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "salvatore-dessole",
+          "francesco-dessole"
+        ],
+        "related_procedures": [
+          "ecografia-ostetrica",
+          "morfologica",
+          "translucenza-nucale"
+        ],
+        "pathways": []
+      },
+      "meta": {
+        "duration_minutes": 30,
+        "indications": [
+          "gravidanza",
+          "monitoraggio fetale",
+          "controllo gestazionale"
+        ],
+        "description": "Controllo periodico della gravidanza e del benessere materno-fetale"
+      }
+    },
+    {
+      "id": "ecografia-ostetrica",
+      "type": "procedure",
+      "name": "Ecografia Ostetrica",
+      "name_search": [
+        "Ecografia Ostetrica",
+        "Ecografia Ostetrica di Controllo",
+        "eco gravidanza",
+        "ecografia feto",
+        "ecografia gestazionale"
+      ],
+      "specialty_parent": "ostetricia",
+      "category": "diagnostica",
+      "page_url": "/pages/ginecologia.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "salvatore-dessole",
+          "francesco-dessole"
+        ],
+        "related_procedures": [
+          "visita-ostetrica",
+          "morfologica"
+        ],
+        "pathways": []
+      },
+      "meta": {
+        "duration_minutes": 20,
+        "indications": [
+          "monitoraggio gravidanza",
+          "crescita fetale",
+          "controllo trimestrale"
+        ],
+        "description": "Monitoraggio ecografico della gravidanza"
+      }
+    },
+    {
+      "id": "ecografia-morfologica",
+      "type": "procedure",
+      "name": "Ecografia Morfologica",
+      "name_search": [
+        "Ecografia Morfologica",
+        "Ecografia Morfologica (II Livello)",
+        "morfologica",
+        "eco morfologica",
+        "ecografia secondo trimestre",
+        "anatomia feto"
+      ],
+      "specialty_parent": "ostetricia",
+      "category": "diagnostica",
+      "page_url": "/pages/ecografia-morfologica.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "salvatore-dessole",
+          "francesco-dessole"
+        ],
+        "related_procedures": [
+          "translucenza-nucale",
+          "ecografia-ostetrica"
+        ],
+        "pathways": []
+      },
+      "meta": {
+        "duration_minutes": 45,
+        "indications": [
+          "screening malformazioni",
+          "studio anatomia fetale",
+          "20 settimane"
+        ],
+        "description": "Studio dettagliato dell'anatomia fetale tra la 19ª e 22ª settimana"
+      }
+    },
+    {
+      "id": "translucenza-nucale",
+      "type": "procedure",
+      "name": "Translucenza Nucale",
+      "name_search": [
+        "Translucenza Nucale",
+        "Ecografia per Translucenza Nucale (NT)",
+        "NT",
+        "plica nucale",
+        "screening Down",
+        "bitest"
+      ],
+      "specialty_parent": "ostetricia",
+      "category": "diagnostica",
+      "page_url": "/pages/ginecologia.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "salvatore-dessole",
+          "francesco-dessole"
+        ],
+        "related_procedures": [
+          "bitest",
+          "ecografia-ostetrica"
+        ],
+        "pathways": []
+      },
+      "meta": {
+        "duration_minutes": 30,
+        "indications": [
+          "screening sindrome di Down",
+          "primo trimestre",
+          "rischio cromosomico"
+        ],
+        "description": "Screening del primo trimestre per anomalie cromosomiche"
+      }
+    },
+    {
+      "id": "visita-cardiologica",
+      "type": "procedure",
+      "name": "Visita Cardiologica",
+      "name_search": [
+        "Visita Cardiologica",
+        "Visita Cardiologica Specialistica con ECG",
+        "cuore",
+        "cardiologo",
+        "pressione alta",
+        "tachicardia",
+        "aritmia",
+        "visita cuore",
+        "controllo cuore"
+      ],
+      "specialty_parent": "cardiologia",
+      "category": "visita",
+      "page_url": "/pages/visita-cardiologica-ecg.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "tonino-bullitta",
+          "sara-uras",
+          "giuliana-guagnozzi",
+          "paolo-pischedda",
+          "paolo-franca"
+        ],
+        "related_procedures": [
+          "ecg",
+          "ecocardiogramma",
+          "holter-ecg"
+        ],
+        "pathways": [
+          "checkup-cardiovascolare"
+        ]
+      },
+      "meta": {
+        "duration_minutes": 40,
+        "indications": [
+          "ipertensione",
+          "dolore toracico",
+          "affanno",
+          "palpitazioni",
+          "prevenzione cardiovascolare"
+        ],
+        "description": "Valutazione completa della salute cardiovascolare con ECG"
+      }
+    },
+    {
+      "id": "ecg",
+      "type": "procedure",
+      "name": "Elettrocardiogramma",
+      "name_search": [
+        "Elettrocardiogramma",
+        "Elettrocardiogramma (ECG) a Riposo",
+        "elettrocardiogramma",
+        "ecg",
+        "cuore elettrico",
+        "tracciato cardiaco"
+      ],
+      "specialty_parent": "cardiologia",
+      "category": "diagnostica",
+      "page_url": "/pages/visita-cardiologica-ecg.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "tonino-bullitta",
+          "sara-uras",
+          "giuliana-guagnozzi",
+          "paolo-pischedda",
+          "paolo-franca"
+        ],
+        "related_procedures": [
+          "visita-cardiologica",
+          "holter-ecg"
+        ],
+        "pathways": []
+      },
+      "meta": {
+        "duration_minutes": 10,
+        "indications": [
+          "aritmie",
+          "dolore toracico",
+          "screening cardiaco",
+          "pre-operatorio"
+        ],
+        "description": "Registrazione dell'attività elettrica del cuore"
+      }
+    },
+    {
+      "id": "ecocardiogramma",
+      "type": "procedure",
+      "name": "Ecocardiogramma",
+      "name_search": [
+        "Ecocardiogramma",
+        "Ecocardiogramma Color-Doppler",
+        "eco cuore",
+        "ecografia cardiaca",
+        "ecocardio",
+        "valvole cuore"
+      ],
+      "specialty_parent": "cardiologia",
+      "category": "diagnostica",
+      "page_url": "/pages/ecocardiogramma.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "tonino-bullitta",
+          "sara-uras",
+          "giuliana-guagnozzi",
+          "paolo-pischedda",
+          "paolo-franca"
+        ],
+        "related_procedures": [
+          "visita-cardiologica",
+          "ecg"
+        ],
+        "pathways": []
+      },
+      "meta": {
+        "duration_minutes": 30,
+        "indications": [
+          "soffio cardiaco",
+          "insufficienza cardiaca",
+          "valvulopatie",
+          "cardiomiopatie"
+        ],
+        "description": "Ecografia del cuore per valutare struttura e funzione cardiaca"
+      }
+    },
+    {
+      "id": "holter-ecg",
+      "type": "procedure",
+      "name": "Holter ECG 24h",
+      "name_search": [
+        "Holter ECG 24h",
+        "Monitoraggio Holter ECG 24 Ore",
+        "holter",
+        "monitoraggio cardiaco",
+        "ECG 24 ore",
+        "aritmie"
+      ],
+      "specialty_parent": "cardiologia",
+      "category": "diagnostica",
+      "page_url": "/pages/holter-ecg.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "tonino-bullitta"
+        ],
+        "related_procedures": [
+          "ecg",
+          "visita-cardiologica"
+        ],
+        "pathways": []
+      },
+      "meta": {
+        "duration_minutes": 15,
+        "indications": [
+          "aritmie intermittenti",
+          "palpitazioni",
+          "sincope",
+          "controllo terapia"
+        ],
+        "description": "Registrazione continua dell'ECG per 24 ore"
+      }
+    },
+    {
+      "id": "holter-pressorio",
+      "type": "procedure",
+      "name": "Holter Pressorio 24h",
+      "name_search": [
+        "Holter Pressorio 24h",
+        "Monitoraggio Pressorio Ambulatoriale 24 Ore (ABPM)",
+        "pressione 24 ore",
+        "ABPM",
+        "monitoraggio pressione",
+        "ipertensione"
+      ],
+      "specialty_parent": "cardiologia",
+      "category": "diagnostica",
+      "page_url": "/pages/holter-pressorio.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "tonino-bullitta"
+        ],
+        "related_procedures": [
+          "visita-cardiologica"
+        ],
+        "pathways": []
+      },
+      "meta": {
+        "duration_minutes": 15,
+        "indications": [
+          "ipertensione",
+          "ipertensione da camice bianco",
+          "controllo terapia antipertensiva"
+        ],
+        "description": "Misurazione automatica della pressione arteriosa per 24 ore"
+      }
+    },
+    {
+      "id": "visita-endocrinologica",
+      "type": "procedure",
+      "name": "Visita Endocrinologica",
+      "name_search": [
+        "Visita Endocrinologica",
+        "Visita Endocrinologica Specialistica",
+        "endocrinologo",
+        "tiroide",
+        "ormoni",
+        "metabolismo",
+        "diabete"
+      ],
+      "specialty_parent": "endocrinologia",
+      "category": "visita",
+      "page_url": "/pages/visita-endocrinologica.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "francesco-tolu",
+          "irene-aini"
+        ],
+        "related_procedures": [
+          "ecografia-tiroidea",
+          "visita-diabetologica"
+        ],
+        "pathways": [
+          "slim-care",
+          "slim-care-donna"
+        ]
+      },
+      "meta": {
+        "duration_minutes": 30,
+        "indications": [
+          "tiroide",
+          "diabete",
+          "obesità",
+          "disturbi ormonali",
+          "osteoporosi"
+        ],
+        "description": "Valutazione delle ghiandole endocrine e del metabolismo"
+      }
+    },
+    {
+      "id": "ecografia-tiroidea",
+      "type": "procedure",
+      "name": "Ecografia Tiroidea",
+      "name_search": [
+        "Ecografia Tiroidea",
+        "Ecografia della Ghiandola Tiroidea",
+        "eco tiroide",
+        "ecografia collo",
+        "nodulo tiroide",
+        "ecografia tiroidea",
+        "tiroide ecografia"
+      ],
+      "specialty_parent": "endocrinologia",
+      "category": "diagnostica",
+      "page_url": "/pages/ecografia-tiroidea.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "francesco-tolu",
+          "irene-aini"
+        ],
+        "related_procedures": [
+          "visita-endocrinologica",
+          "agoaspirato-tiroide"
+        ],
+        "pathways": [
+          "checkup-tiroide"
+        ]
+      },
+      "meta": {
+        "duration_minutes": 20,
+        "indications": [
+          "noduli tiroidei",
+          "gozzo",
+          "tiroidite",
+          "ipertiroidismo",
+          "ipotiroidismo",
+          "familiarità patologie tiroidee",
+          "screening tiroideo"
+        ],
+        "description": "Esame ecografico per valutare morfologia, dimensioni e noduli tiroidei"
+      }
+    },
+    {
+      "id": "visita-diabetologica",
+      "type": "procedure",
+      "name": "Visita Diabetologica",
+      "name_search": [
+        "Visita Diabetologica",
+        "Visita Diabetologica Specialistica",
+        "diabete",
+        "glicemia",
+        "insulina",
+        "zuccheri",
+        "diabetologo"
+      ],
+      "specialty_parent": "endocrinologia",
+      "category": "visita",
+      "page_url": "/pages/endocrinologia.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "francesco-tolu",
+          "irene-aini"
+        ],
+        "related_procedures": [
+          "visita-endocrinologica"
+        ],
+        "pathways": [
+          "slim-care"
+        ]
+      },
+      "meta": {
+        "duration_minutes": 30,
+        "indications": [
+          "diabete tipo 1",
+          "diabete tipo 2",
+          "prediabete",
+          "glicemia alta"
+        ],
+        "description": "Gestione e monitoraggio del diabete mellito"
+      }
+    },
+    {
+      "id": "visita-dermatologica",
+      "type": "procedure",
+      "name": "Visita Dermatologica",
+      "name_search": [
+        "Visita Dermatologica",
+        "Visita Dermatologica Specialistica",
+        "dermatologo",
+        "pelle",
+        "nei",
+        "macchie",
+        "prurito",
+        "eczema"
+      ],
+      "specialty_parent": "dermatologia",
+      "category": "visita",
+      "page_url": "/pages/visita-dermatologica.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "giovanna-costa"
+        ],
+        "related_procedures": [
+          "mappatura-nei",
+          "dermatoscopia"
+        ],
+        "pathways": []
+      },
+      "meta": {
+        "duration_minutes": 20,
+        "indications": [
+          "nei sospetti",
+          "acne",
+          "psoriasi",
+          "dermatiti",
+          "alopecia"
+        ],
+        "description": "Valutazione delle patologie cutanee e degli annessi"
+      }
+    },
+    {
+      "id": "mappatura-nei",
+      "type": "procedure",
+      "name": "Mappatura dei Nei",
+      "name_search": [
+        "Mappatura dei Nei",
+        "Mappatura Computerizzata dei Nei",
+        "controllo nei",
+        "melanoma",
+        "screening pelle",
+        "dermatoscopia"
+      ],
+      "specialty_parent": "dermatologia",
+      "category": "diagnostica",
+      "page_url": "/pages/visita-dermatologica.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "giovanna-costa"
+        ],
+        "related_procedures": [
+          "visita-dermatologica",
+          "dermatoscopia"
+        ],
+        "pathways": []
+      },
+      "meta": {
+        "duration_minutes": 30,
+        "indications": [
+          "prevenzione melanoma",
+          "nei atipici",
+          "familiarità tumori cutanei"
+        ],
+        "description": "Controllo digitale dei nei per prevenzione melanoma"
+      }
+    },
+    {
+      "id": "visita-neurologica",
+      "type": "procedure",
+      "name": "Visita Neurologica",
+      "name_search": [
+        "Visita Neurologica",
+        "Visita Neurologica Specialistica",
+        "neurologo",
+        "mal di testa",
+        "emicrania",
+        "nervi",
+        "cervello"
+      ],
+      "specialty_parent": "neurologia",
+      "category": "visita",
+      "page_url": "/pages/visita-neurologica.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [],
+        "related_procedures": [
+          "elettromiografia",
+          "elettroencefalogramma"
+        ],
+        "pathways": []
+      },
+      "meta": {
+        "duration_minutes": 30,
+        "indications": [
+          "cefalea",
+          "vertigini",
+          "formicolii",
+          "tremori",
+          "disturbi memoria"
+        ],
+        "description": "Valutazione del sistema nervoso centrale e periferico"
+      }
+    },
+    {
+      "id": "elettromiografia",
+      "type": "procedure",
+      "name": "Elettromiografia",
+      "name_search": [
+        "Elettromiografia",
+        "Elettromiografia (EMG) ed Elettroneurografia",
+        "EMG",
+        "nervi",
+        "tunnel carpale",
+        "conduzione nervosa"
+      ],
+      "specialty_parent": "neurologia",
+      "category": "diagnostica",
+      "page_url": "/pages/elettromiografia.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [],
+        "related_procedures": [
+          "visita-neurologica"
+        ],
+        "pathways": []
+      },
+      "meta": {
+        "duration_minutes": 45,
+        "indications": [
+          "tunnel carpale",
+          "formicolii",
+          "debolezza muscolare",
+          "ernia discale"
+        ],
+        "description": "Studio della conduzione nervosa e dell'attività muscolare"
+      }
+    },
+    {
+      "id": "visita-oculistica",
+      "type": "procedure",
+      "name": "Visita Oculistica",
+      "name_search": [
+        "Visita Oculistica",
+        "Visita Oculistica Completa",
+        "oculista",
+        "occhi",
+        "vista",
+        "miopia",
+        "presbiopia",
+        "glaucoma"
+      ],
+      "specialty_parent": "oculistica",
+      "category": "visita",
+      "page_url": "/pages/visita-oculistica.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [],
+        "related_procedures": [
+          "tonometria",
+          "campo-visivo",
+          "oct"
+        ],
+        "pathways": []
+      },
+      "meta": {
+        "duration_minutes": 30,
+        "indications": [
+          "calo visivo",
+          "occhi stanchi",
+          "glaucoma",
+          "cataratta",
+          "controllo periodico"
+        ],
+        "description": "Valutazione completa della salute degli occhi e della vista"
+      }
+    },
+    {
+      "id": "tonometria",
+      "type": "procedure",
+      "name": "Tonometria",
+      "name_search": [
+        "Tonometria",
+        "Misurazione Pressione Intraoculare",
+        "pressione occhio",
+        "glaucoma",
+        "IOP"
+      ],
+      "specialty_parent": "oculistica",
+      "category": "diagnostica",
+      "page_url": "/pages/visita-oculistica.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [],
+        "related_procedures": [
+          "visita-oculistica",
+          "campo-visivo"
+        ],
+        "pathways": []
+      },
+      "meta": {
+        "duration_minutes": 10,
+        "indications": [
+          "screening glaucoma",
+          "ipertensione oculare",
+          "familiarità glaucoma"
+        ],
+        "description": "Misurazione della pressione all'interno dell'occhio"
+      }
+    },
+    {
+      "id": "visita-ortopedica",
+      "type": "procedure",
+      "name": "Visita Ortopedica",
+      "name_search": [
+        "Visita Ortopedica",
+        "Visita Ortopedica Specialistica",
+        "ortopedico",
+        "ossa",
+        "articolazioni",
+        "ginocchio",
+        "spalla",
+        "schiena"
+      ],
+      "specialty_parent": "ortopedia",
+      "category": "visita",
+      "page_url": "/pages/visita-ortopedica.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [],
+        "related_procedures": [
+          "infiltrazioni",
+          "ecografia-muscolo-tendinea"
+        ],
+        "pathways": []
+      },
+      "meta": {
+        "duration_minutes": 30,
+        "indications": [
+          "dolore articolare",
+          "mal di schiena",
+          "traumi",
+          "artrosi",
+          "tendiniti"
+        ],
+        "description": "Valutazione delle patologie muscolo-scheletriche"
+      }
+    },
+    {
+      "id": "ecografia-muscolo-tendinea",
+      "type": "procedure",
+      "name": "Ecografia Muscolo-Tendinea",
+      "name_search": [
+        "Ecografia Muscolo-Tendinea",
+        "Ecografia dell'Apparato Muscolo-Scheletrico",
+        "eco tendini",
+        "ecografia muscoli",
+        "eco spalla",
+        "eco ginocchio"
+      ],
+      "specialty_parent": "ortopedia",
+      "category": "diagnostica",
+      "page_url": "/pages/visita-ortopedica.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [],
+        "related_procedures": [
+          "visita-ortopedica"
+        ],
+        "pathways": []
+      },
+      "meta": {
+        "duration_minutes": 20,
+        "indications": [
+          "tendinite",
+          "strappo muscolare",
+          "borsite",
+          "cisti"
+        ],
+        "description": "Esame ecografico di muscoli, tendini e articolazioni"
+      }
+    },
+    {
+      "id": "visita-nutrizionale",
+      "type": "procedure",
+      "name": "Visita Nutrizionale",
+      "name_search": [
+        "Visita Nutrizionale",
+        "Visita Nutrizionale con Piano Alimentare Personalizzato",
+        "nutrizionista",
+        "dieta",
+        "alimentazione",
+        "dimagrire",
+        "peso"
+      ],
+      "specialty_parent": "nutrizione",
+      "category": "visita",
+      "page_url": "/pages/visita-nutrizionale.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [],
+        "related_procedures": [
+          "bioimpedenziometria"
+        ],
+        "pathways": [
+          "slim-care",
+          "slim-care-donna"
+        ]
+      },
+      "meta": {
+        "duration_minutes": 45,
+        "indications": [
+          "sovrappeso",
+          "obesità",
+          "disturbi alimentari",
+          "sport",
+          "patologie metaboliche"
+        ],
+        "description": "Valutazione nutrizionale e piano alimentare su misura"
+      }
+    },
+    {
+      "id": "bioimpedenziometria",
+      "type": "procedure",
+      "name": "Bioimpedenziometria",
+      "name_search": [
+        "Bioimpedenziometria",
+        "Analisi Composizione Corporea (BIA)",
+        "BIA",
+        "massa grassa",
+        "composizione corporea",
+        "grasso corporeo"
+      ],
+      "specialty_parent": "nutrizione",
+      "category": "diagnostica",
+      "page_url": "/pages/visita-nutrizionale.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [],
+        "related_procedures": [
+          "visita-nutrizionale"
+        ],
+        "pathways": [
+          "slim-care",
+          "slim-care-donna"
+        ]
+      },
+      "meta": {
+        "duration_minutes": 15,
+        "indications": [
+          "controllo peso",
+          "sport",
+          "dieta",
+          "ritenzione idrica"
+        ],
+        "description": "Misurazione della composizione corporea (massa grassa, magra, acqua)"
+      }
+    },
+    {
+      "id": "visita-medicina-sportiva",
+      "type": "procedure",
+      "name": "Visita Medicina dello Sport",
+      "name_search": [
+        "Visita Medicina dello Sport",
+        "Visita per Idoneità Sportiva Agonistica e Non Agonistica",
+        "certificato sport",
+        "idoneità",
+        "visita sportiva",
+        "agonistica"
+      ],
+      "specialty_parent": "medicina-sport",
+      "category": "visita",
+      "page_url": "/pages/visita-medicina-sport.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [],
+        "related_procedures": [
+          "ecg",
+          "spirometria",
+          "test-sforzo"
+        ],
+        "pathways": []
+      },
+      "meta": {
+        "duration_minutes": 45,
+        "indications": [
+          "idoneità sportiva",
+          "certificato sport",
+          "attività agonistica"
+        ],
+        "description": "Certificazione idoneità sportiva con ECG e spirometria"
+      }
+    },
+    {
+      "id": "spirometria",
+      "type": "procedure",
+      "name": "Spirometria",
+      "name_search": [
+        "Spirometria",
+        "Spirometria Semplice",
+        "respiro",
+        "polmoni",
+        "capacità respiratoria",
+        "fiato"
+      ],
+      "specialty_parent": "medicina-sport",
+      "category": "diagnostica",
+      "page_url": "/pages/spirometria.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [],
+        "related_procedures": [
+          "visita-medicina-sportiva",
+          "visita-pneumologica"
+        ],
+        "pathways": []
+      },
+      "meta": {
+        "duration_minutes": 15,
+        "indications": [
+          "asma",
+          "affanno",
+          "tosse cronica",
+          "idoneità sportiva"
+        ],
+        "description": "Misurazione della funzionalità respiratoria"
+      }
+    },
+    {
+      "id": "prelievo-sangue",
+      "type": "procedure",
+      "name": "Prelievo Ematico",
+      "name_search": [
+        "Prelievo Ematico",
+        "Prelievo di Sangue Venoso",
+        "prelievo",
+        "sangue",
+        "analisi sangue",
+        "esami sangue"
+      ],
+      "specialty_parent": "laboratorio",
+      "category": "prelievo",
+      "page_url": "/laboratorio/",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [],
+        "related_procedures": [],
+        "pathways": []
+      },
+      "meta": {
+        "duration_minutes": 10,
+        "indications": [
+          "esami sangue",
+          "analisi",
+          "check-up"
+        ],
+        "description": "Prelievo di sangue per esami di laboratorio"
+      }
+    },
+    {
+      "id": "consulto-pma",
+      "type": "procedure",
+      "name": "Consulto PMA",
+      "name_search": [
+        "Consulto PMA",
+        "Consulto per Procreazione Medicalmente Assistita",
+        "fertilità",
+        "infertilità",
+        "concepimento",
+        "fecondazione assistita",
+        "ICSI",
+        "FIVET"
+      ],
+      "specialty_parent": "ginecologia",
+      "category": "visita",
+      "page_url": "/pages/pma-fertilita.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "salvatore-dessole",
+          "francesco-dessole"
+        ],
+        "related_procedures": [
+          "spermiogramma",
+          "ecografia-transvaginale"
+        ],
+        "pathways": [
+          "pma-fertilita"
+        ]
+      },
+      "meta": {
+        "duration_minutes": 45,
+        "indications": [
+          "infertilità",
+          "difficoltà concepimento",
+          "PMA",
+          "fecondazione"
+        ],
+        "description": "Prima valutazione per percorsi di fertilità assistita"
+      }
+    },
+    {
+      "id": "spermiogramma",
+      "type": "procedure",
+      "name": "Spermiogramma",
+      "name_search": [
+        "Spermiogramma",
+        "Esame del Liquido Seminale",
+        "sperma",
+        "fertilità maschile",
+        "spermatozoi",
+        "seminale"
+      ],
+      "specialty_parent": "laboratorio",
+      "category": "esame",
+      "page_url": "/pages/pma-fertilita.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [],
+        "related_procedures": [
+          "consulto-pma"
+        ],
+        "pathways": [
+          "pma-fertilita"
+        ]
+      },
+      "meta": {
+        "duration_minutes": 5,
+        "indications": [
+          "infertilità maschile",
+          "PMA",
+          "varicocele"
+        ],
+        "description": "Analisi della qualità e quantità degli spermatozoi"
+      }
+    },
+    {
+      "id": "hpv-dna-test",
+      "type": "procedure",
+      "name": "HPV DNA Test",
+      "name_search": [
+        "HPV DNA Test",
+        "Test Molecolare per Papillomavirus Umano",
+        "hpv",
+        "papillomavirus",
+        "virus hpv",
+        "test hpv",
+        "hpv dna",
+        "hpv positivo",
+        "ceppi hpv",
+        "alto rischio",
+        "test molecolare"
+      ],
+      "specialty_parent": "ginecologia",
+      "category": "esame",
+      "page_url": "/pages/hpv-dna-test.html",
+      "price": 60,
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "angelica-fois",
+          "camilla-ruzzoli"
+        ],
+        "related_procedures": [
+          "pap-test",
+          "duopap",
+          "colposcopia",
+          "visita-ginecologica"
+        ],
+        "pathways": [
+          "prevenzione-donna"
+        ]
+      },
+      "meta": {
+        "duration_minutes": 10
+      }
+    },
+    {
+      "id": "duopap",
+      "type": "procedure",
+      "name": "DuoPap",
+      "name_search": [
+        "DuoPap",
+        "Co-Testing Cervicale (Pap Test + HPV DNA Test)",
+        "duopap",
+        "duo pap",
+        "co-testing",
+        "cotesting",
+        "pap hpv insieme",
+        "doppio test",
+        "screening completo",
+        "prevenzione cervice"
+      ],
+      "specialty_parent": "ginecologia",
+      "category": "esame",
+      "page_url": "/pages/duopap.html",
+      "price": 110,
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "angelica-fois",
+          "camilla-ruzzoli"
+        ],
+        "related_procedures": [
+          "pap-test",
+          "hpv-dna-test",
+          "colposcopia",
+          "visita-ginecologica"
+        ],
+        "pathways": [
+          "prevenzione-donna"
+        ]
+      },
+      "meta": {
+        "duration_minutes": 10
+      }
+    },
+    {
+      "id": "caressflow",
+      "type": "procedure",
+      "name": "Caressflow",
+      "name_search": [
+        "Caressflow",
+        "Trattamento Caressflow per Benessere Intimo",
+        "caressflow",
+        "caress flow",
+        "benessere intimo",
+        "secchezza vaginale",
+        "atrofia",
+        "ringiovanimento vaginale",
+        "trattamento intimo"
+      ],
+      "specialty_parent": "ginecologia",
+      "category": "trattamento",
+      "page_url": "/pages/caressflow.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "francesco-dessole"
+        ],
+        "related_procedures": [
+          "radiofrequenza-vaginale",
+          "visita-ginecologica"
+        ],
+        "pathways": [
+          "slim-care-donna"
+        ]
+      },
+      "meta": {
+        "duration_minutes": 30,
+        "indications": [
+          "secchezza vaginale",
+          "atrofia vaginale",
+          "menopausa",
+          "lassità vaginale",
+          "benessere intimo"
+        ],
+        "description": "Trattamento innovativo per il benessere intimo femminile"
+      }
+    },
+    {
+      "id": "radiofrequenza-vaginale",
+      "type": "procedure",
+      "name": "Radiofrequenza Vaginale",
+      "name_search": [
+        "Radiofrequenza Vaginale",
+        "Trattamento Radiofrequenza per Rigenerazione Vaginale",
+        "radiofrequenza vaginale",
+        "rf vaginale",
+        "rigenerazione vaginale",
+        "atrofia vaginale",
+        "menopausa trattamento",
+        "lassità post parto"
+      ],
+      "specialty_parent": "ginecologia",
+      "category": "trattamento",
+      "page_url": "/pages/radiofrequenza-vaginale.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "francesco-dessole"
+        ],
+        "related_procedures": [
+          "caressflow",
+          "visita-ginecologica"
+        ],
+        "pathways": [
+          "slim-care-donna"
+        ]
+      },
+      "meta": {
+        "duration_minutes": 25,
+        "indications": [
+          "atrofia vaginale",
+          "lassità vaginale post-parto",
+          "menopausa",
+          "incontinenza lieve",
+          "dispareunia"
+        ],
+        "description": "Trattamento rigenerativo per atrofia e lassità vaginale"
+      }
+    },
+    {
+      "id": "isteroscopia",
+      "type": "procedure",
+      "name": "Isteroscopia Diagnostica",
+      "name_search": [
+        "Isteroscopia Diagnostica",
+        "Isteroscopia Diagnostica Ambulatoriale",
+        "isteroscopia",
+        "cavità uterina",
+        "polipi",
+        "miomi",
+        "infertilità diagnosi"
+      ],
+      "specialty_parent": "ginecologia",
+      "category": "diagnostica",
+      "page_url": "/pages/isteroscopia.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "salvatore-dessole",
+          "francesco-dessole"
+        ],
+        "related_procedures": [
+          "isterosalpingografia",
+          "visita-ginecologica"
+        ],
+        "pathways": [
+          "pma-fertilita"
+        ]
+      },
+      "meta": {
+        "duration_minutes": 20,
+        "indications": [
+          "sanguinamento anomalo",
+          "infertilità",
+          "polipi endometriali",
+          "miomi sottomucosi",
+          "aderenze uterine"
+        ],
+        "description": "Visualizzazione diretta della cavità uterina per diagnosi di patologie"
+      }
+    },
+    {
+      "id": "isterosalpingografia",
+      "type": "procedure",
+      "name": "Isterosalpingografia",
+      "name_search": [
+        "Isterosalpingografia",
+        "Isterosalpingografia (HSG) - Pervietà Tubarica",
+        "isterosalpingografia",
+        "hsg",
+        "tube pervietà",
+        "tubarica",
+        "infertilità diagnosi",
+        "sterilità"
+      ],
+      "specialty_parent": "ginecologia",
+      "category": "diagnostica",
+      "page_url": "/pages/isterosalpingografia.html",
+      "bookable": true,
+      "schema_type": "MedicalProcedure",
+      "relations": {
+        "physicians": [
+          "salvatore-dessole",
+          "francesco-dessole"
+        ],
+        "related_procedures": [
+          "isteroscopia",
+          "consulto-pma"
+        ],
+        "pathways": [
+          "pma-fertilita"
+        ]
+      },
+      "meta": {
+        "duration_minutes": 30,
+        "indications": [
+          "infertilità",
+          "sterilità tubarica",
+          "malformazioni uterine",
+          "aborti ricorrenti"
+        ],
+        "description": "Esame radiologico per valutare pervietà delle tube e morfologia uterina"
+      }
+    },
+    {
+      "id": "pack-checkup-base",
+      "type": "pack",
+      "name": "Check-up Base",
+      "name_search": [
+        "Check-up Base",
+        "checkup-base",
+        "controllo annuale",
+        "screening generale"
+      ],
+      "category": "prevenzione",
+      "page_url": "/laboratorio/#pack-checkup-base",
+      "bookable": true,
+      "schema_type": "Product",
+      "relations": {
+        "related_exams": [
+          "emocromo-completo",
+          "glicemia",
+          "creatinina",
+          "azotemia",
+          "colesterolo-totale",
+          "esame-urine-completo",
+          "ves"
+        ]
+      },
+      "meta": {
+        "exams_count": 7,
+        "savings": 15,
+        "description": "7 esami essenziali per un controllo completo",
+        "target": "Tutti gli adulti"
+      }
+    },
+    {
+      "id": "pack-checkup-completo",
+      "type": "pack",
+      "name": "Check-up Completo",
+      "name_search": [
+        "Check-up Completo",
+        "checkup-completo",
+        "prevenzione completa",
+        "screening approfondito"
+      ],
+      "category": "prevenzione",
+      "page_url": "/laboratorio/#pack-checkup-completo",
+      "bookable": true,
+      "schema_type": "Product",
+      "relations": {
+        "related_exams": [
+          "emocromo-completo",
+          "glicemia",
+          "emoglobina-glicata",
+          "creatinina",
+          "azotemia",
+          "colesterolo-totale",
+          "colesterolo-hdl",
+          "colesterolo-ldl",
+          "trigliceridi",
+          "ast-got",
+          "alt-gpt",
+          "gamma-gt",
+          "tsh-ultrasensibile",
+          "ft4",
+          "vitamina-d",
+          "ferritina",
+          "esame-urine-completo",
+          "ves",
+          "pcr"
+        ]
+      },
+      "meta": {
+        "exams_count": 19,
+        "savings": 25,
+        "description": "19 esami per una valutazione completa a 360°",
+        "target": "Adulti che desiderano un controllo approfondito"
+      }
+    },
+    {
+      "id": "pack-checkup-tiroide",
+      "type": "pack",
+      "name": "Profilo Tiroide Completo",
+      "name_search": [
+        "Profilo Tiroide Completo",
+        "checkup-tiroide",
+        "ipotiroidismo",
+        "ipertiroidismo",
+        "tiroidite",
+        "noduli tiroidei"
+      ],
+      "category": "endocrinologia",
+      "page_url": "/laboratorio/#pack-checkup-tiroide",
+      "bookable": true,
+      "schema_type": "Product",
+      "relations": {
+        "related_exams": [
+          "tsh-ultrasensibile",
+          "ft3",
+          "ft4",
+          "anti-tpo"
+        ]
+      },
+      "meta": {
+        "exams_count": 4,
+        "savings": 20,
+        "description": "Profilo tiroideo completo con screening autoimmunità",
+        "target": "Persone con sintomi tiroidei o familiarità"
+      }
+    },
+    {
+      "id": "pack-checkup-cardiovascolare",
+      "type": "pack",
+      "name": "Check-up Cardiovascolare",
+      "name_search": [
+        "Check-up Cardiovascolare",
+        "checkup-cardiovascolare",
+        "ipertensione",
+        "dislipidemia",
+        "diabete",
+        "familiarità cardiovascolare"
+      ],
+      "category": "cardiologia",
+      "page_url": "/laboratorio/#pack-checkup-cardiovascolare",
+      "bookable": true,
+      "schema_type": "Product",
+      "relations": {
+        "related_exams": [
+          "colesterolo-totale",
+          "colesterolo-hdl",
+          "colesterolo-ldl",
+          "trigliceridi",
+          "glicemia",
+          "pcr"
+        ]
+      },
+      "meta": {
+        "exams_count": 6,
+        "savings": 18,
+        "description": "Profilo lipidico + marker infiammatori per il tuo cuore",
+        "target": "Persone con fattori di rischio cardiovascolare"
+      }
+    },
+    {
+      "id": "pack-checkup-diabete",
+      "type": "pack",
+      "name": "Profilo Diabete",
+      "name_search": [
+        "Profilo Diabete",
+        "checkup-diabete",
+        "diabete tipo 2",
+        "prediabete",
+        "obesità",
+        "familiarità diabete"
+      ],
+      "category": "metabolismo",
+      "page_url": "/laboratorio/#pack-checkup-diabete",
+      "bookable": true,
+      "schema_type": "Product",
+      "relations": {
+        "related_exams": [
+          "glicemia",
+          "emoglobina-glicata"
+        ]
+      },
+      "meta": {
+        "exams_count": 2,
+        "savings": 10,
+        "description": "Controllo glicemico a breve e lungo termine",
+        "target": "Diabetici o persone a rischio"
+      }
+    },
+    {
+      "id": "pack-checkup-epatico",
+      "type": "pack",
+      "name": "Profilo Epatico",
+      "name_search": [
+        "Profilo Epatico",
+        "checkup-epatico",
+        "steatosi",
+        "epatite",
+        "cirrosi",
+        "farmaci epatotossici"
+      ],
+      "category": "epatologia",
+      "page_url": "/laboratorio/#pack-checkup-epatico",
+      "bookable": true,
+      "schema_type": "Product",
+      "relations": {
+        "related_exams": [
+          "ast-got",
+          "alt-gpt",
+          "gamma-gt"
+        ]
+      },
+      "meta": {
+        "exams_count": 3,
+        "savings": 15,
+        "description": "Controllo completo della salute del fegato",
+        "target": "Persone con sospetta epatopatia o uso farmaci"
+      }
+    },
+    {
+      "id": "pack-checkup-renale",
+      "type": "pack",
+      "name": "Profilo Renale",
+      "name_search": [
+        "Profilo Renale",
+        "checkup-renale",
+        "insufficienza renale",
+        "nefropatia diabetica",
+        "ipertensione"
+      ],
+      "category": "nefrologia",
+      "page_url": "/laboratorio/#pack-checkup-renale",
+      "bookable": true,
+      "schema_type": "Product",
+      "relations": {
+        "related_exams": [
+          "creatinina",
+          "azotemia",
+          "esame-urine-completo"
+        ]
+      },
+      "meta": {
+        "exams_count": 3,
+        "savings": 12,
+        "description": "Controllo completo della funzione renale",
+        "target": "Persone con ipertensione, diabete o familiarità"
+      }
+    },
+    {
+      "id": "pack-checkup-donna-over40",
+      "type": "pack",
+      "name": "Check-up Donna Over 40",
+      "name_search": [
+        "Check-up Donna Over 40",
+        "checkup-donna-over40",
+        "menopausa",
+        "osteoporosi",
+        "anemia",
+        "tiroide"
+      ],
+      "category": "prevenzione",
+      "page_url": "/laboratorio/#pack-checkup-donna-over40",
+      "bookable": true,
+      "schema_type": "Product",
+      "relations": {
+        "related_exams": [
+          "emocromo-completo",
+          "tsh-ultrasensibile",
+          "ferritina",
+          "vitamina-d",
+          "colesterolo-totale",
+          "colesterolo-hdl",
+          "glicemia"
+        ]
+      },
+      "meta": {
+        "exams_count": 7,
+        "savings": 22,
+        "description": "7 esami mirati per la salute femminile dopo i 40",
+        "target": "Donne oltre i 40 anni"
+      }
+    },
+    {
+      "id": "pack-checkup-uomo-over40",
+      "type": "pack",
+      "name": "Check-up Uomo Over 40",
+      "name_search": [
+        "Check-up Uomo Over 40",
+        "checkup-uomo-over40",
+        "prostata",
+        "cardiovascolare",
+        "metabolico"
+      ],
+      "category": "prevenzione",
+      "page_url": "/laboratorio/#pack-checkup-uomo-over40",
+      "bookable": true,
+      "schema_type": "Product",
+      "relations": {
+        "related_exams": [
+          "emocromo-completo",
+          "psa-totale",
+          "colesterolo-totale",
+          "colesterolo-hdl",
+          "colesterolo-ldl",
+          "trigliceridi",
+          "glicemia"
+        ]
+      },
+      "meta": {
+        "exams_count": 7,
+        "savings": 22,
+        "description": "7 esami mirati per la salute maschile dopo i 40",
+        "target": "Uomini oltre i 40 anni"
+      }
+    },
+    {
+      "id": "pack-checkup-anemia",
+      "type": "pack",
+      "name": "Profilo Anemia",
+      "name_search": [
+        "Profilo Anemia",
+        "checkup-anemia",
+        "anemia sideropenica",
+        "carenza ferro",
+        "stanchezza cronica"
+      ],
+      "category": "ematologia",
+      "page_url": "/laboratorio/#pack-checkup-anemia",
+      "bookable": true,
+      "schema_type": "Product",
+      "relations": {
+        "related_exams": [
+          "emocromo-completo",
+          "ferritina"
+        ]
+      },
+      "meta": {
+        "exams_count": 2,
+        "savings": 10,
+        "description": "Diagnosi completa di anemia e carenza di ferro",
+        "target": "Persone con stanchezza, pallore o mestruazioni abbondanti"
+      }
+    },
+    {
+      "id": "pack-checkup-prostata",
+      "type": "pack",
+      "name": "Profilo Prostata",
+      "name_search": [
+        "Profilo Prostata",
+        "checkup-prostata",
+        "ipertrofia prostatica",
+        "tumore prostata",
+        "PSA elevato"
+      ],
+      "category": "urologia",
+      "page_url": "/laboratorio/#pack-checkup-prostata",
+      "bookable": true,
+      "schema_type": "Product",
+      "relations": {
+        "related_exams": [
+          "psa-totale"
+        ]
+      },
+      "meta": {
+        "exams_count": 1,
+        "description": "Screening precoce per la salute della prostata",
+        "target": "Uomini oltre i 50 anni o con familiarità"
+      }
+    },
+    {
+      "id": "pack-checkup-osteoporosi",
+      "type": "pack",
+      "name": "Profilo Osteoporosi",
+      "name_search": [
+        "Profilo Osteoporosi",
+        "checkup-osteoporosi",
+        "osteoporosi",
+        "osteopenia",
+        "fratture da fragilità"
+      ],
+      "category": "metabolismo",
+      "page_url": "/laboratorio/#pack-checkup-osteoporosi",
+      "bookable": true,
+      "schema_type": "Product",
+      "relations": {
+        "related_exams": [
+          "vitamina-d"
+        ]
+      },
+      "meta": {
+        "exams_count": 1,
+        "description": "Controllo della vitamina D per la salute delle ossa",
+        "target": "Donne in menopausa o persone con fattori di rischio"
+      }
+    },
+    {
+      "id": "slim-care",
+      "type": "pathway",
+      "name": "Slim Care - Percorso Dimagrimento",
+      "name_search": [
+        "Slim Care - Percorso Dimagrimento"
+      ],
+      "category": "therapeutic",
+      "page_url": "/pages/slim-care.html",
+      "bookable": true,
+      "schema_type": "Service",
+      "relations": {
+        "related_procedures": [],
+        "physicians": []
+      },
+      "meta": {
+        "duration": "3 mesi"
+      }
+    },
+    {
+      "id": "slim-care-donna",
+      "type": "pathway",
+      "name": "Slim Care Donna",
+      "name_search": [
+        "Slim Care Donna"
+      ],
+      "category": "therapeutic",
+      "page_url": "/pages/slim-care-donna.html",
+      "bookable": true,
+      "schema_type": "Service",
+      "relations": {
+        "related_procedures": [],
+        "physicians": []
+      },
+      "meta": {
+        "duration": "3 mesi"
+      }
+    },
+    {
+      "id": "pma-fertilita",
+      "type": "pathway",
+      "name": "PMA - Procreazione Medicalmente Assistita",
+      "name_search": [
+        "PMA - Procreazione Medicalmente Assistita"
+      ],
+      "category": "therapeutic",
+      "page_url": "/pages/pma-fertilita.html",
+      "bookable": true,
+      "schema_type": "Service",
+      "relations": {
+        "related_procedures": [],
+        "physicians": []
+      },
+      "meta": {
+        "duration": "Variabile"
+      }
+    },
+    {
+      "id": "checkup-tiroide",
+      "type": "pathway",
+      "name": "Check-up Tiroide Completo",
+      "name_search": [
+        "Check-up Tiroide Completo"
+      ],
+      "category": "therapeutic",
+      "page_url": "/pages/checkup-tiroide.html",
+      "bookable": true,
+      "schema_type": "Service",
+      "relations": {
+        "related_procedures": [],
+        "physicians": []
+      },
+      "meta": {
+        "duration": "1-2 settimane"
+      }
+    },
+    {
+      "id": "checkup-cardiovascolare",
+      "type": "pathway",
+      "name": "Check-up Cardiovascolare",
+      "name_search": [
+        "Check-up Cardiovascolare"
+      ],
+      "category": "therapeutic",
+      "page_url": "/pages/checkup-cardiovascolare.html",
+      "bookable": true,
+      "schema_type": "Service",
+      "relations": {
+        "related_procedures": [],
+        "physicians": []
+      },
+      "meta": {
+        "duration": "1 giorno"
+      }
+    },
+    {
+      "id": "checkup-donna-under40",
+      "type": "pathway",
+      "name": "Check-up Donna Under 40",
+      "name_search": [
+        "Check-up Donna Under 40"
+      ],
+      "category": "therapeutic",
+      "page_url": "/pages/checkup-donna-under40.html",
+      "bookable": true,
+      "schema_type": "Service",
+      "relations": {
+        "related_procedures": [],
+        "physicians": []
+      },
+      "meta": {
+        "duration": "1-2 settimane"
+      }
+    },
+    {
+      "id": "checkup-donna-over40",
+      "type": "pathway",
+      "name": "Check-up Donna Over 40",
+      "name_search": [
+        "Check-up Donna Over 40"
+      ],
+      "category": "therapeutic",
+      "page_url": "/pages/checkup-donna-over40.html",
+      "bookable": true,
+      "schema_type": "Service",
+      "relations": {
+        "related_procedures": [],
+        "physicians": []
+      },
+      "meta": {
+        "duration": "1-2 settimane"
+      }
+    },
+    {
+      "id": "checkup-uomo",
+      "type": "pathway",
+      "name": "Check-up Uomo",
+      "name_search": [
+        "Check-up Uomo"
+      ],
+      "category": "therapeutic",
+      "page_url": "/pages/checkup-uomo.html",
+      "bookable": true,
+      "schema_type": "Service",
+      "relations": {
+        "related_procedures": [],
+        "physicians": []
+      },
+      "meta": {
+        "duration": "1-2 settimane"
+      }
+    },
+    {
+      "id": "checkup-base",
+      "type": "pathway",
+      "name": "Check-up Base",
+      "name_search": [
+        "Check-up Base"
+      ],
+      "category": "therapeutic",
+      "page_url": "/pages/checkup-base.html",
+      "bookable": true,
+      "schema_type": "Service",
+      "relations": {
+        "related_procedures": [],
+        "physicians": []
+      },
+      "meta": {
+        "duration": "24-48h"
+      }
+    },
+    {
+      "id": "profilo-tiroideo",
+      "type": "pathway",
+      "name": "Profilo Tiroideo",
+      "name_search": [
+        "Profilo Tiroideo"
+      ],
+      "category": "therapeutic",
+      "page_url": "/pages/profilo-tiroideo.html",
+      "bookable": true,
+      "schema_type": "Service",
+      "relations": {
+        "related_procedures": [],
+        "physicians": []
+      },
+      "meta": {
+        "duration": "24h"
+      }
+    },
+    {
+      "id": "screening-allergologico",
+      "type": "pathway",
+      "name": "Screening Allergologico",
+      "name_search": [
+        "Screening Allergologico"
+      ],
+      "category": "therapeutic",
+      "page_url": "/pages/screening-allergologico.html",
+      "bookable": true,
+      "schema_type": "Service",
+      "relations": {
+        "related_procedures": [],
+        "physicians": []
+      },
+      "meta": {
+        "duration": "5-7 giorni"
+      }
+    },
+    {
+      "id": "checkup-pregravidanza",
+      "type": "pathway",
+      "name": "Check-up Pre-Gravidanza",
+      "name_search": [
+        "Check-up Pre-Gravidanza"
+      ],
+      "category": "therapeutic",
+      "page_url": "/pages/checkup-pregravidanza.html",
+      "bookable": true,
+      "schema_type": "Service",
+      "relations": {
+        "related_procedures": [],
+        "physicians": []
+      },
+      "meta": {
+        "duration": "1 settimana"
+      }
+    },
+    {
+      "id": "salvatore-dessole",
+      "type": "physician",
+      "name": "Prof. Salvatore Dessole",
+      "name_search": [
+        "Salvatore Dessole",
+        null,
+        "Salvatore Dessole undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/salvatore-dessole.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": "Prof."
+      }
+    },
+    {
+      "id": "francesco-dessole",
+      "type": "physician",
+      "name": "Dott. Francesco Dessole",
+      "name_search": [
+        "Francesco Dessole",
+        null,
+        "Francesco Dessole undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/francesco-dessole.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": "Dott."
+      }
+    },
+    {
+      "id": "margherita-dessole",
+      "type": "physician",
+      "name": "Dott.ssa Margherita Dessole",
+      "name_search": [
+        "Margherita Dessole",
+        null,
+        "Margherita Dessole undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/margherita-dessole.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": "Dott.ssa"
+      }
+    },
+    {
+      "id": "maddalena-pola",
+      "type": "physician",
+      "name": "Dott.ssa Maddalena Pola",
+      "name_search": [
+        "Maddalena Pola",
+        null,
+        "Maddalena Pola undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/maddalena-pola.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": "Dott.ssa"
+      }
+    },
+    {
+      "id": "marco-petrillo",
+      "type": "physician",
+      "name": "Dott. Marco Petrillo",
+      "name_search": [
+        "Marco Petrillo",
+        null,
+        "Marco Petrillo undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/marco-petrillo.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": "Dott."
+      }
+    },
+    {
+      "id": "antonella-pruneddu",
+      "type": "physician",
+      "name": "Dott.ssa Antonella Pruneddu",
+      "name_search": [
+        "Antonella Pruneddu",
+        null,
+        "Antonella Pruneddu undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/antonella-pruneddu.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": "Dott.ssa"
+      }
+    },
+    {
+      "id": "angelica-fois",
+      "type": "physician",
+      "name": "Dott.ssa Angelica Fois",
+      "name_search": [
+        "Angelica Fois",
+        null,
+        "Angelica Fois undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/angelica-fois.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": "Dott.ssa"
+      }
+    },
+    {
+      "id": "camilla-ruzzoli",
+      "type": "physician",
+      "name": "Dott. Camilla Ruzzoli",
+      "name_search": [
+        "Camilla Ruzzoli",
+        null,
+        "Camilla Ruzzoli undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/camilla-ruzzoli.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": ""
+      }
+    },
+    {
+      "id": "tonino-bullitta",
+      "type": "physician",
+      "name": "Dott. Tonino Bullitta",
+      "name_search": [
+        "Tonino Bullitta",
+        null,
+        "Tonino Bullitta undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/tonino-bullitta.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": "Dott."
+      }
+    },
+    {
+      "id": "sara-uras",
+      "type": "physician",
+      "name": "Dott.ssa Sara Uras",
+      "name_search": [
+        "Sara Uras",
+        null,
+        "Sara Uras undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/sara-uras.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": "Dott.ssa"
+      }
+    },
+    {
+      "id": "giuliana-guagnozzi",
+      "type": "physician",
+      "name": "Dott.ssa Giuliana Guagnozzi",
+      "name_search": [
+        "Giuliana Guagnozzi",
+        null,
+        "Giuliana Guagnozzi undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/giuliana-guagnozzi.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": "Dott.ssa"
+      }
+    },
+    {
+      "id": "paolo-pischedda",
+      "type": "physician",
+      "name": "Dott. Paolo Pischedda",
+      "name_search": [
+        "Paolo Pischedda",
+        null,
+        "Paolo Pischedda undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/paolo-pischedda.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": "Dott."
+      }
+    },
+    {
+      "id": "paolo-franca",
+      "type": "physician",
+      "name": "Dott. Paolo Franca",
+      "name_search": [
+        "Paolo Franca",
+        null,
+        "Paolo Franca undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/paolo-franca.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": "Dott."
+      }
+    },
+    {
+      "id": "francesco-tolu",
+      "type": "physician",
+      "name": "Dott. Francesco Tolu",
+      "name_search": [
+        "Francesco Tolu",
+        null,
+        "Francesco Tolu undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/francesco-tolu.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": "Dott."
+      }
+    },
+    {
+      "id": "irene-aini",
+      "type": "physician",
+      "name": "Dott.ssa Irene Aini",
+      "name_search": [
+        "Irene Aini",
+        null,
+        "Irene Aini undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/irene-aini.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": "Dott.ssa"
+      }
+    },
+    {
+      "id": "giovanna-costa",
+      "type": "physician",
+      "name": "Dott.ssa Giovanna Costa",
+      "name_search": [
+        "Giovanna Costa",
+        null,
+        "Giovanna Costa undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/giovanna-costa.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": "Dott.ssa"
+      }
+    },
+    {
+      "id": "cinzia-guarino",
+      "type": "physician",
+      "name": "Dott.ssa Cinzia Guarino",
+      "name_search": [
+        "Cinzia Guarino",
+        null,
+        "Cinzia Guarino undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/cinzia-guarino.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": "Dott.ssa"
+      }
+    },
+    {
+      "id": "gloria-reggiani",
+      "type": "physician",
+      "name": "Dott.ssa Gloria Reggiani",
+      "name_search": [
+        "Gloria Reggiani",
+        null,
+        "Gloria Reggiani undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/gloria-reggiani.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": "Dott.ssa"
+      }
+    },
+    {
+      "id": "sara-meloni",
+      "type": "physician",
+      "name": "Dott. Sara Meloni",
+      "name_search": [
+        "Sara Meloni",
+        null,
+        "Sara Meloni undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/sara-meloni.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": ""
+      }
+    },
+    {
+      "id": "gabriele-delogu",
+      "type": "physician",
+      "name": "Dott. Gabriele Delogu",
+      "name_search": [
+        "Gabriele Delogu",
+        null,
+        "Gabriele Delogu undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/gabriele-delogu.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": ""
+      }
+    },
+    {
+      "id": "antonella-galatino",
+      "type": "physician",
+      "name": "Dott.ssa Antonella Galatino",
+      "name_search": [
+        "Antonella Galatino",
+        null,
+        "Antonella Galatino undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/antonella-galatino.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": "Dott.ssa"
+      }
+    },
+    {
+      "id": "alessandro-pandolfi",
+      "type": "physician",
+      "name": "Dott. Alessandro Pandolfi",
+      "name_search": [
+        "Alessandro Pandolfi",
+        null,
+        "Alessandro Pandolfi undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/alessandro-pandolfi.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": "Dott."
+      }
+    },
+    {
+      "id": "giorgio-chiarelli",
+      "type": "physician",
+      "name": "Dott. Giorgio Chiarelli",
+      "name_search": [
+        "Giorgio Chiarelli",
+        null,
+        "Giorgio Chiarelli undefined"
+      ],
+      "category": "specialist",
+      "page_url": "/equipe/giorgio-chiarelli.html",
+      "bookable": true,
+      "schema_type": "Physician",
+      "relations": {
+        "related_procedures": []
+      },
+      "meta": {
+        "title": "Dott."
+      }
+    }
+  ]
+}

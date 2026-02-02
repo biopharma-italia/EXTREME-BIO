@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/bio-clinic-layout.css?v=20260202">
   <link rel="stylesheet" href="../css/unified-search.css?v=20260131">
   <link rel="stylesheet" href="../css/bio-search-pro.css?v=1769644194">
   
@@ -355,15 +356,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://bio-clinic.it/">
     <meta property="og:site_name" content="Bio-Clinic Sassari">
-  <link rel="stylesheet" href="../css/search-fix.css?v=1769644194">
-  <link rel="stylesheet" href="../css/header-spacing-fix.css?v=1769644194">
-
-<style>
-/* CRITICAL FIX v4 - Header Layout con spazio corretto */
-body{padding-top:100px!important;margin:0!important}
-.header{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:9999!important;background:#fff!important;box-shadow:0 2px 10px rgba(0,0,0,0.1)!important}
-.trust-bar{margin-top:15px!important;padding-top:1.5rem!important}
-</style>
+  <!-- Layout CSS now handles header/body spacing via bio-clinic-layout.css -->
 </head>
 <body>
   <!-- NOSCRIPT FALLBACK FOR SEO CRAWLERS -->
@@ -910,10 +903,12 @@ body{padding-top:100px!important;margin:0!important}
       };
     }
   </script>
-  <!-- UNIFIED SEARCH ENGINE v2.0 - Single source of truth -->
+  <!-- UNIFIED SEARCH ENGINE v3.0 - Entity-based search -->
+  <script src="../js/bio-clinic-search.js?v=20260202"></script>
+  <script src="../js/search-ui.js?v=20260202"></script>
+  <!-- Legacy support (to be removed) -->
   <script src="../js/bio-clinic-search-engine.js?v=20260201b"></script>
   <script src="../js/search-ui-adapter.js?v=20260201b"></script>
-  <!-- Legacy support -->
   <script src="../js/bio-search-pro.js"></script>
 </body>
 </html>

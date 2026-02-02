@@ -73,6 +73,10 @@
   /* Container */
   --container-max: 1280px;
   --container-padding: 1.5rem;
+  
+  /* Layout - Header */
+  --header-height: 80px;
+  --header-height-mobile: 70px;
 }
 
 /* === RESET & BASE === */
