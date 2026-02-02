@@ -200,22 +200,14 @@ p {
   justify-content: space-between;
 }
 
-/* === HEADER === */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background-color: #ffffff !important;
-  background: #ffffff !important;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: box-shadow 200ms ease;
-  height: 80px;
-}
+/* === HEADER === 
+ * NOTE: Main header styles are now in bio-clinic-layout.css
+ * This section is kept for backward compatibility but should not override
+ */
+/* .header - MOVED TO bio-clinic-layout.css */
 
 .header.scrolled {
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .header-top {
