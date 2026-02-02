@@ -293,12 +293,24 @@
         }
 
         _renderResults(searchResult) {
-            if (!this.resultsContainer) return;
+            if (!this.resultsContainer) {
+                console.warn('[SearchUI] No results container found');
+                return;
+            }
 
             const { grouped, query, triage, hasTriage } = searchResult;
             
+            console.log('[SearchUI] Rendering results:', { 
+                hasTriage, 
+                triagePresent: !!triage,
+                primaryName: triage?.primary?.name,
+                relatedCount: triage?.related?.length,
+                mode: this.mode
+            });
+            
             // Use TRIAGE renderer if available
             if (hasTriage && triage && this.mode !== 'header') {
+                console.log('[SearchUI] Using TRIAGE renderer');
                 this.resultsContainer.innerHTML = this._renderTriageResults(triage, query);
                 this._bindResultClicks();
                 this._bindAccordions();
@@ -583,33 +595,34 @@
         // ===========================================
         _openResults() {
             if (this.resultsContainer) {
-                this.resultsContainer.style.display = 'block';
                 this.isOpen = true;
                 
-                // Show the panel if it exists (home mode)
+                // Show the panel (home mode uses slide-in animation)
                 if (this.mode === 'home') {
                     const panel = document.querySelector('#search-results-panel');
                     if (panel) {
                         panel.classList.add('active');
-                        panel.style.display = 'block';
+                        // Panel uses transform animation, not display
                     }
+                } else {
+                    this.resultsContainer.style.display = 'block';
                 }
             }
         }
 
         _closeResults() {
             if (this.resultsContainer) {
-                this.resultsContainer.style.display = 'none';
                 this.isOpen = false;
                 this.selectedIndex = -1;
                 
-                // Hide the panel if it exists (home mode)
+                // Hide the panel (home mode uses slide-out animation)
                 if (this.mode === 'home') {
                     const panel = document.querySelector('#search-results-panel');
                     if (panel) {
                         panel.classList.remove('active');
-                        panel.style.display = 'none';
                     }
+                } else {
+                    this.resultsContainer.style.display = 'none';
                 }
             }
         }
