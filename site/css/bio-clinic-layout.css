@@ -19,16 +19,17 @@
    1. HEADER LAYOUT
    ============================================ */
 
-/* Fixed header at top */
+/* Fixed header at top - MUST have white background */
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    background: var(--white, #fff);
-    box-shadow: var(--shadow-sm, 0 1px 2px 0 rgb(0 0 0 / 0.05));
-    transition: box-shadow var(--transition-base, 200ms ease);
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9999 !important;
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+    transition: box-shadow 200ms ease;
 }
 
 .header.scrolled {
@@ -46,19 +47,20 @@
     padding: 0 var(--container-padding, 1.5rem);
 }
 
-/* Body spacing - use padding-top equal to header height */
+/* Body spacing - exact header height (80px) */
 body {
-    padding-top: var(--header-height, 80px);
+    padding-top: 80px !important;
+    margin: 0 !important;
 }
 
 /* Mobile header adjustments */
 @media (max-width: 768px) {
     .header .container {
-        height: var(--header-height-mobile, 70px);
+        height: 70px;
     }
     
     body {
-        padding-top: var(--header-height-mobile, 70px);
+        padding-top: 70px !important;
     }
 }
 
