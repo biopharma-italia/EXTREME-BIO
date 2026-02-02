@@ -27,6 +27,10 @@
 /laboratorio/esame-* /laboratorio/#:splat 301
 /laboratorio/pack-* /laboratorio/#:splat 301
 
+# Redirect servizi/laboratorio-analisi a laboratorio
+/servizi/laboratorio-analisi /laboratorio/ 301
+/servizi/laboratorio-analisi/ /laboratorio/ 301
+
 # Genetica & Preparazione Esami - Explicit routes
 /pages/genetica.html /pages/genetica.html 200
 /pages/preparazione-esami.html /pages/preparazione-esami.html 200
