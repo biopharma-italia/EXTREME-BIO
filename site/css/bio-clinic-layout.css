@@ -48,10 +48,12 @@
     align-items: center;
     justify-content: space-between;
     height: 100%;
-    max-width: 1280px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 1.5rem;
-    background-color: #ffffff; /* Ensure white background */
+    padding: 0 1rem;
+    background-color: #ffffff;
+    flex-wrap: nowrap;
+    gap: 1rem;
 }
 
 /* ============================================

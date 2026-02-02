@@ -268,21 +268,28 @@ p {
   .nav {
     display: flex;
     align-items: center;
-    gap: var(--space-xl);
+    gap: 1rem;
+    flex-shrink: 0;
   }
 }
 
 .nav-list {
   display: flex;
   align-items: center;
-  gap: var(--space-lg);
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-link {
   font-weight: 500;
   color: var(--gray-700);
-  padding: var(--space-sm) 0;
+  padding: 0.5rem 0.4rem;
   position: relative;
+  white-space: nowrap;
+  font-size: 0.9rem;
 }
 
 .nav-link:hover,
