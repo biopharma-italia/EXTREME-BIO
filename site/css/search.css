@@ -111,6 +111,8 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.5rem;
+  position: relative;
+  z-index: 10;
 }
 
 .search-suggestion-tag {
@@ -125,6 +127,9 @@
   cursor: pointer;
   transition: all 0.2s ease;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
 }
 
 .search-suggestion-tag:hover {

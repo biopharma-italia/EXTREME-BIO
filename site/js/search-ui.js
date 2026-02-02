@@ -637,22 +637,27 @@
         const headerSearch = document.querySelector('.header-search-input, #header-search-input, [data-search="header"]');
         const labSearch = document.querySelector('.lab-search-input, #lab-search-input, [data-search="lab"]');
 
+        let activeAdapter = null;
+
         if (homeSearch) {
             const homeAdapter = new SearchUIAdapter('home');
             homeAdapter.init();
             global.bioClinicSearchHome = homeAdapter;
+            activeAdapter = homeAdapter;
         }
 
         if (headerSearch) {
             const headerAdapter = new SearchUIAdapter('header');
             headerAdapter.init();
             global.bioClinicSearchHeader = headerAdapter;
+            if (!activeAdapter) activeAdapter = headerAdapter;
         }
 
         if (labSearch) {
             const labAdapter = new SearchUIAdapter('lab');
             labAdapter.init();
             global.bioClinicSearchLab = labAdapter;
+            if (!activeAdapter) activeAdapter = labAdapter;
         }
 
         // If no specific search found, try auto mode
@@ -660,7 +665,45 @@
             const autoAdapter = new SearchUIAdapter('auto');
             autoAdapter.init();
             global.bioClinicSearchAuto = autoAdapter;
+            activeAdapter = autoAdapter;
         }
+
+        // Bind suggestion tags (Tiroide, Cardiologia, etc.)
+        bindSuggestionTags(activeAdapter);
+    }
+
+    /**
+     * Bind click handlers to suggestion tags
+     */
+    function bindSuggestionTags(adapter) {
+        const tags = document.querySelectorAll('[data-search-suggestion], .search-suggestion-tag[data-search-suggestion]');
+        
+        tags.forEach(tag => {
+            tag.addEventListener('click', (e) => {
+                e.preventDefault();
+                const query = tag.dataset.searchSuggestion || tag.textContent.trim();
+                
+                // Find the search input
+                const input = document.querySelector('#hero-search-input, .hero-search-input, #searchInput, .lab-search-input');
+                
+                if (input && query) {
+                    input.value = query;
+                    input.focus();
+                    
+                    // Trigger search via adapter if available
+                    if (adapter && adapter._performSearch) {
+                        adapter._performSearch(query);
+                    } else {
+                        // Fallback: dispatch input event
+                        input.dispatchEvent(new Event('input', { bubbles: true }));
+                    }
+                }
+                
+                console.log('[SearchUI] Suggestion clicked:', query);
+            });
+        });
+        
+        console.log('[SearchUI] Bound', tags.length, 'suggestion tags');
     }
 
     // ===========================================
