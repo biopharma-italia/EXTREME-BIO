@@ -1,6 +1,10 @@
 # Cloudflare Pages Redirects
 # Docs: https://developers.cloudflare.com/pages/platform/redirects
 
+# Redirect Slim Care progetto peso
+/slim-care-progetto-peso /pages/slim-care.html 301
+/slim-care-progetto-peso/ /pages/slim-care.html 301
+
 # Static HTML pages - serve directly (no fallback)
 /pages/*.html /pages/:splat.html 200
 
