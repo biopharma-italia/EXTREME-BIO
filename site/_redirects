@@ -41,8 +41,9 @@
 /pages/pap-test-hpv /pages/duopap.html 301
 
 # SEO-friendly URL: Mounjaro Tirzepatide Sassari
-/mounjaro-tirzepatide-sassari /pages/mounjaro-tirzepatide-sassari.html 301
-/mounjaro-tirzepatide-sassari/ /pages/mounjaro-tirzepatide-sassari.html 301
-/mounjaro-sassari /pages/mounjaro-tirzepatide-sassari.html 301
-/tirzepatide-sassari /pages/mounjaro-tirzepatide-sassari.html 301
+# Pagina principale in /mounjaro-tirzepatide-sassari/index.html
+/pages/mounjaro-tirzepatide-sassari.html /mounjaro-tirzepatide-sassari/ 301
+/pages/mounjaro-tirzepatide-sassari /mounjaro-tirzepatide-sassari/ 301
+/mounjaro-sassari /mounjaro-tirzepatide-sassari/ 301
+/tirzepatide-sassari /mounjaro-tirzepatide-sassari/ 301
 
