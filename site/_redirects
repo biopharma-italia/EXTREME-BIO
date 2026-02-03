@@ -47,3 +47,7 @@
 /mounjaro-sassari /mounjaro-tirzepatide-sassari/ 301
 /tirzepatide-sassari /mounjaro-tirzepatide-sassari/ 301
 
+# SEO-friendly URL: Contatti
+/pages/contatti.html /contatti/ 301
+/pages/contatti /contatti/ 301
+
