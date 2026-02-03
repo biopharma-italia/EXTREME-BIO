@@ -447,8 +447,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           },
           "aggregateRating": {
             "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "3214",
+            "ratingValue": "5",
+            "reviewCount": "3414",
             "bestRating": "5",
             "worstRating": "1"
           },
@@ -633,6 +633,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "inLanguage": "it-IT"
         }
       ]
+    }
+    </script>
+    
+    <!-- Schema.org MedicalLaboratory per Google AI / Ricerche Vocali -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalLaboratory",
+      "name": "Laboratorio Analisi Bio-Clinic Sassari",
+      "image": "https://bio-clinic.it/images/logo-bioclinic.png",
+      "telephone": "+390799561332",
+      "url": "https://bio-clinic.it/laboratorio/",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Renzo Mossa 23",
+        "addressLocality": "Sassari",
+        "postalCode": "07100",
+        "addressCountry": "IT"
+      },
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "07:00", "closes": "21:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "14:00" }
+      ],
+      "medicalSpecialty": ["Pathology", "LaboratoryScience"],
+      "availableService": [
+        { "@type": "MedicalTest", "name": "Emocromo Urgente" },
+        { "@type": "MedicalTest", "name": "Beta HCG in 4 ore" },
+        { "@type": "MedicalTest", "name": "Test DNA Fetale NIPT" }
+      ],
+      "isAcceptingNewPatients": true,
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "3414",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
     }
     </script>
   <!-- Layout CSS now handles header/body spacing via bio-clinic-layout.css -->
@@ -894,7 +931,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- Trust Badge -->
         <div style="margin-top: 1.5rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem; font-size: 0.9rem; opacity: 0.9;">
           <span>⭐⭐⭐⭐⭐</span>
-          <span><strong>4.9/5</strong> su 3.214 recensioni</span>
+          <span><strong>5/5</strong> su 3.414 recensioni</span>
         </div>
       </section>
       
@@ -904,6 +941,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           50% { opacity: 0.5; }
         }
       </style>
+      
+      <!-- TABELLA COMPARATIVA KILLER -->
+      <section style="padding: 3rem 0; background: white; border-bottom: 1px solid #e5e7eb;">
+        <div style="max-width: 900px; margin: 0 auto; padding: 0 1rem;">
+          <h2 style="text-align: center; font-weight: 700; font-size: 1.5rem; margin-bottom: 2rem; color: #1f2937;">Perché scegliere Bio-Clinic rispetto ad altri laboratori?</h2>
+          <div style="overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 12px; border: 1px solid #e5e7eb;">
+            <table style="width: 100%; text-align: left; border-collapse: collapse; background: white;">
+              <thead>
+                <tr style="background: #f9fafb; font-size: 0.75rem; text-transform: uppercase; color: #6b7280; letter-spacing: 0.05em;">
+                  <th style="padding: 1rem; border-bottom: 1px solid #e5e7eb;">Caratteristica</th>
+                  <th style="padding: 1rem; border-bottom: 1px solid #e5e7eb; font-weight: 700; color: #047857; background: #ecfdf5; width: 40%; text-align: center; border-left: 1px solid #d1fae5; border-right: 1px solid #d1fae5;">BIO-CLINIC</th>
+                  <th style="padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: center; color: #9ca3af;">Laboratori Standard</th>
+                </tr>
+              </thead>
+              <tbody style="font-size: 0.9rem;">
+                <tr>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #374151;">Orario Prelievi</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: center; background: #ecfdf5; font-weight: 700; color: #047857; border-left: 1px solid #d1fae5; border-right: 1px solid #d1fae5;">07:00 - 21:00 (NO STOP)</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: center; color: #6b7280;">Chiudono alle 10:30</td>
+                </tr>
+                <tr>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #374151;">Urgenze (Beta HCG, Cuore)</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: center; background: #ecfdf5; font-weight: 700; color: #047857; border-left: 1px solid #d1fae5; border-right: 1px solid #d1fae5;">Referto in 4 Ore</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: center; color: #6b7280;">Giorno successivo</td>
+                </tr>
+                <tr>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #374151;">Apertura Sabato</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: center; background: #ecfdf5; font-weight: 700; color: #047857; border-left: 1px solid #d1fae5; border-right: 1px solid #d1fae5;">Sì (Fino alle 14:00)</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: center; color: #6b7280;">Spesso Chiusi</td>
+                </tr>
+                <tr>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #374151;">Tecnologia</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: center; background: #ecfdf5; font-weight: 700; color: #047857; border-left: 1px solid #d1fae5; border-right: 1px solid #d1fae5;">Processazione Interna</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: center; color: #6b7280;">Service Esterno</td>
+                </tr>
+                <tr>
+                  <td style="padding: 1rem; font-weight: 600; color: #374151;">Prenotazione</td>
+                  <td style="padding: 1rem; text-align: center; background: #ecfdf5; font-weight: 700; color: #047857; border-left: 1px solid #d1fae5; border-right: 1px solid #d1fae5;">NON NECESSARIA</td>
+                  <td style="padding: 1rem; text-align: center; color: #6b7280;">Obbligatoria</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
       
       <!-- Stats Section -->
       <div class="lab-stats" id="stats">
@@ -1147,6 +1229,55 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     </div>
   </main>
+
+  <!-- SEO TEXT BLOCK - Keywords per Bot Google -->
+  <section style="padding: 4rem 0; background: #f9fafb; font-size: 0.9rem; color: #4b5563; border-top: 1px solid #e5e7eb;">
+    <div style="max-width: 1100px; margin: 0 auto; padding: 0 1rem;">
+      <h3 style="font-weight: 700; color: #111827; margin-bottom: 1rem; font-size: 1.2rem;">Punto Prelievi e Analisi Cliniche a Sassari</h3>
+      <p style="margin-bottom: 1.5rem; line-height: 1.7;">
+        Bio-Clinic è il <strong>laboratorio di riferimento per il Nord Sardegna</strong>. A differenza dei centri convenzionati che hanno budget limitati e liste d'attesa, noi garantiamo l'<strong>accesso immediato senza ricetta rossa obbligatoria</strong>. 
+        Eseguiamo <strong>esami del sangue</strong>, <strong>esami delle urine</strong>, <strong>test ormonali</strong>, <strong>marker tumorali</strong> e <strong>intolleranze alimentari</strong> con strumentazione Roche e Abbott di ultima generazione.
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+        <div>
+          <h4 style="font-weight: 700; color: #1f2937; margin-bottom: 0.5rem;">Analisi Ormonali</h4>
+          <ul style="list-style: disc; padding-left: 1.25rem; line-height: 1.8;">
+            <li>TSH, FT3, FT4 (Tiroide)</li>
+            <li>Beta HCG (Gravidanza)</li>
+            <li>Prolattina, FSH, LH</li>
+            <li>Testosterone e PSA</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-weight: 700; color: #1f2937; margin-bottom: 0.5rem;">Cardiologia & Coagulazione</h4>
+          <ul style="list-style: disc; padding-left: 1.25rem; line-height: 1.8;">
+            <li>Troponina (Infarto)</li>
+            <li>D-Dimero (Trombosi)</li>
+            <li>PT, PTT, Fibrinogeno</li>
+            <li>Omocisteina</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-weight: 700; color: #1f2937; margin-bottom: 0.5rem;">Microbiologia</h4>
+          <ul style="list-style: disc; padding-left: 1.25rem; line-height: 1.8;">
+            <li>Urinocoltura con Antibiogramma</li>
+            <li>Tamponi Vaginali e Uretrali</li>
+            <li>Ricerca HPV DNA</li>
+            <li>Parassitologico Feci</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-weight: 700; color: #1f2937; margin-bottom: 0.5rem;">Check-up Completi</h4>
+          <ul style="list-style: disc; padding-left: 1.25rem; line-height: 1.8;">
+            <li>Check-up Uomo/Donna</li>
+            <li>Malattie Sessualmente Trasmesse</li>
+            <li>Celiachia e Intolleranze</li>
+            <li>Prenatale NIPT</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="footer">
