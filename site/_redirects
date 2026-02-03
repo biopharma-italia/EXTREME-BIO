@@ -56,3 +56,7 @@
 /medici/marco-petrillo /equipe/marco-petrillo.html 301
 /medici/marco-petrillo/ /equipe/marco-petrillo.html 301
 
+# Redirect specialisti-sassari to equipe
+/specialisti-sassari /equipe/ 301
+/specialisti-sassari/ /equipe/ 301
+
