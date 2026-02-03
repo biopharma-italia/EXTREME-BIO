@@ -52,3 +52,7 @@
 /pages/contatti.html /contatti/ 301
 /pages/contatti /contatti/ 301
 
+# Redirect medici/ to equipe/
+/medici/marco-petrillo /equipe/marco-petrillo.html 301
+/medici/marco-petrillo/ /equipe/marco-petrillo.html 301
+
