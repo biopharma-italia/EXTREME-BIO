@@ -6,6 +6,9 @@
 /slim-care-progetto-peso/ /pages/slim-care.html 301
 
 # Redirect Medicina del Lavoro (SEO-friendly URL)
+# Serve il file direttamente con entrambe le varianti URL
+/pages/medicina-del-lavoro-sassari.html /pages/medicina-del-lavoro-sassari.html 200
+/pages/medicina-del-lavoro-sassari /pages/medicina-del-lavoro-sassari.html 200
 /pages/medicina-lavoro /pages/medicina-del-lavoro-sassari.html 301
 /pages/medicina-lavoro.html /pages/medicina-del-lavoro-sassari.html 301
 /pages/medicina-lavoro/ /pages/medicina-del-lavoro-sassari.html 301
