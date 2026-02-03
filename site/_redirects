@@ -60,3 +60,7 @@
 /specialisti-sassari /equipe/ 301
 /specialisti-sassari/ /equipe/ 301
 
+# Redirect screening-inps-sardegna to pages
+/screening-inps-sardegna /pages/screening-inps-sardegna 301
+/screening-inps-sardegna/ /pages/screening-inps-sardegna 301
+
