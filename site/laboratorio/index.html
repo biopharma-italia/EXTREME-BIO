@@ -926,10 +926,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a href="https://wa.me/390799561332?text=Salve%2C%20vorrei%20informazioni%20sugli%20esami%20di%20laboratorio" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #25D366; color: white; padding: 0.9rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
             💬 WhatsApp Diretto
           </a>
-          <a href="https://form.jotform.com/260337295141050" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #FFC107; color: #1a1a1a; padding: 0.9rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-            📅 Prenota
+          <a href="https://form.jotform.com/260337295141050" target="_blank" rel="noopener" class="btn-prenota-pulse" style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #FFC107 0%, #FF9800 100%); color: #1a1a1a; padding: 1rem 2rem; border-radius: 8px; font-weight: 700; font-size: 1.1rem; text-decoration: none; box-shadow: 0 0 0 0 rgba(255,193,7,0.7); animation: pulse-prenota 2s infinite;">
+            📅 Prenota Online
           </a>
         </div>
+        
+        <style>
+          @keyframes pulse-prenota {
+            0% { box-shadow: 0 0 0 0 rgba(255,193,7,0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255,193,7,0); }
+            100% { box-shadow: 0 0 0 0 rgba(255,193,7,0); }
+          }
+          .btn-prenota-pulse:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: 0 8px 25px rgba(255,152,0,0.5) !important;
+            animation: none !important;
+          }
+        </style>
         
         <!-- Trust Badge -->
         <div style="margin-top: 1.5rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem; font-size: 0.9rem; opacity: 0.9;">
@@ -1233,6 +1246,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </a>
           <a href="https://wa.me/390799561332?text=Salve%2C%20vorrei%20prenotare%20esami%20di%20laboratorio" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #25D366; color: white; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 1.1rem;">
             💬 WhatsApp
+          </a>
+          <a href="https://form.jotform.com/260337295141050" target="_blank" rel="noopener" class="btn-prenota-pulse" style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #FFC107 0%, #FF9800 100%); color: #1a1a1a; padding: 1rem 2rem; border-radius: 8px; font-weight: 700; font-size: 1.1rem; text-decoration: none; box-shadow: 0 0 0 0 rgba(255,193,7,0.7); animation: pulse-prenota 2s infinite;">
+            📅 Prenota Online
           </a>
           <a href="https://maps.google.com/?q=40.7267,8.5592" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.2); color: white; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 1.1rem;">
             📍 Indicazioni
