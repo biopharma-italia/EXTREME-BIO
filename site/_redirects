@@ -55,6 +55,8 @@
 # Redirect medici/ to equipe/
 /medici/marco-petrillo /equipe/marco-petrillo.html 301
 /medici/marco-petrillo/ /equipe/marco-petrillo.html 301
+/medici/ginecologo-sassari-francesco-dessole /equipe/francesco-dessole 301
+/medici/ginecologo-sassari-francesco-dessole/ /equipe/francesco-dessole 301
 
 # Redirect specialisti-sassari to equipe
 /specialisti-sassari /equipe/ 301
