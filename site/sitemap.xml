@@ -151,12 +151,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bio-clinic.it/pages/medicina-lavoro.html</loc>
-    <lastmod>2026-02-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://bio-clinic.it/pages/pap-test.html</loc>
     <lastmod>2026-02-01</lastmod>
     <changefreq>monthly</changefreq>
@@ -776,12 +770,6 @@
   </url>
   <url>
     <loc>https://bio-clinic.it/equipe/nicola-frau.html</loc>
-    <lastmod>2026-02-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://bio-clinic.it/equipe/paola-dettori.html</loc>
     <lastmod>2026-02-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

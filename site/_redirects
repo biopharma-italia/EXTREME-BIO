@@ -1,12 +1,16 @@
 # Cloudflare Pages Redirects
 # Docs: https://developers.cloudflare.com/pages/platform/redirects
+# Updated: 2026-02-14 - Structural SEO Cleanup Phase 1
+
+# ============================================================================
+# EXISTING REDIRECTS (PRESERVED)
+# ============================================================================
 
 # Redirect Slim Care progetto peso
 /slim-care-progetto-peso /pages/slim-care.html 301
 /slim-care-progetto-peso/ /pages/slim-care.html 301
 
 # Redirect Medicina del Lavoro (SEO-friendly URL)
-# Nota: Cloudflare Pages gestisce automaticamente .html -> senza estensione
 /pages/medicina-lavoro /pages/medicina-del-lavoro-sassari 301
 /pages/medicina-lavoro.html /pages/medicina-del-lavoro-sassari 301
 /pages/medicina-lavoro/ /pages/medicina-del-lavoro-sassari 301
@@ -23,8 +27,7 @@
 /prestazioni/visita-cardiologica /pages/visita-cardiologica-ecg.html 301
 /prestazioni/ecg /pages/visita-cardiologica-ecg.html 301
 
-# Redirect laboratorio - solo per deep links esami (escludi index.html)
-# Nota: evita match su index.html per prevenire loop
+# Redirect laboratorio - solo per deep links esami
 /laboratorio/esame-* /laboratorio/#:splat 301
 /laboratorio/pack-* /laboratorio/#:splat 301
 
@@ -37,12 +40,10 @@
 /pages/preparazione-esami.html /pages/preparazione-esami.html 200
 
 # SEO: Consolidazione cannibalizzazione Pap Test
-# pap-test-hpv.html -> duopap.html (stesso contenuto, DuoPap più completo)
 /pages/pap-test-hpv.html /pages/duopap.html 301
 /pages/pap-test-hpv /pages/duopap.html 301
 
 # SEO-friendly URL: Mounjaro Tirzepatide Sassari
-# Pagina principale in /mounjaro-tirzepatide-sassari/index.html
 /pages/mounjaro-tirzepatide-sassari.html /mounjaro-tirzepatide-sassari/ 301
 /pages/mounjaro-tirzepatide-sassari /mounjaro-tirzepatide-sassari/ 301
 /mounjaro-sassari /mounjaro-tirzepatide-sassari/ 301
@@ -51,12 +52,6 @@
 # SEO-friendly URL: Contatti
 /pages/contatti.html /contatti/ 301
 /pages/contatti /contatti/ 301
-
-# Redirect medici/ to equipe/
-/medici/marco-petrillo /equipe/marco-petrillo.html 301
-/medici/marco-petrillo/ /equipe/marco-petrillo.html 301
-/medici/ginecologo-sassari-francesco-dessole /equipe/francesco-dessole 301
-/medici/ginecologo-sassari-francesco-dessole/ /equipe/francesco-dessole 301
 
 # Redirect specialisti-sassari to equipe
 /specialisti-sassari /equipe/ 301
@@ -69,4 +64,132 @@
 # Redirect old Perifit URL to new page
 /servizi/esercizi-di-kegel-perifit-riabilitazionepavimento-pelvico /pages/perifit-kegel-sassari 301
 /servizi/esercizi-di-kegel-perifit-riabilitazionepavimento-pelvico/ /pages/perifit-kegel-sassari 301
+
+# ============================================================================
+# NEW: MEDICI TO EQUIPE MIGRATION (Wildcard + Specific)
+# ============================================================================
+
+# Wildcard redirect: /medici/:name -> /equipe/:name
+/medici/:name /equipe/:name 301
+
+# Specific legacy URLs (higher priority than wildcard)
+/medici/marco-petrillo /equipe/marco-petrillo 301
+/medici/marco-petrillo/ /equipe/marco-petrillo 301
+/medici/ginecologo-sassari-francesco-dessole /equipe/francesco-dessole 301
+/medici/ginecologo-sassari-francesco-dessole/ /equipe/francesco-dessole 301
+
+# ============================================================================
+# NEW: META-REFRESH REPLACEMENT (12 pages converted to server-side 301)
+# ============================================================================
+
+# Cardiologia consolidation
+/pages/visita-cardiologica /pages/visita-cardiologica-ecg 301
+/pages/visita-cardiologica.html /pages/visita-cardiologica-ecg.html 301
+/pages/visita-cardiologica/ /pages/visita-cardiologica-ecg 301
+/pages/ecg /pages/visita-cardiologica-ecg 301
+/pages/ecg.html /pages/visita-cardiologica-ecg.html 301
+/pages/ecg/ /pages/visita-cardiologica-ecg 301
+
+# Ginecologia consolidation
+/pages/ecografia-ginecologica /pages/ginecologia 301
+/pages/ecografia-ginecologica.html /pages/ginecologia.html 301
+/pages/ecografia-ginecologica/ /pages/ginecologia 301
+/pages/chirurgia-ginecologica /pages/isteroscopia 301
+/pages/chirurgia-ginecologica.html /pages/isteroscopia.html 301
+/pages/chirurgia-ginecologica/ /pages/isteroscopia 301
+
+# PMA Fertilita consolidation
+/pages/consulto-pma /pages/pma-fertilita 301
+/pages/consulto-pma.html /pages/pma-fertilita.html 301
+/pages/consulto-pma/ /pages/pma-fertilita 301
+/pages/monitoraggio-follicolare /pages/pma-fertilita 301
+/pages/monitoraggio-follicolare.html /pages/pma-fertilita.html 301
+/pages/monitoraggio-follicolare/ /pages/pma-fertilita 301
+
+# Dermatologia consolidation
+/pages/dermatoscopia-digitale /pages/dermatologia 301
+/pages/dermatoscopia-digitale.html /pages/dermatologia.html 301
+/pages/dermatoscopia-digitale/ /pages/dermatologia 301
+
+# Otorinolaringoiatria consolidation
+/pages/impedenzometria /pages/otorinolaringoiatria 301
+/pages/impedenzometria.html /pages/otorinolaringoiatria.html 301
+/pages/impedenzometria/ /pages/otorinolaringoiatria 301
+/pages/rinofibrolaringoscopia /pages/otorinolaringoiatria 301
+/pages/rinofibrolaringoscopia.html /pages/otorinolaringoiatria.html 301
+/pages/rinofibrolaringoscopia/ /pages/otorinolaringoiatria 301
+
+# HPV Test consolidation (to pap-test-hpv, which then redirects to duopap)
+# Note: Direct to duopap to avoid chain
+/pages/hpv-test /pages/duopap 301
+/pages/hpv-test.html /pages/duopap.html 301
+/pages/hpv-test/ /pages/duopap 301
+
+# Ecografia morfologica consolidation
+/pages/translucenza-nucale /pages/ecografia-morfologica 301
+/pages/translucenza-nucale.html /pages/ecografia-morfologica.html 301
+/pages/translucenza-nucale/ /pages/ecografia-morfologica 301
+
+# Endocrinologia consolidation
+/pages/agoaspirato-tiroide /pages/endocrinologia 301
+/pages/agoaspirato-tiroide.html /pages/endocrinologia.html 301
+/pages/agoaspirato-tiroide/ /pages/endocrinologia 301
+
+# ============================================================================
+# NEW: CLEAN URL MAPPINGS FOR SPECIALTY HUBS
+# ============================================================================
+
+# Main specialties - clean URLs
+/cardiologia /pages/cardiologia 301
+/cardiologia/ /pages/cardiologia 301
+/ginecologia /pages/ginecologia 301
+/ginecologia/ /pages/ginecologia 301
+/endocrinologia /pages/endocrinologia 301
+/endocrinologia/ /pages/endocrinologia 301
+/dermatologia /pages/dermatologia 301
+/dermatologia/ /pages/dermatologia 301
+/neurologia /pages/neurologia 301
+/neurologia/ /pages/neurologia 301
+/oculistica /pages/oculistica 301
+/oculistica/ /pages/oculistica 301
+/ortopedia /pages/ortopedia 301
+/ortopedia/ /pages/ortopedia 301
+/pneumologia /pages/pneumologia 301
+/pneumologia/ /pages/pneumologia 301
+/gastroenterologia /pages/gastroenterologia 301
+/gastroenterologia/ /pages/gastroenterologia 301
+/ematologia /pages/ematologia 301
+/ematologia/ /pages/ematologia 301
+/urologia /pages/urologia 301
+/urologia/ /pages/urologia 301
+/reumatologia /pages/reumatologia 301
+/reumatologia/ /pages/reumatologia 301
+/otorinolaringoiatria /pages/otorinolaringoiatria 301
+/otorinolaringoiatria/ /pages/otorinolaringoiatria 301
+/chirurgia-vascolare /pages/chirurgia-vascolare 301
+/chirurgia-vascolare/ /pages/chirurgia-vascolare 301
+
+# Other important pages - clean URLs
+/chi-siamo /pages/chi-siamo 301
+/chi-siamo/ /pages/chi-siamo 301
+/privacy /pages/privacy 301
+/privacy/ /pages/privacy 301
+/cookie /pages/cookie 301
+/cookie/ /pages/cookie 301
+/convenzioni /pages/convenzioni 301
+/convenzioni/ /pages/convenzioni 301
+/pma-fertilita /pages/pma-fertilita 301
+/pma-fertilita/ /pages/pma-fertilita 301
+/slim-care /pages/slim-care 301
+/slim-care/ /pages/slim-care 301
+
+# ============================================================================
+# LEGACY URL PATTERNS (GSC 404 Cleanup)
+# ============================================================================
+
+# Old /servizi/ directory pattern
+/servizi/:service /pages/:service 301
+
+# Old /features/ directory (demo pages - redirect to homepage)
+/features/* / 301
 
