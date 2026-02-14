@@ -51,8 +51,8 @@
 /pages/medicina-lavoro /pages/medicina-del-lavoro-sassari 301
 /pages/medicina-lavoro.html /pages/medicina-del-lavoro-sassari 301
 /pages/medicina-lavoro/ /pages/medicina-del-lavoro-sassari 301
-/medicina-del-lavoro-sassari /pages/medicina-del-lavoro-sassari 301
-/medicina-del-lavoro-sassari/ /pages/medicina-del-lavoro-sassari 301
+# rimosso - migrato
+# rimosso - migrato
 
 # SEO: Consolidazione cannibalizzazione Pap Test
 /pages/pap-test-hpv.html /pages/duopap.html 301
@@ -445,3 +445,9 @@
 /pages/cookie.html /cookie/ 301
 /pages/cookie /cookie/ 301
 # Deploy trigger: 2026-02-14T16:07:52Z
+
+# Medicina del Lavoro - migrato a clean URL
+/pages/medicina-del-lavoro-sassari.html /medicina-del-lavoro/ 301
+/pages/medicina-del-lavoro-sassari /medicina-del-lavoro/ 301
+/medicina-del-lavoro-sassari /medicina-del-lavoro/ 301
+/medicina-del-lavoro-sassari/ /medicina-del-lavoro/ 301
