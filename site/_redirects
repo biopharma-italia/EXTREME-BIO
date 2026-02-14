@@ -1,20 +1,447 @@
 # Cloudflare Pages Redirects
 # Docs: https://developers.cloudflare.com/pages/platform/redirects
+# Updated: 2026-02-14 - Cardiologia Migration + Structural Cleanup
 
-# Static HTML pages - serve directly (no fallback)
+# ============================================================================
+# PRIORITY 1: CARDIOLOGIA CLUSTER MIGRATION (Clean URL Structure)
+# These MUST be processed BEFORE the /pages/*.html wildcard rule
+# ============================================================================
+
+# Hub page: /pages/cardiologia -> /cardiologia/
+/pages/cardiologia /cardiologia/ 301
+/pages/cardiologia.html /cardiologia/ 301
+/pages/cardiologia/ /cardiologia/ 301
+
+# Service pages migration to /cardiologia/servizio/
+/pages/visita-cardiologica-ecg /cardiologia/visita-cardiologica-ecg/ 301
+/pages/visita-cardiologica-ecg.html /cardiologia/visita-cardiologica-ecg/ 301
+/pages/visita-cardiologica-ecg/ /cardiologia/visita-cardiologica-ecg/ 301
+
+/pages/ecocardiogramma /cardiologia/ecocardiogramma/ 301
+/pages/ecocardiogramma.html /cardiologia/ecocardiogramma/ 301
+/pages/ecocardiogramma/ /cardiologia/ecocardiogramma/ 301
+
+/pages/holter-ecg /cardiologia/holter-ecg/ 301
+/pages/holter-ecg.html /cardiologia/holter-ecg/ 301
+/pages/holter-ecg/ /cardiologia/holter-ecg/ 301
+
+/pages/holter-pressorio /cardiologia/holter-pressorio/ 301
+/pages/holter-pressorio.html /cardiologia/holter-pressorio/ 301
+/pages/holter-pressorio/ /cardiologia/holter-pressorio/ 301
+
+/pages/checkup-cardiovascolare /cardiologia/checkup-cardiovascolare/ 301
+/pages/checkup-cardiovascolare.html /cardiologia/checkup-cardiovascolare/ 301
+/pages/checkup-cardiovascolare/ /cardiologia/checkup-cardiovascolare/ 301
+
+# Also redirect old meta-refresh pages to new cardiologia structure
+/pages/visita-cardiologica /cardiologia/visita-cardiologica-ecg/ 301
+/pages/visita-cardiologica.html /cardiologia/visita-cardiologica-ecg/ 301
+/pages/ecg /cardiologia/visita-cardiologica-ecg/ 301
+/pages/ecg.html /cardiologia/visita-cardiologica-ecg/ 301
+
+# ============================================================================
+# PRIORITY 2: OTHER SPECIFIC REDIRECTS (before wildcards)
+# ============================================================================
+
+# Redirect Slim Care progetto peso
+/slim-care-progetto-peso /pages/slim-care.html 301
+/slim-care-progetto-peso/ /pages/slim-care.html 301
+
+# Redirect Medicina del Lavoro (SEO-friendly URL)
+/pages/medicina-lavoro /pages/medicina-del-lavoro-sassari 301
+/pages/medicina-lavoro.html /pages/medicina-del-lavoro-sassari 301
+/pages/medicina-lavoro/ /pages/medicina-del-lavoro-sassari 301
+/medicina-del-lavoro-sassari /pages/medicina-del-lavoro-sassari 301
+/medicina-del-lavoro-sassari/ /pages/medicina-del-lavoro-sassari 301
+
+# SEO: Consolidazione cannibalizzazione Pap Test
+/pages/pap-test-hpv.html /pages/duopap.html 301
+/pages/pap-test-hpv /pages/duopap.html 301
+/pages/hpv-test /pages/duopap 301
+/pages/hpv-test.html /pages/duopap.html 301
+/pages/hpv-test/ /pages/duopap 301
+
+# SEO-friendly URL: Mounjaro Tirzepatide Sassari
+/pages/mounjaro-tirzepatide-sassari.html /mounjaro-tirzepatide-sassari/ 301
+/pages/mounjaro-tirzepatide-sassari /mounjaro-tirzepatide-sassari/ 301
+/mounjaro-sassari /mounjaro-tirzepatide-sassari/ 301
+/tirzepatide-sassari /mounjaro-tirzepatide-sassari/ 301
+
+# SEO-friendly URL: Contatti
+/pages/contatti.html /contatti/ 301
+/pages/contatti /contatti/ 301
+
+# Ginecologia consolidation
+/pages/ecografia-ginecologica /pages/ginecologia 301
+/pages/ecografia-ginecologica.html /pages/ginecologia.html 301
+/pages/chirurgia-ginecologica /pages/isteroscopia 301
+/pages/chirurgia-ginecologica.html /pages/isteroscopia.html 301
+
+# PMA Fertilita consolidation
+/pages/consulto-pma /pages/pma-fertilita 301
+/pages/consulto-pma.html /pages/pma-fertilita.html 301
+/pages/monitoraggio-follicolare /pages/pma-fertilita 301
+/pages/monitoraggio-follicolare.html /pages/pma-fertilita.html 301
+
+# Dermatologia consolidation
+/pages/dermatoscopia-digitale /pages/dermatologia 301
+/pages/dermatoscopia-digitale.html /pages/dermatologia.html 301
+
+# Otorinolaringoiatria consolidation
+/pages/impedenzometria /pages/otorinolaringoiatria 301
+/pages/impedenzometria.html /pages/otorinolaringoiatria.html 301
+/pages/rinofibrolaringoscopia /pages/otorinolaringoiatria 301
+/pages/rinofibrolaringoscopia.html /pages/otorinolaringoiatria.html 301
+
+# Ecografia morfologica consolidation
+/pages/translucenza-nucale /pages/ecografia-morfologica 301
+/pages/translucenza-nucale.html /pages/ecografia-morfologica.html 301
+
+# Endocrinologia consolidation
+/pages/agoaspirato-tiroide /pages/endocrinologia 301
+/pages/agoaspirato-tiroide.html /pages/endocrinologia.html 301
+
+# NOTE: Self-referencing redirects removed on 2026-02-14 (were causing issues)
+# /pages/genetica.html and /pages/preparazione-esami.html now served by wildcard
+
+# ============================================================================
+# PRIORITY 3: STATIC HTML PAGES (wildcard fallback)
+# ============================================================================
+
+# Static HTML pages - serve directly
 /pages/*.html /pages/:splat.html 200
+
+# ============================================================================
+# PRIORITY 4: DIRECTORY/PATTERN REDIRECTS
+# ============================================================================
 
 # Redirect da /prestazioni/ a /pages/
 /prestazioni/:procedure /pages/:procedure.html 301
+/prestazioni/visita-cardiologica /cardiologia/visita-cardiologica-ecg/ 301
+/prestazioni/ecg /cardiologia/visita-cardiologica-ecg/ 301
 
-# Redirect specifici per procedure con nomi diversi
-/prestazioni/visita-cardiologica /pages/visita-cardiologica-ecg.html 301
-/prestazioni/ecg /pages/visita-cardiologica-ecg.html 301
+# Redirect laboratorio deep links
+/laboratorio/esame-* /laboratorio/#:splat 301
+/laboratorio/pack-* /laboratorio/#:splat 301
 
-# Redirect laboratorio
-/laboratorio/:test /laboratorio/index.html#:test 301
+# Redirect servizi/laboratorio-analisi a laboratorio
+/servizi/laboratorio-analisi /laboratorio/ 301
+/servizi/laboratorio-analisi/ /laboratorio/ 301
 
-# Genetica & Preparazione Esami - Explicit routes
-/pages/genetica.html /pages/genetica.html 200
-/pages/preparazione-esami.html /pages/preparazione-esami.html 200
+# Redirect specialisti-sassari to equipe
+/specialisti-sassari /equipe/ 301
+/specialisti-sassari/ /equipe/ 301
 
+# Redirect screening-inps-sardegna to pages
+/screening-inps-sardegna /pages/screening-inps-sardegna 301
+/screening-inps-sardegna/ /pages/screening-inps-sardegna 301
+
+# Redirect old Perifit URL to new page
+/servizi/esercizi-di-kegel-perifit-riabilitazionepavimento-pelvico /pages/perifit-kegel-sassari 301
+/servizi/esercizi-di-kegel-perifit-riabilitazionepavimento-pelvico/ /pages/perifit-kegel-sassari 301
+
+# Medici to Equipe migration
+/medici/:name /equipe/:name 301
+/medici/marco-petrillo /equipe/marco-petrillo 301
+/medici/marco-petrillo/ /equipe/marco-petrillo 301
+/medici/ginecologo-sassari-francesco-dessole /equipe/francesco-dessole 301
+/medici/ginecologo-sassari-francesco-dessole/ /equipe/francesco-dessole 301
+
+# ============================================================================
+# PRIORITY 5: CLEAN URL MAPPINGS FOR SPECIALTY HUBS
+# ============================================================================
+
+# NOTE: /cardiologia/ now serves from /cardiologia/index.html (no redirect needed)
+/ginecologia /pages/ginecologia 301
+/ginecologia/ /pages/ginecologia 301
+/endocrinologia /pages/endocrinologia 301
+/endocrinologia/ /pages/endocrinologia 301
+/dermatologia /pages/dermatologia 301
+/dermatologia/ /pages/dermatologia 301
+/neurologia /pages/neurologia 301
+/neurologia/ /pages/neurologia 301
+/oculistica /pages/oculistica 301
+/oculistica/ /pages/oculistica 301
+/ortopedia /pages/ortopedia 301
+/ortopedia/ /pages/ortopedia 301
+/pneumologia /pages/pneumologia 301
+/pneumologia/ /pages/pneumologia 301
+/gastroenterologia /pages/gastroenterologia 301
+/gastroenterologia/ /pages/gastroenterologia 301
+/ematologia /pages/ematologia 301
+/ematologia/ /pages/ematologia 301
+/urologia /pages/urologia 301
+/urologia/ /pages/urologia 301
+/reumatologia /pages/reumatologia 301
+/reumatologia/ /pages/reumatologia 301
+/otorinolaringoiatria /pages/otorinolaringoiatria 301
+/otorinolaringoiatria/ /pages/otorinolaringoiatria 301
+/chirurgia-vascolare /pages/chirurgia-vascolare 301
+/chirurgia-vascolare/ /pages/chirurgia-vascolare 301
+
+# Other important pages - clean URLs
+/chi-siamo /pages/chi-siamo 301
+/chi-siamo/ /pages/chi-siamo 301
+/privacy /pages/privacy 301
+/privacy/ /pages/privacy 301
+/cookie /pages/cookie 301
+/cookie/ /pages/cookie 301
+/convenzioni /pages/convenzioni 301
+/convenzioni/ /pages/convenzioni 301
+/pma-fertilita /pages/pma-fertilita 301
+/pma-fertilita/ /pages/pma-fertilita 301
+/slim-care /pages/slim-care 301
+/slim-care/ /pages/slim-care 301
+/slim-care-donna /pages/slim-care-donna 301
+/slim-care-donna/ /pages/slim-care-donna 301
+/specialita /pages/specialita 301
+/specialita/ /pages/specialita 301
+/prevenzione /pages/prevenzione 301
+/prevenzione/ /pages/prevenzione 301
+/isterosalpingografia /pages/isterosalpingografia 301
+/isterosalpingografia/ /pages/isterosalpingografia 301
+/isteroscopia /pages/isteroscopia 301
+/isteroscopia/ /pages/isteroscopia 301
+/listino /listino-completo.html 301
+/listino/ /listino-completo.html 301
+
+# Additional service pages - clean URLs
+/medicina-del-lavoro /pages/medicina-del-lavoro-sassari 301
+/medicina-del-lavoro/ /pages/medicina-del-lavoro-sassari 301
+/screening-inps /pages/screening-inps-sardegna 301
+/screening-inps/ /pages/screening-inps-sardegna 301
+/genetica /pages/genetica 301
+/genetica/ /pages/genetica 301
+/preparazione-esami /pages/preparazione-esami 301
+/preparazione-esami/ /pages/preparazione-esami 301
+/symptom-checker /pages/symptom-checker 301
+/symptom-checker/ /pages/symptom-checker 301
+
+# Gynecology services - clean URLs
+/colposcopia /pages/colposcopia 301
+/colposcopia/ /pages/colposcopia 301
+/ecografia-transvaginale /pages/ecografia-transvaginale 301
+/ecografia-transvaginale/ /pages/ecografia-transvaginale 301
+/ecografia-mammaria /pages/ecografia-mammaria 301
+/ecografia-mammaria/ /pages/ecografia-mammaria 301
+/ecografia-pelvica /pages/ecografia-pelvica 301
+/ecografia-pelvica/ /pages/ecografia-pelvica 301
+/ecografia-ostetrica-3d /pages/ecografia-ostetrica-3d 301
+/ecografia-ostetrica-3d/ /pages/ecografia-ostetrica-3d 301
+/ecografia-morfologica /pages/ecografia-morfologica 301
+/ecografia-morfologica/ /pages/ecografia-morfologica 301
+/visita-ginecologica /pages/visita-ginecologica 301
+/visita-ginecologica/ /pages/visita-ginecologica 301
+/assistenza-ostetrica /pages/assistenza-ostetrica 301
+/assistenza-ostetrica/ /pages/assistenza-ostetrica 301
+/corso-preparto /pages/corso-preparto 301
+/corso-preparto/ /pages/corso-preparto 301
+/riabilitazione-pavimento-pelvico /pages/riabilitazione-pavimento-pelvico 301
+/riabilitazione-pavimento-pelvico/ /pages/riabilitazione-pavimento-pelvico 301
+/trattamenti-pavimento-pelvico /pages/trattamenti-pavimento-pelvico 301
+/trattamenti-pavimento-pelvico/ /pages/trattamenti-pavimento-pelvico 301
+/pap-test /pages/pap-test 301
+/pap-test/ /pages/pap-test 301
+/duopap /pages/duopap 301
+/duopap/ /pages/duopap 301
+/hpv-dna-test /pages/hpv-dna-test 301
+/hpv-dna-test/ /pages/hpv-dna-test 301
+/radiofrequenza-vaginale /pages/radiofrequenza-vaginale 301
+/radiofrequenza-vaginale/ /pages/radiofrequenza-vaginale 301
+/caressflow /pages/caressflow 301
+/caressflow/ /pages/caressflow 301
+/perifit-kegel /pages/perifit-kegel-sassari 301
+/perifit-kegel/ /pages/perifit-kegel-sassari 301
+/monitoraggio-follicolare /pages/monitoraggio-follicolare 301
+/monitoraggio-follicolare/ /pages/monitoraggio-follicolare 301
+/ginecologi-sassari /pages/ginecologi-sassari 301
+/ginecologi-sassari/ /pages/ginecologi-sassari 301
+
+# Endocrinology services - clean URLs
+/visita-endocrinologica /pages/visita-endocrinologica 301
+/visita-endocrinologica/ /pages/visita-endocrinologica 301
+/ecografia-tiroidea /pages/ecografia-tiroidea 301
+/ecografia-tiroidea/ /pages/ecografia-tiroidea 301
+/checkup-tiroide /pages/checkup-tiroide 301
+/checkup-tiroide/ /pages/checkup-tiroide 301
+/agoaspirato-tiroide /pages/agoaspirato-tiroide 301
+/agoaspirato-tiroide/ /pages/agoaspirato-tiroide 301
+
+# Other specialty visits - clean URLs
+/visita-dermatologica /pages/visita-dermatologica 301
+/visita-dermatologica/ /pages/visita-dermatologica 301
+/mappatura-nevi /pages/mappatura-nevi 301
+/mappatura-nevi/ /pages/mappatura-nevi 301
+/visita-neurologica /pages/visita-neurologica 301
+/visita-neurologica/ /pages/visita-neurologica 301
+/elettromiografia /pages/elettromiografia 301
+/elettromiografia/ /pages/elettromiografia 301
+/visita-ortopedica /pages/visita-ortopedica 301
+/visita-ortopedica/ /pages/visita-ortopedica 301
+/infiltrazioni-articolari /pages/infiltrazioni-articolari 301
+/infiltrazioni-articolari/ /pages/infiltrazioni-articolari 301
+/visita-oculistica /pages/visita-oculistica 301
+/visita-oculistica/ /pages/visita-oculistica 301
+/campo-visivo /pages/campo-visivo 301
+/campo-visivo/ /pages/campo-visivo 301
+/visita-urologica /pages/visita-urologica 301
+/visita-urologica/ /pages/visita-urologica 301
+/ecografia-prostatica /pages/ecografia-prostatica 301
+/ecografia-prostatica/ /pages/ecografia-prostatica 301
+/visita-pneumologica /pages/visita-pneumologica 301
+/visita-pneumologica/ /pages/visita-pneumologica 301
+/spirometria /pages/spirometria 301
+/spirometria/ /pages/spirometria 301
+/audiometria /pages/audiometria 301
+/audiometria/ /pages/audiometria 301
+/visita-orl /pages/visita-orl 301
+/visita-orl/ /pages/visita-orl 301
+/visita-chirurgia-vascolare /pages/visita-chirurgia-vascolare 301
+/visita-chirurgia-vascolare/ /pages/visita-chirurgia-vascolare 301
+/eco-doppler-arti /pages/eco-doppler-arti 301
+/eco-doppler-arti/ /pages/eco-doppler-arti 301
+/scleroterapia /pages/scleroterapia 301
+/scleroterapia/ /pages/scleroterapia 301
+/visita-ematologica /pages/visita-ematologica 301
+/visita-ematologica/ /pages/visita-ematologica 301
+/visita-reumatologica /pages/visita-reumatologica 301
+/visita-reumatologica/ /pages/visita-reumatologica 301
+/visita-gastroenterologica /pages/visita-gastroenterologica 301
+/visita-gastroenterologica/ /pages/visita-gastroenterologica 301
+/ecografia-addominale /pages/ecografia-addominale 301
+/ecografia-addominale/ /pages/ecografia-addominale 301
+
+# Other services - clean URLs
+/visita-nutrizionale /pages/visita-nutrizionale 301
+/visita-nutrizionale/ /pages/visita-nutrizionale 301
+/visita-internistica /pages/visita-internistica 301
+/visita-internistica/ /pages/visita-internistica 301
+/visita-medicina-lavoro /pages/visita-medicina-lavoro 301
+/visita-medicina-lavoro/ /pages/visita-medicina-lavoro 301
+/visita-medicina-sport /pages/visita-medicina-sport 301
+/visita-medicina-sport/ /pages/visita-medicina-sport 301
+/visita-nefrologica /pages/visita-nefrologica 301
+/visita-nefrologica/ /pages/visita-nefrologica 301
+/visita-pediatrica /pages/visita-pediatrica 301
+/visita-pediatrica/ /pages/visita-pediatrica 301
+/colloquio-psicologico /pages/colloquio-psicologico 301
+/colloquio-psicologico/ /pages/colloquio-psicologico 301
+/visita-fisiatrica /pages/visita-fisiatrica 301
+/visita-fisiatrica/ /pages/visita-fisiatrica 301
+/ecografia-renale /pages/ecografia-renale 301
+/ecografia-renale/ /pages/ecografia-renale 301
+
+# ============================================================================
+# PRIORITY 6: LEGACY URL PATTERNS (catch-all)
+# ============================================================================
+
+# Old /servizi/ directory pattern
+/servizi/:service /pages/:service 301
+
+# Old /features/ directory (demo pages - redirect to homepage)
+/features/* / 301
+
+# ============================================================================
+# PRIORITY 7: EQUIPE MEMBER CLEAN URLs
+# ============================================================================
+
+/equipe/alessandra-musinu /equipe/alessandra-musinu.html 301
+/equipe/alessandra-musinu/ /equipe/alessandra-musinu.html 301
+/equipe/alessandro-pandolfi /equipe/alessandro-pandolfi.html 301
+/equipe/alessandro-pandolfi/ /equipe/alessandro-pandolfi.html 301
+/equipe/alessia-piras /equipe/alessia-piras.html 301
+/equipe/alessia-piras/ /equipe/alessia-piras.html 301
+/equipe/andrea-donato /equipe/andrea-donato.html 301
+/equipe/andrea-donato/ /equipe/andrea-donato.html 301
+/equipe/angelica-fois /equipe/angelica-fois.html 301
+/equipe/angelica-fois/ /equipe/angelica-fois.html 301
+/equipe/angelo-deplano /equipe/angelo-deplano.html 301
+/equipe/angelo-deplano/ /equipe/angelo-deplano.html 301
+/equipe/antonella-galatino /equipe/antonella-galatino.html 301
+/equipe/antonella-galatino/ /equipe/antonella-galatino.html 301
+/equipe/antonella-pruneddu /equipe/antonella-pruneddu.html 301
+/equipe/antonella-pruneddu/ /equipe/antonella-pruneddu.html 301
+/equipe/antonio-michele-cavazzuti /equipe/antonio-michele-cavazzuti.html 301
+/equipe/antonio-michele-cavazzuti/ /equipe/antonio-michele-cavazzuti.html 301
+/equipe/antonio-solinas /equipe/antonio-solinas.html 301
+/equipe/antonio-solinas/ /equipe/antonio-solinas.html 301
+/equipe/camilla-ruzzoli /equipe/camilla-ruzzoli.html 301
+/equipe/camilla-ruzzoli/ /equipe/camilla-ruzzoli.html 301
+/equipe/carlo-burrai /equipe/carlo-burrai.html 301
+/equipe/carlo-burrai/ /equipe/carlo-burrai.html 301
+/equipe/carlos-manuel-cambara-zuniga /equipe/carlos-manuel-cambara-zuniga.html 301
+/equipe/carlos-manuel-cambara-zuniga/ /equipe/carlos-manuel-cambara-zuniga.html 301
+/equipe/cinzia-guarino /equipe/cinzia-guarino.html 301
+/equipe/cinzia-guarino/ /equipe/cinzia-guarino.html 301
+/equipe/daniele-sabiu /equipe/daniele-sabiu.html 301
+/equipe/daniele-sabiu/ /equipe/daniele-sabiu.html 301
+/equipe/fabrizia-caucci /equipe/fabrizia-caucci.html 301
+/equipe/fabrizia-caucci/ /equipe/fabrizia-caucci.html 301
+/equipe/francesco-bussu /equipe/francesco-bussu.html 301
+/equipe/francesco-bussu/ /equipe/francesco-bussu.html 301
+/equipe/francesco-dessole /equipe/francesco-dessole.html 301
+/equipe/francesco-dessole/ /equipe/francesco-dessole.html 301
+/equipe/francesco-santoru /equipe/francesco-santoru.html 301
+/equipe/francesco-santoru/ /equipe/francesco-santoru.html 301
+/equipe/francesco-tolu /equipe/francesco-tolu.html 301
+/equipe/francesco-tolu/ /equipe/francesco-tolu.html 301
+/equipe/gianfranco-manchia /equipe/gianfranco-manchia.html 301
+/equipe/gianfranco-manchia/ /equipe/gianfranco-manchia.html 301
+/equipe/giorgio-chiarelli /equipe/giorgio-chiarelli.html 301
+/equipe/giorgio-chiarelli/ /equipe/giorgio-chiarelli.html 301
+/equipe/giovanna-costa /equipe/giovanna-costa.html 301
+/equipe/giovanna-costa/ /equipe/giovanna-costa.html 301
+/equipe/giuliana-guagnozzi /equipe/giuliana-guagnozzi.html 301
+/equipe/giuliana-guagnozzi/ /equipe/giuliana-guagnozzi.html 301
+/equipe/gloria-reggiani /equipe/gloria-reggiani.html 301
+/equipe/gloria-reggiani/ /equipe/gloria-reggiani.html 301
+/equipe/guido-marongiu /equipe/guido-marongiu.html 301
+/equipe/guido-marongiu/ /equipe/guido-marongiu.html 301
+/equipe/irene-aini /equipe/irene-aini.html 301
+/equipe/irene-aini/ /equipe/irene-aini.html 301
+/equipe/luigi-podda /equipe/luigi-podda.html 301
+/equipe/luigi-podda/ /equipe/luigi-podda.html 301
+/equipe/maddalena-pola /equipe/maddalena-pola.html 301
+/equipe/maddalena-pola/ /equipe/maddalena-pola.html 301
+/equipe/marco-petrillo /equipe/marco-petrillo.html 301
+/equipe/marco-petrillo/ /equipe/marco-petrillo.html 301
+/equipe/margherita-dessole /equipe/margherita-dessole.html 301
+/equipe/margherita-dessole/ /equipe/margherita-dessole.html 301
+/equipe/maria-laura-de-luca /equipe/maria-laura-de-luca.html 301
+/equipe/maria-laura-de-luca/ /equipe/maria-laura-de-luca.html 301
+/equipe/maria-pina-pintus /equipe/maria-pina-pintus.html 301
+/equipe/maria-pina-pintus/ /equipe/maria-pina-pintus.html 301
+/equipe/mariolina-azara /equipe/mariolina-azara.html 301
+/equipe/mariolina-azara/ /equipe/mariolina-azara.html 301
+/equipe/matteo-zucca /equipe/matteo-zucca.html 301
+/equipe/matteo-zucca/ /equipe/matteo-zucca.html 301
+/equipe/niccolo-melis /equipe/niccolo-melis.html 301
+/equipe/niccolo-melis/ /equipe/niccolo-melis.html 301
+/equipe/nicola-frau /equipe/nicola-frau.html 301
+/equipe/nicola-frau/ /equipe/nicola-frau.html 301
+/equipe/paolo-dessole /equipe/paolo-dessole.html 301
+/equipe/paolo-dessole/ /equipe/paolo-dessole.html 301
+/equipe/paolo-franca /equipe/paolo-franca.html 301
+/equipe/paolo-franca/ /equipe/paolo-franca.html 301
+/equipe/paolo-pischedda /equipe/paolo-pischedda.html 301
+/equipe/paolo-pischedda/ /equipe/paolo-pischedda.html 301
+/equipe/pietro-lisai /equipe/pietro-lisai.html 301
+/equipe/pietro-lisai/ /equipe/pietro-lisai.html 301
+/equipe/pietro-pirina /equipe/pietro-pirina.html 301
+/equipe/pietro-pirina/ /equipe/pietro-pirina.html 301
+/equipe/roberto-mancino /equipe/roberto-mancino.html 301
+/equipe/roberto-mancino/ /equipe/roberto-mancino.html 301
+/equipe/salvatore-dessole /equipe/salvatore-dessole.html 301
+/equipe/salvatore-dessole/ /equipe/salvatore-dessole.html 301
+/equipe/sara-uras /equipe/sara-uras.html 301
+/equipe/sara-uras/ /equipe/sara-uras.html 301
+/equipe/sebastiano-traccis /equipe/sebastiano-traccis.html 301
+/equipe/sebastiano-traccis/ /equipe/sebastiano-traccis.html 301
+/equipe/sergio-paolo-sotgia /equipe/sergio-paolo-sotgia.html 301
+/equipe/sergio-paolo-sotgia/ /equipe/sergio-paolo-sotgia.html 301
+/equipe/sonia-bove /equipe/sonia-bove.html 301
+/equipe/sonia-bove/ /equipe/sonia-bove.html 301
+/equipe/speranza-anedda /equipe/speranza-anedda.html 301
+/equipe/speranza-anedda/ /equipe/speranza-anedda.html 301
+/equipe/tonino-bullitta /equipe/tonino-bullitta.html 301
+/equipe/tonino-bullitta/ /equipe/tonino-bullitta.html 301

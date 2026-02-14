@@ -1,0 +1,23 @@
+{
+  "name": "Bio-Clinic Sassari",
+  "short_name": "Bio-Clinic",
+  "description": "Poliambulatorio medico a Sassari con 31 specialità, 67 medici e oltre 1.840 prestazioni",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#00704A",
+  "icons": [
+    {
+      "src": "/images/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

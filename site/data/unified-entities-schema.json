@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Bio-Clinic Unified Entities Schema",
+  "version": "1.0.0",
+  "description": "Single source of truth for all clinical entities",
+  
+  "definitions": {
+    "entity_base": {
+      "type": "object",
+      "required": ["id", "type", "name", "page_url"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$",
+          "description": "Unique identifier (slug format)"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["exam", "procedure", "specialty", "physician", "technology", "pathway", "pack"],
+          "description": "Entity type for categorization and search"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name in Italian"
+        },
+        "name_search": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Alternative names for search (synonyms, abbreviations)"
+        },
+        "specialty_parent": {
+          "type": "string",
+          "description": "Parent specialty ID for fallback navigation"
+        },
+        "category": {
+          "type": "string",
+          "description": "Sub-category within type"
+        },
+        "page_url": {
+          "type": "string",
+          "description": "Relative URL to entity page"
+        },
+        "price": {
+          "type": "number",
+          "description": "Price in EUR (if applicable)"
+        },
+        "bookable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Can be directly booked"
+        },
+        "schema_type": {
+          "type": "string",
+          "enum": ["MedicalTest", "MedicalProcedure", "MedicalSpecialty", "Physician", "MedicalDevice", "Product", "Service"],
+          "description": "Schema.org type for structured data"
+        },
+        "relations": {
+          "type": "object",
+          "properties": {
+            "related_exams": { "type": "array", "items": { "type": "string" } },
+            "related_procedures": { "type": "array", "items": { "type": "string" } },
+            "related_packs": { "type": "array", "items": { "type": "string" } },
+            "physicians": { "type": "array", "items": { "type": "string" } },
+            "pathways": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "meta": {
+          "type": "object",
+          "description": "Type-specific metadata"
+        }
+      }
+    }
+  },
+  
+  "type": "object",
+  "properties": {
+    "version": { "type": "string" },
+    "generated": { "type": "string", "format": "date-time" },
+    "entities": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/entity_base" }
+    }
+  }
+}

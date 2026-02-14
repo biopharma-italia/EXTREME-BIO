@@ -396,6 +396,7 @@ const BioSearchPro = (function() {
 
   /**
    * Esegui ricerca con ranking
+   * INTEGRATO con BioClinicSearchEngine per copertura completa
    */
   function search(query) {
     if (!query || query.length < CONFIG.limits.minQueryLength) {
@@ -408,31 +409,80 @@ const BioSearchPro = (function() {
     // Check Red Flags
     const hasRedFlag = CONFIG.redFlags.some(flag => q.includes(flag));
 
-    // Get all items
+    // Get all items from BioSearchPro
     const allItems = getAllSearchableItems();
 
-    // Score and filter
+    // Score and filter local items
     const scored = allItems
       .map(item => ({
         ...item,
         score: calculateScore(item, q, queryWords)
       }))
-      .filter(item => item.score > CONFIG.weights[item.type]) // Deve avere match
+      .filter(item => item.score > CONFIG.weights[item.type])
       .sort((a, b) => b.score - a.score);
+
+    // INTEGRAZIONE: Usa BioClinicSearchEngine per esami e procedure
+    let unifiedResults = { groups: { tests: [], procedures: [], packs: [], specialties: [] } };
+    if (typeof BioClinicSearchEngine !== 'undefined') {
+      try {
+        unifiedResults = BioClinicSearchEngine.search(query);
+      } catch (e) {
+        console.warn('[BioSearchPro] Unified engine error:', e);
+      }
+    }
+
+    // Converti risultati unificati in formato BioSearchPro
+    const unifiedExams = (unifiedResults.groups?.tests || []).map(t => ({
+      type: 'exam',
+      id: t.id,
+      name: t.name || t.nome,
+      description: t.category || t.cat || '',
+      price: t.price || t.prezzo,
+      icon: '🔬',
+      tags: [],
+      keywords: [t.name?.toLowerCase() || ''],
+      url: '/laboratorio/',
+      bookingType: 'direct',
+      score: t._score || 50
+    }));
+
+    const unifiedProcedures = (unifiedResults.groups?.procedures || []).map(p => ({
+      type: 'specialist',
+      id: p.id,
+      name: p.name || p.nome,
+      description: p.description_short || '',
+      icon: '🩺',
+      tags: [],
+      keywords: [p.name?.toLowerCase() || ''],
+      url: p.url || p.page_url || '#',
+      bookingType: 'direct',
+      score: p._score || 60
+    }));
+
+    // Combina risultati
+    const combinedResults = [...scored, ...unifiedExams, ...unifiedProcedures];
+    
+    // Rimuovi duplicati per ID
+    const uniqueResults = combinedResults.filter((item, index, self) =>
+      index === self.findIndex(t => t.id === item.id)
+    );
+
+    // Ordina per score
+    uniqueResults.sort((a, b) => (b.score || 0) - (a.score || 0));
 
     // Raggruppa per tipo
     const grouped = {
-      packs: scored.filter(i => i.type === 'pack' || i.type === 'pathway'),
-      specialists: scored.filter(i => i.type === 'specialist'),
-      exams: scored.filter(i => i.type === 'exam')
+      packs: uniqueResults.filter(i => i.type === 'pack' || i.type === 'pathway'),
+      specialists: uniqueResults.filter(i => i.type === 'specialist'),
+      exams: uniqueResults.filter(i => i.type === 'exam')
     };
 
     return {
-      results: scored.slice(0, CONFIG.limits.maxResults),
+      results: uniqueResults.slice(0, CONFIG.limits.maxResults),
       grouped: grouped,
       hasRedFlag: hasRedFlag,
       query: query,
-      total: scored.length
+      total: uniqueResults.length
     };
   }
 
@@ -1123,44 +1173,12 @@ const BioSearchPro = (function() {
 
 })();
 
-// Auto-init on DOM ready
-document.addEventListener('DOMContentLoaded', () => {
-  // Init su hero search se presente
-  const heroInput = document.getElementById('hero-search-input');
-  if (heroInput) {
-    BioSearchPro.init('#hero-search-input', '#hero-autocomplete');
-  }
-  
-  // Init su header search se presente
-  if (document.getElementById('header-search-input')) {
-    BioSearchPro.init('#header-search-input', '#header-autocomplete');
-  }
+// DEPRECATED: Auto-init DISABLED - Use bio-clinic-search.js + search-ui.js instead
+// This file is kept for backward compatibility but no longer auto-initializes
 
-  // Init su lab search se presente
-  if (document.getElementById('searchInput')) {
-    BioSearchPro.init('#searchInput', null);
-  }
+// Manual init only - call BioSearchPro.init() explicitly if needed
+console.log('[BioSearchPro] v1.0.0 loaded (AUTO-INIT DISABLED - use BioClinicSearch)');
 
-  // Handler per suggestion tags (Tiroide, Cardiologia, Slim Care, etc.)
-  document.querySelectorAll('[data-search-suggestion]').forEach(tag => {
-    tag.style.cursor = 'pointer';
-    tag.addEventListener('click', () => {
-      const query = tag.dataset.searchSuggestion;
-      const input = document.getElementById('hero-search-input') || 
-                    document.getElementById('header-search-input') ||
-                    document.getElementById('searchInput');
-      
-      if (input) {
-        input.value = query;
-        input.focus();
-        // Trigger input event to show dropdown
-        input.dispatchEvent(new Event('input', { bubbles: true }));
-      }
-    });
-  });
-
-  console.log('[BioSearchPro] v1.0.0 loaded');
-});
-
-// Export globale
+// Export globale (for backward compatibility)
 window.BioSearchPro = BioSearchPro;
+/* Deploy Sun Feb  1 15:52:32 UTC 2026 */

@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PWZWX5RS');</script>
+<!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Genetica e DNA Sassari | Test NIPT, BRCA, Oncogenetica | Bio-Clinic</title>
@@ -29,11 +36,19 @@
   
   <!-- Styles -->
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/bio-clinic-layout.css?v=20260202-triage">
+  <link rel="stylesheet" href="../css/search.css">
+  <link rel="stylesheet" href="../css/unified-search.css?v=20260131">
   <link rel="stylesheet" href="../css/tailwind-utilities.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="../images/favicon.png">
+  <!-- Favicon Completo per Google SERP -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#00704A">
   
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -54,6 +69,11 @@
           "postalCode": "07100",
           "addressCountry": "IT"
         },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 40.7267,
+            "longitude": 8.5592
+          },
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "5",
@@ -184,11 +204,14 @@
   </script>
   
   <style>
+    /* Page-specific styles - Header/Layout managed by bio-clinic-layout.css */
+    
+    /* Hero Section */
     .genetic-hero { background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%); color: white; padding: 4rem 0; }
     .genetic-hero h1 { color: white !important; }
     .genetic-hero p { color: rgba(255,255,255,0.95) !important; }
     .genetic-badge { background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; color: white; }
-    .genetic-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2rem; }
+    .genetic-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
     .genetic-stat { text-align: center; padding: 1rem; background: rgba(255,255,255,0.15); border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); }
     .genetic-stat-value { font-size: 2rem; font-weight: 700; color: #4ade80; }
     .genetic-stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.9); margin-top: 0.25rem; }
@@ -223,38 +246,92 @@
   </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWZWX5RS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
   <!-- Header -->
   <header class="header">
     <div class="container">
-      <a href="../index.html" class="logo">
-        <img src="../images/logo-bioclinic.png" alt="Bio-Clinic Sassari" width="180" height="60">
+      <a href="/" class="logo" title="Torna alla Homepage Bio-Clinic">
+        <img src="../images/logo-bioclinic.png" alt="Bio-Clinic Sassari" width="180" height="60" loading="eager">
       </a>
-      <nav class="nav">
+      <nav class="nav" aria-label="Navigazione principale">
         <ul class="nav-list">
-          <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="slim-care.html" class="nav-link">Slim Care</a></li>
-          <li class="nav-item"><a href="../laboratorio/index.html" class="nav-link">Laboratorio</a></li>
-          <li class="nav-item"><a href="ginecologia.html" class="nav-link">Ginecologia</a></li>
-          <li class="nav-item"><a href="specialita.html" class="nav-link">Specialità</a></li>
-          <li class="nav-item"><a href="contatti.html" class="nav-link">Contatti</a></li>
+          <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Slim Care Medical</a>
+            <div class="nav-dropdown" role="menu">
+              <a href="/slim-care/" role="menuitem"><span style="color: #00A651;">💚</span> Slim Care</a>
+              <a href="/slim-care-donna/" role="menuitem"><span style="color: #E91E8C;">💗</span> Slim Care Donna</a>
+            </div>
+          </li>
+          <li class="nav-item"><a href="/laboratorio/" class="nav-link">Laboratorio</a></li>
+                    <li class="nav-item">
+                        <a href="/medicina-del-lavoro/" class="nav-link" title="Medicina del Lavoro per Aziende">Aziende</a>
+                    </li>
+            <li class="nav-item"><a href="/medicina-del-lavoro/" class="nav-link">Aziende</a></li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Donna & PMA</a>
+            <div class="nav-dropdown" role="menu">
+              <a href="/ginecologia/" role="menuitem"><span>👩‍⚕️</span> Ginecologia</a>
+              <a href="/pma-fertilita/" role="menuitem"><span>👶</span> PMA / Fertilità</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Specialisti</a>
+            <div class="nav-dropdown nav-dropdown-wide" role="menu">
+              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; min-width: 320px;">
+                <a href="/cardiologia/" role="menuitem">❤️ Cardiologia</a>
+                <a href="/endocrinologia/" role="menuitem">🦋 Endocrinologia</a>
+                <a href="/dermatologia/" role="menuitem">🩺 Dermatologia</a>
+                <a href="/neurologia/" role="menuitem">🧠 Neurologia</a>
+              </div>
+              <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
+              <a href="/specialita/" role="menuitem" style="font-weight: 600; color: var(--primary);">Tutte le Specialità →</a>
+            </div>
+          </li>
+          <li class="nav-item"><a href="/contatti/" class="nav-link">Contatti</a></li>
         </ul>
-        <a href="tel:+390799561332" class="btn btn-primary nav-cta">
-          <i class="fas fa-phone"></i> Prenota
+        <a href="tel:+390799561332" class="btn btn-primary nav-cta" style="background: #00704A; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Prenota
         </a>
       </nav>
-      <button class="menu-toggle" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="menu-toggle" aria-label="Apri menu"><span></span><span></span><span></span></button>
     </div>
   </header>
+  
+  <div class="mobile-overlay" aria-hidden="true"></div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Menu mobile" aria-hidden="true">
+    <div class="mobile-nav-header">
+      <img src="../images/logo-bioclinic.png" alt="Bio-Clinic" width="140" height="47">
+      <button class="mobile-nav-close" aria-label="Chiudi menu">&times;</button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="/">🏠 Home</a></li>
+      <li><a href="/slim-care/">💚 Slim Care</a></li>
+      <li><a href="/slim-care-donna/">💗 Slim Care Donna</a></li>
+      <li><a href="/laboratorio/">🔬 Laboratorio</a></li>
+      <li><a href="/ginecologia/">👩‍⚕️ Ginecologia</a></li>
+      <li><a href="/cardiologia/">❤️ Cardiologia</a></li>
+      <li><a href="/specialita/">📋 Tutte le Specialità</a></li>
+      <li><a href="/contatti/">📞 Contatti</a></li>
+    </ul>
+    <div class="mobile-nav-cta">
+      <a href="tel:+390799561332" class="btn btn-primary" style="width: 100%; justify-content: center;">
+        📞 Chiama Ora
+      </a>
+    </div>
+  </nav>
 
   <!-- Breadcrumb -->
   <nav class="breadcrumb-nav" style="background: #f8fafc; padding: 1rem 0;">
     <div class="container">
       <ol class="breadcrumb" style="display: flex; gap: 0.5rem; list-style: none; font-size: 0.9rem;">
-        <li><a href="../index.html" style="color: #3b82f6;">Home</a></li>
+        <li><a href="/" style="color: #3b82f6;">Home</a></li>
         <li style="color: #94a3b8;">/</li>
-        <li><a href="../laboratorio/index.html" style="color: #3b82f6;">Laboratorio</a></li>
+        <li><a href="/laboratorio/" style="color: #3b82f6;">Laboratorio</a></li>
         <li style="color: #94a3b8;">/</li>
         <li style="color: #64748b; font-weight: 500;">Genetica e DNA</li>
       </ol>
@@ -275,12 +352,8 @@
         Carrier Screening, test per PMA e Nutrigenetica. In collaborazione con 
         i migliori laboratori di genomica.
       </p>
-      
+
       <div class="genetic-stats">
-        <div class="genetic-stat">
-          <div class="genetic-stat-value">25+</div>
-          <div class="genetic-stat-label">Test Genetici</div>
-        </div>
         <div class="genetic-stat">
           <div class="genetic-stat-value">7-20gg</div>
           <div class="genetic-stat-label">Tempo Referto</div>
@@ -1048,7 +1121,24 @@
   </main>
 
   <!-- Footer -->
-  <footer class="footer">
+  <!-- E-E-A-T Medical Verification Badge -->
+    <section style="padding: 1.5rem 0; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
+      <div class="container">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; text-align: center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          <span style="color: #166534; font-size: 0.9rem;">
+            <strong>Informazioni verificate dall'équipe medica Bio-Clinic</strong> • 
+            Aggiornato: 01/02/2026 •
+            <a href="/equipe/salvatore-dessole/" style="color: #166534; text-decoration: underline;">Dir. Sanitario: Prof. S. Dessole</a>
+          </span>
+        </div>
+      </div>
+    </section>
+
+<footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div>
@@ -1078,21 +1168,23 @@
         <div>
           <h4 class="footer-title">Percorsi</h4>
           <ul class="footer-links">
-            <li><a href="slim-care.html" title="Scopri il percorso Slim Care">Slim Care</a></li>
-            <li><a href="slim-care-donna.html" title="Scopri Slim Care Donna">Slim Care Donna</a></li>
-            <li><a href="pma-fertilita.html" title="Scopri il percorso PMA e Fertilità">PMA / Fertilità</a></li>
-            <li><a href="cardiologia.html" title="Vai alla sezione Cardiologia">Cardiovascolare</a></li>
+            <li><a href="/slim-care/" title="Scopri il percorso Slim Care">Slim Care</a></li>
+            <li><a href="/slim-care-donna/" title="Scopri Slim Care Donna">Slim Care Donna</a></li>
+            <li><a href="/pma-fertilita/" title="Scopri il percorso PMA e Fertilità">PMA / Fertilità</a></li>
+            <li><a href="/cardiologia/" title="Vai alla sezione Cardiologia">Cardiovascolare</a></li>
+            <li><a href="/convenzioni/" title="Convenzioni Fondi Sanitari">Convenzioni</a></li>
           </ul>
         </div>
         
         <div>
           <h4 class="footer-title">Specialità</h4>
           <ul class="footer-links">
-            <li><a href="ginecologia.html" title="Vai alla sezione Ginecologia">Ginecologia</a></li>
-            <li><a href="cardiologia.html" title="Vai alla sezione Cardiologia">Cardiologia</a></li>
-            <li><a href="endocrinologia.html" title="Vai alla sezione Endocrinologia">Endocrinologia</a></li>
-            <li><a href="../laboratorio/index.html" title="Vai al Laboratorio Analisi">Laboratorio</a></li>
-            <li><a href="specialita.html" title="Vedi tutte le specialità">Tutte le Specialità</a></li>
+            <li><a href="/ginecologia/" title="Vai alla sezione Ginecologia">Ginecologia</a></li>
+            <li><a href="/cardiologia/" title="Vai alla sezione Cardiologia">Cardiologia</a></li>
+            <li><a href="/endocrinologia/" title="Vai alla sezione Endocrinologia">Endocrinologia</a></li>
+            <li><a href="/laboratorio/" title="Vai al Laboratorio Analisi">Laboratorio</a></li>
+            <li><a href="/listino/" title="Listino Prezzi Completo">Listino Prezzi</a></li>
+            <li><a href="/specialita/" title="Vedi tutte le specialità">Tutte le Specialità</a></li>
           </ul>
         </div>
         
@@ -1126,11 +1218,11 @@
       <div class="footer-bottom">
         <div>
           <p>&copy; 2026 Bio Pharma S.r.l. - P.IVA 02869450904 - REA SS-211220</p>
-          <p>Direttore Sanitario: <a href="../equipe/salvatore-dessole.html" class="physician-link" title="Vedi profilo Prof. Salvatore Dessole">Prof. Emerito Salvatore Dessole</a></p>
+          <p>Direttore Sanitario: <a href="/equipe/salvatore-dessole/" class="physician-link" title="Vedi profilo Prof. Salvatore Dessole">Prof. Emerito Salvatore Dessole</a></p>
         </div>
         <div>
-          <a href="privacy.html" title="Leggi la Privacy Policy">Privacy Policy</a> | 
-          <a href="cookie.html" title="Leggi la Cookie Policy">Cookie Policy</a>
+          <a href="/privacy/" title="Leggi la Privacy Policy">Privacy Policy</a> | 
+          <a href="/cookie/" title="Leggi la Cookie Policy">Cookie Policy</a>
         </div>
       </div>
     </div>
