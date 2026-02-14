@@ -853,10 +853,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const pathwaysList = document.getElementById('pathways-list');
         if (physician.pathways && physician.pathways.length > 0) {
           const pathwayInfo = {
-            'slim-care': { icon: '🎯', name: 'Slim Care', desc: 'Percorso dimagrimento con Wegovy/Mounjaro', url: '../pages/slim-care.html' },
-            'slim-care-donna': { icon: '👩', name: 'Slim Care Donna', desc: 'Percorso specifico per PCOS e menopausa', url: '../pages/slim-care-donna.html' },
-            'pma-fertilita': { icon: '👶', name: 'PMA / Fertilità', desc: 'Procreazione Medicalmente Assistita', url: '../pages/pma-fertilita.html' },
-            'checkup-cardiovascolare': { icon: '❤️', name: 'Check-up Cardiovascolare', desc: 'Screening cardiologico completo', url: '../pages/cardiologia.html' }
+            'slim-care': { icon: '🎯', name: 'Slim Care', desc: 'Percorso dimagrimento con Wegovy/Mounjaro', url: '/slim-care/' },
+            'slim-care-donna': { icon: '👩', name: 'Slim Care Donna', desc: 'Percorso specifico per PCOS e menopausa', url: '/slim-care-donna/' },
+            'pma-fertilita': { icon: '👶', name: 'PMA / Fertilità', desc: 'Procreazione Medicalmente Assistita', url: '/pma-fertilita/' },
+            'checkup-cardiovascolare': { icon: '❤️', name: 'Check-up Cardiovascolare', desc: 'Screening cardiologico completo', url: '/cardiologia/' }
           };
           
           pathwaysList.innerHTML = physician.pathways.map(pw => {
