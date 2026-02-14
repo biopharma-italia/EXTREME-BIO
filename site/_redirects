@@ -72,25 +72,19 @@
 /pages/contatti /contatti/ 301
 
 # Ginecologia consolidation
-/pages/ecografia-ginecologica /pages/ginecologia 301
 /pages/ecografia-ginecologica.html /pages/ginecologia.html 301
 /pages/chirurgia-ginecologica /pages/isteroscopia 301
 /pages/chirurgia-ginecologica.html /pages/isteroscopia.html 301
 
 # PMA Fertilita consolidation
-/pages/consulto-pma /pages/pma-fertilita 301
 /pages/consulto-pma.html /pages/pma-fertilita.html 301
-/pages/monitoraggio-follicolare /pages/pma-fertilita 301
 /pages/monitoraggio-follicolare.html /pages/pma-fertilita.html 301
 
 # Dermatologia consolidation
-/pages/dermatoscopia-digitale /pages/dermatologia 301
 /pages/dermatoscopia-digitale.html /pages/dermatologia.html 301
 
 # Otorinolaringoiatria consolidation
-/pages/impedenzometria /pages/otorinolaringoiatria 301
 /pages/impedenzometria.html /pages/otorinolaringoiatria.html 301
-/pages/rinofibrolaringoscopia /pages/otorinolaringoiatria 301
 /pages/rinofibrolaringoscopia.html /pages/otorinolaringoiatria.html 301
 
 # Ecografia morfologica consolidation
@@ -98,7 +92,6 @@
 /pages/translucenza-nucale.html /pages/ecografia-morfologica.html 301
 
 # Endocrinologia consolidation
-/pages/agoaspirato-tiroide /pages/endocrinologia 301
 /pages/agoaspirato-tiroide.html /pages/endocrinologia.html 301
 
 # NOTE: Self-referencing redirects removed on 2026-02-14 (were causing issues)
@@ -152,52 +145,8 @@
 # ============================================================================
 
 # NOTE: /cardiologia/ now serves from /cardiologia/index.html (no redirect needed)
-/ginecologia /pages/ginecologia 301
-/ginecologia/ /pages/ginecologia 301
-/endocrinologia /pages/endocrinologia 301
-/endocrinologia/ /pages/endocrinologia 301
-/dermatologia /pages/dermatologia 301
-/dermatologia/ /pages/dermatologia 301
-/neurologia /pages/neurologia 301
-/neurologia/ /pages/neurologia 301
-/oculistica /pages/oculistica 301
-/oculistica/ /pages/oculistica 301
-/ortopedia /pages/ortopedia 301
-/ortopedia/ /pages/ortopedia 301
-/pneumologia /pages/pneumologia 301
-/pneumologia/ /pages/pneumologia 301
-/gastroenterologia /pages/gastroenterologia 301
-/gastroenterologia/ /pages/gastroenterologia 301
-/ematologia /pages/ematologia 301
-/ematologia/ /pages/ematologia 301
-/urologia /pages/urologia 301
-/urologia/ /pages/urologia 301
-/reumatologia /pages/reumatologia 301
-/reumatologia/ /pages/reumatologia 301
-/otorinolaringoiatria /pages/otorinolaringoiatria 301
-/otorinolaringoiatria/ /pages/otorinolaringoiatria 301
-/chirurgia-vascolare /pages/chirurgia-vascolare 301
-/chirurgia-vascolare/ /pages/chirurgia-vascolare 301
 
 # Other important pages - clean URLs
-/chi-siamo /pages/chi-siamo 301
-/chi-siamo/ /pages/chi-siamo 301
-/privacy /pages/privacy 301
-/privacy/ /pages/privacy 301
-/cookie /pages/cookie 301
-/cookie/ /pages/cookie 301
-/convenzioni /pages/convenzioni 301
-/convenzioni/ /pages/convenzioni 301
-/pma-fertilita /pages/pma-fertilita 301
-/pma-fertilita/ /pages/pma-fertilita 301
-/slim-care /pages/slim-care 301
-/slim-care/ /pages/slim-care 301
-/slim-care-donna /pages/slim-care-donna 301
-/slim-care-donna/ /pages/slim-care-donna 301
-/specialita /pages/specialita 301
-/specialita/ /pages/specialita 301
-/prevenzione /pages/prevenzione 301
-/prevenzione/ /pages/prevenzione 301
 /isterosalpingografia /pages/isterosalpingografia 301
 /isterosalpingografia/ /pages/isterosalpingografia 301
 /isteroscopia /pages/isteroscopia 301
@@ -441,6 +390,52 @@
 /equipe/sergio-paolo-sotgia/ /equipe/sergio-paolo-sotgia.html 301
 /equipe/sonia-bove /equipe/sonia-bove.html 301
 /equipe/sonia-bove/ /equipe/sonia-bove.html 301
+
+# Legacy redirects for migrated pages
+/pages/ginecologia.html /ginecologia/ 301
+/pages/ginecologia /ginecologia/ 301
+/pages/endocrinologia.html /endocrinologia/ 301
+/pages/endocrinologia /endocrinologia/ 301
+/pages/dermatologia.html /dermatologia/ 301
+/pages/dermatologia /dermatologia/ 301
+/pages/neurologia.html /neurologia/ 301
+/pages/neurologia /neurologia/ 301
+/pages/oculistica.html /oculistica/ 301
+/pages/oculistica /oculistica/ 301
+/pages/ortopedia.html /ortopedia/ 301
+/pages/ortopedia /ortopedia/ 301
+/pages/pneumologia.html /pneumologia/ 301
+/pages/pneumologia /pneumologia/ 301
+/pages/gastroenterologia.html /gastroenterologia/ 301
+/pages/gastroenterologia /gastroenterologia/ 301
+/pages/ematologia.html /ematologia/ 301
+/pages/ematologia /ematologia/ 301
+/pages/urologia.html /urologia/ 301
+/pages/urologia /urologia/ 301
+/pages/reumatologia.html /reumatologia/ 301
+/pages/reumatologia /reumatologia/ 301
+/pages/otorinolaringoiatria.html /otorinolaringoiatria/ 301
+/pages/otorinolaringoiatria /otorinolaringoiatria/ 301
+/pages/chirurgia-vascolare.html /chirurgia-vascolare/ 301
+/pages/chirurgia-vascolare /chirurgia-vascolare/ 301
+/pages/slim-care.html /slim-care/ 301
+/pages/slim-care /slim-care/ 301
+/pages/slim-care-donna.html /slim-care-donna/ 301
+/pages/slim-care-donna /slim-care-donna/ 301
+/pages/pma-fertilita.html /pma-fertilita/ 301
+/pages/pma-fertilita /pma-fertilita/ 301
+/pages/chi-siamo.html /chi-siamo/ 301
+/pages/chi-siamo /chi-siamo/ 301
+/pages/specialita.html /specialita/ 301
+/pages/specialita /specialita/ 301
+/pages/prevenzione.html /prevenzione/ 301
+/pages/prevenzione /prevenzione/ 301
+/pages/convenzioni.html /convenzioni/ 301
+/pages/convenzioni /convenzioni/ 301
+/pages/privacy.html /privacy/ 301
+/pages/privacy /privacy/ 301
+/pages/cookie.html /cookie/ 301
+/pages/cookie /cookie/ 301
 /equipe/speranza-anedda /equipe/speranza-anedda.html 301
 /equipe/speranza-anedda/ /equipe/speranza-anedda.html 301
 /equipe/tonino-bullitta /equipe/tonino-bullitta.html 301
