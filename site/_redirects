@@ -48,9 +48,9 @@
 /slim-care-progetto-peso/ /slim-care 301
 
 # Redirect Medicina del Lavoro (SEO-friendly URL)
-/pages/medicina-lavoro /pages/medicina-del-lavoro-sassari 301
-/pages/medicina-lavoro.html /pages/medicina-del-lavoro-sassari 301
-/pages/medicina-lavoro/ /pages/medicina-del-lavoro-sassari 301
+/pages/medicina-lavoro /medicina-del-lavoro/ 301
+/pages/medicina-lavoro.html /medicina-del-lavoro/ 301
+/pages/medicina-lavoro/ /medicina-del-lavoro/ 301
 # rimosso - migrato
 # rimosso - migrato
 
@@ -155,8 +155,6 @@
 /listino/ /listino-completo.html 301
 
 # Additional service pages - clean URLs
-/medicina-del-lavoro /pages/medicina-del-lavoro-sassari 301
-/medicina-del-lavoro/ /pages/medicina-del-lavoro-sassari 301
 /screening-inps /pages/screening-inps-sardegna 301
 /screening-inps/ /pages/screening-inps-sardegna 301
 /genetica /pages/genetica 301
