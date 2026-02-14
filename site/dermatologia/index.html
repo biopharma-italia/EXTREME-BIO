@@ -45,11 +45,44 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="stylesheet" href="../css/search-fix.css?v=1769644194">
   <link rel="stylesheet" href="../css/header-spacing-fix.css?v=1769644194">
   
-  <!-- Schema.org JSON-LD -->
+  <!-- Schema.org JSON-LD - E-E-A-T Optimized -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://bio-clinic.it/dermatologia/#webpage",
+      "url": "https://bio-clinic.it/dermatologia/",
+      "name": "Dermatologia Sassari | 3 Dermatologhe Specializzate | Bio-Clinic",
+      "description": "Dermatologia e Venereologia Bio-Clinic Sassari: visite dermatologiche, mappatura nevi con dermatoscopio digitale, diagnosi patologie cutanee. 3 Dermatologhe specializzate.",
+      "inLanguage": "it-IT",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://bio-clinic.it/#website",
+        "url": "https://bio-clinic.it",
+        "name": "Bio-Clinic Sassari",
+        "publisher": {"@id": "https://bio-clinic.it/#clinic"}
+      },
+      "about": {"@id": "https://bio-clinic.it/dermatologia/#specialty"},
+      "mainEntity": {"@id": "https://bio-clinic.it/dermatologia/#specialty"},
+      "specialty": "Dermatology",
+      "lastReviewed": "2026-02-14",
+      "reviewedBy": {
+        "@type": "Person",
+        "name": "Dott.ssa Giovanna Costa",
+        "jobTitle": "Dermatologa",
+        "worksFor": {"@id": "https://bio-clinic.it/#clinic"}
+      },
+      "medicalAudience": {
+        "@type": "MedicalAudience",
+        "audienceType": "Patient",
+        "healthCondition": {
+          "@type": "MedicalCondition",
+          "name": "Patologie Cutanee"
+        }
+      }
+    },
     {
       "@type": "MedicalSpecialty",
       "@id": "https://bio-clinic.it/dermatologia/#specialty",
@@ -59,21 +92,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     },
     {
       "@type": "MedicalClinic",
-      "name": "Dermatologia - Bio-Clinic Sassari",
+      "@id": "https://bio-clinic.it/#clinic",
+      "name": "Bio-Clinic Sassari - Centro di Dermatologia",
+      "alternateName": "Bio-Clinic Poliambulatorio Medico",
       "medicalSpecialty": "Dermatology",
       "availableService": [
-        {"@type": "MedicalProcedure", "name": "Visita Dermatologica"},
-        {"@type": "MedicalProcedure", "name": "Mappatura Nevi con Dermatoscopio Digitale"},
-        {"@type": "MedicalProcedure", "name": "Dermatoscopia Epiluminescenza"},
-        {"@type": "MedicalProcedure", "name": "Asportazione Neoformazioni Cutanee"},
-        {"@type": "MedicalProcedure", "name": "Terapia Fotodinamica"},
-        {"@type": "MedicalProcedure", "name": "Diagnosi e Trattamento Micosi"},
-        {"@type": "MedicalProcedure", "name": "Trattamento Acne e Cicatrici"},
-        {"@type": "MedicalProcedure", "name": "Trattamento Psoriasi"},
-        {"@type": "MedicalProcedure", "name": "Crioterapia"},
-        {"@type": "MedicalProcedure", "name": "Biopsia Cutanea"}
+        {"@type": "MedicalProcedure", "name": "Visita Dermatologica", "procedureType": "http://schema.org/DiagnosticProcedure"},
+        {"@type": "MedicalProcedure", "name": "Mappatura Nevi con Dermatoscopio Digitale", "procedureType": "http://schema.org/DiagnosticProcedure"},
+        {"@type": "MedicalProcedure", "name": "Dermatoscopia Epiluminescenza", "procedureType": "http://schema.org/DiagnosticProcedure"},
+        {"@type": "MedicalProcedure", "name": "Asportazione Neoformazioni Cutanee", "procedureType": "http://schema.org/TherapeuticProcedure"},
+        {"@type": "MedicalProcedure", "name": "Terapia Fotodinamica", "procedureType": "http://schema.org/TherapeuticProcedure"},
+        {"@type": "MedicalProcedure", "name": "Diagnosi e Trattamento Micosi", "procedureType": "http://schema.org/TherapeuticProcedure"},
+        {"@type": "MedicalProcedure", "name": "Trattamento Acne e Cicatrici", "procedureType": "http://schema.org/TherapeuticProcedure"},
+        {"@type": "MedicalProcedure", "name": "Trattamento Psoriasi", "procedureType": "http://schema.org/TherapeuticProcedure"},
+        {"@type": "MedicalProcedure", "name": "Crioterapia", "procedureType": "http://schema.org/TherapeuticProcedure"},
+        {"@type": "MedicalProcedure", "name": "Biopsia Cutanea", "procedureType": "http://schema.org/DiagnosticProcedure"}
       ],
       "telephone": "+39 079 956 1332",
+      "email": "gestione@bio-clinic.it",
+      "priceRange": "€€",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Via Renzo Mossa, 23",
@@ -82,24 +119,68 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         "addressRegion": "SS",
         "addressCountry": "IT"
       },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 40.7267,
-            "longitude": 8.5592
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5",
-            "reviewCount": "3214",
-            "bestRating": "5",
-            "worstRating": "1"
-          }
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.7267,
+        "longitude": 8.5592
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "07:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:00",
+          "closes": "14:00"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "3214",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    },
+    {
+      "@type": "Physician",
+      "@id": "https://bio-clinic.it/equipe/giovanna-costa/#physician",
+      "name": "Dott.ssa Giovanna Costa",
+      "honorificPrefix": "Dott.ssa",
+      "jobTitle": "Dermatologa",
+      "medicalSpecialty": "Dermatology",
+      "worksFor": {"@id": "https://bio-clinic.it/#clinic"},
+      "knowsAbout": ["Mappatura Nevi", "Dermatoscopia", "Diagnosi Melanoma"]
+    },
+    {
+      "@type": "Physician",
+      "@id": "https://bio-clinic.it/equipe/alessandra-musinu/#physician",
+      "name": "Dott.ssa Alessandra Musinu",
+      "honorificPrefix": "Dott.ssa",
+      "jobTitle": "Dermatologa",
+      "medicalSpecialty": "Dermatology",
+      "worksFor": {"@id": "https://bio-clinic.it/#clinic"},
+      "knowsAbout": ["Psoriasi", "Dermatite", "Acne"]
+    },
+    {
+      "@type": "Physician",
+      "@id": "https://bio-clinic.it/equipe/speranza-anedda/#physician",
+      "name": "Dott.ssa Speranza Anedda",
+      "honorificPrefix": "Dott.ssa",
+      "jobTitle": "Dermatologa",
+      "medicalSpecialty": "Dermatology",
+      "worksFor": {"@id": "https://bio-clinic.it/#clinic"},
+      "knowsAbout": ["Micosi", "Crioterapia", "Infezioni Cutanee"]
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bio-clinic.it/"},
-        {"@type": "ListItem", "position": 2, "name": "Specialità", "item": "https://bio-clinic.it/pages/specialita.html"},
+        {"@type": "ListItem", "position": 2, "name": "Specialità", "item": "https://bio-clinic.it/specialita/"},
         {"@type": "ListItem", "position": 3, "name": "Dermatologia", "item": "https://bio-clinic.it/dermatologia/"}
       ]
     },
