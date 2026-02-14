@@ -101,9 +101,8 @@
 /pages/agoaspirato-tiroide /pages/endocrinologia 301
 /pages/agoaspirato-tiroide.html /pages/endocrinologia.html 301
 
-# Explicit static routes (must be before wildcard)
-/pages/genetica.html /pages/genetica.html 200
-/pages/preparazione-esami.html /pages/preparazione-esami.html 200
+# NOTE: Self-referencing redirects removed on 2026-02-14 (were causing issues)
+# /pages/genetica.html and /pages/preparazione-esami.html now served by wildcard
 
 # ============================================================================
 # PRIORITY 3: STATIC HTML PAGES (wildcard fallback)
@@ -193,6 +192,18 @@
 /pma-fertilita/ /pages/pma-fertilita 301
 /slim-care /pages/slim-care 301
 /slim-care/ /pages/slim-care 301
+/slim-care-donna /pages/slim-care-donna 301
+/slim-care-donna/ /pages/slim-care-donna 301
+/specialita /pages/specialita 301
+/specialita/ /pages/specialita 301
+/prevenzione /pages/prevenzione 301
+/prevenzione/ /pages/prevenzione 301
+/isterosalpingografia /pages/isterosalpingografia 301
+/isterosalpingografia/ /pages/isterosalpingografia 301
+/isteroscopia /pages/isteroscopia 301
+/isteroscopia/ /pages/isteroscopia 301
+/listino /listino-completo.html 301
+/listino/ /listino-completo.html 301
 
 # ============================================================================
 # PRIORITY 6: LEGACY URL PATTERNS (catch-all)
