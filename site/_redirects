@@ -44,8 +44,8 @@
 # ============================================================================
 
 # Redirect Slim Care progetto peso
-/slim-care-progetto-peso /pages/slim-care.html 301
-/slim-care-progetto-peso/ /pages/slim-care.html 301
+/slim-care-progetto-peso /slim-care 301
+/slim-care-progetto-peso/ /slim-care 301
 
 # Redirect Medicina del Lavoro (SEO-friendly URL)
 /pages/medicina-lavoro /pages/medicina-del-lavoro-sassari 301
@@ -72,27 +72,27 @@
 /pages/contatti /contatti/ 301
 
 # Ginecologia consolidation
-/pages/ecografia-ginecologica.html /pages/ginecologia.html 301
+/pages/ecografia-ginecologica.html /ginecologia 301
 /pages/chirurgia-ginecologica /pages/isteroscopia 301
 /pages/chirurgia-ginecologica.html /pages/isteroscopia.html 301
 
 # PMA Fertilita consolidation
-/pages/consulto-pma.html /pages/pma-fertilita.html 301
-/pages/monitoraggio-follicolare.html /pages/pma-fertilita.html 301
+/pages/consulto-pma.html /pma-fertilita 301
+/pages/monitoraggio-follicolare.html /pma-fertilita 301
 
 # Dermatologia consolidation
-/pages/dermatoscopia-digitale.html /pages/dermatologia.html 301
+/pages/dermatoscopia-digitale.html /dermatologia 301
 
 # Otorinolaringoiatria consolidation
-/pages/impedenzometria.html /pages/otorinolaringoiatria.html 301
-/pages/rinofibrolaringoscopia.html /pages/otorinolaringoiatria.html 301
+/pages/impedenzometria.html /otorinolaringoiatria 301
+/pages/rinofibrolaringoscopia.html /otorinolaringoiatria 301
 
 # Ecografia morfologica consolidation
 /pages/translucenza-nucale /pages/ecografia-morfologica 301
 /pages/translucenza-nucale.html /pages/ecografia-morfologica.html 301
 
 # Endocrinologia consolidation
-/pages/agoaspirato-tiroide.html /pages/endocrinologia.html 301
+/pages/agoaspirato-tiroide.html /endocrinologia 301
 
 # NOTE: Self-referencing redirects removed on 2026-02-14 (were causing issues)
 # /pages/genetica.html and /pages/preparazione-esami.html now served by wildcard
@@ -392,6 +392,14 @@
 /equipe/sonia-bove/ /equipe/sonia-bove.html 301
 
 # Legacy redirects for migrated pages
+/equipe/speranza-anedda /equipe/speranza-anedda.html 301
+/equipe/speranza-anedda/ /equipe/speranza-anedda.html 301
+/equipe/tonino-bullitta /equipe/tonino-bullitta.html 301
+/equipe/tonino-bullitta/ /equipe/tonino-bullitta.html 301
+
+# ============================================================================
+# LEGACY REDIRECTS: /pages/xxx → /xxx/ (per retrocompatibilità)
+# ============================================================================
 /pages/ginecologia.html /ginecologia/ 301
 /pages/ginecologia /ginecologia/ 301
 /pages/endocrinologia.html /endocrinologia/ 301
@@ -436,7 +444,3 @@
 /pages/privacy /privacy/ 301
 /pages/cookie.html /cookie/ 301
 /pages/cookie /cookie/ 301
-/equipe/speranza-anedda /equipe/speranza-anedda.html 301
-/equipe/speranza-anedda/ /equipe/speranza-anedda.html 301
-/equipe/tonino-bullitta /equipe/tonino-bullitta.html 301
-/equipe/tonino-bullitta/ /equipe/tonino-bullitta.html 301
