@@ -13,7 +13,7 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://bio-clinic.it/pages/cardiologia.html</loc>
+    <loc>https://bio-clinic.it/cardiologia/</loc>
     <lastmod>2026-02-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -73,7 +73,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bio-clinic.it/pages/checkup-cardiovascolare.html</loc>
+    <loc>https://bio-clinic.it/cardiologia/checkup-cardiovascolare/</loc>
     <lastmod>2026-02-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -163,7 +163,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bio-clinic.it/pages/visita-cardiologica-ecg.html</loc>
+    <loc>https://bio-clinic.it/cardiologia/visita-cardiologica-ecg/</loc>
     <lastmod>2026-02-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -385,7 +385,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bio-clinic.it/pages/ecocardiogramma.html</loc>
+    <loc>https://bio-clinic.it/cardiologia/ecocardiogramma/</loc>
     <lastmod>2026-02-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -415,13 +415,13 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bio-clinic.it/pages/holter-ecg.html</loc>
+    <loc>https://bio-clinic.it/cardiologia/holter-ecg/</loc>
     <lastmod>2026-02-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bio-clinic.it/pages/holter-pressorio.html</loc>
+    <loc>https://bio-clinic.it/cardiologia/holter-pressorio/</loc>
     <lastmod>2026-02-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

@@ -140,8 +140,9 @@
 # ============================================================================
 
 # Main specialties - clean URLs
-/cardiologia /pages/cardiologia 301
-/cardiologia/ /pages/cardiologia 301
+# NOTE: /cardiologia/ now serves from /cardiologia/index.html (directory structure)
+# /cardiologia /pages/cardiologia 301  # REMOVED - now directory
+# /cardiologia/ /pages/cardiologia 301 # REMOVED - now directory
 /ginecologia /pages/ginecologia 301
 /ginecologia/ /pages/ginecologia 301
 /endocrinologia /pages/endocrinologia 301
@@ -193,3 +194,37 @@
 # Old /features/ directory (demo pages - redirect to homepage)
 /features/* / 301
 
+
+# ============================================================================
+# CARDIOLOGIA CLUSTER MIGRATION (Clean URL Structure)
+# Updated: 2026-02-14 - Phase 3 Migration
+# ============================================================================
+
+# Hub page: /pages/cardiologia.html -> /cardiologia/
+/pages/cardiologia /cardiologia/ 301
+/pages/cardiologia.html /cardiologia/ 301
+/pages/cardiologia/ /cardiologia/ 301
+
+# Service pages migration to /cardiologia/servizio/
+/pages/visita-cardiologica-ecg /cardiologia/visita-cardiologica-ecg/ 301
+/pages/visita-cardiologica-ecg.html /cardiologia/visita-cardiologica-ecg/ 301
+/pages/visita-cardiologica-ecg/ /cardiologia/visita-cardiologica-ecg/ 301
+
+/pages/ecocardiogramma /cardiologia/ecocardiogramma/ 301
+/pages/ecocardiogramma.html /cardiologia/ecocardiogramma/ 301
+/pages/ecocardiogramma/ /cardiologia/ecocardiogramma/ 301
+
+/pages/holter-ecg /cardiologia/holter-ecg/ 301
+/pages/holter-ecg.html /cardiologia/holter-ecg/ 301
+/pages/holter-ecg/ /cardiologia/holter-ecg/ 301
+
+/pages/holter-pressorio /cardiologia/holter-pressorio/ 301
+/pages/holter-pressorio.html /cardiologia/holter-pressorio/ 301
+/pages/holter-pressorio/ /cardiologia/holter-pressorio/ 301
+
+/pages/checkup-cardiovascolare /cardiologia/checkup-cardiovascolare/ 301
+/pages/checkup-cardiovascolare.html /cardiologia/checkup-cardiovascolare/ 301
+/pages/checkup-cardiovascolare/ /cardiologia/checkup-cardiovascolare/ 301
+
+# Override previous /cardiologia redirect (now serves directory)
+# Remove the old redirect to /pages/cardiologia and let it serve /cardiologia/index.html
