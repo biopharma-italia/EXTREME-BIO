@@ -56,42 +56,6 @@
 # Both /slug and /slug/ variants needed (CF Pages doesn't auto-strip trailing /)
 # These root dirs are excluded from deploy; redirect rules handle both variants.
 # ============================================
-/assistenza-ostetrica /ginecologia/assistenza-ostetrica/ 301
-/assistenza-ostetrica/ /ginecologia/assistenza-ostetrica/ 301
-/colposcopia /ginecologia/colposcopia/ 301
-/colposcopia/ /ginecologia/colposcopia/ 301
-/corso-preparto /ginecologia/corso-preparto/ 301
-/corso-preparto/ /ginecologia/corso-preparto/ 301
-/duopap /ginecologia/duopap/ 301
-/duopap/ /ginecologia/duopap/ 301
-/ecografia-mammaria /ginecologia/ecografia-mammaria/ 301
-/ecografia-mammaria/ /ginecologia/ecografia-mammaria/ 301
-/ecografia-morfologica /ginecologia/ecografia-morfologica/ 301
-/ecografia-morfologica/ /ginecologia/ecografia-morfologica/ 301
-/ecografia-ostetrica-3d /ginecologia/ecografia-ostetrica-3d/ 301
-/ecografia-ostetrica-3d/ /ginecologia/ecografia-ostetrica-3d/ 301
-/ecografia-pelvica /ginecologia/ecografia-pelvica/ 301
-/ecografia-pelvica/ /ginecologia/ecografia-pelvica/ 301
-/ecografia-transvaginale /ginecologia/ecografia-transvaginale/ 301
-/ecografia-transvaginale/ /ginecologia/ecografia-transvaginale/ 301
-/ginecologi-sassari /ginecologia/ginecologi-sassari/ 301
-/ginecologi-sassari/ /ginecologia/ginecologi-sassari/ 301
-/hpv-dna-test /ginecologia/hpv-dna-test/ 301
-/hpv-dna-test/ /ginecologia/hpv-dna-test/ 301
-/pap-test /ginecologia/pap-test/ 301
-/pap-test/ /ginecologia/pap-test/ 301
-/pap-test-hpv /ginecologia/pap-test-hpv/ 301
-/pap-test-hpv/ /ginecologia/pap-test-hpv/ 301
-/perifit-kegel-sassari /ginecologia/perifit-kegel-sassari/ 301
-/perifit-kegel-sassari/ /ginecologia/perifit-kegel-sassari/ 301
-/radiofrequenza-vaginale /ginecologia/radiofrequenza-vaginale/ 301
-/radiofrequenza-vaginale/ /ginecologia/radiofrequenza-vaginale/ 301
-/riabilitazione-pavimento-pelvico /ginecologia/riabilitazione-pavimento-pelvico/ 301
-/riabilitazione-pavimento-pelvico/ /ginecologia/riabilitazione-pavimento-pelvico/ 301
-/trattamenti-pavimento-pelvico /ginecologia/trattamenti-pavimento-pelvico/ 301
-/trattamenti-pavimento-pelvico/ /ginecologia/trattamenti-pavimento-pelvico/ 301
-/visita-ginecologica /ginecologia/visita-ginecologica/ 301
-/visita-ginecologica/ /ginecologia/visita-ginecologica/ 301
 
 # ============================================
 # CROSS-CANONICAL (14 static — legacy slugs that don't exist as physical dirs)
