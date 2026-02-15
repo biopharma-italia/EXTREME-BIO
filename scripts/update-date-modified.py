@@ -303,7 +303,8 @@ def main():
     print(f"  Visible badge: {stats['badge']}")
     print(f"Skipped (meta-refresh): {len(skipped.get('skip-refresh', []))}")
 
-    return 0 if modified > 0 else 1
+    # Always return 0 (success) — even if no changes needed (idempotent)
+    return 0
 
 
 if __name__ == "__main__":
