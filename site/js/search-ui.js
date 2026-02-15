@@ -432,7 +432,7 @@
                         </div>
                     `).join('')}
                     <div class="search-footer">
-                        <a href="/pages/ricerca.html?q=${encodeURIComponent(query)}" class="search-all-link">
+                        <a href="/prestazioni/?q=${encodeURIComponent(query)}" class="search-all-link">
                             Vedi tutti i risultati per "${query}" →
                         </a>
                     </div>
@@ -454,7 +454,7 @@
                         </a>
                     `).join('')}
                     ${flatResults.length > 5 ? `
-                        <a href="/pages/ricerca.html?q=${encodeURIComponent(query)}" class="search-more-link">
+                        <a href="/prestazioni/?q=${encodeURIComponent(query)}" class="search-more-link">
                             Altri risultati →
                         </a>
                     ` : ''}
@@ -493,8 +493,8 @@
                     <p>Nessun risultato per "<strong>${query}</strong>"</p>
                     <p class="search-suggestions">Prova a cercare:</p>
                     <div class="search-suggestion-links">
-                        <a href="/pages/ginecologia.html">Ginecologia</a>
-                        <a href="/pages/cardiologia.html">Cardiologia</a>
+                        <a href="/ginecologia/">Ginecologia</a>
+                        <a href="/cardiologia/">Cardiologia</a>
                         <a href="/laboratorio/">Laboratorio Analisi</a>
                     </div>
                 </div>

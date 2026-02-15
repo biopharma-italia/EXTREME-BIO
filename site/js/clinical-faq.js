@@ -463,7 +463,7 @@ const ClinicalFAQ = (function() {
                         <li>Miglioramento parametri metabolici</li>
                         <li>Riduzione rischio cardiovascolare</li>
                     </ul>
-                    <p><em>Presso Bio-Clinic offriamo il percorso <a href="slim-care.html">Slim Care</a> con Wegovy® e Mounjaro® sotto supervisione medica specializzata.</em></p>`
+                    <p><em>Presso Bio-Clinic offriamo il percorso <a href="/slim-care/">Slim Care</a> con Wegovy® e Mounjaro® sotto supervisione medica specializzata.</em></p>`
                 }
             ]
         },
@@ -1022,7 +1022,7 @@ const ClinicalFAQ = (function() {
         
         return {
             "@type": "FAQPage",
-            "@id": `https://bio-clinic.it/pages/${specialty}.html#faq`,
+            "@id": `https://bio-clinic.it/${specialty}/#faq`,
             "mainEntity": data.items.map(item => ({
                 "@type": "Question",
                 "name": item.question,
@@ -1224,7 +1224,7 @@ const ClinicalFAQ = (function() {
     // Auto-inject FAQ in pagine specialità
     function autoInjectFAQ() {
         const pathname = window.location.pathname;
-        const match = pathname.match(/pages\/([^.]+)\.html/);
+        const match = pathname.match(/\/([^\/]+)\//);
         
         if (match) {
             const specialty = match[1];

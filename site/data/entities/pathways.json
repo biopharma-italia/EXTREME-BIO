@@ -32,7 +32,7 @@
       ],
       "contraindications": ["Gravidanza", "Allattamento", "Carcinoma midollare tiroide", "MEN 2"],
       "cta_primary": "Scopri Slim Care",
-      "cta_url": "/pages/slim-care.html",
+      "cta_url": "/slim-care/",
       "specialty_id": "endocrinologia",
       "schema_type": "MedicalTherapy"
     },
@@ -65,7 +65,7 @@
       ],
       "contraindications": ["Gravidanza"],
       "cta_primary": "Scopri Slim Care Donna",
-      "cta_url": "/pages/slim-care-donna.html",
+      "cta_url": "/slim-care-donna/",
       "specialty_id": "ginecologia",
       "schema_type": "MedicalTherapy"
     },
@@ -98,7 +98,7 @@
       ],
       "contraindications": [],
       "cta_primary": "Scopri il Percorso Fertilità",
-      "cta_url": "/pages/pma-fertilita.html",
+      "cta_url": "/pma-fertilita/",
       "specialty_id": "ginecologia",
       "schema_type": "MedicalTherapy"
     },
@@ -131,7 +131,7 @@
       ],
       "contraindications": [],
       "cta_primary": "Prenota Check-up Tiroide",
-      "cta_url": "/pages/endocrinologia.html",
+      "cta_url": "/endocrinologia/",
       "specialty_id": "endocrinologia",
       "schema_type": "MedicalTest"
     },
@@ -164,7 +164,7 @@
       ],
       "contraindications": [],
       "cta_primary": "Prenota Check-up Cuore",
-      "cta_url": "/pages/cardiologia.html",
+      "cta_url": "/cardiologia/",
       "specialty_id": "cardiologia",
       "schema_type": "MedicalTest"
     },
@@ -197,7 +197,7 @@
       ],
       "contraindications": [],
       "cta_primary": "Prenota Check-up Donna",
-      "cta_url": "/pages/laboratorio.html",
+      "cta_url": "/laboratorio/",
       "specialty_id": "ginecologia",
       "schema_type": "MedicalTest"
     },
@@ -230,7 +230,7 @@
       ],
       "contraindications": [],
       "cta_primary": "Prenota Check-up Donna Over 40",
-      "cta_url": "/pages/laboratorio.html",
+      "cta_url": "/laboratorio/",
       "specialty_id": "ginecologia",
       "schema_type": "MedicalTest"
     },
@@ -263,7 +263,7 @@
       ],
       "contraindications": [],
       "cta_primary": "Prenota Check-up Uomo",
-      "cta_url": "/pages/laboratorio.html",
+      "cta_url": "/laboratorio/",
       "specialty_id": "laboratorio",
       "schema_type": "MedicalTest"
     },
@@ -296,7 +296,7 @@
       ],
       "contraindications": [],
       "cta_primary": "Prenota Check-up Base",
-      "cta_url": "/pages/laboratorio.html",
+      "cta_url": "/laboratorio/",
       "specialty_id": "laboratorio",
       "schema_type": "MedicalTest"
     },
@@ -329,7 +329,7 @@
       ],
       "contraindications": [],
       "cta_primary": "Prenota Profilo Tiroideo",
-      "cta_url": "/pages/laboratorio.html",
+      "cta_url": "/laboratorio/",
       "specialty_id": "laboratorio",
       "schema_type": "MedicalTest"
     },
@@ -362,7 +362,7 @@
       ],
       "contraindications": [],
       "cta_primary": "Prenota Screening Allergie",
-      "cta_url": "/pages/laboratorio.html",
+      "cta_url": "/laboratorio/",
       "specialty_id": "laboratorio",
       "schema_type": "MedicalTest"
     },
@@ -395,7 +395,7 @@
       ],
       "contraindications": [],
       "cta_primary": "Prenota Check-up Pre-Gravidanza",
-      "cta_url": "/pages/laboratorio.html",
+      "cta_url": "/laboratorio/",
       "specialty_id": "ginecologia",
       "schema_type": "MedicalTest"
     }

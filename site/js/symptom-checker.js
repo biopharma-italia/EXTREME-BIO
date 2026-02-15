@@ -762,7 +762,7 @@ const SymptomChecker = (function() {
                     <div class="sc-suggestion-list">
             `;
             results.suggestions.pathways.forEach(pathway => {
-                const pathwayUrl = `/pages/${pathway}.html`;
+                const pathwayUrl = `/${pathway}/`;
                 const pathwayLabel = formatLabel(pathway);
                 html += `
                         <a href="${pathwayUrl}" class="sc-suggestion-item sc-pathway-item">
@@ -786,7 +786,7 @@ const SymptomChecker = (function() {
                     <div class="sc-suggestion-list">
             `;
             results.suggestions.specialists.forEach(specialist => {
-                const specUrl = `/pages/${specialist}.html`;
+                const specUrl = `/${specialist}/`;
                 const specLabel = formatLabel(specialist);
                 html += `
                         <a href="${specUrl}" class="sc-suggestion-item sc-specialist-item">
@@ -810,7 +810,7 @@ const SymptomChecker = (function() {
                     <div class="sc-suggestion-list">
             `;
             results.suggestions.packs.forEach(pack => {
-                const packUrl = `/laboratorio/index.html#pack-${pack}`;
+                const packUrl = `/laboratorio/#pack-${pack}`;
                 const packLabel = formatLabel(pack);
                 html += `
                         <a href="${packUrl}" class="sc-suggestion-item sc-pack-item">
@@ -841,7 +841,7 @@ const SymptomChecker = (function() {
             });
             html += `
                     </div>
-                    <a href="/laboratorio/index.html" class="sc-view-all">Vedi tutti gli esami →</a>
+                    <a href="/laboratorio/" class="sc-view-all">Vedi tutti gli esami →</a>
                 </div>
             `;
         }
@@ -856,7 +856,7 @@ const SymptomChecker = (function() {
                         <a href="tel:${CONFIG.clinicPhone}" class="sc-cta-btn sc-cta-primary">
                             📞 Chiama 079 956 1332
                         </a>
-                        <a href="/pages/contatti.html" class="sc-cta-btn sc-cta-secondary">
+                        <a href="/contatti/" class="sc-cta-btn sc-cta-secondary">
                             ✉️ Contattaci
                         </a>
                     </div>

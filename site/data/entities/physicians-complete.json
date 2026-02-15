@@ -6,52 +6,52 @@
   "specialties": {
     "ginecologia": {
       "name": "Ginecologia e Ostetricia",
-      "page": "/pages/ginecologia.html",
+      "page": "/ginecologia/",
       "color": "#E91E8C"
     },
     "ostetricia": {
       "name": "Ostetricia",
-      "page": "/pages/ginecologia.html",
+      "page": "/ginecologia/",
       "color": "#E91E8C"
     },
     "cardiologia": {
       "name": "Cardiologia",
-      "page": "/pages/cardiologia.html",
+      "page": "/cardiologia/",
       "color": "#E53935"
     },
     "dermatologia": {
       "name": "Dermatologia",
-      "page": "/pages/dermatologia.html",
+      "page": "/dermatologia/",
       "color": "#8E24AA"
     },
     "endocrinologia": {
       "name": "Endocrinologia",
-      "page": "/pages/endocrinologia.html",
+      "page": "/endocrinologia/",
       "color": "#43A047"
     },
     "neurologia": {
       "name": "Neurologia",
-      "page": "/pages/neurologia.html",
+      "page": "/neurologia/",
       "color": "#5C6BC0"
     },
     "oculistica": {
       "name": "Oculistica",
-      "page": "/pages/oculistica.html",
+      "page": "/oculistica/",
       "color": "#00ACC1"
     },
     "otorinolaringoiatria": {
       "name": "Otorinolaringoiatria",
-      "page": "/pages/otorinolaringoiatria.html",
+      "page": "/otorinolaringoiatria/",
       "color": "#F4511E"
     },
     "ortopedia": {
       "name": "Ortopedia e Traumatologia",
-      "page": "/pages/ortopedia.html",
+      "page": "/ortopedia/",
       "color": "#6D4C41"
     },
     "gastroenterologia": {
       "name": "Gastroenterologia",
-      "page": "/pages/gastroenterologia.html",
+      "page": "/gastroenterologia/",
       "color": "#FF8F00"
     },
     "medicina-interna": {
@@ -66,27 +66,27 @@
     },
     "pneumologia": {
       "name": "Pneumologia",
-      "page": "/pages/pneumologia.html",
+      "page": "/pneumologia/",
       "color": "#0288D1"
     },
     "ematologia": {
       "name": "Ematologia",
-      "page": "/pages/ematologia.html",
+      "page": "/ematologia/",
       "color": "#C62828"
     },
     "reumatologia": {
       "name": "Reumatologia",
-      "page": "/pages/reumatologia.html",
+      "page": "/reumatologia/",
       "color": "#00796B"
     },
     "urologia": {
       "name": "Urologia e Andrologia",
-      "page": "/pages/urologia.html",
+      "page": "/urologia/",
       "color": "#1565C0"
     },
     "chirurgia-vascolare": {
       "name": "Chirurgia Vascolare",
-      "page": "/pages/chirurgia-vascolare.html",
+      "page": "/chirurgia-vascolare/",
       "color": "#AD1457"
     },
     "ecografia": {
@@ -126,7 +126,7 @@
     },
     "laboratorio": {
       "name": "Laboratorio Analisi",
-      "page": "/pages/laboratorio.html",
+      "page": "/laboratorio/",
       "color": "#26A69A"
     }
   },

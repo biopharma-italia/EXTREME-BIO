@@ -396,32 +396,32 @@
     "ginecologia": {
       "name": "Ginecologia e Ostetricia",
       "slug": "ginecologia",
-      "page": "/pages/ginecologia.html"
+      "page": "/ginecologia/"
     },
     "ostetricia": {
       "name": "Ostetricia",
       "slug": "ginecologia",
-      "page": "/pages/ginecologia.html"
+      "page": "/ginecologia/"
     },
     "cardiologia": {
       "name": "Cardiologia",
       "slug": "cardiologia",
-      "page": "/pages/cardiologia.html"
+      "page": "/cardiologia/"
     },
     "endocrinologia": {
       "name": "Endocrinologia",
       "slug": "endocrinologia",
-      "page": "/pages/endocrinologia.html"
+      "page": "/endocrinologia/"
     },
     "dermatologia": {
       "name": "Dermatologia e Venereologia",
       "slug": "dermatologia",
-      "page": "/pages/dermatologia.html"
+      "page": "/dermatologia/"
     },
     "laboratorio": {
       "name": "Laboratorio Analisi",
       "slug": "laboratorio",
-      "page": "/pages/laboratorio.html"
+      "page": "/laboratorio/"
     },
     "nutrizione": {
       "name": "Nutrizione Clinica",
@@ -436,17 +436,17 @@
     "neurologia": {
       "name": "Neurologia",
       "slug": "neurologia",
-      "page": "/pages/neurologia.html"
+      "page": "/neurologia/"
     },
     "oculistica": {
       "name": "Oculistica",
       "slug": "oculistica",
-      "page": "/pages/oculistica.html"
+      "page": "/oculistica/"
     },
     "ortopedia": {
       "name": "Ortopedia e Traumatologia",
       "slug": "ortopedia",
-      "page": "/pages/ortopedia.html"
+      "page": "/ortopedia/"
     }
   }
 }

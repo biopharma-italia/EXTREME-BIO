@@ -31,7 +31,7 @@ const PhysicianLinker = (function() {
     linkClass: 'physician-link',
     
     // Base URL per profili
-    profileBaseUrl: '/equipe/profilo.html',
+    profileBaseUrl: '/equipe/',
     
     // Abilita hover card preview
     enableHoverCard: true,
@@ -268,7 +268,7 @@ const PhysicianLinker = (function() {
    */
   function createPhysicianLink(physician, displayText) {
     const profileUrl = `${CONFIG.profileBaseUrl}?id=${physician.slug}`;
-    const staticPageUrl = `/equipe/${physician.slug}.html`;
+    const staticPageUrl = `/equipe/${physician.slug}/`;
     
     // Usa la pagina statica se esiste, altrimenti profilo dinamico
     const href = staticPageUrl;
@@ -362,7 +362,7 @@ const PhysicianLinker = (function() {
     hoverCard.querySelector('.phc-photo').textContent = emoji;
     hoverCard.querySelector('.phc-name').textContent = physician.full_name;
     hoverCard.querySelector('.phc-specialty').textContent = physician.job_title;
-    hoverCard.querySelector('.phc-btn-profile').href = `/equipe/${physician.slug}.html`;
+    hoverCard.querySelector('.phc-btn-profile').href = `/equipe/${physician.slug}/`;
     
     // Position card
     const rect = anchor.getBoundingClientRect();

@@ -450,7 +450,7 @@ const BioClinicDB = (function() {
         "esami_count": 7,
         "risparmio": "Prezzo per dipendente",
         "icona": "🏭",
-        "url": "pages/medicina-lavoro.html",
+        "url": "/medicina-del-lavoro/",
         "bookingType": "direct"
     }
 ];
@@ -11433,7 +11433,7 @@ const BioClinicDB = (function() {
         "cat": "Genetica",
         "sintomi": ["gravidanza"],
         "referto": "7-10gg",
-        "url": "pages/genetica.html",
+        "url": "/genetica/",
         "descrizione": "Test prenatale non invasivo per screening trisomie 21, 18, 13"
     },
     {
@@ -11443,7 +11443,7 @@ const BioClinicDB = (function() {
         "cat": "Genetica",
         "sintomi": ["gravidanza"],
         "referto": "7-10gg",
-        "url": "pages/genetica.html",
+        "url": "/genetica/",
         "descrizione": "NIPT esteso con microdelezioni e aneuploidie sessuali"
     },
     {
@@ -11453,7 +11453,7 @@ const BioClinicDB = (function() {
         "cat": "Genetica",
         "sintomi": ["gravidanza"],
         "referto": "7-10gg",
-        "url": "pages/genetica.html",
+        "url": "/genetica/",
         "descrizione": "Test prenatale più completo: trisomie + microdelezioni + 50 sindromi genetiche"
     },
     {
@@ -11463,7 +11463,7 @@ const BioClinicDB = (function() {
         "cat": "Genetica",
         "sintomi": ["gravidanza"],
         "referto": "5-7gg",
-        "url": "pages/genetica.html",
+        "url": "/genetica/",
         "descrizione": "Determinazione del fattore Rh fetale da sangue materno"
     },
     {
@@ -11473,7 +11473,7 @@ const BioClinicDB = (function() {
         "cat": "Genetica",
         "sintomi": ["infertilita", "gravidanza"],
         "referto": "15-20gg",
-        "url": "pages/genetica.html",
+        "url": "/genetica/",
         "descrizione": "Pannello portatori per fibrosi cistica, talassemie e altre malattie recessive"
     },
     {
@@ -11483,7 +11483,7 @@ const BioClinicDB = (function() {
         "cat": "Genetica",
         "sintomi": ["infertilita", "gravidanza"],
         "referto": "15-20gg",
-        "url": "pages/genetica.html",
+        "url": "/genetica/",
         "descrizione": "Screening portatori esteso su oltre 300 geni per malattie recessive"
     },
     {
@@ -11493,7 +11493,7 @@ const BioClinicDB = (function() {
         "cat": "Genetica",
         "sintomi": [],
         "referto": "20-25gg",
-        "url": "pages/genetica.html",
+        "url": "/genetica/",
         "descrizione": "Test mutazioni BRCA1/BRCA2 per rischio tumori seno e ovaio"
     },
     {
@@ -11503,7 +11503,7 @@ const BioClinicDB = (function() {
         "cat": "Genetica",
         "sintomi": [],
         "referto": "25-30gg",
-        "url": "pages/genetica.html",
+        "url": "/genetica/",
         "descrizione": "Analisi 30+ geni per tumori ereditari (seno, ovaio, colon, prostata)"
     },
     {
@@ -11513,7 +11513,7 @@ const BioClinicDB = (function() {
         "cat": "Genetica",
         "sintomi": ["infertilita"],
         "referto": "15-20gg",
-        "url": "pages/genetica.html",
+        "url": "/genetica/",
         "descrizione": "Test salivare per diagnosi endometriosi basato su microRNA"
     },
     {
@@ -11523,7 +11523,7 @@ const BioClinicDB = (function() {
         "cat": "Genetica",
         "sintomi": ["infertilita"],
         "referto": "10-15gg",
-        "url": "pages/genetica.html",
+        "url": "/genetica/",
         "descrizione": "Analisi microbiota endometriale per ottimizzare transfer embrionario"
     },
     {
@@ -11533,7 +11533,7 @@ const BioClinicDB = (function() {
         "cat": "Genetica",
         "sintomi": ["infertilita"],
         "referto": "10-15gg",
-        "url": "pages/genetica.html",
+        "url": "/genetica/",
         "descrizione": "Test per identificare finestra impianto personalizzata in PMA"
     },
     {
@@ -11543,7 +11543,7 @@ const BioClinicDB = (function() {
         "cat": "Genetica",
         "sintomi": ["infertilita"],
         "referto": "10-15gg",
-        "url": "pages/genetica.html",
+        "url": "/genetica/",
         "descrizione": "Diagnosi endometrite cronica per fallimenti impianto"
     },
     {
@@ -11553,7 +11553,7 @@ const BioClinicDB = (function() {
         "cat": "Genetica",
         "sintomi": ["infertilita"],
         "referto": "15-20gg",
-        "url": "pages/genetica.html",
+        "url": "/genetica/",
         "descrizione": "Pacchetto completo per studio endometriale in PMA"
     },
     {
@@ -11563,7 +11563,7 @@ const BioClinicDB = (function() {
         "cat": "Genetica",
         "sintomi": ["aumento_peso"],
         "referto": "15-20gg",
-        "url": "pages/genetica.html",
+        "url": "/genetica/",
         "descrizione": "Profilo genetico per metabolismo nutrienti e dieta personalizzata"
     },
     {
@@ -11573,7 +11573,7 @@ const BioClinicDB = (function() {
         "cat": "Genetica",
         "sintomi": ["aumento_peso"],
         "referto": "15-20gg",
-        "url": "pages/genetica.html",
+        "url": "/genetica/",
         "descrizione": "Analisi completa 50+ varianti per nutrizione personalizzata"
     },
     {
@@ -11583,7 +11583,7 @@ const BioClinicDB = (function() {
         "cat": "Genetica",
         "sintomi": ["infertilita"],
         "referto": "15-20gg",
-        "url": "pages/genetica.html",
+        "url": "/genetica/",
         "descrizione": "Analisi cromosomica per infertilità e aborti ricorrenti"
     },
     {
@@ -11593,7 +11593,7 @@ const BioClinicDB = (function() {
         "cat": "Genetica",
         "sintomi": ["gravidanza", "infertilita"],
         "referto": "7-10gg",
-        "url": "pages/genetica.html",
+        "url": "/genetica/",
         "descrizione": "Mutazioni Fattore V Leiden, Protrombina, MTHFR"
     },
     {
@@ -11603,7 +11603,7 @@ const BioClinicDB = (function() {
         "cat": "Genetica",
         "sintomi": ["problemi_digestivi"],
         "referto": "7-10gg",
-        "url": "pages/genetica.html",
+        "url": "/genetica/",
         "descrizione": "Analisi HLA-DQ2/DQ8 per predisposizione celiachia"
     }
 ];
@@ -11630,22 +11630,22 @@ const BioClinicDB = (function() {
         "cardiologia": {
             "nome": "Dr. Tonino Bullitta",
             "ruolo": "Cardiologo",
-            "link": "/equipe/tonino-bullitta.html"
+            "link": "/equipe/tonino-bullitta/"
         },
         "endocrinologia": {
             "nome": "Dr. Francesco Tolu",
             "ruolo": "Endocrinologo - Resp. Slim Care",
-            "link": "/equipe/francesco-tolu.html"
+            "link": "/equipe/francesco-tolu/"
         },
         "ginecologia": {
             "nome": "Prof. Salvatore Dessole",
             "ruolo": "Direttore Sanitario - Ginecologo",
-            "link": "/equipe/salvatore-dessole.html"
+            "link": "/equipe/salvatore-dessole/"
         },
         "laboratorio": {
             "nome": "Bio-Clinic Lab",
             "ruolo": "Laboratorio Analisi",
-            "link": "/pages/laboratorio.html"
+            "link": "/laboratorio/"
         }
     },
     "contatti": {
@@ -12033,7 +12033,7 @@ const BioClinicDB = (function() {
       id: 'isteroscopia',
       nome: 'Isteroscopia Diagnostica',
       categoria: 'ginecologia',
-      url: 'pages/isteroscopia.html',
+      url: '/ginecologia/isteroscopia/',
       bookingType: 'direct',
       descrizione: 'Visualizzazione diretta della cavità uterina per diagnosi di polipi, miomi, malformazioni e aderenze.',
       durata: '15-20 minuti',
@@ -12049,7 +12049,7 @@ const BioClinicDB = (function() {
       id: 'isterosalpingografia',
       nome: 'Isterosalpingografia (HSG)',
       categoria: 'ginecologia',
-      url: 'pages/isterosalpingografia.html',
+      url: '/ginecologia/isterosalpingografia/',
       bookingType: 'direct',
       descrizione: 'Esame radiologico per valutare la pervietà delle tube di Falloppio e la morfologia uterina.',
       durata: '20-30 minuti',

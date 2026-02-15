@@ -441,7 +441,7 @@ const BioClinicUnifiedSearch = (function() {
             physicians: proc.physicians || [],
             pathways: proc.pathways || [],
             relatedProcedures: proc.related_procedures || [],
-            pageUrl: proc.page_url || `/pages/${proc.id}.html`,
+            pageUrl: proc.page_url || `/${proc.id}/`,
             duration: proc.duration_minutes,
             priority: proc.booking_priority === 'high' ? 90 : 70
           });
@@ -462,7 +462,7 @@ const BioClinicUnifiedSearch = (function() {
             includedInPacks: test.included_in_packs || [],
             primaryPack: test.primary_pack,
             relatedTests: test.related_tests || [],
-            pageUrl: `/laboratorio/index.html#${test.id}`,
+            pageUrl: `/laboratorio/#${test.id}`,
             preparation: test.preparation,
             turnaround: test.turnaround_time,
             priority: test.primary_pack ? 80 : 60
@@ -525,7 +525,7 @@ const BioClinicUnifiedSearch = (function() {
             synonyms: [doc.name.toLowerCase(), doc.full_name.toLowerCase()],
             procedures: doc.procedures || [],
             pathways: doc.pathways || [],
-            pageUrl: `/equipe/${doc.slug}.html`,
+            pageUrl: `/equipe/${doc.slug}/`,
             bookingUrl: doc.miodottore_url,
             bookingEnabled: doc.booking_enabled,
             roleBadge: doc.role_badge,
@@ -582,7 +582,7 @@ const BioClinicUnifiedSearch = (function() {
             turnaround: esame.referto,
             preparation: esame.prep,
             upsellPack: esame.upsell,
-            pageUrl: `/laboratorio/index.html#${esame.id}`,
+            pageUrl: `/laboratorio/#${esame.id}`,
             priority: esame.upsell ? 65 : 55 // Esami con pack suggerito hanno priorità leggermente maggiore
           });
         }
@@ -606,7 +606,7 @@ const BioClinicUnifiedSearch = (function() {
             examsCount: pack.esami_count,
             savings: pack.risparmio,
             icon: pack.icona,
-            pageUrl: existing?.pageUrl || `/laboratorio/index.html#pack-${pack.id}`,
+            pageUrl: existing?.pageUrl || `/laboratorio/#pack-${pack.id}`,
             priority: 70
           });
         }
@@ -634,7 +634,7 @@ const BioClinicUnifiedSearch = (function() {
               citations: doc.citations,
               publications: doc.publications,
               knowsAbout: doc.knowsAbout,
-              pageUrl: `/equipe/${doc.slug}.html`,
+              pageUrl: `/equipe/${doc.slug}/`,
               priority: 90
             });
           }
@@ -661,7 +661,7 @@ const BioClinicUnifiedSearch = (function() {
               duration: proc.durata,
               preparation: proc.preparazione,
               price: proc.prezzo,
-              pageUrl: proc.page_url || `/pages/${proc.id}.html`,
+              pageUrl: proc.page_url || `/${proc.id}/`,
               priority: 85
             });
           }
