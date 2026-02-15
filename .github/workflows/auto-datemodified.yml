@@ -1,0 +1,43 @@
+name: Auto-update dateModified & Deploy
+
+on:
+  # Run every 2 days at 06:00 UTC (07:00 CET)
+  schedule:
+    - cron: '0 6 */2 * *'
+  # Manual trigger
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Override date (YYYY-MM-DD). Leave empty for today.'
+        required: false
+        default: ''
+      skip_deploy:
+        description: 'Skip Cloudflare deploy (true/false)'
+        required: false
+        default: 'false'
+
+permissions:
+  contents: write
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Determine date
+        id: date
+        run: |
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            echo "date=${{ github.event.inputs.date }}" >> $GITHUB_OUTPUT
+          else
+            
+... (output truncated, click Expand to see full output)
