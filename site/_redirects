@@ -8,7 +8,7 @@
 # Must be BEFORE the catch-all /pages/* rule
 # ============================================
 /pages/agoaspirato-tiroide /endocrinologia/ 301
-/pages/chirurgia-ginecologica /isteroscopia/ 301
+/pages/chirurgia-ginecologica /ginecologia/isteroscopia/ 301
 /pages/consulto-pma /pma-fertilita/ 301
 /pages/dermatoscopia-digitale /dermatologia/ 301
 /pages/ecg /cardiologia/visita-cardiologica-ecg/ 301
@@ -96,7 +96,7 @@
 # ============================================
 # CROSS-CANONICAL (14 static — legacy slugs that don't exist as physical dirs)
 # ============================================
-/chirurgia-ginecologica /isteroscopia/ 301
+/chirurgia-ginecologica /ginecologia/isteroscopia/ 301
 /consulto-pma /pma-fertilita/ 301
 /dermatoscopia-digitale /dermatologia/ 301
 /ecg /cardiologia/visita-cardiologica-ecg/ 301
