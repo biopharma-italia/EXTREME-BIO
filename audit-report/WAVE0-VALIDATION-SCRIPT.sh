@@ -1,7 +1,7 @@
 #!/bin/bash
 # ====================================================================
-# WAVE 0 POST-DEPLOY VALIDATION SCRIPT
-# Bio-Clinic infrastructure stabilization
+# WAVE 0+1 POST-DEPLOY VALIDATION SCRIPT
+# Bio-Clinic infrastructure stabilization + Ginecologia cluster
 # Run IMMEDIATELY after deploy to verify all redirects are correct
 # ====================================================================
 
@@ -34,7 +34,7 @@ check() {
 }
 
 echo "============================================"
-echo "WAVE 0 VALIDATION - $(date)"
+echo "WAVE 0+1 VALIDATION - $(date)"
 echo "============================================"
 echo ""
 
@@ -70,7 +70,7 @@ for path in "${PAGES_URLS[@]}"; do
 done
 
 echo ""
-echo "=== TEST 2: Root URLs must serve 200 directly (no 308→/pages/) ==="
+echo "=== TEST 2: Root specialist URLs must serve 200 directly ==="
 ROOT_MUST_200=(
     "/visita-ortopedica/"
     "/visita-urologica/"
@@ -82,23 +82,52 @@ ROOT_MUST_200=(
     "/visita-ematologica/"
     "/visita-fisiatrica/"
     "/visita-pediatrica/"
-    "/pap-test/"
-    "/hpv-test/"
-    "/duopap/"
     "/mappatura-nevi/"
-    "/ecografia-mammaria/"
     "/ecografia-tiroidea/"
-    "/ecografia-transvaginale/"
     "/elettromiografia/"
-    "/agoaspirato-tiroide/"
-    "/colposcopia/"
 )
 for path in "${ROOT_MUST_200[@]}"; do
     check "${DOMAIN}${path}" "200" "" "Root must serve 200 directly"
 done
 
 echo ""
-echo "=== TEST 3: Hub pages must remain 200 ==="
+echo "=== TEST 3: Wave 1 — Ginecologia root slugs must redirect 301 to /ginecologia/ ==="
+WAVE1_REDIRECTS=(
+    "/pap-test/|/ginecologia/pap-test/"
+    "/hpv-test/|/ginecologia/pap-test-hpv/"
+    "/duopap/|/ginecologia/duopap/"
+    "/ecografia-mammaria/|/ginecologia/ecografia-mammaria/"
+    "/ecografia-transvaginale/|/ginecologia/ecografia-transvaginale/"
+    "/colposcopia/|/ginecologia/colposcopia/"
+    "/visita-ginecologica/|/ginecologia/visita-ginecologica/"
+)
+for entry in "${WAVE1_REDIRECTS[@]}"; do
+    IFS='|' read -r path expected_loc <<< "$entry"
+    check "${DOMAIN}${path}" "301" "$expected_loc" "Wave 1: must 301 to /ginecologia/"
+done
+
+echo ""
+echo "=== TEST 4: Cross-canonical must redirect 301 to hub ==="
+CROSS_CANONICAL=(
+    "/agoaspirato-tiroide/|/endocrinologia/"
+    "/chirurgia-ginecologica|/isteroscopia/"
+    "/impedenzometria|/otorinolaringoiatria/"
+    "/monitoraggio-follicolare|/pma-fertilita/"
+    "/rinofibrolaringoscopia|/otorinolaringoiatria/"
+    "/translucenza-nucale|/ginecologia/ecografia-morfologica/"
+    "/ecg|/cardiologia/visita-cardiologica-ecg/"
+    "/visita-cardiologica|/cardiologia/visita-cardiologica-ecg/"
+    "/dermatoscopia-digitale|/dermatologia/"
+    "/consulto-pma|/pma-fertilita/"
+    "/ecografia-ginecologica|/ginecologia/"
+)
+for entry in "${CROSS_CANONICAL[@]}"; do
+    IFS='|' read -r path expected_loc <<< "$entry"
+    check "${DOMAIN}${path}" "301" "$expected_loc" "Cross-canonical must 301 to hub"
+done
+
+echo ""
+echo "=== TEST 5: Hub pages must remain 200 ==="
 HUBS=(
     "/cardiologia/"
     "/ginecologia/"
@@ -119,27 +148,33 @@ for path in "${HUBS[@]}"; do
 done
 
 echo ""
-echo "=== TEST 4: Cardiologia cluster must remain intact ==="
-CARDIO=(
+echo "=== TEST 6: Specialty clusters must remain intact ==="
+CLUSTERS=(
     "/cardiologia/visita-cardiologica-ecg/"
     "/cardiologia/ecocardiogramma/"
     "/cardiologia/holter-ecg/"
     "/cardiologia/holter-pressorio/"
     "/cardiologia/checkup-cardiovascolare/"
+    "/ginecologia/visita-ginecologica/"
+    "/ginecologia/pap-test/"
+    "/ginecologia/duopap/"
+    "/ginecologia/colposcopia/"
+    "/ginecologia/ecografia-mammaria/"
 )
-for path in "${CARDIO[@]}"; do
-    check "${DOMAIN}${path}" "200" "" "Cardio cluster must be 200"
+for path in "${CLUSTERS[@]}"; do
+    check "${DOMAIN}${path}" "200" "" "Cluster page must be 200"
 done
 
 echo ""
-echo "=== TEST 5: No redirect loops ==="
-echo "Checking for chains > 1 hop..."
+echo "=== TEST 7: No redirect loops (max 1 hop) ==="
 LOOP_CHECK=(
     "/hpv-test/"
     "/pap-test/"
     "/ginecologi-sassari/"
     "/visita-ortopedica/"
     "/mappatura-nevi/"
+    "/pages/visita-ginecologica"
+    "/pages/ecg"
 )
 for path in "${LOOP_CHECK[@]}"; do
     hops=$(curl -sL -o /dev/null -w "%{num_redirects}" "${DOMAIN}${path}" 2>/dev/null)
@@ -153,7 +188,7 @@ for path in "${LOOP_CHECK[@]}"; do
 done
 
 echo ""
-echo "=== TEST 6: /pages/ 404s should now be 301 ==="
+echo "=== TEST 8: /pages/ 404s should now be 301 ==="
 PAGES_404=(
     "/pages/ginecologia.html"
     "/pages/dermatologia.html"
@@ -168,14 +203,41 @@ for path in "${PAGES_404[@]}"; do
 done
 
 echo ""
+echo "=== TEST 9: Sampled sitemap URLs must return 200 ==="
+SITEMAP_SAMPLES=(
+    "/"
+    "/chi-siamo/"
+    "/contatti/"
+    "/equipe/"
+    "/listino/"
+)
+for path in "${SITEMAP_SAMPLES[@]}"; do
+    check "${DOMAIN}${path}" "200" "" "Sitemap URL must be 200"
+done
+
+echo ""
+echo "=== TEST 10: Canonical tags on key pages ==="
+for path in "/cardiologia/" "/ginecologia/" "/dermatologia/"; do
+    canonical=$(curl -sL "${DOMAIN}${path}" 2>/dev/null | grep -o 'rel="canonical" href="[^"]*"' | head -1)
+    expected="https://bio-clinic.it${path}"
+    if [[ "$canonical" == *"$expected"* ]]; then
+        echo "PASS | ${DOMAIN}${path} | canonical=$expected"
+        ((PASS++))
+    else
+        echo "FAIL | ${DOMAIN}${path} | Expected canonical: $expected | Got: $canonical"
+        ((FAIL++))
+    fi
+done
+
+echo ""
 echo "============================================"
 echo "RESULTS: $PASS passed | $FAIL failed | $WARN warnings"
 echo "============================================"
 
 if [[ $FAIL -gt 0 ]]; then
-    echo "⚠️  WAVE 0 VALIDATION FAILED — DO NOT PROCEED TO WAVE 1"
+    echo "⚠️  WAVE 0+1 VALIDATION FAILED — Fix issues before proceeding"
     exit 1
 else
-    echo "✅  WAVE 0 VALIDATION PASSED — Ready for Wave 1 (after 14-day stability period)"
+    echo "✅  WAVE 0+1 VALIDATION PASSED — Ready for Wave 2"
     exit 0
 fi
