@@ -42,6 +42,14 @@ SITE_DIR="$SCRIPT_DIR/site"
 DEPLOY_DIR="$SCRIPT_DIR/.deploy-staging"
 PROJECT_NAME="bio-clinic"
 
+# Auto-update dateModified before deploy (if script exists and python3 available)
+if [ -f "$SCRIPT_DIR/scripts/update-date-modified.py" ] && command -v python3 &>/dev/null; then
+    echo "=== Pre-deploy: updating dateModified ==="
+    TODAY=$(TZ='Europe/Rome' date +%Y-%m-%d)
+    python3 "$SCRIPT_DIR/scripts/update-date-modified.py" --date "$TODAY" || true
+    echo ""
+fi
+
 echo "=== Bio-Clinic Cloudflare Pages Deploy ==="
 echo "Project: $PROJECT_NAME"
 echo "Site dir: $SITE_DIR"
