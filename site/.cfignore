@@ -1,0 +1,77 @@
+# ============================================
+# .cfignore — Cloudflare Pages deploy exclusions
+# Bio-Clinic.it — Wave 0+ infrastructure
+# ============================================
+# Excludes build artifacts, backups, scripts, and 
+# sensitive files from Cloudflare Pages deployment.
+# Without this file, 800+ unnecessary files are 
+# deployed publicly, including old /pages/ content 
+# in output/ and backups/ that bypasses 301 redirects.
+# ============================================
+
+# Build system
+output/
+build/
+data/
+templates/
+
+# Backups (contain old /pages/ files that bypass 301s)
+backups/
+
+# GitHub Actions (not needed on CDN)
+.github/
+
+# Python scripts
+*.py
+
+# Shell scripts
+*.sh
+
+# Data files
+*.csv
+*.json
+!data/*.json
+
+# Archives
+*.zip
+*.tar.gz
+*.tar
+*.gz
+
+# Backup files
+*.backup*
+*.bak
+*.orig
+
+# Config files not needed on CDN
+wrangler.toml
+package.json
+package-lock.json
+node_modules/
+
+# Documentation
+*.md
+DEPLOY-SETUP.md
+
+# Development files
+*.log
+*.map
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Bio-clinic specific exclusions
+bio-clinic-site.zip
+add_aggregate_rating.py
+generate_sitemap.py
+check-public-pages.py
+link-checker.py
+wave0-implement.py
+wave0-validate.py
+wave1-ginecologia.py
+_redirects.backup*
+sitemap.xml.backup*
+robots.txt.backup*
