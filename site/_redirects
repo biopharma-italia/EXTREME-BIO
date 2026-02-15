@@ -257,15 +257,24 @@
 
 # EXISTING 301 REDIRECTS (preserved)
 # ============================================
-/chirurgia-ginecologica /chirurgia-ginecologica/ 301
-/consulto-pma /consulto-pma/ 301
-/dermatoscopia-digitale /dermatoscopia-digitale/ 301
-/ecg /ecg/ 301
-/ecografia-ginecologica /ecografia-ginecologica/ 301
+/chirurgia-ginecologica /isteroscopia/ 301
+/chirurgia-ginecologica/ /isteroscopia/ 301
+/consulto-pma /pma-fertilita/ 301
+/consulto-pma/ /pma-fertilita/ 301
+/dermatoscopia-digitale /dermatologia/ 301
+/dermatoscopia-digitale/ /dermatologia/ 301
+/ecg /cardiologia/visita-cardiologica-ecg/ 301
+/ecg/ /cardiologia/visita-cardiologica-ecg/ 301
+/ecografia-ginecologica /ginecologia/ 301
+/ecografia-ginecologica/ /ginecologia/ 301
 /equipe/profilo /equipe/profilo/ 301
 /features/* / 301
-/hpv-test /hpv-test/ 301
-/impedenzometria /impedenzometria/ 301
+/hpv-test /ginecologia/pap-test-hpv/ 301
+/hpv-test/ /ginecologia/pap-test-hpv/ 301
+/agoaspirato-tiroide /endocrinologia/ 301
+/agoaspirato-tiroide/ /endocrinologia/ 301
+/impedenzometria /otorinolaringoiatria/ 301
+/impedenzometria/ /otorinolaringoiatria/ 301
 /laboratorio/esame-* /laboratorio/#:splat 301
 /laboratorio/pack-* /laboratorio/#:splat 301
 /listino /listino-completo.html 301
@@ -280,7 +289,10 @@
 # /prestazioni/:procedure wildcard — removed (pointed to /pages/)
 /prestazioni/ecg /cardiologia/visita-cardiologica-ecg/ 301
 /prestazioni/visita-cardiologica /cardiologia/visita-cardiologica-ecg/ 301
-/rinofibrolaringoscopia /rinofibrolaringoscopia/ 301
+/rinofibrolaringoscopia /otorinolaringoiatria/ 301
+/rinofibrolaringoscopia/ /otorinolaringoiatria/ 301
+/monitoraggio-follicolare /pma-fertilita/ 301
+/monitoraggio-follicolare/ /pma-fertilita/ 301
 /servizi/laboratorio-analisi /laboratorio/ 301
 /servizi/laboratorio-analisi/ /laboratorio/ 301
 /slim-care-progetto-peso /slim-care 301
@@ -288,7 +300,10 @@
 /specialisti-sassari /equipe/ 301
 /specialisti-sassari/ /equipe/ 301
 /tirzepatide-sassari /mounjaro-tirzepatide-sassari/ 301
-/translucenza-nucale /translucenza-nucale/ 301
+/translucenza-nucale /ginecologia/ecografia-morfologica/ 301
+/translucenza-nucale/ /ginecologia/ecografia-morfologica/ 301
+/visita-medicina-lavoro /medicina-del-lavoro/ 301
+/visita-medicina-lavoro/ /medicina-del-lavoro/ 301
 /visita-cardiologica /cardiologia/visita-cardiologica-ecg/ 301
 /visita-cardiologica/ /cardiologia/visita-cardiologica-ecg/ 301
 
