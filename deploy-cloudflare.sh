@@ -87,25 +87,10 @@ cd "$SITE_DIR" && tar cf - \
     --exclude='./link-check-report.txt' \
     --exclude='./bio-clinic-site.zip' \
     --exclude='./.deploy-version.bak' \
-    --exclude='./assistenza-ostetrica' \
-    --exclude='./colposcopia' \
-    --exclude='./corso-preparto' \
-    --exclude='./duopap' \
-    --exclude='./ecografia-mammaria' \
-    --exclude='./ecografia-morfologica' \
-    --exclude='./ecografia-ostetrica-3d' \
-    --exclude='./ecografia-pelvica' \
-    --exclude='./ecografia-transvaginale' \
-    --exclude='./ginecologi-sassari' \
-    --exclude='./hpv-dna-test' \
-    --exclude='./pap-test' \
-    --exclude='./pap-test-hpv' \
-    --exclude='./perifit-kegel-sassari' \
-    --exclude='./radiofrequenza-vaginale' \
-    --exclude='./riabilitazione-pavimento-pelvico' \
-    --exclude='./trattamenti-pavimento-pelvico' \
-    --exclude='./visita-ginecologica' \
     . | (cd "$DEPLOY_DIR" && tar xf -)
+# Note: Root ginecologia directories (assistenza-ostetrica, colposcopia, etc.)
+# are now meta-refresh redirects (~450B each) and MUST be deployed.
+# Previously excluded when they contained full duplicate content.
 # Remove any backup files that slipped through
 find "$DEPLOY_DIR" -name '*.backup*' -o -name '*.bak' -o -name '*.orig' -o -name '*.py' -o -name '*.sh' 2>/dev/null | xargs rm -f 2>/dev/null || true
 
