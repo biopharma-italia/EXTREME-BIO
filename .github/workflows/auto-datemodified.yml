@@ -1,10 +1,8 @@
 name: Auto-update dateModified & Deploy
 
 on:
-  # Run every 2 days at 06:00 UTC (07:00 CET)
   schedule:
     - cron: '0 6 */2 * *'
-  # Manual trigger
   workflow_dispatch:
     inputs:
       date:
@@ -39,5 +37,45 @@ jobs:
           if [ -n "${{ github.event.inputs.date }}" ]; then
             echo "date=${{ github.event.inputs.date }}" >> $GITHUB_OUTPUT
           else
-            
-... (output truncated, click Expand to see full output)
+            echo "date=$(TZ='Europe/Rome' date +%Y-%m-%d)" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Update dateModified on all pages
+        run: |
+          python3 scripts/update-date-modified.py --date "${{ steps.date.outputs.date }}"
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --quiet && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit changes
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore(auto): update dateModified to ${{ steps.date.outputs.date }}"
+
+      - name: Push changes
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git push origin main
+
+      - name: Install Wrangler
+        if: steps.changes.outputs.changed == 'true' && github.event.inputs.skip_deploy != 'true'
+        run: npm install -g wrangler@latest
+
+      - name: Deploy to Cloudflare Pages
+        if: steps.changes.outputs.changed == 'true' && github.event.inputs.skip_deploy != 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          bash deploy-cloudflare.sh
+
+      - name: Summary
+        run: |
+          echo "## dateModified Update Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- **Date**: ${{ steps.date.outputs.date }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Changes detected**: ${{ steps.changes.outputs.changed }}" >> $GITHUB_STEP_SUMMARY
