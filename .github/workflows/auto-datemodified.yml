@@ -1,81 +1,107 @@
-name: Auto-update dateModified & Deploy
+#!/usr/bin/env python3
 
-on:
-  schedule:
-    - cron: '0 6 */2 * *'
-  workflow_dispatch:
-    inputs:
-      date:
-        description: 'Override date (YYYY-MM-DD). Leave empty for today.'
-        required: false
-        default: ''
-      skip_deploy:
-        description: 'Skip Cloudflare deploy (true/false)'
-        required: false
-        default: 'false'
+import os
+import re
+import sys
+import argparse
+from datetime import datetime
+from pathlib import Path
 
-permissions:
-  contents: write
+# -------------------------------
+# Utility
+# -------------------------------
 
-jobs:
-  update-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+def iso_datetime(date_str):
+    return f"{date_str}T00:00:00+01:00"
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+def italian_date(date_str):
+    dt = datetime.strptime(date_str, "%Y-%m-%d")
+    return dt.strftime("%d/%m/%Y")
 
-      - name: Determine date
-        id: date
-        run: |
-          if [ -n "${{ github.event.inputs.date }}" ]; then
-            echo "date=${{ github.event.inputs.date }}" >> $GITHUB_OUTPUT
-          else
-            echo "date=$(TZ='Europe/Rome' date +%Y-%m-%d)" >> $GITHUB_OUTPUT
-          fi
+# -------------------------------
+# Update Logic
+# -------------------------------
 
-      - name: Update dateModified on all pages
-        run: |
-          python3 scripts/update-date-modified.py --date "${{ steps.date.outputs.date }}"
+def update_file(filepath, iso_value, italian_value):
+    modified = False
 
-      - name: Check for changes
-        id: changes
-        run: |
-          git diff --quiet && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+    try:
+        content = filepath.read_text(encoding="utf-8")
 
-      - name: Commit changes
-        if: steps.changes.outputs.changed == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "chore(auto): update dateModified to ${{ steps.date.outputs.date }}"
+        # JSON-LD dateModified
+        new_content = re.sub(
+            r'"dateModified"\s*:\s*"[^"]+"',
+            f'"dateModified": "{iso_value}"',
+            content
+        )
 
-      - name: Push changes
-        if: steps.changes.outputs.changed == 'true'
-        run: |
-          git push origin main
+        # Meta article:modified_time
+        new_content = re.sub(
+            r'<meta property="article:modified_time" content="[^"]+" ?/?>',
+            f'<meta property="article:modified_time" content="{iso_value}" />',
+            new_content
+        )
 
-      - name: Install Wrangler
-        if: steps.changes.outputs.changed == 'true' && github.event.inputs.skip_deploy != 'true'
-        run: npm install -g wrangler@latest
+        # Visible badge (if exists)
+        new_content = re.sub(
+            r'(Aggiornato il|Ultimo aggiornamento:)\s*\d{2}/\d{2}/\d{4}',
+            lambda m: f"{m.group(1)} {italian_value}",
+            new_content
+        )
 
-      - name: Deploy to Cloudflare Pages
-        if: steps.changes.outputs.changed == 'true' && github.event.inputs.skip_deploy != 'true'
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: |
-          bash deploy-cloudflare.sh
+        if new_content != content:
+            filepath.write_text(new_content, encoding="utf-8")
+            modified = True
 
-      - name: Summary
-        run: |
-          echo "## dateModified Update Summary" >> $GITHUB_STEP_SUMMARY
-          echo "- **Date**: ${{ steps.date.outputs.date }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Changes detected**: ${{ steps.changes.outputs.changed }}" >> $GITHUB_STEP_SUMMARY
+    except Exception as e:
+        print(f"❌ Error processing {filepath}: {e}")
+        raise
+
+    return modified
+
+# -------------------------------
+# Main
+# -------------------------------
+
+def main():
+    parser = argparse.ArgumentParser(description="Update dateModified across site pages")
+    parser.add_argument("--date", required=True, help="Date in YYYY-MM-DD format")
+    args = parser.parse_args()
+
+    date_str = args.date
+    iso_value = iso_datetime(date_str)
+    italian_value = italian_date(date_str)
+
+    site_dir = Path("site")
+
+    if not site_dir.exists():
+        print("❌ Site directory not found.")
+        sys.exit(1)
+
+    print("=" * 60)
+    print(f"Date: {date_str} ({italian_value})")
+    print(f"ISO full: {iso_value}")
+    print(f"Site dir: {site_dir.resolve()}")
+    print("=" * 60)
+
+    total_pages = 0
+    modified_count = 0
+
+    for filepath in site_dir.rglob("*.html"):
+        total_pages += 1
+        if update_file(filepath, iso_value, italian_value):
+            modified_count += 1
+
+    print(f"Total pages scanned: {total_pages}")
+    print(f"Modified: {modified_count}")
+
+    if modified_count == 0:
+        print("ℹ️ No pages required updating.")
+        sys.exit(0)
+
+    print("✅ Update completed successfully.")
+    sys.exit(0)
+
+
+if __name__ == "__main__":
+    main()
