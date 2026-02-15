@@ -1,0 +1,53 @@
+# Bio-Clinic Sassari - robots.txt
+# https://bio-clinic.it
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://bio-clinic.it/sitemap.xml
+
+# Crawl-delay (optional, be kind to our server)
+Crawl-delay: 1
+
+# Allow important pages
+Allow: /pages/
+Allow: /equipe/
+Allow: /laboratorio/
+Allow: /prestazioni/
+Allow: /shop/
+
+# Block internal/admin paths (if any)
+Disallow: /templates/
+Disallow: /components/
+Disallow: /data/
+Disallow: /*.json$
+
+# Allow CSS and JS for rendering
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+# Google specific
+User-agent: Googlebot
+Allow: /
+
+# Bing specific
+User-agent: Bingbot
+Allow: /
+
+# AI crawlers (Google SGE, ChatGPT, etc.)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /

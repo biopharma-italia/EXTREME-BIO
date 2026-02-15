@@ -1,53 +1,28 @@
-# Bio-Clinic Sassari - robots.txt
-# https://bio-clinic.it
+# Bio-Clinic.it Robots.txt
+# Wave 0 deployment - 2026-02-15
 
 User-agent: *
-Allow: /
-
-# Sitemap location
-Sitemap: https://bio-clinic.it/sitemap.xml
-
-# Crawl-delay (optional, be kind to our server)
 Crawl-delay: 1
 
-# Allow important pages
-Allow: /pages/
-Allow: /equipe/
-Allow: /laboratorio/
-Allow: /prestazioni/
-Allow: /shop/
+# Allow all content
+Allow: /
 
-# Block internal/admin paths (if any)
-Disallow: /templates/
+# Block legacy /pages/ directory (all content now at root URLs)
+Disallow: /pages/
+
+# Block utility paths
 Disallow: /components/
+Disallow: /templates/
 Disallow: /data/
-Disallow: /*.json$
+Disallow: /build/
+Disallow: /scripts/
+Disallow: /reports/
+Disallow: /backups/
+Disallow: /docs/
+Disallow: /shop/
+Disallow: /*.py$
+Disallow: /*.sh$
+Disallow: /*.backup*
 
-# Allow CSS and JS for rendering
-Allow: /css/
-Allow: /js/
-Allow: /images/
-
-# Google specific
-User-agent: Googlebot
-Allow: /
-
-# Bing specific
-User-agent: Bingbot
-Allow: /
-
-# AI crawlers (Google SGE, ChatGPT, etc.)
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
+# Sitemap
+Sitemap: https://bio-clinic.it/sitemap.xml
