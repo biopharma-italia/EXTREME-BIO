@@ -74,7 +74,11 @@ cd "$SITE_DIR" && tar cf - \
     --exclude='./output' \
     --exclude='./backups' \
     --exclude='./build' \
-    --exclude='./data' \
+    --exclude='./data/cache' \
+    --exclude='./data/v2' \
+    --exclude='./data/*.xlsx' \
+    --exclude='./data/SCHEMA-VALIDAZIONE.json' \
+    --exclude='./data/unified-entities-schema.json' \
     --exclude='./templates' \
     --exclude='./pages' \
     --exclude='./.github' \
