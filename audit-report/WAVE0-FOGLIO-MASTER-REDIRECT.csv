@@ -1,0 +1,141 @@
+source,target,action,current_status,priority,note
+/pages/visita-cardiologica-ecg,/pages/visita-cardiologica-ecg.html,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/visita-ginecologica,/visita-ginecologica/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/visita-dermatologica,/visita-dermatologica/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/visita-endocrinologica,/visita-endocrinologica/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/visita-neurologica,/visita-neurologica/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/visita-ortopedica,/visita-ortopedica/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/visita-urologica,/visita-urologica/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/visita-oculistica,/visita-oculistica/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/visita-gastroenterologica,/visita-gastroenterologica/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/visita-pneumologica,/visita-pneumologica/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/visita-reumatologica,/visita-reumatologica/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/visita-ematologica,/visita-ematologica/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/visita-fisiatrica,/visita-fisiatrica/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/visita-pediatrica,/visita-pediatrica/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/visita-nefrologica,/visita-nefrologica/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/visita-chirurgia-vascolare,/visita-chirurgia-vascolare/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/visita-internistica,/visita-internistica/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/visita-medicina-lavoro,/visita-medicina-del-lavoro-sassari/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/visita-medicina-sport,/visita-medicina-sport/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/visita-nutrizionale,/visita-nutrizionale/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/colloquio-psicologico,/colloquio-psicologico/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/ginecologi-sassari,/ginecologi-sassari/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/hpv-test,/pap-test-hpv/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/hpv-dna-test,/hpv-dna-test/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/pap-test,/pap-test/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/duopap,/duopap/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/genetica,/genetica/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/isterosalpingografia,/isterosalpingografia/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/isteroscopia,/isteroscopia/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/mappatura-nevi,/mappatura-nevi/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/dermatoscopia-digitale,/dermatologia/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/agoaspirato-tiroide,/endocrinologia/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/checkup-tiroide,/checkup-tiroide/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/colposcopia,/colposcopia/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/screening-inps-sardegna,/screening-inps-sardegna/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/symptom-checker,/symptom-checker/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/caressflow,/caressflow/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/perifit-kegel-sassari,/perifit-kegel-sassari/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/radiofrequenza-vaginale,/radiofrequenza-vaginale/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/riabilitazione-pavimento-pelvico,/riabilitazione-pavimento-pelvico/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/trattamenti-pavimento-pelvico,/trattamenti-pavimento-pelvico/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/rinofibrolaringoscopia,/otorinolaringoiatria/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/ecografia-mammaria,/ecografia-mammaria/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/ecografia-tiroidea,/ecografia-tiroidea/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/ecografia-transvaginale,/ecografia-transvaginale/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/ecografia-ginecologica,/ginecologia/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/ecografia-pelvica,/ecografia-pelvica/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/ecografia-prostatica,/ecografia-prostatica/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/ecografia-renale,/ecografia-renale/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/ecografia-addominale,/ecografia-addominale/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/ecografia-ostetrica-3d,/ecografia-ostetrica-3d/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/ecografia-morfologica,/ecografia-morfologica/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/eco-doppler-arti,/eco-doppler-arti/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/elettromiografia,/elettromiografia/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/translucenza-nucale,/ecografia-morfologica/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/infiltrazioni-articolari,/infiltrazioni-articolari/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/scleroterapia,/scleroterapia/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/spirometria,/spirometria/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/audiometria,/audiometria/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/impedenzometria,/otorinolaringoiatria/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/campo-visivo,/campo-visivo/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/monitoraggio-follicolare,/pma-fertilita/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/consulto-pma,/pma-fertilita/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/assistenza-ostetrica,/assistenza-ostetrica/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/chirurgia-ginecologica,/isteroscopia/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/corso-preparto,/corso-preparto/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/preparazione-esami,/preparazione-esami/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/laboratorio,/laboratorio/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/visita-orl,/visita-orl/,301,200,CRITICAL,Legacy /pages/ still serving content
+/pages/ginecologia.html,/ginecologia/,301,404,HIGH,404 with possible Google cache/backlinks - recover equity
+/pages/dermatologia.html,/dermatologia/,301,404,HIGH,404 with possible Google cache/backlinks - recover equity
+/pages/neurologia,/neurologia/,301,404,HIGH,404 with possible Google cache/backlinks - recover equity
+/pages/ortopedia,/ortopedia/,301,404,HIGH,404 with possible Google cache/backlinks - recover equity
+/pages/slim-care,/slim-care/,301,404,HIGH,404 with possible Google cache/backlinks - recover equity
+/pages/pma-fertilita,/pma-fertilita/,301,404,HIGH,404 with possible Google cache/backlinks - recover equity
+/pages/specialita,/specialita/,301,404,HIGH,404 with possible Google cache/backlinks - recover equity
+/pages/specialita.html,/specialita/,301,404,HIGH,404 with possible Google cache/backlinks - recover equity
+/pages/ecocardiogramma.html,/cardiologia/ecocardiogramma/,301,404,HIGH,404 with possible Google cache/backlinks - recover equity
+/pages/listino-completo,/listino-completo/,301,404,HIGH,404 with possible Google cache/backlinks - recover equity
+/pages/medicina-del-lavoro,/medicina-del-lavoro/,301,404,HIGH,404 with possible Google cache/backlinks - recover equity
+/agoaspirato-tiroide/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/assistenza-ostetrica/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/audiometria/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/campo-visivo/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/caressflow/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/checkup-tiroide/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/chirurgia-ginecologica/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/colloquio-psicologico/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/colposcopia/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/consulto-pma/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/corso-preparto/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/dermatoscopia-digitale/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/duopap/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/ecg/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/eco-doppler-arti/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/ecografia-addominale/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/ecografia-ginecologica/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/ecografia-mammaria/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/ecografia-morfologica/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/ecografia-ostetrica-3d/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/ecografia-pelvica/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/ecografia-prostatica/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/ecografia-renale/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/ecografia-tiroidea/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/ecografia-transvaginale/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/elettromiografia/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/ginecologi-sassari/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/hpv-dna-test/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/hpv-test/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/impedenzometria/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/infiltrazioni-articolari/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/mappatura-nevi/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/monitoraggio-follicolare/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/pap-test/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/perifit-kegel-sassari/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/radiofrequenza-vaginale/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/riabilitazione-pavimento-pelvico/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/rinofibrolaringoscopia/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/scleroterapia/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/screening-inps-sardegna/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/spirometria/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/symptom-checker/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/translucenza-nucale/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/trattamenti-pavimento-pelvico/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/visita-chirurgia-vascolare/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/visita-ematologica/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/visita-fisiatrica/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/visita-gastroenterologica/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/visita-internistica/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/visita-medicina-lavoro/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/visita-medicina-sport/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/visita-nefrologica/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/visita-nutrizionale/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/visita-oculistica/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/visita-orl/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/visita-ortopedica/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/visita-pediatrica/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/visita-pneumologica/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/visita-reumatologica/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"
+/visita-urologica/,(serve 200 directly),REMOVE_308,308→/pages/,CRITICAL,"Root URL must serve content directly, not redirect to /pages/"

@@ -1,36 +1,11 @@
 # Cloudflare Pages Redirects
-# Updated: 2026-02-14
-# Priority: 200 rewrites first, then 301 redirects
+# WAVE 0 DEPLOYMENT — 2026-02-15
+# All /pages/ 200 rewrites REMOVED. Content now at root-level.
+# /pages/ URLs now 301 → canonical destinations.
 
 # ============================================
-# CLEAN URL REWRITES (200) - Serve files at clean URLs
+# EQUIPE REWRITES (200) — /equipe/ directory
 # ============================================
-/agoaspirato-tiroide/ /pages/agoaspirato-tiroide.html 200
-/assistenza-ostetrica/ /pages/assistenza-ostetrica.html 200
-/audiometria/ /pages/audiometria.html 200
-/campo-visivo/ /pages/campo-visivo.html 200
-/caressflow/ /pages/caressflow.html 200
-/checkup-tiroide/ /pages/checkup-tiroide.html 200
-/chirurgia-ginecologica/ /pages/chirurgia-ginecologica.html 200
-/colloquio-psicologico/ /pages/colloquio-psicologico.html 200
-/colposcopia/ /pages/colposcopia.html 200
-/consulto-pma/ /pages/consulto-pma.html 200
-/corso-preparto/ /pages/corso-preparto.html 200
-/dermatoscopia-digitale/ /pages/dermatoscopia-digitale.html 200
-/duopap/ /pages/duopap.html 200
-/ecg/ /pages/ecg.html 200
-/eco-doppler-arti/ /pages/eco-doppler-arti.html 200
-/ecografia-addominale/ /pages/ecografia-addominale.html 200
-/ecografia-ginecologica/ /pages/ecografia-ginecologica.html 200
-/ecografia-mammaria/ /pages/ecografia-mammaria.html 200
-/ecografia-morfologica/ /pages/ecografia-morfologica.html 200
-/ecografia-ostetrica-3d/ /pages/ecografia-ostetrica-3d.html 200
-/ecografia-pelvica/ /pages/ecografia-pelvica.html 200
-/ecografia-prostatica/ /pages/ecografia-prostatica.html 200
-/ecografia-renale/ /pages/ecografia-renale.html 200
-/ecografia-tiroidea/ /pages/ecografia-tiroidea.html 200
-/ecografia-transvaginale/ /pages/ecografia-transvaginale.html 200
-/elettromiografia/ /pages/elettromiografia.html 200
 /equipe/alessandra-musinu/ /equipe/alessandra-musinu.html 200
 /equipe/alessandro-pandolfi/ /equipe/alessandro-pandolfi.html 200
 /equipe/alessia-piras/ /equipe/alessia-piras.html 200
@@ -82,46 +57,205 @@
 /equipe/sonia-bove/ /equipe/sonia-bove.html 200
 /equipe/speranza-anedda/ /equipe/speranza-anedda.html 200
 /equipe/tonino-bullitta/ /equipe/tonino-bullitta.html 200
-/ginecologi-sassari/ /pages/ginecologi-sassari.html 200
-/hpv-dna-test/ /pages/hpv-dna-test.html 200
-/hpv-test/ /pages/hpv-test.html 200
-/impedenzometria/ /pages/impedenzometria.html 200
-/infiltrazioni-articolari/ /pages/infiltrazioni-articolari.html 200
-/listino/ /listino-completo.html 200
-/mappatura-nevi/ /pages/mappatura-nevi.html 200
-/monitoraggio-follicolare/ /pages/monitoraggio-follicolare.html 200
-/pages/*.html /pages/:splat.html 200
-/pap-test-hpv/ /pages/pap-test-hpv.html 200
-/pap-test/ /pages/pap-test.html 200
-/perifit-kegel-sassari/ /pages/perifit-kegel-sassari.html 200
-/radiofrequenza-vaginale/ /pages/radiofrequenza-vaginale.html 200
-/riabilitazione-pavimento-pelvico/ /pages/riabilitazione-pavimento-pelvico.html 200
-/rinofibrolaringoscopia/ /pages/rinofibrolaringoscopia.html 200
-/scleroterapia/ /pages/scleroterapia.html 200
-/screening-inps-sardegna/ /pages/screening-inps-sardegna.html 200
-/spirometria/ /pages/spirometria.html 200
-/symptom-checker/ /pages/symptom-checker.html 200
-/translucenza-nucale/ /pages/translucenza-nucale.html 200
-/trattamenti-pavimento-pelvico/ /pages/trattamenti-pavimento-pelvico.html 200
-/visita-chirurgia-vascolare/ /pages/visita-chirurgia-vascolare.html 200
-/visita-ematologica/ /pages/visita-ematologica.html 200
-/visita-fisiatrica/ /pages/visita-fisiatrica.html 200
-/visita-gastroenterologica/ /pages/visita-gastroenterologica.html 200
-/visita-internistica/ /pages/visita-internistica.html 200
-/visita-medicina-lavoro/ /pages/visita-medicina-lavoro.html 200
-/visita-medicina-sport/ /pages/visita-medicina-sport.html 200
-/visita-nefrologica/ /pages/visita-nefrologica.html 200
-/visita-nutrizionale/ /pages/visita-nutrizionale.html 200
-/visita-oculistica/ /pages/visita-oculistica.html 200
-/visita-orl/ /pages/visita-orl.html 200
-/visita-ortopedica/ /pages/visita-ortopedica.html 200
-/visita-pediatrica/ /pages/visita-pediatrica.html 200
-/visita-pneumologica/ /pages/visita-pneumologica.html 200
-/visita-reumatologica/ /pages/visita-reumatologica.html 200
-/visita-urologica/ /pages/visita-urologica.html 200
 
 # ============================================
-# 301 REDIRECTS - Legacy URL migrations
+# SPECIAL REWRITES (200) — non-standard paths
+# ============================================
+/listino/ /listino-completo.html 200
+# /pages/*.html rewrite REMOVED (Wave 0) — all /pages/ now redirect via 301 rules below
+
+# ============================================
+# /pages/ LEGACY → 301 TO CANONICAL (Wave 0)
+# ============================================
+/pages/assistenza-ostetrica /ginecologia/assistenza-ostetrica/ 301
+/pages/assistenza-ostetrica.html /ginecologia/assistenza-ostetrica/ 301
+/pages/audiometria /audiometria/ 301
+/pages/audiometria.html /audiometria/ 301
+/pages/campo-visivo /campo-visivo/ 301
+/pages/campo-visivo.html /campo-visivo/ 301
+/pages/caressflow /caressflow/ 301
+/pages/caressflow.html /caressflow/ 301
+/pages/checkup-tiroide /checkup-tiroide/ 301
+/pages/checkup-tiroide.html /checkup-tiroide/ 301
+/pages/colloquio-psicologico /colloquio-psicologico/ 301
+/pages/colloquio-psicologico.html /colloquio-psicologico/ 301
+/pages/colposcopia /ginecologia/colposcopia/ 301
+/pages/colposcopia.html /ginecologia/colposcopia/ 301
+/pages/corso-preparto /ginecologia/corso-preparto/ 301
+/pages/corso-preparto.html /ginecologia/corso-preparto/ 301
+/pages/duopap /ginecologia/duopap/ 301
+/pages/duopap.html /ginecologia/duopap/ 301
+/pages/eco-doppler-arti /eco-doppler-arti/ 301
+/pages/eco-doppler-arti.html /eco-doppler-arti/ 301
+/pages/ecografia-addominale /ecografia-addominale/ 301
+/pages/ecografia-addominale.html /ecografia-addominale/ 301
+/pages/ecografia-mammaria /ginecologia/ecografia-mammaria/ 301
+/pages/ecografia-mammaria.html /ginecologia/ecografia-mammaria/ 301
+/pages/ecografia-morfologica /ginecologia/ecografia-morfologica/ 301
+/pages/ecografia-morfologica.html /ginecologia/ecografia-morfologica/ 301
+/pages/ecografia-ostetrica-3d /ginecologia/ecografia-ostetrica-3d/ 301
+/pages/ecografia-ostetrica-3d.html /ginecologia/ecografia-ostetrica-3d/ 301
+/pages/ecografia-pelvica /ginecologia/ecografia-pelvica/ 301
+/pages/ecografia-pelvica.html /ginecologia/ecografia-pelvica/ 301
+/pages/ecografia-prostatica /ecografia-prostatica/ 301
+/pages/ecografia-prostatica.html /ecografia-prostatica/ 301
+/pages/ecografia-renale /ecografia-renale/ 301
+/pages/ecografia-renale.html /ecografia-renale/ 301
+/pages/ecografia-tiroidea /ecografia-tiroidea/ 301
+/pages/ecografia-tiroidea.html /ecografia-tiroidea/ 301
+/pages/ecografia-transvaginale /ginecologia/ecografia-transvaginale/ 301
+/pages/ecografia-transvaginale.html /ginecologia/ecografia-transvaginale/ 301
+/pages/elettromiografia /elettromiografia/ 301
+/pages/elettromiografia.html /elettromiografia/ 301
+/pages/genetica /genetica/ 301
+/pages/genetica.html /genetica/ 301
+/pages/ginecologi-sassari /ginecologia/ginecologi-sassari/ 301
+/pages/ginecologi-sassari.html /ginecologia/ginecologi-sassari/ 301
+/pages/hpv-dna-test /ginecologia/hpv-dna-test/ 301
+/pages/hpv-dna-test.html /ginecologia/hpv-dna-test/ 301
+/pages/infiltrazioni-articolari /infiltrazioni-articolari/ 301
+/pages/infiltrazioni-articolari.html /infiltrazioni-articolari/ 301
+/pages/isterosalpingografia /isterosalpingografia/ 301
+/pages/isterosalpingografia.html /isterosalpingografia/ 301
+/pages/isteroscopia /isteroscopia/ 301
+/pages/isteroscopia.html /isteroscopia/ 301
+/pages/laboratorio /laboratorio/ 301
+/pages/laboratorio.html /laboratorio/ 301
+/pages/mappatura-nevi /mappatura-nevi/ 301
+/pages/mappatura-nevi.html /mappatura-nevi/ 301
+/pages/mounjaro-tirzepatide-sassari /mounjaro-tirzepatide-sassari/ 301
+/pages/mounjaro-tirzepatide-sassari.html /mounjaro-tirzepatide-sassari/ 301
+/pages/pap-test /ginecologia/pap-test/ 301
+/pages/pap-test.html /ginecologia/pap-test/ 301
+/pages/pap-test-hpv /ginecologia/pap-test-hpv/ 301
+/pages/pap-test-hpv.html /ginecologia/pap-test-hpv/ 301
+/pages/perifit-kegel-sassari /ginecologia/perifit-kegel-sassari/ 301
+/pages/perifit-kegel-sassari.html /ginecologia/perifit-kegel-sassari/ 301
+/pages/preparazione-esami /preparazione-esami/ 301
+/pages/preparazione-esami.html /preparazione-esami/ 301
+/pages/radiofrequenza-vaginale /ginecologia/radiofrequenza-vaginale/ 301
+/pages/radiofrequenza-vaginale.html /ginecologia/radiofrequenza-vaginale/ 301
+/pages/riabilitazione-pavimento-pelvico /ginecologia/riabilitazione-pavimento-pelvico/ 301
+/pages/riabilitazione-pavimento-pelvico.html /ginecologia/riabilitazione-pavimento-pelvico/ 301
+/pages/scleroterapia /scleroterapia/ 301
+/pages/scleroterapia.html /scleroterapia/ 301
+/pages/screening-inps-sardegna /screening-inps-sardegna/ 301
+/pages/screening-inps-sardegna.html /screening-inps-sardegna/ 301
+/pages/spirometria /spirometria/ 301
+/pages/spirometria.html /spirometria/ 301
+/pages/symptom-checker /symptom-checker/ 301
+/pages/symptom-checker.html /symptom-checker/ 301
+/pages/trattamenti-pavimento-pelvico /ginecologia/trattamenti-pavimento-pelvico/ 301
+/pages/trattamenti-pavimento-pelvico.html /ginecologia/trattamenti-pavimento-pelvico/ 301
+/pages/visita-chirurgia-vascolare /visita-chirurgia-vascolare/ 301
+/pages/visita-chirurgia-vascolare.html /visita-chirurgia-vascolare/ 301
+/pages/visita-dermatologica /visita-dermatologica/ 301
+/pages/visita-dermatologica.html /visita-dermatologica/ 301
+/pages/visita-ematologica /visita-ematologica/ 301
+/pages/visita-ematologica.html /visita-ematologica/ 301
+/pages/visita-endocrinologica /visita-endocrinologica/ 301
+/pages/visita-endocrinologica.html /visita-endocrinologica/ 301
+/pages/visita-fisiatrica /visita-fisiatrica/ 301
+/pages/visita-fisiatrica.html /visita-fisiatrica/ 301
+/pages/visita-gastroenterologica /visita-gastroenterologica/ 301
+/pages/visita-gastroenterologica.html /visita-gastroenterologica/ 301
+/pages/visita-ginecologica /ginecologia/visita-ginecologica/ 301
+/pages/visita-ginecologica.html /ginecologia/visita-ginecologica/ 301
+/pages/visita-internistica /visita-internistica/ 301
+/pages/visita-internistica.html /visita-internistica/ 301
+/pages/visita-medicina-sport /visita-medicina-sport/ 301
+/pages/visita-medicina-sport.html /visita-medicina-sport/ 301
+/pages/visita-nefrologica /visita-nefrologica/ 301
+/pages/visita-nefrologica.html /visita-nefrologica/ 301
+/pages/visita-neurologica /visita-neurologica/ 301
+/pages/visita-neurologica.html /visita-neurologica/ 301
+/pages/visita-nutrizionale /visita-nutrizionale/ 301
+/pages/visita-nutrizionale.html /visita-nutrizionale/ 301
+/pages/visita-oculistica /visita-oculistica/ 301
+/pages/visita-oculistica.html /visita-oculistica/ 301
+/pages/visita-orl /visita-orl/ 301
+/pages/visita-orl.html /visita-orl/ 301
+/pages/visita-ortopedica /visita-ortopedica/ 301
+/pages/visita-ortopedica.html /visita-ortopedica/ 301
+/pages/visita-pediatrica /visita-pediatrica/ 301
+/pages/visita-pediatrica.html /visita-pediatrica/ 301
+/pages/visita-pneumologica /visita-pneumologica/ 301
+/pages/visita-pneumologica.html /visita-pneumologica/ 301
+/pages/visita-reumatologica /visita-reumatologica/ 301
+/pages/visita-reumatologica.html /visita-reumatologica/ 301
+/pages/visita-urologica /visita-urologica/ 301
+/pages/visita-urologica.html /visita-urologica/ 301
+/pages/agoaspirato-tiroide /endocrinologia/ 301
+/pages/agoaspirato-tiroide.html /endocrinologia/ 301
+/pages/chirurgia-ginecologica /isteroscopia/ 301
+/pages/chirurgia-ginecologica.html /isteroscopia/ 301
+/pages/consulto-pma /pma-fertilita/ 301
+/pages/consulto-pma.html /pma-fertilita/ 301
+/pages/dermatoscopia-digitale /dermatologia/ 301
+/pages/dermatoscopia-digitale.html /dermatologia/ 301
+/pages/ecg /cardiologia/visita-cardiologica-ecg/ 301
+/pages/ecg.html /cardiologia/visita-cardiologica-ecg/ 301
+/pages/ecografia-ginecologica /ginecologia/ 301
+/pages/ecografia-ginecologica.html /ginecologia/ 301
+/pages/hpv-test /ginecologia/pap-test-hpv/ 301
+/pages/hpv-test.html /ginecologia/pap-test-hpv/ 301
+/pages/impedenzometria /otorinolaringoiatria/ 301
+/pages/impedenzometria.html /otorinolaringoiatria/ 301
+/pages/monitoraggio-follicolare /pma-fertilita/ 301
+/pages/monitoraggio-follicolare.html /pma-fertilita/ 301
+/pages/rinofibrolaringoscopia /otorinolaringoiatria/ 301
+/pages/rinofibrolaringoscopia.html /otorinolaringoiatria/ 301
+/pages/translucenza-nucale /ginecologia/ecografia-morfologica/ 301
+/pages/translucenza-nucale.html /ginecologia/ecografia-morfologica/ 301
+/pages/visita-cardiologica /cardiologia/visita-cardiologica-ecg/ 301
+/pages/visita-cardiologica.html /cardiologia/visita-cardiologica-ecg/ 301
+/pages/visita-medicina-lavoro /medicina-del-lavoro/ 301
+/pages/visita-medicina-lavoro.html /medicina-del-lavoro/ 301
+
+# ============================================
+
+# ============================================
+# WAVE 1: Ginecologia cluster migration (301)
+# Added: 2026-02-15
+# ============================================
+/assistenza-ostetrica/ /ginecologia/assistenza-ostetrica/ 301
+/assistenza-ostetrica /ginecologia/assistenza-ostetrica/ 301
+/colposcopia/ /ginecologia/colposcopia/ 301
+/colposcopia /ginecologia/colposcopia/ 301
+/corso-preparto/ /ginecologia/corso-preparto/ 301
+/corso-preparto /ginecologia/corso-preparto/ 301
+/duopap/ /ginecologia/duopap/ 301
+/duopap /ginecologia/duopap/ 301
+/ecografia-mammaria/ /ginecologia/ecografia-mammaria/ 301
+/ecografia-mammaria /ginecologia/ecografia-mammaria/ 301
+/ecografia-morfologica/ /ginecologia/ecografia-morfologica/ 301
+/ecografia-morfologica /ginecologia/ecografia-morfologica/ 301
+/ecografia-ostetrica-3d/ /ginecologia/ecografia-ostetrica-3d/ 301
+/ecografia-ostetrica-3d /ginecologia/ecografia-ostetrica-3d/ 301
+/ecografia-pelvica/ /ginecologia/ecografia-pelvica/ 301
+/ecografia-pelvica /ginecologia/ecografia-pelvica/ 301
+/ecografia-transvaginale/ /ginecologia/ecografia-transvaginale/ 301
+/ecografia-transvaginale /ginecologia/ecografia-transvaginale/ 301
+/ginecologi-sassari/ /ginecologia/ginecologi-sassari/ 301
+/ginecologi-sassari /ginecologia/ginecologi-sassari/ 301
+/hpv-dna-test/ /ginecologia/hpv-dna-test/ 301
+/hpv-dna-test /ginecologia/hpv-dna-test/ 301
+/pap-test/ /ginecologia/pap-test/ 301
+/pap-test /ginecologia/pap-test/ 301
+/pap-test-hpv/ /ginecologia/pap-test-hpv/ 301
+/pap-test-hpv /ginecologia/pap-test-hpv/ 301
+/perifit-kegel-sassari/ /ginecologia/perifit-kegel-sassari/ 301
+/perifit-kegel-sassari /ginecologia/perifit-kegel-sassari/ 301
+/radiofrequenza-vaginale/ /ginecologia/radiofrequenza-vaginale/ 301
+/radiofrequenza-vaginale /ginecologia/radiofrequenza-vaginale/ 301
+/riabilitazione-pavimento-pelvico/ /ginecologia/riabilitazione-pavimento-pelvico/ 301
+/riabilitazione-pavimento-pelvico /ginecologia/riabilitazione-pavimento-pelvico/ 301
+/trattamenti-pavimento-pelvico/ /ginecologia/trattamenti-pavimento-pelvico/ 301
+/trattamenti-pavimento-pelvico /ginecologia/trattamenti-pavimento-pelvico/ 301
+/visita-ginecologica/ /ginecologia/visita-ginecologica/ 301
+/visita-ginecologica /ginecologia/visita-ginecologica/ 301
+
+# EXISTING 301 REDIRECTS (preserved)
 # ============================================
 /chirurgia-ginecologica /chirurgia-ginecologica/ 301
 /consulto-pma /consulto-pma/ 301
@@ -143,7 +277,25 @@
 /medicina-del-lavoro-sassari /medicina-del-lavoro/ 301
 /medicina-del-lavoro-sassari/ /medicina-del-lavoro/ 301
 /mounjaro-sassari /mounjaro-tirzepatide-sassari/ 301
-/pages/agoaspirato-tiroide.html /endocrinologia 301
+# /prestazioni/:procedure wildcard — removed (pointed to /pages/)
+/prestazioni/ecg /cardiologia/visita-cardiologica-ecg/ 301
+/prestazioni/visita-cardiologica /cardiologia/visita-cardiologica-ecg/ 301
+/rinofibrolaringoscopia /rinofibrolaringoscopia/ 301
+/servizi/laboratorio-analisi /laboratorio/ 301
+/servizi/laboratorio-analisi/ /laboratorio/ 301
+/slim-care-progetto-peso /slim-care 301
+/slim-care-progetto-peso/ /slim-care 301
+/specialisti-sassari /equipe/ 301
+/specialisti-sassari/ /equipe/ 301
+/tirzepatide-sassari /mounjaro-tirzepatide-sassari/ 301
+/translucenza-nucale /translucenza-nucale/ 301
+/visita-cardiologica /cardiologia/visita-cardiologica-ecg/ 301
+/visita-cardiologica/ /cardiologia/visita-cardiologica-ecg/ 301
+
+# ============================================
+# /pages/ LEGACY → 301 (previously existing rules preserved)
+# Hub names, cardiology cluster, institutional pages
+# ============================================
 /pages/cardiologia /cardiologia/ 301
 /pages/cardiologia.html /cardiologia/ 301
 /pages/cardiologia/ /cardiologia/ 301
@@ -152,10 +304,8 @@
 /pages/checkup-cardiovascolare/ /cardiologia/checkup-cardiovascolare/ 301
 /pages/chi-siamo /chi-siamo/ 301
 /pages/chi-siamo.html /chi-siamo/ 301
-/pages/chirurgia-ginecologica.html /pages/isteroscopia.html 301
 /pages/chirurgia-vascolare /chirurgia-vascolare/ 301
 /pages/chirurgia-vascolare.html /chirurgia-vascolare/ 301
-/pages/consulto-pma.html /pma-fertilita 301
 /pages/contatti /contatti/ 301
 /pages/contatti.html /contatti/ 301
 /pages/convenzioni /convenzioni/ 301
@@ -164,13 +314,9 @@
 /pages/cookie.html /cookie/ 301
 /pages/dermatologia /dermatologia/ 301
 /pages/dermatologia.html /dermatologia/ 301
-/pages/dermatoscopia-digitale.html /dermatologia 301
-/pages/ecg /cardiologia/visita-cardiologica-ecg/ 301
-/pages/ecg.html /cardiologia/visita-cardiologica-ecg/ 301
 /pages/ecocardiogramma /cardiologia/ecocardiogramma/ 301
 /pages/ecocardiogramma.html /cardiologia/ecocardiogramma/ 301
 /pages/ecocardiogramma/ /cardiologia/ecocardiogramma/ 301
-/pages/ecografia-ginecologica.html /ginecologia 301
 /pages/ematologia /ematologia/ 301
 /pages/ematologia.html /ematologia/ 301
 /pages/endocrinologia /endocrinologia/ 301
@@ -185,16 +331,13 @@
 /pages/holter-pressorio /cardiologia/holter-pressorio/ 301
 /pages/holter-pressorio.html /cardiologia/holter-pressorio/ 301
 /pages/holter-pressorio/ /cardiologia/holter-pressorio/ 301
-/pages/hpv-test.html /pages/duopap.html 301
-/pages/impedenzometria.html /otorinolaringoiatria 301
+/pages/listino-completo /listino/ 301
+/pages/medicina-del-lavoro /medicina-del-lavoro/ 301
 /pages/medicina-del-lavoro-sassari /medicina-del-lavoro/ 301
 /pages/medicina-del-lavoro-sassari.html /medicina-del-lavoro/ 301
 /pages/medicina-lavoro /medicina-del-lavoro/ 301
 /pages/medicina-lavoro.html /medicina-del-lavoro/ 301
 /pages/medicina-lavoro/ /medicina-del-lavoro/ 301
-/pages/monitoraggio-follicolare.html /pma-fertilita 301
-/pages/mounjaro-tirzepatide-sassari /mounjaro-tirzepatide-sassari/ 301
-/pages/mounjaro-tirzepatide-sassari.html /mounjaro-tirzepatide-sassari/ 301
 /pages/neurologia /neurologia/ 301
 /pages/neurologia.html /neurologia/ 301
 /pages/oculistica /oculistica/ 301
@@ -203,8 +346,6 @@
 /pages/ortopedia.html /ortopedia/ 301
 /pages/otorinolaringoiatria /otorinolaringoiatria/ 301
 /pages/otorinolaringoiatria.html /otorinolaringoiatria/ 301
-/pages/pap-test-hpv /pages/duopap.html 301
-/pages/pap-test-hpv.html /pages/duopap.html 301
 /pages/pma-fertilita /pma-fertilita/ 301
 /pages/pma-fertilita.html /pma-fertilita/ 301
 /pages/pneumologia /pneumologia/ 301
@@ -215,33 +356,14 @@
 /pages/privacy.html /privacy/ 301
 /pages/reumatologia /reumatologia/ 301
 /pages/reumatologia.html /reumatologia/ 301
-/pages/rinofibrolaringoscopia.html /otorinolaringoiatria 301
 /pages/slim-care /slim-care/ 301
 /pages/slim-care-donna /slim-care-donna/ 301
 /pages/slim-care-donna.html /slim-care-donna/ 301
 /pages/slim-care.html /slim-care/ 301
 /pages/specialita /specialita/ 301
 /pages/specialita.html /specialita/ 301
-/pages/translucenza-nucale.html /pages/ecografia-morfologica.html 301
 /pages/urologia /urologia/ 301
 /pages/urologia.html /urologia/ 301
-/pages/visita-cardiologica /cardiologia/visita-cardiologica-ecg/ 301
 /pages/visita-cardiologica-ecg /cardiologia/visita-cardiologica-ecg/ 301
 /pages/visita-cardiologica-ecg.html /cardiologia/visita-cardiologica-ecg/ 301
 /pages/visita-cardiologica-ecg/ /cardiologia/visita-cardiologica-ecg/ 301
-/pages/visita-cardiologica.html /cardiologia/visita-cardiologica-ecg/ 301
-/pap-test-hpv /pap-test-hpv/ 301
-/perifit-kegel-sassari /perifit-kegel-sassari/ 301
-/prestazioni/:procedure /pages/:procedure.html 301
-/prestazioni/ecg /cardiologia/visita-cardiologica-ecg/ 301
-/prestazioni/visita-cardiologica /cardiologia/visita-cardiologica-ecg/ 301
-/rinofibrolaringoscopia /rinofibrolaringoscopia/ 301
-/servizi/laboratorio-analisi /laboratorio/ 301
-/servizi/laboratorio-analisi/ /laboratorio/ 301
-/slim-care-progetto-peso /slim-care 301
-/slim-care-progetto-peso/ /slim-care 301
-/specialisti-sassari /equipe/ 301
-/specialisti-sassari/ /equipe/ 301
-/tirzepatide-sassari /mounjaro-tirzepatide-sassari/ 301
-/translucenza-nucale /translucenza-nucale/ 301
-/visita-cardiologica /visita-cardiologica/ 301

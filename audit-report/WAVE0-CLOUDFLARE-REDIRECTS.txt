@@ -1,0 +1,154 @@
+# WAVE 0 - Bio-Clinic Redirect Rules
+# Format: source destination status_code
+# Deploy: add to _redirects file or Cloudflare Worker
+# Generated: 2026-02-15
+# Total rules: 80
+
+# === SECTION A: /pages/ legacy → canonical destinations (301) ===
+
+/pages/agoaspirato-tiroide  /endocrinologia/  301
+/pages/assistenza-ostetrica  /assistenza-ostetrica/  301
+/pages/audiometria  /audiometria/  301
+/pages/campo-visivo  /campo-visivo/  301
+/pages/caressflow  /caressflow/  301
+/pages/checkup-tiroide  /checkup-tiroide/  301
+/pages/chirurgia-ginecologica  /isteroscopia/  301
+/pages/colloquio-psicologico  /colloquio-psicologico/  301
+/pages/colposcopia  /colposcopia/  301
+/pages/consulto-pma  /pma-fertilita/  301
+/pages/corso-preparto  /corso-preparto/  301
+/pages/dermatologia.html  /dermatologia/  301
+/pages/dermatoscopia-digitale  /dermatologia/  301
+/pages/duopap  /duopap/  301
+/pages/eco-doppler-arti  /eco-doppler-arti/  301
+/pages/ecocardiogramma.html  /cardiologia/ecocardiogramma/  301
+/pages/ecografia-addominale  /ecografia-addominale/  301
+/pages/ecografia-ginecologica  /ginecologia/  301
+/pages/ecografia-mammaria  /ecografia-mammaria/  301
+/pages/ecografia-morfologica  /ecografia-morfologica/  301
+/pages/ecografia-ostetrica-3d  /ecografia-ostetrica-3d/  301
+/pages/ecografia-pelvica  /ecografia-pelvica/  301
+/pages/ecografia-prostatica  /ecografia-prostatica/  301
+/pages/ecografia-renale  /ecografia-renale/  301
+/pages/ecografia-tiroidea  /ecografia-tiroidea/  301
+/pages/ecografia-transvaginale  /ecografia-transvaginale/  301
+/pages/elettromiografia  /elettromiografia/  301
+/pages/genetica  /genetica/  301
+/pages/ginecologi-sassari  /ginecologi-sassari/  301
+/pages/ginecologia.html  /ginecologia/  301
+/pages/hpv-dna-test  /hpv-dna-test/  301
+/pages/hpv-test  /pap-test-hpv/  301
+/pages/impedenzometria  /otorinolaringoiatria/  301
+/pages/infiltrazioni-articolari  /infiltrazioni-articolari/  301
+/pages/isterosalpingografia  /isterosalpingografia/  301
+/pages/isteroscopia  /isteroscopia/  301
+/pages/laboratorio  /laboratorio/  301
+/pages/listino-completo  /listino-completo/  301
+/pages/mappatura-nevi  /mappatura-nevi/  301
+/pages/medicina-del-lavoro  /medicina-del-lavoro/  301
+/pages/monitoraggio-follicolare  /pma-fertilita/  301
+/pages/neurologia  /neurologia/  301
+/pages/ortopedia  /ortopedia/  301
+/pages/pap-test  /pap-test/  301
+/pages/perifit-kegel-sassari  /perifit-kegel-sassari/  301
+/pages/pma-fertilita  /pma-fertilita/  301
+/pages/preparazione-esami  /preparazione-esami/  301
+/pages/radiofrequenza-vaginale  /radiofrequenza-vaginale/  301
+/pages/riabilitazione-pavimento-pelvico  /riabilitazione-pavimento-pelvico/  301
+/pages/rinofibrolaringoscopia  /otorinolaringoiatria/  301
+/pages/scleroterapia  /scleroterapia/  301
+/pages/screening-inps-sardegna  /screening-inps-sardegna/  301
+/pages/slim-care  /slim-care/  301
+/pages/specialita  /specialita/  301
+/pages/specialita.html  /specialita/  301
+/pages/spirometria  /spirometria/  301
+/pages/symptom-checker  /symptom-checker/  301
+/pages/translucenza-nucale  /ecografia-morfologica/  301
+/pages/trattamenti-pavimento-pelvico  /trattamenti-pavimento-pelvico/  301
+/pages/visita-cardiologica-ecg  /pages/visita-cardiologica-ecg.html  301
+/pages/visita-chirurgia-vascolare  /visita-chirurgia-vascolare/  301
+/pages/visita-dermatologica  /visita-dermatologica/  301
+/pages/visita-ematologica  /visita-ematologica/  301
+/pages/visita-endocrinologica  /visita-endocrinologica/  301
+/pages/visita-fisiatrica  /visita-fisiatrica/  301
+/pages/visita-gastroenterologica  /visita-gastroenterologica/  301
+/pages/visita-ginecologica  /visita-ginecologica/  301
+/pages/visita-internistica  /visita-internistica/  301
+/pages/visita-medicina-lavoro  /visita-medicina-del-lavoro-sassari/  301
+/pages/visita-medicina-sport  /visita-medicina-sport/  301
+/pages/visita-nefrologica  /visita-nefrologica/  301
+/pages/visita-neurologica  /visita-neurologica/  301
+/pages/visita-nutrizionale  /visita-nutrizionale/  301
+/pages/visita-oculistica  /visita-oculistica/  301
+/pages/visita-orl  /visita-orl/  301
+/pages/visita-ortopedica  /visita-ortopedica/  301
+/pages/visita-pediatrica  /visita-pediatrica/  301
+/pages/visita-pneumologica  /visita-pneumologica/  301
+/pages/visita-reumatologica  /visita-reumatologica/  301
+/pages/visita-urologica  /visita-urologica/  301
+
+# === SECTION B: Root URLs needing routing fix ===
+# These URLs currently 308→/pages/. The framework must be reconfigured
+# to serve these as 200 directly instead of redirecting to /pages/
+# This is NOT a redirect rule — it's a routing change.
+
+# FIX: /agoaspirato-tiroide/ must serve /pages/agoaspirato-tiroide content directly
+# FIX: /assistenza-ostetrica/ must serve /pages/assistenza-ostetrica content directly
+# FIX: /audiometria/ must serve /pages/audiometria content directly
+# FIX: /campo-visivo/ must serve /pages/campo-visivo content directly
+# FIX: /caressflow/ must serve /pages/caressflow content directly
+# FIX: /checkup-tiroide/ must serve /pages/checkup-tiroide content directly
+# FIX: /chirurgia-ginecologica/ must serve /pages/chirurgia-ginecologica content directly
+# FIX: /colloquio-psicologico/ must serve /pages/colloquio-psicologico content directly
+# FIX: /colposcopia/ must serve /pages/colposcopia content directly
+# FIX: /consulto-pma/ must serve /pages/consulto-pma content directly
+# FIX: /corso-preparto/ must serve /pages/corso-preparto content directly
+# FIX: /dermatoscopia-digitale/ must serve /pages/dermatoscopia-digitale content directly
+# FIX: /duopap/ must serve /pages/duopap content directly
+# FIX: /ecg/ must serve /pages/ecg content directly
+# FIX: /eco-doppler-arti/ must serve /pages/eco-doppler-arti content directly
+# FIX: /ecografia-addominale/ must serve /pages/ecografia-addominale content directly
+# FIX: /ecografia-ginecologica/ must serve /pages/ecografia-ginecologica content directly
+# FIX: /ecografia-mammaria/ must serve /pages/ecografia-mammaria content directly
+# FIX: /ecografia-morfologica/ must serve /pages/ecografia-morfologica content directly
+# FIX: /ecografia-ostetrica-3d/ must serve /pages/ecografia-ostetrica-3d content directly
+# FIX: /ecografia-pelvica/ must serve /pages/ecografia-pelvica content directly
+# FIX: /ecografia-prostatica/ must serve /pages/ecografia-prostatica content directly
+# FIX: /ecografia-renale/ must serve /pages/ecografia-renale content directly
+# FIX: /ecografia-tiroidea/ must serve /pages/ecografia-tiroidea content directly
+# FIX: /ecografia-transvaginale/ must serve /pages/ecografia-transvaginale content directly
+# FIX: /elettromiografia/ must serve /pages/elettromiografia content directly
+# FIX: /ginecologi-sassari/ must serve /pages/ginecologi-sassari content directly
+# FIX: /hpv-dna-test/ must serve /pages/hpv-dna-test content directly
+# FIX: /hpv-test/ must serve /pages/hpv-test content directly
+# FIX: /impedenzometria/ must serve /pages/impedenzometria content directly
+# FIX: /infiltrazioni-articolari/ must serve /pages/infiltrazioni-articolari content directly
+# FIX: /mappatura-nevi/ must serve /pages/mappatura-nevi content directly
+# FIX: /monitoraggio-follicolare/ must serve /pages/monitoraggio-follicolare content directly
+# FIX: /pap-test/ must serve /pages/pap-test content directly
+# FIX: /perifit-kegel-sassari/ must serve /pages/perifit-kegel-sassari content directly
+# FIX: /radiofrequenza-vaginale/ must serve /pages/radiofrequenza-vaginale content directly
+# FIX: /riabilitazione-pavimento-pelvico/ must serve /pages/riabilitazione-pavimento-pelvico content directly
+# FIX: /rinofibrolaringoscopia/ must serve /pages/rinofibrolaringoscopia content directly
+# FIX: /scleroterapia/ must serve /pages/scleroterapia content directly
+# FIX: /screening-inps-sardegna/ must serve /pages/screening-inps-sardegna content directly
+# FIX: /spirometria/ must serve /pages/spirometria content directly
+# FIX: /symptom-checker/ must serve /pages/symptom-checker content directly
+# FIX: /translucenza-nucale/ must serve /pages/translucenza-nucale content directly
+# FIX: /trattamenti-pavimento-pelvico/ must serve /pages/trattamenti-pavimento-pelvico content directly
+# FIX: /visita-chirurgia-vascolare/ must serve /pages/visita-chirurgia-vascolare content directly
+# FIX: /visita-ematologica/ must serve /pages/visita-ematologica content directly
+# FIX: /visita-fisiatrica/ must serve /pages/visita-fisiatrica content directly
+# FIX: /visita-gastroenterologica/ must serve /pages/visita-gastroenterologica content directly
+# FIX: /visita-internistica/ must serve /pages/visita-internistica content directly
+# FIX: /visita-medicina-lavoro/ must serve /pages/visita-medicina-lavoro content directly
+# FIX: /visita-medicina-sport/ must serve /pages/visita-medicina-sport content directly
+# FIX: /visita-nefrologica/ must serve /pages/visita-nefrologica content directly
+# FIX: /visita-nutrizionale/ must serve /pages/visita-nutrizionale content directly
+# FIX: /visita-oculistica/ must serve /pages/visita-oculistica content directly
+# FIX: /visita-orl/ must serve /pages/visita-orl content directly
+# FIX: /visita-ortopedica/ must serve /pages/visita-ortopedica content directly
+# FIX: /visita-pediatrica/ must serve /pages/visita-pediatrica content directly
+# FIX: /visita-pneumologica/ must serve /pages/visita-pneumologica content directly
+# FIX: /visita-reumatologica/ must serve /pages/visita-reumatologica content directly
+# FIX: /visita-urologica/ must serve /pages/visita-urologica content directly
