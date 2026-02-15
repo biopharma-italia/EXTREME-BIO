@@ -60,19 +60,19 @@ const BioClinicPhysician = (function() {
 
   // Keywords per interlinking automatico
   const INTERLINK_KEYWORDS = {
-    'PMA': { url: '/pages/pma-fertilita.html', title: 'Procreazione Medicalmente Assistita' },
-    'Slim Care': { url: '/pages/slim-care.html', title: 'Percorso Dimagrimento Slim Care' },
-    'Wegovy': { url: '/pages/slim-care.html', title: 'Trattamento con Wegovy' },
-    'Mounjaro': { url: '/pages/slim-care.html', title: 'Trattamento con Mounjaro' },
-    'cardiologia': { url: '/pages/cardiologia.html', title: 'Reparto di Cardiologia' },
-    'ginecologia': { url: '/pages/ginecologia.html', title: 'Reparto di Ginecologia' },
+    'PMA': { url: '/pma-fertilita/', title: 'Procreazione Medicalmente Assistita' },
+    'Slim Care': { url: '/slim-care/', title: 'Percorso Dimagrimento Slim Care' },
+    'Wegovy': { url: '/slim-care/', title: 'Trattamento con Wegovy' },
+    'Mounjaro': { url: '/slim-care/', title: 'Trattamento con Mounjaro' },
+    'cardiologia': { url: '/cardiologia/', title: 'Reparto di Cardiologia' },
+    'ginecologia': { url: '/ginecologia/', title: 'Reparto di Ginecologia' },
     'laboratorio': { url: '/laboratorio/', title: 'Laboratorio Analisi' },
-    'endocrinologia': { url: '/pages/endocrinologia.html', title: 'Reparto di Endocrinologia' },
-    'dermatologia': { url: '/pages/dermatologia.html', title: 'Reparto di Dermatologia' },
-    'tiroide': { url: '/pages/endocrinologia.html', title: 'Patologie della Tiroide' },
-    'menopausa': { url: '/pages/slim-care-donna.html', title: 'Gestione Menopausa' },
-    'PCOS': { url: '/pages/slim-care-donna.html', title: 'Sindrome dell\'Ovaio Policistico' },
-    'fertilità': { url: '/pages/pma-fertilita.html', title: 'Centro Fertilità' }
+    'endocrinologia': { url: '/endocrinologia/', title: 'Reparto di Endocrinologia' },
+    'dermatologia': { url: '/dermatologia/', title: 'Reparto di Dermatologia' },
+    'tiroide': { url: '/endocrinologia/', title: 'Patologie della Tiroide' },
+    'menopausa': { url: '/slim-care-donna/', title: 'Gestione Menopausa' },
+    'PCOS': { url: '/slim-care-donna/', title: 'Sindrome dell\'Ovaio Policistico' },
+    'fertilità': { url: '/pma-fertilita/', title: 'Centro Fertilità' }
   };
 
   // =============================================
@@ -171,7 +171,7 @@ const BioClinicPhysician = (function() {
             }))
           },
           'image': medico.photo_url || `${CONFIG.clinicUrl}/images/default-physician.jpg`,
-          'url': `${CONFIG.clinicUrl}/equipe/${medico.slug}.html`
+          'url': `${CONFIG.clinicUrl}/equipe/${medico.slug}/`
         },
 
         // 2. BreadcrumbList
@@ -194,7 +194,7 @@ const BioClinicPhysician = (function() {
               '@type': 'ListItem',
               'position': 3,
               'name': medico.full_name,
-              'item': `${CONFIG.clinicUrl}/equipe/${medico.slug}.html`
+              'item': `${CONFIG.clinicUrl}/equipe/${medico.slug}/`
             }
           ]
         },

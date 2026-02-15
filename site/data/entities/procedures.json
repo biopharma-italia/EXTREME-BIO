@@ -43,7 +43,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/visita-ginecologica.html"
+      "page_url": "/visita-ginecologica/"
     },
     {
       "id": "ecografia-transvaginale",
@@ -83,7 +83,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/ImagingTest"
       },
-      "page_url": "/pages/ecografia-transvaginale.html"
+      "page_url": "/ecografia-transvaginale/"
     },
     {
       "id": "ecografia-mammaria",
@@ -122,7 +122,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/ImagingTest"
       },
-      "page_url": "/pages/ecografia-mammaria.html"
+      "page_url": "/ecografia-mammaria/"
     },
     {
       "id": "pap-test",
@@ -164,7 +164,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/pap-test.html",
+      "page_url": "/pap-test/",
       "description": "Esame citologico per la prevenzione del tumore della cervice uterina. Rileva cellule anomale prima che diventino cancerose. Referto in 7 giorni, tra i più rapidi.",
       "price_options": {
         "sola_lettura": 30,
@@ -205,7 +205,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/colposcopia.html"
+      "page_url": "/colposcopia/"
     },
     {
       "id": "visita-ostetrica",
@@ -242,7 +242,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/ginecologia.html"
+      "page_url": "/ginecologia/"
     },
     {
       "id": "ecografia-ostetrica",
@@ -277,7 +277,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/ImagingTest"
       },
-      "page_url": "/pages/ginecologia.html"
+      "page_url": "/ginecologia/"
     },
     {
       "id": "ecografia-morfologica",
@@ -313,7 +313,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/ImagingTest"
       },
-      "page_url": "/pages/ecografia-morfologica.html"
+      "page_url": "/ecografia-morfologica/"
     },
     {
       "id": "translucenza-nucale",
@@ -349,7 +349,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/ImagingTest"
       },
-      "page_url": "/pages/ginecologia.html"
+      "page_url": "/ginecologia/"
     },
     {
       "id": "visita-cardiologica",
@@ -392,7 +392,7 @@
         "controllo cuore"
       ],
       "booking_priority": "high",
-      "page_url": "/pages/visita-cardiologica-ecg.html",
+      "page_url": "/visita-cardiologica-ecg/",
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
@@ -436,7 +436,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/visita-cardiologica-ecg.html"
+      "page_url": "/visita-cardiologica-ecg/"
     },
     {
       "id": "ecocardiogramma",
@@ -476,7 +476,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/ImagingTest"
       },
-      "page_url": "/pages/ecocardiogramma.html"
+      "page_url": "/ecocardiogramma/"
     },
     {
       "id": "holter-ecg",
@@ -512,7 +512,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/holter-ecg.html"
+      "page_url": "/holter-ecg/"
     },
     {
       "id": "holter-pressorio",
@@ -546,7 +546,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/holter-pressorio.html"
+      "page_url": "/holter-pressorio/"
     },
     {
       "id": "visita-endocrinologica",
@@ -588,7 +588,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/visita-endocrinologica.html"
+      "page_url": "/visita-endocrinologica/"
     },
     {
       "id": "ecografia-tiroidea",
@@ -627,7 +627,7 @@
         "tiroide ecografia"
       ],
       "booking_priority": "high",
-      "page_url": "/pages/ecografia-tiroidea.html",
+      "page_url": "/ecografia-tiroidea/",
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/ImagingTest"
@@ -670,7 +670,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/endocrinologia.html"
+      "page_url": "/endocrinologia/"
     },
     {
       "id": "visita-dermatologica",
@@ -709,7 +709,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/visita-dermatologica.html"
+      "page_url": "/visita-dermatologica/"
     },
     {
       "id": "mappatura-nei",
@@ -744,7 +744,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/visita-dermatologica.html"
+      "page_url": "/visita-dermatologica/"
     },
     {
       "id": "visita-neurologica",
@@ -780,7 +780,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/visita-neurologica.html"
+      "page_url": "/visita-neurologica/"
     },
     {
       "id": "elettromiografia",
@@ -813,7 +813,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/elettromiografia.html"
+      "page_url": "/elettromiografia/"
     },
     {
       "id": "visita-oculistica",
@@ -851,7 +851,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/visita-oculistica.html"
+      "page_url": "/visita-oculistica/"
     },
     {
       "id": "tonometria",
@@ -883,7 +883,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/visita-oculistica.html"
+      "page_url": "/visita-oculistica/"
     },
     {
       "id": "visita-ortopedica",
@@ -920,7 +920,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/visita-ortopedica.html"
+      "page_url": "/visita-ortopedica/"
     },
     {
       "id": "ecografia-muscolo-tendinea",
@@ -953,7 +953,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/ImagingTest"
       },
-      "page_url": "/pages/visita-ortopedica.html"
+      "page_url": "/visita-ortopedica/"
     },
     {
       "id": "visita-nutrizionale",
@@ -991,7 +991,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/visita-nutrizionale.html"
+      "page_url": "/visita-nutrizionale/"
     },
     {
       "id": "bioimpedenziometria",
@@ -1027,7 +1027,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/visita-nutrizionale.html"
+      "page_url": "/visita-nutrizionale/"
     },
     {
       "id": "visita-medicina-sportiva",
@@ -1061,7 +1061,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/visita-medicina-sport.html"
+      "page_url": "/visita-medicina-sport/"
     },
     {
       "id": "spirometria",
@@ -1095,7 +1095,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/spirometria.html"
+      "page_url": "/spirometria/"
     },
     {
       "id": "prelievo-sangue",
@@ -1166,7 +1166,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/pma-fertilita.html"
+      "page_url": "/pma-fertilita/"
     },
     {
       "id": "spermiogramma",
@@ -1200,7 +1200,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/pages/pma-fertilita.html"
+      "page_url": "/pma-fertilita/"
     },
     {
       "id": "hpv-dna-test",
@@ -1226,7 +1226,7 @@
       "pathways": [
         "prevenzione-donna"
       ],
-      "page_url": "/pages/hpv-dna-test.html",
+      "page_url": "/hpv-dna-test/",
       "search_terms": [
         "hpv",
         "papillomavirus",
@@ -1272,7 +1272,7 @@
       "pathways": [
         "prevenzione-donna"
       ],
-      "page_url": "/pages/duopap.html",
+      "page_url": "/duopap/",
       "search_terms": [
         "duopap",
         "duo pap",
@@ -1311,7 +1311,7 @@
       "pathways": [
         "slim-care-donna"
       ],
-      "page_url": "/pages/caressflow.html",
+      "page_url": "/caressflow/",
       "search_terms": [
         "caressflow",
         "caress flow",
@@ -1349,7 +1349,7 @@
       "pathways": [
         "slim-care-donna"
       ],
-      "page_url": "/pages/radiofrequenza-vaginale.html",
+      "page_url": "/radiofrequenza-vaginale/",
       "search_terms": [
         "radiofrequenza vaginale",
         "rf vaginale",
@@ -1387,7 +1387,7 @@
       "pathways": [
         "pma-fertilita"
       ],
-      "page_url": "/pages/isteroscopia.html",
+      "page_url": "/isteroscopia/",
       "search_terms": [
         "isteroscopia",
         "cavità uterina",
@@ -1423,7 +1423,7 @@
       "pathways": [
         "pma-fertilita"
       ],
-      "page_url": "/pages/isterosalpingografia.html",
+      "page_url": "/isterosalpingografia/",
       "search_terms": [
         "isterosalpingografia",
         "hsg",

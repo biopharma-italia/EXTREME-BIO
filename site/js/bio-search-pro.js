@@ -122,7 +122,7 @@ const BioSearchPro = (function() {
         description: 'Percorso dimagrimento con Wegovy e Mounjaro',
         icon: '🎯',
         tags: ['dimagrimento', 'peso', 'obesità', 'wegovy', 'mounjaro', 'ozempic'],
-        url: '/pages/slim-care.html',
+        url: '/slim-care/',
         bookingType: 'whatsapp',
         price: null,
         featured: true
@@ -133,7 +133,7 @@ const BioSearchPro = (function() {
         description: 'Percorso dimagrimento specifico per donne con PCOS e menopausa',
         icon: '👩',
         tags: ['donna', 'pcos', 'menopausa', 'dimagrimento', 'peso'],
-        url: '/pages/slim-care-donna.html',
+        url: '/slim-care-donna/',
         bookingType: 'whatsapp',
         price: null,
         featured: true
@@ -144,7 +144,7 @@ const BioSearchPro = (function() {
         description: 'Procreazione Medicalmente Assistita e percorsi fertilità',
         icon: '👶',
         tags: ['fertilità', 'pma', 'fecondazione', 'gravidanza', 'infertilità', 'icsi', 'fivet'],
-        url: '/pages/pma-fertilita.html',
+        url: '/pma-fertilita/',
         bookingType: 'whatsapp',
         price: null,
         featured: true
@@ -156,7 +156,7 @@ const BioSearchPro = (function() {
         description: 'Percorso completo per la salute del cuore: ECG, ecocardiogramma, esami',
         icon: '❤️',
         tags: ['cuore', 'cardiologico', 'cardiovascolare', 'ecg', 'ecocardiogramma', 'prevenzione'],
-        url: '/pages/checkup-cardiovascolare.html',
+        url: '/cardiologia/checkup-cardiovascolare/',
         bookingType: 'miodottore',
         price: 150,
         featured: false
@@ -167,7 +167,7 @@ const BioSearchPro = (function() {
         description: 'Valutazione completa funzionalità tiroidea: TSH, FT3, FT4, anticorpi',
         icon: '🦋',
         tags: ['tiroide', 'tsh', 'ipotiroidismo', 'ipertiroidismo', 'eutirox', 'tiroidite'],
-        url: '/pages/checkup-tiroide.html',
+        url: '/endocrinologia/checkup-tiroide/',
         bookingType: 'direct',
         price: 29,
         featured: false
@@ -178,7 +178,7 @@ const BioSearchPro = (function() {
         description: 'Scopri il check-up giusto per la tua età e le tue esigenze',
         icon: '🩺',
         tags: ['prevenzione', 'check-up', 'screening', 'controllo', 'esami'],
-        url: '/pages/prevenzione.html',
+        url: '/prevenzione/',
         bookingType: 'direct',
         price: null,
         featured: false
@@ -189,7 +189,7 @@ const BioSearchPro = (function() {
         description: 'Non sai da dove iniziare? Descrivi i sintomi e trova il percorso giusto',
         icon: '🏥',
         tags: ['sintomi', 'non so', 'aiuto', 'cosa fare', 'quale esame', 'quale specialista'],
-        url: '/pages/symptom-checker.html',
+        url: '/symptom-checker/',
         bookingType: 'direct',
         price: null,
         featured: true
@@ -200,7 +200,7 @@ const BioSearchPro = (function() {
         description: 'Prevenzione femminile completa: anemia, tiroide, vitamina D',
         icon: '👩',
         tags: ['donna', 'femminile', 'under 40', 'anemia', 'ferro', 'prevenzione donna'],
-        url: '/laboratorio/index.html#pack-check-up-donna-under-40',
+        url: '/laboratorio/#pack-check-up-donna-under-40',
         bookingType: 'direct',
         price: 89,
         featured: false
@@ -211,7 +211,7 @@ const BioSearchPro = (function() {
         description: 'Prevenzione per menopausa: cuore, ossa, metabolismo',
         icon: '👩',
         tags: ['donna', 'over 40', 'menopausa', 'osteoporosi', 'cardiovascolare'],
-        url: '/laboratorio/index.html#pack-check-up-donna-over-40',
+        url: '/laboratorio/#pack-check-up-donna-over-40',
         bookingType: 'direct',
         price: 129,
         featured: false
@@ -222,7 +222,7 @@ const BioSearchPro = (function() {
         description: 'Prevenzione maschile: prostata, cuore, diabete',
         icon: '👨',
         tags: ['uomo', 'over 40', 'prostata', 'psa', 'cardiovascolare'],
-        url: '/laboratorio/index.html#pack-check-up-uomo-over-40',
+        url: '/laboratorio/#pack-check-up-uomo-over-40',
         bookingType: 'direct',
         price: 119,
         featured: false
@@ -233,7 +233,7 @@ const BioSearchPro = (function() {
         description: 'Screening dermatologico con dermatoscopia per prevenzione melanoma',
         icon: '🔬',
         tags: ['nei', 'nevi', 'melanoma', 'pelle', 'dermatoscopia', 'mappatura'],
-        url: '/pages/dermatologia.html',
+        url: '/dermatologia/',
         bookingType: 'miodottore',
         price: null,
         featured: false
@@ -299,7 +299,7 @@ const BioSearchPro = (function() {
           icon: spec.icon,
           tags: spec.keywords,
           keywords: spec.keywords,
-          url: `/pages/${spec.id}.html`,
+          url: `/${spec.id}/`,
           bookingType: 'miodottore',
           price: null
         });

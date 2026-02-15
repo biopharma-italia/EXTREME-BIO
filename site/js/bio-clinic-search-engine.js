@@ -219,7 +219,7 @@ const BioClinicSearchEngine = (function() {
             type: 'specialty',
             icon: s.icon || '🏥',
             synonyms: s.aliases || [],
-            url: s.page_url || `/pages/${s.id}.html`
+            url: s.page_url || `/${s.id}/`
           });
         });
       }
@@ -232,7 +232,7 @@ const BioClinicSearchEngine = (function() {
             type: 'procedure',
             icon: '🩺',
             synonyms: p.search_terms || [],
-            url: p.page_url || `/pages/${p.id}.html`
+            url: p.page_url || `/${p.id}/`
           });
         });
       }
@@ -272,7 +272,7 @@ const BioClinicSearchEngine = (function() {
             type: 'pathway',
             icon: p.icon || '🛤️',
             synonyms: p.aliases || [],
-            url: p.page_url || `/pages/${p.id}.html`
+            url: p.page_url || `/${p.id}/`
           });
         });
       }
@@ -286,7 +286,7 @@ const BioClinicSearchEngine = (function() {
             type: 'physician',
             icon: '👨‍⚕️',
             synonyms: [],
-            url: p.page_url || `/equipe/${p.slug || p.id}.html`
+            url: p.page_url || `/equipe/${p.slug || p.id}/`
           });
         });
       }

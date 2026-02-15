@@ -54,7 +54,7 @@ const SmartComparator = (function() {
                         "Non include anticorpi"
                     ],
                     bestFor: "Monitoraggio terapia con Eutirox se valori stabili",
-                    url: "/laboratorio/index.html#esame-tsh",
+                    url: "/laboratorio/#esame-tsh",
                     bookingType: "direct"
                 },
                 {
@@ -75,7 +75,7 @@ const SmartComparator = (function() {
                     ],
                     bestFor: "Screening iniziale, controlli periodici",
                     recommended: false,
-                    url: "/laboratorio/index.html#pack-check-up-tiroide-base",
+                    url: "/laboratorio/#pack-check-up-tiroide-base",
                     bookingType: "direct"
                 },
                 {
@@ -96,7 +96,7 @@ const SmartComparator = (function() {
                     ],
                     bestFor: "Prima diagnosi, sospetta tiroidite, gravidanza, familiarità",
                     recommended: true,
-                    url: "/laboratorio/index.html#pack-check-up-tiroide-plus",
+                    url: "/laboratorio/#pack-check-up-tiroide-plus",
                     bookingType: "direct"
                 },
                 {
@@ -116,7 +116,7 @@ const SmartComparator = (function() {
                         "Costo più elevato"
                     ],
                     bestFor: "Valori alterati, noduli, necessità di terapia",
-                    url: "/pages/endocrinologia.html",
+                    url: "/endocrinologia/",
                     bookingType: "miodottore"
                 }
             ],
@@ -178,7 +178,7 @@ const SmartComparator = (function() {
                         "Senza interpretazione specialistica"
                     ],
                     bestFor: "Screening base, pre-interventi, controllo rapido",
-                    url: "/pages/cardiologia.html",
+                    url: "/cardiologia/",
                     bookingType: "miodottore"
                 },
                 {
@@ -199,7 +199,7 @@ const SmartComparator = (function() {
                     ],
                     bestFor: "Screening periodico, soggetti a basso rischio",
                     recommended: false,
-                    url: "/pages/checkup-cardiovascolare.html",
+                    url: "/cardiologia/checkup-cardiovascolare/",
                     bookingType: "miodottore"
                 },
                 {
@@ -220,7 +220,7 @@ const SmartComparator = (function() {
                     ],
                     bestFor: "Prevenzione completa, fattori di rischio, familiarità",
                     recommended: true,
-                    url: "/pages/checkup-cardiovascolare.html",
+                    url: "/cardiologia/checkup-cardiovascolare/",
                     bookingType: "miodottore"
                 },
                 {
@@ -239,7 +239,7 @@ const SmartComparator = (function() {
                         "Non valuta struttura del cuore"
                     ],
                     bestFor: "Palpitazioni, svenimenti, aritmie intermittenti",
-                    url: "/pages/cardiologia.html",
+                    url: "/cardiologia/",
                     bookingType: "miodottore"
                 }
             ],
@@ -301,7 +301,7 @@ const SmartComparator = (function() {
                         "Non include screening metabolico"
                     ],
                     bestFor: "Controllo annuale, sintomi ginecologici",
-                    url: "/pages/ginecologia.html",
+                    url: "/ginecologia/",
                     bookingType: "miodottore"
                 },
                 {
@@ -322,7 +322,7 @@ const SmartComparator = (function() {
                     ],
                     bestFor: "Screening ematico per donne giovani",
                     recommended: false,
-                    url: "/laboratorio/index.html#pack-check-up-donna-under-40",
+                    url: "/laboratorio/#pack-check-up-donna-under-40",
                     bookingType: "direct"
                 },
                 {
@@ -343,7 +343,7 @@ const SmartComparator = (function() {
                     ],
                     bestFor: "Prevenzione completa per over 40, pre-menopausa",
                     recommended: true,
-                    url: "/laboratorio/index.html#pack-check-up-donna-over-40",
+                    url: "/laboratorio/#pack-check-up-donna-over-40",
                     bookingType: "direct"
                 },
                 {
@@ -365,7 +365,7 @@ const SmartComparator = (function() {
                     ],
                     bestFor: "Difficoltà a concepire da >12 mesi, infertilità",
                     featured: true,
-                    url: "/pages/pma-fertilita.html",
+                    url: "/pma-fertilita/",
                     bookingType: "whatsapp"
                 }
             ],
@@ -427,7 +427,7 @@ const SmartComparator = (function() {
                         "Non include piano alimentare"
                     ],
                     bestFor: "Screening iniziale, escludi cause ormonali",
-                    url: "/laboratorio/index.html",
+                    url: "/laboratorio/",
                     bookingType: "direct"
                 },
                 {
@@ -446,7 +446,7 @@ const SmartComparator = (function() {
                         "Follow-up da prenotare a parte"
                     ],
                     bestFor: "Sospetta causa ormonale, necessità farmaci",
-                    url: "/pages/endocrinologia.html",
+                    url: "/endocrinologia/",
                     bookingType: "miodottore"
                 },
                 {
@@ -469,7 +469,7 @@ const SmartComparator = (function() {
                     bestFor: "Obesità, fallimento diete tradizionali, BMI >30",
                     featured: true,
                     recommended: true,
-                    url: "/pages/slim-care.html",
+                    url: "/slim-care/",
                     bookingType: "whatsapp"
                 },
                 {
@@ -490,7 +490,7 @@ const SmartComparator = (function() {
                     ],
                     bestFor: "Donne con PCOS, menopausa, difficoltà ormonali",
                     featured: true,
-                    url: "/pages/slim-care-donna.html",
+                    url: "/slim-care-donna/",
                     bookingType: "whatsapp"
                 }
             ],
@@ -552,7 +552,7 @@ const SmartComparator = (function() {
                         "Non include marker specifici"
                     ],
                     bestFor: "Primo check-up, controllo annuale base",
-                    url: "/laboratorio/index.html#pack-check-up-base",
+                    url: "/laboratorio/#pack-check-up-base",
                     bookingType: "direct"
                 },
                 {
@@ -572,7 +572,7 @@ const SmartComparator = (function() {
                         "Non include esami specifici"
                     ],
                     bestFor: "Uomini 20-40 anni, prevenzione base",
-                    url: "/laboratorio/index.html#pack-check-up-uomo-under-40",
+                    url: "/laboratorio/#pack-check-up-uomo-under-40",
                     bookingType: "direct"
                 },
                 {
@@ -592,7 +592,7 @@ const SmartComparator = (function() {
                     ],
                     bestFor: "Uomini over 40, prevenzione completa",
                     recommended: true,
-                    url: "/laboratorio/index.html#pack-check-up-uomo-over-40",
+                    url: "/laboratorio/#pack-check-up-uomo-over-40",
                     bookingType: "direct"
                 },
                 {
@@ -610,7 +610,7 @@ const SmartComparator = (function() {
                         "Richiede di sapere cosa fare"
                     ],
                     bestFor: "Monitoraggio specifico, prescrizione medica",
-                    url: "/laboratorio/index.html",
+                    url: "/laboratorio/",
                     bookingType: "direct"
                 }
             ],

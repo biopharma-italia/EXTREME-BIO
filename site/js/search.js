@@ -734,7 +734,7 @@ class BioClinicSearch {
     const procedures = physician.procedures?.slice(0, 3).map(p => this.formatId(p)).join(', ') || '';
     
     return `
-      <a href="/equipe/${physician.id}.html" class="search-physician-card">
+      <a href="/equipe/${physician.id}/" class="search-physician-card">
         <div class="search-physician-avatar">${initials}</div>
         <div class="search-physician-card-content">
           <div class="search-physician-name">${physician.full_name}</div>
@@ -819,12 +819,12 @@ class BioClinicSearch {
   
   getEntityUrl(type, id) {
     const urls = {
-      pathway: `/pages/${id}.html`,
-      pack: `/prestazioni/${id}`,
-      procedure: `/prestazioni/${id}`,
-      test: `/laboratorio/${id}`,
-      physician: `/equipe/${id}.html`,
-      specialty: `/pages/${id}.html`
+      pathway: `/${id}/`,
+      pack: `/${id}/`,
+      procedure: `/${id}/`,
+      test: `/laboratorio/#${id}`,
+      physician: `/equipe/${id}/`,
+      specialty: `/${id}/`
     };
     
     return urls[type] || '#';

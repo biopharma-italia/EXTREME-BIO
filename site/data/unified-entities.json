@@ -18,7 +18,7 @@
         "Ginecologia e Ostetricia"
       ],
       "category": "medical",
-      "page_url": "/pages/ginecologia.html",
+      "page_url": "/ginecologia/",
       "bookable": true,
       "schema_type": "MedicalSpecialty",
       "relations": {
@@ -45,7 +45,7 @@
         "Cardiologia"
       ],
       "category": "medical",
-      "page_url": "/pages/cardiologia.html",
+      "page_url": "/cardiologia/",
       "bookable": true,
       "schema_type": "MedicalSpecialty",
       "relations": {
@@ -71,7 +71,7 @@
         "Endocrinologia"
       ],
       "category": "medical",
-      "page_url": "/pages/endocrinologia.html",
+      "page_url": "/endocrinologia/",
       "bookable": true,
       "schema_type": "MedicalSpecialty",
       "relations": {
@@ -94,7 +94,7 @@
         "Dermatologia e Venereologia"
       ],
       "category": "medical",
-      "page_url": "/pages/dermatologia.html",
+      "page_url": "/dermatologia/",
       "bookable": true,
       "schema_type": "MedicalSpecialty",
       "relations": {
@@ -116,7 +116,7 @@
         "Laboratorio Analisi"
       ],
       "category": "medical",
-      "page_url": "/pages/laboratorio.html",
+      "page_url": "/laboratorio/",
       "bookable": true,
       "schema_type": "MedicalSpecialty",
       "relations": {
@@ -141,7 +141,7 @@
         "Neurologia"
       ],
       "category": "medical",
-      "page_url": "/pages/neurologia.html",
+      "page_url": "/neurologia/",
       "bookable": true,
       "schema_type": "MedicalSpecialty",
       "relations": {
@@ -161,7 +161,7 @@
         "Oculistica"
       ],
       "category": "medical",
-      "page_url": "/pages/oculistica.html",
+      "page_url": "/oculistica/",
       "bookable": true,
       "schema_type": "MedicalSpecialty",
       "relations": {
@@ -181,7 +181,7 @@
         "Ortopedia e Traumatologia"
       ],
       "category": "medical",
-      "page_url": "/pages/ortopedia.html",
+      "page_url": "/ortopedia/",
       "bookable": true,
       "schema_type": "MedicalSpecialty",
       "relations": {
@@ -203,7 +203,7 @@
         "Nutrizione Clinica"
       ],
       "category": "medical",
-      "page_url": "/pages/nutrizione.html",
+      "page_url": "/nutrizione/",
       "bookable": true,
       "schema_type": "MedicalSpecialty",
       "relations": {
@@ -226,7 +226,7 @@
         "Medicina dello Sport"
       ],
       "category": "medical",
-      "page_url": "/pages/medicina-sport.html",
+      "page_url": "/medicina-sport/",
       "bookable": true,
       "schema_type": "MedicalSpecialty",
       "relations": {
@@ -248,7 +248,7 @@
         "Ostetricia"
       ],
       "category": "medical",
-      "page_url": "/pages/ginecologia.html",
+      "page_url": "/ginecologia/",
       "bookable": true,
       "schema_type": "MedicalSpecialty",
       "relations": {
@@ -278,7 +278,7 @@
       ],
       "specialty_parent": "ginecologia",
       "category": "visita",
-      "page_url": "/pages/visita-ginecologica.html",
+      "page_url": "/visita-ginecologica/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -321,7 +321,7 @@
       ],
       "specialty_parent": "ginecologia",
       "category": "diagnostica",
-      "page_url": "/pages/ecografia-transvaginale.html",
+      "page_url": "/ecografia-transvaginale/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -363,7 +363,7 @@
       ],
       "specialty_parent": "ginecologia",
       "category": "diagnostica",
-      "page_url": "/pages/ecografia-mammaria.html",
+      "page_url": "/ecografia-mammaria/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -408,7 +408,7 @@
       ],
       "specialty_parent": "ginecologia",
       "category": "esame",
-      "page_url": "/pages/pap-test.html",
+      "page_url": "/pap-test/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -447,7 +447,7 @@
       ],
       "specialty_parent": "ginecologia",
       "category": "diagnostica",
-      "page_url": "/pages/colposcopia.html",
+      "page_url": "/colposcopia/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -485,7 +485,7 @@
       ],
       "specialty_parent": "ostetricia",
       "category": "visita",
-      "page_url": "/pages/ginecologia.html",
+      "page_url": "/ginecologia/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -523,7 +523,7 @@
       ],
       "specialty_parent": "ostetricia",
       "category": "diagnostica",
-      "page_url": "/pages/ginecologia.html",
+      "page_url": "/ginecologia/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -561,7 +561,7 @@
       ],
       "specialty_parent": "ostetricia",
       "category": "diagnostica",
-      "page_url": "/pages/ecografia-morfologica.html",
+      "page_url": "/ecografia-morfologica/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -599,7 +599,7 @@
       ],
       "specialty_parent": "ostetricia",
       "category": "diagnostica",
-      "page_url": "/pages/ginecologia.html",
+      "page_url": "/ginecologia/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -640,7 +640,7 @@
       ],
       "specialty_parent": "cardiologia",
       "category": "visita",
-      "page_url": "/pages/visita-cardiologica-ecg.html",
+      "page_url": "/visita-cardiologica-ecg/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -686,7 +686,7 @@
       ],
       "specialty_parent": "cardiologia",
       "category": "diagnostica",
-      "page_url": "/pages/visita-cardiologica-ecg.html",
+      "page_url": "/visita-cardiologica-ecg/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -728,7 +728,7 @@
       ],
       "specialty_parent": "cardiologia",
       "category": "diagnostica",
-      "page_url": "/pages/ecocardiogramma.html",
+      "page_url": "/ecocardiogramma/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -770,7 +770,7 @@
       ],
       "specialty_parent": "cardiologia",
       "category": "diagnostica",
-      "page_url": "/pages/holter-ecg.html",
+      "page_url": "/holter-ecg/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -808,7 +808,7 @@
       ],
       "specialty_parent": "cardiologia",
       "category": "diagnostica",
-      "page_url": "/pages/holter-pressorio.html",
+      "page_url": "/holter-pressorio/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -845,7 +845,7 @@
       ],
       "specialty_parent": "endocrinologia",
       "category": "visita",
-      "page_url": "/pages/visita-endocrinologica.html",
+      "page_url": "/visita-endocrinologica/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -889,7 +889,7 @@
       ],
       "specialty_parent": "endocrinologia",
       "category": "diagnostica",
-      "page_url": "/pages/ecografia-tiroidea.html",
+      "page_url": "/ecografia-tiroidea/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -934,7 +934,7 @@
       ],
       "specialty_parent": "endocrinologia",
       "category": "visita",
-      "page_url": "/pages/endocrinologia.html",
+      "page_url": "/endocrinologia/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -976,7 +976,7 @@
       ],
       "specialty_parent": "dermatologia",
       "category": "visita",
-      "page_url": "/pages/visita-dermatologica.html",
+      "page_url": "/visita-dermatologica/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -1015,7 +1015,7 @@
       ],
       "specialty_parent": "dermatologia",
       "category": "diagnostica",
-      "page_url": "/pages/visita-dermatologica.html",
+      "page_url": "/visita-dermatologica/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -1053,7 +1053,7 @@
       ],
       "specialty_parent": "neurologia",
       "category": "visita",
-      "page_url": "/pages/visita-neurologica.html",
+      "page_url": "/visita-neurologica/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -1090,7 +1090,7 @@
       ],
       "specialty_parent": "neurologia",
       "category": "diagnostica",
-      "page_url": "/pages/elettromiografia.html",
+      "page_url": "/elettromiografia/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -1127,7 +1127,7 @@
       ],
       "specialty_parent": "oculistica",
       "category": "visita",
-      "page_url": "/pages/visita-oculistica.html",
+      "page_url": "/visita-oculistica/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -1164,7 +1164,7 @@
       ],
       "specialty_parent": "oculistica",
       "category": "diagnostica",
-      "page_url": "/pages/visita-oculistica.html",
+      "page_url": "/visita-oculistica/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -1201,7 +1201,7 @@
       ],
       "specialty_parent": "ortopedia",
       "category": "visita",
-      "page_url": "/pages/visita-ortopedica.html",
+      "page_url": "/visita-ortopedica/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -1238,7 +1238,7 @@
       ],
       "specialty_parent": "ortopedia",
       "category": "diagnostica",
-      "page_url": "/pages/visita-ortopedica.html",
+      "page_url": "/visita-ortopedica/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -1274,7 +1274,7 @@
       ],
       "specialty_parent": "nutrizione",
       "category": "visita",
-      "page_url": "/pages/visita-nutrizionale.html",
+      "page_url": "/visita-nutrizionale/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -1313,7 +1313,7 @@
       ],
       "specialty_parent": "nutrizione",
       "category": "diagnostica",
-      "page_url": "/pages/visita-nutrizionale.html",
+      "page_url": "/visita-nutrizionale/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -1351,7 +1351,7 @@
       ],
       "specialty_parent": "medicina-sport",
       "category": "visita",
-      "page_url": "/pages/visita-medicina-sport.html",
+      "page_url": "/visita-medicina-sport/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -1387,7 +1387,7 @@
       ],
       "specialty_parent": "medicina-sport",
       "category": "diagnostica",
-      "page_url": "/pages/spirometria.html",
+      "page_url": "/spirometria/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -1457,7 +1457,7 @@
       ],
       "specialty_parent": "ginecologia",
       "category": "visita",
-      "page_url": "/pages/pma-fertilita.html",
+      "page_url": "/pma-fertilita/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -1498,7 +1498,7 @@
       ],
       "specialty_parent": "laboratorio",
       "category": "esame",
-      "page_url": "/pages/pma-fertilita.html",
+      "page_url": "/pma-fertilita/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -1539,7 +1539,7 @@
       ],
       "specialty_parent": "ginecologia",
       "category": "esame",
-      "page_url": "/pages/hpv-dna-test.html",
+      "page_url": "/hpv-dna-test/",
       "price": 60,
       "bookable": true,
       "schema_type": "MedicalProcedure",
@@ -1580,7 +1580,7 @@
       ],
       "specialty_parent": "ginecologia",
       "category": "esame",
-      "page_url": "/pages/duopap.html",
+      "page_url": "/duopap/",
       "price": 110,
       "bookable": true,
       "schema_type": "MedicalProcedure",
@@ -1620,7 +1620,7 @@
       ],
       "specialty_parent": "ginecologia",
       "category": "trattamento",
-      "page_url": "/pages/caressflow.html",
+      "page_url": "/caressflow/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -1663,7 +1663,7 @@
       ],
       "specialty_parent": "ginecologia",
       "category": "trattamento",
-      "page_url": "/pages/radiofrequenza-vaginale.html",
+      "page_url": "/radiofrequenza-vaginale/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -1705,7 +1705,7 @@
       ],
       "specialty_parent": "ginecologia",
       "category": "diagnostica",
-      "page_url": "/pages/isteroscopia.html",
+      "page_url": "/isteroscopia/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -1749,7 +1749,7 @@
       ],
       "specialty_parent": "ginecologia",
       "category": "diagnostica",
-      "page_url": "/pages/isterosalpingografia.html",
+      "page_url": "/isterosalpingografia/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -2159,7 +2159,7 @@
         "Slim Care - Percorso Dimagrimento"
       ],
       "category": "therapeutic",
-      "page_url": "/pages/slim-care.html",
+      "page_url": "/slim-care/",
       "bookable": true,
       "schema_type": "Service",
       "relations": {
@@ -2178,7 +2178,7 @@
         "Slim Care Donna"
       ],
       "category": "therapeutic",
-      "page_url": "/pages/slim-care-donna.html",
+      "page_url": "/slim-care-donna/",
       "bookable": true,
       "schema_type": "Service",
       "relations": {
@@ -2197,7 +2197,7 @@
         "PMA - Procreazione Medicalmente Assistita"
       ],
       "category": "therapeutic",
-      "page_url": "/pages/pma-fertilita.html",
+      "page_url": "/pma-fertilita/",
       "bookable": true,
       "schema_type": "Service",
       "relations": {
@@ -2216,7 +2216,7 @@
         "Check-up Tiroide Completo"
       ],
       "category": "therapeutic",
-      "page_url": "/pages/checkup-tiroide.html",
+      "page_url": "/checkup-tiroide/",
       "bookable": true,
       "schema_type": "Service",
       "relations": {
@@ -2235,7 +2235,7 @@
         "Check-up Cardiovascolare"
       ],
       "category": "therapeutic",
-      "page_url": "/pages/checkup-cardiovascolare.html",
+      "page_url": "/checkup-cardiovascolare/",
       "bookable": true,
       "schema_type": "Service",
       "relations": {
@@ -2254,7 +2254,7 @@
         "Check-up Donna Under 40"
       ],
       "category": "therapeutic",
-      "page_url": "/pages/checkup-donna-under40.html",
+      "page_url": "/checkup-donna-under40/",
       "bookable": true,
       "schema_type": "Service",
       "relations": {
@@ -2273,7 +2273,7 @@
         "Check-up Donna Over 40"
       ],
       "category": "therapeutic",
-      "page_url": "/pages/checkup-donna-over40.html",
+      "page_url": "/checkup-donna-over40/",
       "bookable": true,
       "schema_type": "Service",
       "relations": {
@@ -2292,7 +2292,7 @@
         "Check-up Uomo"
       ],
       "category": "therapeutic",
-      "page_url": "/pages/checkup-uomo.html",
+      "page_url": "/checkup-uomo/",
       "bookable": true,
       "schema_type": "Service",
       "relations": {
@@ -2311,7 +2311,7 @@
         "Check-up Base"
       ],
       "category": "therapeutic",
-      "page_url": "/pages/checkup-base.html",
+      "page_url": "/checkup-base/",
       "bookable": true,
       "schema_type": "Service",
       "relations": {
@@ -2330,7 +2330,7 @@
         "Profilo Tiroideo"
       ],
       "category": "therapeutic",
-      "page_url": "/pages/profilo-tiroideo.html",
+      "page_url": "/profilo-tiroideo/",
       "bookable": true,
       "schema_type": "Service",
       "relations": {
@@ -2349,7 +2349,7 @@
         "Screening Allergologico"
       ],
       "category": "therapeutic",
-      "page_url": "/pages/screening-allergologico.html",
+      "page_url": "/screening-allergologico/",
       "bookable": true,
       "schema_type": "Service",
       "relations": {
@@ -2368,7 +2368,7 @@
         "Check-up Pre-Gravidanza"
       ],
       "category": "therapeutic",
-      "page_url": "/pages/checkup-pregravidanza.html",
+      "page_url": "/checkup-pregravidanza/",
       "bookable": true,
       "schema_type": "Service",
       "relations": {
@@ -2389,7 +2389,7 @@
         "Salvatore Dessole undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/salvatore-dessole.html",
+      "page_url": "/equipe/salvatore-dessole/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2409,7 +2409,7 @@
         "Francesco Dessole undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/francesco-dessole.html",
+      "page_url": "/equipe/francesco-dessole/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2429,7 +2429,7 @@
         "Margherita Dessole undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/margherita-dessole.html",
+      "page_url": "/equipe/margherita-dessole/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2449,7 +2449,7 @@
         "Maddalena Pola undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/maddalena-pola.html",
+      "page_url": "/equipe/maddalena-pola/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2469,7 +2469,7 @@
         "Marco Petrillo undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/marco-petrillo.html",
+      "page_url": "/equipe/marco-petrillo/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2489,7 +2489,7 @@
         "Antonella Pruneddu undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/antonella-pruneddu.html",
+      "page_url": "/equipe/antonella-pruneddu/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2509,7 +2509,7 @@
         "Angelica Fois undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/angelica-fois.html",
+      "page_url": "/equipe/angelica-fois/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2529,7 +2529,7 @@
         "Camilla Ruzzoli undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/camilla-ruzzoli.html",
+      "page_url": "/equipe/camilla-ruzzoli/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2549,7 +2549,7 @@
         "Tonino Bullitta undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/tonino-bullitta.html",
+      "page_url": "/equipe/tonino-bullitta/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2569,7 +2569,7 @@
         "Sara Uras undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/sara-uras.html",
+      "page_url": "/equipe/sara-uras/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2589,7 +2589,7 @@
         "Giuliana Guagnozzi undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/giuliana-guagnozzi.html",
+      "page_url": "/equipe/giuliana-guagnozzi/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2609,7 +2609,7 @@
         "Paolo Pischedda undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/paolo-pischedda.html",
+      "page_url": "/equipe/paolo-pischedda/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2629,7 +2629,7 @@
         "Paolo Franca undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/paolo-franca.html",
+      "page_url": "/equipe/paolo-franca/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2649,7 +2649,7 @@
         "Francesco Tolu undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/francesco-tolu.html",
+      "page_url": "/equipe/francesco-tolu/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2669,7 +2669,7 @@
         "Irene Aini undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/irene-aini.html",
+      "page_url": "/equipe/irene-aini/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2689,7 +2689,7 @@
         "Giovanna Costa undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/giovanna-costa.html",
+      "page_url": "/equipe/giovanna-costa/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2709,7 +2709,7 @@
         "Cinzia Guarino undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/cinzia-guarino.html",
+      "page_url": "/equipe/cinzia-guarino/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2729,7 +2729,7 @@
         "Gloria Reggiani undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/gloria-reggiani.html",
+      "page_url": "/equipe/gloria-reggiani/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2749,7 +2749,7 @@
         "Sara Meloni undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/sara-meloni.html",
+      "page_url": "/equipe/sara-meloni/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2769,7 +2769,7 @@
         "Gabriele Delogu undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/gabriele-delogu.html",
+      "page_url": "/equipe/gabriele-delogu/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2789,7 +2789,7 @@
         "Antonella Galatino undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/antonella-galatino.html",
+      "page_url": "/equipe/antonella-galatino/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2809,7 +2809,7 @@
         "Alessandro Pandolfi undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/alessandro-pandolfi.html",
+      "page_url": "/equipe/alessandro-pandolfi/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2829,7 +2829,7 @@
         "Giorgio Chiarelli undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/giorgio-chiarelli.html",
+      "page_url": "/equipe/giorgio-chiarelli/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
