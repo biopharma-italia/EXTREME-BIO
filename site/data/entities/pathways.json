@@ -8,8 +8,23 @@
       "slug": "slim-care",
       "name": "Slim Care - Percorso Dimagrimento",
       "name_short": "Slim Care",
-      "aliases": ["dimagrimento", "perdere peso", "wegovy", "mounjaro", "semaglutide", "tirzepatide"],
-      "symptom_keywords": ["dimagrire", "peso", "obesità", "sovrappeso", "grasso", "pancia", "fame"],
+      "aliases": [
+        "dimagrimento",
+        "perdere peso",
+        "wegovy",
+        "mounjaro",
+        "semaglutide",
+        "tirzepatide"
+      ],
+      "symptom_keywords": [
+        "dimagrire",
+        "peso",
+        "obesità",
+        "sovrappeso",
+        "grasso",
+        "pancia",
+        "fame"
+      ],
       "icon": "scale",
       "is_flagship": true,
       "priority_score": 10,
@@ -20,9 +35,28 @@
       "duration": "3 mesi",
       "expected_outcome": "12-18 kg di perdita peso",
       "includes": {
-        "procedures": ["visita-endocrinologica", "visita-nutrizionale", "visbody-scan", "certificato-sportivo"],
-        "tests": ["emocromo", "glicemia", "profilo-lipidico", "tsh", "ft4", "creatinina", "transaminasi"],
-        "physicians": ["francesco-tolu", "irene-aini", "antonella-galatino", "alessandro-pandolfi", "giorgio-chiarelli"]
+        "procedures": [
+          "visita-endocrinologica",
+          "visita-nutrizionale",
+          "visbody-scan",
+          "certificato-sportivo"
+        ],
+        "tests": [
+          "emocromo",
+          "glicemia",
+          "profilo-lipidico",
+          "tsh",
+          "ft4",
+          "creatinina",
+          "transaminasi"
+        ],
+        "physicians": [
+          "francesco-tolu",
+          "irene-aini",
+          "antonella-galatino",
+          "alessandro-pandolfi",
+          "giorgio-chiarelli"
+        ]
       },
       "highlights": [
         "Farmaco incluso (Wegovy o Mounjaro)",
@@ -30,7 +64,12 @@
         "2 cicli di analisi sangue",
         "Supporto nutrizionale continuo"
       ],
-      "contraindications": ["Gravidanza", "Allattamento", "Carcinoma midollare tiroide", "MEN 2"],
+      "contraindications": [
+        "Gravidanza",
+        "Allattamento",
+        "Carcinoma midollare tiroide",
+        "MEN 2"
+      ],
       "cta_primary": "Scopri Slim Care",
       "cta_url": "/slim-care/",
       "specialty_id": "endocrinologia",
@@ -41,8 +80,18 @@
       "slug": "slim-care-donna",
       "name": "Slim Care Donna",
       "name_short": "Slim Care Donna",
-      "aliases": ["dimagrimento donna", "menopausa peso", "pcos dimagrire"],
-      "symptom_keywords": ["menopausa", "pcos", "ovaio policistico", "ciclo irregolare", "peso donna"],
+      "aliases": [
+        "dimagrimento donna",
+        "menopausa peso",
+        "pcos dimagrire"
+      ],
+      "symptom_keywords": [
+        "menopausa",
+        "pcos",
+        "ovaio policistico",
+        "ciclo irregolare",
+        "peso donna"
+      ],
       "icon": "female",
       "is_flagship": true,
       "priority_score": 9,
@@ -53,9 +102,25 @@
       "duration": "3 mesi",
       "expected_outcome": "Perdita peso + riequilibrio ormonale",
       "includes": {
-        "procedures": ["visita-ginecologica", "visita-endocrinologica", "visita-nutrizionale", "ecografia-pelvica"],
-        "tests": ["profilo-ormonale-femminile", "tsh", "ft4", "insulina", "glicemia"],
-        "physicians": ["francesco-dessole", "irene-aini", "antonella-galatino", "giorgio-chiarelli"]
+        "procedures": [
+          "visita-ginecologica",
+          "visita-endocrinologica",
+          "visita-nutrizionale",
+          "ecografia-pelvica"
+        ],
+        "tests": [
+          "profilo-ormonale-femminile",
+          "tsh",
+          "ft4",
+          "insulina",
+          "glicemia"
+        ],
+        "physicians": [
+          "francesco-dessole",
+          "irene-aini",
+          "antonella-galatino",
+          "giorgio-chiarelli"
+        ]
       },
       "highlights": [
         "Team multidisciplinare femminile",
@@ -63,7 +128,9 @@
         "Piano nutrizionale personalizzato",
         "Monitoraggio ormonale"
       ],
-      "contraindications": ["Gravidanza"],
+      "contraindications": [
+        "Gravidanza"
+      ],
       "cta_primary": "Scopri Slim Care Donna",
       "cta_url": "/slim-care-donna/",
       "specialty_id": "ginecologia",
@@ -74,8 +141,21 @@
       "slug": "pma-fertilita",
       "name": "PMA - Procreazione Medicalmente Assistita",
       "name_short": "PMA / Fertilità",
-      "aliases": ["fertilità", "infertilità", "fecondazione", "procreazione assistita", "avere figli"],
-      "symptom_keywords": ["fertilità", "infertilità", "gravidanza", "concepimento", "ovulazione", "spermatozoi"],
+      "aliases": [
+        "fertilità",
+        "infertilità",
+        "fecondazione",
+        "procreazione assistita",
+        "avere figli"
+      ],
+      "symptom_keywords": [
+        "fertilità",
+        "infertilità",
+        "gravidanza",
+        "concepimento",
+        "ovulazione",
+        "spermatozoi"
+      ],
       "icon": "baby",
       "is_flagship": true,
       "priority_score": 9,
@@ -86,9 +166,27 @@
       "duration": "Variabile",
       "expected_outcome": "Gravidanza",
       "includes": {
-        "procedures": ["visita-ginecologica", "monitoraggio-follicolare", "isteroscopia", "consulenza-coppia"],
-        "tests": ["spermiogramma", "endobiome", "endorecept", "tunel", "profilo-ormonale", "prenatal-advance"],
-        "physicians": ["salvatore-dessole", "francesco-dessole", "marco-petrillo", "angelica-fois", "cinzia-guarino"]
+        "procedures": [
+          "visita-ginecologica",
+          "monitoraggio-follicolare",
+          "isteroscopia",
+          "consulenza-coppia"
+        ],
+        "tests": [
+          "spermiogramma",
+          "endobiome",
+          "endorecept",
+          "tunel",
+          "profilo-ormonale",
+          "prenatal-advance"
+        ],
+        "physicians": [
+          "salvatore-dessole",
+          "francesco-dessole",
+          "marco-petrillo",
+          "angelica-fois",
+          "cinzia-guarino"
+        ]
       },
       "highlights": [
         "Monitoraggio follicolare 7/7",
@@ -107,8 +205,20 @@
       "slug": "checkup-tiroide",
       "name": "Check-up Tiroide Completo",
       "name_short": "Check-up Tiroide",
-      "aliases": ["controllo tiroide", "esami tiroide", "tiroide completo"],
-      "symptom_keywords": ["tiroide", "stanchezza", "affaticamento", "peso inspiegabile", "freddo", "caldo", "nervosismo"],
+      "aliases": [
+        "controllo tiroide",
+        "esami tiroide",
+        "tiroide completo"
+      ],
+      "symptom_keywords": [
+        "tiroide",
+        "stanchezza",
+        "affaticamento",
+        "peso inspiegabile",
+        "freddo",
+        "caldo",
+        "nervosismo"
+      ],
       "icon": "thyroid",
       "is_flagship": false,
       "priority_score": 8,
@@ -119,9 +229,21 @@
       "duration": "1-2 settimane",
       "expected_outcome": "Quadro completo funzionalità tiroidea",
       "includes": {
-        "procedures": ["visita-endocrinologica", "ecografia-tiroidea"],
-        "tests": ["tsh", "ft3", "ft4", "anti-tpo", "anti-tg"],
-        "physicians": ["francesco-tolu", "irene-aini"]
+        "procedures": [
+          "visita-endocrinologica",
+          "ecografia-tiroidea"
+        ],
+        "tests": [
+          "tsh",
+          "ft3",
+          "ft4",
+          "anti-tpo",
+          "anti-tg"
+        ],
+        "physicians": [
+          "francesco-tolu",
+          "irene-aini"
+        ]
       },
       "highlights": [
         "Visita specialistica inclusa",
@@ -140,8 +262,19 @@
       "slug": "checkup-cardiovascolare",
       "name": "Check-up Cardiovascolare",
       "name_short": "Check-up Cuore",
-      "aliases": ["controllo cuore", "check cuore", "prevenzione infarto"],
-      "symptom_keywords": ["cuore", "palpitazioni", "affanno", "dolore petto", "fiato corto", "pressione alta"],
+      "aliases": [
+        "controllo cuore",
+        "check cuore",
+        "prevenzione infarto"
+      ],
+      "symptom_keywords": [
+        "cuore",
+        "palpitazioni",
+        "affanno",
+        "dolore petto",
+        "fiato corto",
+        "pressione alta"
+      ],
       "icon": "heart",
       "is_flagship": false,
       "priority_score": 8,
@@ -152,9 +285,24 @@
       "duration": "1 giorno",
       "expected_outcome": "Valutazione rischio cardiovascolare",
       "includes": {
-        "procedures": ["visita-cardiologica", "ecg", "ecocardiogramma"],
-        "tests": ["profilo-lipidico", "glicemia", "creatinina", "emocromo"],
-        "physicians": ["tonino-bullitta", "sara-uras", "giuliana-guagnozzi", "paolo-pischedda", "paolo-franca"]
+        "procedures": [
+          "visita-cardiologica",
+          "ecg",
+          "ecocardiogramma"
+        ],
+        "tests": [
+          "profilo-lipidico",
+          "glicemia",
+          "creatinina",
+          "emocromo"
+        ],
+        "physicians": [
+          "tonino-bullitta",
+          "sara-uras",
+          "giuliana-guagnozzi",
+          "paolo-pischedda",
+          "paolo-franca"
+        ]
       },
       "highlights": [
         "Visita cardiologica",
@@ -173,8 +321,15 @@
       "slug": "checkup-donna-under40",
       "name": "Check-up Donna Under 40",
       "name_short": "Check-up Donna <40",
-      "aliases": ["check donna giovane", "prevenzione donna"],
-      "symptom_keywords": ["prevenzione donna", "controllo donna", "screening donna"],
+      "aliases": [
+        "check donna giovane",
+        "prevenzione donna"
+      ],
+      "symptom_keywords": [
+        "prevenzione donna",
+        "controllo donna",
+        "screening donna"
+      ],
       "icon": "female",
       "is_flagship": false,
       "priority_score": 7,
@@ -185,9 +340,26 @@
       "duration": "1-2 settimane",
       "expected_outcome": "Quadro preventivo completo",
       "includes": {
-        "procedures": ["visita-ginecologica", "ecografia-pelvica", "pap-test"],
-        "tests": ["emocromo", "glicemia", "profilo-lipidico", "tsh", "ft4", "ferro", "ferritina", "vitamina-d"],
-        "physicians": ["margherita-dessole", "maddalena-pola", "antonella-pruneddu"]
+        "procedures": [
+          "visita-ginecologica",
+          "ecografia-pelvica",
+          "pap-test"
+        ],
+        "tests": [
+          "emocromo",
+          "glicemia",
+          "profilo-lipidico",
+          "tsh",
+          "ft4",
+          "ferro",
+          "ferritina",
+          "vitamina-d"
+        ],
+        "physicians": [
+          "margherita-dessole",
+          "maddalena-pola",
+          "antonella-pruneddu"
+        ]
       },
       "highlights": [
         "Esami sangue completi",
@@ -206,8 +378,16 @@
       "slug": "checkup-donna-over40",
       "name": "Check-up Donna Over 40",
       "name_short": "Check-up Donna >40",
-      "aliases": ["check donna matura", "prevenzione menopausa"],
-      "symptom_keywords": ["prevenzione donna", "menopausa", "osteoporosi", "mammografia"],
+      "aliases": [
+        "check donna matura",
+        "prevenzione menopausa"
+      ],
+      "symptom_keywords": [
+        "prevenzione donna",
+        "menopausa",
+        "osteoporosi",
+        "mammografia"
+      ],
       "icon": "female",
       "is_flagship": false,
       "priority_score": 7,
@@ -218,9 +398,28 @@
       "duration": "1-2 settimane",
       "expected_outcome": "Screening preventivo completo",
       "includes": {
-        "procedures": ["visita-ginecologica", "ecografia-mammaria", "ecografia-pelvica", "pap-test", "moc"],
-        "tests": ["emocromo", "profilo-lipidico", "tsh", "ft4", "ca125", "vitamina-d", "calcio", "fosforo"],
-        "physicians": ["salvatore-dessole", "francesco-dessole", "margherita-dessole"]
+        "procedures": [
+          "visita-ginecologica",
+          "ecografia-mammaria",
+          "ecografia-pelvica",
+          "pap-test",
+          "moc"
+        ],
+        "tests": [
+          "emocromo",
+          "profilo-lipidico",
+          "tsh",
+          "ft4",
+          "ca125",
+          "vitamina-d",
+          "calcio",
+          "fosforo"
+        ],
+        "physicians": [
+          "salvatore-dessole",
+          "francesco-dessole",
+          "margherita-dessole"
+        ]
       },
       "highlights": [
         "Ecografia mammaria",
@@ -239,8 +438,17 @@
       "slug": "checkup-uomo",
       "name": "Check-up Uomo",
       "name_short": "Check-up Uomo",
-      "aliases": ["check uomo", "prevenzione uomo", "prostata"],
-      "symptom_keywords": ["prevenzione uomo", "prostata", "psa", "controllo uomo"],
+      "aliases": [
+        "check uomo",
+        "prevenzione uomo",
+        "prostata"
+      ],
+      "symptom_keywords": [
+        "prevenzione uomo",
+        "prostata",
+        "psa",
+        "controllo uomo"
+      ],
       "icon": "male",
       "is_flagship": false,
       "priority_score": 7,
@@ -251,8 +459,19 @@
       "duration": "1-2 settimane",
       "expected_outcome": "Screening preventivo maschile",
       "includes": {
-        "procedures": ["ecografia-prostatica"],
-        "tests": ["emocromo", "glicemia", "profilo-lipidico", "tsh", "psa-totale", "psa-libero", "creatinina", "transaminasi"],
+        "procedures": [
+          "ecografia-prostatica"
+        ],
+        "tests": [
+          "emocromo",
+          "glicemia",
+          "profilo-lipidico",
+          "tsh",
+          "psa-totale",
+          "psa-libero",
+          "creatinina",
+          "transaminasi"
+        ],
         "physicians": []
       },
       "highlights": [
@@ -272,8 +491,17 @@
       "slug": "checkup-base",
       "name": "Check-up Base",
       "name_short": "Check-up Base",
-      "aliases": ["analisi base", "esami base", "controllo generale"],
-      "symptom_keywords": ["analisi", "controllo", "esami sangue", "check generale"],
+      "aliases": [
+        "analisi base",
+        "esami base",
+        "controllo generale"
+      ],
+      "symptom_keywords": [
+        "analisi",
+        "controllo",
+        "esami sangue",
+        "check generale"
+      ],
       "icon": "check",
       "is_flagship": false,
       "priority_score": 6,
@@ -285,7 +513,15 @@
       "expected_outcome": "Quadro ematochimico base",
       "includes": {
         "procedures": [],
-        "tests": ["emocromo", "glicemia", "profilo-lipidico", "transaminasi", "creatinina", "azotemia", "esame-urine"],
+        "tests": [
+          "emocromo",
+          "glicemia",
+          "profilo-lipidico",
+          "transaminasi",
+          "creatinina",
+          "azotemia",
+          "esame-urine"
+        ],
         "physicians": []
       },
       "highlights": [
@@ -305,8 +541,16 @@
       "slug": "profilo-tiroideo",
       "name": "Profilo Tiroideo",
       "name_short": "Profilo Tiroideo",
-      "aliases": ["esami tiroide", "pannello tiroide"],
-      "symptom_keywords": ["tiroide", "tsh", "ipotiroidismo", "ipertiroidismo"],
+      "aliases": [
+        "esami tiroide",
+        "pannello tiroide"
+      ],
+      "symptom_keywords": [
+        "tiroide",
+        "tsh",
+        "ipotiroidismo",
+        "ipertiroidismo"
+      ],
       "icon": "thyroid",
       "is_flagship": false,
       "priority_score": 7,
@@ -318,7 +562,13 @@
       "expected_outcome": "Quadro tiroideo completo",
       "includes": {
         "procedures": [],
-        "tests": ["tsh", "ft3", "ft4", "anti-tpo", "anti-tg"],
+        "tests": [
+          "tsh",
+          "ft3",
+          "ft4",
+          "anti-tpo",
+          "anti-tg"
+        ],
         "physicians": []
       },
       "highlights": [
@@ -338,8 +588,20 @@
       "slug": "screening-allergologico",
       "name": "Screening Allergologico",
       "name_short": "Screening Allergie",
-      "aliases": ["test allergie", "allergie", "intolleranze"],
-      "symptom_keywords": ["allergia", "allergie", "prurito", "orticaria", "asma", "rinite", "intolleranza"],
+      "aliases": [
+        "test allergie",
+        "allergie",
+        "intolleranze"
+      ],
+      "symptom_keywords": [
+        "allergia",
+        "allergie",
+        "prurito",
+        "orticaria",
+        "asma",
+        "rinite",
+        "intolleranza"
+      ],
       "icon": "allergy",
       "is_flagship": false,
       "priority_score": 6,
@@ -351,7 +613,12 @@
       "expected_outcome": "Mappa allergeni",
       "includes": {
         "procedures": [],
-        "tests": ["ige-totali", "ige-inalanti-panel", "ige-alimentari-panel", "eosinofili"],
+        "tests": [
+          "ige-totali",
+          "ige-inalanti-panel",
+          "ige-alimentari-panel",
+          "eosinofili"
+        ],
         "physicians": []
       },
       "highlights": [
@@ -371,8 +638,17 @@
       "slug": "checkup-pregravidanza",
       "name": "Check-up Pre-Gravidanza",
       "name_short": "Check-up Pre-Gravidanza",
-      "aliases": ["esami pre concepimento", "preconcezionale", "prima della gravidanza"],
-      "symptom_keywords": ["gravidanza", "concepimento", "avere figli", "rimanere incinta"],
+      "aliases": [
+        "esami pre concepimento",
+        "preconcezionale",
+        "prima della gravidanza"
+      ],
+      "symptom_keywords": [
+        "gravidanza",
+        "concepimento",
+        "avere figli",
+        "rimanere incinta"
+      ],
       "icon": "baby",
       "is_flagship": false,
       "priority_score": 7,
@@ -383,9 +659,24 @@
       "duration": "1 settimana",
       "expected_outcome": "Idoneità alla gravidanza",
       "includes": {
-        "procedures": ["visita-ginecologica"],
-        "tests": ["gruppo-sanguigno", "toxoplasmosi", "rosolia", "citomegalovirus", "hiv", "hbsag", "hcv", "emocromo", "sideremia"],
-        "physicians": ["francesco-dessole", "margherita-dessole"]
+        "procedures": [
+          "visita-ginecologica"
+        ],
+        "tests": [
+          "gruppo-sanguigno",
+          "toxoplasmosi",
+          "rosolia",
+          "citomegalovirus",
+          "hiv",
+          "hbsag",
+          "hcv",
+          "emocromo",
+          "sideremia"
+        ],
+        "physicians": [
+          "francesco-dessole",
+          "margherita-dessole"
+        ]
       },
       "highlights": [
         "Screening infettivologico completo",

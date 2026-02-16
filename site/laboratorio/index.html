@@ -25,8 +25,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/search.css">
-  <link rel="stylesheet" href="/css/unified-search.css?v=20260131">
+  <!-- Search v4.1 - Unified -->
+  <link rel="stylesheet" href="/css/bio-search.css?v=20260216-v4">
   
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"MedicalClinic","@id":"https://bio-clinic.it/#organization","name":"Bio-Clinic - Laboratorio Analisi","medicalSpecialty":"Laboratory Medicine","aggregateRating":{"@type":"AggregateRating","ratingValue":"5","reviewCount":"3214","bestRating":"5","worstRating":"1"},"availableService":[{"@type":"MedicalTest","name":"Analisi del sangue"},{"@type":"MedicalTest","name":"Esami allergologici IgE"},{"@type":"MedicalTest","name":"Test genetici"},{"@type":"MedicalTest","name":"Marcatori tumorali"},{"@type":"MedicalTest","name":"Profilo ormonale"}],"areaServed":[{"@type":"City","name":"Sassari","sameAs":"https://it.wikipedia.org/wiki/Sassari"},{"@type":"AdministrativeArea","name":"Provincia di Sassari","sameAs":"https://it.wikipedia.org/wiki/Provincia_di_Sassari"},{"@type":"AdministrativeArea","name":"Nord Sardegna"}],"dateModified":"2026-02-16"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://bio-clinic.it/"},{"@type":"ListItem","position":2,"name":"Specialità","item":"https://bio-clinic.it/specialita/"},{"@type":"ListItem","position":3,"name":"Laboratorio","item":"https://bio-clinic.it/specialita/laboratorio/"}]}]}</script>
     <link rel="canonical" href="https://bio-clinic.it/laboratorio/">
@@ -38,7 +38,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta property="og:image" content="https://bio-clinic.it/images/laboratorio-hero.jpg">
     <meta property="og:url" content="https://bio-clinic.it/laboratorio/">
     <meta property="og:site_name" content="Bio-Clinic Sassari">
-  <link rel="stylesheet" href="/css/search-fix.css?v=1769644194">
   <link rel="stylesheet" href="/css/header-spacing-fix.css?v=1769644194">
 
 <style>
@@ -241,10 +240,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- END MASTER HEADER -->
 
-  
+  <!-- LAB SEARCH HERO - Search Optimization v1.0 -->
+  <section class="lab-search-hero" id="lab-search">
+    <div class="container">
+      <h1 style="text-align:center;font-size:2rem;margin:1.5rem 0 0.5rem;color:var(--text-dark);">Laboratorio Analisi Sassari</h1>
+      <p style="text-align:center;color:var(--text-light);margin:0 0 1.5rem;font-size:1.05rem;">
+        Cerca tra 1.162 esami, pacchetti check-up e categorie diagnostiche
+      </p>
+      <div class="lab-search-box" style="max-width:640px;margin:0 auto 1.5rem;position:relative;">
+        <div class="lab-search-input-wrapper bs-search-wrap" style="display:flex;gap:0;border:2px solid var(--primary, #00704A);border-radius:12px;overflow:visible;background:#fff;box-shadow:0 4px 20px rgba(0,112,74,0.12);position:relative;">
+          <input type="text" id="lab-search-input" class="lab-search-input"
+                 placeholder="Cerca esami: emocromo, tiroide, colesterolo, psa..."
+                 autocomplete="off" aria-label="Cerca esami di laboratorio" aria-expanded="false"
+                 style="flex:1;border:none;padding:1rem 1.25rem;font-size:1.05rem;outline:none;background:transparent;color:var(--text-dark);">
+          <button id="lab-search-btn" class="lab-search-btn" aria-label="Cerca"
+                  style="background:var(--primary, #00704A);border:none;padding:0 1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:0 10px 10px 0;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" width="22" height="22">
+              <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+            </svg>
+          </button>
+          <!-- Dropdown created dynamically by BioSearchUI v4 -->
+        </div>
+      </div>
+      <div class="lab-search-suggestions" style="text-align:center;display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;padding:0 1rem;">
+        <span style="color:var(--text-light);font-size:0.85rem;margin-right:0.25rem;">Ricerche frequenti:</span>
+        <button class="lab-suggestion-tag" data-query="emocromo" style="background:var(--gray-100, #f3f4f6);border:1px solid var(--gray-200, #e5e7eb);border-radius:20px;padding:0.3rem 0.75rem;font-size:0.85rem;cursor:pointer;color:var(--text-dark);transition:all 0.2s;">Emocromo</button>
+        <button class="lab-suggestion-tag" data-query="tsh tiroide" style="background:var(--gray-100, #f3f4f6);border:1px solid var(--gray-200, #e5e7eb);border-radius:20px;padding:0.3rem 0.75rem;font-size:0.85rem;cursor:pointer;color:var(--text-dark);transition:all 0.2s;">TSH Tiroide</button>
+        <button class="lab-suggestion-tag" data-query="colesterolo" style="background:var(--gray-100, #f3f4f6);border:1px solid var(--gray-200, #e5e7eb);border-radius:20px;padding:0.3rem 0.75rem;font-size:0.85rem;cursor:pointer;color:var(--text-dark);transition:all 0.2s;">Colesterolo</button>
+        <button class="lab-suggestion-tag" data-query="vitamina d" style="background:var(--gray-100, #f3f4f6);border:1px solid var(--gray-200, #e5e7eb);border-radius:20px;padding:0.3rem 0.75rem;font-size:0.85rem;cursor:pointer;color:var(--text-dark);transition:all 0.2s;">Vitamina D</button>
+        <button class="lab-suggestion-tag" data-query="psa" style="background:var(--gray-100, #f3f4f6);border:1px solid var(--gray-200, #e5e7eb);border-radius:20px;padding:0.3rem 0.75rem;font-size:0.85rem;cursor:pointer;color:var(--text-dark);transition:all 0.2s;">PSA</button>
+        <button class="lab-suggestion-tag" data-query="check up" style="background:var(--gray-100, #f3f4f6);border:1px solid var(--gray-200, #e5e7eb);border-radius:20px;padding:0.3rem 0.75rem;font-size:0.85rem;cursor:pointer;color:var(--text-dark);transition:all 0.2s;">Check-up</button>
+      </div>
+    </div>
+  </section>
+
   <section class="trust-bar">
     <div class="container">
-    <h1 style="text-align:center;font-size:2rem;margin:1.5rem 0 0;color:var(--text-dark);">Laboratorio Analisi Sassari</h1>
       <div class="trust-items">
         <div class="trust-item">
           <div class="trust-icon">
@@ -725,10 +756,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </footer>
 
   <script src="/js/main.js"></script>
-  <script src="/js/search.js?v=20260216-fix"></script>
-  <script src="/js/header-search.js"></script>
-  <!-- Unified Clinical Search System v1.0 -->
-  <script src="/js/unified-search.js?v=20260216-fix"></script>
-  <script src="/js/search-controller.js?v=20260216-fix"></script>
+  <!-- SEARCH v4.1 UNIFIED: Single engine + single UI -->
+  <script src="/js/search-engine-v4.js?v=20260216-v4"></script>
+  <script src="/js/search-ui-v4.js?v=20260216-v4"></script>
 </body>
 </html>

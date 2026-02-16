@@ -42,10 +42,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <!-- Styles -->
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/bio-clinic-layout.css?v=20260202-triage">
-  <!-- Search Styles (legacy + new unified) -->
-  <link rel="stylesheet" href="/css/search.css">
-  <link rel="stylesheet" href="/css/bio-search-pro.css?v=1769644194">
-  <link rel="stylesheet" href="/css/unified-search.css?v=20260131">
+  <!-- Search v4.1 - Unified -->
+  <link rel="stylesheet" href="/css/bio-search.css?v=20260216-v4">
   
   <!-- Favicon Completo per Google SERP -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -321,10 +319,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="hero-search-subtitle">Cerca prestazioni, esami, medici o specialità</p>
       
       <div class="search-box-hero">
-        <div class="search-input-wrapper">
+        <div class="search-input-wrapper bs-search-wrap">
           <input type="text" id="hero-search-input" class="search-input" 
                  placeholder="Es: cardiologo, TSH, ecografia, dimagrire..." 
-                 autocomplete="off" aria-label="Cerca prestazioni, esami, medici">
+                 autocomplete="off" aria-label="Cerca prestazioni, esami, medici" aria-expanded="false">
           <button id="hero-search-btn" class="search-btn" aria-label="Cerca">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="11" cy="11" r="8"/>
@@ -332,8 +330,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </svg>
           </button>
         </div>
-        <!-- Dropdown OUTSIDE wrapper to avoid overflow:hidden clipping -->
-        <div id="hero-autocomplete" class="search-autocomplete"></div>
+        <!-- Dropdown created dynamically by BioSearchUI v4 -->
       </div>
       
       <div class="search-suggestions">
@@ -949,30 +946,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
-  <!-- Legacy Search Results Panel (fallback) -->
-  <div id="search-overlay" class="search-overlay"></div>
-  <div id="search-results-panel" class="search-results-panel">
-    <div class="search-results-header">
-      <h3>Risultati della ricerca</h3>
-      <button id="search-results-close" class="search-results-close" aria-label="Chiudi">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="18" y1="6" x2="6" y2="18"/>
-          <line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
-      </button>
-    </div>
-    <div id="search-results-content" class="search-results-content"></div>
-  </div>
 
   <!-- Scripts -->
   <script src="/js/main.js"></script>
-  <script src="/js/database.js?v=20260216-fix"></script>
-  <!-- UNIFIED SEARCH ENGINE v3.0 - Entity-based search -->
-  <script src="/js/bio-clinic-search.js?v=20260216-fix"></script>
-  <script src="/js/search-ui.js?v=20260216-fix"></script>
-  <!-- Legacy support (to be removed after validation) -->
-  <script src="/js/bio-clinic-search-engine.js?v=20260216-fix"></script>
-  <script src="/js/search-ui-adapter.js?v=20260216-fix"></script>
-  <script src="/js/bio-search-pro.js?v=20260216-fix"></script>
+  <!-- SEARCH v4.1 UNIFIED: Single engine + single UI replaces 6 old search scripts -->
+  <script src="/js/search-engine-v4.js?v=20260216-v4"></script>
+  <script src="/js/search-ui-v4.js?v=20260216-v4"></script>
 </body>
 </html>
