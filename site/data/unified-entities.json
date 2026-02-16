@@ -203,7 +203,7 @@
         "Nutrizione Clinica"
       ],
       "category": "medical",
-      "page_url": "/nutrizione/",
+      "page_url": "/visita-nutrizionale/",
       "bookable": true,
       "schema_type": "MedicalSpecialty",
       "relations": {
@@ -226,7 +226,7 @@
         "Medicina dello Sport"
       ],
       "category": "medical",
-      "page_url": "/medicina-sport/",
+      "page_url": "/visita-medicina-sport/",
       "bookable": true,
       "schema_type": "MedicalSpecialty",
       "relations": {
@@ -640,7 +640,7 @@
       ],
       "specialty_parent": "cardiologia",
       "category": "visita",
-      "page_url": "/visita-cardiologica-ecg/",
+      "page_url": "/cardiologia/visita-cardiologica-ecg/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -686,7 +686,7 @@
       ],
       "specialty_parent": "cardiologia",
       "category": "diagnostica",
-      "page_url": "/visita-cardiologica-ecg/",
+      "page_url": "/cardiologia/visita-cardiologica-ecg/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -728,7 +728,7 @@
       ],
       "specialty_parent": "cardiologia",
       "category": "diagnostica",
-      "page_url": "/ecocardiogramma/",
+      "page_url": "/cardiologia/ecocardiogramma/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -770,7 +770,7 @@
       ],
       "specialty_parent": "cardiologia",
       "category": "diagnostica",
-      "page_url": "/holter-ecg/",
+      "page_url": "/cardiologia/holter-ecg/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -808,7 +808,7 @@
       ],
       "specialty_parent": "cardiologia",
       "category": "diagnostica",
-      "page_url": "/holter-pressorio/",
+      "page_url": "/cardiologia/holter-pressorio/",
       "bookable": true,
       "schema_type": "MedicalProcedure",
       "relations": {
@@ -2235,7 +2235,7 @@
         "Check-up Cardiovascolare"
       ],
       "category": "therapeutic",
-      "page_url": "/checkup-cardiovascolare/",
+      "page_url": "/laboratorio/",
       "bookable": true,
       "schema_type": "Service",
       "relations": {
@@ -2254,7 +2254,7 @@
         "Check-up Donna Under 40"
       ],
       "category": "therapeutic",
-      "page_url": "/checkup-donna-under40/",
+      "page_url": "/laboratorio/",
       "bookable": true,
       "schema_type": "Service",
       "relations": {
@@ -2273,7 +2273,7 @@
         "Check-up Donna Over 40"
       ],
       "category": "therapeutic",
-      "page_url": "/checkup-donna-over40/",
+      "page_url": "/laboratorio/",
       "bookable": true,
       "schema_type": "Service",
       "relations": {
@@ -2292,7 +2292,7 @@
         "Check-up Uomo"
       ],
       "category": "therapeutic",
-      "page_url": "/checkup-uomo/",
+      "page_url": "/laboratorio/",
       "bookable": true,
       "schema_type": "Service",
       "relations": {
@@ -2311,7 +2311,7 @@
         "Check-up Base"
       ],
       "category": "therapeutic",
-      "page_url": "/checkup-base/",
+      "page_url": "/laboratorio/",
       "bookable": true,
       "schema_type": "Service",
       "relations": {
@@ -2330,7 +2330,7 @@
         "Profilo Tiroideo"
       ],
       "category": "therapeutic",
-      "page_url": "/profilo-tiroideo/",
+      "page_url": "/laboratorio/",
       "bookable": true,
       "schema_type": "Service",
       "relations": {
@@ -2349,7 +2349,7 @@
         "Screening Allergologico"
       ],
       "category": "therapeutic",
-      "page_url": "/screening-allergologico/",
+      "page_url": "/laboratorio/",
       "bookable": true,
       "schema_type": "Service",
       "relations": {
@@ -2368,7 +2368,7 @@
         "Check-up Pre-Gravidanza"
       ],
       "category": "therapeutic",
-      "page_url": "/checkup-pregravidanza/",
+      "page_url": "/laboratorio/",
       "bookable": true,
       "schema_type": "Service",
       "relations": {
@@ -2749,7 +2749,7 @@
         "Sara Meloni undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/sara-meloni/",
+      "page_url": "/equipe/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {
@@ -2769,7 +2769,7 @@
         "Gabriele Delogu undefined"
       ],
       "category": "specialist",
-      "page_url": "/equipe/gabriele-delogu/",
+      "page_url": "/equipe/",
       "bookable": true,
       "schema_type": "Physician",
       "relations": {

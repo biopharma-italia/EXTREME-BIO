@@ -392,7 +392,7 @@
         "controllo cuore"
       ],
       "booking_priority": "high",
-      "page_url": "/visita-cardiologica-ecg/",
+      "page_url": "/cardiologia/visita-cardiologica-ecg/",
       "schema_org": {
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
@@ -436,7 +436,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/visita-cardiologica-ecg/"
+      "page_url": "/cardiologia/visita-cardiologica-ecg/"
     },
     {
       "id": "ecocardiogramma",
@@ -476,7 +476,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/ImagingTest"
       },
-      "page_url": "/ecocardiogramma/"
+      "page_url": "/cardiologia/ecocardiogramma/"
     },
     {
       "id": "holter-ecg",
@@ -512,7 +512,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/holter-ecg/"
+      "page_url": "/cardiologia/holter-ecg/"
     },
     {
       "id": "holter-pressorio",
@@ -546,7 +546,7 @@
         "@type": "MedicalProcedure",
         "procedureType": "http://schema.org/DiagnosticProcedure"
       },
-      "page_url": "/holter-pressorio/"
+      "page_url": "/cardiologia/holter-pressorio/"
     },
     {
       "id": "visita-endocrinologica",
