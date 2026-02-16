@@ -566,36 +566,48 @@ const BioSearchEngine = (function () {
     });
 
     // 4. Direct name matching (stronger signals)
+    // Clinical entities (specialty, procedure, pathway, pack, physician) get higher
+    // name-match scores than lab exams. Users typing partial words almost always
+    // want a clinical service, not a lab test with a similar prefix.
+    var isShortQuery = q.length <= 4;
+    var clinicalTypes = { specialty: true, procedure: true, pathway: true, pack: true, physician: true };
     var allItems = [].concat(
-      store.exams, store.specialties, store.procedures,
-      store.packs, store.pathways, store.physicians
+      store.specialties, store.procedures, store.pathways,
+      store.packs, store.physicians, store.exams
     );
     allItems.forEach(function(item) {
       var nameLower = norm(item.name || '');
       var key = item.type + ':' + item.id;
+      var isClinical = !!clinicalTypes[item.type];
+      // Clinical entities get much stronger name-match boosts
+      var exactBonus = isClinical ? 80 : 50;
+      var startsBonus = isClinical ? 55 : 20;
+      var containsBonus = isClinical ? 20 : 10;
+      var allMatchBonus = isClinical ? 15 : 8;
 
       if (nameLower === q) {
-        scores.set(key, (scores.get(key) || 0) + 50);
+        scores.set(key, (scores.get(key) || 0) + exactBonus);
       } else if (nameLower.startsWith(q)) {
-        scores.set(key, (scores.get(key) || 0) + 30);
+        scores.set(key, (scores.get(key) || 0) + startsBonus);
       } else if (nameLower.indexOf(q) !== -1) {
-        scores.set(key, (scores.get(key) || 0) + 15);
+        scores.set(key, (scores.get(key) || 0) + containsBonus);
       } else {
         // All tokens must match
         var allMatch = tokens.length > 0 && tokens.every(function(t) {
           return nameLower.indexOf(t) !== -1;
         });
         if (allMatch) {
-          scores.set(key, (scores.get(key) || 0) + 12);
+          scores.set(key, (scores.get(key) || 0) + allMatchBonus);
         }
       }
 
-      // Also match against ID
+      // Also match against ID (slug)
       var idLower = norm(item.id || '');
+      var idStartsBonus = isClinical ? 35 : 15;
       if (idLower === q) {
-        scores.set(key, (scores.get(key) || 0) + 40);
+        scores.set(key, (scores.get(key) || 0) + (isClinical ? 60 : 40));
       } else if (idLower.startsWith(q)) {
-        scores.set(key, (scores.get(key) || 0) + 20);
+        scores.set(key, (scores.get(key) || 0) + idStartsBonus);
       } else if (idLower.indexOf(q) !== -1) {
         scores.set(key, (scores.get(key) || 0) + 8);
       }
@@ -643,6 +655,8 @@ const BioSearchEngine = (function () {
     }
 
     // 7. Context-aware type boost
+    // For short queries (≤4 chars) in non-lab context, strongly penalize exams
+    // to prevent obscure lab tests from outranking clinical services
     var isLabContext = context === 'lab';
     scores.forEach(function(score, key) {
       var type = key.split(':')[0];
@@ -650,15 +664,19 @@ const BioSearchEngine = (function () {
       if (isLabContext) {
         if (type === 'exam') boost = 15;
         else if (type === 'pack') boost = 10;
-        else if (type === 'specialty') boost = 2;
-        else if (type === 'procedure') boost = 3;
+        else if (type === 'specialty') boost = 5;
+        else if (type === 'procedure') boost = 5;
       } else {
-        if (type === 'specialty') boost = 8;
-        else if (type === 'procedure') boost = 6;
-        else if (type === 'pathway') boost = 5;
-        else if (type === 'physician') boost = 4;
-        else if (type === 'pack') boost = 3;
-        else if (type === 'exam') boost = 2;
+        if (type === 'specialty') boost = 20;
+        else if (type === 'procedure') boost = 15;
+        else if (type === 'pathway') boost = 12;
+        else if (type === 'physician') boost = 8;
+        else if (type === 'pack') boost = 10;
+        else if (type === 'exam') boost = 0;
+      }
+      // For short queries, further boost clinical results to prevent exam flooding
+      if (isShortQuery && !isLabContext && type === 'exam') {
+        boost = -Math.floor(score * 0.3); // reduce exam scores by 30% for short queries
       }
       scores.set(key, score + boost);
     });
