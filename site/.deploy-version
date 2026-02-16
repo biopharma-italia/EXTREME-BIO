@@ -1,10 +1,13 @@
-# Bio-Clinic Deploy Version
-version: 2026.02.15.1200
-timestamp: 2026-02-15T12:00:00Z
-changes:
-  - Wave 0: Infrastructure stabilisation — eliminate /pages/ system
-  - Wave 1: Cluster Ginecologia — 18 pages migrated under /ginecologia/
-  - 268 301 redirects replacing legacy 200 rewrites
-  - Clean sitemap.xml with 143 verified URLs
-  - robots.txt updated to disallow /pages/
-  - CI/CD pipeline fixed — workflow moved to .github/workflows/
+{
+  "version": "2026-02-16-v8",
+  "deployed": "2026-02-16T16:31:49+0100",
+  "changes": "cardiology-seo-14-fixes",
+  "pages": [
+    "/cardiologia/",
+    "/cardiologia/ecocardiogramma/",
+    "/cardiologia/holter-ecg/",
+    "/cardiologia/holter-pressorio/",
+    "/cardiologia/visita-cardiologica-ecg/",
+    "/cardiologia/checkup-cardiovascolare/"
+  ]
+}
