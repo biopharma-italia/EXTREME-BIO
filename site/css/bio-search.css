@@ -360,7 +360,8 @@
    HERO SEARCH SECTION (homepage)
    ═══════════════════════════════════════════════════════════════ */
 section.hero-search {
-  padding: 2.5rem 0 2rem;
+  padding-top: 100px;  /* 80px fixed-header height + 20px breathing room */
+  padding-bottom: 1.5rem;
   background: linear-gradient(180deg, #f8faf9 0%, #ffffff 100%);
   text-align: center;
 }
@@ -398,7 +399,7 @@ section.hero-search {
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  overflow: hidden;
+  /* NO overflow:hidden — dropdown is appended inside and must be visible */
 }
 
 .search-input-wrapper:focus-within {
@@ -406,8 +407,9 @@ section.hero-search {
   box-shadow: 0 4px 20px rgba(0, 112, 74, 0.1), 0 0 0 3px rgba(0, 112, 74, 0.08);
 }
 
-/* The search input itself */
-.search-box-hero .search-input {
+/* The search input itself — !important to override bio-clinic-layout.css */
+.search-box-hero .search-input,
+.search-box-hero input[type="text"] {
   flex: 1;
   width: 100%;
   padding: 1rem 1rem 1rem 1.25rem;
@@ -457,20 +459,19 @@ section.hero-search {
   stroke: #fff;
 }
 
-/* Ensure dropdown within hero is positioned correctly */
+/* Dropdown inside hero: absolutely positioned below the input row */
 .search-input-wrapper .bs-dropdown,
 .search-box-hero .bs-dropdown {
+  position: absolute;
+  top: 100%;
+  left: -2px;
+  right: -2px;
   border-radius: 0 0 14px 14px;
   border: 2px solid #e2e8f0;
   border-top: 1px solid #f0f0f0;
-  margin-top: -2px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-}
-
-/* When dropdown is open, square off the bottom of the input */
-.search-input-wrapper.bs-dropdown-open {
-  border-radius: 16px 16px 0 0;
-  border-bottom-color: transparent;
+  z-index: 9999;
+  background: #fff;
 }
 
 /* Lab search box */
@@ -556,7 +557,8 @@ section.hero-search {
    ═══════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
   section.hero-search {
-    padding: 1.75rem 0 1.5rem;
+    padding-top: 86px;  /* 70px mobile header + 16px gap */
+    padding-bottom: 1rem;
   }
 
   .hero-search-title {
@@ -652,7 +654,8 @@ section.hero-search {
 
 @media (max-width: 480px) {
   section.hero-search {
-    padding: 1.25rem 0 1rem;
+    padding-top: 82px;  /* 70px mobile header + 12px gap */
+    padding-bottom: 0.75rem;
   }
 
   .hero-search-title {
