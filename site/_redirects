@@ -52,10 +52,19 @@
 /pages/visita-cardiologica-ecg /cardiologia/visita-cardiologica-ecg/ 301
 
 # ============================================
-# WAVE 1: Root slug → /ginecologia/ (18 slugs × 2 = 36 static)
-# Both /slug and /slug/ variants needed (CF Pages doesn't auto-strip trailing /)
-# These root dirs are excluded from deploy; redirect rules handle both variants.
+# WAVE 2: Root slug → /cardiologia/ (5 procedures without their own root dir)
+# These root .html stubs have meta-refresh, but 301 is faster + better for SEO
 # ============================================
+/ecocardiogramma /cardiologia/ecocardiogramma/ 301
+/ecocardiogramma/ /cardiologia/ecocardiogramma/ 301
+/holter-ecg /cardiologia/holter-ecg/ 301
+/holter-ecg/ /cardiologia/holter-ecg/ 301
+/holter-pressorio /cardiologia/holter-pressorio/ 301
+/holter-pressorio/ /cardiologia/holter-pressorio/ 301
+/visita-cardiologica-ecg /cardiologia/visita-cardiologica-ecg/ 301
+/visita-cardiologica-ecg/ /cardiologia/visita-cardiologica-ecg/ 301
+/checkup-cardiovascolare /cardiologia/checkup-cardiovascolare/ 301
+/checkup-cardiovascolare/ /cardiologia/checkup-cardiovascolare/ 301
 
 # ============================================
 # CROSS-CANONICAL (14 static — legacy slugs that don't exist as physical dirs)
