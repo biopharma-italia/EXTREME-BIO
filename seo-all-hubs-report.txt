@@ -1,0 +1,635 @@
+REPORT SEO ALL HUBS - MODIFICHE PER PAGINA
+Data: 2026-02-16
+Pagine: 60
+Modifiche: 210
+
+
+============================================================
+PAGINA: ginecologia/hub
+FILE: ginecologia/index.html
+Size: 65379 -> 69370 bytes
+Parole: ~1899
+Modifiche (2):
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ginecologia/assistenza_ostetrica
+FILE: ginecologia/assistenza-ostetrica/index.html
+Size: 44759 -> 52783 bytes
+Parole: ~1542
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /ginecologia/assistenza-ostetrica/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ginecologia/caressflow
+FILE: ginecologia/caressflow/index.html
+Size: 36733 -> 42902 bytes
+Parole: ~1348
+Modifiche (3):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ginecologia/colposcopia
+FILE: ginecologia/colposcopia/index.html
+Size: 41552 -> 47998 bytes
+Parole: ~1488
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /ginecologia/colposcopia/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ginecologia/corso_preparto
+FILE: ginecologia/corso-preparto/index.html
+Size: 44354 -> 52106 bytes
+Parole: ~1509
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /ginecologia/corso-preparto/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ginecologia/duopap
+FILE: ginecologia/duopap/index.html
+Size: 40661 -> 48541 bytes
+Parole: ~1604
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /ginecologia/duopap/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ginecologia/ecografia_mammaria
+FILE: ginecologia/ecografia-mammaria/index.html
+Size: 44850 -> 52661 bytes
+Parole: ~1552
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /ginecologia/ecografia-mammaria/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ginecologia/ecografia_morfologica
+FILE: ginecologia/ecografia-morfologica/index.html
+Size: 41753 -> 49692 bytes
+Parole: ~1491
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /ginecologia/ecografia-morfologica/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ginecologia/ecografia_ostetrica_3d
+FILE: ginecologia/ecografia-ostetrica-3d/index.html
+Size: 42186 -> 49976 bytes
+Parole: ~1471
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /ginecologia/ecografia-ostetrica-3d/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ginecologia/ecografia_pelvica
+FILE: ginecologia/ecografia-pelvica/index.html
+Size: 44682 -> 52532 bytes
+Parole: ~1556
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /ginecologia/ecografia-pelvica/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ginecologia/ecografia_transvaginale
+FILE: ginecologia/ecografia-transvaginale/index.html
+Size: 43758 -> 51685 bytes
+Parole: ~1541
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /ginecologia/ecografia-transvaginale/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ginecologia/ginecologi_sassari
+FILE: ginecologia/ginecologi-sassari/index.html
+Size: 38914 -> 41460 bytes
+Parole: ~1514
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /ginecologia/ginecologi-sassari/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ginecologia/hpv_dna_test
+FILE: ginecologia/hpv-dna-test/index.html
+Size: 43190 -> 49085 bytes
+Parole: ~1748
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /ginecologia/hpv-dna-test/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ginecologia/isterosalpingografia
+FILE: ginecologia/isterosalpingografia/index.html
+Size: 58928 -> 62150 bytes
+Parole: ~1942
+Modifiche (3):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ginecologia/isteroscopia
+FILE: ginecologia/isteroscopia/index.html
+Size: 44754 -> 52684 bytes
+Parole: ~1517
+Modifiche (3):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ginecologia/pap_test_hpv
+FILE: ginecologia/pap-test-hpv/index.html
+Size: 33594 -> 39329 bytes
+Parole: ~1433
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /ginecologia/pap-test-hpv/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ginecologia/pap_test
+FILE: ginecologia/pap-test/index.html
+Size: 45052 -> 51153 bytes
+Parole: ~1843
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /ginecologia/pap-test/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ginecologia/perifit_kegel
+FILE: ginecologia/perifit-kegel-sassari/index.html
+Size: 63878 -> 58278 bytes
+Parole: ~2994
+Modifiche (3):
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /ginecologia/perifit-kegel-sassari/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ginecologia/radiofrequenza_vaginale
+FILE: ginecologia/radiofrequenza-vaginale/index.html
+Size: 36521 -> 42880 bytes
+Parole: ~1336
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /ginecologia/radiofrequenza-vaginale/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ginecologia/riabilitazione_pavimento_pelvico
+FILE: ginecologia/riabilitazione-pavimento-pelvico/index.html
+Size: 46145 -> 54106 bytes
+Parole: ~1554
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /ginecologia/riabilitazione-pavimento-pelvico/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ginecologia/trattamenti_pavimento_pelvico
+FILE: ginecologia/trattamenti-pavimento-pelvico/index.html
+Size: 64372 -> 68318 bytes
+Parole: ~3588
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /ginecologia/trattamenti-pavimento-pelvico/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ginecologia/visita_ginecologica
+FILE: ginecologia/visita-ginecologica/index.html
+Size: 40075 -> 46061 bytes
+Parole: ~1460
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /ginecologia/visita-ginecologica/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: dermatologia/hub
+FILE: dermatologia/index.html
+Size: 53618 -> 52252 bytes
+Parole: ~2820
+Modifiche (2):
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: dermatologia/mappatura_nevi
+FILE: dermatologia/mappatura-nevi/index.html
+Size: 46169 -> 51752 bytes
+Parole: ~1365
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /dermatologia/mappatura-nevi/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: dermatologia/visita_dermatologica
+FILE: dermatologia/visita-dermatologica/index.html
+Size: 38869 -> 42355 bytes
+Parole: ~1220
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /dermatologia/visita-dermatologica/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: endocrinologia/hub
+FILE: endocrinologia/index.html
+Size: 35532 -> 37262 bytes
+Parole: ~965
+Modifiche (2):
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: endocrinologia/checkup_tiroide
+FILE: endocrinologia/checkup-tiroide/index.html
+Size: 47818 -> 50708 bytes
+Parole: ~2257
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /endocrinologia/checkup-tiroide/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: endocrinologia/ecografia_tiroidea
+FILE: endocrinologia/ecografia-tiroidea/index.html
+Size: 43094 -> 48261 bytes
+Parole: ~1231
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /endocrinologia/ecografia-tiroidea/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: endocrinologia/visita_endocrinologica
+FILE: endocrinologia/visita-endocrinologica/index.html
+Size: 38786 -> 42164 bytes
+Parole: ~1170
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /endocrinologia/visita-endocrinologica/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: neurologia/hub
+FILE: neurologia/index.html
+Size: 33329 -> 34250 bytes
+Parole: ~884
+Modifiche (2):
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: neurologia/elettromiografia
+FILE: neurologia/elettromiografia/index.html
+Size: 41701 -> 46652 bytes
+Parole: ~1177
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /neurologia/elettromiografia/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: neurologia/visita_neurologica
+FILE: neurologia/visita-neurologica/index.html
+Size: 37631 -> 40626 bytes
+Parole: ~1128
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /neurologia/visita-neurologica/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ortopedia/hub
+FILE: ortopedia/index.html
+Size: 33555 -> 34812 bytes
+Parole: ~894
+Modifiche (2):
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ortopedia/infiltrazioni_articolari
+FILE: ortopedia/infiltrazioni-articolari/index.html
+Size: 41799 -> 47095 bytes
+Parole: ~1209
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /ortopedia/infiltrazioni-articolari/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ortopedia/visita_fisiatrica
+FILE: ortopedia/visita-fisiatrica/index.html
+Size: 35897 -> 39392 bytes
+Parole: ~1072
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /ortopedia/visita-fisiatrica/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ortopedia/visita_ortopedica
+FILE: ortopedia/visita-ortopedica/index.html
+Size: 37499 -> 40771 bytes
+Parole: ~1128
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /ortopedia/visita-ortopedica/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: urologia/hub
+FILE: urologia/index.html
+Size: 33583 -> 34546 bytes
+Parole: ~914
+Modifiche (2):
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: urologia/ecografia_prostatica
+FILE: urologia/ecografia-prostatica/index.html
+Size: 39378 -> 44229 bytes
+Parole: ~1148
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /urologia/ecografia-prostatica/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: urologia/ecografia_renale
+FILE: urologia/ecografia-renale/index.html
+Size: 39484 -> 42189 bytes
+Parole: ~2031
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /urologia/ecografia-renale/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: urologia/visita_urologica
+FILE: urologia/visita-urologica/index.html
+Size: 36695 -> 39432 bytes
+Parole: ~1125
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /urologia/visita-urologica/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: chirurgia_vascolare/hub
+FILE: chirurgia-vascolare/index.html
+Size: 38965 -> 39552 bytes
+Parole: ~1090
+Modifiche (2):
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: chirurgia_vascolare/eco_doppler_arti
+FILE: chirurgia-vascolare/eco-doppler-arti/index.html
+Size: 39593 -> 44469 bytes
+Parole: ~1155
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /chirurgia-vascolare/eco-doppler-arti/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: chirurgia_vascolare/scleroterapia
+FILE: chirurgia-vascolare/scleroterapia/index.html
+Size: 39347 -> 44165 bytes
+Parole: ~1122
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /chirurgia-vascolare/scleroterapia/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: chirurgia_vascolare/visita_chirurgia_vascolare
+FILE: chirurgia-vascolare/visita-chirurgia-vascolare/index.html
+Size: 36564 -> 39622 bytes
+Parole: ~1122
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /chirurgia-vascolare/visita-chirurgia-vascolare/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: otorinolaringoiatria/hub
+FILE: otorinolaringoiatria/index.html
+Size: 33470 -> 34644 bytes
+Parole: ~847
+Modifiche (2):
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: otorinolaringoiatria/audiometria
+FILE: otorinolaringoiatria/audiometria/index.html
+Size: 39997 -> 43855 bytes
+Parole: ~1131
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /otorinolaringoiatria/audiometria/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: otorinolaringoiatria/campo_visivo
+FILE: otorinolaringoiatria/campo-visivo/index.html
+Size: 38845 -> 42113 bytes
+Parole: ~1138
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /otorinolaringoiatria/campo-visivo/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: otorinolaringoiatria/spirometria
+FILE: otorinolaringoiatria/spirometria/index.html
+Size: 40432 -> 45627 bytes
+Parole: ~1162
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /otorinolaringoiatria/spirometria/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: otorinolaringoiatria/visita_orl
+FILE: otorinolaringoiatria/visita-orl/index.html
+Size: 37263 -> 40649 bytes
+Parole: ~1074
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /otorinolaringoiatria/visita-orl/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: gastroenterologia/hub
+FILE: gastroenterologia/index.html
+Size: 32606 -> 33306 bytes
+Parole: ~835
+Modifiche (2):
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: gastroenterologia/ecografia_addominale
+FILE: gastroenterologia/ecografia-addominale/index.html
+Size: 41002 -> 45573 bytes
+Parole: ~1134
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /gastroenterologia/ecografia-addominale/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: gastroenterologia/visita_gastroenterologica
+FILE: gastroenterologia/visita-gastroenterologica/index.html
+Size: 36353 -> 39152 bytes
+Parole: ~1061
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /gastroenterologia/visita-gastroenterologica/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: oculistica/hub
+FILE: oculistica/index.html
+Size: 34212 -> 35042 bytes
+Parole: ~961
+Modifiche (2):
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: oculistica/visita_oculistica
+FILE: oculistica/visita-oculistica/index.html
+Size: 42114 -> 44862 bytes
+Parole: ~1203
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /oculistica/visita-oculistica/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: pneumologia/hub
+FILE: pneumologia/index.html
+Size: 32214 -> 32584 bytes
+Parole: ~815
+Modifiche (2):
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: pneumologia/visita_pneumologica
+FILE: pneumologia/visita-pneumologica/index.html
+Size: 36219 -> 38486 bytes
+Parole: ~1050
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /pneumologia/visita-pneumologica/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ematologia/hub
+FILE: ematologia/index.html
+Size: 32883 -> 33484 bytes
+Parole: ~867
+Modifiche (2):
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: ematologia/visita_ematologica
+FILE: ematologia/visita-ematologica/index.html
+Size: 37104 -> 39881 bytes
+Parole: ~1088
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /ematologia/visita-ematologica/
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: reumatologia/hub
+FILE: reumatologia/index.html
+Size: 32171 -> 32483 bytes
+Parole: ~813
+Modifiche (2):
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX #6: Cross-linking section added
+
+============================================================
+PAGINA: reumatologia/visita_reumatologica
+FILE: reumatologia/visita-reumatologica/index.html
+Size: 35887 -> 38334 bytes
+Parole: ~1014
+Modifiche (4):
+  - FIX #12: og:type website -> article
+  - FIX #2,3,4,5,9,11: Schema rebuild (Breadcrumb, @id, FAQPage, Person, MedicalWebPage, Speakable, HowTo)
+  - FIX: og:url fixed from /pages/ to /reumatologia/visita-reumatologica/
+  - FIX #6: Cross-linking section added
