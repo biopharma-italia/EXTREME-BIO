@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "last_updated": "2026-01-27",
+  "last_updated": "2026-02-17",
   "total_packs": 12,
   "packs": [
     {
@@ -35,7 +35,7 @@
       },
       "priority_score": 100,
       "cta_text": "Prenota Check-up Base",
-      "cta_url": "/laboratorio/",
+      "cta_url": "/laboratorio/prenota/?service=prelievo-standard",
       "schema_org": {
         "@type": [
           "MedicalTest",
@@ -88,7 +88,7 @@
       },
       "priority_score": 95,
       "cta_text": "Prenota Check-up Completo",
-      "cta_url": "/laboratorio/",
+      "cta_url": "/laboratorio/prenota/?service=prelievo-standard",
       "schema_org": {
         "@type": [
           "MedicalTest",
@@ -128,7 +128,7 @@
       },
       "priority_score": 90,
       "cta_text": "Prenota Profilo Tiroide",
-      "cta_url": "/laboratorio/",
+      "cta_url": "/laboratorio/prenota/?service=profilo-tiroide",
       "uplink_suggestion": "Per questo esame, il percorso più completo è il Profilo Tiroide Completo",
       "schema_org": {
         "@type": [
@@ -171,7 +171,7 @@
       },
       "priority_score": 88,
       "cta_text": "Prenota Check-up Cuore",
-      "cta_url": "/laboratorio/",
+      "cta_url": "/laboratorio/prenota/?service=prelievo-standard",
       "schema_org": {
         "@type": [
           "MedicalTest",
@@ -209,7 +209,7 @@
       },
       "priority_score": 85,
       "cta_text": "Prenota Profilo Diabete",
-      "cta_url": "/laboratorio/",
+      "cta_url": "/laboratorio/prenota/?service=glicemia-curva",
       "schema_org": {
         "@type": [
           "MedicalTest",
@@ -248,7 +248,7 @@
       },
       "priority_score": 82,
       "cta_text": "Prenota Profilo Epatico",
-      "cta_url": "/laboratorio/",
+      "cta_url": "/laboratorio/prenota/?service=prelievo-standard",
       "schema_org": {
         "@type": [
           "MedicalTest",
@@ -286,7 +286,7 @@
       },
       "priority_score": 80,
       "cta_text": "Prenota Profilo Renale",
-      "cta_url": "/laboratorio/",
+      "cta_url": "/laboratorio/prenota/?service=urine-standard",
       "schema_org": {
         "@type": [
           "MedicalTest",
@@ -329,7 +329,7 @@
       },
       "priority_score": 92,
       "cta_text": "Prenota Check-up Donna Over 40",
-      "cta_url": "/laboratorio/",
+      "cta_url": "/laboratorio/prenota/?service=prelievo-standard",
       "schema_org": {
         "@type": [
           "MedicalTest",
@@ -371,7 +371,7 @@
       },
       "priority_score": 92,
       "cta_text": "Prenota Check-up Uomo Over 40",
-      "cta_url": "/laboratorio/",
+      "cta_url": "/laboratorio/prenota/?service=prelievo-standard",
       "schema_org": {
         "@type": [
           "MedicalTest",
@@ -408,7 +408,7 @@
       },
       "priority_score": 78,
       "cta_text": "Prenota Profilo Anemia",
-      "cta_url": "/laboratorio/",
+      "cta_url": "/laboratorio/prenota/?service=emocromo-completo",
       "schema_org": {
         "@type": [
           "MedicalTest",
@@ -444,7 +444,7 @@
       },
       "priority_score": 75,
       "cta_text": "Prenota PSA",
-      "cta_url": "/laboratorio/",
+      "cta_url": "/laboratorio/prenota/?service=prelievo-standard",
       "schema_org": {
         "@type": [
           "MedicalTest",
@@ -480,7 +480,7 @@
       },
       "priority_score": 72,
       "cta_text": "Prenota Vitamina D",
-      "cta_url": "/laboratorio/",
+      "cta_url": "/laboratorio/prenota/?service=prelievo-standard",
       "schema_org": {
         "@type": [
           "MedicalTest",

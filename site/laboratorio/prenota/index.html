@@ -553,8 +553,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       slots: [],
       calendarMonth: new Date().getMonth(),
       calendarYear: new Date().getFullYear(),
-      booking: null
+      booking: null,
+      dataSource: 'api'  // 'api' or 'fallback'
     };
+
+    // =======================================================================
+    // FALLBACK SERVICES (used when API is unreachable)
+    // =======================================================================
+    var FALLBACK_SERVICES = [
+      { id: "prelievo-standard", name: "Prelievo Ematico Standard", category: "prelievo", duration_minutes: 15, price_eur: 5.00, requires_fasting: true, prep_instructions: "Presentarsi a digiuno da almeno 8 ore. Bere solo acqua." },
+      { id: "prelievo-urgente", name: "Prelievo Ematico Urgente", category: "prelievo", duration_minutes: 15, price_eur: 15.00, requires_fasting: true, prep_instructions: "Presentarsi a digiuno da almeno 8 ore. Referto in giornata." },
+      { id: "emocromo-completo", name: "Emocromo Completo con Formula", category: "ematologia", duration_minutes: 15, price_eur: 8.00, requires_fasting: false, prep_instructions: "Nessuna preparazione necessaria." },
+      { id: "urine-standard", name: "Esame Urine Completo", category: "urine", duration_minutes: 10, price_eur: 8.00, requires_fasting: false, prep_instructions: "Portare campione di urina del mattino in contenitore sterile." },
+      { id: "tampone-vaginale", name: "Tampone Vaginale / Cervicale", category: "microbiologia", duration_minutes: 20, price_eur: 25.00, requires_fasting: false, prep_instructions: "Evitare lavande vaginali 24h prima e ovuli/creme 5 giorni prima." },
+      { id: "tampone-faringeo", name: "Tampone Faringeo", category: "microbiologia", duration_minutes: 10, price_eur: 20.00, requires_fasting: true, prep_instructions: "Non usare collutorio. No antibiotici 48h prima." },
+      { id: "test-hpv", name: "HPV DNA Test", category: "microbiologia", duration_minutes: 20, price_eur: 55.00, requires_fasting: false, prep_instructions: "Evitare rapporti sessuali 48h prima." },
+      { id: "profilo-tiroide", name: "Profilo Tiroideo Completo (TSH, FT3, FT4)", category: "profilo", duration_minutes: 15, price_eur: 35.00, requires_fasting: false, prep_instructions: "Nessuna preparazione. Preferibile il mattino." },
+      { id: "profilo-ormonale-donna", name: "Profilo Ormonale Donna", category: "profilo", duration_minutes: 15, price_eur: 65.00, requires_fasting: true, prep_instructions: "Digiuno 8 ore. Eseguire tra il 3° e 5° giorno del ciclo." },
+      { id: "marcatori-tumorali", name: "Pannello Marcatori Tumorali", category: "profilo", duration_minutes: 15, price_eur: 80.00, requires_fasting: true, prep_instructions: "Presentarsi a digiuno da almeno 8 ore." },
+      { id: "glicemia-curva", name: "Curva Glicemica da Carico (OGTT)", category: "profilo", duration_minutes: 120, price_eur: 25.00, requires_fasting: true, prep_instructions: "Digiuno 10-12 ore. Test dura circa 2 ore." },
+      { id: "test-allergologico", name: "Pannello Allergologico (IgE Specifiche)", category: "profilo", duration_minutes: 15, price_eur: 45.00, requires_fasting: false, prep_instructions: "Nessuna preparazione necessaria." }
+    ];
 
     // =======================================================================
     // DOM REFS
@@ -563,18 +582,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var $$ = function(sel) { return document.querySelectorAll(sel); };
 
     // =======================================================================
-    // 1. LOAD SERVICES
+    // 1. LOAD SERVICES (API with fallback)
     // =======================================================================
     function loadServices() {
       fetch(API_BASE + '/services')
-        .then(function(r) { return r.json(); })
+        .then(function(r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        })
         .then(function(data) {
-          if (!data.success) throw new Error(data.error);
+          if (!data.success) throw new Error(data.error || 'API error');
           state.services = data.services;
+          state.dataSource = 'api';
           renderServices();
         })
         .catch(function(err) {
-          $('#services-list').innerHTML = '<p style="color:var(--danger);">Errore nel caricamento. <a href="javascript:location.reload()">Riprova</a>.</p>';
+          console.warn('[Booking] API fallback:', err.message || err);
+          // Use inline fallback data
+          state.services = FALLBACK_SERVICES;
+          state.dataSource = 'fallback';
+          renderServices();
         });
     }
 
@@ -674,6 +701,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     // =======================================================================
     // 3. LOAD SLOTS
     // =======================================================================
+    // =======================================================================
+    // 3. LOAD SLOTS (API with client-side fallback)
+    // =======================================================================
+    function generateFallbackSlots(dateStr) {
+      var dateObj = new Date(dateStr + 'T00:00:00');
+      var dayOfWeek = dateObj.getDay(); // 0=Sun, 6=Sat
+      var slots = [];
+      var startH, endH;
+
+      if (dayOfWeek === 6) { // Saturday
+        startH = 8; endH = 13;
+      } else if (dayOfWeek === 0) { // Sunday
+        return [];
+      } else { // Mon-Fri
+        startH = 7; endH = 20;
+      }
+
+      for (var h = startH; h < endH; h++) {
+        for (var m = 0; m < 60; m += 15) {
+          var time = String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');
+          slots.push({ time: time, available: 3, total: 3, status: 'available' });
+        }
+      }
+      return slots;
+    }
+
     function loadSlots(dateStr) {
       var section = $('#slots-section');
       section.style.display = 'block';
@@ -681,17 +734,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       var dateObj = new Date(dateStr + 'T00:00:00');
       var dayName = dateObj.toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'long' });
-      $('#slots-date-label').textContent = 'Orari disponibili — ' + dayName;
+      $('#slots-date-label').textContent = 'Orari disponibili \u2014 ' + dayName;
 
       fetch(API_BASE + '/slots?date=' + dateStr + '&service_id=' + state.selectedService.id)
-        .then(function(r) { return r.json(); })
+        .then(function(r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        })
         .then(function(data) {
           if (!data.success) throw new Error(data.error);
           state.slots = data.slots;
           renderSlots();
         })
         .catch(function(err) {
-          $('#slots-grid').innerHTML = '<div class="slots-empty">' + (err.message || 'Errore nel caricamento orari.') + '</div>';
+          console.warn('[Booking] Slots API fallback:', err.message || err);
+          // Generate client-side slots based on opening hours
+          state.slots = generateFallbackSlots(dateStr);
+          if (state.slots.length > 0) {
+            renderSlots();
+          } else {
+            $('#slots-grid').innerHTML = '<div class="slots-empty">Nessun orario disponibile per questa data.</div>';
+          }
         });
     }
 
@@ -858,9 +921,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         renderConfirmation(data.booking);
       })
       .catch(function(err) {
-        btn.disabled = false;
-        btn.innerHTML = btnText;
-        alert(err.message || 'Errore nella prenotazione. Riprovare.');
+        console.warn('[Booking] Confirm API failed:', err.message || err);
+        // If API is down, show a "pending" confirmation with phone CTA
+        if (state.dataSource === 'fallback') {
+          var fallbackBooking = {
+            id: 'PENDING-' + Date.now().toString(36).toUpperCase(),
+            service_name: state.selectedService.name,
+            date: state.selectedDate,
+            time: state.selectedTime,
+            duration_minutes: state.selectedService.duration_minutes,
+            price: state.selectedService.price_eur,
+            patient_name: name,
+            prep_instructions: state.selectedService.prep_instructions || '',
+            _pending: true
+          };
+          goToStep(4);
+          renderConfirmation(fallbackBooking);
+        } else {
+          btn.disabled = false;
+          btn.innerHTML = btnText;
+          alert(err.message || 'Errore nella prenotazione. Riprovare.');
+        }
       });
     }
 
@@ -870,11 +951,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function renderConfirmation(booking) {
       var dateObj = new Date(booking.date + 'T00:00:00');
       var dateFormatted = dateObj.toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+      var isPending = booking._pending;
 
-      var html = '<div class="check-icon">&#10003;</div>'
-        + '<h2>Prenotazione Confermata!</h2>'
-        + '<p style="color:#065F46;">Codice: <strong>' + booking.id + '</strong></p>'
-        + '<div class="confirm-details">'
+      var html = '';
+      if (isPending) {
+        html += '<div class="check-icon" style="color:#f59e0b;">&#9888;</div>'
+          + '<h2 style="color:#92400E;">Prenotazione in Attesa di Conferma</h2>'
+          + '<p style="color:#92400E;">Per completare la prenotazione, chiama il laboratorio:</p>'
+          + '<a href="tel:+390799561332" style="display:inline-flex;align-items:center;gap:0.5rem;background:#00704A;color:#fff;padding:0.8rem 1.5rem;border-radius:8px;font-weight:600;text-decoration:none;margin:0.5rem 0 1rem;">'
+          + '&#128222; 079 956 1332</a>';
+      } else {
+        html += '<div class="check-icon">&#10003;</div>'
+          + '<h2>Prenotazione Confermata!</h2>'
+          + '<p style="color:#065F46;">Codice: <strong>' + booking.id + '</strong></p>';
+      }
+
+      html += '<div class="confirm-details">'
         + '<div class="detail-row"><span class="detail-label">Esame</span><span class="detail-value">' + booking.service_name + '</span></div>'
         + '<div class="detail-row"><span class="detail-label">Data</span><span class="detail-value">' + dateFormatted + '</span></div>'
         + '<div class="detail-row"><span class="detail-label">Ora</span><span class="detail-value">' + booking.time + '</span></div>'
@@ -889,8 +981,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           + '</div>';
       }
 
+      if (isPending) {
+        html += '<div style="margin-top:1rem;background:#FEF3C7;border:1px solid #FCD34D;border-radius:8px;padding:1rem;text-align:left;font-size:0.9rem;">'
+          + '<strong>Come procedere:</strong><br>'
+          + '1. Chiama <a href="tel:+390799561332" style="color:#00704A;font-weight:600;">079 956 1332</a> e comunica i dati sopra<br>'
+          + '2. Il laboratorio confermer&agrave; la tua prenotazione<br>'
+          + '3. Presentati nella data e ora scelte'
+          + '</div>';
+      }
+
       html += '<div style="margin-top:1.5rem;">'
-        + '<p style="font-size:0.9rem;color:var(--gray-600);">Riceverai una conferma via email (se fornita). Per cancellare o modificare chiama <a href="tel:+390799561332" style="color:var(--primary-dark);font-weight:600;">079 956 1332</a>.</p>'
+        + '<p style="font-size:0.9rem;color:var(--gray-600);">'
+        + (isPending ? 'Oppure presentati direttamente senza appuntamento.' : 'Riceverai una conferma via email (se fornita).')
+        + ' Per cancellare o modificare chiama <a href="tel:+390799561332" style="color:var(--primary-dark);font-weight:600;">079 956 1332</a>.</p>'
         + '<div style="margin-top:1rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">'
         + '<a href="/laboratorio/" class="btn-booking btn-outline">Torna al Laboratorio</a>'
         + '<a href="/laboratorio/prenota/" class="btn-booking btn-primary">Nuova Prenotazione</a>'
@@ -929,35 +1032,70 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var urlParams = new URLSearchParams(window.location.search);
       var preselectedServiceId = urlParams.get('service');
       if (preselectedServiceId) {
-        // Wait for services to load AND render, then auto-select
-        var checkInterval = setInterval(function() {
+        var autoSelectDone = false;
+
+        function tryAutoSelect() {
+          if (autoSelectDone) return;
           var targetCard = document.querySelector('.service-card[data-id="' + preselectedServiceId + '"]');
           if (targetCard) {
-            clearInterval(checkInterval);
+            autoSelectDone = true;
             // Auto-select with visual feedback
             targetCard.click();
             targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            // Flash highlight effect
-            targetCard.style.transition = 'box-shadow 0.3s';
+            // Flash highlight
+            targetCard.style.transition = 'box-shadow 0.3s, border-color 0.3s';
             targetCard.style.boxShadow = '0 0 0 4px rgba(0,112,74,0.3)';
-            setTimeout(function() { targetCard.style.boxShadow = ''; }, 1500);
-            // Auto-advance to step 2 after brief delay
+            setTimeout(function() { targetCard.style.boxShadow = ''; }, 2000);
+            // Auto-advance to step 2
             setTimeout(function() {
               if (state.selectedService) {
                 goToStep(2);
                 renderCalendar();
               }
             }, 800);
+            return true;
+          }
+          return false;
+        }
+
+        // Strategy 1: MutationObserver (fires when DOM changes)
+        var servicesList = document.getElementById('services-list');
+        if (servicesList) {
+          var observer = new MutationObserver(function() {
+            if (tryAutoSelect()) observer.disconnect();
+          });
+          observer.observe(servicesList, { childList: true, subtree: true });
+        }
+
+        // Strategy 2: Polling fallback (100ms intervals)
+        var pollCount = 0;
+        var pollInterval = setInterval(function() {
+          pollCount++;
+          if (tryAutoSelect() || pollCount > 80) {
+            clearInterval(pollInterval);
           }
         }, 100);
-        // Safety: stop checking after 8s and show fallback message
+
+        // Strategy 3: Safety timeout after 8s
         setTimeout(function() {
-          clearInterval(checkInterval);
-          if (!state.selectedService) {
-            // Service not found - show helpful message
-            var servicesList = document.getElementById('services-list');
-            if (servicesList && !servicesList.querySelector('.service-card')) {
-              servicesList.innerHTML = '<p style="color:var(--danger);text-align:center;padding:1rem;">Impossibile caricare i servizi. <a href="javascript:location.reload()" style="color:var(--primary-dark);font-weight:600;">Ricarica la pagina</a> oppure <a href="tel:+390799561332" style="color:var(--primary-dark);font-weight:600;">chiama 079 956 1332</a>.</p>';
+          clearInterval(pollInterval);
+          if (observer) observer.disconnect();
+          if (!autoSelectDone) {
+            // Services loaded but target not found? Show all services with message
+            var cards = document.querySelectorAll('.service-card');
+            if (cards.length > 0) {
+              // Service ID not in the list — show info banner
+              var banner = document.createElement('div');
+              banner.style.cssText = 'background:#FEF3C7;border:1px solid #FCD34D;border-radius:8px;padding:1rem;margin-bottom:1rem;text-align:center;font-size:0.9rem;color:#92400E;';
+              banner.innerHTML = '⚠️ Il servizio richiesto non e disponibile per la prenotazione online. Seleziona un servizio qui sotto oppure <a href="tel:+390799561332" style="color:#92400E;font-weight:600;">chiama 079 956 1332</a>.';
+              servicesList.insertBefore(banner, servicesList.firstChild);
+            } else {
+              // No services loaded at all
+              servicesList.innerHTML = '<div style="text-align:center;padding:2rem;">'
+                + '<p style="color:var(--danger);margin-bottom:1rem;">Impossibile caricare i servizi.</p>'
+                + '<a href="javascript:location.reload()" class="btn-booking btn-primary" style="margin-right:1rem;">Ricarica</a>'
+                + '<a href="tel:+390799561332" class="btn-booking btn-outline">Chiama 079 956 1332</a>'
+                + '</div>';
             }
           }
         }, 8000);

@@ -360,13 +360,28 @@ const BioSearchEngine = (function () {
         });
       }
 
-      // ── Packs (URL fix: /prestazioni/X -> /laboratorio/) ──
+      // ── Packs (URL fix: all packs → booking deep-link) ──
+      var packToBookingService = {
+        'checkup-base': 'prelievo-standard',
+        'checkup-completo': 'prelievo-standard',
+        'checkup-tiroide': 'profilo-tiroide',
+        'checkup-cardiovascolare': 'prelievo-standard',
+        'checkup-diabete': 'glicemia-curva',
+        'checkup-epatico': 'prelievo-standard',
+        'checkup-renale': 'urine-standard',
+        'checkup-donna-over40': 'prelievo-standard',
+        'checkup-uomo-over40': 'prelievo-standard',
+        'checkup-anemia': 'emocromo-completo',
+        'checkup-prostata': 'prelievo-standard',
+        'checkup-osteoporosi': 'prelievo-standard'
+      };
       if (packs && packs.packs) {
         store.packs = packs.packs.map(function(pk) {
           var url = pk.cta_url || '/laboratorio/';
-          // Fix broken /prestazioni/ URLs
-          if (url.indexOf('/prestazioni/') === 0) {
-            url = '/laboratorio/';
+          // Fix broken /prestazioni/ URLs and generic /laboratorio/ URLs
+          if (url.indexOf('/prestazioni/') === 0 || url === '/laboratorio/') {
+            var svc = packToBookingService[pk.id] || 'prelievo-standard';
+            url = '/laboratorio/prenota/?service=' + svc;
           }
           return {
             id: pk.id,
