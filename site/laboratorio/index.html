@@ -283,6 +283,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       {"@type": "MedicalTest", "name": "Test DNA Fetale NIPT"}
     ],
     "isAcceptingNewPatients": true,
+    "potentialAction": {
+      "@type": "ReserveAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://bio-clinic.it/laboratorio/prenota/",
+        "actionPlatform": ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"]
+      },
+      "result": {
+        "@type": "Reservation",
+        "name": "Prenotazione Esame Laboratorio"
+      }
+    },
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5",
