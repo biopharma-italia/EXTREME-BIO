@@ -212,6 +212,8 @@ window.bcDataLayer = {"page_type": "services_list", "specialty": "none", "servic
 <!-- End CGE -->
 </head>
 <body>
+<a href="#main-content" class="skip-link">Vai al contenuto principale</a>
+
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWZWX5RS"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -322,6 +324,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </button>
   </div>
 </header>
+<main id="main-content">
+
 
 <!-- Mobile Overlay -->
 <div class="mobile-overlay" aria-hidden="true"></div>
@@ -900,7 +904,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
+  </main>
+<footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div>
@@ -949,7 +954,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </footer>
 
-  <script src="/js/main.js"></script>
+  <script src="/js/main.js" defer></script>
   <script>
     // Filtro specialità
     document.getElementById('filter-specialty').addEventListener('change', function() {
@@ -1008,8 +1013,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
   </script>
   <!-- SEARCH v4.1 UNIFIED -->
-  <script src="/js/search-engine-v4.js?v=20260216-v5"></script>
-  <script src="/js/search-ui-v4.js?v=20260216-v5"></script>
+  <script src="/js/search-engine-v4.js?v=20260216-v5" defer></script>
+  <script src="/js/search-ui-v4.js?v=20260216-v5" defer></script>
 <!-- Iubenda Cookie Consent Banner -->
 <script type="text/javascript">
 var _iub = _iub || [];

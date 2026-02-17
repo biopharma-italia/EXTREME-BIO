@@ -1,93 +1,64 @@
-# Cloudflare Pages Redirects — Bio-Clinic
-# WAVE 0+1+2 — 2026-02-15 (100-rule budget)
-# FREE PLAN LIMIT: 100 rules. Every rule counts.
-# Wave 2: Services moved under specialty hubs; old root dirs have meta-refresh.
+# Bio-Clinic redirect stubs -> canonical pages
+# Generated: 2026-02-17 P0 Structural Stabilization
+# Cloudflare Pages _redirects format: from  to  status
 
-# ============================================
-# /pages/ → UNIQUE DESTINATIONS (16 static)
-# Must be BEFORE the catch-all /pages/* rule
-# ============================================
-/pages/agoaspirato-tiroide /endocrinologia/ 301
-/pages/chirurgia-ginecologica /ginecologia/isteroscopia/ 301
-/pages/consulto-pma /pma-fertilita/ 301
-/pages/dermatoscopia-digitale /dermatologia/ 301
-/pages/ecg /cardiologia/visita-cardiologica-ecg/ 301
-/pages/ecografia-ginecologica /ginecologia/ 301
-/pages/hpv-test /ginecologia/pap-test-hpv/ 301
-/pages/impedenzometria /otorinolaringoiatria/ 301
-/pages/listino-completo /listino/ 301
-/pages/medicina-del-lavoro-sassari /medicina-del-lavoro/ 301
-/pages/medicina-lavoro /medicina-del-lavoro/ 301
-/pages/monitoraggio-follicolare /pma-fertilita/ 301
-/pages/rinofibrolaringoscopia /otorinolaringoiatria/ 301
-/pages/translucenza-nucale /ginecologia/ecografia-morfologica/ 301
-/pages/visita-cardiologica /cardiologia/visita-cardiologica-ecg/ 301
-/pages/visita-medicina-lavoro /medicina-del-lavoro/ 301
+/assistenza-ostetrica/  /ginecologia/assistenza-ostetrica/  301
+/audiometria/  /otorinolaringoiatria/audiometria/  301
+/campo-visivo/  /otorinolaringoiatria/campo-visivo/  301
+/caressflow/  /ginecologia/caressflow/  301
+/checkup-tiroide/  /endocrinologia/checkup-tiroide/  301
+/chirurgia-ginecologica/  /ginecologia/isteroscopia/  301
+/colposcopia/  /ginecologia/colposcopia/  301
+/consulto-pma/  /pma-fertilita/  301
+/corso-preparto/  /ginecologia/corso-preparto/  301
+/dermatoscopia-digitale/  /dermatologia/  301
+/duopap/  /ginecologia/duopap/  301
+/ecg/  /cardiologia/visita-cardiologica-ecg/  301
+/eco-doppler-arti/  /chirurgia-vascolare/eco-doppler-arti/  301
+/ecografia-addominale/  /gastroenterologia/ecografia-addominale/  301
+/ecografia-ginecologica/  /ginecologia/  301
+/ecografia-mammaria/  /ginecologia/ecografia-mammaria/  301
+/ecografia-morfologica/  /ginecologia/ecografia-morfologica/  301
+/ecografia-ostetrica-3d/  /ginecologia/ecografia-ostetrica-3d/  301
+/ecografia-pelvica/  /ginecologia/ecografia-pelvica/  301
+/ecografia-prostatica/  /urologia/ecografia-prostatica/  301
+/ecografia-renale/  /urologia/ecografia-renale/  301
+/ecografia-tiroidea/  /endocrinologia/ecografia-tiroidea/  301
+/ecografia-transvaginale/  /ginecologia/ecografia-transvaginale/  301
+/elettromiografia/  /neurologia/elettromiografia/  301
+/ginecologi-sassari/  /ginecologia/ginecologi-sassari/  301
+/hpv-dna-test/  /ginecologia/hpv-dna-test/  301
+/impedenzometria/  /otorinolaringoiatria/  301
+/infiltrazioni-articolari/  /ortopedia/infiltrazioni-articolari/  301
+/isterosalpingografia/  /ginecologia/isterosalpingografia/  301
+/isteroscopia/  /ginecologia/isteroscopia/  301
+/mappatura-nevi/  /dermatologia/mappatura-nevi/  301
+/monitoraggio-follicolare/  /pma-fertilita/  301
+/pap-test-hpv/  /ginecologia/pap-test-hpv/  301
+/pap-test/  /ginecologia/pap-test/  301
+/perifit-kegel-sassari/  /ginecologia/perifit-kegel-sassari/  301
+/radiofrequenza-vaginale/  /ginecologia/radiofrequenza-vaginale/  301
+/riabilitazione-pavimento-pelvico/  /ginecologia/riabilitazione-pavimento-pelvico/  301
+/rinofibrolaringoscopia/  /otorinolaringoiatria/  301
+/scleroterapia/  /chirurgia-vascolare/scleroterapia/  301
+/spirometria/  /otorinolaringoiatria/spirometria/  301
+/translucenza-nucale/  /ginecologia/ecografia-morfologica/  301
+/trattamenti-pavimento-pelvico/  /ginecologia/trattamenti-pavimento-pelvico/  301
+/visita-chirurgia-vascolare/  /chirurgia-vascolare/visita-chirurgia-vascolare/  301
+/visita-dermatologica/  /dermatologia/visita-dermatologica/  301
+/visita-ematologica/  /ematologia/visita-ematologica/  301
+/visita-endocrinologica/  /endocrinologia/visita-endocrinologica/  301
+/visita-fisiatrica/  /ortopedia/visita-fisiatrica/  301
+/visita-gastroenterologica/  /gastroenterologia/visita-gastroenterologica/  301
+/visita-ginecologica/  /ginecologia/visita-ginecologica/  301
+/visita-neurologica/  /neurologia/visita-neurologica/  301
+/visita-oculistica/  /oculistica/visita-oculistica/  301
+/visita-orl/  /otorinolaringoiatria/visita-orl/  301
+/visita-ortopedica/  /ortopedia/visita-ortopedica/  301
+/visita-pneumologica/  /pneumologia/visita-pneumologica/  301
+/visita-reumatologica/  /reumatologia/visita-reumatologica/  301
+/visita-urologica/  /urologia/visita-urologica/  301
 
-# /pages/ → GINECOLOGIA cluster (18 static)
-/pages/assistenza-ostetrica /ginecologia/assistenza-ostetrica/ 301
-/pages/colposcopia /ginecologia/colposcopia/ 301
-/pages/corso-preparto /ginecologia/corso-preparto/ 301
-/pages/duopap /ginecologia/duopap/ 301
-/pages/ecografia-mammaria /ginecologia/ecografia-mammaria/ 301
-/pages/ecografia-morfologica /ginecologia/ecografia-morfologica/ 301
-/pages/ecografia-ostetrica-3d /ginecologia/ecografia-ostetrica-3d/ 301
-/pages/ecografia-pelvica /ginecologia/ecografia-pelvica/ 301
-/pages/ecografia-transvaginale /ginecologia/ecografia-transvaginale/ 301
-/pages/ginecologi-sassari /ginecologia/ginecologi-sassari/ 301
-/pages/hpv-dna-test /ginecologia/hpv-dna-test/ 301
-/pages/pap-test /ginecologia/pap-test/ 301
-/pages/pap-test-hpv /ginecologia/pap-test-hpv/ 301
-/pages/perifit-kegel-sassari /ginecologia/perifit-kegel-sassari/ 301
-/pages/radiofrequenza-vaginale /ginecologia/radiofrequenza-vaginale/ 301
-/pages/riabilitazione-pavimento-pelvico /ginecologia/riabilitazione-pavimento-pelvico/ 301
-/pages/trattamenti-pavimento-pelvico /ginecologia/trattamenti-pavimento-pelvico/ 301
-/pages/visita-ginecologica /ginecologia/visita-ginecologica/ 301
-
-# /pages/ → CARDIOLOGIA cluster (5 static)
-/pages/checkup-cardiovascolare /cardiologia/checkup-cardiovascolare/ 301
-/pages/ecocardiogramma /cardiologia/ecocardiogramma/ 301
-/pages/holter-ecg /cardiologia/holter-ecg/ 301
-/pages/holter-pressorio /cardiologia/holter-pressorio/ 301
-/pages/visita-cardiologica-ecg /cardiologia/visita-cardiologica-ecg/ 301
-
-# ============================================
-# WAVE 2: Root slug → /cardiologia/ (5 procedures without their own root dir)
-# These root .html stubs have meta-refresh, but 301 is faster + better for SEO
-# ============================================
-/ecocardiogramma /cardiologia/ecocardiogramma/ 301
-/ecocardiogramma/ /cardiologia/ecocardiogramma/ 301
-/holter-ecg /cardiologia/holter-ecg/ 301
-/holter-ecg/ /cardiologia/holter-ecg/ 301
-/holter-pressorio /cardiologia/holter-pressorio/ 301
-/holter-pressorio/ /cardiologia/holter-pressorio/ 301
-/visita-cardiologica-ecg /cardiologia/visita-cardiologica-ecg/ 301
-/visita-cardiologica-ecg/ /cardiologia/visita-cardiologica-ecg/ 301
-/checkup-cardiovascolare /cardiologia/checkup-cardiovascolare/ 301
-/checkup-cardiovascolare/ /cardiologia/checkup-cardiovascolare/ 301
-
-# ============================================
-# CROSS-CANONICAL (14 static — legacy slugs that don't exist as physical dirs)
-# ============================================
-/chirurgia-ginecologica /ginecologia/isteroscopia/ 301
-/consulto-pma /pma-fertilita/ 301
-/dermatoscopia-digitale /dermatologia/ 301
-/ecg /cardiologia/visita-cardiologica-ecg/ 301
-/ecografia-ginecologica /ginecologia/ 301
-/hpv-test /ginecologia/pap-test-hpv/ 301
-/hpv-test/ /ginecologia/pap-test-hpv/ 301
-/agoaspirato-tiroide /endocrinologia/ 301
-/agoaspirato-tiroide/ /endocrinologia/ 301
-/impedenzometria /otorinolaringoiatria/ 301
-/monitoraggio-follicolare /pma-fertilita/ 301
-/rinofibrolaringoscopia /otorinolaringoiatria/ 301
-/translucenza-nucale /ginecologia/ecografia-morfologica/ 301
-/visita-cardiologica /cardiologia/visita-cardiologica-ecg/ 301
-
-# ============================================
-# DYNAMIC CATCH-ALL (3 dynamic)
-# /pages/* must be LAST among /pages/ rules
-# ============================================
-/pages/* /:splat 301
-/medici/:name /equipe/:name 301
-/laboratorio/esame-* /laboratorio/#:splat 301
+# Fix broken internal links
+/agoaspirato-tiroide/  /endocrinologia/ecografia-tiroidea/  301
+/hpv-test/  /ginecologia/hpv-dna-test/  301
