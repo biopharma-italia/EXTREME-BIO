@@ -389,6 +389,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- STEP 1: Select Service -->
       <div class="booking-panel active" id="step-1" role="tabpanel">
+        <div id="exam-context-banner" style="display:none;background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1px solid #a7f3d0;border-radius:10px;padding:1rem 1.2rem;margin-bottom:1.2rem;display:none;">
+          <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;">
+            <span style="font-size:1.2rem;">&#129514;</span>
+            <div>
+              <div style="font-weight:700;color:#065F46;font-size:0.95rem;" id="exam-context-name"></div>
+              <div style="font-size:0.8rem;color:#047857;">Seleziona il tipo di prelievo appropriato per procedere alla prenotazione.</div>
+            </div>
+          </div>
+        </div>
         <h2 style="margin-bottom:0.5rem;font-size:1.3rem;">Quale esame devi effettuare?</h2>
         <p style="color:var(--gray-500);margin-bottom:1.5rem;font-size:0.9rem;">Seleziona il servizio per vedere le disponibilita.</p>
         <div class="service-grid" id="services-list">
@@ -554,7 +563,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       calendarMonth: new Date().getMonth(),
       calendarYear: new Date().getFullYear(),
       booking: null,
-      dataSource: 'api'  // 'api' or 'fallback'
+      dataSource: 'api',  // 'api' or 'fallback'
+      examName: null       // specific exam name from search (e.g. "TRIIODOTIRONINA LIBERA (FT3)")
     };
 
     // =======================================================================
@@ -792,8 +802,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var dateObj = new Date(state.selectedDate + 'T00:00:00');
       var dateFormatted = dateObj.toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 
-      var html = '<h3>Riepilogo Prenotazione</h3>'
-        + '<div class="sum-row"><span>Esame:</span><strong>' + state.selectedService.name + '</strong></div>'
+      var html = '<h3>Riepilogo Prenotazione</h3>';
+      if (state.examName) {
+        html += '<div class="sum-row"><span>Esame richiesto:</span><strong>' + state.examName + '</strong></div>';
+      }
+      html += '<div class="sum-row"><span>Tipo prelievo:</span><strong>' + state.selectedService.name + '</strong></div>'
         + '<div class="sum-row"><span>Data:</span><strong>' + dateFormatted + '</strong></div>'
         + '<div class="sum-row"><span>Ora:</span><strong>' + state.selectedTime + '</strong></div>'
         + '<div class="sum-row"><span>Durata:</span><span>' + state.selectedService.duration_minutes + ' minuti</span></div>'
@@ -854,6 +867,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         patient_email: email,
         patient_fiscal_code: ($('#patient_fiscal_code').value || '').trim().toUpperCase(),
         notes: ($('#notes').value || '').trim(),
+        exam_name: state.examName || '',
         gclid: $('#hidden_gclid').value,
         lead_source: 'website',
         source_page: window.location.pathname,
@@ -926,7 +940,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         if (state.dataSource === 'fallback') {
           var fallbackBooking = {
             id: 'PENDING-' + Date.now().toString(36).toUpperCase(),
-            service_name: state.selectedService.name,
+            service_name: state.examName || state.selectedService.name,
             date: state.selectedDate,
             time: state.selectedTime,
             duration_minutes: state.selectedService.duration_minutes,
@@ -967,7 +981,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
 
       html += '<div class="confirm-details">'
-        + '<div class="detail-row"><span class="detail-label">Esame</span><span class="detail-value">' + booking.service_name + '</span></div>'
+        + (state.examName ? '<div class="detail-row"><span class="detail-label">Esame richiesto</span><span class="detail-value">' + state.examName + '</span></div>' : '')
+        + '<div class="detail-row"><span class="detail-label">Tipo prelievo</span><span class="detail-value">' + booking.service_name + '</span></div>'
         + '<div class="detail-row"><span class="detail-label">Data</span><span class="detail-value">' + dateFormatted + '</span></div>'
         + '<div class="detail-row"><span class="detail-label">Ora</span><span class="detail-value">' + booking.time + '</span></div>'
         + '<div class="detail-row"><span class="detail-label">Durata</span><span class="detail-value">' + booking.duration_minutes + ' min</span></div>'
@@ -1031,6 +1046,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       // AUTO-SELECT service from URL param ?service=ID
       var urlParams = new URLSearchParams(window.location.search);
       var preselectedServiceId = urlParams.get('service');
+
+      // Read exam context (from search engine)
+      var examParam = urlParams.get('exam');
+      if (examParam) {
+        state.examName = decodeURIComponent(examParam);
+        var banner = $('#exam-context-banner');
+        var nameEl = $('#exam-context-name');
+        if (banner && nameEl) {
+          nameEl.textContent = 'Stai prenotando: ' + state.examName;
+          banner.style.display = 'block';
+        }
+      }
+
       if (preselectedServiceId) {
         var autoSelectDone = false;
 
