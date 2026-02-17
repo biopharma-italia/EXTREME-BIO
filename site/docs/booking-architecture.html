@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking System Architecture | Bio-Clinic</title>
+<style>
+:root { --primary: #008238; --primary-dark: #00704A; --gray-50: #F9FAFB; --gray-100: #F3F4F6; --gray-200: #E5E7EB; --gray-600: #4B5563; --gray-800: #1F2937; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--gray-800); line-height: 1.6; background: var(--gray-50); }
+.doc-container { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
+h1 { font-size: 2rem; color: var(--primary-dark); margin-bottom: 0.5rem; }
+h2 { font-size: 1.4rem; color: var(--primary); margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--gray-200); }
+h3 { font-size: 1.1rem; margin: 1.5rem 0 0.5rem; }
+p, li { font-size: 0.95rem; color: var(--gray-600); }
+ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.3rem; }
+code { background: var(--gray-100); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; color: #B91C1C; }
+pre { background: var(--gray-800); color: #E5E7EB; padding: 1rem 1.2rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; font-size: 0.85rem; line-height: 1.5; }
+pre code { background: none; color: inherit; padding: 0; }
+.diagram { background: #fff; border: 1px solid var(--gray-200); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; overflow-x: auto; }
+.diagram pre { background: #fff; color: var(--gray-800); border: none; padding: 0; margin: 0; font-family: 'Courier New', monospace; font-size: 0.8rem; line-height: 1.4; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; }
+th { background: var(--primary-dark); color: #fff; padding: 0.6rem 0.8rem; text-align: left; }
+td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--gray-200); }
+tr:nth-child(even) { background: var(--gray-50); }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; }
+.badge-green { background: #D1FAE5; color: #065F46; }
+.badge-blue { background: #DBEAFE; color: #1E40AF; }
+.badge-yellow { background: #FEF3C7; color: #92400E; }
+.badge-gray { background: var(--gray-100); color: var(--gray-600); }
+.version { font-size: 0.85rem; color: var(--gray-600); margin-bottom: 2rem; }
+</style>
+</head>
+<body>
+<div class="doc-container">
+
+<h1>Bio-Clinic Laboratory Booking System</h1>
+<p class="version">Architecture Document v2.0 | 2026-02-17 | Phase 1: Laboratory Booking</p>
+
+<h2>1. System Architecture</h2>
+
+<div class="diagram">
+<pre>
++------------------+     +---------------------+     +------------------+
+|   BROWSER        |     |  CLOUDFLARE EDGE     |     |  CLOUDFLARE      |
+|                  |     |                      |     |  STORAGE         |
+|  /laboratorio/   |     |  Pages Functions     |     |                  |
+|  prenota/        +----&gt;+  (Workers Runtime)   +----&gt;+  D1 Database     |
+|                  |     |                      |     |  (SQLite)        |
+|  booking-engine  |     |  /api/booking/       |     |                  |
+|  .js (inline)    |     |    services  (GET)   |     |  KV Namespace    |
+|                  |     |    slots     (GET)   |     |  (rate limiting) |
+|  CGE Tracking    |     |    confirm   (POST)  |     |                  |
+|  (cge-tracking   |     |    ping      (GET)   |     |  R2 Bucket       |
+|   .js)           |     |                      |     |  (future: docs)  |
++--------+---------+     +----------+-----------+     +------------------+
+         |                           |
+         | dataLayer.push()          | Email API
+         v                           v
++------------------+     +---------------------+
+|  GTM CONTAINER   |     |  RESEND API          |
+|  GTM-PWZWX5RS    |     |  (confirmation       |
+|                  |     |   emails)            |
+|  bc_booking_     |     +---------------------+
+|  confirmed       |
+|       |          |
+|       v          |
+|  GA4 purchase    |
+|  (G-9EXCL016VJ) |
++------------------+
+</pre>
+</div>
+
+<h3>Key Design Decisions</h3>
+<ul>
+<li><strong>No WordPress, no external SaaS</strong> — entire system runs on Cloudflare infrastructure</li>
+<li><strong>Cloudflare Pages Functions</strong> — serverless Workers auto-deployed from <code>functions/</code> directory</li>
+<li><strong>D1 (SQLite)</strong> for persistence — zero-config, edge-local, SQL-based</li>
+<li><strong>Static fallback</strong> — all APIs work without D1 binding using inline service data</li>
+<li><strong>Structured JSON responses</strong> — every API returns data ready for GTM/GA4 tracking</li>
+</ul>
+
+<h2>2. Project Structure</h2>
+
+<pre><code>EXTREME-BIO/
+├── wrangler.toml              # Cloudflare Pages config (root)
+├── functions/                 # Pages Functions (OUTSIDE output dir!)
+│   └── api/
+│       ├── booking/
+│       │   ├── _services-data.js   # Shared fallback data module
+│       │   ├── services.js         # GET /api/booking/services
+│       │   ├── slots.js            # GET /api/booking/slots
+│       │   ├── confirm.js          # POST /api/booking/confirm
+│       │   └── ping.js             # GET /api/booking/ping (health)
+│       ├── contact.js              # POST /api/contact (existing)
+│       └── collect.js              # POST /api/collect (existing)
+├── site/                      # Static assets (pages_build_output_dir)
+│   ├── index.html             # Homepage
+│   ├── laboratorio/
+│   │   ├── index.html         # Lab hub page
+│   │   └── prenota/
+│   │       └── index.html     # Booking frontend (4-step wizard)
+│   ├── js/
+│   │   └── cge-tracking.js    # CGE v3.0 tracking library
+│   ├── css/
+│   │   └── style.css          # Site-wide styles
+│   ├── docs/
+│   │   ├── d1-booking-schema.sql          # D1 database schema
+│   │   ├── booking-architecture.html      # This document
+│   │   └── gtm-container-CGE_v1_foundation.json
+│   └── .cfignore              # Deploy exclusions
+└── .git/
+</code></pre>
+
+<p><strong>Critical:</strong> The <code>functions/</code> directory MUST be at the project root (sibling of <code>site/</code>), NOT inside the output directory. Cloudflare Pages compiles functions only when they're outside <code>pages_build_output_dir</code>.</p>
+
+<h2>3. Database Schema (D1)</h2>
+
+<table>
+<tr><th>Table</th><th>Purpose</th><th>Phase</th></tr>
+<tr><td><code>services</code></td><td>Bookable lab services (id, name, price, duration, prep instructions)</td><td><span class="badge badge-green">Phase 1</span></td></tr>
+<tr><td><code>schedule_rules</code></td><td>Weekly opening hours per department (day_of_week, start/end time)</td><td><span class="badge badge-green">Phase 1</span></td></tr>
+<tr><td><code>schedule_overrides</code></td><td>Date-specific closures or modified hours (holidays, etc.)</td><td><span class="badge badge-green">Phase 1</span></td></tr>
+<tr><td><code>bookings</code></td><td>Confirmed bookings with patient data, GCLID, transaction_id</td><td><span class="badge badge-green">Phase 1</span></td></tr>
+<tr><td><code>blocked_slots</code></td><td>Manually blocked time slots</td><td><span class="badge badge-green">Phase 1</span></td></tr>
+<tr><td><code>physicians</code></td><td>Physician profiles and specialties</td><td><span class="badge badge-blue">Phase 2</span></td></tr>
+<tr><td><code>physician_services</code></td><td>Physician-service relationships with price overrides</td><td><span class="badge badge-blue">Phase 2</span></td></tr>
+<tr><td><code>physician_schedule</code></td><td>Per-physician availability schedules</td><td><span class="badge badge-blue">Phase 2</span></td></tr>
+</table>
+
+<h3>Bookings Table (key columns)</h3>
+<pre><code>CREATE TABLE bookings (
+  id                  TEXT PRIMARY KEY,        -- bc_book_xxx
+  transaction_id      TEXT NOT NULL UNIQUE,    -- bc_txn_xxx (for GA4 purchase dedup)
+  service_id          TEXT NOT NULL,
+  booking_date        TEXT NOT NULL,           -- YYYY-MM-DD
+  booking_time        TEXT NOT NULL,           -- HH:MM
+  patient_name        TEXT NOT NULL,
+  patient_phone       TEXT NOT NULL,
+  price_eur           REAL NOT NULL,
+  gclid               TEXT DEFAULT '',         -- Google Click ID (closed-loop)
+  status              TEXT CHECK(status IN ('confirmed','completed','cancelled','no_show')),
+  physician_id        TEXT DEFAULT NULL,       -- Phase 2
+  created_at          TEXT DEFAULT (datetime('now'))
+);</code></pre>
+
+<h2>4. API Endpoints</h2>
+
+<table>
+<tr><th>Method</th><th>Endpoint</th><th>Description</th><th>Auth</th></tr>
+<tr><td><span class="badge badge-green">GET</span></td><td><code>/api/booking/services</code></td><td>List active lab services</td><td>Public</td></tr>
+<tr><td><span class="badge badge-green">GET</span></td><td><code>/api/booking/slots?date=&amp;service_id=</code></td><td>Available time slots for date + service</td><td>Public</td></tr>
+<tr><td><span class="badge badge-yellow">POST</span></td><td><code>/api/booking/confirm</code></td><td>Create confirmed booking</td><td>Rate-limited</td></tr>
+<tr><td><span class="badge badge-gray">GET</span></td><td><code>/api/booking/ping</code></td><td>Health check</td><td>Public</td></tr>
+</table>
+
+<h3>Confirm Request Body</h3>
+<pre><code>{
+  "service_id": "prelievo-standard",
+  "date": "2026-02-18",
+  "time": "08:00",
+  "patient_name": "Mario Rossi",
+  "patient_phone": "+39079270480",
+  "patient_email": "mario@esempio.it",        // optional
+  "patient_fiscal_code": "RSSMRA80A01H501Z",  // optional
+  "gclid": "CjwKCAjw...",                      // auto-injected by CGE
+  "lead_source": "website",
+  "source_page": "/laboratorio/prenota/",
+  "utm_source": "google",                      // optional
+  "utm_medium": "cpc",                         // optional
+  "notes": ""                                   // optional
+}</code></pre>
+
+<h3>Confirm Response (used by frontend + GTM)</h3>
+<pre><code>{
+  "success": true,
+  "booking": {
+    "id": "bc_book_mlqivxur_5579b80c",
+    "transaction_id": "bc_txn_mlqivxur_5579b80c",
+    "service_name": "Prelievo Ematico Standard",
+    "date": "2026-02-18",
+    "time": "08:00",
+    "price": 5.00,
+    "currency": "EUR",
+    "status": "confirmed",
+    "prep_instructions": "Presentarsi a digiuno da almeno 8 ore."
+  },
+  "tracking": {
+    "event": "bc_booking_confirmed",
+    "transaction_id": "bc_txn_mlqivxur_5579b80c",
+    "bc_lead_id": "bc_book_mlqivxur_5579b80c",
+    "bc_service_name": "Prelievo Ematico Standard",
+    "bc_specialty": "laboratorio",
+    "bc_revenue": 5.00,
+    "bc_transaction_id": "bc_txn_mlqivxur_5579b80c",
+    "bc_gclid": "",
+    "currency": "EUR",
+    "value": 5.00
+  }
+}</code></pre>
+
+<h2>5. Booking Flow</h2>
+
+<div class="diagram">
+<pre>
+USER FLOW (4-step wizard)
+═══════════════════════════════════════════════════════════════
+
+Step 1: SELECT SERVICE                    Step 2: DATE + TIME
+┌─────────────────────────┐    ┌───────────────────────────────┐
+│  Prelievo Standard €5   │    │  ◄ Febbraio 2026 ►            │
+│  Prelievo Urgente €15   │    │  L  M  M  G  V  S  D         │
+│  Urine Completo €8      │───►│  .. .. 18 19 20 21 ..        │
+│  Profilo Tiroide €35    │    │                               │
+│  Pannello Tumori €80    │    │  Orari: 07:00 07:15 [07:30]  │
+│  ...12 services         │    │  08:15 08:30 08:45 09:00 ... │
+└─────────────────────────┘    └───────────────────────────────┘
+                                         │
+Step 3: PATIENT DATA                     │
+┌─────────────────────────┐              │
+│  Nome: Mario Rossi      │◄─────────────┘
+│  Tel: +39 079 270480    │
+│  Email: (opzionale)     │
+│  CF: (opzionale)        │
+│  ☑ Privacy Policy       │
+│                         │
+│  [Conferma Prenotazione]│
+└────────────┬────────────┘
+             │  POST /api/booking/confirm
+             ▼
+Step 4: CONFIRMATION
+┌─────────────────────────┐     ┌──────────────────────────┐
+│  ✓ Prenotazione         │     │  dataLayer.push({        │
+│    Confermata!           │────►│    event: 'bc_booking_   │
+│                         │     │           confirmed',    │
+│  Codice: bc_book_xxx    │     │    transaction_id: xxx,  │
+│  Data: mer 18 feb 2026  │     │    bc_revenue: 5.00,     │
+│  Ora: 08:00             │     │    value: 5.00,          │
+│  Importo: €5.00         │     │    currency: 'EUR'       │
+│                         │     │  })                      │
+│  ⚠ Digiuno da 8h       │     │           │               │
+└─────────────────────────┘     │           ▼               │
+                                │  GTM: bc_booking_         │
+                                │       confirmed           │
+                                │           │               │
+                                │           ▼               │
+                                │  GA4: purchase event      │
+                                │  (deduped by txn_id)      │
+                                └──────────────────────────┘
+</pre>
+</div>
+
+<h2>6. GTM/GA4 Integration Strategy</h2>
+
+<h3>Conversion Tracking Chain</h3>
+<ol>
+<li><strong>bc_form_submit</strong> — fires on "Conferma" click (intent only, NOT a conversion)</li>
+<li><strong>bc_booking_confirmed</strong> — fires on API 201 success response</li>
+<li><strong>generate_lead</strong> — paired with bc_lead_generated (NOT on form submit)</li>
+<li><strong>purchase</strong> — paired with bc_booking_confirmed (deduped by transaction_id)</li>
+</ol>
+
+<h3>DataLayer Push (on confirmation)</h3>
+<pre><code>// Fired by CGE (BCG.fireBookingConfirmed) or fallback direct push
+dataLayer.push({
+  event: 'bc_booking_confirmed',
+  bc_lead_id: 'bc_book_mlqivxur_5579b80c',
+  bc_specialty: 'laboratorio',
+  bc_service_name: 'Prelievo Ematico Standard',
+  bc_physician_name: 'none',
+  bc_revenue: 5.00,
+  bc_transaction_id: 'bc_txn_mlqivxur_5579b80c',
+  bc_gclid: 'CjwKCAjw...',  // from CGE cookie
+  transaction_id: 'bc_txn_mlqivxur_5579b80c',
+  value: 5.00,
+  currency: 'EUR'
+});</code></pre>
+
+<h3>GCLID Closed-Loop Attribution</h3>
+<pre><code>URL ?gclid=xxx → CGE cookie (90d) → hidden form field → API payload → D1 → CRM</code></pre>
+
+<h2>7. Security</h2>
+
+<table>
+<tr><th>Control</th><th>Implementation</th><th>Status</th></tr>
+<tr><td>Rate Limiting</td><td>5 bookings per IP per hour via KV TTL</td><td><span class="badge badge-green">Active</span></td></tr>
+<tr><td>Input Sanitization</td><td>HTML entities stripped, max length enforced</td><td><span class="badge badge-green">Active</span></td></tr>
+<tr><td>CORS</td><td>Restricted to bio-clinic.it + pages.dev</td><td><span class="badge badge-green">Active</span></td></tr>
+<tr><td>Double-Booking</td><td>Atomic slot count check before INSERT</td><td><span class="badge badge-green">Active</span></td></tr>
+<tr><td>Transaction Dedup</td><td>UNIQUE constraint on transaction_id</td><td><span class="badge badge-green">Active</span></td></tr>
+<tr><td>GDPR Privacy</td><td>Consent checkbox required, data minimal</td><td><span class="badge badge-green">Active</span></td></tr>
+<tr><td>No PII in Analytics</td><td>Only hashed values via bc_enhanced_conversion</td><td><span class="badge badge-green">Active</span></td></tr>
+<tr><td>CSRF Token</td><td>X-CSRF-Token header support (optional)</td><td><span class="badge badge-yellow">Optional</span></td></tr>
+<tr><td>Fiscal Code Validation</td><td>Italian CF regex pattern check</td><td><span class="badge badge-green">Active</span></td></tr>
+</table>
+
+<h2>8. Scalability Model (Future Phases)</h2>
+
+<h3>Phase 2: Physician Agendas</h3>
+<ul>
+<li>Add <code>physicians</code>, <code>physician_services</code>, <code>physician_schedule</code> tables</li>
+<li>New endpoint: <code>GET /api/booking/physicians?specialty=cardiologia</code></li>
+<li>Step 0 in booking wizard: "Choose physician (optional)"</li>
+<li>Each physician has independent schedule_rules and capacity</li>
+<li><code>bookings.physician_id</code> column already exists (NULL for lab-only)</li>
+</ul>
+
+<h3>Phase 3: Multi-Department</h3>
+<ul>
+<li>All tables use <code>department</code> column — already partitioned</li>
+<li>New routes: <code>/cardiologia/prenota/</code>, <code>/ginecologia/prenota/</code></li>
+<li>Same API, different <code>department</code> filter parameter</li>
+<li>Shared booking engine JS with department config injection</li>
+</ul>
+
+<h3>Phase 4: Admin Dashboard</h3>
+<ul>
+<li>Protected <code>/admin/</code> route with Cloudflare Access (Zero Trust)</li>
+<li>D1 queries for booking management (cancel, reschedule)</li>
+<li>Schedule override management (holidays, closures)</li>
+<li>Analytics dashboard with booking conversion data</li>
+</ul>
+
+<h3>Scaling Characteristics</h3>
+<table>
+<tr><th>Dimension</th><th>Current (Phase 1)</th><th>Scalable To</th></tr>
+<tr><td>Departments</td><td>1 (laboratorio)</td><td>Unlimited (column filter)</td></tr>
+<tr><td>Services</td><td>12 (inline + D1)</td><td>Unlimited (D1 table)</td></tr>
+<tr><td>Physicians</td><td>0 (lab-only)</td><td>Unlimited (Phase 2 tables)</td></tr>
+<tr><td>Concurrent bookings</td><td>Workers edge (global)</td><td>Millions req/day</td></tr>
+<tr><td>Storage</td><td>D1 (5GB free tier)</td><td>D1 + R2 for attachments</td></tr>
+<tr><td>Regions</td><td>Global (Cloudflare edge)</td><td>Already global</td></tr>
+</table>
+
+<h2>9. Deployment</h2>
+
+<pre><code># Deploy to Cloudflare Pages (with Functions)
+export CLOUDFLARE_API_TOKEN="your-token"
+npx wrangler pages deploy ./site --project-name="bio-clinic"
+
+# The key structural requirement:
+# functions/ directory MUST be at project root (sibling of site/)
+# NOT inside the pages_build_output_dir (site/)
+
+# To bind D1 database (production):
+# 1. Create D1 database: wrangler d1 create bio-clinic-booking
+# 2. Apply schema: wrangler d1 execute bio-clinic-booking --file=site/docs/d1-booking-schema.sql
+# 3. Add binding in wrangler.toml or CF dashboard
+</code></pre>
+
+<p style="margin-top:2rem;font-size:0.8rem;color:var(--gray-600);text-align:center;">
+Bio-Clinic Booking System Architecture &mdash; v2.0 &mdash; 2026-02-17<br>
+Bio Pharma S.r.l. &mdash; P.IVA 02869450904
+</p>
+
+</div>
+</body>
+</html>

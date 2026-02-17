@@ -1,6 +1,31 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+<!-- Google Consent Mode v2 (MUST fire before GTM) -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'functionality_storage': 'granted',
+  'personalization_storage': 'denied',
+  'security_storage': 'granted',
+  'wait_for_update': 500
+});
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'region': ['IT', 'EU']
+});
+gtag('set', 'ads_data_redaction', true);
+gtag('set', 'url_passthrough', true);
+</script>
+<!-- End Consent Mode v2 -->
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -147,6 +172,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 body{padding-top:100px!important;margin:0!important}
 .header{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:9999!important;background:#fff!important;box-shadow:0 2px 10px rgba(0,0,0,0.1)!important}
 </style>
+<!-- CGE: Clinical Growth Engine v1.0 -->
+<script>
+window.bcDataLayer = {"page_type": "equipe_detail", "specialty": "multi", "service_name": "medico_andrea-donato", "physician_name": "andrea-donato", "price_range": "none", "content_group": "equipe", "funnel_stage": "consideration"};
+</script>
+<script src="/js/cge-tracking.js?v=CGE_v1_20260216" defer></script>
+<!-- End CGE -->
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -398,5 +429,66 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 }(document,"script","zl-widget-s");
 </script>
+<!-- Iubenda Cookie Consent Banner -->
+<script type="text/javascript">
+var _iub = _iub || [];
+_iub.csConfiguration = {
+  "askConsentAtCookiePolicyUpdate": true,
+  "enableFadp": false,
+  "enableLgpd": false,
+  "enableUspr": false,
+  "fadpApplies": false,
+  "floatingPreferencesButtonDisplay": "bottom-right",
+  "lang": "it",
+  "perPurposeConsent": true,
+  "preferenceCookie": { "expireAfter": 365 },
+  "siteId": "3313232",
+  "cookiePolicyId": "85172996",
+  "whitelabel": false,
+  "cookiePolicyUrl": "https://bio-clinic.it/cookie/",
+  "privacyPolicyUrl": "https://bio-clinic.it/privacy/",
+  "banner": {
+    "acceptButtonCaptionColor": "#FFFFFF",
+    "acceptButtonColor": "#00704A",
+    "acceptButtonDisplay": true,
+    "backgroundColor": "#FFFFFF",
+    "brandBackgroundColor": "#FFFFFF",
+    "brandTextColor": "#000000",
+    "closeButtonDisplay": false,
+    "customizeButtonCaptionColor": "#4D4D4D",
+    "customizeButtonColor": "#DADADA",
+    "customizeButtonDisplay": true,
+    "explicitWithdrawal": true,
+    "fontSizeBody": "12px",
+    "listPurposes": true,
+    "logo": null,
+    "ownerName": "Bio-Clinic Sassari",
+    "position": "float-bottom-center",
+    "rejectButtonCaptionColor": "#FFFFFF",
+    "rejectButtonColor": "#666666",
+    "rejectButtonDisplay": true,
+    "showTitle": false,
+    "showTotalNumberOfProviders": true,
+    "textColor": "#000000"
+  },
+  "callback": {
+    "onPreferenceExpressedOrNotNeeded": function(preference) {
+      if (preference && preference.purposes) {
+        if (typeof BCG !== 'undefined' && BCG.updateConsent) {
+          BCG.updateConsent({
+            analytics: !!preference.purposes[4],
+            marketing: !!preference.purposes[5],
+            preferences: !!preference.purposes[3]
+          });
+        }
+      }
+    }
+  }
+};
+</script>
+<script type="text/javascript" src="https://cs.iubenda.com/autoblocking/3313232.js"></script>
+<script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js"></script>
+<script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+<!-- End Iubenda -->
 </body>
 </html>

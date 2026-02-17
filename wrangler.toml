@@ -1,0 +1,26 @@
+# ============================================
+# Bio-Clinic Cloudflare Pages Configuration
+# ============================================
+# Functions directory: ./functions/ (auto-detected by Cloudflare Pages)
+# Static assets: ./site/
+# ============================================
+
+name = "bio-clinic"
+pages_build_output_dir = "./site"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+# D1 Database binding
+[[d1_databases]]
+binding = "BOOKING_DB"
+database_name = "bio-clinic-booking"
+database_id = "2774d698-2d22-41bd-aa69-5b07de04d749"
+
+# KV Namespace binding (rate limiting, fallback storage)
+[[kv_namespaces]]
+binding = "BOOKING_KV"
+id = "f7eaf83738ea465baf6f043f9b94641a"
+
+[vars]
+ALLOWED_ORIGINS = "https://bio-clinic.it,https://bio-clinic.pages.dev"
+CONTACT_EMAIL = "info@bio-clinic.it"

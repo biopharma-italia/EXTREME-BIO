@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<!-- Google Consent Mode v2 (MUST fire before GTM) -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'functionality_storage': 'granted',
+  'personalization_storage': 'denied',
+  'security_storage': 'granted',
+  'wait_for_update': 500
+});
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'region': ['IT', 'EU']
+});
+gtag('set', 'ads_data_redaction', true);
+gtag('set', 'url_passthrough', true);
+</script>
+<!-- End Consent Mode v2 -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PWZWX5RS');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#00704A">
+  <meta name="description" content="Prenota online il tuo prelievo o esame di laboratorio presso Bio-Clinic Sassari. Scegli data e orario, conferma in 30 secondi. Laboratorio aperto Lun-Ven 7:00-20:00, Sab 8:00-13:00.">
+  <meta name="keywords" content="prenotazione laboratorio sassari, prenota prelievo sangue sassari, analisi online sassari, bio-clinic prenotazione">
+
+  <title>Prenota Esame Laboratorio Online | Bio-Clinic Sassari</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="canonical" href="https://bio-clinic.it/laboratorio/prenota/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Prenota Esame Laboratorio Online | Bio-Clinic Sassari">
+  <meta property="og:description" content="Prenota prelievo o esame di laboratorio online. Scegli data, orario e conferma in 30 secondi.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bio-clinic.it/laboratorio/prenota/">
+  <meta property="og:site_name" content="Bio-Clinic Sassari">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    "name": "Bio-Clinic Laboratorio Analisi",
+    "url": "https://bio-clinic.it/laboratorio/prenota/",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Via Luna e Sole 64",
+      "addressLocality": "Sassari",
+      "postalCode": "07100",
+      "addressRegion": "SS",
+      "addressCountry": "IT"
+    },
+    "telephone": "+390799561332",
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "07:00", "closes": "20:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "13:00"}
+    ],
+    "potentialAction": {
+      "@type": "ReserveAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://bio-clinic.it/laboratorio/prenota/",
+        "actionPlatform": ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"]
+      },
+      "result": {
+        "@type": "Reservation",
+        "name": "Prenotazione Esame Laboratorio"
+      }
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/header-spacing-fix.css?v=1769644194">
+  <style>
+  body{padding-top:100px!important;margin:0!important}
+  .header{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:9999!important;background:#fff!important;box-shadow:0 2px 10px rgba(0,0,0,0.1)!important}
+
+  /* ===== BOOKING SYSTEM STYLES ===== */
+  .booking-hero {
+    background: linear-gradient(135deg, #008238 0%, #7CBA3D 100%);
+    color: #fff;
+    padding: 3rem 0 2rem;
+    text-align: center;
+  }
+  .booking-hero h1 { font-family: var(--font-heading); font-size: 2rem; margin-bottom: 0.5rem; }
+  .booking-hero p { opacity: 0.9; font-size: 1.1rem; }
+
+  .booking-container {
+    max-width: 800px;
+    margin: -2rem auto 3rem;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  .booking-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+
+  /* Stepper */
+  .booking-stepper {
+    display: flex;
+    background: var(--gray-50);
+    border-bottom: 1px solid var(--gray-200);
+    padding: 0;
+  }
+  .booking-step {
+    flex: 1;
+    text-align: center;
+    padding: 1rem 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gray-400);
+    position: relative;
+    transition: all 0.3s;
+  }
+  .booking-step.active { color: var(--primary-dark); background: #fff; }
+  .booking-step.completed { color: var(--primary); }
+  .booking-step .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--gray-200);
+    color: var(--gray-500);
+    font-size: 0.8rem;
+    margin-right: 0.4rem;
+    transition: all 0.3s;
+  }
+  .booking-step.active .step-num { background: var(--primary-dark); color: #fff; }
+  .booking-step.completed .step-num { background: var(--primary); color: #fff; }
+
+  .booking-panel { padding: 2rem; display: none; }
+  .booking-panel.active { display: block; }
+
+  /* Service cards */
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .service-card {
+    border: 2px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .service-card:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+  .service-card.selected { border-color: var(--primary-dark); background: var(--primary-bg); }
+  .service-card .svc-name { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.3rem; color: var(--gray-800); }
+  .service-card .svc-meta { font-size: 0.8rem; color: var(--gray-500); }
+  .service-card .svc-price { font-size: 1.3rem; font-weight: 700; color: var(--primary-dark); margin-top: 0.5rem; }
+  .service-card .svc-badge { position: absolute; top: 8px; right: 8px; font-size: 0.65rem; padding: 2px 8px; border-radius: 10px; background: #FEF3C7; color: #92400E; font-weight: 600; }
+
+  /* Date picker */
+  .date-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    margin-top: 1rem;
+  }
+  .date-grid .day-header { text-align: center; font-size: 0.75rem; font-weight: 600; color: var(--gray-400); padding: 0.3rem; }
+  .date-cell {
+    text-align: center;
+    padding: 0.6rem 0.3rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.15s;
+    border: 2px solid transparent;
+  }
+  .date-cell:hover:not(.disabled):not(.empty) { background: var(--primary-bg); }
+  .date-cell.selected { background: var(--primary-dark); color: #fff; border-color: var(--primary-dark); }
+  .date-cell.disabled { color: var(--gray-300); cursor: not-allowed; }
+  .date-cell.today { border-color: var(--primary); font-weight: 700; }
+  .date-cell.empty { cursor: default; }
+  .date-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+  .date-nav button { background: none; border: 1px solid var(--gray-200); border-radius: 8px; padding: 0.4rem 1rem; cursor: pointer; font-size: 0.9rem; transition: all 0.15s; }
+  .date-nav button:hover { background: var(--primary-bg); border-color: var(--primary); }
+  .date-nav .month-label { font-weight: 600; font-size: 1.1rem; color: var(--gray-800); }
+
+  /* Slots */
+  .slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 8px;
+    margin-top: 1rem;
+  }
+  .slot-btn {
+    padding: 0.7rem 0.5rem;
+    border: 2px solid var(--gray-200);
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.15s;
+    color: var(--gray-700);
+  }
+  .slot-btn:hover:not(.full) { border-color: var(--primary); background: var(--primary-bg); }
+  .slot-btn.selected { background: var(--primary-dark); color: #fff; border-color: var(--primary-dark); }
+  .slot-btn.full { background: var(--gray-100); color: var(--gray-300); cursor: not-allowed; text-decoration: line-through; }
+  .slot-btn .slot-avail { display: block; font-size: 0.65rem; font-weight: 400; margin-top: 2px; }
+
+  /* Patient form */
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.3rem; color: var(--gray-700); }
+  .form-group input, .form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--gray-200);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: var(--font-primary);
+    transition: border-color 0.15s;
+    box-sizing: border-box;
+  }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); outline: none; }
+  .form-group .field-hint { font-size: 0.75rem; color: var(--gray-500); margin-top: 0.2rem; }
+  .form-group .field-error { font-size: 0.8rem; color: var(--danger); margin-top: 0.2rem; display: none; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
+  /* Buttons */
+  .btn-booking {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--font-primary);
+  }
+  .btn-primary { background: var(--primary-dark); color: #fff; }
+  .btn-primary:hover { background: #006b2e; transform: translateY(-1px); }
+  .btn-primary:disabled { background: var(--gray-300); cursor: not-allowed; transform: none; }
+  .btn-outline { background: transparent; color: var(--gray-600); border: 2px solid var(--gray-200); }
+  .btn-outline:hover { border-color: var(--gray-400); }
+  .booking-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--gray-100); }
+
+  /* Confirmation */
+  .confirm-card {
+    background: #ECFDF5;
+    border: 2px solid #A7F3D0;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+  }
+  .confirm-card .check-icon { font-size: 3rem; margin-bottom: 1rem; }
+  .confirm-card h2 { color: #065F46; font-size: 1.5rem; margin-bottom: 0.5rem; }
+  .confirm-details {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    text-align: left;
+  }
+  .confirm-details .detail-row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100); }
+  .confirm-details .detail-row:last-child { border-bottom: none; }
+  .confirm-details .detail-label { font-weight: 600; color: var(--gray-600); }
+  .confirm-details .detail-value { color: var(--gray-800); }
+  .prep-alert {
+    background: #FFFBEB;
+    border: 1px solid #FCD34D;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+    text-align: left;
+    font-size: 0.9rem;
+  }
+
+  /* Summary sidebar (inside step 3) */
+  .booking-summary {
+    background: var(--gray-50);
+    border-radius: 8px;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--gray-200);
+  }
+  .booking-summary h3 { font-size: 0.9rem; color: var(--gray-500); margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .booking-summary .sum-row { display: flex; justify-content: space-between; padding: 0.3rem 0; font-size: 0.9rem; }
+  .booking-summary .sum-total { font-weight: 700; font-size: 1.1rem; color: var(--primary-dark); border-top: 2px solid var(--gray-200); margin-top: 0.5rem; padding-top: 0.5rem; }
+
+  /* Loading */
+  .loading-spinner {
+    display: inline-block;
+    width: 20px; height: 20px;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .slots-loading, .slots-empty {
+    text-align: center;
+    padding: 2rem;
+    color: var(--gray-500);
+    font-size: 0.95rem;
+  }
+
+  /* Privacy consent */
+  .consent-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    color: var(--gray-600);
+  }
+  .consent-check input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; }
+  </style>
+
+<!-- CGE: Clinical Growth Engine v3.0 -->
+<script>
+window.bcDataLayer = {
+  "page_type": "booking",
+  "specialty": "laboratorio",
+  "service_name": "none",
+  "physician_name": "none",
+  "price_range": "5-80",
+  "content_group": "laboratorio_booking",
+  "funnel_stage": "conversion"
+};
+</script>
+<script src="/js/cge-tracking.js?v=CGE_v3_20260217" defer></script>
+<!-- End CGE -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWZWX5RS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header (reused from site) -->
+  <header class="header">
+    <div class="container">
+      <a href="/" class="logo" title="Torna alla Homepage Bio-Clinic">
+        <img src="/images/logo-bioclinic.png" alt="Bio-Clinic Sassari" width="180" height="60" loading="eager">
+      </a>
+      <nav class="nav" aria-label="Navigazione principale">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="/specialita/" class="nav-link">Specialita</a></li>
+          <li class="nav-item"><a href="/laboratorio/" class="nav-link">Laboratorio</a></li>
+          <li class="nav-item"><a href="/equipe/" class="nav-link">Equipe</a></li>
+          <li class="nav-item"><a href="/listino/" class="nav-link">Listino</a></li>
+          <li class="nav-item"><a href="/contatti/" class="nav-link">Contatti</a></li>
+        </ul>
+      </nav>
+      <a href="tel:+390799561332" class="header-cta" title="Chiama Bio-Clinic">
+        <span>079 956 1332</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="booking-hero">
+    <div class="container">
+      <p style="margin-bottom:0.3rem;font-size:0.9rem;opacity:0.8;"><a href="/laboratorio/" style="color:#fff;text-decoration:none;">&larr; Laboratorio</a></p>
+      <h1>Prenota il Tuo Esame di Laboratorio</h1>
+      <p>Scegli il servizio, seleziona data e orario, conferma in 30 secondi.</p>
+    </div>
+  </section>
+
+  <!-- Booking Widget -->
+  <div class="booking-container">
+    <div class="booking-card">
+
+      <!-- Stepper -->
+      <div class="booking-stepper" role="tablist">
+        <div class="booking-step active" data-step="1" role="tab">
+          <span class="step-num">1</span> Servizio
+        </div>
+        <div class="booking-step" data-step="2" role="tab">
+          <span class="step-num">2</span> Data e Ora
+        </div>
+        <div class="booking-step" data-step="3" role="tab">
+          <span class="step-num">3</span> Dati Paziente
+        </div>
+        <div class="booking-step" data-step="4" role="tab">
+          <span class="step-num">4</span> Conferma
+        </div>
+      </div>
+
+      <!-- STEP 1: Select Service -->
+      <div class="booking-panel active" id="step-1" role="tabpanel">
+        <h2 style="margin-bottom:0.5rem;font-size:1.3rem;">Quale esame devi effettuare?</h2>
+        <p style="color:var(--gray-500);margin-bottom:1.5rem;font-size:0.9rem;">Seleziona il servizio per vedere le disponibilita.</p>
+        <div class="service-grid" id="services-list">
+          <div class="slots-loading">Caricamento servizi...</div>
+        </div>
+        <div class="booking-actions">
+          <span></span>
+          <button class="btn-booking btn-primary" id="btn-step1-next" disabled>
+            Avanti &rarr;
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Date + Time -->
+      <div class="booking-panel" id="step-2" role="tabpanel">
+        <h2 style="margin-bottom:0.5rem;font-size:1.3rem;">Scegli Data e Orario</h2>
+        <p style="color:var(--gray-500);margin-bottom:1.5rem;font-size:0.9rem;">Laboratorio: Lun-Ven 7:00-20:00, Sab 8:00-13:00</p>
+
+        <div class="date-nav">
+          <button id="prev-month">&larr; Precedente</button>
+          <span class="month-label" id="month-label"></span>
+          <button id="next-month">Successivo &rarr;</button>
+        </div>
+        <div class="date-grid" id="date-grid">
+          <div class="day-header">Lun</div>
+          <div class="day-header">Mar</div>
+          <div class="day-header">Mer</div>
+          <div class="day-header">Gio</div>
+          <div class="day-header">Ven</div>
+          <div class="day-header">Sab</div>
+          <div class="day-header">Dom</div>
+        </div>
+
+        <div id="slots-section" style="margin-top:1.5rem;display:none;">
+          <h3 style="font-size:1rem;margin-bottom:0.5rem;" id="slots-date-label">Orari disponibili</h3>
+          <div class="slots-grid" id="slots-grid"></div>
+        </div>
+
+        <div class="booking-actions">
+          <button class="btn-booking btn-outline" id="btn-step2-back">&larr; Indietro</button>
+          <button class="btn-booking btn-primary" id="btn-step2-next" disabled>Avanti &rarr;</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Patient Info -->
+      <div class="booking-panel" id="step-3" role="tabpanel">
+        <h2 style="margin-bottom:0.5rem;font-size:1.3rem;">I Tuoi Dati</h2>
+        <p style="color:var(--gray-500);margin-bottom:1.5rem;font-size:0.9rem;">Inserisci i dati per completare la prenotazione.</p>
+
+        <div class="booking-summary" id="booking-summary"></div>
+
+        <form id="patient-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="patient_name">Nome e Cognome *</label>
+              <input type="text" id="patient_name" name="patient_name" required autocomplete="name" placeholder="Mario Rossi">
+              <div class="field-error" id="err-name">Nome e cognome obbligatori.</div>
+            </div>
+            <div class="form-group">
+              <label for="patient_phone">Telefono *</label>
+              <input type="tel" id="patient_phone" name="patient_phone" required autocomplete="tel" placeholder="+39 333 1234567">
+              <div class="field-error" id="err-phone">Numero non valido.</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="patient_email">Email <span style="font-weight:400;color:var(--gray-400);">(opzionale)</span></label>
+              <input type="email" id="patient_email" name="patient_email" autocomplete="email" placeholder="mario@esempio.it">
+              <div class="field-hint">Per ricevere la conferma via email.</div>
+              <div class="field-error" id="err-email">Email non valida.</div>
+            </div>
+            <div class="form-group">
+              <label for="patient_fiscal_code">Codice Fiscale <span style="font-weight:400;color:var(--gray-400);">(opzionale)</span></label>
+              <input type="text" id="patient_fiscal_code" name="patient_fiscal_code" maxlength="16" autocomplete="off" placeholder="RSSMRA80A01H501Z" style="text-transform:uppercase;">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="notes">Note <span style="font-weight:400;color:var(--gray-400);">(opzionale)</span></label>
+            <textarea id="notes" name="notes" rows="2" placeholder="Es: allergie, terapie in corso, richieste particolari..."></textarea>
+          </div>
+
+          <!-- Hidden fields for attribution -->
+          <input type="hidden" id="hidden_gclid" name="gclid" value="">
+          <input type="hidden" id="hidden_source" name="source_page" value="">
+
+          <div class="consent-check">
+            <input type="checkbox" id="privacy_consent" required>
+            <label for="privacy_consent">
+              Ho letto e accetto la <a href="/privacy/" target="_blank" style="color:var(--primary-dark);">Privacy Policy</a>.
+              I dati saranno trattati per gestire la prenotazione (GDPR Art.6 lett.b).
+            </label>
+          </div>
+        </form>
+
+        <div class="booking-actions">
+          <button class="btn-booking btn-outline" id="btn-step3-back">&larr; Indietro</button>
+          <button class="btn-booking btn-primary" id="btn-step3-confirm">
+            Conferma Prenotazione
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Confirmation -->
+      <div class="booking-panel" id="step-4" role="tabpanel">
+        <div class="confirm-card" id="confirm-content">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+    </div><!-- /booking-card -->
+  </div><!-- /booking-container -->
+
+  <!-- Footer -->
+  <footer class="footer" style="margin-top:0;">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>
+          <p>&copy; 2026 Bio Pharma S.r.l. - P.IVA 02869450904 - REA SS-211220</p>
+          <p>Direttore Sanitario: <a href="/equipe/salvatore-dessole/" class="physician-link">Prof. Emerito Salvatore Dessole</a></p>
+        </div>
+        <div>
+          <a href="/privacy/">Privacy Policy</a> |
+          <a href="/cookie/">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================================================================== -->
+  <!-- BOOKING ENGINE JS — Self-contained, CGE-integrated                 -->
+  <!-- ================================================================== -->
+  <script>
+  (function() {
+    'use strict';
+
+    // =======================================================================
+    // CONFIG
+    // =======================================================================
+    var API_BASE = '/api/booking';
+    var state = {
+      step: 1,
+      services: [],
+      selectedService: null,
+      selectedDate: null,
+      selectedTime: null,
+      slots: [],
+      calendarMonth: new Date().getMonth(),
+      calendarYear: new Date().getFullYear(),
+      booking: null
+    };
+
+    // =======================================================================
+    // DOM REFS
+    // =======================================================================
+    var $ = function(sel) { return document.querySelector(sel); };
+    var $$ = function(sel) { return document.querySelectorAll(sel); };
+
+    // =======================================================================
+    // 1. LOAD SERVICES
+    // =======================================================================
+    function loadServices() {
+      fetch(API_BASE + '/services')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (!data.success) throw new Error(data.error);
+          state.services = data.services;
+          renderServices();
+        })
+        .catch(function(err) {
+          $('#services-list').innerHTML = '<p style="color:var(--danger);">Errore nel caricamento. <a href="javascript:location.reload()">Riprova</a>.</p>';
+        });
+    }
+
+    function renderServices() {
+      var html = '';
+      state.services.forEach(function(svc) {
+        var badge = svc.requires_fasting ? '<span class="svc-badge">Digiuno</span>' : '';
+        html += '<div class="service-card" data-id="' + svc.id + '">'
+          + badge
+          + '<div class="svc-name">' + svc.name + '</div>'
+          + '<div class="svc-meta">' + svc.duration_minutes + ' min &middot; ' + svc.category + '</div>'
+          + '<div class="svc-price">&euro;' + Number(svc.price_eur).toFixed(2) + '</div>'
+          + '</div>';
+      });
+      $('#services-list').innerHTML = html;
+
+      // Click handlers
+      $$('.service-card').forEach(function(card) {
+        card.addEventListener('click', function() {
+          $$('.service-card').forEach(function(c) { c.classList.remove('selected'); });
+          card.classList.add('selected');
+          state.selectedService = state.services.find(function(s) { return s.id === card.dataset.id; });
+          $('#btn-step1-next').disabled = false;
+
+          // Track prenota click (intent)
+          if (typeof BCG !== 'undefined' && BCG.firePrenota) {
+            BCG.firePrenota({ service: state.selectedService.name, specialty: 'laboratorio' });
+          }
+        });
+      });
+    }
+
+    // =======================================================================
+    // 2. CALENDAR
+    // =======================================================================
+    var MONTHS_IT = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno',
+                     'Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+
+    function renderCalendar() {
+      var year = state.calendarYear;
+      var month = state.calendarMonth;
+      $('#month-label').textContent = MONTHS_IT[month] + ' ' + year;
+
+      var firstDay = new Date(year, month, 1);
+      var lastDay = new Date(year, month + 1, 0);
+      var startWeekday = (firstDay.getDay() + 6) % 7; // Mon=0
+      var today = new Date(); today.setHours(0,0,0,0);
+      var maxDate = new Date(today); maxDate.setDate(maxDate.getDate() + 60);
+
+      // Remove old date cells
+      var grid = $('#date-grid');
+      var cells = grid.querySelectorAll('.date-cell');
+      cells.forEach(function(c) { c.remove(); });
+
+      // Empty cells before first day
+      for (var i = 0; i < startWeekday; i++) {
+        var empty = document.createElement('div');
+        empty.className = 'date-cell empty';
+        grid.appendChild(empty);
+      }
+
+      // Day cells
+      for (var d = 1; d <= lastDay.getDate(); d++) {
+        var cellDate = new Date(year, month, d);
+        var dayOfWeek = cellDate.getDay(); // 0=Sun
+        var cell = document.createElement('div');
+        cell.className = 'date-cell';
+        cell.textContent = d;
+
+        var isPast = cellDate < today;
+        var isTooFar = cellDate > maxDate;
+        var isSunday = dayOfWeek === 0;
+
+        if (isPast || isTooFar || isSunday) {
+          cell.classList.add('disabled');
+        } else {
+          var dateStr = year + '-' + String(month + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0');
+          cell.dataset.date = dateStr;
+          cell.addEventListener('click', function() {
+            $$('.date-cell').forEach(function(c) { c.classList.remove('selected'); });
+            this.classList.add('selected');
+            state.selectedDate = this.dataset.date;
+            state.selectedTime = null;
+            $('#btn-step2-next').disabled = true;
+            loadSlots(state.selectedDate);
+          });
+        }
+
+        if (cellDate.toDateString() === today.toDateString()) {
+          cell.classList.add('today');
+        }
+
+        grid.appendChild(cell);
+      }
+    }
+
+    // =======================================================================
+    // 3. LOAD SLOTS
+    // =======================================================================
+    function loadSlots(dateStr) {
+      var section = $('#slots-section');
+      section.style.display = 'block';
+      $('#slots-grid').innerHTML = '<div class="slots-loading">Caricamento orari...</div>';
+
+      var dateObj = new Date(dateStr + 'T00:00:00');
+      var dayName = dateObj.toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'long' });
+      $('#slots-date-label').textContent = 'Orari disponibili — ' + dayName;
+
+      fetch(API_BASE + '/slots?date=' + dateStr + '&service_id=' + state.selectedService.id)
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (!data.success) throw new Error(data.error);
+          state.slots = data.slots;
+          renderSlots();
+        })
+        .catch(function(err) {
+          $('#slots-grid').innerHTML = '<div class="slots-empty">' + (err.message || 'Errore nel caricamento orari.') + '</div>';
+        });
+    }
+
+    function renderSlots() {
+      if (!state.slots || state.slots.length === 0) {
+        $('#slots-grid').innerHTML = '<div class="slots-empty">Nessun orario disponibile per questa data.</div>';
+        return;
+      }
+
+      var html = '';
+      state.slots.forEach(function(slot) {
+        var cls = 'slot-btn' + (slot.status === 'full' ? ' full' : '');
+        var avail = slot.status === 'full' ? 'Completo' : slot.available + ' posti';
+        html += '<button class="' + cls + '" data-time="' + slot.time + '" ' + (slot.status === 'full' ? 'disabled' : '') + '>'
+          + slot.time
+          + '<span class="slot-avail">' + avail + '</span>'
+          + '</button>';
+      });
+      $('#slots-grid').innerHTML = html;
+
+      $$('.slot-btn:not(.full)').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          $$('.slot-btn').forEach(function(b) { b.classList.remove('selected'); });
+          btn.classList.add('selected');
+          state.selectedTime = btn.dataset.time;
+          $('#btn-step2-next').disabled = false;
+        });
+      });
+    }
+
+    // =======================================================================
+    // 4. SUMMARY & FORM
+    // =======================================================================
+    function renderSummary() {
+      var dateObj = new Date(state.selectedDate + 'T00:00:00');
+      var dateFormatted = dateObj.toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+
+      var html = '<h3>Riepilogo Prenotazione</h3>'
+        + '<div class="sum-row"><span>Esame:</span><strong>' + state.selectedService.name + '</strong></div>'
+        + '<div class="sum-row"><span>Data:</span><strong>' + dateFormatted + '</strong></div>'
+        + '<div class="sum-row"><span>Ora:</span><strong>' + state.selectedTime + '</strong></div>'
+        + '<div class="sum-row"><span>Durata:</span><span>' + state.selectedService.duration_minutes + ' minuti</span></div>'
+        + '<div class="sum-row sum-total"><span>Importo:</span><span>&euro;' + Number(state.selectedService.price_eur).toFixed(2) + '</span></div>';
+      $('#booking-summary').innerHTML = html;
+
+      // Inject GCLID from CGE
+      var gclid = (typeof BCG !== 'undefined' && BCG.getGclid) ? BCG.getGclid() : '';
+      $('#hidden_gclid').value = gclid || '';
+      $('#hidden_source').value = window.location.pathname;
+    }
+
+    // =======================================================================
+    // 5. CONFIRM BOOKING
+    // =======================================================================
+    function confirmBooking() {
+      // Validate
+      var name = $('#patient_name').value.trim();
+      var phone = $('#patient_phone').value.trim();
+      var email = $('#patient_email').value.trim();
+      var consent = $('#privacy_consent').checked;
+      var valid = true;
+
+      // Reset errors
+      $$('.field-error').forEach(function(e) { e.style.display = 'none'; });
+
+      if (!name || name.length < 2) {
+        $('#err-name').style.display = 'block';
+        valid = false;
+      }
+      if (!phone || !/^\+?[0-9\s\-\(\)\.]{8,20}$/.test(phone)) {
+        $('#err-phone').style.display = 'block';
+        valid = false;
+      }
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        $('#err-email').style.display = 'block';
+        valid = false;
+      }
+      if (!consent) {
+        alert('Devi accettare la Privacy Policy per procedere.');
+        valid = false;
+      }
+      if (!valid) return;
+
+      // Disable button, show loading
+      var btn = $('#btn-step3-confirm');
+      var btnText = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<span class="loading-spinner"></span> Invio in corso...';
+
+      // Build payload
+      var payload = {
+        service_id: state.selectedService.id,
+        date: state.selectedDate,
+        time: state.selectedTime,
+        patient_name: name,
+        patient_phone: phone,
+        patient_email: email,
+        patient_fiscal_code: ($('#patient_fiscal_code').value || '').trim().toUpperCase(),
+        notes: ($('#notes').value || '').trim(),
+        gclid: $('#hidden_gclid').value,
+        lead_source: 'website',
+        source_page: window.location.pathname,
+        utm_source: new URLSearchParams(window.location.search).get('utm_source') || '',
+        utm_medium: new URLSearchParams(window.location.search).get('utm_medium') || '',
+        utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign') || ''
+      };
+
+      // Track form submit intent (bc_form_submit)
+      if (typeof BCG !== 'undefined' && BCG.fireFormSubmit) {
+        BCG.fireFormSubmit({
+          form_id: 'booking-lab',
+          specialty: 'laboratorio',
+          service: state.selectedService.name,
+          lead_type: 'booking'
+        });
+      }
+
+      fetch(API_BASE + '/confirm', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (!data.success) {
+          throw new Error(data.error || 'Errore nella prenotazione.');
+        }
+
+        state.booking = data.booking;
+
+        // ============================================================
+        // GTM/GA4 CONVERSION TRACKING
+        // ============================================================
+        // Fire bc_booking_confirmed + purchase via CGE
+        if (typeof BCG !== 'undefined' && BCG.fireBookingConfirmed) {
+          BCG.fireBookingConfirmed({
+            transaction_id: data.booking.transaction_id,
+            lead_id: data.booking.id,
+            revenue: data.booking.price,
+            specialty: 'laboratorio',
+            service_name: data.booking.service_name,
+            physician_name: 'none'
+          });
+        } else {
+          // Fallback: push directly to dataLayer
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: 'bc_booking_confirmed',
+            bc_lead_id: data.booking.id,
+            bc_specialty: 'laboratorio',
+            bc_service_name: data.booking.service_name,
+            bc_physician_name: 'none',
+            bc_revenue: data.booking.price,
+            bc_transaction_id: data.booking.transaction_id,
+            bc_gclid: payload.gclid || '',
+            transaction_id: data.booking.transaction_id,
+            value: data.booking.price,
+            currency: 'EUR'
+          });
+        }
+
+        // Show confirmation (step 4)
+        goToStep(4);
+        renderConfirmation(data.booking);
+      })
+      .catch(function(err) {
+        btn.disabled = false;
+        btn.innerHTML = btnText;
+        alert(err.message || 'Errore nella prenotazione. Riprovare.');
+      });
+    }
+
+    // =======================================================================
+    // 6. CONFIRMATION UI
+    // =======================================================================
+    function renderConfirmation(booking) {
+      var dateObj = new Date(booking.date + 'T00:00:00');
+      var dateFormatted = dateObj.toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+
+      var html = '<div class="check-icon">&#10003;</div>'
+        + '<h2>Prenotazione Confermata!</h2>'
+        + '<p style="color:#065F46;">Codice: <strong>' + booking.id + '</strong></p>'
+        + '<div class="confirm-details">'
+        + '<div class="detail-row"><span class="detail-label">Esame</span><span class="detail-value">' + booking.service_name + '</span></div>'
+        + '<div class="detail-row"><span class="detail-label">Data</span><span class="detail-value">' + dateFormatted + '</span></div>'
+        + '<div class="detail-row"><span class="detail-label">Ora</span><span class="detail-value">' + booking.time + '</span></div>'
+        + '<div class="detail-row"><span class="detail-label">Durata</span><span class="detail-value">' + booking.duration_minutes + ' min</span></div>'
+        + '<div class="detail-row"><span class="detail-label">Importo</span><span class="detail-value" style="font-weight:700;color:var(--primary-dark);">&euro;' + Number(booking.price).toFixed(2) + '</span></div>'
+        + '<div class="detail-row"><span class="detail-label">Paziente</span><span class="detail-value">' + booking.patient_name + '</span></div>'
+        + '</div>';
+
+      if (booking.prep_instructions) {
+        html += '<div class="prep-alert">'
+          + '<strong>&#9888; Preparazione:</strong><br>' + booking.prep_instructions
+          + '</div>';
+      }
+
+      html += '<div style="margin-top:1.5rem;">'
+        + '<p style="font-size:0.9rem;color:var(--gray-600);">Riceverai una conferma via email (se fornita). Per cancellare o modificare chiama <a href="tel:+390799561332" style="color:var(--primary-dark);font-weight:600;">079 956 1332</a>.</p>'
+        + '<div style="margin-top:1rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">'
+        + '<a href="/laboratorio/" class="btn-booking btn-outline">Torna al Laboratorio</a>'
+        + '<a href="/laboratorio/prenota/" class="btn-booking btn-primary">Nuova Prenotazione</a>'
+        + '</div>'
+        + '</div>';
+
+      $('#confirm-content').innerHTML = html;
+    }
+
+    // =======================================================================
+    // 7. STEP NAVIGATION
+    // =======================================================================
+    function goToStep(n) {
+      state.step = n;
+      $$('.booking-panel').forEach(function(p) { p.classList.remove('active'); });
+      $('#step-' + n).classList.add('active');
+
+      $$('.booking-step').forEach(function(s) {
+        var sn = parseInt(s.dataset.step);
+        s.classList.remove('active', 'completed');
+        if (sn === n) s.classList.add('active');
+        else if (sn < n) s.classList.add('completed');
+      });
+
+      // Scroll to top of booking card
+      document.querySelector('.booking-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // =======================================================================
+    // 8. EVENT LISTENERS
+    // =======================================================================
+    document.addEventListener('DOMContentLoaded', function() {
+      loadServices();
+
+      // AUTO-SELECT service from URL param ?service=ID
+      var urlParams = new URLSearchParams(window.location.search);
+      var preselectedServiceId = urlParams.get('service');
+      if (preselectedServiceId) {
+        // Wait for services to load, then auto-select
+        var checkInterval = setInterval(function() {
+          if (state.services && state.services.length > 0) {
+            clearInterval(checkInterval);
+            var targetCard = document.querySelector('.service-card[data-id="' + preselectedServiceId + '"]');
+            if (targetCard) {
+              targetCard.click();
+              targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              // Auto-advance to step 2 after brief delay
+              setTimeout(function() {
+                if (state.selectedService) {
+                  goToStep(2);
+                  renderCalendar();
+                }
+              }, 600);
+            }
+          }
+        }, 100);
+        // Safety: stop checking after 5s
+        setTimeout(function() { clearInterval(checkInterval); }, 5000);
+      }
+
+      // Step 1 -> 2
+      $('#btn-step1-next').addEventListener('click', function() {
+        if (!state.selectedService) return;
+        goToStep(2);
+        renderCalendar();
+      });
+
+      // Step 2 nav
+      $('#btn-step2-back').addEventListener('click', function() { goToStep(1); });
+      $('#btn-step2-next').addEventListener('click', function() {
+        if (!state.selectedDate || !state.selectedTime) return;
+        goToStep(3);
+        renderSummary();
+      });
+
+      // Step 3 nav
+      $('#btn-step3-back').addEventListener('click', function() { goToStep(2); });
+      $('#btn-step3-confirm').addEventListener('click', function(e) {
+        e.preventDefault();
+        confirmBooking();
+      });
+
+      // Calendar month nav
+      $('#prev-month').addEventListener('click', function() {
+        var today = new Date();
+        if (state.calendarMonth === today.getMonth() && state.calendarYear === today.getFullYear()) return;
+        state.calendarMonth--;
+        if (state.calendarMonth < 0) { state.calendarMonth = 11; state.calendarYear--; }
+        renderCalendar();
+      });
+      $('#next-month').addEventListener('click', function() {
+        var max = new Date();
+        max.setDate(max.getDate() + 60);
+        if (state.calendarYear > max.getFullYear() || (state.calendarYear === max.getFullYear() && state.calendarMonth >= max.getMonth())) return;
+        state.calendarMonth++;
+        if (state.calendarMonth > 11) { state.calendarMonth = 0; state.calendarYear++; }
+        renderCalendar();
+      });
+    });
+
+  })();
+  </script>
+
+  <!-- Iubenda Cookie Consent Banner -->
+  <script type="text/javascript">
+  var _iub = _iub || [];
+  _iub.csConfiguration = {
+    "askConsentAtCookiePolicyUpdate": true,
+    "enableFadp": false,
+    "enableLgpd": false,
+    "enableUspr": false,
+    "fadpApplies": false,
+    "floatingPreferencesButtonDisplay": "bottom-right",
+    "lang": "it",
+    "perPurposeConsent": true,
+    "preferenceCookie": { "expireAfter": 365 },
+    "siteId": "3313232",
+    "cookiePolicyId": "85172996",
+    "whitelabel": false,
+    "cookiePolicyUrl": "https://bio-clinic.it/cookie/",
+    "privacyPolicyUrl": "https://bio-clinic.it/privacy/",
+    "banner": {
+      "acceptButtonCaptionColor": "#FFFFFF",
+      "acceptButtonColor": "#00704A",
+      "acceptButtonDisplay": true,
+      "backgroundColor": "#FFFFFF",
+      "closeButtonDisplay": false,
+      "customizeButtonCaptionColor": "#4D4D4D",
+      "customizeButtonColor": "#DADADA",
+      "customizeButtonDisplay": true,
+      "explicitWithdrawal": true,
+      "fontSizeBody": "12px",
+      "listPurposes": true,
+      "ownerName": "Bio-Clinic Sassari",
+      "position": "float-bottom-center",
+      "rejectButtonCaptionColor": "#FFFFFF",
+      "rejectButtonColor": "#666666",
+      "rejectButtonDisplay": true,
+      "showTitle": false,
+      "showTotalNumberOfProviders": true,
+      "textColor": "#000000"
+    },
+    "callback": {
+      "onPreferenceExpressedOrNotNeeded": function(preference) {
+        if (preference && preference.purposes) {
+          if (typeof BCG !== 'undefined' && BCG.updateConsent) {
+            BCG.updateConsent({
+              analytics: !!preference.purposes[4],
+              marketing: !!preference.purposes[5],
+              preferences: !!preference.purposes[3]
+            });
+          }
+        }
+      }
+    }
+  };
+  </script>
+  <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/3313232.js"></script>
+  <script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js"></script>
+  <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+  <!-- End Iubenda -->
+</body>
+</html>

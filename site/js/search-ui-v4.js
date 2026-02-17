@@ -39,7 +39,7 @@ var BioSearchUI = (function () {
   var TYPE_META = {
     specialty:  { label: 'Specialit\u00e0',  icon: '\uD83C\uDFE5', cta: 'Scopri',  css: 'specialty' },
     procedure:  { label: 'Prestazione',      icon: '\uD83E\uDE7A', cta: 'Prenota', css: 'procedure' },
-    exam:       { label: 'Esame',            icon: '\uD83E\uDDEA', cta: 'Info',    css: 'exam' },
+    exam:       { label: 'Esame',            icon: '\uD83E\uDDEA', cta: 'Prenota', css: 'exam' },
     pack:       { label: 'Check-up',         icon: '\uD83D\uDCE6', cta: 'Scopri',  css: 'pack' },
     pathway:    { label: 'Percorso',         icon: '\uD83C\uDFAF', cta: 'Scopri',  css: 'pathway' },
     physician:  { label: 'Medico',           icon: '\uD83D\uDC68\u200D\u2695\uFE0F', cta: 'Profilo', css: 'physician' }

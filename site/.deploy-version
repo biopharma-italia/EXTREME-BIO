@@ -1,13 +1,72 @@
 {
-  "version": "2026-02-16-v8",
-  "deployed": "2026-02-16T16:31:49+0100",
-  "changes": "cardiology-seo-14-fixes",
-  "pages": [
-    "/cardiologia/",
-    "/cardiologia/ecocardiogramma/",
-    "/cardiologia/holter-ecg/",
-    "/cardiologia/holter-pressorio/",
-    "/cardiologia/visita-cardiologica-ecg/",
-    "/cardiologia/checkup-cardiovascolare/"
+  "version": "2026-02-16-v9",
+  "deployed": "2026-02-16T16:14:14+00:00",
+  "changes": "all-hubs-seo-14-fixes (13 hubs, 60 pages, 210 modifications)",
+  "hubs": [
+    {
+      "name": "Ginecologia",
+      "pages": 22,
+      "changes": 82
+    },
+    {
+      "name": "Dermatologia",
+      "pages": 3,
+      "changes": 10
+    },
+    {
+      "name": "Endocrinologia",
+      "pages": 4,
+      "changes": 14
+    },
+    {
+      "name": "Neurologia",
+      "pages": 3,
+      "changes": 10
+    },
+    {
+      "name": "Ortopedia",
+      "pages": 4,
+      "changes": 14
+    },
+    {
+      "name": "Urologia",
+      "pages": 4,
+      "changes": 14
+    },
+    {
+      "name": "Chirurgia Vascolare",
+      "pages": 4,
+      "changes": 14
+    },
+    {
+      "name": "Otorinolaringoiatria",
+      "pages": 5,
+      "changes": 18
+    },
+    {
+      "name": "Gastroenterologia",
+      "pages": 3,
+      "changes": 10
+    },
+    {
+      "name": "Oculistica",
+      "pages": 2,
+      "changes": 6
+    },
+    {
+      "name": "Pneumologia",
+      "pages": 2,
+      "changes": 6
+    },
+    {
+      "name": "Ematologia",
+      "pages": 2,
+      "changes": 6
+    },
+    {
+      "name": "Reumatologia",
+      "pages": 2,
+      "changes": 6
+    }
   ]
 }

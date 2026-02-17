@@ -1,0 +1,1199 @@
+{
+  "cardiologia/index.html": {
+    "page_type": "hub",
+    "specialty": "cardiologia",
+    "service_name": "cardiologia_hub",
+    "physician_name": "tonino-bullitta",
+    "price_range": "100-200",
+    "content_group": "cardiologia_hub",
+    "funnel_stage": "awareness"
+  },
+  "cardiologia/checkup-cardiovascolare/index.html": {
+    "page_type": "service",
+    "specialty": "cardiologia",
+    "service_name": "checkup-cardiovascolare",
+    "physician_name": "tonino-bullitta",
+    "price_range": "150-250",
+    "content_group": "cardiologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "cardiologia/ecocardiogramma/index.html": {
+    "page_type": "service",
+    "specialty": "cardiologia",
+    "service_name": "ecocardiogramma",
+    "physician_name": "tonino-bullitta",
+    "price_range": "100-150",
+    "content_group": "cardiologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "cardiologia/holter-ecg/index.html": {
+    "page_type": "service",
+    "specialty": "cardiologia",
+    "service_name": "holter-ecg-24h",
+    "physician_name": "tonino-bullitta",
+    "price_range": "100-150",
+    "content_group": "cardiologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "cardiologia/holter-pressorio/index.html": {
+    "page_type": "service",
+    "specialty": "cardiologia",
+    "service_name": "holter-pressorio-24h",
+    "physician_name": "tonino-bullitta",
+    "price_range": "80-120",
+    "content_group": "cardiologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "cardiologia/visita-cardiologica-ecg/index.html": {
+    "page_type": "service",
+    "specialty": "cardiologia",
+    "service_name": "visita-cardiologica-ecg",
+    "physician_name": "tonino-bullitta",
+    "price_range": "100-130",
+    "content_group": "cardiologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/index.html": {
+    "page_type": "hub",
+    "specialty": "ginecologia",
+    "service_name": "ginecologia_hub",
+    "physician_name": "francesco-dessole",
+    "price_range": "80-200",
+    "content_group": "ginecologia_hub",
+    "funnel_stage": "awareness"
+  },
+  "ginecologia/visita-ginecologica/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "visita-ginecologica",
+    "physician_name": "francesco-dessole",
+    "price_range": "80-120",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/ecografia-ginecologica/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "ecografia-ginecologica",
+    "physician_name": "francesco-dessole",
+    "price_range": "80-120",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/ecografia-mammaria/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "ecografia-mammaria",
+    "physician_name": "francesco-dessole",
+    "price_range": "70-100",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/ecografia-ostetrica-3d/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "ecografia-ostetrica-3d",
+    "physician_name": "francesco-dessole",
+    "price_range": "100-150",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/ecografia-morfologica/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "ecografia-morfologica",
+    "physician_name": "francesco-dessole",
+    "price_range": "150-200",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/ecografia-transvaginale/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "ecografia-transvaginale",
+    "physician_name": "francesco-dessole",
+    "price_range": "80-120",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/ecografia-pelvica/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "ecografia-pelvica",
+    "physician_name": "francesco-dessole",
+    "price_range": "80-100",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/pap-test/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "pap-test",
+    "physician_name": "francesco-dessole",
+    "price_range": "30-60",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/pap-test-hpv/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "pap-test-hpv",
+    "physician_name": "francesco-dessole",
+    "price_range": "50-80",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/hpv-dna-test/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "hpv-dna-test",
+    "physician_name": "francesco-dessole",
+    "price_range": "50-80",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/duopap/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "duopap",
+    "physician_name": "francesco-dessole",
+    "price_range": "60-90",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/colposcopia/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "colposcopia",
+    "physician_name": "francesco-dessole",
+    "price_range": "80-120",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/translucenza-nucale/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "translucenza-nucale",
+    "physician_name": "francesco-dessole",
+    "price_range": "100-150",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/monitoraggio-follicolare/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "monitoraggio-follicolare",
+    "physician_name": "francesco-dessole",
+    "price_range": "60-100",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/isteroscopia/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "isteroscopia",
+    "physician_name": "francesco-dessole",
+    "price_range": "200-400",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/isterosalpingografia/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "isterosalpingografia",
+    "physician_name": "francesco-dessole",
+    "price_range": "200-350",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/assistenza-ostetrica/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "assistenza-ostetrica",
+    "physician_name": "francesco-dessole",
+    "price_range": "80-150",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/chirurgia-ginecologica/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "chirurgia-ginecologica",
+    "physician_name": "francesco-dessole",
+    "price_range": "300-800",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/consulto-pma/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "consulto-pma",
+    "physician_name": "francesco-dessole",
+    "price_range": "100-200",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/corso-preparto/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "corso-preparto",
+    "physician_name": "francesco-dessole",
+    "price_range": "150-300",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/caressflow/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "caressflow",
+    "physician_name": "francesco-dessole",
+    "price_range": "150-300",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/perifit-kegel-sassari/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "perifit-kegel",
+    "physician_name": "francesco-dessole",
+    "price_range": "50-100",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/radiofrequenza-vaginale/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "radiofrequenza-vaginale",
+    "physician_name": "francesco-dessole",
+    "price_range": "200-400",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/riabilitazione-pavimento-pelvico/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "riabilitazione-pavimento-pelvico",
+    "physician_name": "francesco-dessole",
+    "price_range": "60-100",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/trattamenti-pavimento-pelvico/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "trattamenti-pavimento-pelvico",
+    "physician_name": "francesco-dessole",
+    "price_range": "100-300",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ginecologia/ginecologi-sassari/index.html": {
+    "page_type": "service",
+    "specialty": "ginecologia",
+    "service_name": "ginecologi-sassari",
+    "physician_name": "francesco-dessole",
+    "price_range": "80-200",
+    "content_group": "ginecologia_servizi",
+    "funnel_stage": "awareness"
+  },
+  "dermatologia/index.html": {
+    "page_type": "hub",
+    "specialty": "dermatologia",
+    "service_name": "dermatologia_hub",
+    "physician_name": "alessandra-musinu",
+    "price_range": "80-150",
+    "content_group": "dermatologia_hub",
+    "funnel_stage": "awareness"
+  },
+  "dermatologia/visita-dermatologica/index.html": {
+    "page_type": "service",
+    "specialty": "dermatologia",
+    "service_name": "visita-dermatologica",
+    "physician_name": "alessandra-musinu",
+    "price_range": "80-120",
+    "content_group": "dermatologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "dermatologia/mappatura-nevi/index.html": {
+    "page_type": "service",
+    "specialty": "dermatologia",
+    "service_name": "mappatura-nevi",
+    "physician_name": "alessandra-musinu",
+    "price_range": "80-120",
+    "content_group": "dermatologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "dermatologia/dermatoscopia-digitale/index.html": {
+    "page_type": "service",
+    "specialty": "dermatologia",
+    "service_name": "dermatoscopia-digitale",
+    "physician_name": "alessandra-musinu",
+    "price_range": "80-120",
+    "content_group": "dermatologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "endocrinologia/index.html": {
+    "page_type": "hub",
+    "specialty": "endocrinologia",
+    "service_name": "endocrinologia_hub",
+    "physician_name": "carlo-burrai",
+    "price_range": "80-150",
+    "content_group": "endocrinologia_hub",
+    "funnel_stage": "awareness"
+  },
+  "endocrinologia/visita-endocrinologica/index.html": {
+    "page_type": "service",
+    "specialty": "endocrinologia",
+    "service_name": "visita-endocrinologica",
+    "physician_name": "carlo-burrai",
+    "price_range": "80-120",
+    "content_group": "endocrinologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "endocrinologia/ecografia-tiroidea/index.html": {
+    "page_type": "service",
+    "specialty": "endocrinologia",
+    "service_name": "ecografia-tiroidea",
+    "physician_name": "carlo-burrai",
+    "price_range": "60-100",
+    "content_group": "endocrinologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "endocrinologia/checkup-tiroide/index.html": {
+    "page_type": "service",
+    "specialty": "endocrinologia",
+    "service_name": "checkup-tiroide",
+    "physician_name": "carlo-burrai",
+    "price_range": "100-180",
+    "content_group": "endocrinologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "neurologia/index.html": {
+    "page_type": "hub",
+    "specialty": "neurologia",
+    "service_name": "neurologia_hub",
+    "physician_name": "guido-marongiu",
+    "price_range": "80-150",
+    "content_group": "neurologia_hub",
+    "funnel_stage": "awareness"
+  },
+  "neurologia/visita-neurologica/index.html": {
+    "page_type": "service",
+    "specialty": "neurologia",
+    "service_name": "visita-neurologica",
+    "physician_name": "guido-marongiu",
+    "price_range": "80-120",
+    "content_group": "neurologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "neurologia/elettromiografia/index.html": {
+    "page_type": "service",
+    "specialty": "neurologia",
+    "service_name": "elettromiografia",
+    "physician_name": "guido-marongiu",
+    "price_range": "100-180",
+    "content_group": "neurologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ortopedia/index.html": {
+    "page_type": "hub",
+    "specialty": "ortopedia",
+    "service_name": "ortopedia_hub",
+    "physician_name": "andrea-donato",
+    "price_range": "80-150",
+    "content_group": "ortopedia_hub",
+    "funnel_stage": "awareness"
+  },
+  "ortopedia/visita-ortopedica/index.html": {
+    "page_type": "service",
+    "specialty": "ortopedia",
+    "service_name": "visita-ortopedica",
+    "physician_name": "andrea-donato",
+    "price_range": "80-120",
+    "content_group": "ortopedia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ortopedia/visita-fisiatrica/index.html": {
+    "page_type": "service",
+    "specialty": "ortopedia",
+    "service_name": "visita-fisiatrica",
+    "physician_name": "andrea-donato",
+    "price_range": "80-120",
+    "content_group": "ortopedia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ortopedia/infiltrazioni-articolari/index.html": {
+    "page_type": "service",
+    "specialty": "ortopedia",
+    "service_name": "infiltrazioni-articolari",
+    "physician_name": "andrea-donato",
+    "price_range": "80-150",
+    "content_group": "ortopedia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "urologia/index.html": {
+    "page_type": "hub",
+    "specialty": "urologia",
+    "service_name": "urologia_hub",
+    "physician_name": "carlos-cambara-zuniga",
+    "price_range": "80-150",
+    "content_group": "urologia_hub",
+    "funnel_stage": "awareness"
+  },
+  "urologia/visita-urologica/index.html": {
+    "page_type": "service",
+    "specialty": "urologia",
+    "service_name": "visita-urologica",
+    "physician_name": "carlos-cambara-zuniga",
+    "price_range": "80-120",
+    "content_group": "urologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "urologia/ecografia-prostatica/index.html": {
+    "page_type": "service",
+    "specialty": "urologia",
+    "service_name": "ecografia-prostatica",
+    "physician_name": "carlos-cambara-zuniga",
+    "price_range": "60-100",
+    "content_group": "urologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "urologia/ecografia-renale/index.html": {
+    "page_type": "service",
+    "specialty": "urologia",
+    "service_name": "ecografia-renale",
+    "physician_name": "carlos-cambara-zuniga",
+    "price_range": "60-100",
+    "content_group": "urologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "chirurgia-vascolare/index.html": {
+    "page_type": "hub",
+    "specialty": "chirurgia-vascolare",
+    "service_name": "chirurgia-vascolare_hub",
+    "physician_name": "francesco-tolu",
+    "price_range": "80-150",
+    "content_group": "chirurgia-vascolare_hub",
+    "funnel_stage": "awareness"
+  },
+  "chirurgia-vascolare/visita-chirurgia-vascolare/index.html": {
+    "page_type": "service",
+    "specialty": "chirurgia-vascolare",
+    "service_name": "visita-chirurgia-vascolare",
+    "physician_name": "francesco-tolu",
+    "price_range": "80-120",
+    "content_group": "chirurgia-vascolare_servizi",
+    "funnel_stage": "consideration"
+  },
+  "chirurgia-vascolare/eco-doppler-arti/index.html": {
+    "page_type": "service",
+    "specialty": "chirurgia-vascolare",
+    "service_name": "eco-doppler-arti",
+    "physician_name": "francesco-tolu",
+    "price_range": "80-120",
+    "content_group": "chirurgia-vascolare_servizi",
+    "funnel_stage": "consideration"
+  },
+  "chirurgia-vascolare/scleroterapia/index.html": {
+    "page_type": "service",
+    "specialty": "chirurgia-vascolare",
+    "service_name": "scleroterapia",
+    "physician_name": "francesco-tolu",
+    "price_range": "100-200",
+    "content_group": "chirurgia-vascolare_servizi",
+    "funnel_stage": "consideration"
+  },
+  "otorinolaringoiatria/index.html": {
+    "page_type": "hub",
+    "specialty": "otorinolaringoiatria",
+    "service_name": "orl_hub",
+    "physician_name": "maria-laura-de-luca",
+    "price_range": "80-150",
+    "content_group": "otorinolaringoiatria_hub",
+    "funnel_stage": "awareness"
+  },
+  "otorinolaringoiatria/visita-orl/index.html": {
+    "page_type": "service",
+    "specialty": "otorinolaringoiatria",
+    "service_name": "visita-orl",
+    "physician_name": "maria-laura-de-luca",
+    "price_range": "80-120",
+    "content_group": "otorinolaringoiatria_servizi",
+    "funnel_stage": "consideration"
+  },
+  "otorinolaringoiatria/audiometria/index.html": {
+    "page_type": "service",
+    "specialty": "otorinolaringoiatria",
+    "service_name": "audiometria",
+    "physician_name": "maria-laura-de-luca",
+    "price_range": "50-80",
+    "content_group": "otorinolaringoiatria_servizi",
+    "funnel_stage": "consideration"
+  },
+  "otorinolaringoiatria/spirometria/index.html": {
+    "page_type": "service",
+    "specialty": "otorinolaringoiatria",
+    "service_name": "spirometria",
+    "physician_name": "maria-laura-de-luca",
+    "price_range": "50-80",
+    "content_group": "otorinolaringoiatria_servizi",
+    "funnel_stage": "consideration"
+  },
+  "otorinolaringoiatria/campo-visivo/index.html": {
+    "page_type": "service",
+    "specialty": "otorinolaringoiatria",
+    "service_name": "campo-visivo",
+    "physician_name": "maria-laura-de-luca",
+    "price_range": "50-80",
+    "content_group": "otorinolaringoiatria_servizi",
+    "funnel_stage": "consideration"
+  },
+  "otorinolaringoiatria/rinofibrolaringoscopia/index.html": {
+    "page_type": "service",
+    "specialty": "otorinolaringoiatria",
+    "service_name": "rinofibrolaringoscopia",
+    "physician_name": "maria-laura-de-luca",
+    "price_range": "80-120",
+    "content_group": "otorinolaringoiatria_servizi",
+    "funnel_stage": "consideration"
+  },
+  "otorinolaringoiatria/impedenzometria/index.html": {
+    "page_type": "service",
+    "specialty": "otorinolaringoiatria",
+    "service_name": "impedenzometria",
+    "physician_name": "maria-laura-de-luca",
+    "price_range": "50-80",
+    "content_group": "otorinolaringoiatria_servizi",
+    "funnel_stage": "consideration"
+  },
+  "gastroenterologia/index.html": {
+    "page_type": "hub",
+    "specialty": "gastroenterologia",
+    "service_name": "gastroenterologia_hub",
+    "physician_name": "gavino-porcu",
+    "price_range": "80-200",
+    "content_group": "gastroenterologia_hub",
+    "funnel_stage": "awareness"
+  },
+  "gastroenterologia/visita-gastroenterologica/index.html": {
+    "page_type": "service",
+    "specialty": "gastroenterologia",
+    "service_name": "visita-gastroenterologica",
+    "physician_name": "gavino-porcu",
+    "price_range": "80-120",
+    "content_group": "gastroenterologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "gastroenterologia/ecografia-addominale/index.html": {
+    "page_type": "service",
+    "specialty": "gastroenterologia",
+    "service_name": "ecografia-addominale",
+    "physician_name": "gavino-porcu",
+    "price_range": "60-100",
+    "content_group": "gastroenterologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "oculistica/index.html": {
+    "page_type": "hub",
+    "specialty": "oculistica",
+    "service_name": "oculistica_hub",
+    "physician_name": "francesco-santoru",
+    "price_range": "80-150",
+    "content_group": "oculistica_hub",
+    "funnel_stage": "awareness"
+  },
+  "oculistica/visita-oculistica/index.html": {
+    "page_type": "service",
+    "specialty": "oculistica",
+    "service_name": "visita-oculistica",
+    "physician_name": "francesco-santoru",
+    "price_range": "80-120",
+    "content_group": "oculistica_servizi",
+    "funnel_stage": "consideration"
+  },
+  "pneumologia/index.html": {
+    "page_type": "hub",
+    "specialty": "pneumologia",
+    "service_name": "pneumologia_hub",
+    "physician_name": "pietro-pirina",
+    "price_range": "80-150",
+    "content_group": "pneumologia_hub",
+    "funnel_stage": "awareness"
+  },
+  "pneumologia/visita-pneumologica/index.html": {
+    "page_type": "service",
+    "specialty": "pneumologia",
+    "service_name": "visita-pneumologica",
+    "physician_name": "pietro-pirina",
+    "price_range": "80-120",
+    "content_group": "pneumologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "ematologia/index.html": {
+    "page_type": "hub",
+    "specialty": "ematologia",
+    "service_name": "ematologia_hub",
+    "physician_name": "claudio-fozza",
+    "price_range": "80-150",
+    "content_group": "ematologia_hub",
+    "funnel_stage": "awareness"
+  },
+  "ematologia/visita-ematologica/index.html": {
+    "page_type": "service",
+    "specialty": "ematologia",
+    "service_name": "visita-ematologica",
+    "physician_name": "claudio-fozza",
+    "price_range": "80-120",
+    "content_group": "ematologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "reumatologia/index.html": {
+    "page_type": "hub",
+    "specialty": "reumatologia",
+    "service_name": "reumatologia_hub",
+    "physician_name": "niccolo-melis",
+    "price_range": "80-150",
+    "content_group": "reumatologia_hub",
+    "funnel_stage": "awareness"
+  },
+  "reumatologia/visita-reumatologica/index.html": {
+    "page_type": "service",
+    "specialty": "reumatologia",
+    "service_name": "visita-reumatologica",
+    "physician_name": "niccolo-melis",
+    "price_range": "80-120",
+    "content_group": "reumatologia_servizi",
+    "funnel_stage": "consideration"
+  },
+  "index.html": {
+    "page_type": "home",
+    "specialty": "none",
+    "service_name": "homepage",
+    "physician_name": "none",
+    "price_range": "none",
+    "content_group": "home",
+    "funnel_stage": "awareness"
+  },
+  "chi-siamo/index.html": {
+    "page_type": "info",
+    "specialty": "none",
+    "service_name": "chi-siamo",
+    "physician_name": "none",
+    "price_range": "none",
+    "content_group": "info",
+    "funnel_stage": "awareness"
+  },
+  "contatti/index.html": {
+    "page_type": "conversion",
+    "specialty": "none",
+    "service_name": "contatti",
+    "physician_name": "none",
+    "price_range": "none",
+    "content_group": "conversion",
+    "funnel_stage": "conversion"
+  },
+  "equipe/index.html": {
+    "page_type": "equipe",
+    "specialty": "none",
+    "service_name": "equipe",
+    "physician_name": "none",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "listino/index.html": {
+    "page_type": "pricing",
+    "specialty": "none",
+    "service_name": "listino",
+    "physician_name": "none",
+    "price_range": "none",
+    "content_group": "pricing",
+    "funnel_stage": "consideration"
+  },
+  "convenzioni/index.html": {
+    "page_type": "info",
+    "specialty": "none",
+    "service_name": "convenzioni",
+    "physician_name": "none",
+    "price_range": "none",
+    "content_group": "info",
+    "funnel_stage": "consideration"
+  },
+  "cookie/index.html": {
+    "page_type": "legal",
+    "specialty": "none",
+    "service_name": "cookie",
+    "physician_name": "none",
+    "price_range": "none",
+    "content_group": "legal",
+    "funnel_stage": "none"
+  },
+  "privacy/index.html": {
+    "page_type": "legal",
+    "specialty": "none",
+    "service_name": "privacy",
+    "physician_name": "none",
+    "price_range": "none",
+    "content_group": "legal",
+    "funnel_stage": "none"
+  },
+  "equipe/alessandra-musinu/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_alessandra-musinu",
+    "physician_name": "alessandra-musinu",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/alessandro-pandolfi/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_alessandro-pandolfi",
+    "physician_name": "alessandro-pandolfi",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/alessia-piras/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_alessia-piras",
+    "physician_name": "alessia-piras",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/andrea-donato/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_andrea-donato",
+    "physician_name": "andrea-donato",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/angelica-fois/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_angelica-fois",
+    "physician_name": "angelica-fois",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/angelo-deplano/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_angelo-deplano",
+    "physician_name": "angelo-deplano",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/antonella-galatino/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_antonella-galatino",
+    "physician_name": "antonella-galatino",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/antonella-pruneddu/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_antonella-pruneddu",
+    "physician_name": "antonella-pruneddu",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/antonio-michele-cavazzuti/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_antonio-michele-cavazzuti",
+    "physician_name": "antonio-michele-cavazzuti",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/antonio-solinas/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_antonio-solinas",
+    "physician_name": "antonio-solinas",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/camilla-ruzzoli/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_camilla-ruzzoli",
+    "physician_name": "camilla-ruzzoli",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/carlo-burrai/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_carlo-burrai",
+    "physician_name": "carlo-burrai",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/carlos-manuel-cambara-zuniga/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_carlos-manuel-cambara-zuniga",
+    "physician_name": "carlos-manuel-cambara-zuniga",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/cinzia-guarino/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_cinzia-guarino",
+    "physician_name": "cinzia-guarino",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/daniele-sabiu/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_daniele-sabiu",
+    "physician_name": "daniele-sabiu",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/fabrizia-caucci/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_fabrizia-caucci",
+    "physician_name": "fabrizia-caucci",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/francesco-bussu/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_francesco-bussu",
+    "physician_name": "francesco-bussu",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/francesco-dessole/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_francesco-dessole",
+    "physician_name": "francesco-dessole",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/francesco-santoru/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_francesco-santoru",
+    "physician_name": "francesco-santoru",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/francesco-tolu/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_francesco-tolu",
+    "physician_name": "francesco-tolu",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/gianfranco-manchia/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_gianfranco-manchia",
+    "physician_name": "gianfranco-manchia",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/giorgio-chiarelli/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_giorgio-chiarelli",
+    "physician_name": "giorgio-chiarelli",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/giovanna-costa/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_giovanna-costa",
+    "physician_name": "giovanna-costa",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/giuliana-guagnozzi/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_giuliana-guagnozzi",
+    "physician_name": "giuliana-guagnozzi",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/gloria-reggiani/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_gloria-reggiani",
+    "physician_name": "gloria-reggiani",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/irene-aini/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_irene-aini",
+    "physician_name": "irene-aini",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/guido-marongiu/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_guido-marongiu",
+    "physician_name": "guido-marongiu",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/luigi-podda/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_luigi-podda",
+    "physician_name": "luigi-podda",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/maddalena-pola/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_maddalena-pola",
+    "physician_name": "maddalena-pola",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/marco-petrillo/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_marco-petrillo",
+    "physician_name": "marco-petrillo",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/margherita-dessole/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_margherita-dessole",
+    "physician_name": "margherita-dessole",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/maria-laura-de-luca/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_maria-laura-de-luca",
+    "physician_name": "maria-laura-de-luca",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/maria-pina-pintus/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_maria-pina-pintus",
+    "physician_name": "maria-pina-pintus",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/mariolina-azara/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_mariolina-azara",
+    "physician_name": "mariolina-azara",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/matteo-zucca/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_matteo-zucca",
+    "physician_name": "matteo-zucca",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/niccolo-melis/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_niccolo-melis",
+    "physician_name": "niccolo-melis",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/nicola-frau/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_nicola-frau",
+    "physician_name": "nicola-frau",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/paola-dettori/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_paola-dettori",
+    "physician_name": "paola-dettori",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/paolo-dessole/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_paolo-dessole",
+    "physician_name": "paolo-dessole",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/paolo-franca/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_paolo-franca",
+    "physician_name": "paolo-franca",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/paolo-pischedda/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_paolo-pischedda",
+    "physician_name": "paolo-pischedda",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/pietro-lisai/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_pietro-lisai",
+    "physician_name": "pietro-lisai",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/pietro-pirina/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_pietro-pirina",
+    "physician_name": "pietro-pirina",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/roberto-mancino/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_roberto-mancino",
+    "physician_name": "roberto-mancino",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/salvatore-dessole/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_salvatore-dessole",
+    "physician_name": "salvatore-dessole",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/sara-uras/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_sara-uras",
+    "physician_name": "sara-uras",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/sebastiano-traccis/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_sebastiano-traccis",
+    "physician_name": "sebastiano-traccis",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/sergio-paolo-sotgia/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_sergio-paolo-sotgia",
+    "physician_name": "sergio-paolo-sotgia",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/sonia-bove/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_sonia-bove",
+    "physician_name": "sonia-bove",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/speranza-anedda/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_speranza-anedda",
+    "physician_name": "speranza-anedda",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  },
+  "equipe/tonino-bullitta/index.html": {
+    "page_type": "equipe_detail",
+    "specialty": "multi",
+    "service_name": "medico_tonino-bullitta",
+    "physician_name": "tonino-bullitta",
+    "price_range": "none",
+    "content_group": "equipe",
+    "funnel_stage": "consideration"
+  }
+}

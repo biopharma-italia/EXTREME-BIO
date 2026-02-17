@@ -1,6 +1,31 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+<!-- Google Consent Mode v2 (MUST fire before GTM) -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'functionality_storage': 'granted',
+  'personalization_storage': 'denied',
+  'security_storage': 'granted',
+  'wait_for_update': 500
+});
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'region': ['IT', 'EU']
+});
+gtag('set', 'ads_data_redaction', true);
+gtag('set', 'url_passthrough', true);
+</script>
+<!-- End Consent Mode v2 -->
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -16,10 +41,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#00704A">
-  <meta name="description" content="Laboratorio Analisi Bio-Clinic Sassari: 1.162 esami, 26 categorie. Analisi del sangue, allergologia, genetica, marcatori tumorali. Ritiro referti online. T...">
-  <meta name="keywords" content="laboratorio analisi sassari, analisi sangue sassari, esami laboratorio sassari, prelievo sangue sassari, bio-clinic laboratorio">
-  
-  <title>Laboratorio Analisi Sassari | 1.162 Esami | Bio-Clinic</title>
+  <title>Laboratorio Analisi Sassari | Esami Sangue 07-21 | Referti 4h | Bio-Clinic</title>
+  <meta name="description" content="Laboratorio analisi a Sassari aperto fino alle 21:00. 1.162 esami, analisi del sangue, ormonali e genetiche senza appuntamento. Referti urgenti in 4 ore. Prelievi dal lunedi al sabato. Prezzi online.">
+  <meta name="keywords" content="laboratorio analisi sassari, esami sangue sassari, prelievi pomeriggio sassari, analisi private sassari, costo esami sangue, laboratorio pasubio, laboratorio las, analisi aou sassari, bio-clinic laboratorio">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,16 +52,270 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <!-- Search v4.1 - Unified -->
   <link rel="stylesheet" href="/css/bio-search.css?v=20260216-v7">
   
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"MedicalClinic","@id":"https://bio-clinic.it/#organization","name":"Bio-Clinic - Laboratorio Analisi","medicalSpecialty":"Laboratory Medicine","aggregateRating":{"@type":"AggregateRating","ratingValue":"5","reviewCount":"3214","bestRating":"5","worstRating":"1"},"availableService":[{"@type":"MedicalTest","name":"Analisi del sangue"},{"@type":"MedicalTest","name":"Esami allergologici IgE"},{"@type":"MedicalTest","name":"Test genetici"},{"@type":"MedicalTest","name":"Marcatori tumorali"},{"@type":"MedicalTest","name":"Profilo ormonale"}],"areaServed":[{"@type":"City","name":"Sassari","sameAs":"https://it.wikipedia.org/wiki/Sassari"},{"@type":"AdministrativeArea","name":"Provincia di Sassari","sameAs":"https://it.wikipedia.org/wiki/Provincia_di_Sassari"},{"@type":"AdministrativeArea","name":"Nord Sardegna"}],"dateModified":"2026-02-17"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://bio-clinic.it/"},{"@type":"ListItem","position":2,"name":"Specialità","item":"https://bio-clinic.it/specialita/"},{"@type":"ListItem","position":3,"name":"Laboratorio","item":"https://bio-clinic.it/specialita/laboratorio/"}]}]}</script>
+  <!-- Schema.org MedicalBusiness + FAQPage + AggregateRating + OfferCatalog -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "MedicalBusiness",
+        "@id": "https://bio-clinic.it/laboratorio/#organization",
+        "name": "Bio-Clinic Laboratorio Analisi Sassari",
+        "alternateName": ["Laboratorio Bio-Clinic", "Analisi Bio-Clinic Sassari"],
+        "description": "Laboratorio analisi cliniche a Sassari aperto fino alle 21:00. Oltre 1.162 esami disponibili, referti urgenti in 4 ore, accesso diretto senza prenotazione.",
+        "url": "https://bio-clinic.it/laboratorio/",
+        "logo": "https://bio-clinic.it/images/logo-bioclinic.png",
+        "image": "https://bio-clinic.it/images/laboratorio-analisi-sassari.jpg",
+        "telephone": "+39 079 956 1332",
+        "email": "laboratorio@bio-clinic.it",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Via Renzo Mossa, 23",
+          "addressLocality": "Sassari",
+          "addressRegion": "SS",
+          "postalCode": "07100",
+          "addressCountry": "IT"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 40.7267,
+          "longitude": 8.5592
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "07:00",
+            "closes": "21:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
+            "opens": "08:00",
+            "closes": "14:00"
+          }
+        ],
+        "priceRange": "$$",
+        "paymentAccepted": ["Cash", "Credit Card", "Debit Card", "Bank Transfer"],
+        "currenciesAccepted": "EUR",
+        "areaServed": [
+          {"@type": "City", "name": "Sassari", "sameAs": "https://it.wikipedia.org/wiki/Sassari"},
+          {"@type": "AdministrativeArea", "name": "Provincia di Sassari", "sameAs": "https://it.wikipedia.org/wiki/Provincia_di_Sassari"},
+          {"@type": "AdministrativeArea", "name": "Nord Sardegna"}
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "reviewCount": "3414",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Esami di Laboratorio",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {"@type": "MedicalTest", "name": "Emocromo Completo", "description": "Analisi completa del sangue con conta cellulare"},
+              "price": "5.00", "priceCurrency": "EUR"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {"@type": "MedicalTest", "name": "TSH - Tireotropina", "description": "Esame funzionalita tiroidea"},
+              "price": "12.00", "priceCurrency": "EUR"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {"@type": "MedicalTest", "name": "Vitamina D", "description": "Dosaggio 25-OH Vitamina D"},
+              "price": "22.00", "priceCurrency": "EUR"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {"@type": "MedicalTest", "name": "Check-Up Donna Under 40", "description": "17 esami completi per donna under 40"},
+              "price": "97.00", "priceCurrency": "EUR"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {"@type": "MedicalTest", "name": "Check-Up Uomo Under 40", "description": "Screening completo uomo under 40"},
+              "price": "75.00", "priceCurrency": "EUR"
+            }
+          ]
+        },
+        "sameAs": [
+          "https://www.facebook.com/bioclinicss",
+          "https://www.instagram.com/bioclinicsassari"
+        ],
+        "dateModified": "2026-02-17"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://bio-clinic.it/laboratorio/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Qual e l'orario di apertura del laboratorio Bio-Clinic a Sassari?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Il Laboratorio Bio-Clinic Sassari e aperto dal Lunedi al Venerdi dalle 07:00 alle 21:00, e il Sabato dalle 08:00 alle 14:00. Siamo l'unico laboratorio a Sassari con orario continuato fino alle 21, ideale per chi lavora e non puo assentarsi durante l'orario d'ufficio."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Serve la prenotazione per fare gli esami del sangue?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No, al Laboratorio Bio-Clinic l'accesso e diretto senza prenotazione. Puoi presentarti direttamente in Via Renzo Mossa 23 a Sassari durante gli orari di apertura. Per i prelievi del sangue e consigliato presentarsi a digiuno entro le ore 10:00."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "In quanto tempo ricevo i risultati degli esami?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "I referti standard sono disponibili in 24 ore. Per urgenze offriamo il servizio REFERTO URGENTE con risultati in sole 4 ore (supplemento 15 euro). I referti sono consultabili online nel nostro portale pazienti o ritirabili in sede."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quanto costa un emocromo completo a Bio-Clinic?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "L'emocromo completo costa 5 euro. Altri esami frequenti: Glicemia 2 euro, Colesterolo 2 euro, TSH 12 euro, Vitamina D 22 euro. Offriamo anche pacchetti check-up completi: Check-Up Donna 97 euro, Check-Up Uomo 75 euro, Check-Up Bambino 59,90 euro."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Posso fare esami nel pomeriggio a Sassari?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Si! Bio-Clinic e l'unico laboratorio a Sassari aperto con orario continuato fino alle 21:00. Puoi fare prelievi ed esami anche nel tardo pomeriggio dopo il lavoro. Alcuni esami non richiedono il digiuno e possono essere effettuati a qualsiasi ora."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quali esami si possono fare senza digiuno?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Molti esami non richiedono digiuno: esami ormonali (TSH, FT3, FT4), markers tumorali (PSA, CEA, CA125), esami urine, tamponi, esami genetici, Vitamina D, sierologie (HIV, epatite, toxoplasma). Contattaci per verificare la preparazione specifica."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Bio-Clinic e convenzionato con assicurazioni o mutue?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Si, Bio-Clinic e convenzionato con le principali assicurazioni sanitarie e fondi integrativi: Unisalute, Previmedical, Blue Assistance, Generali Welion, Fasi, Faschim, e molti altri. Porta la tessera e verificheremo la copertura."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Come raggiungo il laboratorio Bio-Clinic a Sassari?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Bio-Clinic si trova in Via Renzo Mossa 23, Sassari (zona Li Punti). Parcheggio gratuito disponibile. Raggiungibile con autobus linee 8 e 18. A 5 minuti dall'uscita della superstrada per Alghero. Coordinate GPS: 40.7267, 8.5592."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Fate anche esami genetici e test DNA?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Si, offriamo una vasta gamma di test genetici: test di paternita, screening genetico prenatale (NIPT), test predisposizione tumori (BRCA1/BRCA2), intolleranze alimentari genetiche, farmacogenetica. I campioni vengono analizzati in laboratori certificati."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quali metodi di pagamento accettate?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Accettiamo tutti i metodi di pagamento: contanti, carte di credito/debito (Visa, Mastercard, Maestro), Bancomat, bonifico bancario. Le fatture sono detraibili fiscalmente al 19% come spese sanitarie."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bio-clinic.it/"},
+          {"@type": "ListItem", "position": 2, "name": "Laboratorio Analisi", "item": "https://bio-clinic.it/laboratorio/"}
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://bio-clinic.it/laboratorio/#webpage",
+        "url": "https://bio-clinic.it/laboratorio/",
+        "name": "Laboratorio Analisi Sassari 07-21 | 1.162 Esami | Referti in 4h | Bio-Clinic",
+        "description": "L'unico Laboratorio a Sassari aperto fino alle 21:00. Esami del sangue, ormonali e genetici senza appuntamento. Referti urgenti in 4 ore.",
+        "isPartOf": {"@id": "https://bio-clinic.it/#website"},
+        "about": {"@id": "https://bio-clinic.it/laboratorio/#organization"},
+        "datePublished": "2024-01-15",
+        "dateModified": "2026-02-17",
+        "inLanguage": "it-IT"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Schema.org MedicalLaboratory per Google AI / Ricerche Vocali -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalLaboratory",
+    "name": "Laboratorio Analisi Bio-Clinic Sassari",
+    "image": "https://bio-clinic.it/images/logo-bioclinic.png",
+    "telephone": "+390799561332",
+    "url": "https://bio-clinic.it/laboratorio/",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Via Renzo Mossa 23",
+      "addressLocality": "Sassari",
+      "postalCode": "07100",
+      "addressCountry": "IT"
+    },
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "07:00", "closes": "21:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "14:00"}
+    ],
+    "medicalSpecialty": ["Pathology", "LaboratoryScience"],
+    "availableService": [
+      {"@type": "MedicalTest", "name": "Emocromo Urgente"},
+      {"@type": "MedicalTest", "name": "Beta HCG in 4 ore"},
+      {"@type": "MedicalTest", "name": "Test DNA Fetale NIPT"}
+    ],
+    "isAcceptingNewPatients": true,
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "3414",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  }
+  </script>
+
     <link rel="canonical" href="https://bio-clinic.it/laboratorio/">
-    <!-- Open Graph -->
-    <meta property="og:title" content="Laboratorio Analisi Sassari | 1.162 Esami | Bio-Clinic">
-    <meta property="og:description" content="Laboratorio Analisi Bio-Clinic Sassari: 1.162 esami, 26 categorie. Analisi del sangue, allergologia, genetica, marcatori tumorali. Ritiro referti online. T">
+    
+    <!-- Open Graph OTTIMIZZATO -->
+    <meta property="og:title" content="Laboratorio Analisi Sassari | Aperto 07-21 | 1.162 Esami | Referti in 4h">
+    <meta property="og:description" content="L'unico laboratorio a Sassari aperto fino alle 21. 1.162 esami sangue, ormonali, genetici. Referti urgenti in 4 ore. Confronta i nostri prezzi!">
     <meta property="og:type" content="website">
     <meta property="article:modified_time" content="2026-02-17T10:00:00+01:00">
-    <meta property="og:image" content="https://bio-clinic.it/images/laboratorio-hero.jpg">
+    <meta property="og:image" content="https://bio-clinic.it/images/laboratorio-analisi-sassari-og.jpg">
     <meta property="og:url" content="https://bio-clinic.it/laboratorio/">
     <meta property="og:site_name" content="Bio-Clinic Sassari">
+    <meta property="og:locale" content="it_IT">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Laboratorio Analisi Sassari | Aperto 07-21 | 1.162 Esami | Referti in 4h">
+    <meta name="twitter:description" content="L'unico laboratorio a Sassari aperto fino alle 21. 1.162 esami sangue, ormonali, genetici senza appuntamento.">
+    
+    <!-- GEO & Local SEO -->
+    <meta name="geo.region" content="IT-SS">
+    <meta name="geo.placename" content="Sassari">
+    <meta name="geo.position" content="40.7267;8.5592">
+    <meta name="ICBM" content="40.7267, 8.5592">
+
   <link rel="stylesheet" href="/css/header-spacing-fix.css?v=1769644194">
 
 <style>
@@ -45,13 +323,232 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 body{padding-top:100px!important;margin:0!important}
 .header{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:9999!important;background:#fff!important;box-shadow:0 2px 10px rgba(0,0,0,0.1)!important}
 .trust-bar{margin-top:15px!important;padding-top:1.5rem!important}
+
+/* Lab Hero & Components */
+:root {
+  --lab-primary: #00A651;
+  --lab-secondary: #26A69A;
+}
+
+.lab-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  overflow: visible !important;
+}
+
+.lab-stat {
+  text-align: center;
+  overflow: visible !important;
+  padding: 0.5rem 0;
+}
+
+.lab-stat-number {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 2.5rem;
+  font-weight: 700;
+  display: block;
+  line-height: 1.5 !important;
+  padding: 0.5rem 0 !important;
+  overflow: visible !important;
+  min-height: 4rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Search Box */
+.lab-search-section {
+  background: white;
+  margin-top: -3rem;
+  margin-bottom: 2rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+.lab-search-box {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.lab-search-input {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.lab-search-input:focus {
+  border-color: var(--lab-primary);
+  box-shadow: 0 0 0 3px rgba(0, 166, 81, 0.1);
+}
+
+.lab-search-btn {
+  padding: 1rem 2rem;
+  background: var(--lab-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lab-search-btn:hover {
+  background: #008C44;
+  transform: translateY(-1px);
+}
+
+.search-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.suggestion-tag {
+  padding: 0.5rem 1rem;
+  background: var(--gray-100);
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.suggestion-tag:hover {
+  background: var(--lab-primary);
+  color: white;
+}
+
+/* Results */
+.results-section { display: none; margin-top: 2rem; }
+.results-section.active { display: block; }
+
+/* Pack Card */
+.pack-suggestion {
+  background: linear-gradient(135deg, #fff9e6 0%, #fff3cc 100%);
+  border: 2px solid #f0c14b;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.pack-icon { font-size: 3rem; }
+.pack-info h3 { margin: 0 0 0.5rem; color: var(--gray-900); }
+.pack-price { font-size: 1.5rem; font-weight: 700; color: var(--lab-primary); }
+.pack-savings { font-size: 0.9rem; color: #d4a017; font-weight: 500; }
+
+/* Exam Cards */
+.exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem; }
+.exam-card { background: white; border: 1px solid var(--gray-100); border-radius: var(--radius-md); padding: 1.25rem; transition: all 0.3s ease; }
+.exam-card:hover { box-shadow: var(--shadow-md); border-color: var(--lab-primary); }
+.exam-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
+.exam-name { font-weight: 600; color: var(--gray-900); font-size: 1rem; }
+.exam-price { font-weight: 700; color: var(--lab-primary); white-space: nowrap; }
+.exam-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+.exam-tag { font-size: 0.75rem; padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); background: var(--gray-100); color: var(--gray-600); }
+.exam-tag.cat { background: #e3f2fd; color: #1565c0; }
+.exam-tag.prep { background: #fff3e0; color: #e65100; }
+.exam-tag.referto { background: #e8f5e9; color: #2e7d32; }
+.exam-tag.urgente { background: #ffebee; color: #c62828; font-weight: 600; }
+
+/* Pack Grid */
+.pack-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+.pack-card { background: white; border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-sm); border: 2px solid transparent; transition: all 0.3s ease; text-decoration: none; color: inherit; display: block; }
+.pack-card:hover { border-color: var(--lab-primary); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.pack-card-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.pack-card-icon { font-size: 2.5rem; }
+.pack-card-info h3 { margin: 0 0 0.25rem; font-size: 1.1rem; }
+.pack-card-price { font-size: 1.5rem; font-weight: 700; color: var(--lab-primary); }
+.pack-card-desc { color: var(--gray-600); font-size: 0.9rem; margin-bottom: 1rem; }
+.pack-card-exams { font-size: 0.85rem; color: var(--gray-500); }
+.pack-card-cta { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--gray-100); }
+
+/* Categories */
+.category-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+.category-tab { padding: 0.5rem 1rem; background: var(--gray-100); border: none; border-radius: var(--radius-full); cursor: pointer; font-size: 0.9rem; transition: all 0.2s ease; }
+.category-tab:hover, .category-tab.active { background: var(--lab-primary); color: white; }
+
+@media (max-width: 768px) {
+  .lab-stats { gap: 1.5rem; }
+  .lab-stat-number { font-size: 2rem; min-height: 2.8rem; }
+  .lab-search-box { flex-direction: column; }
+  .pack-suggestion { flex-direction: column; text-align: center; }
+}
+
+@keyframes pulse-prenota {
+  0% { box-shadow: 0 0 0 0 rgba(255,193,7,0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(255,193,7,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,193,7,0); }
+}
+.btn-prenota-pulse:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 25px rgba(255,152,0,0.5) !important;
+  animation: none !important;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
 </style>
+<!-- CGE: Clinical Growth Engine v1.0 -->
+<script>
+window.bcDataLayer = {"page_type": "hub", "specialty": "laboratorio", "service_name": "none", "physician_name": "none", "price_range": "none", "content_group": "laboratorio_hub", "funnel_stage": "awareness"};
+</script>
+<script src="/js/cge-tracking.js?v=CGE_v1_20260216" defer></script>
+<!-- End CGE -->
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWZWX5RS"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+  <!-- NOSCRIPT FALLBACK FOR SEO CRAWLERS -->
+  <noscript>
+    <div style="padding: 20px; max-width: 1200px; margin: 0 auto; font-family: Arial, sans-serif;">
+      <h1>Laboratorio Analisi Sassari - Esami del Sangue Bio-Clinic</h1>
+      <p><strong>Via Renzo Mossa 23, Sassari | Tel: 079 956 1332</strong></p>
+      <p><strong>Accesso Diretto senza prenotazione</strong> | Referti in giornata | Aperto Lun-Ven 7:00-21:00, Sab 8:00-14:00</p>
+      
+      <h2>Pacchetti Check-Up Analisi Sangue Sassari - Listino Prezzi</h2>
+      <ul>
+        <li><strong>Check Up Base</strong> - 55 euro (18 esami: Emocromo, Glicemia, Colesterolo, GOT, GPT, TSH...)</li>
+        <li><strong>Check Up Donna Under 40</strong> - 97 euro (17 esami: Ferro, Ferritina, Vitamina D, Acido Folico...)</li>
+        <li><strong>Check Up Donna Over 40</strong> - 75 euro (Screening completo con markers tumorali)</li>
+        <li><strong>Check Up Uomo Under 40</strong> - 75 euro (PSA, Testosterone, Profilo Lipidico...)</li>
+        <li><strong>Check Up Uomo Over 40</strong> - 124,99 euro (Screening prostata e cuore)</li>
+        <li><strong>Check Up Bambino</strong> - 59,90 euro (Screening pediatrico completo)</li>
+        <li><strong>Check Up Tiroide Base</strong> - 29 euro (TSH, FT3, FT4)</li>
+        <li><strong>Check Up Tiroide Plus</strong> - 85,90 euro (Tiroide + Anticorpi)</li>
+        <li><strong>Check Up Cardiologico Plus</strong> - 125 euro (Profilo lipidico completo + markers cardiaci)</li>
+        <li><strong>Check Up Pre Gravidanza</strong> - 185 euro (Screening completo fertilita)</li>
+        <li><strong>Profilo Renale</strong> - 29 euro | <strong>Profilo Epatico</strong> - 75 euro</li>
+      </ul>
+      
+      <h2>Esami del Sangue Piu Richiesti a Sassari</h2>
+      <ul>
+        <li>Emocromo Completo - 5 euro | Glicemia - 2 euro | Colesterolo Totale - 2 euro</li>
+        <li>TSH - 12 euro | FT3 - 12 euro | FT4 - 12 euro | Vitamina D - 22 euro</li>
+        <li>Ferritina - 8 euro | Sideremia - 3 euro | PSA Totale - 15 euro</li>
+        <li>Beta HCG (Test Gravidanza) - 18 euro | Urine Completo - 4 euro</li>
+        <li>GOT/AST - 2 euro | GPT/ALT - 2 euro | Creatinina - 2 euro | Uricemia - 2 euro</li>
+        <li>Trigliceridi - 3 euro | HDL - 3 euro | LDL - 3 euro</li>
+      </ul>
+      
+      <p><a href="tel:+390799561332">Chiama ora: 079 956 1332</a> | <a href="https://wa.me/390799561332">WhatsApp</a></p>
+    </div>
+  </noscript>
+  <!-- END NOSCRIPT -->
+  
   <!-- Header -->
   <!-- HEADER PRINCIPALE -->
 <header class="header">
@@ -91,9 +588,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         
         <!-- LABORATORIO -->
         <li class="nav-item">
-          <a href="/laboratorio/" class="nav-link" title="Laboratorio Analisi - 1.136 Esami">Laboratorio</a>
+          <a href="/laboratorio/" class="nav-link active" title="Laboratorio Analisi - 1.162 Esami">Laboratorio</a>
         </li>
-        
         
         <!-- AZIENDE -->
         <li class="nav-item">
@@ -107,15 +603,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <a href="/ginecologia/" title="Ginecologia e Ostetricia" role="menuitem">
               <span>👩‍⚕️</span> Ginecologia
             </a>
-            <a href="/pma-fertilita/" title="PMA e Fertilità" role="menuitem">
-              <span>👶</span> PMA / Fertilità
+            <a href="/pma-fertilita/" title="PMA e Fertilita" role="menuitem">
+              <span>👶</span> PMA / Fertilita
             </a>
             <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
             <span style="font-size: 0.7rem; color: #888; padding: 0.25rem 0.75rem; display: block;">Diagnostica Avanzata (Prof. Dessole)</span>
             <a href="/ginecologia/isteroscopia/" title="Isteroscopia Diagnostica" role="menuitem">
               <span>🔍</span> Isteroscopia Diagnostica
             </a>
-            <a href="/ginecologia/isterosalpingografia/" title="Isterosalpingografia - Pervietà Tubarica" role="menuitem">
+            <a href="/ginecologia/isterosalpingografia/" title="Isterosalpingografia - Pervieta Tubarica" role="menuitem">
               <span>🩺</span> Isterosalpingografia (Tube)
             </a>
           </div>
@@ -123,7 +619,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         
         <!-- SPECIALISTI -->
         <li class="nav-item">
-          <a href="#" class="nav-link " title="Specialità Mediche" aria-haspopup="true" aria-expanded="false">Specialisti</a>
+          <a href="#" class="nav-link " title="Specialita Mediche" aria-haspopup="true" aria-expanded="false">Specialisti</a>
           <div class="nav-dropdown nav-dropdown-wide" role="menu">
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; min-width: 320px;">
               <a href="/cardiologia/" title="Cardiologia" role="menuitem">❤️ Cardiologia</a>
@@ -134,11 +630,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <a href="/ortopedia/" title="Ortopedia" role="menuitem">🦴 Ortopedia</a>
             </div>
             <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
-            <a href="/specialita/" title="Tutte le Specialità" role="menuitem" style="font-weight: 600; color: var(--primary);">
-              Tutte le Specialità →
+            <a href="/specialita/" title="Tutte le Specialita" role="menuitem" style="font-weight: 600; color: var(--primary);">
+              Tutte le Specialita →
             </a>
-            <a href="/equipe/" title="Équipe Medica" role="menuitem" style="font-weight: 600;">
-              👨‍⚕️ Équipe Medica (48 Specialisti)
+            <a href="/equipe/" title="Equipe Medica" role="menuitem" style="font-weight: 600;">
+              👨‍⚕️ Equipe Medica (48 Specialisti)
             </a>
           </div>
         </li>
@@ -203,7 +699,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="mobile-nav-section-title">Donna & PMA</span>
       <ul>
         <li><a href="/ginecologia/">👩‍⚕️ Ginecologia</a></li>
-        <li><a href="/pma-fertilita/">👶 PMA / Fertilità</a></li>
+        <li><a href="/pma-fertilita/">👶 PMA / Fertilita</a></li>
         <li style="padding-top: 0.5rem; border-top: 1px solid #eee; margin-top: 0.5rem;">
           <span style="font-size: 0.7rem; color: #888;">Diagnostica Avanzata</span>
         </li>
@@ -220,8 +716,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="/neurologia/">🧠 Neurologia</a></li>
         <li><a href="/oculistica/">👁️ Oculistica</a></li>
         <li><a href="/ortopedia/">🦴 Ortopedia</a></li>
-        <li><a href="/specialita/" style="font-weight: 600;">→ Tutte le Specialità</a></li>
-        <li><a href="/equipe/" style="font-weight: 600;">👨‍⚕️ Équipe (48 Medici)</a></li>
+        <li><a href="/specialita/" style="font-weight: 600;">→ Tutte le Specialita</a></li>
+        <li><a href="/equipe/" style="font-weight: 600;">👨‍⚕️ Equipe (48 Medici)</a></li>
       </ul>
     </li>
     <li><a href="/shop/" title="Medical Shop">🛒 Medical Shop <span style="background: #E91E8C; color: white; font-size: 0.65rem; padding: 0.1rem 0.3rem; border-radius: 8px;">NEW</span></a></li>
@@ -240,415 +736,658 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- END MASTER HEADER -->
 
-  <!-- LAB SEARCH HERO - Search Optimization v1.0 -->
-  <section class="lab-search-hero" id="lab-search">
+<main class="section">
     <div class="container">
-      <h1 style="text-align:center;font-size:2rem;margin:1.5rem 0 0.5rem;color:var(--text-dark);">Laboratorio Analisi Sassari</h1>
-      <p style="text-align:center;color:var(--text-light);margin:0 0 1.5rem;font-size:1.05rem;">
-        Cerca tra 1.162 esami, pacchetti check-up e categorie diagnostiche
+      
+      <!-- ========== HERO SECTION COMPETITIVA ========== -->
+      <section class="lab-hero-dominant" style="background: linear-gradient(135deg, #00A651 0%, #00704A 100%); color: white; padding: 3rem 2rem; border-radius: 16px; margin-bottom: 2rem; text-align: center;">
+        
+        <!-- Badge Urgenza -->
+        <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 50px; margin-bottom: 1rem; font-size: 0.9rem;">
+          <span style="animation: pulse 2s infinite;">🔴</span>
+          <span><strong>UNICO A SASSARI</strong> aperto fino alle 21:00</span>
+        </div>
+        
+        <h1 style="font-size: 2.2rem; margin-bottom: 0.75rem; font-weight: 700;">Analisi del Sangue e Prelievi a Sassari</h1>
+        <p style="font-size: 1.2rem; opacity: 0.95; margin-bottom: 1.5rem;">Esami del sangue, analisi ormonali e genetiche <strong>senza appuntamento</strong>.<br>Il laboratorio analisi di riferimento a Sassari.</p>
+        
+        <!-- USP Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; max-width: 800px; margin: 0 auto 1.5rem;">
+          <div style="background: rgba(255,255,255,0.15); padding: 1rem; border-radius: 12px;">
+            <div style="font-size: 1.8rem; font-weight: 700;">07-21</div>
+            <div style="font-size: 0.85rem; opacity: 0.9;">Orario Continuato</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.15); padding: 1rem; border-radius: 12px;">
+            <div style="font-size: 1.8rem; font-weight: 700;">4h</div>
+            <div style="font-size: 0.85rem; opacity: 0.9;">Referti Urgenti</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.15); padding: 1rem; border-radius: 12px;">
+            <div style="font-size: 1.8rem; font-weight: 700;">1.162+</div>
+            <div style="font-size: 0.85rem; opacity: 0.9;">Esami Disponibili</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.15); padding: 1rem; border-radius: 12px;">
+            <div style="font-size: 1.8rem; font-weight: 700;">0&euro;</div>
+            <div style="font-size: 0.85rem; opacity: 0.9;">Prenotazione</div>
+          </div>
+        </div>
+        
+        <!-- CTA Buttons -->
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+          <a href="tel:+390799561332" style="display: inline-flex; align-items: center; gap: 0.5rem; background: white; color: #00704A; padding: 0.9rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+            📞 Chiama Ora: 079 956 1332
+          </a>
+          <a href="https://wa.me/390799561332?text=Salve%2C%20vorrei%20informazioni%20sugli%20esami%20di%20laboratorio" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #25D366; color: white; padding: 0.9rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+            💬 WhatsApp Diretto
+          </a>
+          <a href="/laboratorio/prenota/" class="btn-prenota-pulse" style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #FFC107 0%, #FF9800 100%); color: #1a1a1a; padding: 1rem 2rem; border-radius: 8px; font-weight: 700; font-size: 1.1rem; text-decoration: none; box-shadow: 0 0 0 0 rgba(255,193,7,0.7); animation: pulse-prenota 2s infinite;">
+            📅 Prenota Online
+          </a>
+        </div>
+        
+        <!-- Trust Badge -->
+        <div style="margin-top: 1.5rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem; font-size: 0.9rem; opacity: 0.9;">
+          <span>⭐⭐⭐⭐⭐</span>
+          <span><strong>5/5</strong> su 3.414 recensioni</span>
+        </div>
+      </section>
+      
+      <!-- ========== TABELLA COMPARATIVA ========== -->
+      <section style="padding: 3rem 0; background: white; border-bottom: 1px solid #e5e7eb;">
+        <div style="max-width: 900px; margin: 0 auto; padding: 0 1rem;">
+          <h2 style="text-align: center; font-weight: 700; font-size: 1.5rem; margin-bottom: 2rem; color: #1f2937;">Perche scegliere il Laboratorio Analisi Bio-Clinic Sassari?</h2>
+          <div style="overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 12px; border: 1px solid #e5e7eb;">
+            <table style="width: 100%; text-align: left; border-collapse: collapse; background: white;">
+              <thead>
+                <tr style="background: #f9fafb; font-size: 0.75rem; text-transform: uppercase; color: #6b7280; letter-spacing: 0.05em;">
+                  <th style="padding: 1rem; border-bottom: 1px solid #e5e7eb;">Caratteristica</th>
+                  <th style="padding: 1rem; border-bottom: 1px solid #e5e7eb; font-weight: 700; color: #047857; background: #ecfdf5; width: 40%; text-align: center; border-left: 1px solid #d1fae5; border-right: 1px solid #d1fae5;">BIO-CLINIC</th>
+                  <th style="padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: center; color: #9ca3af;">Laboratori Standard</th>
+                </tr>
+              </thead>
+              <tbody style="font-size: 0.9rem;">
+                <tr>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #374151;">Orario Prelievi</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: center; background: #ecfdf5; font-weight: 700; color: #047857; border-left: 1px solid #d1fae5; border-right: 1px solid #d1fae5;">07:00 - 21:00 (NO STOP)</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: center; color: #6b7280;">Chiudono alle 10:30</td>
+                </tr>
+                <tr>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #374151;">Urgenze (Beta HCG, Cuore)</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: center; background: #ecfdf5; font-weight: 700; color: #047857; border-left: 1px solid #d1fae5; border-right: 1px solid #d1fae5;">Referto in 4 Ore</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: center; color: #6b7280;">Giorno successivo</td>
+                </tr>
+                <tr>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #374151;">Apertura Sabato</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: center; background: #ecfdf5; font-weight: 700; color: #047857; border-left: 1px solid #d1fae5; border-right: 1px solid #d1fae5;">Si (Fino alle 14:00)</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: center; color: #6b7280;">Spesso Chiusi</td>
+                </tr>
+                <tr>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #374151;">Esami Urgenza</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: center; background: #ecfdf5; font-weight: 700; color: #047857; border-left: 1px solid #d1fae5; border-right: 1px solid #d1fae5;">Processiamo Internamente il 100%</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: center; color: #6b7280;">Service Esterno</td>
+                </tr>
+                <tr>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #374151;">Staff</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: center; background: #ecfdf5; font-weight: 700; color: #047857; border-left: 1px solid #d1fae5; border-right: 1px solid #d1fae5;">Biologi Esperti</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: center; color: #6b7280;">Personale Generico</td>
+                </tr>
+                <tr>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #374151;">Certificazioni</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: center; background: #ecfdf5; font-weight: 700; color: #047857; border-left: 1px solid #d1fae5; border-right: 1px solid #d1fae5;">ISO 9001 + ISO 14001</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: center; color: #6b7280;">Non Certificati</td>
+                </tr>
+                <tr>
+                  <td style="padding: 1rem; font-weight: 600; color: #374151;">Prenotazione</td>
+                  <td style="padding: 1rem; text-align: center; background: #ecfdf5; font-weight: 700; color: #047857; border-left: 1px solid #d1fae5; border-right: 1px solid #d1fae5;">NON NECESSARIA</td>
+                  <td style="padding: 1rem; text-align: center; color: #6b7280;">Obbligatoria</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      
+      <!-- ========== SEARCH BOX v4.1 ========== -->
+      <section class="bs-search-section" style="background: white; margin-top: -3rem; margin-bottom: 2rem; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); padding: 2rem; position: relative; z-index: 10;">
+        <h2 style="margin: 0 0 1rem; text-align: center; font-size: 1.3rem;">🔍 Cerca tra 1.162 esami, pacchetti e categorie</h2>
+        <div class="bs-search-wrap" style="position: relative;">
+          <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+            <input 
+              type="text" 
+              id="lab-search-input"
+              data-bs-search="lab"
+              class="lab-search-input" 
+              placeholder="Es: TSH, colesterolo, stanchezza, controllo tiroide..."
+              autocomplete="off"
+              aria-expanded="false"
+              aria-label="Cerca esami di laboratorio"
+              style="flex: 1; padding: 1rem 1.5rem; font-size: 1.1rem; border: 2px solid #e5e7eb; border-radius: 12px; outline: none; transition: all 0.3s ease;"
+            >
+          </div>
+          <div class="search-suggestions" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+            <span class="suggestion-tag" data-bs-query="stanchezza" style="padding: 0.5rem 1rem; background: #f3f4f6; border-radius: 50px; font-size: 0.9rem; cursor: pointer; transition: all 0.2s;">😴 Stanchezza</span>
+            <span class="suggestion-tag" data-bs-query="tiroide" style="padding: 0.5rem 1rem; background: #f3f4f6; border-radius: 50px; font-size: 0.9rem; cursor: pointer; transition: all 0.2s;">🦋 Tiroide</span>
+            <span class="suggestion-tag" data-bs-query="colesterolo" style="padding: 0.5rem 1rem; background: #f3f4f6; border-radius: 50px; font-size: 0.9rem; cursor: pointer; transition: all 0.2s;">❤️ Colesterolo</span>
+            <span class="suggestion-tag" data-bs-query="ferro" style="padding: 0.5rem 1rem; background: #f3f4f6; border-radius: 50px; font-size: 0.9rem; cursor: pointer; transition: all 0.2s;">💪 Ferro</span>
+            <span class="suggestion-tag" data-bs-query="prostata" style="padding: 0.5rem 1rem; background: #f3f4f6; border-radius: 50px; font-size: 0.9rem; cursor: pointer; transition: all 0.2s;">👨 Prostata</span>
+            <span class="suggestion-tag" data-bs-query="gravidanza" style="padding: 0.5rem 1rem; background: #f3f4f6; border-radius: 50px; font-size: 0.9rem; cursor: pointer; transition: all 0.2s;">🤰 Gravidanza</span>
+            <span class="suggestion-tag" data-bs-query="vitamina d" style="padding: 0.5rem 1rem; background: #f3f4f6; border-radius: 50px; font-size: 0.9rem; cursor: pointer; transition: all 0.2s;">☀️ Vitamina D</span>
+            <span class="suggestion-tag" data-bs-query="emocromo" style="padding: 0.5rem 1rem; background: #f3f4f6; border-radius: 50px; font-size: 0.9rem; cursor: pointer; transition: all 0.2s;">🩸 Emocromo</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== PACK CHECK-UP STATICI ========== -->
+      <section id="packSection" style="margin-bottom: 3rem;">
+        <h2 style="margin-bottom: 0.5rem; font-size: 1.5rem;">📦 20 Check-Up e Pacchetti Analisi</h2>
+        <p style="color: #6b7280; margin-bottom: 2rem;">Risparmia scegliendo un pacchetto completo. 20 profili disponibili per prevenzione, sport, gravidanza, screening oncologico e molto altro. Accesso diretto, senza prenotazione.</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;">
+          
+          <!-- 1. Check-up Base -->
+          <div style="background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 2px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#00A651'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,166,81,0.15)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <span style="font-size: 2.5rem;">🛡️</span>
+              <div><h3 style="margin: 0 0 0.25rem; font-size: 1.1rem;">Check-up Base</h3><span style="font-size: 0.85rem; color: #6b7280;">Tutti gli adulti</span></div>
+            </div>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">7 esami essenziali per un controllo completo: emocromo, glicemia, colesterolo, creatinina, azotemia, urine, VES.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #f3f4f6;">
+              <span style="color: #00A651; font-weight: 600; font-size: 0.9rem;">Risparmi 15%</span>
+              <a href="tel:+390799561332" style="color: #00A651; font-weight: 600; text-decoration: none;">Prenota →</a>
+            </div>
+          </div>
+
+          <!-- 2. Check-up Completo -->
+          <div style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 2px solid #00A651; position: relative; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,166,81,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'">
+            <div style="position: absolute; top: -10px; right: 16px; background: #00A651; color: white; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700;">PIU RICHIESTO</div>
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <span style="font-size: 2.5rem;">⭐</span>
+              <div><h3 style="margin: 0 0 0.25rem; font-size: 1.1rem;">Check-up Completo</h3><span style="font-size: 0.85rem; color: #6b7280;">Controllo approfondito</span></div>
+            </div>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">19 esami a 360°: emocromo, profilo lipidico completo, fegato (GOT, GPT, GGT), tiroide (TSH, FT4), vitamina D, ferritina, reni, urine, VES, PCR.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #bbf7d0;">
+              <span style="color: #00A651; font-weight: 700; font-size: 0.9rem;">Risparmi 25%</span>
+              <a href="tel:+390799561332" style="background: #00A651; color: white; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 0.9rem;">Prenota →</a>
+            </div>
+          </div>
+
+          <!-- 3. Profilo Tiroide Completo -->
+          <div style="background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 2px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#00A651'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,166,81,0.15)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <span style="font-size: 2.5rem;">🦋</span>
+              <div><h3 style="margin: 0 0 0.25rem; font-size: 1.1rem;">Profilo Tiroide Completo</h3><span style="font-size: 0.85rem; color: #6b7280;">Sintomi tiroidei o familiarita</span></div>
+            </div>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">4 esami: TSH ultrasensibile, FT3, FT4, Anti-TPO. Screening completo della funzione tiroidea e autoimmunita.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #f3f4f6;">
+              <span style="color: #00A651; font-weight: 600; font-size: 0.9rem;">Risparmi 20%</span>
+              <a href="tel:+390799561332" style="color: #00A651; font-weight: 600; text-decoration: none;">Prenota →</a>
+            </div>
+          </div>
+
+          <!-- 4. Check-up Cardiovascolare -->
+          <div style="background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 2px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#00A651'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,166,81,0.15)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <span style="font-size: 2.5rem;">❤️</span>
+              <div><h3 style="margin: 0 0 0.25rem; font-size: 1.1rem;">Check-up Cardiovascolare</h3><span style="font-size: 0.85rem; color: #6b7280;">Rischio cardiovascolare</span></div>
+            </div>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">6 esami: colesterolo totale, HDL, LDL, trigliceridi, glicemia, PCR. Profilo lipidico completo per il tuo cuore.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #f3f4f6;">
+              <span style="color: #00A651; font-weight: 600; font-size: 0.9rem;">Risparmi 18%</span>
+              <a href="tel:+390799561332" style="color: #00A651; font-weight: 600; text-decoration: none;">Prenota →</a>
+            </div>
+          </div>
+
+          <!-- 5. Profilo Diabete -->
+          <div style="background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 2px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#00A651'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,166,81,0.15)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <span style="font-size: 2.5rem;">🔬</span>
+              <div><h3 style="margin: 0 0 0.25rem; font-size: 1.1rem;">Profilo Diabete</h3><span style="font-size: 0.85rem; color: #6b7280;">Diabetici o persone a rischio</span></div>
+            </div>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">2 esami chiave: glicemia a digiuno + emoglobina glicata (HbA1c). Controllo del compenso glicemico a breve e lungo termine.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #f3f4f6;">
+              <span style="color: #00A651; font-weight: 600; font-size: 0.9rem;">Risparmi 10%</span>
+              <a href="tel:+390799561332" style="color: #00A651; font-weight: 600; text-decoration: none;">Prenota →</a>
+            </div>
+          </div>
+
+          <!-- 6. Profilo Epatico -->
+          <div style="background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 2px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#00A651'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,166,81,0.15)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <span style="font-size: 2.5rem;">🫀</span>
+              <div><h3 style="margin: 0 0 0.25rem; font-size: 1.1rem;">Profilo Epatico</h3><span style="font-size: 0.85rem; color: #6b7280;">Sospetta epatopatia o uso farmaci</span></div>
+            </div>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">3 esami: AST/GOT, ALT/GPT, Gamma-GT. Valutazione completa della funzione epatica e dello stato del fegato.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #f3f4f6;">
+              <span style="color: #00A651; font-weight: 600; font-size: 0.9rem;">Risparmi 15%</span>
+              <a href="tel:+390799561332" style="color: #00A651; font-weight: 600; text-decoration: none;">Prenota →</a>
+            </div>
+          </div>
+
+          <!-- 7. Profilo Renale -->
+          <div style="background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 2px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#00A651'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,166,81,0.15)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <span style="font-size: 2.5rem;">💧</span>
+              <div><h3 style="margin: 0 0 0.25rem; font-size: 1.1rem;">Profilo Renale</h3><span style="font-size: 0.85rem; color: #6b7280;">Ipertensione, diabete o familiarita</span></div>
+            </div>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">3 esami: creatinina, azotemia, esame urine completo. Screening della funzione renale e nefropatia.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #f3f4f6;">
+              <span style="color: #00A651; font-weight: 600; font-size: 0.9rem;">Risparmi 12%</span>
+              <a href="tel:+390799561332" style="color: #00A651; font-weight: 600; text-decoration: none;">Prenota →</a>
+            </div>
+          </div>
+
+          <!-- 8. Check-up Donna Over 40 -->
+          <div style="background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 2px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#E91E8C'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(233,30,140,0.15)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <span style="font-size: 2.5rem;">👩</span>
+              <div><h3 style="margin: 0 0 0.25rem; font-size: 1.1rem;">Check-up Donna Over 40</h3><span style="font-size: 0.85rem; color: #6b7280;">Menopausa, osteoporosi, anemia</span></div>
+            </div>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">7 esami mirati: emocromo, TSH, ferritina, vitamina D, colesterolo totale, HDL, glicemia. Salute femminile dopo i 40.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #f3f4f6;">
+              <span style="color: #E91E8C; font-weight: 600; font-size: 0.9rem;">Risparmi 22%</span>
+              <a href="tel:+390799561332" style="color: #E91E8C; font-weight: 600; text-decoration: none;">Prenota →</a>
+            </div>
+          </div>
+
+          <!-- 9. Check-up Uomo Over 40 -->
+          <div style="background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 2px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#1565c0'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(21,101,192,0.15)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <span style="font-size: 2.5rem;">👨</span>
+              <div><h3 style="margin: 0 0 0.25rem; font-size: 1.1rem;">Check-up Uomo Over 40</h3><span style="font-size: 0.85rem; color: #6b7280;">Prostata, cardiovascolare</span></div>
+            </div>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">7 esami mirati: emocromo, PSA totale, colesterolo totale, HDL, LDL, trigliceridi, glicemia. Prevenzione maschile.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #f3f4f6;">
+              <span style="color: #1565c0; font-weight: 600; font-size: 0.9rem;">Risparmi 22%</span>
+              <a href="tel:+390799561332" style="color: #1565c0; font-weight: 600; text-decoration: none;">Prenota →</a>
+            </div>
+          </div>
+
+          <!-- 10. Profilo Anemia -->
+          <div style="background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 2px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#00A651'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,166,81,0.15)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <span style="font-size: 2.5rem;">🩸</span>
+              <div><h3 style="margin: 0 0 0.25rem; font-size: 1.1rem;">Profilo Anemia</h3><span style="font-size: 0.85rem; color: #6b7280;">Stanchezza, pallore, mestruazioni</span></div>
+            </div>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">2 esami: emocromo completo + ferritina. Diagnosi completa di anemia e carenza di ferro.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #f3f4f6;">
+              <span style="color: #00A651; font-weight: 600; font-size: 0.9rem;">Risparmi 10%</span>
+              <a href="tel:+390799561332" style="color: #00A651; font-weight: 600; text-decoration: none;">Prenota →</a>
+            </div>
+          </div>
+
+          <!-- 11. Profilo Prostata -->
+          <div style="background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 2px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#1565c0'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(21,101,192,0.15)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <span style="font-size: 2.5rem;">♂️</span>
+              <div><h3 style="margin: 0 0 0.25rem; font-size: 1.1rem;">Profilo Prostata</h3><span style="font-size: 0.85rem; color: #6b7280;">Uomini over 50 o familiarita</span></div>
+            </div>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">PSA totale per screening precoce del tumore prostatico. Consigliato annualmente dopo i 50 anni.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #f3f4f6;">
+              <span style="color: #1565c0; font-weight: 600; font-size: 0.9rem;">Screening essenziale</span>
+              <a href="tel:+390799561332" style="color: #1565c0; font-weight: 600; text-decoration: none;">Prenota →</a>
+            </div>
+          </div>
+
+          <!-- 12. Profilo Osteoporosi -->
+          <div style="background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 2px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#00A651'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,166,81,0.15)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <span style="font-size: 2.5rem;">🦴</span>
+              <div><h3 style="margin: 0 0 0.25rem; font-size: 1.1rem;">Profilo Osteoporosi</h3><span style="font-size: 0.85rem; color: #6b7280;">Donne in menopausa, fratture</span></div>
+            </div>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">Vitamina D (25-OH) per valutazione del metabolismo osseo e rischio osteoporosi. Nessuna preparazione richiesta.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #f3f4f6;">
+              <span style="color: #00A651; font-weight: 600; font-size: 0.9rem;">Nessun digiuno</span>
+              <a href="tel:+390799561332" style="color: #00A651; font-weight: 600; text-decoration: none;">Prenota →</a>
+            </div>
+          </div>
+
+          <!-- 13. Screening MST -->
+          <div style="background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 2px solid transparent; position: relative; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#dc3545'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(220,53,69,0.15)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'">
+            <div style="position: absolute; top: -10px; right: 16px; background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700;">RISERVATO</div>
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <span style="font-size: 2.5rem;">🛡️</span>
+              <div><h3 style="margin: 0 0 0.25rem; font-size: 1.1rem;">Screening MST</h3><span style="font-size: 0.85rem; color: #6b7280;">Malattie Sessualmente Trasmesse</span></div>
+            </div>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">6 esami: HIV 1-2, Anti-HCV, HBsAg (Epatite B), VDRL, Treponema IgG e IgM. Risultati riservati, accesso diretto.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #f3f4f6;">
+              <span style="color: #dc3545; font-weight: 600; font-size: 0.9rem;">Risultati in 24h</span>
+              <a href="tel:+390799561332" style="color: #dc3545; font-weight: 600; text-decoration: none;">Prenota →</a>
+            </div>
+          </div>
+
+          <!-- 14. Profilo Pre-Gravidanza TORCH -->
+          <div style="background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 2px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#E91E8C'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(233,30,140,0.15)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <span style="font-size: 2.5rem;">🤰</span>
+              <div><h3 style="margin: 0 0 0.25rem; font-size: 1.1rem;">Profilo Pre-Gravidanza (TORCH)</h3><span style="font-size: 0.85rem; color: #6b7280;">Pianificazione gravidanza</span></div>
+            </div>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">9 esami: Toxoplasma IgG/IgM, Rosolia IgG/IgM, Citomegalovirus IgG/IgM, Emocromo, Glicemia, Esame Urine. Screening essenziale pre-concepimento.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #f3f4f6;">
+              <span style="color: #E91E8C; font-weight: 600; font-size: 0.9rem;">Nessun digiuno per TORCH</span>
+              <a href="tel:+390799561332" style="color: #E91E8C; font-weight: 600; text-decoration: none;">Prenota →</a>
+            </div>
+          </div>
+
+          <!-- 15. Screening Celiachia -->
+          <div style="background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 2px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#f59e0b'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(245,158,11,0.15)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <span style="font-size: 2.5rem;">🌾</span>
+              <div><h3 style="margin: 0 0 0.25rem; font-size: 1.1rem;">Screening Celiachia</h3><span style="font-size: 0.85rem; color: #6b7280;">Sospetta celiachia o familiarita</span></div>
+            </div>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">5 esami: Anti-Transglutaminasi IgA e IgG, Anti-Endomisio IgA, Anti-Gliadina Deamidata IgA e IgG. Pannello completo per diagnosi celiachia.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #f3f4f6;">
+              <span style="color: #f59e0b; font-weight: 600; font-size: 0.9rem;">Diagnosi completa</span>
+              <a href="tel:+390799561332" style="color: #f59e0b; font-weight: 600; text-decoration: none;">Prenota →</a>
+            </div>
+          </div>
+
+          <!-- 16. Check-up Sport -->
+          <div style="background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 2px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#2563eb'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(37,99,235,0.15)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <span style="font-size: 2.5rem;">🏃</span>
+              <div><h3 style="margin: 0 0 0.25rem; font-size: 1.1rem;">Check-up Sport</h3><span style="font-size: 0.85rem; color: #6b7280;">Sportivi e certificato sportivo</span></div>
+            </div>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">Emocromo, ferritina, glicemia, sodio, potassio, magnesio, CPK. Valutazione completa per l'attivita sportiva agonistica e amatoriale. €81,00.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #f3f4f6;">
+              <span style="color: #2563eb; font-weight: 700; font-size: 1rem;">€81,00</span>
+              <a href="tel:+390799561332" style="color: #2563eb; font-weight: 600; text-decoration: none;">Prenota →</a>
+            </div>
+          </div>
+
+          <!-- 17. Profilo Markers Tumorali -->
+          <div style="background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 2px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#7c3aed'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(124,58,237,0.15)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <span style="font-size: 2.5rem;">🎯</span>
+              <div><h3 style="margin: 0 0 0.25rem; font-size: 1.1rem;">Profilo Markers Tumorali</h3><span style="font-size: 0.85rem; color: #6b7280;">Screening oncologico generale</span></div>
+            </div>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">6 markers: CEA, CA 125, CA 15-3, CA 19-9, Alfafetoproteina, PSA totale. Pannello completo per screening tumorale di primo livello.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #f3f4f6;">
+              <span style="color: #7c3aed; font-weight: 600; font-size: 0.9rem;">Nessun digiuno</span>
+              <a href="tel:+390799561332" style="color: #7c3aed; font-weight: 600; text-decoration: none;">Prenota →</a>
+            </div>
+          </div>
+
+          <!-- 18. Check-up Bambino -->
+          <div style="background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 2px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#10b981'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(16,185,129,0.15)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <span style="font-size: 2.5rem;">👶</span>
+              <div><h3 style="margin: 0 0 0.25rem; font-size: 1.1rem;">Check-up Bambino</h3><span style="font-size: 0.85rem; color: #6b7280;">Screening pediatrico completo</span></div>
+            </div>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">Pacchetto dedicato ai bambini: emocromo, ferritina, glicemia, esami urine, funzione tiroidea. Screening di crescita e sviluppo. €59,90.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #f3f4f6;">
+              <span style="color: #10b981; font-weight: 700; font-size: 1rem;">€59,90</span>
+              <a href="tel:+390799561332" style="color: #10b981; font-weight: 600; text-decoration: none;">Prenota →</a>
+            </div>
+          </div>
+
+          <!-- 19. Check-up Donna Under 40 -->
+          <div style="background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 2px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#E91E8C'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(233,30,140,0.15)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <span style="font-size: 2.5rem;">💗</span>
+              <div><h3 style="margin: 0 0 0.25rem; font-size: 1.1rem;">Check-up Donna Under 40</h3><span style="font-size: 0.85rem; color: #6b7280;">Ferro, vitamine, tiroide, ormonale</span></div>
+            </div>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">17 esami completi: emocromo, ferro, ferritina, vitamina D, acido folico, TSH, FT4, profilo lipidico, glicemia, urine. Per la donna giovane. €97,00.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #f3f4f6;">
+              <span style="color: #E91E8C; font-weight: 700; font-size: 1rem;">€97,00</span>
+              <a href="tel:+390799561332" style="color: #E91E8C; font-weight: 600; text-decoration: none;">Prenota →</a>
+            </div>
+          </div>
+
+          <!-- 20. Check-up Uomo Under 40 -->
+          <div style="background: white; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 2px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#1565c0'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(21,101,192,0.15)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0,0,0,0.06)'">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <span style="font-size: 2.5rem;">💙</span>
+              <div><h3 style="margin: 0 0 0.25rem; font-size: 1.1rem;">Check-up Uomo Under 40</h3><span style="font-size: 0.85rem; color: #6b7280;">Profilo lipidico, PSA, testosterone</span></div>
+            </div>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1rem;">Screening completo per l'uomo giovane: emocromo, profilo lipidico, glicemia, funzione epatica, PSA, testosterone, esame urine. €75,00.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #f3f4f6;">
+              <span style="color: #1565c0; font-weight: 700; font-size: 1rem;">€75,00</span>
+              <a href="tel:+390799561332" style="color: #1565c0; font-weight: 600; text-decoration: none;">Prenota →</a>
+            </div>
+          </div>
+
+        </div>
+        
+        <!-- CTA sotto i pack -->
+        <div style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: #f0fdf4; border-radius: 12px;">
+          <p style="margin: 0 0 1rem; font-weight: 600; color: #166534;">Non trovi il pacchetto giusto? Chiamaci per un preventivo personalizzato</p>
+          <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+            <a href="tel:+390799561332" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #00A651; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none;">📞 079 956 1332</a>
+            <a href="https://wa.me/390799561332?text=Salve%2C%20vorrei%20info%20sui%20pacchetti%20check-up" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #25D366; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none;">💬 WhatsApp</a>
+          </div>
+        </div>
+      </section>
+      
+      <!-- ========== TRUST SIGNALS & COMPARAZIONE ========== -->
+      <section style="margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 16px;">
+        <h2 style="text-align: center; margin-bottom: 2rem;">🏆 Perche Scegliere Bio-Clinic?</h2>
+        
+        <!-- Confronto Competitivo -->
+        <div style="overflow-x: auto; margin-bottom: 2rem;">
+          <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <thead>
+              <tr style="background: #00A651; color: white;">
+                <th style="padding: 1rem; text-align: left;">Caratteristica</th>
+                <th style="padding: 1rem; text-align: center;">Bio-Clinic ✓</th>
+                <th style="padding: 1rem; text-align: center; opacity: 0.7;">Altri Lab</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 0.75rem 1rem;">Orario Apertura</td>
+                <td style="padding: 0.75rem 1rem; text-align: center; font-weight: 600; color: #00A651;">07:00 - 21:00</td>
+                <td style="padding: 0.75rem 1rem; text-align: center; color: #999;">08:00 - 13:00</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #eee; background: #f9f9f9;">
+                <td style="padding: 0.75rem 1rem;">Prelievi Pomeriggio</td>
+                <td style="padding: 0.75rem 1rem; text-align: center; color: #00A651;">✅ Disponibili</td>
+                <td style="padding: 0.75rem 1rem; text-align: center; color: #dc3545;">❌ Non disponibili</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 0.75rem 1rem;">Referti Urgenti</td>
+                <td style="padding: 0.75rem 1rem; text-align: center; font-weight: 600; color: #00A651;">4 ore</td>
+                <td style="padding: 0.75rem 1rem; text-align: center; color: #999;">48-72 ore</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #eee; background: #f9f9f9;">
+                <td style="padding: 0.75rem 1rem;">Prenotazione</td>
+                <td style="padding: 0.75rem 1rem; text-align: center; color: #00A651;">✅ Non necessaria</td>
+                <td style="padding: 0.75rem 1rem; text-align: center; color: #999;">Obbligatoria</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 0.75rem 1rem;">Apertura Sabato</td>
+                <td style="padding: 0.75rem 1rem; text-align: center; color: #00A651;">✅ 08:00 - 14:00</td>
+                <td style="padding: 0.75rem 1rem; text-align: center; color: #dc3545;">❌ Chiuso</td>
+              </tr>
+              <tr style="background: #f9f9f9;">
+                <td style="padding: 0.75rem 1rem;">Esami Disponibili</td>
+                <td style="padding: 0.75rem 1rem; text-align: center; font-weight: 600; color: #00A651;">1.162+</td>
+                <td style="padding: 0.75rem 1rem; text-align: center; color: #999;">~500</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Trust Badges -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+          <div style="background: white; padding: 1.25rem; border-radius: 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏥</div>
+            <div style="font-weight: 600; margin-bottom: 0.25rem;">Laboratorio Certificato</div>
+            <div style="font-size: 0.85rem; color: #666;">ISO 9001:2015</div>
+          </div>
+          <div style="background: white; padding: 1.25rem; border-radius: 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">👨‍⚕️</div>
+            <div style="font-weight: 600; margin-bottom: 0.25rem;">Biologi Specializzati</div>
+            <div style="font-size: 0.85rem; color: #666;">12 professionisti</div>
+          </div>
+          <div style="background: white; padding: 1.25rem; border-radius: 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔬</div>
+            <div style="font-weight: 600; margin-bottom: 0.25rem;">Strumentazione</div>
+            <div style="font-size: 0.85rem; color: #666;">Ultima generazione</div>
+          </div>
+          <div style="background: white; padding: 1.25rem; border-radius: 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🅿️</div>
+            <div style="font-weight: 600; margin-bottom: 0.25rem;">Parcheggio</div>
+            <div style="font-size: 0.85rem; color: #666;">Gratuito</div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- ========== FAQ ACCORDION ========== -->
+      <section style="margin-top: 3rem;" id="faq-section">
+        <h2 style="text-align: center; margin-bottom: 2rem;">❓ Domande Frequenti - Laboratorio Analisi Sassari</h2>
+        
+        <div style="max-width: 800px; margin: 0 auto;">
+          <details style="background: white; border-radius: 12px; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);" open>
+            <summary style="padding: 1.25rem; cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+              Qual e l'orario di apertura del laboratorio?
+              <span style="font-size: 1.5rem; color: #00A651;">+</span>
+            </summary>
+            <div style="padding: 0 1.25rem 1.25rem; color: #555; line-height: 1.6;">
+              <strong>Bio-Clinic e aperto con orario continuato:</strong><br>
+              📅 <strong>Lunedi - Venerdi:</strong> 07:00 - 21:00<br>
+              📅 <strong>Sabato:</strong> 08:00 - 14:00<br><br>
+              Siamo l'<strong>unico laboratorio a Sassari aperto fino alle 21:00</strong>, ideale per chi lavora e non puo assentarsi durante l'orario d'ufficio.
+            </div>
+          </details>
+          
+          <details style="background: white; border-radius: 12px; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <summary style="padding: 1.25rem; cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+              Serve prenotazione per gli esami del sangue?
+              <span style="font-size: 1.5rem; color: #00A651;">+</span>
+            </summary>
+            <div style="padding: 0 1.25rem 1.25rem; color: #555; line-height: 1.6;">
+              <strong>No, l'accesso e diretto senza prenotazione.</strong><br><br>
+              Puoi presentarti direttamente in <strong>Via Renzo Mossa 23</strong> durante gli orari di apertura. Per i prelievi del sangue e consigliato presentarsi <strong>a digiuno entro le ore 10:00</strong>.
+            </div>
+          </details>
+          
+          <details style="background: white; border-radius: 12px; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <summary style="padding: 1.25rem; cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+              In quanto tempo ricevo i risultati?
+              <span style="font-size: 1.5rem; color: #00A651;">+</span>
+            </summary>
+            <div style="padding: 0 1.25rem 1.25rem; color: #555; line-height: 1.6;">
+              <strong>Referti standard:</strong> disponibili in <strong>24 ore</strong><br>
+              <strong>Referti urgenti:</strong> disponibili in <strong>4 ore</strong> (supplemento 15 euro)<br><br>
+              I referti sono consultabili online nel portale pazienti o ritirabili in sede.
+            </div>
+          </details>
+          
+          <details style="background: white; border-radius: 12px; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <summary style="padding: 1.25rem; cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+              Quanto costa un emocromo completo?
+              <span style="font-size: 1.5rem; color: #00A651;">+</span>
+            </summary>
+            <div style="padding: 0 1.25rem 1.25rem; color: #555; line-height: 1.6;">
+              <strong>Emocromo completo: 5,00 euro</strong><br><br>
+              Altri esami frequenti:<br>
+              &bull; Glicemia: 2 euro | Colesterolo: 2 euro<br>
+              &bull; TSH: 12 euro | Vitamina D: 22 euro<br>
+              &bull; Check-Up Donna: 97 euro | Check-Up Uomo: 75 euro
+            </div>
+          </details>
+          
+          <details style="background: white; border-radius: 12px; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <summary style="padding: 1.25rem; cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+              Posso fare esami nel pomeriggio a Sassari?
+              <span style="font-size: 1.5rem; color: #00A651;">+</span>
+            </summary>
+            <div style="padding: 0 1.25rem 1.25rem; color: #555; line-height: 1.6;">
+              <strong>Si!</strong> Bio-Clinic e l'unico laboratorio a Sassari aperto fino alle 21:00.<br><br>
+              Puoi fare prelievi ed esami anche nel <strong>tardo pomeriggio dopo il lavoro</strong>. Molti esami (ormonali, markers, urine) non richiedono il digiuno.
+            </div>
+          </details>
+          
+          <details style="background: white; border-radius: 12px; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <summary style="padding: 1.25rem; cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+              Come raggiungo il laboratorio?
+              <span style="font-size: 1.5rem; color: #00A651;">+</span>
+            </summary>
+            <div style="padding: 0 1.25rem 1.25rem; color: #555; line-height: 1.6;">
+              📍 <strong>Via Renzo Mossa 23, Sassari</strong> (zona Li Punti)<br><br>
+              &bull; 🅿️ Parcheggio gratuito disponibile<br>
+              &bull; 🚌 Autobus linee 8 e 18<br>
+              &bull; 🚗 5 minuti dall'uscita superstrada Alghero<br><br>
+              <a href="https://maps.google.com/?q=40.7267,8.5592" target="_blank" rel="noopener" style="color: #00A651; font-weight: 600;">📍 Apri in Google Maps →</a>
+            </div>
+          </details>
+        </div>
+      </section>
+      
+      <!-- ========== CTA FINALE ========== -->
+      <section style="margin-top: 3rem; background: linear-gradient(135deg, #00A651 0%, #00704A 100%); color: white; padding: 2.5rem; border-radius: 16px; text-align: center;">
+        <h2 style="margin-bottom: 1rem;">Prenota i Tuoi Esami Oggi</h2>
+        <p style="opacity: 0.9; margin-bottom: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+          Accesso diretto senza prenotazione. Referti in 24h (urgenti in 4h). L'unico laboratorio a Sassari aperto fino alle 21:00.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+          <a href="tel:+390799561332" style="display: inline-flex; align-items: center; gap: 0.5rem; background: white; color: #00704A; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 1.1rem;">
+            📞 079 956 1332
+          </a>
+          <a href="https://wa.me/390799561332?text=Salve%2C%20vorrei%20prenotare%20esami%20di%20laboratorio" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #25D366; color: white; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 1.1rem;">
+            💬 WhatsApp
+          </a>
+          <a href="/laboratorio/prenota/" class="btn-prenota-pulse" style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #FFC107 0%, #FF9800 100%); color: #1a1a1a; padding: 1rem 2rem; border-radius: 8px; font-weight: 700; font-size: 1.1rem; text-decoration: none; box-shadow: 0 0 0 0 rgba(255,193,7,0.7); animation: pulse-prenota 2s infinite;">
+            📅 Prenota Online
+          </a>
+          <a href="https://maps.google.com/?q=40.7267,8.5592" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.2); color: white; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 1.1rem;">
+            📍 Indicazioni
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- SEO TEXT BLOCK - Keywords per Bot Google -->
+  <section style="padding: 4rem 0; background: #f9fafb; font-size: 0.9rem; color: #4b5563; border-top: 1px solid #e5e7eb;">
+    <div style="max-width: 1100px; margin: 0 auto; padding: 0 1rem;">
+      <h3 style="font-weight: 700; color: #111827; margin-bottom: 1rem; font-size: 1.2rem;">Punto Prelievi e Analisi Cliniche a Sassari</h3>
+      <p style="margin-bottom: 1.5rem; line-height: 1.7;">
+        Bio-Clinic e il <strong>laboratorio di riferimento per il Nord Sardegna</strong>. A differenza dei centri convenzionati che hanno budget limitati e liste d'attesa, noi garantiamo l'<strong>accesso immediato senza ricetta rossa obbligatoria</strong>. 
+        Eseguiamo <strong>esami del sangue</strong>, <strong>esami delle urine</strong>, <strong>test ormonali</strong>, <strong>marker tumorali</strong> e <strong>intolleranze alimentari</strong> con strumentazione Roche e Abbott di ultima generazione.
       </p>
-      <div class="lab-search-box" style="max-width:640px;margin:0 auto 1.5rem;position:relative;">
-        <div class="lab-search-input-wrapper bs-search-wrap" style="display:flex;gap:0;border:2px solid var(--primary, #00704A);border-radius:12px;overflow:visible;background:#fff;box-shadow:0 4px 20px rgba(0,112,74,0.12);position:relative;">
-          <input type="text" id="lab-search-input" class="lab-search-input"
-                 placeholder="Cerca esami: emocromo, tiroide, colesterolo, psa..."
-                 autocomplete="off" aria-label="Cerca esami di laboratorio" aria-expanded="false"
-                 style="flex:1;border:none;padding:1rem 1.25rem;font-size:1.05rem;outline:none;background:transparent;color:var(--text-dark);">
-          <button id="lab-search-btn" class="lab-search-btn" aria-label="Cerca"
-                  style="background:var(--primary, #00704A);border:none;padding:0 1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:0 10px 10px 0;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" width="22" height="22">
-              <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
-            </svg>
-          </button>
-          <!-- Dropdown created dynamically by BioSearchUI v4 -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+        <div>
+          <h4 style="font-weight: 700; color: #1f2937; margin-bottom: 0.5rem;">Analisi Ormonali</h4>
+          <ul style="list-style: disc; padding-left: 1.25rem; line-height: 1.8;">
+            <li>TSH, FT3, FT4 (Tiroide)</li>
+            <li>Beta HCG (Gravidanza)</li>
+            <li>Prolattina, FSH, LH</li>
+            <li>Testosterone e PSA</li>
+          </ul>
         </div>
-      </div>
-      <div class="lab-search-suggestions" style="text-align:center;display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;padding:0 1rem;">
-        <span style="color:var(--text-light);font-size:0.85rem;margin-right:0.25rem;">Ricerche frequenti:</span>
-        <button class="lab-suggestion-tag" data-query="emocromo" style="background:var(--gray-100, #f3f4f6);border:1px solid var(--gray-200, #e5e7eb);border-radius:20px;padding:0.3rem 0.75rem;font-size:0.85rem;cursor:pointer;color:var(--text-dark);transition:all 0.2s;">Emocromo</button>
-        <button class="lab-suggestion-tag" data-query="tsh tiroide" style="background:var(--gray-100, #f3f4f6);border:1px solid var(--gray-200, #e5e7eb);border-radius:20px;padding:0.3rem 0.75rem;font-size:0.85rem;cursor:pointer;color:var(--text-dark);transition:all 0.2s;">TSH Tiroide</button>
-        <button class="lab-suggestion-tag" data-query="colesterolo" style="background:var(--gray-100, #f3f4f6);border:1px solid var(--gray-200, #e5e7eb);border-radius:20px;padding:0.3rem 0.75rem;font-size:0.85rem;cursor:pointer;color:var(--text-dark);transition:all 0.2s;">Colesterolo</button>
-        <button class="lab-suggestion-tag" data-query="vitamina d" style="background:var(--gray-100, #f3f4f6);border:1px solid var(--gray-200, #e5e7eb);border-radius:20px;padding:0.3rem 0.75rem;font-size:0.85rem;cursor:pointer;color:var(--text-dark);transition:all 0.2s;">Vitamina D</button>
-        <button class="lab-suggestion-tag" data-query="psa" style="background:var(--gray-100, #f3f4f6);border:1px solid var(--gray-200, #e5e7eb);border-radius:20px;padding:0.3rem 0.75rem;font-size:0.85rem;cursor:pointer;color:var(--text-dark);transition:all 0.2s;">PSA</button>
-        <button class="lab-suggestion-tag" data-query="check up" style="background:var(--gray-100, #f3f4f6);border:1px solid var(--gray-200, #e5e7eb);border-radius:20px;padding:0.3rem 0.75rem;font-size:0.85rem;cursor:pointer;color:var(--text-dark);transition:all 0.2s;">Check-up</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="trust-bar">
-    <div class="container">
-      <div class="trust-items">
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M9 3h6v2H9zM9 1h6v2H9z"/>
-              <path d="M14 5H10a2 2 0 00-2 2v3l-3 10a2 2 0 002 2h10a2 2 0 002-2l-3-10V7a2 2 0 00-2-2z"/>
-            </svg>
-          </div>
-          <div class="trust-text">
-            <strong>1.162 Esami</strong>
-            <span>Disponibili</span>
-          </div>
+        <div>
+          <h4 style="font-weight: 700; color: #1f2937; margin-bottom: 0.5rem;">Cardiologia & Coagulazione</h4>
+          <ul style="list-style: disc; padding-left: 1.25rem; line-height: 1.8;">
+            <li>Troponina (Infarto)</li>
+            <li>D-Dimero (Trombosi)</li>
+            <li>PT, PTT, Fibrinogeno</li>
+            <li>Omocisteina</li>
+          </ul>
         </div>
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="4" width="18" height="18" rx="2"/>
-              <line x1="16" y1="2" x2="16" y2="6"/>
-              <line x1="8" y1="2" x2="8" y2="6"/>
-              <line x1="3" y1="10" x2="21" y2="10"/>
-            </svg>
-          </div>
-          <div class="trust-text">
-            <strong>26 Categorie</strong>
-            <span>Di Analisi</span>
-          </div>
+        <div>
+          <h4 style="font-weight: 700; color: #1f2937; margin-bottom: 0.5rem;">Microbiologia</h4>
+          <ul style="list-style: disc; padding-left: 1.25rem; line-height: 1.8;">
+            <li>Urinocoltura con Antibiogramma</li>
+            <li>Tamponi Vaginali e Uretrali</li>
+            <li>Ricerca HPV DNA</li>
+            <li>Parassitologico Feci</li>
+          </ul>
         </div>
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <polyline points="12 6 12 12 16 14"/>
-            </svg>
-          </div>
-          <div class="trust-text">
-            <strong>Risultati Rapidi</strong>
-            <span>Referti Online</span>
-          </div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-              <polyline points="22 4 12 14.01 9 11.01"/>
-            </svg>
-          </div>
-          <div class="trust-text">
-            <strong>3 Specialisti</strong>
-            <span>Team Laboratorio</span>
-          </div>
+        <div>
+          <h4 style="font-weight: 700; color: #1f2937; margin-bottom: 0.5rem;">Check-up Completi</h4>
+          <ul style="list-style: disc; padding-left: 1.25rem; line-height: 1.8;">
+            <li>Check-up Uomo/Donna</li>
+            <li>Malattie Sessualmente Trasmesse</li>
+            <li>Celiachia e Intolleranze</li>
+            <li>Prenatale NIPT</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Categorie -->
-  <section class="section" id="categorie">
-    <div class="container">
-      <div class="section-header" data-animate>
-        <span class="section-badge">26 Categorie</span>
-        <h2 class="section-title">Esami Disponibili</h2>
-        <p class="section-description">
-          Un laboratorio completo per ogni esigenza diagnostica
-        </p>
-      </div>
-      
-      <div class="grid grid-4" data-animate data-delay="100">
-        <div class="card specialty-card">
-          <div class="specialty-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-            </svg>
-          </div>
-          <h3 class="card-title">Biochimica</h3>
-          <span class="specialty-count">~150 esami</span>
-        </div>
-        
-        <div class="card specialty-card">
-          <div class="specialty-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <circle cx="12" cy="12" r="6"/>
-              <circle cx="12" cy="12" r="2"/>
-            </svg>
-          </div>
-          <h3 class="card-title">Allergologia IgE</h3>
-          <span class="specialty-count">~200 esami</span>
-        </div>
-        
-        <div class="card specialty-card">
-          <div class="specialty-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="4"/>
-              <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"/>
-            </svg>
-          </div>
-          <h3 class="card-title">Ematologia</h3>
-          <span class="specialty-count">~80 esami</span>
-        </div>
-        
-        <div class="card specialty-card">
-          <div class="specialty-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
-          </div>
-          <h3 class="card-title">Infettivologia</h3>
-          <span class="specialty-count">~100 esami</span>
-        </div>
-        
-        <div class="card specialty-card">
-          <div class="specialty-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-            </svg>
-          </div>
-          <h3 class="card-title">Endocrinologia</h3>
-          <span class="specialty-count">~60 esami</span>
-        </div>
-        
-        <div class="card specialty-card">
-          <div class="specialty-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-            </svg>
-          </div>
-          <h3 class="card-title">Autoimmunità</h3>
-          <span class="specialty-count">~80 esami</span>
-        </div>
-        
-        <div class="card specialty-card">
-          <div class="specialty-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-            </svg>
-          </div>
-          <h3 class="card-title">Genetica</h3>
-          <span class="specialty-count">~40 esami</span>
-        </div>
-        
-        <div class="card specialty-card">
-          <div class="specialty-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-            </svg>
-          </div>
-          <h3 class="card-title">Marcatori Tumorali</h3>
-          <span class="specialty-count">~20 esami</span>
-        </div>
-        
-        <div class="card specialty-card">
-          <div class="specialty-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-            </svg>
-          </div>
-          <h3 class="card-title">Fertilità/PMA</h3>
-          <span class="specialty-count">~30 esami</span>
-        </div>
-        
-        <div class="card specialty-card">
-          <div class="specialty-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-              <polyline points="22 4 12 14.01 9 11.01"/>
-            </svg>
-          </div>
-          <h3 class="card-title">Prenatale</h3>
-          <span class="specialty-count">~15 esami</span>
-        </div>
-        
-        <div class="card specialty-card">
-          <div class="specialty-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-            </svg>
-          </div>
-          <h3 class="card-title">Tossicologia</h3>
-          <span class="specialty-count">~50 esami</span>
-        </div>
-        
-        <div class="card specialty-card">
-          <div class="specialty-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-              <line x1="3" y1="9" x2="21" y2="9"/>
-              <line x1="9" y1="21" x2="9" y2="9"/>
-            </svg>
-          </div>
-          <h3 class="card-title">Altre Categorie</h3>
-          <span class="specialty-count">+300 esami</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pacchetti -->
-  <section class="section bg-primary-light">
-    <div class="container">
-      <div class="section-header" data-animate>
-        <span class="section-badge">I Nostri Pack</span>
-        <h2 class="section-title">Pacchetti Analisi</h2>
-        <p class="section-description">
-          Check-up completi a prezzi vantaggiosi
-        </p>
-      </div>
-      
-      <div class="grid grid-3" data-animate data-delay="100">
-        <div class="card" style="padding: 2rem;">
-          <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Check-up Base</h3>
-          <p style="color: var(--gray-600); margin-bottom: 1rem; font-size: 0.9rem;">
-            Emocromo, glicemia, colesterolo totale, HDL, LDL, trigliceridi, creatinina, GOT, GPT, urine.
-          </p>
-          <span class="btn btn-outline btn-sm">Richiedi Info</span>
-        </div>
-        
-        <div class="card" style="padding: 2rem;">
-          <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Check-up Donna</h3>
-          <p style="color: var(--gray-600); margin-bottom: 1rem; font-size: 0.9rem;">
-            Check-up base + profilo ormonale femminile, ferritina, vitamina D, sideremia.
-          </p>
-          <span class="btn btn-outline btn-sm">Richiedi Info</span>
-        </div>
-        
-        <div class="card" style="padding: 2rem;">
-          <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Check-up Uomo</h3>
-          <p style="color: var(--gray-600); margin-bottom: 1rem; font-size: 0.9rem;">
-            Check-up base + PSA totale e libero, testosterone, ferritina, vitamina D.
-          </p>
-          <span class="btn btn-outline btn-sm">Richiedi Info</span>
-        </div>
-        
-        <div class="card" style="padding: 2rem;">
-          <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Profilo Tiroide</h3>
-          <p style="color: var(--gray-600); margin-bottom: 1rem; font-size: 0.9rem;">
-            TSH, FT3, FT4, anticorpi anti-tireoglobulina, anticorpi anti-TPO.
-          </p>
-          <span class="btn btn-outline btn-sm">Richiedi Info</span>
-        </div>
-        
-        <div class="card" style="padding: 2rem;">
-          <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Pack Slim Care Obesità</h3>
-          <p style="color: var(--gray-600); margin-bottom: 1rem; font-size: 0.9rem;">
-            Profilo metabolico completo per il percorso Slim Care: glicemia, insulina, HbA1c, profilo lipidico, epatico, renale.
-          </p>
-          <span class="btn btn-outline btn-sm">Richiedi Info</span>
-        </div>
-        
-        <div class="card" style="padding: 2rem;">
-          <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Profilo Cardiovascolare</h3>
-          <p style="color: var(--gray-600); margin-bottom: 1rem; font-size: 0.9rem;">
-            Profilo lipidico completo, omocisteina, PCR, fibrinogeno, D-dimero.
-          </p>
-          <span class="btn btn-outline btn-sm">Richiedi Info</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header" data-animate>
-        <span class="section-badge">Il Team</span>
-        <h2 class="section-title">Staff Laboratorio</h2>
-      </div>
-      
-      <div class="team-grid" data-animate data-delay="100">
-        <a href="/equipe/cinzia-guarino/" class="team-member team-member-clickable" title="Vedi profilo di Dott.ssa Cinzia Guarino - Direttrice Laboratorio">
-          <div class="team-avatar">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
-            </svg>
-          </div>
-          <h4 class="team-name">Dott.ssa Cinzia Guarino</h4>
-          <p class="team-role">Direttrice Laboratorio</p>
-        </a>
-        <a href="/equipe/gloria-reggiani/" class="team-member team-member-clickable" title="Vedi profilo di Dott.ssa Gloria Reggiani - Biologa - Specialista Disturbi Alimentazione">
-          <div class="team-avatar">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
-            </svg>
-          </div>
-          <h4 class="team-name">Dott.ssa Gloria Reggiani</h4>
-          <p class="team-role">Biologa - Specialista Disturbi Alimentazione</p>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Info -->
-  <section class="section bg-gray">
-    <div class="container">
-      <div class="grid grid-2" style="align-items: center; gap: 4rem;">
-        <div data-animate>
-          <span class="section-badge">Informazioni Utili</span>
-          <h2 class="section-title" style="text-align: left;">Come Prepararsi</h2>
-          
-          <div class="card" style="padding: 1.5rem; margin-bottom: 1rem;">
-            <h3 style="font-size: 1rem; color: var(--primary); margin-bottom: 0.5rem;">Digiuno</h3>
-            <p style="color: var(--gray-600); margin: 0;">
-              Per la maggior parte degli esami è richiesto digiuno di almeno 8-12 ore. È consentito bere acqua.
-            </p>
-          </div>
-          
-          <div class="card" style="padding: 1.5rem; margin-bottom: 1rem;">
-            <h3 style="font-size: 1rem; color: var(--primary); margin-bottom: 0.5rem;">Orari Prelievi</h3>
-            <p style="color: var(--gray-600); margin: 0;">
-              <strong>Lun-Ven:</strong> 07:00 - 10:30<br>
-              <strong>Sabato:</strong> 08:00 - 10:00
-            </p>
-          </div>
-          
-          <div class="card" style="padding: 1.5rem;">
-            <h3 style="font-size: 1rem; color: var(--primary); margin-bottom: 0.5rem;">Referti</h3>
-            <p style="color: var(--gray-600); margin: 0;">
-              Disponibili online entro 24-48 ore per la maggior parte degli esami. 
-              Per esami specialistici i tempi possono variare.
-            </p>
-          </div>
-        </div>
-        
-        <div data-animate data-delay="200">
-          <img src="/images/laboratorio-equipment.jpg" alt="Attrezzature Laboratorio Bio-Clinic" style="border-radius: var(--radius-xl); box-shadow: var(--shadow-xl);" width="500" height="400" loading="lazy">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Prenota Online -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header" data-animate>
-        <span class="section-badge">Prenota Online</span>
-        <h2 class="section-title">Prenota i Tuoi Esami</h2>
-        <p style="color: var(--gray-600); max-width: 600px; margin: 0 auto;">
-          Scegli data e ora disponibili direttamente online tramite MioDottore
-        </p>
-      </div>
-      <div style="max-width: 800px; margin: 2rem auto;" data-animate data-delay="100">
-        <a href="https://www.miodottore.it/strutture/bioclinic" data-zl-widget-facility="bioclinic" rel="nofollow" data-placement="inline" data-zlw-type="facility-calendar-listing-with-saas-only">BioClinic</a>
-        <script id="zl-facility-widget" src="https://www.miodottore.it/platform/js/widget.js"></script>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta">
-    <div class="container">
-      <h2 class="cta-title" data-animate>Prenota i Tuoi Esami</h2>
-      <p class="cta-description" data-animate data-delay="100">
-        1.162 esami disponibili. Prelievi dal lunedì al sabato.
-      </p>
-      <div class="cta-buttons" data-animate data-delay="200">
-        <a href="tel:+390799561332" class="btn btn-white btn-lg" title="Chiama Bio-Clinic Sassari">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-          </svg>
-          Chiama: 079 956 1332
-        </a>
-        <a href="/contatti/" class="btn btn-outline btn-lg" style="border-color: white; color: white;" title="Contattaci">
-          Scrivici
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
+  <!-- Trust Badge dateModified -->
     <section class="trust-badge-datemodified" style="padding: 1.5rem 0; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
       <div class="container">
         <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; text-align: center;">
@@ -657,7 +1396,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <polyline points="22 4 12 14.01 9 11.01"/>
           </svg>
           <span style="color: #166534; font-size: 0.9rem;">
-            <strong>Informazioni verificate dall&apos;équipe medica Bio-Clinic</strong> &bull;
+            <strong>Informazioni verificate dall&apos;equipe medica Bio-Clinic</strong> &bull;
             Aggiornato: 17/02/2026 &bull;
             <a href="/equipe/salvatore-dessole/" style="color: #166534; text-decoration: underline;">Dir. Sanitario: Prof. S. Dessole</a>
           </span>
@@ -665,6 +1404,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </section>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
@@ -673,7 +1413,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <img src="/images/logo-bioclinic.png" alt="Bio-Clinic" style="height: 45px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;">
           </div>
           <p class="footer-description">
-            Poliambulatorio medico a Sassari con 31 specialità, 67 medici e oltre 1.840 prestazioni. 
+            Poliambulatorio medico a Sassari con 31 specialita, 67 medici e oltre 1.840 prestazioni. 
             Centro di eccellenza per Slim Care, Ginecologia e Cardiologia.
           </p>
           <div class="footer-social">
@@ -682,7 +1422,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
               </svg>
             </a>
-            <a href="https://www.instagram.com/bioclinicss/" target="_blank" rel="noopener" aria-label="Instagram" title="Visita il profilo Instagram di Bio-Clinic">
+            <a href="https://www.instagram.com/bioclinicsassari/" target="_blank" rel="noopener" aria-label="Instagram" title="Visita il profilo Instagram di Bio-Clinic">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
@@ -697,21 +1437,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <ul class="footer-links">
             <li><a href="/slim-care/" title="Scopri il percorso Slim Care">Slim Care</a></li>
             <li><a href="/slim-care-donna/" title="Scopri Slim Care Donna">Slim Care Donna</a></li>
-            <li><a href="/pma-fertilita/" title="Scopri il percorso PMA e Fertilità">PMA / Fertilità</a></li>
+            <li><a href="/pma-fertilita/" title="Scopri il percorso PMA e Fertilita">PMA / Fertilita</a></li>
             <li><a href="/cardiologia/" title="Vai alla sezione Cardiologia">Cardiovascolare</a></li>
             <li><a href="/convenzioni/" title="Convenzioni Fondi Sanitari">Convenzioni</a></li>
           </ul>
         </div>
         
         <div>
-          <h4 class="footer-title">Specialità</h4>
+          <h4 class="footer-title">Specialita</h4>
           <ul class="footer-links">
             <li><a href="/ginecologia/" title="Vai alla sezione Ginecologia">Ginecologia</a></li>
             <li><a href="/cardiologia/" title="Vai alla sezione Cardiologia">Cardiologia</a></li>
             <li><a href="/endocrinologia/" title="Vai alla sezione Endocrinologia">Endocrinologia</a></li>
             <li><a href="/laboratorio/" title="Vai al Laboratorio Analisi">Laboratorio</a></li>
             <li><a href="/listino/" title="Listino Prezzi Completo">Listino Prezzi</a></li>
-            <li><a href="/specialita/" title="Vedi tutte le specialità">Tutte le Specialità</a></li>
+            <li><a href="/specialita/" title="Vedi tutte le specialita">Tutte le Specialita</a></li>
           </ul>
         </div>
         
@@ -755,9 +1495,72 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </footer>
 
+  <!-- Search Engine v4.1 + UI v4.1 (replaces deprecated database.js) -->
+  
   <script src="/js/main.js"></script>
   <!-- SEARCH v4.1 UNIFIED: Single engine + single UI -->
   <script src="/js/search-engine-v4.js?v=20260216-v5"></script>
   <script src="/js/search-ui-v4.js?v=20260216-v5"></script>
+<!-- Iubenda Cookie Consent Banner -->
+<script type="text/javascript">
+var _iub = _iub || [];
+_iub.csConfiguration = {
+  "askConsentAtCookiePolicyUpdate": true,
+  "enableFadp": false,
+  "enableLgpd": false,
+  "enableUspr": false,
+  "fadpApplies": false,
+  "floatingPreferencesButtonDisplay": "bottom-right",
+  "lang": "it",
+  "perPurposeConsent": true,
+  "preferenceCookie": { "expireAfter": 365 },
+  "siteId": "3313232",
+  "cookiePolicyId": "85172996",
+  "whitelabel": false,
+  "cookiePolicyUrl": "https://bio-clinic.it/cookie/",
+  "privacyPolicyUrl": "https://bio-clinic.it/privacy/",
+  "banner": {
+    "acceptButtonCaptionColor": "#FFFFFF",
+    "acceptButtonColor": "#00704A",
+    "acceptButtonDisplay": true,
+    "backgroundColor": "#FFFFFF",
+    "brandBackgroundColor": "#FFFFFF",
+    "brandTextColor": "#000000",
+    "closeButtonDisplay": false,
+    "customizeButtonCaptionColor": "#4D4D4D",
+    "customizeButtonColor": "#DADADA",
+    "customizeButtonDisplay": true,
+    "explicitWithdrawal": true,
+    "fontSizeBody": "12px",
+    "listPurposes": true,
+    "logo": null,
+    "ownerName": "Bio-Clinic Sassari",
+    "position": "float-bottom-center",
+    "rejectButtonCaptionColor": "#FFFFFF",
+    "rejectButtonColor": "#666666",
+    "rejectButtonDisplay": true,
+    "showTitle": false,
+    "showTotalNumberOfProviders": true,
+    "textColor": "#000000"
+  },
+  "callback": {
+    "onPreferenceExpressedOrNotNeeded": function(preference) {
+      if (preference && preference.purposes) {
+        if (typeof BCG !== 'undefined' && BCG.updateConsent) {
+          BCG.updateConsent({
+            analytics: !!preference.purposes[4],
+            marketing: !!preference.purposes[5],
+            preferences: !!preference.purposes[3]
+          });
+        }
+      }
+    }
+  }
+};
+</script>
+<script type="text/javascript" src="https://cs.iubenda.com/autoblocking/3313232.js"></script>
+<script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js"></script>
+<script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+<!-- End Iubenda -->
 </body>
 </html>

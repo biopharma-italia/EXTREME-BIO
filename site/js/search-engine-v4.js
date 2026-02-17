@@ -282,8 +282,36 @@ const BioSearchEngine = (function () {
       var priority = results[6];
 
       // ── Exams (listino: 1136 items) ──
+      // Map exam IDs to booking service IDs where a direct match exists
+      var examToBookingService = {
+        'emocromo': 'emocromo-completo',
+        'emocromo-completo': 'emocromo-completo',
+        'check-up-tiroide-base': 'profilo-tiroide',
+        'check-up-tiroide-plus': 'profilo-tiroide',
+        'tsh-ultrasensibile': 'profilo-tiroide',
+        'ft3': 'profilo-tiroide',
+        'ft4': 'profilo-tiroide',
+        'esame-delle-urine': 'urine-standard',
+        'esame-chimico-fisico-delle-urine': 'urine-standard',
+        'hpv-dna-screening-e-tipizzazione-di-ceppi-al-alto-': 'test-hpv',
+        'curva-da-carico-di-glucosio': 'glicemia-curva',
+        'ogtt-curva-glicemica-in-gravidanza-arancia': 'glicemia-curva',
+        'antigene-prostatico-specifico-psa-totale': 'marcatori-tumorali',
+        'antigene-carcinoembrionale-cea': 'marcatori-tumorali',
+        'antigene-carboidratico-ca-125': 'marcatori-tumorali',
+        'antigene-carboidratico-ca-15-3': 'marcatori-tumorali',
+        'antigene-carboidratico-ca-19-9': 'marcatori-tumorali',
+        'alfafetoproteina-afp': 'marcatori-tumorali',
+        'ige-totali': 'test-allergologico',
+        'ige-pannello-allergologico': 'test-allergologico'
+      };
+
       if (listino && Array.isArray(listino)) {
         store.exams = listino.map(function(e) {
+          var bookingSvc = examToBookingService[e.id];
+          var examUrl = bookingSvc
+            ? '/laboratorio/prenota/?service=' + bookingSvc
+            : '/laboratorio/prenota/?service=prelievo-standard';
           return {
             id: e.id,
             type: 'exam',
@@ -292,7 +320,7 @@ const BioSearchEngine = (function () {
             category: e.cat,
             symptoms: e.sintomi || [],
             turnaround: e.referto,
-            url: '/laboratorio/#' + e.id
+            url: examUrl
           };
         });
       }

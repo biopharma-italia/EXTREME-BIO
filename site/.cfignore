@@ -29,8 +29,10 @@ backups/
 
 # Data files
 *.csv
+# JSON: block all except docs/ and specific needed files
 *.json
-!data/*.json
+!docs/*.json
+!site.webmanifest
 
 # Archives
 *.zip

@@ -1,0 +1,1205 @@
+================================================================================
+  AUDIT COMPLETO — TUTTI GLI HUB bio-clinic.it
+  14 punti di controllo SEO/E-E-A-T/AI per pagina
+================================================================================
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  HUB: GINECOLOGIA — 22 pagine
+  Punteggio medio: 76/140 (54.1%)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  [HUB] https://bio-clinic.it/ginecologia/
+    Size: 65,379 bytes | Words: 846 | Score: 104/140 (74.3%)
+      ✅ h1: 10/10 — text='Ginecologia e Ostetricia Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 1
+      ✅ at_id: 10/10 — OK
+      ✅ faqpage: 10/10 — 5 Q&A
+      ✅ person_schema: 10/10 — 6 physicians
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ⚠️ content_depth: 4/10 — 846 words
+      ⚠️ medical_webpage: 5/10 — MWP
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ✅ og_type: 10/10 — 'website' (expected: 'website')
+      ✅ title_tag: 10/10 — 'Ginecologia Sassari | 6 Specialisti Ginecologi | Bio-Cl' (59ch)
+      ✅ images_alt: 10/10 — 4/4 with alt
+
+  [SUB] https://bio-clinic.it/ginecologia/assistenza-ostetrica/
+    Size: 44,759 bytes | Words: 452 | Score: 61/140 (43.6%)
+      ✅ h1: 10/10 — text='Assistenza Ostetrica
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 4
+      ❌ at_id: 3/10 — bad IDs: 1
+      ❌ faqpage: 0/10 — MISSING
+      ❌ person_schema: 0/10 — MISSING
+      ✅ cross_linking: 10/10 — 6 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 452 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Assistenza Ostetrica Sassari | Bio-Clinic' (41ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/ginecologia/caressflow/
+    Size: 36,733 bytes | Words: 434 | Score: 81/140 (57.9%)
+      ✅ h1: 10/10 — text='Caressflow
+                        Benessere Intim'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 2
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 3 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ✅ cross_linking: 10/10 — 5 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 434 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Caressflow Sassari | Trattamento Intimo Avanzato | Bio-' (61ch)
+      ✅ images_alt: 10/10 — 4/4 with alt
+
+  [SUB] https://bio-clinic.it/ginecologia/colposcopia/
+    Size: 41,552 bytes | Words: 541 | Score: 83/140 (59.3%)
+      ✅ h1: 10/10 — text='Videocolposcopia
+                            Digit'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 2 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ✅ cross_linking: 10/10 — 5 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 2/10 — 541 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Videocolposcopia Digitale Sassari | Dott.ssa Pola Bio-C' (60ch)
+      ✅ images_alt: 10/10 — 5/5 with alt
+
+  [SUB] https://bio-clinic.it/ginecologia/corso-preparto/
+    Size: 44,354 bytes | Words: 455 | Score: 61/140 (43.6%)
+      ✅ h1: 10/10 — text='Corso Preparto
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 4
+      ❌ at_id: 3/10 — bad IDs: 1
+      ❌ faqpage: 0/10 — MISSING
+      ❌ person_schema: 0/10 — MISSING
+      ✅ cross_linking: 10/10 — 5 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 455 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Corso Preparto Sassari | Bio-Clinic' (35ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/ginecologia/duopap/
+    Size: 40,661 bytes | Words: 533 | Score: 63/140 (45.0%)
+      ✅ h1: 10/10 — text='DuoPap
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ❌ faqpage: 0/10 — MISSING
+      ❌ person_schema: 0/10 — MISSING
+      ✅ cross_linking: 10/10 — 9 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 2/10 — 533 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'DuoPap Sassari | Pap Test + HPV DNA Test | Bio-Clinic' (53ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/ginecologia/ecografia-mammaria/
+    Size: 44,850 bytes | Words: 501 | Score: 63/140 (45.0%)
+      ✅ h1: 10/10 — text='Ecografia Mammaria
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ❌ faqpage: 0/10 — MISSING
+      ❌ person_schema: 0/10 — MISSING
+      ✅ cross_linking: 10/10 — 5 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 2/10 — 501 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Ecografia Mammaria Sassari | Bio-Clinic' (39ch)
+      ✅ images_alt: 10/10 — 4/4 with alt
+
+  [SUB] https://bio-clinic.it/ginecologia/ecografia-morfologica/
+    Size: 41,753 bytes | Words: 444 | Score: 61/140 (43.6%)
+      ✅ h1: 10/10 — text='Ecografia Morfologica
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ❌ faqpage: 0/10 — MISSING
+      ❌ person_schema: 0/10 — MISSING
+      ✅ cross_linking: 10/10 — 4 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 444 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Ecografia Morfologica Sassari | Bio-Clinic' (42ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/ginecologia/ecografia-ostetrica-3d/
+    Size: 42,186 bytes | Words: 408 | Score: 61/140 (43.6%)
+      ✅ h1: 10/10 — text='Ecografia Ostetrica 3D/4D
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ❌ faqpage: 0/10 — MISSING
+      ❌ person_schema: 0/10 — MISSING
+      ✅ cross_linking: 10/10 — 3 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 408 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Ecografia Ostetrica 3D/4D Sassari | Bio-Clinic' (46ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/ginecologia/ecografia-pelvica/
+    Size: 44,682 bytes | Words: 497 | Score: 61/140 (43.6%)
+      ✅ h1: 10/10 — text='Ecografia Pelvica
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ❌ faqpage: 0/10 — MISSING
+      ❌ person_schema: 0/10 — MISSING
+      ✅ cross_linking: 10/10 — 5 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 497 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Ecografia Pelvica Sassari | Bio-Clinic' (38ch)
+      ✅ images_alt: 10/10 — 4/4 with alt
+
+  [SUB] https://bio-clinic.it/ginecologia/ecografia-transvaginale/
+    Size: 43,758 bytes | Words: 487 | Score: 61/140 (43.6%)
+      ✅ h1: 10/10 — text='Ecografia Transvaginale
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ❌ faqpage: 0/10 — MISSING
+      ❌ person_schema: 0/10 — MISSING
+      ✅ cross_linking: 10/10 — 5 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 487 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Ecografia Transvaginale Sassari | Bio-Clinic' (44ch)
+      ✅ images_alt: 10/10 — 4/4 with alt
+
+  [SUB] https://bio-clinic.it/ginecologia/ginecologi-sassari/
+    Size: 38,914 bytes | Words: 487 | Score: 86/140 (61.4%)
+      ✅ h1: 10/10 — text='Ginecologi a Sassari — 6 Specialisti Bio-Clinic'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 5 Q&A
+      ✅ person_schema: 10/10 — 6 physicians
+      ✅ cross_linking: 10/10 — 7 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 487 words
+      ⚠️ medical_webpage: 5/10 — MWP
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Ginecologo Sassari | 6 Ginecologi Specialisti | Bio-Cli' (58ch)
+      ✅ images_alt: 10/10 — 4/4 with alt
+
+  [SUB] https://bio-clinic.it/ginecologia/hpv-dna-test/
+    Size: 43,190 bytes | Words: 765 | Score: 75/140 (53.6%)
+      ✅ h1: 10/10 — text='HPV DNA Test
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 3 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ✅ cross_linking: 10/10 — 9 links
+      ✅ author_credit: 10/10 — present
+      ⚠️ content_depth: 4/10 — 765 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'HPV DNA Test Sassari | Test Papillomavirus | Bio-Clinic' (55ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/ginecologia/isterosalpingografia/
+    Size: 58,928 bytes | Words: 888 | Score: 92/140 (65.7%)
+      ✅ h1: 10/10 — text='Isterosalpingografia (HSG)
+                       '
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 2
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 6 Q&A
+      ✅ person_schema: 10/10 — 1 physicians
+      ✅ cross_linking: 10/10 — 8 links
+      ✅ author_credit: 10/10 — present
+      ⚠️ content_depth: 4/10 — 888 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ⚠️ title_tag: 7/10 — 'Isterosalpingografia Sassari | HSG Tube | Prof. Dessole' (68ch)
+      ✅ images_alt: 10/10 — 4/4 with alt
+
+  [SUB] https://bio-clinic.it/ginecologia/isteroscopia/
+    Size: 44,754 bytes | Words: 483 | Score: 61/140 (43.6%)
+      ✅ h1: 10/10 — text='Isteroscopia
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 2
+      ❌ at_id: 3/10 — bad IDs: 1
+      ❌ faqpage: 0/10 — MISSING
+      ❌ person_schema: 0/10 — MISSING
+      ✅ cross_linking: 10/10 — 5 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 483 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Isteroscopia Sassari | Bio-Clinic' (33ch)
+      ✅ images_alt: 10/10 — 4/4 with alt
+
+  [SUB] https://bio-clinic.it/ginecologia/pap-test-hpv/
+    Size: 33,594 bytes | Words: 488 | Score: 81/140 (57.9%)
+      ✅ h1: 10/10 — text='Pap Test
+                            ThinPrep.
+   '
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 3 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ✅ cross_linking: 10/10 — 6 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 488 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Pap Test e HPV Test Sassari | ThinPrep 7 Giorni | Bio-C' (60ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/ginecologia/pap-test/
+    Size: 45,052 bytes | Words: 845 | Score: 75/140 (53.6%)
+      ✅ h1: 10/10 — text='Pap Test
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 3 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ✅ cross_linking: 10/10 — 13 links
+      ✅ author_credit: 10/10 — present
+      ⚠️ content_depth: 4/10 — 845 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Pap Test Sassari | Screening Cervice Uterina | Bio-Clin' (57ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/ginecologia/perifit-kegel-sassari/
+    Size: 63,878 bytes | Words: 1249 | Score: 128/140 (91.4%)
+      ✅ h1: 10/10 — text='Perifit: Esercizi di Kegelcon Biofeedback
+        '
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 11
+      ❌ at_id: 3/10 — bad IDs: 6
+      ✅ faqpage: 10/10 — 12 Q&A
+      ✅ person_schema: 10/10 — 2 physicians
+      ✅ cross_linking: 10/10 — 6 links
+      ✅ author_credit: 10/10 — present
+      ✅ content_depth: 10/10 — 1249 words
+      ✅ medical_webpage: 10/10 — MWP+Speak
+      ✅ first_paragraph: 10/10 — optimized
+      ✅ howto_schema: 10/10 — 6 steps
+      ✅ og_type: 10/10 — 'article' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Perifit Sassari | Esercizi Kegel con App | €109 | Bio-C' (60ch)
+      ✅ images_alt: 10/10 — 4/4 with alt
+
+  [SUB] https://bio-clinic.it/ginecologia/radiofrequenza-vaginale/
+    Size: 36,521 bytes | Words: 411 | Score: 78/140 (55.7%)
+      ✅ h1: 10/10 — text='Radiofrequenza
+                        Vaginale
+  '
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 3 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ✅ cross_linking: 10/10 — 6 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 411 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ⚠️ title_tag: 7/10 — 'Radiofrequenza Vaginale Sassari | Ringiovanimento Intim' (69ch)
+      ✅ images_alt: 10/10 — 4/4 with alt
+
+  [SUB] https://bio-clinic.it/ginecologia/riabilitazione-pavimento-pelvico/
+    Size: 46,145 bytes | Words: 502 | Score: 63/140 (45.0%)
+      ✅ h1: 10/10 — text='Riabilitazione Pavimento Pelvico
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 4
+      ❌ at_id: 3/10 — bad IDs: 1
+      ❌ faqpage: 0/10 — MISSING
+      ❌ person_schema: 0/10 — MISSING
+      ✅ cross_linking: 10/10 — 6 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 2/10 — 502 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Riabilitazione Pavimento Pelvico Sassari | Bio-Clinic' (53ch)
+      ✅ images_alt: 10/10 — 4/4 with alt
+
+  [SUB] https://bio-clinic.it/ginecologia/trattamenti-pavimento-pelvico/
+    Size: 64,372 bytes | Words: 1153 | Score: 88/140 (62.9%)
+      ✅ h1: 10/10 — text='🌸 Trattamenti Pavimento Pelvico
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 5
+      ❌ at_id: 3/10 — bad IDs: 3
+      ✅ faqpage: 10/10 — 5 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ✅ cross_linking: 10/10 — 6 links
+      ✅ author_credit: 10/10 — present
+      ⚠️ content_depth: 7/10 — 1153 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Pavimento Pelvico Sassari | Radiofrequenza | Bio-Clinic' (55ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/ginecologia/visita-ginecologica/
+    Size: 40,075 bytes | Words: 532 | Score: 80/140 (57.1%)
+      ✅ h1: 10/10 — text='Ginecologia
+                        & Ostetricia
+ '
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 3 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ⚠️ cross_linking: 7/10 — 2 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 2/10 — 532 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Ginecologia & Ostetricia Sassari | Bio-Clinic' (45ch)
+      ✅ images_alt: 10/10 — 4/4 with alt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  HUB: DERMATOLOGIA — 3 pagine
+  Punteggio medio: 78/140 (56.0%)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  [HUB] https://bio-clinic.it/dermatologia/
+    Size: 53,618 bytes | Words: 792 | Score: 99/140 (70.7%)
+      ✅ h1: 10/10 — text='DermatologiaBio-Clinic Sassari'
+      ✅ breadcrumb_urls: 10/10 — legacy /pages/ refs: 0
+      ✅ at_id: 10/10 — OK
+      ✅ faqpage: 10/10 — 3 Q&A
+      ✅ person_schema: 10/10 — 4 physicians
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ⚠️ content_depth: 4/10 — 792 words
+      ⚠️ medical_webpage: 5/10 — MWP
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ✅ og_type: 10/10 — 'website' (expected: 'website')
+      ✅ title_tag: 10/10 — 'Dermatologia Sassari | 3 Dermatologhe Specializzate | B' (64ch)
+      ✅ images_alt: 10/10 — 5/5 with alt
+
+  [SUB] https://bio-clinic.it/dermatologia/mappatura-nevi/
+    Size: 46,169 bytes | Words: 476 | Score: 61/140 (43.6%)
+      ✅ h1: 10/10 — text='Mappatura Nevi
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ❌ faqpage: 0/10 — MISSING
+      ❌ person_schema: 0/10 — MISSING
+      ✅ cross_linking: 10/10 — 3 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 476 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Mappatura Nevi Sassari | Bio-Clinic' (35ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/dermatologia/visita-dermatologica/
+    Size: 38,869 bytes | Words: 481 | Score: 75/140 (53.6%)
+      ✅ h1: 10/10 — text='Dermatologia
+                        Chirurgica & '
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 3 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ⚠️ cross_linking: 4/10 — 1 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 481 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Dermatologia Chirurgica & Oncologica Sassari | Bio-Clin' (57ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  HUB: ENDOCRINOLOGIA — 4 pagine
+  Punteggio medio: 80/140 (57.0%)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  [HUB] https://bio-clinic.it/endocrinologia/
+    Size: 35,532 bytes | Words: 468 | Score: 95/140 (67.9%)
+      ✅ h1: 10/10 — text='Endocrinologia a Sassari'
+      ✅ breadcrumb_urls: 10/10 — legacy /pages/ refs: 0
+      ✅ at_id: 10/10 — OK
+      ✅ faqpage: 10/10 — 4 Q&A
+      ✅ person_schema: 10/10 — 2 physicians
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 468 words
+      ⚠️ medical_webpage: 5/10 — MWP
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ✅ og_type: 10/10 — 'website' (expected: 'website')
+      ✅ title_tag: 10/10 — 'Endocrinologia Sassari | Tiroide | Bio-Clinic' (45ch)
+      ✅ images_alt: 10/10 — 4/4 with alt
+
+  [SUB] https://bio-clinic.it/endocrinologia/checkup-tiroide/
+    Size: 47,818 bytes | Words: 797 | Score: 85/140 (60.7%)
+      ✅ h1: 10/10 — text='🦋 Check-Up Tiroide Completo
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 4
+      ❌ at_id: 3/10 — bad IDs: 2
+      ✅ faqpage: 10/10 — 4 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ✅ cross_linking: 10/10 — 5 links
+      ✅ author_credit: 10/10 — present
+      ⚠️ content_depth: 4/10 — 797 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Check-Up Tiroide Sassari | Esami TSH, FT3, FT4 | Bio-Cl' (59ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/endocrinologia/ecografia-tiroidea/
+    Size: 43,094 bytes | Words: 427 | Score: 61/140 (43.6%)
+      ✅ h1: 10/10 — text='Ecografia Tiroidea
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ❌ faqpage: 0/10 — MISSING
+      ❌ person_schema: 0/10 — MISSING
+      ✅ cross_linking: 10/10 — 4 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 427 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Ecografia Tiroidea Sassari | Bio-Clinic' (39ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/endocrinologia/visita-endocrinologica/
+    Size: 38,786 bytes | Words: 484 | Score: 78/140 (55.7%)
+      ✅ h1: 10/10 — text='Endocrinologia
+                        & Metabolis'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 3 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ⚠️ cross_linking: 7/10 — 2 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 484 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Endocrinologia & Metabolismo Sassari | Bio-Clinic' (49ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  HUB: NEUROLOGIA — 3 pagine
+  Punteggio medio: 76/140 (54.3%)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  [HUB] https://bio-clinic.it/neurologia/
+    Size: 33,329 bytes | Words: 405 | Score: 95/140 (67.9%)
+      ✅ h1: 10/10 — text='Neurologia a Sassari'
+      ✅ breadcrumb_urls: 10/10 — legacy /pages/ refs: 0
+      ✅ at_id: 10/10 — OK
+      ✅ faqpage: 10/10 — 4 Q&A
+      ✅ person_schema: 10/10 — 2 physicians
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 405 words
+      ⚠️ medical_webpage: 5/10 — MWP
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ✅ og_type: 10/10 — 'website' (expected: 'website')
+      ✅ title_tag: 10/10 — 'Neurologia Sassari | 2 Specialisti | Bio-Clinic' (47ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/neurologia/elettromiografia/
+    Size: 41,701 bytes | Words: 385 | Score: 58/140 (41.4%)
+      ✅ h1: 10/10 — text='Elettromiografia
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ❌ faqpage: 0/10 — MISSING
+      ❌ person_schema: 0/10 — MISSING
+      ⚠️ cross_linking: 7/10 — 2 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 385 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Elettromiografia Sassari | Bio-Clinic' (37ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/neurologia/visita-neurologica/
+    Size: 37,631 bytes | Words: 447 | Score: 75/140 (53.6%)
+      ✅ h1: 10/10 — text='Neurologia
+                        & Neurofisiolog'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 3 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ⚠️ cross_linking: 4/10 — 1 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 447 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Neurologia & Neurofisiologia Sassari | Bio-Clinic' (49ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  HUB: ORTOPEDIA — 4 pagine
+  Punteggio medio: 76/140 (54.1%)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  [HUB] https://bio-clinic.it/ortopedia/
+    Size: 33,555 bytes | Words: 413 | Score: 95/140 (67.9%)
+      ✅ h1: 10/10 — text='Ortopedia a Sassari'
+      ✅ breadcrumb_urls: 10/10 — legacy /pages/ refs: 0
+      ✅ at_id: 10/10 — OK
+      ✅ faqpage: 10/10 — 4 Q&A
+      ✅ person_schema: 10/10 — 2 physicians
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 413 words
+      ⚠️ medical_webpage: 5/10 — MWP
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ✅ og_type: 10/10 — 'website' (expected: 'website')
+      ✅ title_tag: 10/10 — 'Ortopedia Sassari | 2 Specialisti | Bio-Clinic' (46ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/ortopedia/infiltrazioni-articolari/
+    Size: 41,799 bytes | Words: 391 | Score: 58/140 (41.4%)
+      ✅ h1: 10/10 — text='Infiltrazioni Articolari
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 4
+      ❌ at_id: 3/10 — bad IDs: 1
+      ❌ faqpage: 0/10 — MISSING
+      ❌ person_schema: 0/10 — MISSING
+      ⚠️ cross_linking: 7/10 — 2 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 391 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Infiltrazioni Articolari Sassari | Bio-Clinic' (45ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/ortopedia/visita-fisiatrica/
+    Size: 35,897 bytes | Words: 397 | Score: 75/140 (53.6%)
+      ✅ h1: 10/10 — text='Fisiatria
+                        & Riabilitazione'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 3 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ⚠️ cross_linking: 4/10 — 1 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 397 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Fisiatria & Riabilitazione Sassari | Bio-Clinic' (47ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/ortopedia/visita-ortopedica/
+    Size: 37,499 bytes | Words: 440 | Score: 75/140 (53.6%)
+      ✅ h1: 10/10 — text='Ortopedia
+                        & Traumatologia
+'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 3 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ⚠️ cross_linking: 4/10 — 1 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 440 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Ortopedia & Traumatologia Sassari | Bio-Clinic' (46ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  HUB: UROLOGIA — 4 pagine
+  Punteggio medio: 70/140 (50.4%)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  [HUB] https://bio-clinic.it/urologia/
+    Size: 33,583 bytes | Words: 444 | Score: 95/140 (67.9%)
+      ✅ h1: 10/10 — text='Urologia a Sassari'
+      ✅ breadcrumb_urls: 10/10 — legacy /pages/ refs: 0
+      ✅ at_id: 10/10 — OK
+      ✅ faqpage: 10/10 — 4 Q&A
+      ✅ person_schema: 10/10 — 1 physicians
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 444 words
+      ⚠️ medical_webpage: 5/10 — MWP
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ✅ og_type: 10/10 — 'website' (expected: 'website')
+      ✅ title_tag: 10/10 — 'Urologia Sassari | Andrologo | Bio-Clinic' (41ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/urologia/ecografia-prostatica/
+    Size: 39,378 bytes | Words: 382 | Score: 55/140 (39.3%)
+      ✅ h1: 10/10 — text='Ecografia Prostatica
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 4
+      ❌ at_id: 3/10 — bad IDs: 1
+      ❌ faqpage: 0/10 — MISSING
+      ❌ person_schema: 0/10 — MISSING
+      ⚠️ cross_linking: 4/10 — 1 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 382 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Ecografia Prostatica Sassari | Bio-Clinic' (41ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/urologia/ecografia-renale/
+    Size: 39,484 bytes | Words: 496 | Score: 61/140 (43.6%)
+      ✅ h1: 10/10 — text='Ecografia Renale
+                        a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 4
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 3 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 496 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Ecografia Renale Sassari | Dott. Sotgia | Bio-Clinic' (52ch)
+      ✅ images_alt: 10/10 — 4/4 with alt
+
+  [SUB] https://bio-clinic.it/urologia/visita-urologica/
+    Size: 36,695 bytes | Words: 473 | Score: 71/140 (50.7%)
+      ✅ h1: 10/10 — text='Urologia
+                        & Andrologia
+    '
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 3 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 473 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Urologia & Andrologia Sassari | Bio-Clinic' (42ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  HUB: CHIRURGIA VASCOLARE — 4 pagine
+  Punteggio medio: 66/140 (47.0%)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  [HUB] https://bio-clinic.it/chirurgia-vascolare/
+    Size: 38,965 bytes | Words: 615 | Score: 82/140 (58.6%)
+      ✅ h1: 10/10 — text='Chirurgia Vascolare Sassari'
+      ✅ breadcrumb_urls: 10/10 — legacy /pages/ refs: 0
+      ✅ at_id: 10/10 — OK
+      ✅ faqpage: 10/10 — 5 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 2/10 — 615 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ✅ og_type: 10/10 — 'website' (expected: 'website')
+      ✅ title_tag: 10/10 — 'Chirurgia Vascolare Sassari | Bio-Clinic' (40ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/chirurgia-vascolare/eco-doppler-arti/
+    Size: 39,593 bytes | Words: 362 | Score: 55/140 (39.3%)
+      ✅ h1: 10/10 — text='Eco-Doppler Arti
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 4
+      ❌ at_id: 3/10 — bad IDs: 1
+      ❌ faqpage: 0/10 — MISSING
+      ❌ person_schema: 0/10 — MISSING
+      ⚠️ cross_linking: 4/10 — 1 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 362 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Eco-Doppler Arti Sassari | Bio-Clinic' (37ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/chirurgia-vascolare/scleroterapia/
+    Size: 39,347 bytes | Words: 354 | Score: 55/140 (39.3%)
+      ✅ h1: 10/10 — text='Scleroterapia
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 4
+      ❌ at_id: 3/10 — bad IDs: 1
+      ❌ faqpage: 0/10 — MISSING
+      ❌ person_schema: 0/10 — MISSING
+      ⚠️ cross_linking: 4/10 — 1 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 354 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Scleroterapia Sassari | Bio-Clinic' (34ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/chirurgia-vascolare/visita-chirurgia-vascolare/
+    Size: 36,564 bytes | Words: 445 | Score: 71/140 (50.7%)
+      ✅ h1: 10/10 — text='Chirurgia Vascolare
+                        & Fleb'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 3 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 445 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Chirurgia Vascolare & Flebologia Sassari | Bio-Clinic' (53ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  HUB: OTORINOLARINGOIATRIA — 5 pagine
+  Punteggio medio: 74/140 (52.7%)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  [HUB] https://bio-clinic.it/otorinolaringoiatria/
+    Size: 33,470 bytes | Words: 404 | Score: 95/140 (67.9%)
+      ✅ h1: 10/10 — text='Otorinolaringoiatria a Sassari'
+      ✅ breadcrumb_urls: 10/10 — legacy /pages/ refs: 0
+      ✅ at_id: 10/10 — OK
+      ✅ faqpage: 10/10 — 4 Q&A
+      ✅ person_schema: 10/10 — 2 physicians
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 404 words
+      ⚠️ medical_webpage: 5/10 — MWP
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ✅ og_type: 10/10 — 'website' (expected: 'website')
+      ✅ title_tag: 10/10 — 'Otorinolaringoiatria Sassari | ORL | Bio-Clinic' (47ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/otorinolaringoiatria/audiometria/
+    Size: 39,997 bytes | Words: 471 | Score: 81/140 (57.9%)
+      ✅ h1: 10/10 — text='Esame Audiometrico
+                            Cli'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 4
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 2 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ✅ cross_linking: 10/10 — 3 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 471 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Esame Audiometrico Sassari | Otorino Bio-Clinic' (47ch)
+      ✅ images_alt: 10/10 — 4/4 with alt
+
+  [SUB] https://bio-clinic.it/otorinolaringoiatria/campo-visivo/
+    Size: 38,845 bytes | Words: 488 | Score: 71/140 (50.7%)
+      ✅ h1: 10/10 — text='Oculistica
+                        & Oftalmologia
+'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 3 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 488 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Oculistica & Oftalmologia Sassari | Bio-Clinic' (46ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/otorinolaringoiatria/spirometria/
+    Size: 40,432 bytes | Words: 393 | Score: 51/140 (36.4%)
+      ✅ h1: 10/10 — text='Spirometria
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 4
+      ❌ at_id: 3/10 — bad IDs: 1
+      ❌ faqpage: 0/10 — MISSING
+      ❌ person_schema: 0/10 — MISSING
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 393 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Spirometria Sassari | Bio-Clinic' (32ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/otorinolaringoiatria/visita-orl/
+    Size: 37,263 bytes | Words: 436 | Score: 71/140 (50.7%)
+      ✅ h1: 10/10 — text='Otorinolaringoiatria
+                        (ORL)'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 3 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 436 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Otorinolaringoiatria (ORL) Sassari | Bio-Clinic' (47ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  HUB: GASTROENTEROLOGIA — 3 pagine
+  Punteggio medio: 72/140 (51.7%)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  [HUB] https://bio-clinic.it/gastroenterologia/
+    Size: 32,606 bytes | Words: 400 | Score: 95/140 (67.9%)
+      ✅ h1: 10/10 — text='Gastroenterologia a Sassari'
+      ✅ breadcrumb_urls: 10/10 — legacy /pages/ refs: 0
+      ✅ at_id: 10/10 — OK
+      ✅ faqpage: 10/10 — 4 Q&A
+      ✅ person_schema: 10/10 — 1 physicians
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 400 words
+      ⚠️ medical_webpage: 5/10 — MWP
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ✅ og_type: 10/10 — 'website' (expected: 'website')
+      ✅ title_tag: 10/10 — 'Gastroenterologia Sassari | Bio-Clinic' (38ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/gastroenterologia/ecografia-addominale/
+    Size: 41,002 bytes | Words: 381 | Score: 51/140 (36.4%)
+      ✅ h1: 10/10 — text='Ecografia Addominale
+      a Sassari'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 4
+      ❌ at_id: 3/10 — bad IDs: 1
+      ❌ faqpage: 0/10 — MISSING
+      ❌ person_schema: 0/10 — MISSING
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 381 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Ecografia Addominale Sassari | Bio-Clinic' (41ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/gastroenterologia/visita-gastroenterologica/
+    Size: 36,353 bytes | Words: 435 | Score: 71/140 (50.7%)
+      ✅ h1: 10/10 — text='Gastroenterologia
+                        & Epatol'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 3 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 435 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Gastroenterologia & Epatologia Sassari | Bio-Clinic' (51ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  HUB: OCULISTICA — 2 pagine
+  Punteggio medio: 85/140 (60.7%)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  [HUB] https://bio-clinic.it/oculistica/
+    Size: 34,212 bytes | Words: 432 | Score: 95/140 (67.9%)
+      ✅ h1: 10/10 — text='Oculistica a Sassari'
+      ✅ breadcrumb_urls: 10/10 — legacy /pages/ refs: 0
+      ✅ at_id: 10/10 — OK
+      ✅ faqpage: 10/10 — 4 Q&A
+      ✅ person_schema: 10/10 — 3 physicians
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 432 words
+      ⚠️ medical_webpage: 5/10 — MWP
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ✅ og_type: 10/10 — 'website' (expected: 'website')
+      ✅ title_tag: 10/10 — 'Oculistica Sassari | 3 Specialisti | Bio-Clinic' (47ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/oculistica/visita-oculistica/
+    Size: 42,114 bytes | Words: 469 | Score: 75/140 (53.6%)
+      ✅ h1: 10/10 — text='Oculistica
+                        
+              '
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 4
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 2 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ⚠️ cross_linking: 4/10 — 1 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 469 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Oculistica Sassari | OCT, Glaucoma | Bio-Clinic' (47ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  HUB: PNEUMOLOGIA — 2 pagine
+  Punteggio medio: 83/140 (59.3%)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  [HUB] https://bio-clinic.it/pneumologia/
+    Size: 32,214 bytes | Words: 397 | Score: 95/140 (67.9%)
+      ✅ h1: 10/10 — text='Pneumologia a Sassari'
+      ✅ breadcrumb_urls: 10/10 — legacy /pages/ refs: 0
+      ✅ at_id: 10/10 — OK
+      ✅ faqpage: 10/10 — 4 Q&A
+      ✅ person_schema: 10/10 — 1 physicians
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 397 words
+      ⚠️ medical_webpage: 5/10 — MWP
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ✅ og_type: 10/10 — 'website' (expected: 'website')
+      ✅ title_tag: 10/10 — 'Pneumologia Sassari | Bio-Clinic' (32ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/pneumologia/visita-pneumologica/
+    Size: 36,219 bytes | Words: 437 | Score: 71/140 (50.7%)
+      ✅ h1: 10/10 — text='Pneumologia
+                        & Allergologia'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 3 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 437 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Pneumologia & Allergologia Respiratoria Sassari | Bio-C' (60ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  HUB: EMATOLOGIA — 2 pagine
+  Punteggio medio: 83/140 (59.3%)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  [HUB] https://bio-clinic.it/ematologia/
+    Size: 32,883 bytes | Words: 392 | Score: 95/140 (67.9%)
+      ✅ h1: 10/10 — text='Ematologia a Sassari'
+      ✅ breadcrumb_urls: 10/10 — legacy /pages/ refs: 0
+      ✅ at_id: 10/10 — OK
+      ✅ faqpage: 10/10 — 4 Q&A
+      ✅ person_schema: 10/10 — 2 physicians
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 392 words
+      ⚠️ medical_webpage: 5/10 — MWP
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ✅ og_type: 10/10 — 'website' (expected: 'website')
+      ✅ title_tag: 10/10 — 'Ematologia Sassari | Bio-Clinic' (31ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/ematologia/visita-ematologica/
+    Size: 37,104 bytes | Words: 421 | Score: 71/140 (50.7%)
+      ✅ h1: 10/10 — text='Ematologia
+                        & Coagulazione
+'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 3 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 421 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Ematologia & Coagulazione Sassari | Bio-Clinic' (46ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  HUB: REUMATOLOGIA — 2 pagine
+  Punteggio medio: 83/140 (59.3%)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  [HUB] https://bio-clinic.it/reumatologia/
+    Size: 32,171 bytes | Words: 390 | Score: 95/140 (67.9%)
+      ✅ h1: 10/10 — text='Reumatologia a Sassari'
+      ✅ breadcrumb_urls: 10/10 — legacy /pages/ refs: 0
+      ✅ at_id: 10/10 — OK
+      ✅ faqpage: 10/10 — 4 Q&A
+      ✅ person_schema: 10/10 — 1 physicians
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 390 words
+      ⚠️ medical_webpage: 5/10 — MWP
+      ❌ first_paragraph: 0/10 — NOT optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ✅ og_type: 10/10 — 'website' (expected: 'website')
+      ✅ title_tag: 10/10 — 'Reumatologia Sassari | Bio-Clinic' (33ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+  [SUB] https://bio-clinic.it/reumatologia/visita-reumatologica/
+    Size: 35,887 bytes | Words: 396 | Score: 71/140 (50.7%)
+      ✅ h1: 10/10 — text='Reumatologia
+                        & Immunologia'
+      ⚠️ breadcrumb_urls: 5/10 — legacy /pages/ refs: 3
+      ❌ at_id: 3/10 — bad IDs: 1
+      ✅ faqpage: 10/10 — 3 Q&A
+      ❌ person_schema: 0/10 — MISSING
+      ❌ cross_linking: 0/10 — 0 links
+      ✅ author_credit: 10/10 — present
+      ❌ content_depth: 0/10 — 396 words
+      ❌ medical_webpage: 0/10 — MISSING
+      ✅ first_paragraph: 10/10 — optimized
+      ❌ howto_schema: 0/10 — MISSING
+      ❌ og_type: 3/10 — 'website' (expected: 'article')
+      ✅ title_tag: 10/10 — 'Reumatologia & Immunologia Sassari | Bio-Clinic' (47ch)
+      ✅ images_alt: 10/10 — 3/3 with alt
+
+================================================================================
+  RIEPILOGO GLOBALE
+================================================================================
+  Hub analizzati: 13
+  Pagine totali: 60
+  Punteggio globale: 4551/8400 (54.2%)
+
+  Hub                        Pagine    Score       %   Avg/page
+  ───────────────────────── ─────── ──────── ─────── ──────────
+  Ginecologia                    22  1667/3080   54.1%     75.8/140
+  Dermatologia                    3   235/420   56.0%     78.3/140
+  Endocrinologia                  4   319/560   57.0%     79.8/140
+  Neurologia                      3   228/420   54.3%     76.0/140
+  Ortopedia                       4   303/560   54.1%     75.8/140
+  Urologia                        4   282/560   50.4%     70.5/140
+  Chirurgia Vascolare             4   263/560   47.0%     65.8/140
+  Otorinolaringoiatria            5   369/700   52.7%     73.8/140
+  Gastroenterologia               3   217/420   51.7%     72.3/140
+  Oculistica                      2   170/280   60.7%     85.0/140
+  Pneumologia                     2   166/280   59.3%     83.0/140
+  Ematologia                      2   166/280   59.3%     83.0/140
+  Reumatologia                    2   166/280   59.3%     83.0/140
+
+  ⚠️  ISSUE CRITICHE (19):
+    • CRITICAL: https://bio-clinic.it/ginecologia/assistenza-ostetrica/ — faqpage
+    • CRITICAL: https://bio-clinic.it/ginecologia/corso-preparto/ — faqpage
+    • CRITICAL: https://bio-clinic.it/ginecologia/duopap/ — faqpage
+    • CRITICAL: https://bio-clinic.it/ginecologia/ecografia-mammaria/ — faqpage
+    • CRITICAL: https://bio-clinic.it/ginecologia/ecografia-morfologica/ — faqpage
+    • CRITICAL: https://bio-clinic.it/ginecologia/ecografia-ostetrica-3d/ — faqpage
+    • CRITICAL: https://bio-clinic.it/ginecologia/ecografia-pelvica/ — faqpage
+    • CRITICAL: https://bio-clinic.it/ginecologia/ecografia-transvaginale/ — faqpage
+    • CRITICAL: https://bio-clinic.it/ginecologia/isteroscopia/ — faqpage
+    • CRITICAL: https://bio-clinic.it/ginecologia/riabilitazione-pavimento-pelvico/ — faqpage
+    • CRITICAL: https://bio-clinic.it/dermatologia/mappatura-nevi/ — faqpage
+    • CRITICAL: https://bio-clinic.it/endocrinologia/ecografia-tiroidea/ — faqpage
+    • CRITICAL: https://bio-clinic.it/neurologia/elettromiografia/ — faqpage
+    • CRITICAL: https://bio-clinic.it/ortopedia/infiltrazioni-articolari/ — faqpage
+    • CRITICAL: https://bio-clinic.it/urologia/ecografia-prostatica/ — faqpage
+    • CRITICAL: https://bio-clinic.it/chirurgia-vascolare/eco-doppler-arti/ — faqpage
+    • CRITICAL: https://bio-clinic.it/chirurgia-vascolare/scleroterapia/ — faqpage
+    • CRITICAL: https://bio-clinic.it/otorinolaringoiatria/spirometria/ — faqpage
+    • CRITICAL: https://bio-clinic.it/gastroenterologia/ecografia-addominale/ — faqpage
+
+  MEDIA PER VOCE (tutti gli hub):
+    ✅ h1                    : 10.0/10
+    ⚠️ breadcrumb_urls       : 6.0/10
+    ⚠️ at_id                 : 4.5/10
+    ⚠️ faqpage               : 6.8/10
+    ❌ person_schema         : 2.5/10
+    ⚠️ cross_linking         : 5.0/10
+    ✅ author_credit         : 10.0/10
+    ❌ content_depth         : 0.9/10
+    ❌ medical_webpage       : 1.2/10
+    ⚠️ first_paragraph       : 4.2/10
+    ❌ howto_schema          : 0.2/10
+    ⚠️ og_type               : 4.6/10
+    ✅ title_tag             : 9.9/10
+    ✅ images_alt            : 10.0/10
+
+================================================================================
