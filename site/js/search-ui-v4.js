@@ -344,7 +344,12 @@ var BioSearchUI = (function () {
           html += '<div class="bs-item__sub">' + esc(subtitle) + '</div>';
         }
         html += '</div>';
-        html += '<span class="bs-item__badge bs-badge--' + meta.css + '">' + esc(meta.label) + '</span>';
+        // Show CTA button for exam/procedure types, badge for others
+        if (meta.cta === 'Prenota') {
+          html += '<span class="bs-item__cta">' + esc(meta.cta) + ' \u2192</span>';
+        } else {
+          html += '<span class="bs-item__badge bs-badge--' + meta.css + '">' + esc(meta.cta || meta.label) + '</span>';
+        }
         html += '</div>';
 
         totalShown++;

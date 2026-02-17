@@ -929,26 +929,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var urlParams = new URLSearchParams(window.location.search);
       var preselectedServiceId = urlParams.get('service');
       if (preselectedServiceId) {
-        // Wait for services to load, then auto-select
+        // Wait for services to load AND render, then auto-select
         var checkInterval = setInterval(function() {
-          if (state.services && state.services.length > 0) {
+          var targetCard = document.querySelector('.service-card[data-id="' + preselectedServiceId + '"]');
+          if (targetCard) {
             clearInterval(checkInterval);
-            var targetCard = document.querySelector('.service-card[data-id="' + preselectedServiceId + '"]');
-            if (targetCard) {
-              targetCard.click();
-              targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-              // Auto-advance to step 2 after brief delay
-              setTimeout(function() {
-                if (state.selectedService) {
-                  goToStep(2);
-                  renderCalendar();
-                }
-              }, 600);
-            }
+            // Auto-select with visual feedback
+            targetCard.click();
+            targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // Flash highlight effect
+            targetCard.style.transition = 'box-shadow 0.3s';
+            targetCard.style.boxShadow = '0 0 0 4px rgba(0,112,74,0.3)';
+            setTimeout(function() { targetCard.style.boxShadow = ''; }, 1500);
+            // Auto-advance to step 2 after brief delay
+            setTimeout(function() {
+              if (state.selectedService) {
+                goToStep(2);
+                renderCalendar();
+              }
+            }, 800);
           }
         }, 100);
-        // Safety: stop checking after 5s
-        setTimeout(function() { clearInterval(checkInterval); }, 5000);
+        // Safety: stop checking after 8s and show fallback message
+        setTimeout(function() {
+          clearInterval(checkInterval);
+          if (!state.selectedService) {
+            // Service not found - show helpful message
+            var servicesList = document.getElementById('services-list');
+            if (servicesList && !servicesList.querySelector('.service-card')) {
+              servicesList.innerHTML = '<p style="color:var(--danger);text-align:center;padding:1rem;">Impossibile caricare i servizi. <a href="javascript:location.reload()" style="color:var(--primary-dark);font-weight:600;">Ricarica la pagina</a> oppure <a href="tel:+390799561332" style="color:var(--primary-dark);font-weight:600;">chiama 079 956 1332</a>.</p>';
+            }
+          }
+        }, 8000);
       }
 
       // Step 1 -> 2

@@ -183,6 +183,27 @@
 .bs-badge--pathway    { background: #f3e5f5; color: #7b1fa2; }
 .bs-badge--physician  { background: #e0f7fa; color: #00838f; }
 
+/* CTA Button for bookable items (exams, procedures) */
+.bs-item__cta {
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 6px;
+  background: #00704A;
+  color: #fff;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  transition: background-color 0.15s, transform 0.15s;
+}
+
+.bs-item:hover .bs-item__cta,
+.bs-item--active .bs-item__cta {
+  background: #005c3d;
+  transform: scale(1.03);
+}
+
 /* ═══════════════════════════════════════════════════════════════
    EMPTY / NO RESULTS
    ═══════════════════════════════════════════════════════════════ */
