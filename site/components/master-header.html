@@ -5,7 +5,7 @@
   ║                                                                               ║
   ║  QUESTO È L'HEADER UFFICIALE - DEVE ESSERE IDENTICO SU TUTTE LE PAGINE       ║
   ║  Voci menu: Home | Slim Care Medical | Laboratorio | Donna & PMA |           ║
-  ║             Specialisti | Medical Shop | [Prenota]                            ║
+  ║             Specialisti | Medical Shop | Salute | Contatti | [Prenota]       ║
   ║                                                                               ║
   ║  Per aggiornare: modificare SOLO questo file, poi eseguire:                   ║
   ║  python scripts/propagate-header.py                                           ║
@@ -121,6 +121,11 @@
           </a>
         </li>
         
+        <!-- SALUTE -->
+        <li class="nav-item">
+          <a href="/salute/" class="nav-link {{ACTIVE_SALUTE}}" title="Guida alla Salute - Articoli Medici">Salute</a>
+        </li>
+        
         <!-- CONTATTI -->
         <li class="nav-item">
           <a href="{{PAGES_PATH}}contatti.html" class="nav-link {{ACTIVE_CONTATTI}}" title="Contatti e Orari">Contatti</a>
@@ -190,6 +195,7 @@
       </ul>
     </li>
     <li><a href="{{ROOT_PATH}}shop/index.html" title="Medical Shop">🛒 Medical Shop <span style="background: #E91E8C; color: white; font-size: 0.65rem; padding: 0.1rem 0.3rem; border-radius: 8px;">NEW</span></a></li>
+    <li><a href="/salute/" title="Guida alla Salute" style="font-weight: 600;">📰 Guida alla Salute</a></li>
     <li><a href="{{PAGES_PATH}}contatti.html" title="Contatti">📍 Contatti</a></li>
   </ul>
   <div class="mobile-nav-footer">
