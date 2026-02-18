@@ -7,19 +7,34 @@
 
 /* === SKIP-TO-CONTENT (A11y) === */
 .skip-link {
-  position: absolute;
-  left: -9999px;
+  position: absolute !important;
+  left: -9999px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  z-index: 100000 !important;
 }
 .skip-link:focus {
-  left: 20px;
-  top: 20px;
+  position: fixed !important;
+  left: 20px !important;
+  top: 20px !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
   background: #000;
   color: #fff;
-  padding: 10px;
-  z-index: 9999;
+  padding: 10px 20px;
+  z-index: 100000 !important;
   text-decoration: none;
   font-weight: 600;
   border-radius: 4px;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 /* === CSS VARIABLES === */
