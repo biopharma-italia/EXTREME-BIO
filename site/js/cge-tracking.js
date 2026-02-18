@@ -1,6 +1,7 @@
+// CGE v4.0.1 Compliance Patch — 2026-02-17
 /**
  * ============================================================================
- * BIO-CLINIC CLINICAL GROWTH ENGINE (CGE) v3.0 — PRODUCTION
+ * BIO-CLINIC CLINICAL GROWTH ENGINE (CGE) v4.0 — PRODUCTION
  * ============================================================================
  *
  * Enterprise-level behavioral tracking for bio-clinic.it
@@ -9,6 +10,12 @@
  * Architecture:
  *   Consent Mode v2 (inline, before GTM) -> GTM Container -> GA4
  *   bcDataLayer (inline) -> cge-tracking.js (this file) -> dataLayer
+ *
+ * KEY CHANGES v4.0 vs v3.0:
+ *   - Version alignment: BCG.version = 'CGE_v4.0'
+ *   - Phone E.164 normalization before SHA-256 hashing
+ *   - Removed cleartext email from bc_enhanced_conversion push
+ *   - All prior v3.0 features retained unchanged
  *
  * KEY CHANGES v3.0 vs v2.1:
  *   - GCLID closed-loop: auto-capture from URL, store in first-party cookie,
@@ -48,11 +55,11 @@
  *
  * Container: GTM-PWZWX5RS
  * GA4: G-9EXCL016VJ
- * Version: CGE_v3.0_production
+ * Version: CGE_v4.0
  *
  * @author Bio-Clinic Digital Architecture
- * @version 3.0.0
- * @date 2026-02-16
+ * @version 4.0.1
+ * @date 2026-02-17
  */
 
 (function() {
@@ -67,7 +74,7 @@
   var BCG = window.BCG || {};
   window.BCG = BCG;
 
-  BCG.version = 'CGE_v3.0_production';
+  BCG.version = 'CGE_v4.0';
   BCG.debug = (window.location.search.indexOf('cge_debug=1') > -1);
 
   // =========================================================================
@@ -258,6 +265,20 @@
         return b.toString(16).padStart(2, '0');
       }).join('');
     });
+  };
+
+  // E.164 phone normalization for Enhanced Conversions (Italy default)
+  BCG._normalizePhoneE164 = function(phone) {
+    if (!phone) return '';
+    var digits = phone.replace(/\D/g, '');
+    if (digits.length === 0) return '';
+    if (digits.indexOf('39') === 0) {
+      return '+' + digits;
+    }
+    if (digits.indexOf('0') === 0) {
+      return '+39' + digits.substring(1);
+    }
+    return '+39' + digits;
   };
 
   // =========================================================================
@@ -501,11 +522,14 @@
         );
       }
       if (phoneField && phoneField.value) {
-        hashPromises.push(
-          BCG.sha256(phoneField.value).then(function(hash) {
-            enhancedData.bc_user_phone_hash = hash;
-          })
-        );
+        var normalizedPhone = BCG._normalizePhoneE164(phoneField.value);
+        if (normalizedPhone) {
+          hashPromises.push(
+            BCG.sha256(normalizedPhone).then(function(hash) {
+              enhancedData.bc_user_phone_hash = hash;
+            })
+          );
+        }
       }
 
       Promise.all(hashPromises).then(function() {
@@ -513,15 +537,12 @@
         // NOTE: No PII hashes in bc_form_submit (GDPR-safe)
         BCG.sendEvent('bc_form_submit', eventParams);
 
-        // Push enhanced conversion data separately (hashed only)
+        // Push enhanced conversion data separately (hashed only, no cleartext PII)
         if (enhancedData.bc_user_email_hash || enhancedData.bc_user_phone_hash) {
           window.dataLayer.push({
             event: 'bc_enhanced_conversion',
             bc_user_email_hash: enhancedData.bc_user_email_hash || '',
-            bc_user_phone_hash: enhancedData.bc_user_phone_hash || '',
-            enhanced_conversion_data: {
-              email: emailField ? emailField.value.trim().toLowerCase() : ''
-            }
+            bc_user_phone_hash: enhancedData.bc_user_phone_hash || ''
           });
         }
 
@@ -1073,7 +1094,7 @@
     BCG._observeForms();
 
     if (BCG.debug) {
-      console.log('%c[CGE] Clinical Growth Engine v3.0 PRODUCTION initialized', 'color:#00704A;font-weight:bold;font-size:14px');
+      console.log('%c[CGE] Clinical Growth Engine v4.0 initialized', 'color:#00704A;font-weight:bold;font-size:14px');
       console.log('[CGE] Context:', BCG.getContext());
       console.log('[CGE] User ID:', BCG.getUserId());
       console.log('[CGE] User ID mode:', BCG._consentState.analytics_storage === 'granted' ? 'persistent' : 'session-only (no consent)');
