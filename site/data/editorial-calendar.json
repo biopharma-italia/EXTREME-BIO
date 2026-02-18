@@ -1,0 +1,807 @@
+{
+  "version": "1.0",
+  "project": "Bio-Clinic Salute Hub",
+  "reviewer": {
+    "name": "Dott. Francesco Dessole",
+    "slug": "francesco-dessole",
+    "title": "Medico Chirurgo – Specialista in Ginecologia e Ostetricia",
+    "credentials": "Dottorato di Ricerca · Ordine dei Medici di Sassari n° 5244",
+    "url": "/equipe/francesco-dessole/"
+  },
+  "schedule": {
+    "frequency": "daily",
+    "days": ["monday", "tuesday", "wednesday", "thursday", "friday"],
+    "publish_time": "07:00 CET",
+    "start_date": "2026-02-23"
+  },
+  "articles": [
+    {
+      "id": 1,
+      "publish_date": "2026-02-23",
+      "slug": "ipertensione-arteriosa",
+      "keyword": "ipertensione arteriosa cause sintomi cura",
+      "title_h1": "Ipertensione Arteriosa: Cause, Sintomi e Cura a Sassari",
+      "specialty": "cardiologia",
+      "specialty_page": "/cardiologia/",
+      "sardinia_angle": "La Sardegna presenta tassi di ipertensione superiori alla media nazionale, correlati alla predisposizione genetica isolana e alla dieta tradizionale ricca di sodio.",
+      "specialists": [
+        {
+          "name": "Dott.ssa Giuliana Guagnozzi",
+          "slug": "giuliana-guagnozzi",
+          "role": "Cardiologa",
+          "url": "/equipe/giuliana-guagnozzi/"
+        },
+        {
+          "name": "Dott. Paolo Franca",
+          "slug": "paolo-franca",
+          "role": "Cardiologo Interventista",
+          "url": "/equipe/paolo-franca/"
+        },
+        {
+          "name": "Dott. Paolo Pischedda",
+          "slug": "paolo-pischedda",
+          "role": "Cardiologo",
+          "url": "/equipe/paolo-pischedda/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "analisi del sangue per profilo lipidico e renale", "url": "/laboratorio/"},
+        "specialist": {"anchor": "équipe di cardiologia Bio-Clinic", "url": "/cardiologia/"},
+        "booking": {"anchor": "Prenota una visita cardiologica a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 2,
+      "publish_date": "2026-02-24",
+      "slug": "ipotiroidismo",
+      "keyword": "ipotiroidismo sintomi cura tiroide",
+      "title_h1": "Ipotiroidismo: Sintomi, Diagnosi e Cura in Sardegna",
+      "specialty": "endocrinologia",
+      "specialty_page": "/endocrinologia/",
+      "sardinia_angle": "L'ipotiroidismo autoimmune (tiroidite di Hashimoto) ha una prevalenza particolarmente elevata in Sardegna, in linea con l'alta incidenza di patologie autoimmuni nell'isola.",
+      "specialists": [
+        {
+          "name": "Dott.ssa Irene Aini",
+          "slug": "irene-aini",
+          "role": "Endocrinologa",
+          "url": "/equipe/irene-aini/"
+        },
+        {
+          "name": "Dott. Francesco Tolu",
+          "slug": "francesco-tolu",
+          "role": "Endocrinologo",
+          "url": "/equipe/francesco-tolu/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "esami della tiroide TSH, FT3, FT4", "url": "/laboratorio/"},
+        "specialist": {"anchor": "specialisti in endocrinologia", "url": "/endocrinologia/"},
+        "booking": {"anchor": "Prenota un checkup tiroideo a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 3,
+      "publish_date": "2026-02-25",
+      "slug": "endometriosi-sintomi",
+      "keyword": "endometriosi sintomi diagnosi cura",
+      "title_h1": "Endometriosi: Sintomi, Diagnosi e Trattamento a Sassari",
+      "specialty": "ginecologia",
+      "specialty_page": "/ginecologia/",
+      "sardinia_angle": "L'endometriosi colpisce circa il 10-15% delle donne in età fertile. In Sardegna la diagnosi viene spesso ritardata di 7-10 anni, rendendo fondamentale l'accesso a specialisti dedicati.",
+      "specialists": [
+        {
+          "name": "Dott. Francesco Dessole",
+          "slug": "francesco-dessole",
+          "role": "Ginecologo – Ecografia 3D/4D",
+          "url": "/equipe/francesco-dessole/"
+        },
+        {
+          "name": "Prof. Marco Petrillo",
+          "slug": "marco-petrillo",
+          "role": "Ginecologo – Chirurgia mini-invasiva",
+          "url": "/equipe/marco-petrillo/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "marker CA-125 e profilo ormonale", "url": "/laboratorio/"},
+        "specialist": {"anchor": "ginecologi esperti in endometriosi", "url": "/ginecologia/"},
+        "booking": {"anchor": "Prenota una visita ginecologica a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 4,
+      "publish_date": "2026-02-26",
+      "slug": "diabete-tipo-2-sardegna",
+      "keyword": "diabete tipo 2 sintomi cura sardegna",
+      "title_h1": "Diabete di Tipo 2 in Sardegna: Sintomi, Rischi e Cura",
+      "specialty": "endocrinologia",
+      "specialty_page": "/endocrinologia/",
+      "sardinia_angle": "La Sardegna detiene il primato mondiale per incidenza di diabete di tipo 1 e una prevalenza di tipo 2 superiore alla media italiana, legata a fattori genetici isolani unici.",
+      "specialists": [
+        {
+          "name": "Dott.ssa Fabrizia Caucci",
+          "slug": "fabrizia-caucci",
+          "role": "Diabetologa – Endocrinologa",
+          "url": "/equipe/fabrizia-caucci/"
+        },
+        {
+          "name": "Dott. Francesco Tolu",
+          "slug": "francesco-tolu",
+          "role": "Endocrinologo",
+          "url": "/equipe/francesco-tolu/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "glicemia, emoglobina glicata HbA1c e profilo metabolico", "url": "/laboratorio/"},
+        "specialist": {"anchor": "diabetologa ed endocrinologa Bio-Clinic", "url": "/endocrinologia/"},
+        "booking": {"anchor": "Prenota un controllo diabetologico a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 5,
+      "publish_date": "2026-02-27",
+      "slug": "anemia-mediterranea-talassemia",
+      "keyword": "talassemia anemia mediterranea sardegna portatore sano",
+      "title_h1": "Anemia Mediterranea (Talassemia) in Sardegna: Guida Completa",
+      "specialty": "ematologia",
+      "specialty_page": "/ematologia/",
+      "sardinia_angle": "La Sardegna ha la più alta prevalenza di portatori sani di talassemia in Europa: circa il 12-13% della popolazione sarda è portatore del tratto talassemico.",
+      "specialists": [
+        {
+          "name": "Dr. Daniele Sabiu",
+          "slug": "daniele-sabiu",
+          "role": "Ematologo",
+          "url": "/equipe/daniele-sabiu/"
+        },
+        {
+          "name": "Dott. Luigi Podda",
+          "slug": "luigi-podda",
+          "role": "Ematologo",
+          "url": "/equipe/luigi-podda/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "emocromo completo, elettroforesi emoglobina e test genetico", "url": "/laboratorio/"},
+        "specialist": {"anchor": "ematologi Bio-Clinic Sassari", "url": "/ematologia/"},
+        "booking": {"anchor": "Prenota uno screening per talassemia a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 6,
+      "publish_date": "2026-03-02",
+      "slug": "reflusso-gastroesofageo",
+      "keyword": "reflusso gastroesofageo sintomi cura",
+      "title_h1": "Reflusso Gastroesofageo: Sintomi, Cause e Cura",
+      "specialty": "gastroenterologia",
+      "specialty_page": "/gastroenterologia/",
+      "sardinia_angle": "Il reflusso gastroesofageo colpisce il 20-30% degli adulti italiani. La dieta sarda tradizionale, ricca di vino e formaggi stagionati, può rappresentare un fattore aggravante.",
+      "specialists": [
+        {
+          "name": "Dott. Angelo Deplano",
+          "slug": "angelo-deplano",
+          "role": "Gastroenterologo – Epatologo",
+          "url": "/equipe/angelo-deplano/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "test per Helicobacter pylori e marcatori infiammatori", "url": "/laboratorio/"},
+        "specialist": {"anchor": "gastroenterologo Bio-Clinic Sassari", "url": "/gastroenterologia/"},
+        "booking": {"anchor": "Prenota una visita gastroenterologica a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 7,
+      "publish_date": "2026-03-03",
+      "slug": "noduli-tiroidei",
+      "keyword": "noduli tiroidei quando preoccuparsi",
+      "title_h1": "Noduli Tiroidei: Quando Preoccuparsi e Cosa Fare",
+      "specialty": "endocrinologia",
+      "specialty_page": "/endocrinologia/",
+      "sardinia_angle": "In Sardegna la prevalenza di noduli tiroidei è elevata, anche per la storica carenza iodica delle zone interne dell'isola.",
+      "specialists": [
+        {
+          "name": "Dott.ssa Irene Aini",
+          "slug": "irene-aini",
+          "role": "Endocrinologa",
+          "url": "/equipe/irene-aini/"
+        },
+        {
+          "name": "Dott. Francesco Tolu",
+          "slug": "francesco-tolu",
+          "role": "Endocrinologo",
+          "url": "/equipe/francesco-tolu/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "dosaggio TSH, calcitonina e tireoglobulina", "url": "/laboratorio/"},
+        "specialist": {"anchor": "endocrinologi Bio-Clinic", "url": "/endocrinologia/"},
+        "booking": {"anchor": "Prenota un'ecografia tiroidea a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 8,
+      "publish_date": "2026-03-04",
+      "slug": "cervicalgia-dolore-collo",
+      "keyword": "dolore cervicale cause rimedi cervicalgia",
+      "title_h1": "Cervicalgia: Cause, Sintomi e Rimedi per il Dolore al Collo",
+      "specialty": "ortopedia",
+      "specialty_page": "/ortopedia/",
+      "sardinia_angle": "La cervicalgia è tra le prime cause di visita specialistica in Sardegna, aggravata dallo stile di vita sedentario e dalle lunghe percorrenze in auto tipiche del territorio.",
+      "specialists": [
+        {
+          "name": "Dott. Andrea Donato",
+          "slug": "andrea-donato",
+          "role": "Ortopedico",
+          "url": "/equipe/andrea-donato/"
+        },
+        {
+          "name": "Dott. Pietro Lisai",
+          "slug": "pietro-lisai",
+          "role": "Ortopedico",
+          "url": "/equipe/pietro-lisai/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "esami ematici per indici infiammatori", "url": "/laboratorio/"},
+        "specialist": {"anchor": "ortopedici Bio-Clinic", "url": "/ortopedia/"},
+        "booking": {"anchor": "Prenota una visita ortopedica a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 9,
+      "publish_date": "2026-03-05",
+      "slug": "dermatite-atopica",
+      "keyword": "dermatite atopica adulti cura sintomi",
+      "title_h1": "Dermatite Atopica: Sintomi, Cause e Cura a Sassari",
+      "specialty": "dermatologia",
+      "specialty_page": "/dermatologia/",
+      "sardinia_angle": "La dermatite atopica in Sardegna colpisce con prevalenza significativa, complice il clima secco estivo e la predisposizione genetica autoimmune della popolazione sarda.",
+      "specialists": [
+        {
+          "name": "Dott.ssa Alessandra Musinu",
+          "slug": "alessandra-musinu",
+          "role": "Dermatologa",
+          "url": "/equipe/alessandra-musinu/"
+        },
+        {
+          "name": "Dott.ssa Giovanna Costa",
+          "slug": "giovanna-costa",
+          "role": "Dermatologa – Dermatoscopia",
+          "url": "/equipe/giovanna-costa/"
+        },
+        {
+          "name": "Dott.ssa Speranza Anedda",
+          "slug": "speranza-anedda",
+          "role": "Dermatologa",
+          "url": "/equipe/speranza-anedda/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "test allergologici e IgE specifiche", "url": "/laboratorio/"},
+        "specialist": {"anchor": "dermatologhe Bio-Clinic", "url": "/dermatologia/"},
+        "booking": {"anchor": "Prenota una visita dermatologica a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 10,
+      "publish_date": "2026-03-06",
+      "slug": "cistite-ricorrente",
+      "keyword": "cistite ricorrente cause cura prevenzione",
+      "title_h1": "Cistite Ricorrente: Cause, Cura e Prevenzione",
+      "specialty": "urologia",
+      "specialty_page": "/urologia/",
+      "sardinia_angle": "La cistite ricorrente colpisce fino al 30% delle donne italiane, con un picco estivo in Sardegna legato alla disidratazione e ai bagni in mare.",
+      "specialists": [
+        {
+          "name": "Dott. Carlos Manuel Cambara Zuniga",
+          "slug": "carlos-manuel-cambara-zuniga",
+          "role": "Urologo – Andrologo",
+          "url": "/equipe/carlos-manuel-cambara-zuniga/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "esame urine e urinocoltura con antibiogramma", "url": "/laboratorio/"},
+        "specialist": {"anchor": "urologo Bio-Clinic Sassari", "url": "/urologia/"},
+        "booking": {"anchor": "Prenota una visita urologica a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 11,
+      "publish_date": "2026-03-09",
+      "slug": "fibrillazione-atriale",
+      "keyword": "fibrillazione atriale sintomi rischi cura",
+      "title_h1": "Fibrillazione Atriale: Sintomi, Rischi e Trattamento",
+      "specialty": "cardiologia",
+      "specialty_page": "/cardiologia/",
+      "sardinia_angle": "La fibrillazione atriale interessa circa il 2% della popolazione italiana, con un'incidenza crescente nella popolazione anziana sarda.",
+      "specialists": [
+        {
+          "name": "Dott. Paolo Franca",
+          "slug": "paolo-franca",
+          "role": "Cardiologo Interventista",
+          "url": "/equipe/paolo-franca/"
+        },
+        {
+          "name": "Dott.ssa Sara Uras",
+          "slug": "sara-uras",
+          "role": "Cardiologa",
+          "url": "/equipe/sara-uras/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "esami coagulazione e BNP", "url": "/laboratorio/"},
+        "specialist": {"anchor": "cardiologi Bio-Clinic", "url": "/cardiologia/"},
+        "booking": {"anchor": "Prenota un Holter ECG a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 12,
+      "publish_date": "2026-03-10",
+      "slug": "sindrome-ovaio-policistico",
+      "keyword": "ovaio policistico sintomi cura PCOS",
+      "title_h1": "Sindrome dell'Ovaio Policistico (PCOS): Sintomi e Cura",
+      "specialty": "ginecologia",
+      "specialty_page": "/ginecologia/",
+      "sardinia_angle": "La PCOS colpisce il 5-10% delle donne in età fertile ed è una delle principali cause di infertilità, un tema particolarmente sentito nel percorso PMA.",
+      "specialists": [
+        {
+          "name": "Dott. Francesco Dessole",
+          "slug": "francesco-dessole",
+          "role": "Ginecologo – Esperto PMA",
+          "url": "/equipe/francesco-dessole/"
+        },
+        {
+          "name": "Dott.ssa Maddalena Pola",
+          "slug": "maddalena-pola",
+          "role": "Ginecologa",
+          "url": "/equipe/maddalena-pola/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "profilo ormonale completo e insulinemia", "url": "/laboratorio/"},
+        "specialist": {"anchor": "ginecologi esperti in PCOS", "url": "/ginecologia/"},
+        "booking": {"anchor": "Prenota un'ecografia pelvica a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 13,
+      "publish_date": "2026-03-11",
+      "slug": "ernia-disco-lombare",
+      "keyword": "ernia del disco lombare sintomi cura",
+      "title_h1": "Ernia del Disco Lombare: Sintomi, Diagnosi e Cura",
+      "specialty": "ortopedia",
+      "specialty_page": "/ortopedia/",
+      "sardinia_angle": "L'ernia del disco lombare è tra le cause più frequenti di lombalgia cronica e rappresenta una delle principali ragioni di visita ortopedica nel nord Sardegna.",
+      "specialists": [
+        {
+          "name": "Dott. Andrea Donato",
+          "slug": "andrea-donato",
+          "role": "Ortopedico",
+          "url": "/equipe/andrea-donato/"
+        },
+        {
+          "name": "Dott. Nicola Frau",
+          "slug": "nicola-frau",
+          "role": "Fisiatra",
+          "url": "/equipe/nicola-frau/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "esami ematici pre-operatori", "url": "/laboratorio/"},
+        "specialist": {"anchor": "ortopedici e fisiatri Bio-Clinic", "url": "/ortopedia/"},
+        "booking": {"anchor": "Prenota una visita ortopedica a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 14,
+      "publish_date": "2026-03-12",
+      "slug": "helicobacter-pylori",
+      "keyword": "helicobacter pylori test sintomi cura",
+      "title_h1": "Helicobacter Pylori: Test, Sintomi e Cura",
+      "specialty": "gastroenterologia",
+      "specialty_page": "/gastroenterologia/",
+      "sardinia_angle": "L'infezione da H. pylori interessa circa il 30-50% della popolazione adulta italiana, con possibili variazioni regionali in Sardegna legate alle abitudini alimentari.",
+      "specialists": [
+        {
+          "name": "Dott. Angelo Deplano",
+          "slug": "angelo-deplano",
+          "role": "Gastroenterologo – Epatologo",
+          "url": "/equipe/angelo-deplano/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "breath test e antigene fecale H. pylori", "url": "/laboratorio/"},
+        "specialist": {"anchor": "gastroenterologo Bio-Clinic", "url": "/gastroenterologia/"},
+        "booking": {"anchor": "Prenota un test per Helicobacter a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 15,
+      "publish_date": "2026-03-13",
+      "slug": "ipertiroidismo",
+      "keyword": "ipertiroidismo sintomi cura morbo di basedow",
+      "title_h1": "Ipertiroidismo e Morbo di Basedow: Sintomi e Cura",
+      "specialty": "endocrinologia",
+      "specialty_page": "/endocrinologia/",
+      "sardinia_angle": "Il morbo di Basedow-Graves è una patologia autoimmune con prevalenza elevata in Sardegna, coerente con il profilo immunogenetico della popolazione isolana.",
+      "specialists": [
+        {
+          "name": "Dott.ssa Fabrizia Caucci",
+          "slug": "fabrizia-caucci",
+          "role": "Diabetologa – Endocrinologa",
+          "url": "/equipe/fabrizia-caucci/"
+        },
+        {
+          "name": "Dott.ssa Irene Aini",
+          "slug": "irene-aini",
+          "role": "Endocrinologa",
+          "url": "/equipe/irene-aini/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "dosaggio TSH, FT3, FT4 e anticorpi anti-recettore TSH", "url": "/laboratorio/"},
+        "specialist": {"anchor": "endocrinologhe Bio-Clinic", "url": "/endocrinologia/"},
+        "booking": {"anchor": "Prenota un checkup tiroideo a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 16,
+      "publish_date": "2026-03-16",
+      "slug": "asma-bronchiale",
+      "keyword": "asma bronchiale sintomi diagnosi cura",
+      "title_h1": "Asma Bronchiale: Sintomi, Diagnosi e Cura",
+      "specialty": "pneumologia",
+      "specialty_page": "/pneumologia/",
+      "sardinia_angle": "L'asma bronchiale interessa circa il 6-8% della popolazione italiana, con possibili trigger ambientali specifici del clima sardo (pollini, mistral, inquinamento urbano).",
+      "specialists": [
+        {
+          "name": "Prof. Pietro Pirina",
+          "slug": "pietro-pirina",
+          "role": "Pneumologo",
+          "url": "/equipe/pietro-pirina/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "spirometria e test allergologici", "url": "/laboratorio/"},
+        "specialist": {"anchor": "pneumologo Bio-Clinic", "url": "/pneumologia/"},
+        "booking": {"anchor": "Prenota una spirometria a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 17,
+      "publish_date": "2026-03-17",
+      "slug": "menopausa-sintomi",
+      "keyword": "menopausa sintomi rimedi terapia ormonale",
+      "title_h1": "Menopausa: Sintomi, Rimedi e Terapia Ormonale Sostitutiva",
+      "specialty": "ginecologia",
+      "specialty_page": "/ginecologia/",
+      "sardinia_angle": "La menopausa rappresenta una fase cruciale per la salute della donna. In Sardegna, la lunga aspettativa di vita rende essenziale la gestione dei sintomi post-menopausali.",
+      "specialists": [
+        {
+          "name": "Dott. Francesco Dessole",
+          "slug": "francesco-dessole",
+          "role": "Ginecologo – Radiofrequenza vaginale GSM",
+          "url": "/equipe/francesco-dessole/"
+        },
+        {
+          "name": "Dott.ssa Sonia Bove",
+          "slug": "sonia-bove",
+          "role": "Ginecologa – Senologa",
+          "url": "/equipe/sonia-bove/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "profilo ormonale menopausale e MOC-DEXA", "url": "/laboratorio/"},
+        "specialist": {"anchor": "ginecologi esperti in menopausa", "url": "/ginecologia/"},
+        "booking": {"anchor": "Prenota una visita ginecologica a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 18,
+      "publish_date": "2026-03-18",
+      "slug": "psoriasi",
+      "keyword": "psoriasi cause sintomi cura",
+      "title_h1": "Psoriasi: Cause, Sintomi e Cura a Sassari",
+      "specialty": "dermatologia",
+      "specialty_page": "/dermatologia/",
+      "sardinia_angle": "La psoriasi, malattia autoimmune cronica, colpisce circa il 2-3% della popolazione italiana. In Sardegna, la componente autoimmune è amplificata dal profilo genetico isolano.",
+      "specialists": [
+        {
+          "name": "Dott.ssa Giovanna Costa",
+          "slug": "giovanna-costa",
+          "role": "Dermatologa – Dermatoscopia",
+          "url": "/equipe/giovanna-costa/"
+        },
+        {
+          "name": "Dott.ssa Speranza Anedda",
+          "slug": "speranza-anedda",
+          "role": "Dermatologa",
+          "url": "/equipe/speranza-anedda/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "esami autoimmunitari e indici infiammatori", "url": "/laboratorio/"},
+        "specialist": {"anchor": "dermatologhe Bio-Clinic", "url": "/dermatologia/"},
+        "booking": {"anchor": "Prenota una visita dermatologica a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 19,
+      "publish_date": "2026-03-19",
+      "slug": "prostatite",
+      "keyword": "prostatite sintomi cura prevenzione",
+      "title_h1": "Prostatite: Sintomi, Diagnosi e Cura",
+      "specialty": "urologia",
+      "specialty_page": "/urologia/",
+      "sardinia_angle": "La prostatite è una delle patologie urologiche più comuni negli uomini tra 30 e 50 anni, con frequenti episodi correlati allo stress e alla sedentarietà.",
+      "specialists": [
+        {
+          "name": "Dott. Carlos Manuel Cambara Zuniga",
+          "slug": "carlos-manuel-cambara-zuniga",
+          "role": "Urologo – Andrologo",
+          "url": "/equipe/carlos-manuel-cambara-zuniga/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "PSA, esame urine e spermiocoltura", "url": "/laboratorio/"},
+        "specialist": {"anchor": "urologo Bio-Clinic Sassari", "url": "/urologia/"},
+        "booking": {"anchor": "Prenota una visita urologica a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 20,
+      "publish_date": "2026-03-20",
+      "slug": "colesterolo-alto",
+      "keyword": "colesterolo alto cause dieta rimedi",
+      "title_h1": "Colesterolo Alto: Cause, Rischi e Come Abbassarlo",
+      "specialty": "cardiologia",
+      "specialty_page": "/cardiologia/",
+      "sardinia_angle": "L'ipercolesterolemia familiare è frequente in Sardegna. La dieta tradizionale sarda, se non bilanciata, può contribuire ad elevare il colesterolo LDL.",
+      "specialists": [
+        {
+          "name": "Dott.ssa Giuliana Guagnozzi",
+          "slug": "giuliana-guagnozzi",
+          "role": "Cardiologa",
+          "url": "/equipe/giuliana-guagnozzi/"
+        },
+        {
+          "name": "Dr. Tonino Bullitta",
+          "slug": "tonino-bullitta",
+          "role": "Cardiologo",
+          "url": "/equipe/tonino-bullitta/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "profilo lipidico completo", "url": "/laboratorio/"},
+        "specialist": {"anchor": "cardiologi Bio-Clinic", "url": "/cardiologia/"},
+        "booking": {"anchor": "Prenota un checkup cardiovascolare a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 21,
+      "publish_date": "2026-03-23",
+      "slug": "artrite-reumatoide-sardegna",
+      "keyword": "artrite reumatoide sintomi cura sardegna",
+      "title_h1": "Artrite Reumatoide in Sardegna: Sintomi, Diagnosi e Cura",
+      "specialty": "reumatologia",
+      "specialty_page": "/reumatologia/",
+      "sardinia_angle": "La Sardegna presenta la più alta prevalenza di artrite reumatoide in Italia, legata al peculiare assetto HLA della popolazione sarda.",
+      "specialists": [
+        {
+          "name": "Dott. Niccolò Melis",
+          "slug": "niccolo-melis",
+          "role": "Reumatologo",
+          "url": "/equipe/niccolo-melis/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "fattore reumatoide, anti-CCP e VES/PCR", "url": "/laboratorio/"},
+        "specialist": {"anchor": "reumatologo Bio-Clinic", "url": "/reumatologia/"},
+        "booking": {"anchor": "Prenota una visita reumatologica a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 22,
+      "publish_date": "2026-03-24",
+      "slug": "cefalea-emicrania",
+      "keyword": "emicrania cause cura cefalea cronica",
+      "title_h1": "Emicrania e Cefalea: Cause, Tipi e Cura",
+      "specialty": "neurologia",
+      "specialty_page": "/neurologia/",
+      "sardinia_angle": "L'emicrania colpisce circa il 12% della popolazione italiana e rappresenta una delle cause principali di disabilità lavorativa temporanea.",
+      "specialists": [
+        {
+          "name": "Dott. Guido Marongiu",
+          "slug": "guido-marongiu",
+          "role": "Neurologo",
+          "url": "/equipe/guido-marongiu/"
+        },
+        {
+          "name": "Dott. Sebastiano Traccis",
+          "slug": "sebastiano-traccis",
+          "role": "Neurologo",
+          "url": "/equipe/sebastiano-traccis/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "esami ematici per escludere cause secondarie", "url": "/laboratorio/"},
+        "specialist": {"anchor": "neurologi Bio-Clinic", "url": "/neurologia/"},
+        "booking": {"anchor": "Prenota una visita neurologica a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 23,
+      "publish_date": "2026-03-25",
+      "slug": "infertilita-femminile",
+      "keyword": "infertilità femminile cause diagnosi PMA",
+      "title_h1": "Infertilità Femminile: Cause, Diagnosi e Percorso PMA a Sassari",
+      "specialty": "ginecologia",
+      "specialty_page": "/pma-fertilita/",
+      "sardinia_angle": "In Sardegna l'età media del primo figlio supera i 32 anni, aumentando il rischio di infertilità. Il percorso PMA è fondamentale per molte coppie sarde.",
+      "specialists": [
+        {
+          "name": "Dott. Francesco Dessole",
+          "slug": "francesco-dessole",
+          "role": "Ginecologo – Esperto PMA e Monitoraggio Follicolare",
+          "url": "/equipe/francesco-dessole/"
+        },
+        {
+          "name": "Dott.ssa Antonella Pruneddu",
+          "slug": "antonella-pruneddu",
+          "role": "Ginecologa",
+          "url": "/equipe/antonella-pruneddu/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "profilo ormonale fertilità e AMH", "url": "/laboratorio/"},
+        "specialist": {"anchor": "specialisti PMA Bio-Clinic", "url": "/pma-fertilita/"},
+        "booking": {"anchor": "Prenota una consulenza fertilità a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 24,
+      "publish_date": "2026-03-26",
+      "slug": "sclerosi-multipla-sardegna",
+      "keyword": "sclerosi multipla sintomi sardegna diagnosi",
+      "title_h1": "Sclerosi Multipla in Sardegna: Sintomi, Diagnosi e Supporto",
+      "specialty": "neurologia",
+      "specialty_page": "/neurologia/",
+      "sardinia_angle": "La Sardegna ha una delle incidenze più alte al mondo di sclerosi multipla: circa 370 casi per 100.000 abitanti, contro i 110/100.000 della media italiana.",
+      "specialists": [
+        {
+          "name": "Dott. Guido Marongiu",
+          "slug": "guido-marongiu",
+          "role": "Neurologo",
+          "url": "/equipe/guido-marongiu/"
+        },
+        {
+          "name": "Dott. Sebastiano Traccis",
+          "slug": "sebastiano-traccis",
+          "role": "Neurologo",
+          "url": "/equipe/sebastiano-traccis/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "esami sangue, potenziali evocati e RMN encefalo", "url": "/laboratorio/"},
+        "specialist": {"anchor": "neurologi Bio-Clinic Sassari", "url": "/neurologia/"},
+        "booking": {"anchor": "Prenota una visita neurologica a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 25,
+      "publish_date": "2026-03-27",
+      "slug": "insufficienza-venosa",
+      "keyword": "insufficienza venosa gambe vene varicose",
+      "title_h1": "Insufficienza Venosa e Vene Varicose: Sintomi e Cura",
+      "specialty": "chirurgia-vascolare",
+      "specialty_page": "/chirurgia-vascolare/",
+      "sardinia_angle": "L'insufficienza venosa cronica interessa fino al 50% della popolazione adulta, con prevalenza nei lavoratori che stanno a lungo in piedi.",
+      "specialists": [
+        {
+          "name": "Dott.ssa Paola Dettori",
+          "slug": "paola-dettori",
+          "role": "Chirurgo Vascolare",
+          "url": "/equipe/paola-dettori/"
+        },
+        {
+          "name": "Dott. Roberto Mancino",
+          "slug": "roberto-mancino",
+          "role": "Chirurgo Vascolare",
+          "url": "/equipe/roberto-mancino/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "eco-Doppler venoso arti inferiori", "url": "/laboratorio/"},
+        "specialist": {"anchor": "chirurghi vascolari Bio-Clinic", "url": "/chirurgia-vascolare/"},
+        "booking": {"anchor": "Prenota un eco-Doppler a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 26,
+      "publish_date": "2026-03-30",
+      "slug": "otite-acufeni",
+      "keyword": "acufeni cause cura otite orecchio",
+      "title_h1": "Acufeni e Otite: Cause, Diagnosi e Cura",
+      "specialty": "otorinolaringoiatria",
+      "specialty_page": "/otorinolaringoiatria/",
+      "sardinia_angle": "Gli acufeni colpiscono il 10-15% della popolazione adulta. In Sardegna, l'esposizione al vento e alle variazioni di pressione atmosferica può aggravare le patologie dell'orecchio.",
+      "specialists": [
+        {
+          "name": "Prof. Francesco Bussu",
+          "slug": "francesco-bussu",
+          "role": "Otorinolaringoiatra",
+          "url": "/equipe/francesco-bussu/"
+        },
+        {
+          "name": "Dott.ssa Maria Laura De Luca",
+          "slug": "maria-laura-de-luca",
+          "role": "Otorinolaringoiatra",
+          "url": "/equipe/maria-laura-de-luca/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "audiometria e impedenzometria", "url": "/laboratorio/"},
+        "specialist": {"anchor": "otorinolaringoiatri Bio-Clinic", "url": "/otorinolaringoiatria/"},
+        "booking": {"anchor": "Prenota una visita ORL a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 27,
+      "publish_date": "2026-03-31",
+      "slug": "glaucoma",
+      "keyword": "glaucoma sintomi prevenzione cura occhi",
+      "title_h1": "Glaucoma: Sintomi, Prevenzione e Cura a Sassari",
+      "specialty": "oculistica",
+      "specialty_page": "/oculistica/",
+      "sardinia_angle": "Il glaucoma è la seconda causa di cecità nel mondo. In Italia colpisce circa 1 milione di persone, ma il 50% non sa di esserne affetto.",
+      "specialists": [
+        {
+          "name": "Dott. Francesco Santoru",
+          "slug": "francesco-santoru",
+          "role": "Oculista",
+          "url": "/equipe/francesco-santoru/"
+        },
+        {
+          "name": "Dott.ssa Maria Pina Pintus",
+          "slug": "maria-pina-pintus",
+          "role": "Oculista",
+          "url": "/equipe/maria-pina-pintus/"
+        },
+        {
+          "name": "Dott. Matteo Zucca",
+          "slug": "matteo-zucca",
+          "role": "Oculista",
+          "url": "/equipe/matteo-zucca/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "campo visivo e tonometria oculare", "url": "/laboratorio/"},
+        "specialist": {"anchor": "oculisti Bio-Clinic", "url": "/oculistica/"},
+        "booking": {"anchor": "Prenota una visita oculistica a Sassari", "url": "/contatti/"}
+      }
+    },
+    {
+      "id": 28,
+      "publish_date": "2026-04-01",
+      "slug": "celiachia-sardegna",
+      "keyword": "celiachia sintomi diagnosi sardegna",
+      "title_h1": "Celiachia in Sardegna: Sintomi, Diagnosi e Dieta",
+      "specialty": "gastroenterologia",
+      "specialty_page": "/gastroenterologia/",
+      "sardinia_angle": "La Sardegna ha una prevalenza di celiachia 2-3 volte superiore alla media italiana, correlata all'alta frequenza dell'aplotipo HLA-DQ2/DQ8 nella popolazione sarda.",
+      "specialists": [
+        {
+          "name": "Dott. Angelo Deplano",
+          "slug": "angelo-deplano",
+          "role": "Gastroenterologo – Epatologo",
+          "url": "/equipe/angelo-deplano/"
+        }
+      ],
+      "internal_links": {
+        "lab": {"anchor": "anticorpi anti-transglutaminasi e IgA totali", "url": "/laboratorio/"},
+        "specialist": {"anchor": "gastroenterologo Bio-Clinic", "url": "/gastroenterologia/"},
+        "booking": {"anchor": "Prenota uno screening celiachia a Sassari", "url": "/contatti/"}
+      }
+    }
+  ]
+}

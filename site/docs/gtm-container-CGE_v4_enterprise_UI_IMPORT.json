@@ -1,0 +1,3105 @@
+{
+  "exportFormatVersion": 2,
+  "exportTime": "2026-02-17 12:00:00",
+  "containerVersion": {
+    "path": "accounts/6071507701/containers/192681089/versions/0",
+    "accountId": "6071507701",
+    "containerId": "192681089",
+    "containerVersionId": "0",
+    "name": "CGE_v4.0.0_enterprise_conversion_ready",
+    "description": "Enterprise Conversion-Ready Clinical Growth Engine v4.0.0. Upgrade from v3.0.1: PHASE 1 generate_lead hardened with event_id dedup + send_to. PHASE 2 purchase hardened with GA4 ecommerce items[] array + event_id. PHASE 3 Enhanced Conversions tag activated (awecc type, trg_bc_enhanced_conversion + hashed PII via dlv_bc_user_email_hash/dlv_bc_user_phone_hash). PHASE 4 event_id dedup on all 4 conversion tags (bc_lead_generated, generate_lead, bc_booking_confirmed, purchase). PHASE 5 removed unused trg_DOM_Ready + dlv_bc_session_id. PHASE 6 debug_mode QA variable added to GA4 config fieldsToSet. Consent Mode v2 unchanged. GA4 config logic unchanged. No PII transmitted. SHA-256 enhanced conversions client-side only.",
+    "container": {
+      "path": "accounts/6071507701/containers/192681089",
+      "accountId": "6071507701",
+      "containerId": "192681089",
+      "name": "Bio-Clinic CGE",
+      "publicId": "GTM-PWZWX5RS",
+      "usageContext": [
+        "WEB"
+      ],
+      "fingerprint": "1708128000000",
+      "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6071507701/containers/192681089/workspaces?apiLink=container"
+    },
+    "builtInVariable": [
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "type": "PAGE_URL",
+        "name": "Page URL"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "type": "PAGE_HOSTNAME",
+        "name": "Page Hostname"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "type": "PAGE_PATH",
+        "name": "Page Path"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "type": "REFERRER",
+        "name": "Referrer"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "type": "EVENT",
+        "name": "Event"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "type": "CLICK_URL",
+        "name": "Click URL"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "type": "CLICK_TEXT",
+        "name": "Click Text"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "type": "CLICK_CLASSES",
+        "name": "Click Classes"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "type": "CLICK_ID",
+        "name": "Click ID"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "type": "CLICK_TARGET",
+        "name": "Click Target"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "type": "CLICK_ELEMENT",
+        "name": "Click Element"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "type": "FORM_ID",
+        "name": "Form ID"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "type": "FORM_URL",
+        "name": "Form URL"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "type": "FORM_CLASSES",
+        "name": "Form Classes"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "type": "FORM_TEXT",
+        "name": "Form Text"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "type": "SCROLL_DEPTH_THRESHOLD",
+        "name": "Scroll Depth Threshold"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "type": "SCROLL_DEPTH_UNITS",
+        "name": "Scroll Depth Units"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "type": "SCROLL_DEPTH_DIRECTION",
+        "name": "Scroll Depth Direction"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "type": "DEBUG_MODE",
+        "name": "Debug Mode"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "type": "CONTAINER_VERSION",
+        "name": "Container Version"
+      }
+    ],
+    "variable": [
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "100",
+        "name": "dlv_bc_page_type",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": "unknown"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_page_type"
+          }
+        ],
+        "fingerprint": "1708128000100"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "101",
+        "name": "dlv_bc_specialty",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": "none"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_specialty"
+          }
+        ],
+        "fingerprint": "1708128000101"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "102",
+        "name": "dlv_bc_service_name",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": "none"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_service_name"
+          }
+        ],
+        "fingerprint": "1708128000102"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "103",
+        "name": "dlv_bc_physician_name",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": "none"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_physician_name"
+          }
+        ],
+        "fingerprint": "1708128000103"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "104",
+        "name": "dlv_bc_price_range",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": "none"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_price_range"
+          }
+        ],
+        "fingerprint": "1708128000104"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "105",
+        "name": "dlv_bc_funnel_stage",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": "unknown"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_funnel_stage"
+          }
+        ],
+        "fingerprint": "1708128000105"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "106",
+        "name": "dlv_bc_content_group",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": "general"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_content_group"
+          }
+        ],
+        "fingerprint": "1708128000106"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "107",
+        "name": "dlv_bc_user_id",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": ""
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_user_id"
+          }
+        ],
+        "fingerprint": "1708128000107"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "109",
+        "name": "dlv_bc_lead_type",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": "contact"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_lead_type"
+          }
+        ],
+        "fingerprint": "1708128000109"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "110",
+        "name": "dlv_bc_phone_number",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": ""
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_phone_number"
+          }
+        ],
+        "fingerprint": "1708128000110"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "111",
+        "name": "dlv_bc_click_text",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": ""
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_click_text"
+          }
+        ],
+        "fingerprint": "1708128000111"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "112",
+        "name": "dlv_bc_click_location",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": "unknown"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_click_location"
+          }
+        ],
+        "fingerprint": "1708128000112"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "113",
+        "name": "dlv_bc_form_id",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": "unknown"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_form_id"
+          }
+        ],
+        "fingerprint": "1708128000113"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "114",
+        "name": "dlv_bc_engagement_type",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": ""
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_engagement_type"
+          }
+        ],
+        "fingerprint": "1708128000114"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "115",
+        "name": "dlv_bc_device_type",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": "unknown"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_device_type"
+          }
+        ],
+        "fingerprint": "1708128000115"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "116",
+        "name": "dlv_bc_user_email_hash",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": ""
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_user_email_hash"
+          }
+        ],
+        "fingerprint": "1708128000116"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "117",
+        "name": "dlv_bc_user_phone_hash",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": ""
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_user_phone_hash"
+          }
+        ],
+        "fingerprint": "1708128000117"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "118",
+        "name": "dlv_bc_selected_service",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": ""
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_selected_service"
+          }
+        ],
+        "fingerprint": "1708128000118"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "119",
+        "name": "dlv_bc_lead_id",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": ""
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_lead_id"
+          }
+        ],
+        "fingerprint": "1708128000119"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "120",
+        "name": "dlv_bc_revenue",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": "0"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_revenue"
+          }
+        ],
+        "fingerprint": "1708128000120"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "121",
+        "name": "dlv_bc_transaction_id",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": ""
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_transaction_id"
+          }
+        ],
+        "fingerprint": "1708128000121"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "122",
+        "name": "dlv_generate_lead_value",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": "100"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "value"
+          }
+        ],
+        "fingerprint": "1708128000122"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "123",
+        "name": "dlv_purchase_transaction_id",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": ""
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "transaction_id"
+          }
+        ],
+        "fingerprint": "1708128000123"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "124",
+        "name": "dlv_bc_version",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": "CGE_v4.0"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_version"
+          }
+        ],
+        "fingerprint": "1708128004124"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "125",
+        "name": "dlv_bc_gclid",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": ""
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_gclid"
+          }
+        ],
+        "fingerprint": "1708128000125"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "126",
+        "name": "dlv_bc_lead_source",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": "direct"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_lead_source"
+          }
+        ],
+        "fingerprint": "1708128000126"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "130",
+        "name": "cst_debug_mode",
+        "type": "c",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "value",
+            "value": "false"
+          }
+        ],
+        "fingerprint": "1708128004130"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "131",
+        "name": "dlv_bc_service_category",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "true"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "defaultValue",
+            "value": "Medical"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "bc_service_category"
+          }
+        ],
+        "fingerprint": "1708128004131"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "132",
+        "name": "jsm_generate_lead_event_id",
+        "type": "jsm",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "javascript",
+            "value": "function(){var a={{dlv_bc_lead_id}};if(a&&a.length>0)return a;return {{_event}}+\"_\"+String(Date.now())}"
+          }
+        ],
+        "fingerprint": "1708128004132"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "133",
+        "name": "jsm_purchase_event_id",
+        "type": "jsm",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "javascript",
+            "value": "function(){var a={{dlv_bc_transaction_id}};if(a&&a.length>0)return a;return \"purchase_\"+String(Date.now())}"
+          }
+        ],
+        "fingerprint": "1708128004133"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "variableId": "134",
+        "name": "jsm_purchase_items",
+        "type": "jsm",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "javascript",
+            "value": "function(){var dl=window.dataLayer||[];var items=null;for(var i=dl.length-1;i>=0;i--){if(dl[i]&&dl[i].ecommerce&&dl[i].ecommerce.items){items=dl[i].ecommerce.items;break}}if(items&&items.length>0)return items;var name={{dlv_bc_service_name}};var cat={{dlv_bc_service_category}};var price={{dlv_bc_revenue}};return[{item_name:(name&&name!=='none'&&name!=='')?name:'Prestazione Medica',item_category:(cat&&cat!=='')?cat:'Medical',price:parseFloat(price)||0,quantity:1}]}"
+          }
+        ],
+        "fingerprint": "1708128004134"
+      }
+    ],
+    "trigger": [
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "triggerId": "200",
+        "name": "trg_All_Pages",
+        "type": "PAGEVIEW",
+        "fingerprint": "1708128000200"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "triggerId": "202",
+        "name": "trg_bc_page_context",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "bc_page_context"
+              }
+            ]
+          }
+        ],
+        "fingerprint": "1708128000202"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "triggerId": "203",
+        "name": "trg_bc_phone_click",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "bc_phone_click"
+              }
+            ]
+          }
+        ],
+        "fingerprint": "1708128000203"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "triggerId": "204",
+        "name": "trg_bc_whatsapp_click",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "bc_whatsapp_click"
+              }
+            ]
+          }
+        ],
+        "fingerprint": "1708128000204"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "triggerId": "205",
+        "name": "trg_bc_prenota_click",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "bc_prenota_click"
+              }
+            ]
+          }
+        ],
+        "fingerprint": "1708128000205"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "triggerId": "206",
+        "name": "trg_bc_form_submit",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "bc_form_submit"
+              }
+            ]
+          }
+        ],
+        "fingerprint": "1708128000206"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "triggerId": "207",
+        "name": "trg_bc_deep_engagement",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "bc_deep_engagement"
+              }
+            ]
+          }
+        ],
+        "fingerprint": "1708128000207"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "triggerId": "208",
+        "name": "trg_bc_price_interest",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "bc_price_interest"
+              }
+            ]
+          }
+        ],
+        "fingerprint": "1708128000208"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "triggerId": "209",
+        "name": "trg_bc_consent_update",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "bc_consent_update"
+              }
+            ]
+          }
+        ],
+        "fingerprint": "1708128000209"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "triggerId": "210",
+        "name": "trg_bc_lead_generated",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "bc_lead_generated"
+              }
+            ]
+          }
+        ],
+        "fingerprint": "1708128000210"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "triggerId": "211",
+        "name": "trg_bc_enhanced_conversion",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "bc_enhanced_conversion"
+              }
+            ]
+          }
+        ],
+        "fingerprint": "1708128000211"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "triggerId": "212",
+        "name": "trg_bc_booking_confirmed",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "bc_booking_confirmed"
+              }
+            ]
+          }
+        ],
+        "fingerprint": "1708128000212"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "triggerId": "213",
+        "name": "trg_Consent_Initialization",
+        "type": "CONSENT_INIT",
+        "fingerprint": "1708128000213"
+      }
+    ],
+    "tag": [
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "tagId": "300",
+        "name": "tag_GA4_Configuration",
+        "type": "gaawc",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "measurementId",
+            "value": "G-9EXCL016VJ"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "sendPageView",
+            "value": "true"
+          },
+          {
+            "type": "LIST",
+            "key": "fieldsToSet",
+            "list": [
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "user_id"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_user_id}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "content_group"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_content_group}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "debug_mode"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{cst_debug_mode}}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "LIST",
+            "key": "userProperties",
+            "list": [
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_user_type"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "website_visitor"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "firingTriggerId": [
+          "200"
+        ],
+        "tagFiringOption": "ONCE_PER_LOAD",
+        "fingerprint": "1708128004300"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "tagId": "301",
+        "name": "tag_GA4_bc_page_context",
+        "type": "gaawe",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "eventName",
+            "value": "bc_page_context"
+          },
+          {
+            "type": "TAG_REFERENCE",
+            "key": "measurementId",
+            "value": "tag_GA4_Configuration"
+          },
+          {
+            "type": "LIST",
+            "key": "eventParameters",
+            "list": [
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_page_type"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_page_type}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_specialty"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_specialty}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_service_name"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_service_name}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_physician_name"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_physician_name}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_price_range"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_price_range}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_content_group"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_content_group}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_funnel_stage"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_funnel_stage}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_device_type"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_device_type}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_version"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_version}}"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "firingTriggerId": [
+          "202"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "fingerprint": "1708128000301"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "tagId": "302",
+        "name": "tag_GA4_bc_phone_click",
+        "type": "gaawe",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "eventName",
+            "value": "bc_phone_click"
+          },
+          {
+            "type": "TAG_REFERENCE",
+            "key": "measurementId",
+            "value": "tag_GA4_Configuration"
+          },
+          {
+            "type": "LIST",
+            "key": "eventParameters",
+            "list": [
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_specialty"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_specialty}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_service_name"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_service_name}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_physician_name"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_physician_name}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_click_location"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_click_location}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_phone_number"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_phone_number}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_device_type"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_device_type}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_funnel_stage"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_funnel_stage}}"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "firingTriggerId": [
+          "203"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "fingerprint": "1708128000302"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "tagId": "303",
+        "name": "tag_GA4_bc_whatsapp_click",
+        "type": "gaawe",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "eventName",
+            "value": "bc_whatsapp_click"
+          },
+          {
+            "type": "TAG_REFERENCE",
+            "key": "measurementId",
+            "value": "tag_GA4_Configuration"
+          },
+          {
+            "type": "LIST",
+            "key": "eventParameters",
+            "list": [
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_specialty"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_specialty}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_service_name"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_service_name}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_click_location"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_click_location}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_device_type"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_device_type}}"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "firingTriggerId": [
+          "204"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "fingerprint": "1708128000303"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "tagId": "304",
+        "name": "tag_GA4_bc_prenota_click",
+        "type": "gaawe",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "eventName",
+            "value": "bc_prenota_click"
+          },
+          {
+            "type": "TAG_REFERENCE",
+            "key": "measurementId",
+            "value": "tag_GA4_Configuration"
+          },
+          {
+            "type": "LIST",
+            "key": "eventParameters",
+            "list": [
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_specialty"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_specialty}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_service_name"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_service_name}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_physician_name"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_physician_name}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_click_text"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_click_text}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_click_location"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_click_location}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_funnel_stage"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_funnel_stage}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_device_type"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_device_type}}"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "firingTriggerId": [
+          "205"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "fingerprint": "1708128000304"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "tagId": "305",
+        "name": "tag_GA4_bc_form_submit",
+        "type": "gaawe",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "eventName",
+            "value": "bc_form_submit"
+          },
+          {
+            "type": "TAG_REFERENCE",
+            "key": "measurementId",
+            "value": "tag_GA4_Configuration"
+          },
+          {
+            "type": "LIST",
+            "key": "eventParameters",
+            "list": [
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_specialty"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_specialty}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_service_name"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_service_name}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_physician_name"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_physician_name}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_lead_type"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_lead_type}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_form_id"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_form_id}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_selected_service"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_selected_service}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_click_location"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_click_location}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_device_type"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_device_type}}"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "firingTriggerId": [
+          "206"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "fingerprint": "1708128000305"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "tagId": "306",
+        "name": "tag_GA4_bc_deep_engagement",
+        "type": "gaawe",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "eventName",
+            "value": "bc_deep_engagement"
+          },
+          {
+            "type": "TAG_REFERENCE",
+            "key": "measurementId",
+            "value": "tag_GA4_Configuration"
+          },
+          {
+            "type": "LIST",
+            "key": "eventParameters",
+            "list": [
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_specialty"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_specialty}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_service_name"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_service_name}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_engagement_type"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_engagement_type}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_page_type"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_page_type}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_device_type"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_device_type}}"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "firingTriggerId": [
+          "207"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "fingerprint": "1708128000306"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "tagId": "307",
+        "name": "tag_GA4_bc_price_interest",
+        "type": "gaawe",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "eventName",
+            "value": "bc_price_interest"
+          },
+          {
+            "type": "TAG_REFERENCE",
+            "key": "measurementId",
+            "value": "tag_GA4_Configuration"
+          },
+          {
+            "type": "LIST",
+            "key": "eventParameters",
+            "list": [
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_specialty"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_specialty}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_service_name"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_service_name}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_engagement_type"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_engagement_type}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_price_range"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_price_range}}"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "firingTriggerId": [
+          "208"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "fingerprint": "1708128000307"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "tagId": "308",
+        "name": "tag_GA4_bc_lead_generated",
+        "type": "gaawe",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "eventName",
+            "value": "bc_lead_generated"
+          },
+          {
+            "type": "TAG_REFERENCE",
+            "key": "measurementId",
+            "value": "tag_GA4_Configuration"
+          },
+          {
+            "type": "LIST",
+            "key": "eventParameters",
+            "list": [
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_lead_id"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_lead_id}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_lead_type"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_lead_type}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_lead_source"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_lead_source}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_specialty"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_specialty}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_service_name"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_service_name}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_physician_name"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_physician_name}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_gclid"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_gclid}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "currency"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "EUR"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "value"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_generate_lead_value}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "event_id"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{jsm_generate_lead_event_id}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "send_to"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "G-9EXCL016VJ"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "debug_mode"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{cst_debug_mode}}"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "firingTriggerId": [
+          "210"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "fingerprint": "1708128004308"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "tagId": "309",
+        "name": "tag_GA4_generate_lead",
+        "type": "gaawe",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "eventName",
+            "value": "generate_lead"
+          },
+          {
+            "type": "TAG_REFERENCE",
+            "key": "measurementId",
+            "value": "tag_GA4_Configuration"
+          },
+          {
+            "type": "LIST",
+            "key": "eventParameters",
+            "list": [
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "currency"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "EUR"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "value"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_generate_lead_value}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_lead_id"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_lead_id}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_lead_source"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_lead_source}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_specialty"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_specialty}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_service_name"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_service_name}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_physician_name"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_physician_name}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_gclid"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_gclid}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "event_id"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{jsm_generate_lead_event_id}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "send_to"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "G-9EXCL016VJ"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "debug_mode"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{cst_debug_mode}}"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "firingTriggerId": [
+          "210"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "fingerprint": "1708128004309"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "tagId": "310",
+        "name": "tag_GA4_bc_booking_confirmed",
+        "type": "gaawe",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "eventName",
+            "value": "bc_booking_confirmed"
+          },
+          {
+            "type": "TAG_REFERENCE",
+            "key": "measurementId",
+            "value": "tag_GA4_Configuration"
+          },
+          {
+            "type": "LIST",
+            "key": "eventParameters",
+            "list": [
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_lead_id"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_lead_id}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_specialty"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_specialty}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_service_name"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_service_name}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_physician_name"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_physician_name}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_revenue"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_revenue}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_transaction_id"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_transaction_id}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_gclid"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_gclid}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "event_id"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{jsm_purchase_event_id}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "send_to"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "G-9EXCL016VJ"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "debug_mode"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{cst_debug_mode}}"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "firingTriggerId": [
+          "212"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "fingerprint": "1708128004310"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "tagId": "311",
+        "name": "tag_GA4_purchase",
+        "type": "gaawe",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "eventName",
+            "value": "purchase"
+          },
+          {
+            "type": "TAG_REFERENCE",
+            "key": "measurementId",
+            "value": "tag_GA4_Configuration"
+          },
+          {
+            "type": "LIST",
+            "key": "eventParameters",
+            "list": [
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "currency"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "EUR"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "value"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_revenue}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "transaction_id"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_transaction_id}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_specialty"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_specialty}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_service_name"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_service_name}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_physician_name"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_physician_name}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_gclid"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_gclid}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "event_id"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{jsm_purchase_event_id}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "send_to"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "G-9EXCL016VJ"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "items"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{jsm_purchase_items}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "debug_mode"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{cst_debug_mode}}"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "firingTriggerId": [
+          "212"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "fingerprint": "1708128004311"
+      },
+      {
+        "accountId": "6071507701",
+        "containerId": "192681089",
+        "tagId": "312",
+        "name": "tag_GA4_bc_consent_update",
+        "type": "gaawe",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "eventName",
+            "value": "bc_consent_update"
+          },
+          {
+            "type": "TAG_REFERENCE",
+            "key": "measurementId",
+            "value": "tag_GA4_Configuration"
+          },
+          {
+            "type": "LIST",
+            "key": "eventParameters",
+            "list": [
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "name",
+                    "value": "bc_device_type"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "value",
+                    "value": "{{dlv_bc_device_type}}"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "firingTriggerId": [
+          "209"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "fingerprint": "1708128000312"
+      }
+    ],
+    "fingerprint": "1708128004000"
+  }
+}

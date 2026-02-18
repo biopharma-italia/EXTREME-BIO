@@ -1,0 +1,123 @@
+{
+  "audit_date": "2026-02-17",
+  "container": "GTM-PWZWX5RS",
+  "ga4": "G-9EXCL016VJ",
+  "cge_version": "CGE_v4.0",
+  "cge_script_version": "4.0.1",
+  "total_checks": 63,
+  "passed": 63,
+  "failed": 0,
+  "score": 94,
+  "duplication_risk": "LOW",
+  "verdict": "GO",
+  "verdict_condition": "99/364 production pages missing bcDataLayer+cge-tracking.js -- deploy within 48h post-publish",
+  "phase_results": {
+    "P1_Frontend_Integrity": {
+      "verdict": "PASS",
+      "checks": 8,
+      "passed": 8,
+      "details": {
+        "BCG_version": "PASS - CGE_v4.0",
+        "phone_normalization": "PASS - +393451234567",
+        "email_hash_in_dataLayer": "PASS - bc_user_email_hash via bc_enhanced_conversion",
+        "phone_hash_in_dataLayer": "PASS - bc_user_phone_hash via bc_enhanced_conversion",
+        "no_cleartext_email": "PASS - only SHA-256 hashes pushed",
+        "no_enhanced_conversion_data_object": "PASS - uses bc_user_email_hash/bc_user_phone_hash keys",
+        "bc_page_context_fires_once": "PASS - single call in init()",
+        "bc_page_context_complete": "PASS - 15 fields including bc_gclid"
+      }
+    },
+    "P2_GTM_Firing_Integrity": {
+      "verdict": "PASS",
+      "checks": 17,
+      "passed": 17,
+      "details": {
+        "single_generate_lead_tag": "PASS - tagId 309 only",
+        "generate_lead_trigger": "PASS - trigger 210 (bc_lead_generated)",
+        "generate_lead_event_id": "PASS - jsm_generate_lead_event_id",
+        "generate_lead_value_numeric": "PASS - from lead value table (70-400 EUR)",
+        "generate_lead_currency_EUR": "PASS - hard-coded",
+        "generate_lead_send_to": "PASS - G-9EXCL016VJ",
+        "single_purchase_tag": "PASS - tagId 311 only",
+        "purchase_trigger": "PASS - trigger 212 (bc_booking_confirmed)",
+        "purchase_event_id": "PASS - jsm_purchase_event_id",
+        "purchase_transaction_id": "PASS - dlv_bc_transaction_id",
+        "purchase_value_numeric": "PASS - from dlv_bc_revenue",
+        "purchase_currency_EUR": "PASS - hard-coded",
+        "no_duplicate_conversion_tags": "PASS - verified",
+        "all_tags_oncePerEvent": "PASS - all 4 conversion tags",
+        "js_lead_dedup": "PASS - _isLeadDuplicate()",
+        "js_transaction_dedup": "PASS - _isTransactionDuplicate() + sessionStorage",
+        "form_submit_not_conversion": "PASS - separate trigger 206 vs 210"
+      }
+    },
+    "P3_GA4_Ecommerce_Integrity": {
+      "verdict": "PASS",
+      "checks": 12,
+      "passed": 12,
+      "details": {
+        "generate_lead_in_GA4": "PASS",
+        "purchase_in_GA4": "PASS",
+        "purchase_items_array": "PASS - jsm_purchase_items",
+        "items_price_equals_value": "PASS - both use dlv_bc_revenue",
+        "items_quantity_1": "PASS - hard-coded",
+        "items_item_name": "PASS - dlv_bc_service_name or 'Prestazione Medica'",
+        "items_item_category": "PASS - dlv_bc_service_category or 'Medical'",
+        "generate_lead_event_id": "PASS",
+        "purchase_event_id": "PASS",
+        "no_duplicate_within_5s": "PASS - JS-level dedup",
+        "generate_lead_event_id_deterministic": "PASS - uses bc_lead_id",
+        "purchase_event_id_deterministic": "PASS - uses bc_transaction_id"
+      }
+    },
+    "P4_Consent_Integrity": {
+      "verdict": "PASS",
+      "checks": 13,
+      "passed": 13,
+      "details": {
+        "consent_before_GTM": "PASS - inline script precedes GTM snippet",
+        "default_all_denied": "PASS - 5 types denied, 2 granted (functionality+security)",
+        "wait_for_update_500": "PASS",
+        "gcs_G100_before_consent": "PASS - all storage denied by default",
+        "gcs_G111_after_consent": "PASS - updateConsent() grants all",
+        "no_conversion_before_consent": "PASS - GA4 config tag requires consent",
+        "ads_data_redaction": "PASS",
+        "url_passthrough": "PASS",
+        "region_specific_defaults": "PASS - IT, EU",
+        "gtm_consent_default_tag": "PASS - tag 299 on trigger 213",
+        "enhanced_conversions_consent_gated": "PASS - requires ad_storage + ad_user_data",
+        "user_id_consent_gated": "PASS - localStorage only with analytics_storage granted",
+        "consent_revocation_cleanup": "PASS - removes bc_user_id from localStorage"
+      }
+    },
+    "P5_GCLID_Propagation": {
+      "verdict": "PASS",
+      "checks": 13,
+      "passed": 13,
+      "details": {
+        "gclid_creates_cookie": "PASS - _bc_gclid cookie, 90-day",
+        "cookie_attributes": "PASS - SameSite=Lax, Secure, path=/",
+        "bc_gclid_in_dataLayer": "PASS",
+        "returning_visitor_cookie_read": "PASS",
+        "generate_lead_bc_gclid": "PASS - tag 309",
+        "purchase_bc_gclid": "PASS - tag 311",
+        "bc_lead_generated_bc_gclid": "PASS - tag 308",
+        "bc_booking_confirmed_bc_gclid": "PASS - tag 310",
+        "js_events_include_gclid": "PASS - phone, whatsapp, form API",
+        "gclid_form_injection": "PASS - hidden input name=gclid",
+        "dynamic_form_observer": "PASS - MutationObserver",
+        "bc_page_context_gclid": "PASS",
+        "sendEvent_base_params_gclid": "PASS"
+      }
+    }
+  },
+  "cross_site_coverage": {
+    "total_production_pages": 364,
+    "pages_with_tracking": 265,
+    "pages_missing_tracking": 99,
+    "coverage_percent": 72.8,
+    "severity": "NON-BLOCKING",
+    "note": "CGE handles missing bcDataLayer gracefully with defaults. 99 pages need bcDataLayer+cge-tracking.js added within 48h."
+  },
+  "report_file": "CGE_v4_PRE_PUBLICATION_AUDIT_REPORT.md"
+}
