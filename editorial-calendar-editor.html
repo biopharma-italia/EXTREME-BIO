@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bio-Clinic | Calendario Editoriale 90 Giorni</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f0f2f5;color:#1a1a2e}
+.header{background:linear-gradient(135deg,#00704A 0%,#005a3c 100%);color:#fff;padding:1.5rem 2rem;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+.header h1{font-size:1.4rem;font-weight:700}
+.header p{font-size:.85rem;opacity:.85;margin-top:.25rem}
+.toolbar{background:#fff;padding:.75rem 2rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap;border-bottom:1px solid #e0e0e0;position:sticky;top:72px;z-index:99;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.toolbar label{font-size:.8rem;font-weight:600;color:#555}
+.toolbar select,.toolbar input{padding:.4rem .6rem;border:1px solid #ccc;border-radius:6px;font-size:.8rem}
+.toolbar select{min-width:140px}
+.btn{padding:.45rem 1rem;border:none;border-radius:6px;cursor:pointer;font-weight:600;font-size:.8rem;transition:all .2s}
+.btn-primary{background:#00704A;color:#fff}.btn-primary:hover{background:#005a3c}
+.btn-secondary{background:#e0e0e0;color:#333}.btn-secondary:hover{background:#ccc}
+.btn-danger{background:#dc3545;color:#fff}.btn-danger:hover{background:#b02a37}
+.btn-success{background:#198754;color:#fff}.btn-success:hover{background:#146c43}
+.btn-sm{padding:.3rem .6rem;font-size:.75rem}
+.stats{display:flex;gap:2rem;padding:1rem 2rem;background:#fff;border-bottom:1px solid #eee;flex-wrap:wrap}
+.stat{text-align:center;min-width:80px}
+.stat-value{font-size:1.5rem;font-weight:700;color:#00704A}
+.stat-label{font-size:.7rem;color:#888;text-transform:uppercase;letter-spacing:.5px}
+.container{max-width:1400px;margin:0 auto;padding:1rem}
+.month-group{margin-bottom:2rem}
+.month-header{font-size:1.1rem;font-weight:700;color:#00704A;padding:.75rem 1rem;background:#e8f5e9;border-radius:8px 8px 0 0;border-left:4px solid #00704A}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:0 0 8px 8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+th{background:#f5f5f5;padding:.6rem .5rem;font-size:.75rem;text-align:left;color:#555;text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid #e0e0e0;position:sticky;top:122px;z-index:10}
+td{padding:.5rem;font-size:.82rem;border-bottom:1px solid #f0f0f0;vertical-align:top}
+tr:hover{background:#f8fffe}
+tr.published{background:#f0fdf4}
+tr.today{background:#fff8e1;border-left:3px solid #ffc107}
+tr.weekend{display:none}
+.date-cell{white-space:nowrap;font-weight:600;min-width:90px}
+.day-name{font-size:.7rem;color:#888;font-weight:400}
+.slug-cell{max-width:220px}
+.slug-cell input{width:100%;padding:.3rem .4rem;border:1px solid #ddd;border-radius:4px;font-size:.8rem;font-family:monospace}
+.title-cell{min-width:280px}
+.title-cell input{width:100%;padding:.3rem .4rem;border:1px solid #ddd;border-radius:4px;font-size:.8rem}
+.spec-cell select{width:100%;padding:.3rem;border:1px solid #ddd;border-radius:4px;font-size:.8rem}
+.specialists-cell{min-width:200px;font-size:.78rem;color:#555}
+.specialists-cell input{width:100%;padding:.3rem .4rem;border:1px solid #ddd;border-radius:4px;font-size:.78rem}
+.status-badge{display:inline-block;padding:.15rem .5rem;border-radius:12px;font-size:.7rem;font-weight:600}
+.status-published{background:#d4edda;color:#155724}
+.status-draft{background:#fff3cd;color:#856404}
+.status-planned{background:#e2e3e5;color:#383d41}
+.sardinia-cell{max-width:200px}
+.sardinia-cell textarea{width:100%;padding:.3rem .4rem;border:1px solid #ddd;border-radius:4px;font-size:.75rem;resize:vertical;min-height:36px;font-family:inherit}
+.actions-cell{white-space:nowrap}
+.spec-tag{display:inline-block;padding:.1rem .4rem;border-radius:10px;font-size:.7rem;font-weight:600;color:#fff}
+.spec-cardiologia{background:#E53935}.spec-endocrinologia{background:#8E24AA}.spec-ginecologia{background:#E91E8C}
+.spec-gastroenterologia{background:#FF8F00}.spec-ortopedia{background:#1565C0}.spec-dermatologia{background:#00897B}
+.spec-urologia{background:#5D4037}.spec-neurologia{background:#6A1B9A}.spec-ematologia{background:#C62828}
+.spec-pneumologia{background:#0277BD}.spec-reumatologia{background:#4527A0}.spec-oculistica{background:#2E7D32}
+.spec-otorinolaringoiatria{background:#EF6C00}.spec-chirurgia-vascolare{background:#AD1457}
+.spec-nefrologia{background:#00695C}.spec-pediatria{background:#F48FB1}.spec-nutrizionale{background:#7CB342}
+.spec-medicina-interna{background:#546E7A}.spec-psicologia{background:#AB47BC}
+.spec-medicina-sport{background:#00ACC1}.spec-medicina-lavoro{background:#8D6E63}
+.spec-laboratorio{background:#607D8B}
+.modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:200;align-items:center;justify-content:center}
+.modal-overlay.active{display:flex}
+.modal{background:#fff;border-radius:12px;padding:2rem;max-width:600px;width:95%;max-height:85vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.2)}
+.modal h2{font-size:1.2rem;margin-bottom:1rem;color:#00704A}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;font-size:.8rem;font-weight:600;color:#555;margin-bottom:.3rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:.5rem;border:1px solid #ccc;border-radius:6px;font-size:.85rem}
+.form-group textarea{min-height:80px;resize:vertical;font-family:inherit}
+.export-box{background:#f8f9fa;border:1px solid #dee2e6;border-radius:8px;padding:1rem;margin-top:1rem}
+.export-box textarea{width:100%;min-height:200px;font-family:monospace;font-size:.75rem;border:1px solid #ccc;border-radius:4px;padding:.5rem}
+.legend{display:flex;gap:1rem;flex-wrap:wrap;padding:.5rem 2rem;font-size:.75rem;background:#fafafa;border-bottom:1px solid #eee}
+.legend-item{display:flex;align-items:center;gap:.3rem}
+.legend-dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+#toast{position:fixed;bottom:2rem;right:2rem;background:#00704A;color:#fff;padding:.75rem 1.5rem;border-radius:8px;font-size:.85rem;font-weight:600;opacity:0;transition:opacity .3s;z-index:300;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+#toast.show{opacity:1}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Bio-Clinic | Calendario Editoriale 90 Giorni</h1>
+  <p>18 Febbraio 2026 &rarr; 19 Maggio 2026 &middot; Lun-Ven 07:00 CET &middot; Revisore: Dott. Francesco Dessole (n&deg; 5244)</p>
+</div>
+
+<div class="toolbar">
+  <label>Filtra specialit&agrave;:
+    <select id="filterSpec"><option value="">Tutte</option></select>
+  </label>
+  <label>Stato:
+    <select id="filterStatus">
+      <option value="">Tutti</option>
+      <option value="published">Pubblicato</option>
+      <option value="draft">Bozza</option>
+      <option value="planned">Pianificato</option>
+    </select>
+  </label>
+  <label>Cerca:
+    <input type="text" id="searchBox" placeholder="slug, titolo, specialista...">
+  </label>
+  <div style="flex:1"></div>
+  <button class="btn btn-primary" onclick="addArticle()">+ Nuovo Articolo</button>
+  <button class="btn btn-success" onclick="exportJSON()">Esporta JSON</button>
+  <button class="btn btn-secondary" onclick="importJSON()">Importa JSON</button>
+  <button class="btn btn-secondary" onclick="exportCSV()">Esporta CSV</button>
+</div>
+
+<div class="stats" id="statsBar"></div>
+<div class="legend" id="legendBar"></div>
+<div class="container" id="calendarContainer"></div>
+
+<!-- Edit Modal -->
+<div class="modal-overlay" id="editModal">
+  <div class="modal">
+    <h2 id="modalTitle">Modifica Articolo</h2>
+    <input type="hidden" id="editId">
+    <div class="form-group"><label>Data pubblicazione</label><input type="date" id="editDate"></div>
+    <div class="form-group"><label>Slug</label><input type="text" id="editSlug" placeholder="es. ipertensione-arteriosa"></div>
+    <div class="form-group"><label>Titolo H1</label><input type="text" id="editTitle" placeholder="Titolo completo dell'articolo"></div>
+    <div class="form-group"><label>Keyword principale</label><input type="text" id="editKeyword" placeholder="keyword target SEO"></div>
+    <div class="form-group"><label>Specialit&agrave;</label><select id="editSpecialty"></select></div>
+    <div class="form-group"><label>Angolo Sardegna</label><textarea id="editSardinia" placeholder="Perch&eacute; questo tema &egrave; rilevante in Sardegna..."></textarea></div>
+    <div class="form-group"><label>Specialisti (nomi separati da virgola)</label><input type="text" id="editSpecialists" placeholder="Dott. Nome Cognome, Dott.ssa Nome Cognome"></div>
+    <div class="form-group"><label>Stato</label>
+      <select id="editStatus">
+        <option value="planned">Pianificato</option>
+        <option value="draft">Bozza</option>
+        <option value="published">Pubblicato</option>
+      </select>
+    </div>
+    <div style="display:flex;gap:.5rem;justify-content:flex-end;margin-top:1.5rem">
+      <button class="btn btn-secondary" onclick="closeModal()">Annulla</button>
+      <button class="btn btn-primary" onclick="saveArticle()">Salva</button>
+    </div>
+  </div>
+</div>
+
+<!-- Export Modal -->
+<div class="modal-overlay" id="exportModal">
+  <div class="modal">
+    <h2 id="exportTitle">Esporta</h2>
+    <div class="export-box">
+      <textarea id="exportContent" readonly></textarea>
+    </div>
+    <div style="display:flex;gap:.5rem;justify-content:flex-end;margin-top:1rem">
+      <button class="btn btn-primary" onclick="copyExport()">Copia</button>
+      <button class="btn btn-success" onclick="downloadExport()">Scarica</button>
+      <button class="btn btn-secondary" onclick="closeExportModal()">Chiudi</button>
+    </div>
+  </div>
+</div>
+
+<!-- Import Modal -->
+<div class="modal-overlay" id="importModal">
+  <div class="modal">
+    <h2>Importa JSON</h2>
+    <div class="form-group"><label>Incolla il JSON del calendario editoriale</label>
+      <textarea id="importContent" style="min-height:300px;font-family:monospace;font-size:.75rem" placeholder='Incolla qui il JSON...'></textarea>
+    </div>
+    <div style="display:flex;gap:.5rem;justify-content:flex-end;margin-top:1rem">
+      <button class="btn btn-secondary" onclick="closeImportModal()">Annulla</button>
+      <button class="btn btn-primary" onclick="doImport()">Importa</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+const TODAY = '2026-02-18';
+const RANGE_START = '2026-02-18';
+const RANGE_END = '2026-05-19';
+
+const SPECIALTIES = [
+  'cardiologia','endocrinologia','ginecologia','gastroenterologia','ortopedia',
+  'dermatologia','urologia','neurologia','ematologia','pneumologia','reumatologia',
+  'oculistica','otorinolaringoiatria','chirurgia-vascolare','nefrologia','pediatria',
+  'nutrizionale','medicina-interna','psicologia','medicina-sport','medicina-lavoro','laboratorio'
+];
+
+const DAYS_IT = ['Domenica','Lunedi','Martedi','Mercoledi','Giovedi','Venerdi','Sabato'];
+const MONTHS_IT = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+
+// Initialize with existing 28 articles + new articles for 90 days
+let articles = EXISTING_DATA();
+
+function EXISTING_DATA() {
+  return [
+    {id:1,publish_date:'2026-02-18',slug:'ipertensione-arteriosa',keyword:'ipertensione arteriosa cause sintomi cura',title_h1:'Ipertensione Arteriosa: Cause, Sintomi e Cura a Sassari',specialty:'cardiologia',sardinia_angle:'Sardegna: tassi superiori alla media nazionale, predisposizione genetica isolana e dieta ricca di sodio.',specialists:'Dott.ssa Giuliana Guagnozzi, Dott. Paolo Franca, Dott. Paolo Pischedda',status:'published'},
+    {id:2,publish_date:'2026-02-19',slug:'ipotiroidismo',keyword:'ipotiroidismo sintomi cura tiroide',title_h1:'Ipotiroidismo: Sintomi, Diagnosi e Cura in Sardegna',specialty:'endocrinologia',sardinia_angle:'Tiroidite di Hashimoto con prevalenza elevata in Sardegna per alta incidenza autoimmune.',specialists:'Dott.ssa Irene Aini, Dott. Francesco Tolu',status:'planned'},
+    {id:3,publish_date:'2026-02-20',slug:'endometriosi-sintomi',keyword:'endometriosi sintomi diagnosi cura',title_h1:'Endometriosi: Sintomi, Diagnosi e Trattamento a Sassari',specialty:'ginecologia',sardinia_angle:'Diagnosi ritardata di 7-10 anni in Sardegna, fondamentale l\'accesso a specialisti dedicati.',specialists:'Dott. Francesco Dessole, Prof. Marco Petrillo',status:'planned'},
+    {id:4,publish_date:'2026-02-23',slug:'diabete-tipo-2-sardegna',keyword:'diabete tipo 2 sintomi cura sardegna',title_h1:'Diabete di Tipo 2 in Sardegna: Sintomi, Rischi e Cura',specialty:'endocrinologia',sardinia_angle:'Sardegna: primato mondiale diabete tipo 1, prevalenza tipo 2 superiore alla media italiana.',specialists:'Dott.ssa Fabrizia Caucci, Dott. Francesco Tolu',status:'planned'},
+    {id:5,publish_date:'2026-02-24',slug:'anemia-mediterranea-talassemia',keyword:'talassemia anemia mediterranea sardegna portatore sano',title_h1:'Anemia Mediterranea (Talassemia) in Sardegna: Guida Completa',specialty:'ematologia',sardinia_angle:'12-13% dei sardi portatore del tratto talassemico, la pi\u00f9 alta prevalenza in Europa.',specialists:'Dr. Daniele Sabiu, Dott. Luigi Podda',status:'planned'},
+    {id:6,publish_date:'2026-02-25',slug:'reflusso-gastroesofageo',keyword:'reflusso gastroesofageo sintomi cura',title_h1:'Reflusso Gastroesofageo: Sintomi, Cause e Cura',specialty:'gastroenterologia',sardinia_angle:'Dieta sarda con vino e formaggi stagionati pu\u00f2 aggravare il reflusso.',specialists:'Dott. Angelo Deplano',status:'planned'},
+    {id:7,publish_date:'2026-02-26',slug:'noduli-tiroidei',keyword:'noduli tiroidei quando preoccuparsi',title_h1:'Noduli Tiroidei: Quando Preoccuparsi e Cosa Fare',specialty:'endocrinologia',sardinia_angle:'Prevalenza elevata in Sardegna per storica carenza iodica delle zone interne.',specialists:'Dott.ssa Irene Aini, Dott. Francesco Tolu',status:'planned'},
+    {id:8,publish_date:'2026-02-27',slug:'cervicalgia-dolore-collo',keyword:'dolore cervicale cause rimedi cervicalgia',title_h1:'Cervicalgia: Cause, Sintomi e Rimedi per il Dolore al Collo',specialty:'ortopedia',sardinia_angle:'Prima causa visita specialistica in Sardegna, aggravata da sedentariet\u00e0 e lunghe percorrenze auto.',specialists:'Dott. Andrea Donato, Dott. Pietro Lisai',status:'planned'},
+    {id:9,publish_date:'2026-03-02',slug:'dermatite-atopica',keyword:'dermatite atopica adulti cura sintomi',title_h1:'Dermatite Atopica: Sintomi, Cause e Cura a Sassari',specialty:'dermatologia',sardinia_angle:'Clima secco estivo sardo e predisposizione genetica autoimmune.',specialists:'Dott.ssa Alessandra Musinu, Dott.ssa Giovanna Costa, Dott.ssa Speranza Anedda',status:'planned'},
+    {id:10,publish_date:'2026-03-03',slug:'cistite-ricorrente',keyword:'cistite ricorrente cause cura prevenzione',title_h1:'Cistite Ricorrente: Cause, Cura e Prevenzione',specialty:'urologia',sardinia_angle:'Picco estivo in Sardegna per disidratazione e bagni in mare.',specialists:'Dott. Carlos Manuel Cambara Zuniga',status:'planned'},
+    {id:11,publish_date:'2026-03-04',slug:'fibrillazione-atriale',keyword:'fibrillazione atriale sintomi rischi cura',title_h1:'Fibrillazione Atriale: Sintomi, Rischi e Trattamento',specialty:'cardiologia',sardinia_angle:'Incidenza crescente nella popolazione anziana sarda.',specialists:'Dott. Paolo Franca, Dott.ssa Sara Uras',status:'planned'},
+    {id:12,publish_date:'2026-03-05',slug:'sindrome-ovaio-policistico',keyword:'ovaio policistico sintomi cura PCOS',title_h1:'Sindrome dell\'Ovaio Policistico (PCOS): Sintomi e Cura',specialty:'ginecologia',sardinia_angle:'Principale causa di infertilit\u00e0, tema sentito nel percorso PMA.',specialists:'Dott. Francesco Dessole, Dott.ssa Maddalena Pola',status:'planned'},
+    {id:13,publish_date:'2026-03-06',slug:'ernia-disco-lombare',keyword:'ernia del disco lombare sintomi cura',title_h1:'Ernia del Disco Lombare: Sintomi, Diagnosi e Cura',specialty:'ortopedia',sardinia_angle:'Tra le principali ragioni di visita ortopedica nel nord Sardegna.',specialists:'Dott. Andrea Donato, Dott. Nicola Frau',status:'planned'},
+    {id:14,publish_date:'2026-03-09',slug:'helicobacter-pylori',keyword:'helicobacter pylori test sintomi cura',title_h1:'Helicobacter Pylori: Test, Sintomi e Cura',specialty:'gastroenterologia',sardinia_angle:'30-50% popolazione adulta italiana, variazioni regionali in Sardegna.',specialists:'Dott. Angelo Deplano',status:'planned'},
+    {id:15,publish_date:'2026-03-10',slug:'ipertiroidismo',keyword:'ipertiroidismo sintomi cura morbo di basedow',title_h1:'Ipertiroidismo e Morbo di Basedow: Sintomi e Cura',specialty:'endocrinologia',sardinia_angle:'Morbo di Basedow-Graves con prevalenza elevata in Sardegna, profilo immunogenetico isolano.',specialists:'Dott.ssa Fabrizia Caucci, Dott.ssa Irene Aini',status:'planned'},
+    {id:16,publish_date:'2026-03-11',slug:'asma-bronchiale',keyword:'asma bronchiale sintomi diagnosi cura',title_h1:'Asma Bronchiale: Sintomi, Diagnosi e Cura',specialty:'pneumologia',sardinia_angle:'Trigger ambientali specifici: pollini, mistral, inquinamento urbano sardo.',specialists:'Prof. Pietro Pirina',status:'planned'},
+    {id:17,publish_date:'2026-03-12',slug:'menopausa-sintomi',keyword:'menopausa sintomi rimedi terapia ormonale',title_h1:'Menopausa: Sintomi, Rimedi e Terapia Ormonale Sostitutiva',specialty:'ginecologia',sardinia_angle:'Lunga aspettativa di vita in Sardegna rende essenziale la gestione post-menopausa.',specialists:'Dott. Francesco Dessole, Dott.ssa Sonia Bove',status:'planned'},
+    {id:18,publish_date:'2026-03-13',slug:'psoriasi',keyword:'psoriasi cause sintomi cura',title_h1:'Psoriasi: Cause, Sintomi e Cura a Sassari',specialty:'dermatologia',sardinia_angle:'Componente autoimmune amplificata dal profilo genetico isolano.',specialists:'Dott.ssa Giovanna Costa, Dott.ssa Speranza Anedda',status:'planned'},
+    {id:19,publish_date:'2026-03-16',slug:'prostatite',keyword:'prostatite sintomi cura prevenzione',title_h1:'Prostatite: Sintomi, Diagnosi e Cura',specialty:'urologia',sardinia_angle:'Frequenti episodi correlati a stress e sedentariet\u00e0.',specialists:'Dott. Carlos Manuel Cambara Zuniga',status:'planned'},
+    {id:20,publish_date:'2026-03-17',slug:'colesterolo-alto',keyword:'colesterolo alto cause dieta rimedi',title_h1:'Colesterolo Alto: Cause, Rischi e Come Abbassarlo',specialty:'cardiologia',sardinia_angle:'Ipercolesterolemia familiare frequente in Sardegna, dieta tradizionale pu\u00f2 elevare LDL.',specialists:'Dott.ssa Giuliana Guagnozzi, Dr. Tonino Bullitta',status:'planned'},
+    {id:21,publish_date:'2026-03-18',slug:'artrite-reumatoide-sardegna',keyword:'artrite reumatoide sintomi cura sardegna',title_h1:'Artrite Reumatoide in Sardegna: Sintomi, Diagnosi e Cura',specialty:'reumatologia',sardinia_angle:'Pi\u00f9 alta prevalenza di AR in Italia, legata all\'assetto HLA sardo.',specialists:'Dott. Niccol\u00f2 Melis',status:'planned'},
+    {id:22,publish_date:'2026-03-19',slug:'cefalea-emicrania',keyword:'emicrania cefalea sintomi cura',title_h1:'Cefalea ed Emicrania: Sintomi, Cause e Cura',specialty:'neurologia',sardinia_angle:'Patologia molto diffusa, accesso rapido a diagnostica neurologica a Sassari.',specialists:'Dott. Sebastiano Traccis, Dott.ssa Maria Pina Pintus',status:'planned'},
+    {id:23,publish_date:'2026-03-20',slug:'infertilita-femminile',keyword:'infertilit\u00e0 femminile cause cura PMA',title_h1:'Infertilit\u00e0 Femminile: Cause, Diagnosi e Percorsi PMA',specialty:'ginecologia',sardinia_angle:'Centro PMA di riferimento per il nord Sardegna.',specialists:'Dott. Francesco Dessole, Dott.ssa Margherita Dessole, Dott.ssa Antonella Pruneddu',status:'planned'},
+    {id:24,publish_date:'2026-03-23',slug:'sclerosi-multipla-sardegna',keyword:'sclerosi multipla sardegna sintomi diagnosi',title_h1:'Sclerosi Multipla in Sardegna: la Seconda Incidenza al Mondo',specialty:'neurologia',sardinia_angle:'Sardegna ha la 2\u00b0 pi\u00f9 alta incidenza di SM al mondo dopo la Scozia.',specialists:'Dott. Sebastiano Traccis, Dott.ssa Maria Laura De Luca',status:'planned'},
+    {id:25,publish_date:'2026-03-24',slug:'insufficienza-venosa',keyword:'insufficienza venosa cronica gambe pesanti vene varicose',title_h1:'Insufficienza Venosa e Vene Varicose: Sintomi e Cura',specialty:'chirurgia-vascolare',sardinia_angle:'Molto diffusa in Sardegna, professioni in piedi e caldo estivo.',specialists:'Dott. Guido Marongiu, Dott. Roberto Mancino',status:'planned'},
+    {id:26,publish_date:'2026-03-25',slug:'otite-acufeni',keyword:'otite acufeni orecchio tappato cause cura',title_h1:'Otite e Acufeni: Cause, Sintomi e Cura',specialty:'otorinolaringoiatria',sardinia_angle:'Acufeni e otiti frequenti, legati anche al vento (mistral) e balneazione.',specialists:'Dott. Francesco Bussu, Dott. Francesco Santoru',status:'planned'},
+    {id:27,publish_date:'2026-03-26',slug:'glaucoma',keyword:'glaucoma sintomi diagnosi cura',title_h1:'Glaucoma: Sintomi, Diagnosi Precoce e Cura a Sassari',specialty:'oculistica',sardinia_angle:'Screening fondamentale dopo i 40 anni; accesso alla tonometria a Sassari.',specialists:'Dott.ssa Maria Pina Pintus, Dott. Matteo Zucca, Dott. Giorgio Chiarelli',status:'planned'},
+    {id:28,publish_date:'2026-03-27',slug:'celiachia-sardegna',keyword:'celiachia sintomi diagnosi dieta sardegna',title_h1:'Celiachia in Sardegna: Sintomi, Diagnosi e Dieta',specialty:'gastroenterologia',sardinia_angle:'Sardegna: incidenza di celiachia 2-3 volte superiore alla media italiana.',specialists:'Dott. Angelo Deplano',status:'planned'},
+    // ============ NUOVI ARTICOLI (Aprile - Maggio 2026) ============
+    {id:29,publish_date:'2026-03-30',slug:'nefropatia-diabetica',keyword:'nefropatia diabetica insufficienza renale prevenzione',title_h1:'Nefropatia Diabetica: Prevenzione e Cura a Sassari',specialty:'nefrologia',sardinia_angle:'In Sardegna alta prevalenza diabetica rende la nefropatia una complicanza frequente.',specialists:'Dott. Paolo Dessole, Dott. Sergio Paolo Sotgia',status:'planned'},
+    {id:30,publish_date:'2026-03-31',slug:'obesita-sindrome-metabolica',keyword:'obesit\u00e0 sindrome metabolica cause cura',title_h1:'Obesit\u00e0 e Sindrome Metabolica: Rischi e Trattamento',specialty:'nutrizionale',sardinia_angle:'Il sovrappeso \u00e8 in aumento in Sardegna, con impatto su diabete e patologie cardiovascolari.',specialists:'Dott.ssa Antonella Galatino, Dott. Alessandro Pandolfi',status:'planned'},
+    {id:31,publish_date:'2026-04-01',slug:'calcoli-renali',keyword:'calcoli renali sintomi colica renale cura',title_h1:'Calcoli Renali: Sintomi, Colica Renale e Cura',specialty:'nefrologia',sardinia_angle:'Il clima caldo sardo e la disidratazione aumentano il rischio di calcolosi.',specialists:'Dott. Sergio Paolo Sotgia, Dott. Carlos Manuel Cambara Zuniga',status:'planned'},
+    {id:32,publish_date:'2026-04-02',slug:'ansia-attacchi-panico',keyword:'ansia attacchi di panico sintomi cura',title_h1:'Ansia e Attacchi di Panico: Sintomi e Cura',specialty:'psicologia',sardinia_angle:'Disturbi d\'ansia in aumento nel post-pandemia, supporto psicologico fondamentale.',specialists:'Dott.ssa Alessia Piras',status:'planned'},
+    {id:33,publish_date:'2026-04-03',slug:'tunnel-carpale',keyword:'sindrome tunnel carpale sintomi operazione',title_h1:'Sindrome del Tunnel Carpale: Sintomi, Diagnosi e Intervento',specialty:'ortopedia',sardinia_angle:'Molto diffusa tra lavoratori manuali e agricoltori sardi.',specialists:'Dott. Andrea Donato, Dott. Pietro Lisai',status:'planned'},
+    {id:34,publish_date:'2026-04-06',slug:'gastrite-cronica',keyword:'gastrite cronica sintomi cura alimentazione',title_h1:'Gastrite Cronica: Sintomi, Cause e Alimentazione',specialty:'gastroenterologia',sardinia_angle:'Abitudini alimentari sarde (vino, insaccati, formaggi) possono aggravare la gastrite.',specialists:'Dott. Angelo Deplano',status:'planned'},
+    {id:35,publish_date:'2026-04-07',slug:'ecografia-gravidanza',keyword:'ecografia gravidanza quando farla cosa si vede',title_h1:'Ecografia in Gravidanza: Quando Farla e Cosa Si Vede',specialty:'ginecologia',sardinia_angle:'Centro ecografia 3D/4D di riferimento nel nord Sardegna.',specialists:'Dott. Francesco Dessole, Dott.ssa Angelica Fois, Dott.ssa Camilla Ruzzoli',status:'planned'},
+    {id:36,publish_date:'2026-04-08',slug:'apnee-notturne',keyword:'apnee notturne russamento OSAS cause cura',title_h1:'Apnee Notturne (OSAS): Cause, Rischi e Cura',specialty:'pneumologia',sardinia_angle:'OSAS sottostimata in Sardegna, correlata a ipertensione e obesit\u00e0.',specialists:'Prof. Pietro Pirina',status:'planned'},
+    {id:37,publish_date:'2026-04-09',slug:'allergie-stagionali',keyword:'allergie stagionali rinite allergica sintomi cura',title_h1:'Allergie Stagionali e Rinite Allergica: Sintomi e Cura',specialty:'otorinolaringoiatria',sardinia_angle:'Pollini di ulivo, parietaria e graminacee tipici della primavera sarda.',specialists:'Dott. Francesco Bussu, Dott. Francesco Santoru',status:'planned'},
+    {id:38,publish_date:'2026-04-10',slug:'scoliosi-postura',keyword:'scoliosi postura bambini adulti cura',title_h1:'Scoliosi e Difetti Posturali: Diagnosi e Trattamento',specialty:'ortopedia',sardinia_angle:'Screening posturale fondamentale in et\u00e0 scolare; accesso rapido a Sassari.',specialists:'Dott. Pietro Lisai, Dott. Nicola Frau',status:'planned'},
+    {id:39,publish_date:'2026-04-13',slug:'epatite-steatosi-epatica',keyword:'steatosi epatica fegato grasso cause cura',title_h1:'Steatosi Epatica (Fegato Grasso): Cause e Cura',specialty:'medicina-interna',sardinia_angle:'In Sardegna alta prevalenza di steatosi legata a dieta e consumo di alcol.',specialists:'Prof. Antonio Solinas',status:'planned'},
+    {id:40,publish_date:'2026-04-14',slug:'nei-melanoma-prevenzione',keyword:'nei sospetti melanoma prevenzione mappatura nei',title_h1:'Nei e Melanoma: Prevenzione e Mappatura a Sassari',specialty:'dermatologia',sardinia_angle:'Esposizione solare intensa in Sardegna aumenta il rischio melanoma; screening fondamentale.',specialists:'Dott.ssa Giovanna Costa, Dott.ssa Alessandra Musinu',status:'planned'},
+    {id:41,publish_date:'2026-04-15',slug:'endocrinologo-pediatrico',keyword:'endocrinologo pediatrico crescita bambino tiroide',title_h1:'Endocrinologia Pediatrica: Crescita, Tiroide e Diabete nei Bambini',specialty:'pediatria',sardinia_angle:'In Sardegna alta incidenza di diabete tipo 1 giovanile e patologie tiroidee pediatriche.',specialists:'Dr. Carlo Burrai, Dott.ssa Mariolina Azara',status:'planned'},
+    {id:42,publish_date:'2026-04-16',slug:'ipertrofia-prostatica',keyword:'ipertrofia prostatica benigna sintomi cura',title_h1:'Ipertrofia Prostatica Benigna: Sintomi e Cura',specialty:'urologia',sardinia_angle:'Colpisce oltre il 50% degli uomini sopra i 50 anni; diagnosi precoce a Sassari.',specialists:'Dott. Carlos Manuel Cambara Zuniga',status:'planned'},
+    {id:43,publish_date:'2026-04-17',slug:'vertigini-labirintite',keyword:'vertigini labirintite cause cura',title_h1:'Vertigini e Labirintite: Cause, Diagnosi e Cura',specialty:'otorinolaringoiatria',sardinia_angle:'Vertigini posizionali molto frequenti; accesso rapido a diagnostica ORL a Sassari.',specialists:'Dott. Francesco Bussu',status:'planned'},
+    {id:44,publish_date:'2026-04-20',slug:'infertilita-maschile',keyword:'infertilit\u00e0 maschile cause spermiogramma cura',title_h1:'Infertilit\u00e0 Maschile: Cause, Spermiogramma e Percorsi PMA',specialty:'urologia',sardinia_angle:'Centro PMA di riferimento nel nord Sardegna con percorso integrato urologo-ginecologo.',specialists:'Dott. Carlos Manuel Cambara Zuniga, Dott. Francesco Dessole',status:'planned'},
+    {id:45,publish_date:'2026-04-21',slug:'fibromialgia',keyword:'fibromialgia sintomi diagnosi cura',title_h1:'Fibromialgia: Sintomi, Diagnosi e Trattamento',specialty:'reumatologia',sardinia_angle:'Prevalenza in aumento, approccio multidisciplinare fondamentale.',specialists:'Dott. Niccol\u00f2 Melis',status:'planned'},
+    {id:46,publish_date:'2026-04-22',slug:'vitamina-d-carenza',keyword:'vitamina D carenza sintomi integrazione',title_h1:'Carenza di Vitamina D: Sintomi, Esami e Integrazione',specialty:'endocrinologia',sardinia_angle:'Paradosso sardo: nonostante il sole, carenza diffusa per stile di vita indoor.',specialists:'Dott.ssa Irene Aini, Dott.ssa Fabrizia Caucci',status:'planned'},
+    {id:47,publish_date:'2026-04-23',slug:'visita-medicina-sport',keyword:'visita medico sportiva certificato idoneita',title_h1:'Visita Medico Sportiva: Certificato Idoneit\u00e0 a Sassari',specialty:'medicina-sport',sardinia_angle:'Obbligatoria per attivit\u00e0 agonistica; centro certificato a Sassari.',specialists:'Dr. Giorgio Chiarelli',status:'planned'},
+    {id:48,publish_date:'2026-04-24',slug:'sindrome-intestino-irritabile',keyword:'colon irritabile sintomi dieta cura',title_h1:'Sindrome dell\'Intestino Irritabile (IBS): Sintomi e Cura',specialty:'gastroenterologia',sardinia_angle:'Tra le pi\u00f9 frequenti patologie gastroenterologiche, stress e dieta come fattori scatenanti.',specialists:'Dott. Angelo Deplano',status:'planned'},
+    {id:49,publish_date:'2026-04-27',slug:'osteoporosi-prevenzione',keyword:'osteoporosi prevenzione MOC DEXA cura',title_h1:'Osteoporosi: Prevenzione, MOC-DEXA e Cura',specialty:'reumatologia',sardinia_angle:'Popolazione anziana sarda a rischio elevato; MOC-DEXA disponibile a Bio-Clinic.',specialists:'Dott. Niccol\u00f2 Melis, Dott.ssa Irene Aini',status:'planned'},
+    {id:50,publish_date:'2026-04-28',slug:'cataratta',keyword:'cataratta sintomi intervento tempi recupero',title_h1:'Cataratta: Sintomi, Intervento e Tempi di Recupero',specialty:'oculistica',sardinia_angle:'Elevata esposizione solare in Sardegna come fattore di rischio; screening dai 60 anni.',specialists:'Dott. Matteo Zucca, Dott. Giorgio Chiarelli',status:'planned'},
+    {id:51,publish_date:'2026-04-29',slug:'pap-test-hpv',keyword:'pap test HPV screening cervice uterina',title_h1:'Pap Test e HPV: Screening per la Prevenzione del Tumore Cervicale',specialty:'ginecologia',sardinia_angle:'Screening fondamentale; Bio-Clinic offre percorso completo pap-test + HPV-DNA.',specialists:'Dott. Francesco Dessole, Dott.ssa Sonia Bove',status:'planned'},
+    {id:52,publish_date:'2026-04-30',slug:'medicina-lavoro-sassari',keyword:'medicina del lavoro visita sorveglianza sanitaria',title_h1:'Medicina del Lavoro a Sassari: Visite e Sorveglianza Sanitaria',specialty:'medicina-lavoro',sardinia_angle:'Servizio dedicato alle aziende del nord Sardegna con visite in sede e fuori sede.',specialists:'Dott. Gianfranco Manchia',status:'planned'},
+    {id:53,publish_date:'2026-05-04',slug:'dolore-spalla',keyword:'dolore spalla cause cuffia rotatori cura',title_h1:'Dolore alla Spalla e Cuffia dei Rotatori: Cause e Cura',specialty:'ortopedia',sardinia_angle:'Patologia frequente tra sportivi e lavoratori manuali sardi.',specialists:'Dott. Andrea Donato, Dott. Antonio Michele Cavazzuti',status:'planned'},
+    {id:54,publish_date:'2026-05-05',slug:'tiroide-gravidanza',keyword:'tiroide gravidanza ipotiroidismo gestazionale',title_h1:'Tiroide e Gravidanza: Controlli e Rischi',specialty:'endocrinologia',sardinia_angle:'Fondamentale il controllo tiroideo in gravidanza, specialmente in Sardegna per prevalenza autoimmune.',specialists:'Dott.ssa Irene Aini, Dott. Francesco Dessole',status:'planned'},
+    {id:55,publish_date:'2026-05-06',slug:'eczema-mani',keyword:'eczema mani dermatite contatto cura',title_h1:'Eczema alle Mani: Cause, Prevenzione e Cura',specialty:'dermatologia',sardinia_angle:'Frequente in lavoratori esposti a detergenti e agenti chimici.',specialists:'Dott.ssa Alessandra Musinu, Dott.ssa Speranza Anedda',status:'planned'},
+    {id:56,publish_date:'2026-05-07',slug:'incontinenza-urinaria',keyword:'incontinenza urinaria femminile cause cura',title_h1:'Incontinenza Urinaria Femminile: Cause e Cura',specialty:'ginecologia',sardinia_angle:'Problema spesso sottovalutato; trattamento con Perifit e riabilitazione pelviperineale a Bio-Clinic.',specialists:'Dott. Francesco Dessole, Dott.ssa Angelica Fois',status:'planned'},
+    {id:57,publish_date:'2026-05-08',slug:'aritmie-cardiache',keyword:'aritmie cardiache extrasistole tachicardia cura',title_h1:'Aritmie Cardiache: Extrasistole, Tachicardia e Cura',specialty:'cardiologia',sardinia_angle:'Holter ECG 24h disponibile per diagnosi precisa; accesso rapido a Sassari.',specialists:'Dott. Paolo Franca, Dott.ssa Giuliana Guagnozzi',status:'planned'},
+    {id:58,publish_date:'2026-05-11',slug:'ernia-inguinale',keyword:'ernia inguinale sintomi intervento tempi',title_h1:'Ernia Inguinale: Sintomi, Intervento e Recupero',specialty:'chirurgia-vascolare',sardinia_angle:'Tra gli interventi chirurgici pi\u00f9 comuni; approccio mini-invasivo a Sassari.',specialists:'Dott. Guido Marongiu',status:'planned'},
+    {id:59,publish_date:'2026-05-12',slug:'acne-adulti',keyword:'acne adulti cause cura trattamento',title_h1:'Acne negli Adulti: Cause, Cura e Trattamenti',specialty:'dermatologia',sardinia_angle:'Non solo adolescenti: acne tardiva frequente, soprattutto nelle donne.',specialists:'Dott.ssa Giovanna Costa, Dott.ssa Speranza Anedda',status:'planned'},
+    {id:60,publish_date:'2026-05-13',slug:'controllo-nei-bambini',keyword:'visita pediatrica sassari bilancio salute',title_h1:'Visita Pediatrica a Sassari: Bilancio di Salute e Controlli',specialty:'pediatria',sardinia_angle:'Servizio pediatrico dedicato a Bio-Clinic per le famiglie del nord Sardegna.',specialists:'Dott.ssa Mariolina Azara, Dr. Carlo Burrai',status:'planned'},
+    {id:61,publish_date:'2026-05-14',slug:'neuropatia-periferica',keyword:'neuropatia periferica formicolio mani piedi cause',title_h1:'Neuropatia Periferica: Formicolio a Mani e Piedi',specialty:'neurologia',sardinia_angle:'Frequente complicanza del diabete, molto diffuso in Sardegna.',specialists:'Dott. Sebastiano Traccis',status:'planned'},
+    {id:62,publish_date:'2026-05-15',slug:'check-up-cardiovascolare',keyword:'check up cardiovascolare cuore esami prevenzione',title_h1:'Check-Up Cardiovascolare: Esami e Prevenzione a Sassari',specialty:'cardiologia',sardinia_angle:'Prevenzione primaria fondamentale in Sardegna per tassi elevati di patologie CV.',specialists:'Dott.ssa Giuliana Guagnozzi, Dott. Paolo Franca, Dott. Paolo Pischedda',status:'planned'},
+    {id:63,publish_date:'2026-05-18',slug:'alimentazione-sport',keyword:'alimentazione sportiva dieta atleta nutrizione',title_h1:'Alimentazione e Sport: Guida Nutrizionale per l\'Atleta',specialty:'nutrizionale',sardinia_angle:'Supporto nutrizionale personalizzato per atleti sardi di ogni livello.',specialists:'Dott.ssa Antonella Galatino, Dott. Alessandro Pandolfi',status:'planned'},
+    {id:64,publish_date:'2026-05-19',slug:'analisi-sangue-guida',keyword:'analisi del sangue valori normali come leggere',title_h1:'Analisi del Sangue: Guida Completa ai Valori Normali',specialty:'laboratorio',sardinia_angle:'Laboratorio ad accesso diretto 07:00-10:00, 1.136 esami disponibili.',specialists:'Dott.ssa Cinzia Guarino, Dott.ssa Gloria Reggiani',status:'planned'}
+  ];
+}
+
+function init() {
+  populateSpecFilters();
+  renderStats();
+  renderLegend();
+  renderCalendar();
+}
+
+function populateSpecFilters() {
+  const sel = document.getElementById('filterSpec');
+  const editSel = document.getElementById('editSpecialty');
+  SPECIALTIES.forEach(s => {
+    sel.innerHTML += `<option value="${s}">${s.replace(/-/g,' ')}</option>`;
+    editSel.innerHTML += `<option value="${s}">${s.replace(/-/g,' ')}</option>`;
+  });
+  sel.onchange = renderCalendar;
+  document.getElementById('filterStatus').onchange = renderCalendar;
+  document.getElementById('searchBox').oninput = renderCalendar;
+}
+
+function renderStats() {
+  const total = articles.length;
+  const published = articles.filter(a => a.status === 'published').length;
+  const planned = articles.filter(a => a.status === 'planned').length;
+  const draft = articles.filter(a => a.status === 'draft').length;
+  const specs = [...new Set(articles.map(a => a.specialty))].length;
+  const weeks = Math.ceil(total / 5);
+  document.getElementById('statsBar').innerHTML = `
+    <div class="stat"><div class="stat-value">${total}</div><div class="stat-label">Articoli</div></div>
+    <div class="stat"><div class="stat-value">${published}</div><div class="stat-label">Pubblicati</div></div>
+    <div class="stat"><div class="stat-value">${draft}</div><div class="stat-label">Bozze</div></div>
+    <div class="stat"><div class="stat-value">${planned}</div><div class="stat-label">Pianificati</div></div>
+    <div class="stat"><div class="stat-value">${specs}</div><div class="stat-label">Specialit&agrave;</div></div>
+    <div class="stat"><div class="stat-value">${weeks}</div><div class="stat-label">Settimane</div></div>
+    <div class="stat"><div class="stat-value">5/sett</div><div class="stat-label">Frequenza</div></div>
+  `;
+}
+
+function renderLegend() {
+  const used = [...new Set(articles.map(a => a.specialty))];
+  document.getElementById('legendBar').innerHTML = used.map(s =>
+    `<div class="legend-item"><span class="legend-dot spec-${s}" style="display:inline-block;width:10px;height:10px;border-radius:50%"></span> ${s.replace(/-/g,' ')}</div>`
+  ).join('');
+}
+
+function renderCalendar() {
+  const filterSpec = document.getElementById('filterSpec').value;
+  const filterStatus = document.getElementById('filterStatus').value;
+  const search = document.getElementById('searchBox').value.toLowerCase();
+
+  let filtered = articles.filter(a => {
+    if (filterSpec && a.specialty !== filterSpec) return false;
+    if (filterStatus && a.status !== filterStatus) return false;
+    if (search && !(a.slug+a.title_h1+a.keyword+a.specialists+a.specialty).toLowerCase().includes(search)) return false;
+    return true;
+  });
+
+  // Group by month
+  const groups = {};
+  filtered.forEach(a => {
+    const m = a.publish_date.substring(0, 7);
+    if (!groups[m]) groups[m] = [];
+    groups[m].push(a);
+  });
+
+  let html = '';
+  Object.keys(groups).sort().forEach(month => {
+    const [y, m] = month.split('-');
+    const monthName = MONTHS_IT[parseInt(m) - 1] + ' ' + y;
+    const count = groups[month].length;
+
+    html += `<div class="month-group">
+      <div class="month-header">${monthName} &mdash; ${count} articol${count===1?'o':'i'}</div>
+      <table>
+        <thead><tr>
+          <th style="width:50px">#</th>
+          <th style="width:110px">Data</th>
+          <th style="width:40px">Stato</th>
+          <th style="width:130px">Specialit&agrave;</th>
+          <th style="width:200px">Slug</th>
+          <th>Titolo H1</th>
+          <th style="width:200px">Specialisti</th>
+          <th style="width:80px">Azioni</th>
+        </tr></thead><tbody>`;
+
+    groups[month].forEach(a => {
+      const d = new Date(a.publish_date + 'T00:00:00');
+      const dayName = DAYS_IT[d.getDay()];
+      const isToday = a.publish_date === TODAY;
+      const isPast = a.publish_date < TODAY;
+      const rowClass = a.status === 'published' ? 'published' : (isToday ? 'today' : '');
+      const statusClass = a.status === 'published' ? 'status-published' : (a.status === 'draft' ? 'status-draft' : 'status-planned');
+      const statusLabel = a.status === 'published' ? 'PUB' : (a.status === 'draft' ? 'BOZZA' : 'PLAN');
+
+      html += `<tr class="${rowClass}" data-id="${a.id}">
+        <td style="color:#aaa;font-weight:600">${a.id}</td>
+        <td class="date-cell">${a.publish_date.substring(5)}<br><span class="day-name">${dayName}</span></td>
+        <td><span class="status-badge ${statusClass}">${statusLabel}</span></td>
+        <td><span class="spec-tag spec-${a.specialty}">${a.specialty.replace(/-/g,' ')}</span></td>
+        <td style="font-family:monospace;font-size:.78rem;color:#1565c0">${a.slug}</td>
+        <td style="font-weight:500">${a.title_h1}</td>
+        <td class="specialists-cell">${a.specialists}</td>
+        <td class="actions-cell">
+          <button class="btn btn-sm btn-secondary" onclick="editArticle(${a.id})" title="Modifica">&#9998;</button>
+          <button class="btn btn-sm btn-danger" onclick="deleteArticle(${a.id})" title="Elimina">&times;</button>
+        </td>
+      </tr>`;
+    });
+
+    html += '</tbody></table></div>';
+  });
+
+  if (!filtered.length) {
+    html = '<div style="text-align:center;padding:3rem;color:#888;">Nessun articolo trovato con i filtri selezionati.</div>';
+  }
+
+  document.getElementById('calendarContainer').innerHTML = html;
+}
+
+function editArticle(id) {
+  const a = articles.find(x => x.id === id);
+  if (!a) return;
+  document.getElementById('editId').value = id;
+  document.getElementById('editDate').value = a.publish_date;
+  document.getElementById('editSlug').value = a.slug;
+  document.getElementById('editTitle').value = a.title_h1;
+  document.getElementById('editKeyword').value = a.keyword;
+  document.getElementById('editSpecialty').value = a.specialty;
+  document.getElementById('editSardinia').value = a.sardinia_angle;
+  document.getElementById('editSpecialists').value = a.specialists;
+  document.getElementById('editStatus').value = a.status;
+  document.getElementById('modalTitle').textContent = 'Modifica Articolo #' + id;
+  document.getElementById('editModal').classList.add('active');
+}
+
+function addArticle() {
+  // Find next available date (weekday after last article)
+  const lastDate = articles.length ? articles[articles.length - 1].publish_date : TODAY;
+  let next = new Date(lastDate + 'T00:00:00');
+  do { next.setDate(next.getDate() + 1); } while (next.getDay() === 0 || next.getDay() === 6);
+  const nextStr = next.toISOString().substring(0, 10);
+  const newId = Math.max(...articles.map(a => a.id)) + 1;
+
+  document.getElementById('editId').value = 'new';
+  document.getElementById('editDate').value = nextStr;
+  document.getElementById('editSlug').value = '';
+  document.getElementById('editTitle').value = '';
+  document.getElementById('editKeyword').value = '';
+  document.getElementById('editSpecialty').value = 'cardiologia';
+  document.getElementById('editSardinia').value = '';
+  document.getElementById('editSpecialists').value = '';
+  document.getElementById('editStatus').value = 'planned';
+  document.getElementById('modalTitle').textContent = 'Nuovo Articolo #' + newId;
+  document.getElementById('editModal').classList.add('active');
+}
+
+function saveArticle() {
+  const idVal = document.getElementById('editId').value;
+  const data = {
+    publish_date: document.getElementById('editDate').value,
+    slug: document.getElementById('editSlug').value.trim(),
+    title_h1: document.getElementById('editTitle').value.trim(),
+    keyword: document.getElementById('editKeyword').value.trim(),
+    specialty: document.getElementById('editSpecialty').value,
+    sardinia_angle: document.getElementById('editSardinia').value.trim(),
+    specialists: document.getElementById('editSpecialists').value.trim(),
+    status: document.getElementById('editStatus').value
+  };
+
+  if (!data.slug || !data.title_h1 || !data.publish_date) {
+    alert('Compila almeno: Data, Slug e Titolo');
+    return;
+  }
+
+  if (idVal === 'new') {
+    data.id = Math.max(...articles.map(a => a.id)) + 1;
+    articles.push(data);
+    toast('Articolo #' + data.id + ' aggiunto');
+  } else {
+    const idx = articles.findIndex(a => a.id === parseInt(idVal));
+    if (idx >= 0) {
+      data.id = parseInt(idVal);
+      articles[idx] = data;
+      toast('Articolo #' + data.id + ' aggiornato');
+    }
+  }
+
+  articles.sort((a, b) => a.publish_date.localeCompare(b.publish_date));
+  closeModal();
+  renderStats();
+  renderLegend();
+  renderCalendar();
+}
+
+function deleteArticle(id) {
+  if (!confirm('Eliminare l\'articolo #' + id + '?')) return;
+  articles = articles.filter(a => a.id !== id);
+  renderStats();
+  renderLegend();
+  renderCalendar();
+  toast('Articolo #' + id + ' eliminato');
+}
+
+function closeModal() { document.getElementById('editModal').classList.remove('active'); }
+function closeExportModal() { document.getElementById('exportModal').classList.remove('active'); }
+function closeImportModal() { document.getElementById('importModal').classList.remove('active'); }
+
+function exportJSON() {
+  const output = {
+    version: '2.0',
+    project: 'Bio-Clinic Salute Hub',
+    generated: new Date().toISOString().substring(0, 10),
+    range: { start: RANGE_START, end: RANGE_END, days: 90 },
+    reviewer: {
+      name: 'Dott. Francesco Dessole',
+      credentials: 'Ordine dei Medici di Sassari n. 5244',
+      url: '/equipe/francesco-dessole/'
+    },
+    schedule: { frequency: 'daily', days: ['monday','tuesday','wednesday','thursday','friday'], publish_time: '07:00 CET' },
+    total_articles: articles.length,
+    articles: articles.map(a => ({
+      id: a.id,
+      publish_date: a.publish_date,
+      slug: a.slug,
+      keyword: a.keyword,
+      title_h1: a.title_h1,
+      specialty: a.specialty,
+      sardinia_angle: a.sardinia_angle,
+      specialists: a.specialists,
+      status: a.status
+    }))
+  };
+  document.getElementById('exportContent').value = JSON.stringify(output, null, 2);
+  document.getElementById('exportTitle').textContent = 'Esporta JSON — ' + articles.length + ' articoli';
+  document.getElementById('exportModal').classList.add('active');
+  window._exportFormat = 'json';
+}
+
+function exportCSV() {
+  let csv = 'ID,Data,Slug,Keyword,Titolo,Specialita,Angolo_Sardegna,Specialisti,Stato\n';
+  articles.forEach(a => {
+    csv += `${a.id},${a.publish_date},"${a.slug}","${a.keyword}","${a.title_h1}",${a.specialty},"${a.sardinia_angle}","${a.specialists}",${a.status}\n`;
+  });
+  document.getElementById('exportContent').value = csv;
+  document.getElementById('exportTitle').textContent = 'Esporta CSV — ' + articles.length + ' articoli';
+  document.getElementById('exportModal').classList.add('active');
+  window._exportFormat = 'csv';
+}
+
+function copyExport() {
+  navigator.clipboard.writeText(document.getElementById('exportContent').value);
+  toast('Copiato negli appunti!');
+}
+
+function downloadExport() {
+  const ext = window._exportFormat || 'json';
+  const blob = new Blob([document.getElementById('exportContent').value], { type: ext === 'json' ? 'application/json' : 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'bio-clinic-calendario-90gg.' + ext;
+  a.click();
+  URL.revokeObjectURL(url);
+  toast('File scaricato!');
+}
+
+function importJSON() {
+  document.getElementById('importContent').value = '';
+  document.getElementById('importModal').classList.add('active');
+}
+
+function doImport() {
+  try {
+    const data = JSON.parse(document.getElementById('importContent').value);
+    const imported = data.articles || data;
+    if (!Array.isArray(imported)) throw new Error('Formato non valido');
+    articles = imported.map((a, i) => ({
+      id: a.id || i + 1,
+      publish_date: a.publish_date || '',
+      slug: a.slug || '',
+      keyword: a.keyword || '',
+      title_h1: a.title_h1 || '',
+      specialty: a.specialty || '',
+      sardinia_angle: a.sardinia_angle || '',
+      specialists: typeof a.specialists === 'string' ? a.specialists : (a.specialists || []).map(s => s.name || s).join(', '),
+      status: a.status || 'planned'
+    }));
+    articles.sort((a, b) => a.publish_date.localeCompare(b.publish_date));
+    closeImportModal();
+    renderStats();
+    renderLegend();
+    renderCalendar();
+    toast(articles.length + ' articoli importati!');
+  } catch (e) {
+    alert('Errore: ' + e.message);
+  }
+}
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+init();
+</script>
+</body>
+</html>

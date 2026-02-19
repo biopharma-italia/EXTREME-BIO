@@ -74,6 +74,7 @@ cd "$SITE_DIR" && tar cf - \
     --exclude='./output' \
     --exclude='./backups' \
     --exclude='./build' \
+    --exclude='./salute/_drafts' \
     --exclude='./data/cache' \
     --exclude='./data/v2' \
     --exclude='./data/*.xlsx' \
