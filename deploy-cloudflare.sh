@@ -13,27 +13,25 @@
 
 set -e
 
+# ── Load credentials from config file if env vars are empty ──
+SCRIPT_DIR_INIT="$(cd "$(dirname "$0")" && pwd)"
+CONFIG_FILE="$SCRIPT_DIR_INIT/.cloudflare-config"
+if [ -f "$CONFIG_FILE" ]; then
+    source "$CONFIG_FILE"
+fi
+
 # Verify credentials
 if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
     echo "ERROR: CLOUDFLARE_API_TOKEN is not set."
     echo ""
-    echo "To create a token:"
-    echo "  1. Go to https://dash.cloudflare.com/profile/api-tokens"
-    echo "  2. Create Custom Token"
-    echo "  3. Permissions:"
-    echo "     - Account > Cloudflare Pages > Edit"
-    echo "     - Zone > Cache Purge > Purge (recommended)"
-    echo "  4. export CLOUDFLARE_API_TOKEN='your-token'"
+    echo "Set it via environment variable or .cloudflare-config file."
     exit 1
 fi
 
 if [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
     echo "ERROR: CLOUDFLARE_ACCOUNT_ID is not set."
     echo ""
-    echo "To find your Account ID:"
-    echo "  1. Go to https://dash.cloudflare.com"
-    echo "  2. Check URL: https://dash.cloudflare.com/XXXXXXXXXX"
-    echo "  3. export CLOUDFLARE_ACCOUNT_ID='XXXXXXXXXX'"
+    echo "Set it via environment variable or .cloudflare-config file."
     exit 1
 fi
 

@@ -236,6 +236,30 @@ def process_file(filepath, date_iso, date_iso_full, date_it, dry_run=False):
     return "modified" if changes else "unchanged", changes
 
 
+def run_daily_publish(date_iso, dry_run=False):
+    """Run daily-publish.py if it exists, to publish scheduled articles."""
+    import subprocess
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    publish_script = os.path.join(script_dir, "daily-publish.py")
+    if not os.path.exists(publish_script):
+        return
+
+    print(f"\n{'='*60}")
+    print(f"[AUTO-PUBLISH] Running daily-publish for {date_iso}...")
+    print(f"{'='*60}\n")
+
+    cmd = [sys.executable, publish_script, "--date", date_iso]
+    if dry_run:
+        cmd.append("--dry-run")
+
+    try:
+        result = subprocess.run(cmd, capture_output=False, text=True, timeout=120)
+        if result.returncode != 0:
+            print(f"  WARNING: daily-publish exited with code {result.returncode}")
+    except Exception as e:
+        print(f"  WARNING: daily-publish failed: {e}")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Update dateModified on all Bio-Clinic pages")
     parser.add_argument("--date", type=str, default=None,
@@ -244,6 +268,8 @@ def main():
                         help="Don't write files, just report what would change")
     parser.add_argument("--site-dir", type=str, default=None,
                         help="Override site directory path")
+    parser.add_argument("--skip-publish", action="store_true",
+                        help="Skip daily article publishing step")
     args = parser.parse_args()
 
     global SITE_DIR
@@ -255,6 +281,10 @@ def main():
     else:
         now = datetime.now(IT_TZ)
         date_iso = now.strftime("%Y-%m-%d")
+
+    # ── Step 0: Publish scheduled articles ──
+    if not args.skip_publish:
+        run_daily_publish(date_iso, args.dry_run)
 
     date_iso_full = format_date_iso_full(date_iso)
     date_it = format_date_it(date_iso)
