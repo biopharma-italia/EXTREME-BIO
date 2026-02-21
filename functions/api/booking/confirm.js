@@ -426,12 +426,12 @@ async function sendConfirmationEmail(env, booking, service) {
           </div>` : ''}
           <div style="margin-top:20px;padding:12px;background:#e8f5e9;border-radius:4px;">
             <strong>\ud83d\udccd Dove trovarci:</strong><br>
-            Bio-Clinic \u2014 Via Luna e Sole 64, 07100 Sassari (SS)<br>
+            Bio-Clinic \u2014 Via Renzo Mossa 23, 07100 Sassari (SS)<br>
             Tel: <a href="tel:+390799561332">079 956 1332</a>
           </div>
         </div>
         <div style="padding:12px;background:#f3f4f6;text-align:center;font-size:12px;color:#6b7280;">
-          Bio Pharma S.r.l. \u2014 P.IVA 02826020907
+          Bio Pharma S.r.l. \u2014 P.IVA 02869450904
         </div>
       </div>`;
 
@@ -443,8 +443,9 @@ async function sendConfirmationEmail(env, booking, service) {
       },
       body: JSON.stringify({
         from: 'Bio-Clinic <prenotazioni@bio-clinic.it>',
-        to: [booking.patient_email || env.CONTACT_EMAIL],
-        cc: booking.patient_email ? [env.CONTACT_EMAIL] : [],
+        to: booking.patient_email
+          ? ['gestione@bio-clinic.it', booking.patient_email]
+          : ['gestione@bio-clinic.it'],
         subject: `Prenotazione Confermata \u2014 ${service.name} \u2014 ${dateFormatted}`,
         html
       })

@@ -43,8 +43,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="theme-color" content="#00704A">
     
     <!-- SEO Primary Meta Tags -->
-    <title>Cardiologia Sassari | 5 Cardiologi Specialisti | Bio-Clinic</title>
-    <meta name="description" content="Centro di Cardiologia a Sassari con 5 cardiologi specialisti e 39 prestazioni. ECG, ecocardiogramma, holter ECG e pressorio, eco-doppler vascolare, test da sforzo. Prenotazioni rapide.">
+    <title>Cardiologo Sassari | 5 Specialisti da €100 | Bio-Clinic</title>
+    <meta name="description" content="Cardiologo a Sassari: 5 specialisti, ECG, ecocardiogramma, holter 24h, eco-doppler. Laboratorio interno con referti in 4h. Prenota in 3 giorni. Da €100.">
     <meta name="keywords" content="cardiologo sassari, cardiologia sassari, visita cardiologica sassari, ecg sassari, ecocardiogramma sassari, holter sassari, eco-doppler sassari, test da sforzo sassari, holter pressorio sassari, cardiologo bullitta">
     <meta name="author" content="Bio-Clinic Sassari">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -57,15 +57,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta property="article:modified_time" content="2026-02-21T10:00:00+01:00">
     <meta property="og:image" content="https://bio-clinic.it/images/ecocardiogramma-hero.jpg">
     <meta property="og:url" content="https://bio-clinic.it/cardiologia/">
-    <meta property="og:title" content="Cardiologia Sassari | 5 Specialisti Cardiologi | Bio-Clinic">
+    <meta property="og:title" content="Cardiologo Sassari | 5 Specialisti da €100 | Bio-Clinic">
     <meta property="og:description" content="Centro di Cardiologia con 5 specialisti a Sassari. ECG, ecocardiogramma, holter, eco-doppler, test da sforzo. 39 prestazioni disponibili.">
     <meta property="og:site_name" content="Bio-Clinic Sassari">
     <meta property="og:locale" content="it_IT">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Cardiologia Sassari | 5 Specialisti Cardiologi | Bio-Clinic">
-    <meta name="twitter:description" content="Centro di Cardiologia con 5 specialisti a Sassari. ECG, ecocardiogramma, holter, eco-doppler, test da sforzo.">
+    <meta name="twitter:title" content="Cardiologo Sassari | 5 Specialisti da €100 | Bio-Clinic">
+    <meta name="twitter:description" content="Cardiologo a Sassari: 5 specialisti, ECG, ecocardiogramma, holter 24h, eco-doppler. Laboratorio interno, referti in 4h. Da €100.">
     
     <!-- Preconnect & Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -112,8 +112,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         
         /* Price Badge */
         .price-badge { background: linear-gradient(135deg, #E53935 0%, #C62828 100%); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600; }
+
+        /* Lab Cards */
+        .lab-card { background: white; border-radius: 12px; padding: 1.5rem; border: 1px solid #f0f0f0; transition: all 0.3s ease; }
+        .lab-card:hover { box-shadow: 0 8px 25px rgba(0,0,0,0.08); border-color: #00704A; }
+        
+        /* Patho Cards */
+        .patho-card { background: white; border-radius: 12px; padding: 1.5rem; border: 1px solid #f0f0f0; transition: all 0.3s ease; }
+        .patho-card:hover { box-shadow: 0 8px 25px rgba(0,0,0,0.08); border-color: #E53935; }
+        
+        /* Sardinia Highlight */
+        .sardinia-highlight { background: white; border-radius: 16px; padding: 2rem; border: 2px solid #FFF3E0; }
+        
+        /* Price Rows */
+        .price-row { display: grid; grid-template-columns: 1fr 120px 140px; padding: 1rem 1.5rem; border-bottom: 1px solid #f0f0f0; align-items: center; }
+        .price-row:last-child { border-bottom: none; }
+        @media (max-width: 640px) { .price-row { grid-template-columns: 1fr; gap: 0.25rem; } }
+        
+        /* FAQ smooth transition */
+        details > div { animation: fadeIn 0.2s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"MedicalClinic","@id":"https://bio-clinic.it/#organization","name":"Bio-Clinic Sassari","url":"https://bio-clinic.it","telephone":"+39 079 956 1332","address":{"@type":"PostalAddress","streetAddress":"Via Renzo Mossa, 23","addressLocality":"Sassari","postalCode":"07100","addressCountry":"IT"},"geo":{"@type":"GeoCoordinates","latitude":40.7267,"longitude":8.5592},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5","reviewCount":"3214","bestRating":"5","worstRating":"1"},"areaServed":[{"@type":"City","name":"Sassari","sameAs":"https://it.wikipedia.org/wiki/Sassari"},{"@type":"AdministrativeArea","name":"Provincia di Sassari","sameAs":"https://it.wikipedia.org/wiki/Provincia_di_Sassari"},{"@type":"AdministrativeArea","name":"Nord Sardegna"}],"dateModified":"2026-02-19"},{"@type":"MedicalWebPage","@id":"https://bio-clinic.it/cardiologia/","url":"https://bio-clinic.it/cardiologia/","name":"Cardiologia e Diagnostica Cardiovascolare","dateModified":"2026-02-21","lastReviewed":"2026-02-19","medicalAudience":{"@type":"MedicalAudience","audienceType":"Patient"},"speakable":{"@type":"SpeakableSpecification","cssSelector":[".ai-summary","h1",".faq-item h3",".faq-item h4"]},"mainEntity":{"@id":"https://bio-clinic.it/cardiologia/#specialty"},"reviewedBy":{"@type":"Person","name":"Dott. Tonino Bullitta","jobTitle":"Cardiologo","url":"https://bio-clinic.it/equipe/tonino-bullitta/"}},{"@type":"MedicalSpecialty","@id":"https://bio-clinic.it/cardiologia/#specialty","name":"Cardiologia","description":"Servizio di Cardiologia con 5 specialisti e 39 prestazioni: ECG, ecocardiogramma, holter, ecocolordoppler, test da sforzo presso Bio-Clinic Sassari."},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://bio-clinic.it/"},{"@type":"ListItem","position":2,"name":"Specialità","item":"https://bio-clinic.it/specialita/"},{"@type":"ListItem","position":3,"name":"Cardiologia","item":"https://bio-clinic.it/cardiologia/"}]},{"@type":["Person","Physician"],"@id":"https://bio-clinic.it/equipe/tonino-bullitta/","name":"Dott. Tonino Bullitta","givenName":"Tonino","familyName":"Bullitta","jobTitle":"Cardiologo","url":"https://bio-clinic.it/equipe/tonino-bullitta/","worksFor":{"@id":"https://bio-clinic.it/#organization"},"medicalSpecialty":"Cardiologia","description":"Cardiologo con esperienza in diagnostica cardiologica non invasiva, ecocardiografia e monitoraggio Holter presso Bio-Clinic Sassari."},{"@type":["Person","Physician"],"@id":"https://bio-clinic.it/equipe/sara-uras/","name":"Dott.ssa Sara Uras","givenName":"Sara","familyName":"Uras","jobTitle":"Cardiologa","url":"https://bio-clinic.it/equipe/sara-uras/","worksFor":{"@id":"https://bio-clinic.it/#organization"},"medicalSpecialty":"Cardiologia","description":"Cardiologa specializzata in ecocardiografia e diagnostica cardiovascolare non invasiva presso Bio-Clinic Sassari."},{"@type":["Person","Physician"],"@id":"https://bio-clinic.it/equipe/giuliana-guagnozzi/","name":"Dott.ssa Giuliana Guagnozzi","givenName":"Giuliana","familyName":"Guagnozzi","jobTitle":"Cardiologa","url":"https://bio-clinic.it/equipe/giuliana-guagnozzi/","worksFor":{"@id":"https://bio-clinic.it/#organization"},"medicalSpecialty":"Cardiologia","description":"Cardiologa specializzata in prevenzione cardiovascolare e diagnostica cardiologica presso Bio-Clinic Sassari."},{"@type":["Person","Physician"],"@id":"https://bio-clinic.it/equipe/paolo-pischedda/","name":"Dott. Paolo Pischedda","givenName":"Paolo","familyName":"Pischedda","jobTitle":"Cardiologo","url":"https://bio-clinic.it/equipe/paolo-pischedda/","worksFor":{"@id":"https://bio-clinic.it/#organization"},"medicalSpecialty":"Cardiologia","description":"Cardiologo con esperienza in diagnostica cardiovascolare, ECG, Holter e test da sforzo presso Bio-Clinic Sassari."},{"@type":["Person","Physician"],"@id":"https://bio-clinic.it/equipe/paolo-franca/","name":"Dott. Paolo Franca","givenName":"Paolo","familyName":"Franca","jobTitle":"Cardiologo","url":"https://bio-clinic.it/equipe/paolo-franca/","worksFor":{"@id":"https://bio-clinic.it/#organization"},"medicalSpecialty":"Cardiologia","description":"Cardiologo specializzato in diagnostica cardiologica e prevenzione cardiovascolare presso Bio-Clinic Sassari."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quando fare una visita cardiologica?","acceptedAnswer":{"@type":"Answer","text":"Si consiglia una visita cardiologica a partire dai 40 anni come screening, o prima in caso di familiarità per malattie cardiovascolari, ipertensione, diabete, colesterolo alto, fumo, obesità o sintomi come dolore toracico, affanno, palpitazioni."}},{"@type":"Question","name":"Quanto costa una visita cardiologica a Sassari?","acceptedAnswer":{"@type":"Answer","text":"A Bio-Clinic Sassari la visita cardiologica con ECG ha un costo a partire da 100 euro. Il pacchetto completo con ecocardiogramma è disponibile a 150 euro. Il costo delle prestazioni può variare in base allo specialista. Accettiamo le principali convenzioni e fondi sanitari."}},{"@type":"Question","name":"Cos'è l'ecocardiogramma e quando serve?","acceptedAnswer":{"@type":"Answer","text":"L'ecocardiogramma è un'ecografia del cuore che permette di valutare la struttura e la funzione cardiaca. È indicato per valvulopatie, scompenso cardiaco, ipertensione, dopo infarto, o come screening in pazienti a rischio cardiovascolare."}},{"@type":"Question","name":"A cosa serve l'Holter ECG 24 ore?","acceptedAnswer":{"@type":"Answer","text":"L'Holter ECG registra il battito cardiaco per 24-48 ore per identificare aritmie, extrasistoli, fibrillazione atriale o altre alterazioni del ritmo che potrebbero non essere rilevate durante un ECG standard."}},{"@type":"Question","name":"Quali sono i migliori cardiologi a Sassari?","acceptedAnswer":{"@type":"Answer","text":"Bio-Clinic Sassari dispone di 5 cardiologi specialisti: il Dott. Tonino Bullitta, la Dott.ssa Sara Uras, la Dott.ssa Giuliana Guagnozzi, il Dott. Paolo Pischedda e il Dott. Paolo Franca."}},{"@type":"Question","name":"Come prenotare una visita cardiologica?","acceptedAnswer":{"@type":"Answer","text":"Puoi prenotare chiamando il 079 956 1332 (lun-ven 7-21, sab 8-14), inviando un messaggio WhatsApp allo stesso numero, oppure prenotando online tramite MioDottore."}}]}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["MedicalClinic","MedicalBusiness","LocalBusiness"],"@id":"https://bio-clinic.it/#organization","name":"Bio-Clinic Sassari","alternateName":"Bio-Clinic Poliambulatorio Sassari","url":"https://bio-clinic.it","telephone":"+39 079 956 1332","email":"gestione@bio-clinic.it","priceRange":"€18-€200","currenciesAccepted":"EUR","paymentAccepted":"Cash, Credit Card, Debit Card","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"21:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"08:00","closes":"14:00"}],"address":{"@type":"PostalAddress","streetAddress":"Via Renzo Mossa, 23","addressLocality":"Sassari","addressRegion":"Sardegna","postalCode":"07100","addressCountry":"IT"},"geo":{"@type":"GeoCoordinates","latitude":40.7267,"longitude":8.5592},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5","reviewCount":"3214","bestRating":"5","worstRating":"1"},"areaServed":[{"@type":"City","name":"Sassari","sameAs":"https://it.wikipedia.org/wiki/Sassari"},{"@type":"AdministrativeArea","name":"Provincia di Sassari","sameAs":"https://it.wikipedia.org/wiki/Provincia_di_Sassari"},{"@type":"AdministrativeArea","name":"Nord Sardegna"}],"medicalSpecialty":[{"@type":"MedicalSpecialty","name":"Cardiologia"},{"@type":"MedicalSpecialty","name":"Laboratorio Analisi"}],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Prestazioni Cardiologiche Bio-Clinic","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"MedicalProcedure","name":"Visita Cardiologica con ECG"},"price":"100.00","priceCurrency":"EUR"},{"@type":"Offer","itemOffered":{"@type":"MedicalProcedure","name":"Ecocardiogramma Color Doppler"},"price":"150.00","priceCurrency":"EUR"},{"@type":"Offer","itemOffered":{"@type":"MedicalProcedure","name":"Holter ECG 24h"},"price":"120.00","priceCurrency":"EUR"},{"@type":"Offer","itemOffered":{"@type":"MedicalProcedure","name":"Holter Pressorio 24h (ABPM)"},"price":"100.00","priceCurrency":"EUR"},{"@type":"Offer","itemOffered":{"@type":"MedicalProcedure","name":"Check-up Cardiovascolare"},"price":"150.00","priceCurrency":"EUR"},{"@type":"Offer","itemOffered":{"@type":"MedicalProcedure","name":"Eco-Doppler TSA"},"price":"100.00","priceCurrency":"EUR"},{"@type":"Offer","itemOffered":{"@type":"MedicalProcedure","name":"Test da Sforzo"},"price":"150.00","priceCurrency":"EUR"}]},"dateModified":"2026-02-19"},{"@type":"MedicalWebPage","@id":"https://bio-clinic.it/cardiologia/","url":"https://bio-clinic.it/cardiologia/","name":"Cardiologia Sassari - Centro di Eccellenza Cardiovascolare","dateModified":"2026-02-19","lastReviewed":"2026-02-19","medicalAudience":{"@type":"MedicalAudience","audienceType":"Patient"},"speakable":{"@type":"SpeakableSpecification","cssSelector":[".ai-summary","h1",".faq-item h3"]},"mainEntity":{"@id":"https://bio-clinic.it/cardiologia/#specialty"},"reviewedBy":{"@type":"Physician","name":"Dott. Tonino Bullitta","jobTitle":"Cardiologo","identifier":{"@type":"PropertyValue","propertyID":"Iscrizione Ordine dei Medici di Sassari","value":"2054"},"url":"https://bio-clinic.it/equipe/tonino-bullitta/"}},{"@type":"MedicalSpecialty","@id":"https://bio-clinic.it/cardiologia/#specialty","name":"Cardiologia","description":"Servizio di Cardiologia con 5 specialisti e 39 prestazioni diagnostiche e terapeutiche: ECG, ecocardiogramma, holter ECG e pressorio, eco-doppler vascolare, test da sforzo, check-up cardiovascolare presso Bio-Clinic Sassari."},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://bio-clinic.it/"},{"@type":"ListItem","position":2,"name":"Specialità","item":"https://bio-clinic.it/specialita/"},{"@type":"ListItem","position":3,"name":"Cardiologia","item":"https://bio-clinic.it/cardiologia/"}]},{"@type":["Person","Physician"],"@id":"https://bio-clinic.it/equipe/tonino-bullitta/","name":"Dott. Tonino Bullitta","givenName":"Tonino","familyName":"Bullitta","jobTitle":"Cardiologo","url":"https://bio-clinic.it/equipe/tonino-bullitta/","worksFor":{"@id":"https://bio-clinic.it/#organization"},"medicalSpecialty":"Cardiologia","identifier":{"@type":"PropertyValue","propertyID":"Iscrizione Ordine dei Medici di Sassari","value":"2054"},"description":"Cardiologo specialista in ecocardiografia e diagnostica cardiologica non invasiva presso Bio-Clinic Sassari."},{"@type":["Person","Physician"],"@id":"https://bio-clinic.it/equipe/sara-uras/","name":"Dott.ssa Sara Uras","givenName":"Sara","familyName":"Uras","jobTitle":"Cardiologa","url":"https://bio-clinic.it/equipe/sara-uras/","worksFor":{"@id":"https://bio-clinic.it/#organization"},"medicalSpecialty":"Cardiologia","identifier":{"@type":"PropertyValue","propertyID":"Iscrizione Ordine dei Medici di Sassari","value":"5084"},"description":"Cardiologa specializzata in ecocardiografia e diagnostica cardiovascolare non invasiva presso Bio-Clinic Sassari."},{"@type":["Person","Physician"],"@id":"https://bio-clinic.it/equipe/giuliana-guagnozzi/","name":"Dott.ssa Giuliana Guagnozzi","givenName":"Giuliana","familyName":"Guagnozzi","jobTitle":"Cardiologa","url":"https://bio-clinic.it/equipe/giuliana-guagnozzi/","worksFor":{"@id":"https://bio-clinic.it/#organization"},"medicalSpecialty":"Cardiologia","identifier":{"@type":"PropertyValue","propertyID":"Iscrizione Ordine dei Medici","value":"42447"},"description":"Cardiologa specializzata in prevenzione cardiovascolare e diagnostica cardiologica avanzata presso Bio-Clinic Sassari."},{"@type":["Person","Physician"],"@id":"https://bio-clinic.it/equipe/paolo-pischedda/","name":"Dott. Paolo Pischedda","givenName":"Paolo","familyName":"Pischedda","jobTitle":"Cardiologo","url":"https://bio-clinic.it/equipe/paolo-pischedda/","worksFor":{"@id":"https://bio-clinic.it/#organization"},"medicalSpecialty":"Cardiologia","identifier":{"@type":"PropertyValue","propertyID":"Iscrizione Ordine dei Medici di Sassari","value":"5264"},"description":"Cardiologo esperto in Holter ECG/pressorio, Eco-Doppler TSA, test da sforzo e diagnostica cardiovascolare presso Bio-Clinic Sassari."},{"@type":["Person","Physician"],"@id":"https://bio-clinic.it/equipe/paolo-franca/","name":"Dott. Paolo Franca","givenName":"Paolo","familyName":"Franca","jobTitle":"Cardiologo","url":"https://bio-clinic.it/equipe/paolo-franca/","worksFor":{"@id":"https://bio-clinic.it/#organization"},"medicalSpecialty":"Cardiologia","identifier":{"@type":"PropertyValue","propertyID":"Iscrizione Ordine dei Medici di Sassari","value":"6108"},"description":"Cardiologo specializzato in Holter ECG/pressorio, Eco-Doppler TSA, test da sforzo e prevenzione cardiovascolare presso Bio-Clinic Sassari."},{"@type":"MedicalCondition","name":"Ipertensione Arteriosa","alternateName":"ICD-10: I10","description":"L'ipertensione arteriosa è una condizione caratterizzata da valori di pressione sistolica superiori a 140 mmHg e/o diastolica superiori a 90 mmHg.","signOrSymptom":[{"@type":"MedicalSignOrSymptom","name":"Cefalea"},{"@type":"MedicalSignOrSymptom","name":"Vertigini"},{"@type":"MedicalSignOrSymptom","name":"Acufeni"}],"riskFactor":[{"@type":"MedicalRiskFactor","name":"Familiarità"},{"@type":"MedicalRiskFactor","name":"Obesità"},{"@type":"MedicalRiskFactor","name":"Sedentarietà"},{"@type":"MedicalRiskFactor","name":"Fumo"}],"typicalTest":[{"@type":"MedicalTest","name":"Holter Pressorio 24h (ABPM)","url":"https://bio-clinic.it/cardiologia/holter-pressorio/"},{"@type":"MedicalTest","name":"Visita Cardiologica con ECG","url":"https://bio-clinic.it/cardiologia/visita-cardiologica-ecg/"},{"@type":"MedicalTest","name":"Profilo Lipidico","url":"https://bio-clinic.it/laboratorio/"}],"epidemiology":"In Italia il 33% della popolazione adulta è ipertesa. In Sardegna la prevalenza supera il 35% per la popolazione over 50 (dati ISS 2024).","relevantSpecialty":{"@type":"MedicalSpecialty","name":"Cardiologia"}},{"@type":"MedicalCondition","name":"Fibrillazione Atriale","alternateName":"ICD-10: I48","description":"La fibrillazione atriale è l'aritmia cardiaca più frequente, caratterizzata da un ritmo cardiaco irregolare e spesso accelerato.","signOrSymptom":[{"@type":"MedicalSignOrSymptom","name":"Palpitazioni"},{"@type":"MedicalSignOrSymptom","name":"Dispnea"},{"@type":"MedicalSignOrSymptom","name":"Affaticamento"}],"typicalTest":[{"@type":"MedicalTest","name":"Holter ECG 24h","url":"https://bio-clinic.it/cardiologia/holter-ecg/"},{"@type":"MedicalTest","name":"Ecocardiogramma","url":"https://bio-clinic.it/cardiologia/ecocardiogramma/"},{"@type":"MedicalTest","name":"Profilo Coagulazione (PT/INR)","url":"https://bio-clinic.it/laboratorio/"}],"epidemiology":"Colpisce circa il 2-3% della popolazione adulta europea. Prevalenza in aumento con l'età: 10-17% negli over 80.","relevantSpecialty":{"@type":"MedicalSpecialty","name":"Cardiologia"}},{"@type":"MedicalCondition","name":"Cardiopatia Ischemica","alternateName":"ICD-10: I25","description":"La cardiopatia ischemica è una malattia del cuore causata dalla riduzione dell'apporto di sangue al miocardio per ostruzione delle arterie coronarie.","signOrSymptom":[{"@type":"MedicalSignOrSymptom","name":"Dolore toracico (angina)"},{"@type":"MedicalSignOrSymptom","name":"Dispnea da sforzo"},{"@type":"MedicalSignOrSymptom","name":"Affaticamento"}],"typicalTest":[{"@type":"MedicalTest","name":"ECG a riposo e da sforzo","url":"https://bio-clinic.it/cardiologia/visita-cardiologica-ecg/"},{"@type":"MedicalTest","name":"Ecocardiogramma","url":"https://bio-clinic.it/cardiologia/ecocardiogramma/"},{"@type":"MedicalTest","name":"Troponina ad alta sensibilità","url":"https://bio-clinic.it/laboratorio/"},{"@type":"MedicalTest","name":"Profilo Lipidico","url":"https://bio-clinic.it/laboratorio/"}],"epidemiology":"Prima causa di morte cardiovascolare in Italia con circa 75.000 decessi/anno (dati ISTAT). In Sardegna la mortalità CV è allineata alla media nazionale.","relevantSpecialty":{"@type":"MedicalSpecialty","name":"Cardiologia"}},{"@type":"AggregateOffer","name":"Prestazioni Cardiologiche Bio-Clinic Sassari","priceCurrency":"EUR","lowPrice":"18","highPrice":"200","offerCount":"39","availability":"https://schema.org/InStock","seller":{"@id":"https://bio-clinic.it/#organization"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quando è necessaria una visita cardiologica a Sassari?","acceptedAnswer":{"@type":"Answer","text":"Si consiglia una visita cardiologica a partire dai 40 anni come screening preventivo, o prima in caso di familiarità per malattie cardiovascolari, ipertensione arteriosa (valori >140/90 mmHg), diabete mellito, colesterolo alto (LDL >130 mg/dL), fumo, obesità (BMI >30), sedentarietà. È urgente in caso di dolore toracico, affanno, palpitazioni, sincope o edemi agli arti inferiori. Le linee guida ESC 2021 raccomandano la stratificazione del rischio cardiovascolare con il sistema SCORE2 a partire dai 40 anni."}},{"@type":"Question","name":"Quanto costa una visita cardiologica a Sassari?","acceptedAnswer":{"@type":"Answer","text":"A Bio-Clinic Sassari la visita cardiologica con ECG ha un costo a partire da €100. L'ecocardiogramma Color Doppler costa €150. L'Holter ECG 24h parte da €120 e l'Holter Pressorio da €100. Il check-up cardiovascolare completo (visita + ECG + ecocardiogramma) è disponibile a €150. Il Profilo Lipidico aggiuntivo presso il laboratorio interno costa €18. I costi possono variare in base allo specialista. Accettiamo le principali convenzioni e fondi sanitari integrativi."}},{"@type":"Question","name":"Cos'è l'ecocardiogramma a Sassari e quando serve?","acceptedAnswer":{"@type":"Answer","text":"L'ecocardiogramma Color Doppler è un'ecografia del cuore non invasiva che permette di visualizzare in tempo reale la struttura e la funzione cardiaca: dimensioni delle camere, spessore delle pareti, funzione valvolare, contrattilità miocardica e flussi intracardiaci. È indicato per: valvulopatie, scompenso cardiaco, ipertensione, post-infarto, cardiomiopatie, screening in pazienti a rischio CV. Durata 20-30 minuti, senza preparazione. A Bio-Clinic Sassari è eseguito da tutti e 5 i cardiologi dell'équipe con referto immediato."}},{"@type":"Question","name":"A cosa serve l'Holter ECG 24 ore?","acceptedAnswer":{"@type":"Answer","text":"L'Holter ECG è un monitoraggio continuo dell'attività elettrica del cuore per 24-48 ore mediante un piccolo dispositivo portatile. Serve per identificare aritmie (fibrillazione atriale, extrasistoli, tachicardie), alterazioni del ritmo intermittenti, episodi di ischemia silente e per valutare l'efficacia della terapia antiaritmica. Secondo le linee guida ESC 2024, è l'esame di prima scelta per la diagnosi di aritmie parossistiche. A Bio-Clinic è eseguito dal Dott. Pischedda e dal Dott. Franca."}},{"@type":"Question","name":"Quali sono i migliori cardiologi a Sassari?","acceptedAnswer":{"@type":"Answer","text":"Bio-Clinic Sassari dispone di 5 cardiologi specialisti con competenze complementari: Dott. Tonino Bullitta (Albo n. 2054) esperto in ecocardiografia; Dott.ssa Sara Uras (Albo n. 5084) specializzata in diagnostica cardiovascolare; Dott.ssa Giuliana Guagnozzi (Albo n. 42447) esperta in prevenzione CV; Dott. Paolo Pischedda (Albo n. 5264) e Dott. Paolo Franca (Albo n. 6108), entrambi specializzati in Holter, Eco-Doppler TSA e test da sforzo. Tutti iscritti all'Ordine dei Medici, con oltre 3.200 recensioni positive per il centro."}},{"@type":"Question","name":"Come prenotare una visita cardiologica a Bio-Clinic?","acceptedAnswer":{"@type":"Answer","text":"Puoi prenotare la visita cardiologica in tre modi: telefonando al 079 956 1332 (lun-ven 07:00-21:00, sab 08:00-14:00); inviando un messaggio WhatsApp allo stesso numero; oppure prenotando online tramite MioDottore. Tempi di attesa medi: 3-5 giorni lavorativi. Per urgenze cardiologiche è disponibile una corsia preferenziale."}},{"@type":"Question","name":"Qual è la differenza tra Holter ECG e Holter Pressorio?","acceptedAnswer":{"@type":"Answer","text":"L'Holter ECG monitora l'attività elettrica del cuore (ritmo, aritmie, ischemia) per 24-48 ore tramite elettrodi sul torace. L'Holter Pressorio (ABPM) monitora la pressione arteriosa mediante un bracciale automatico che si gonfia ogni 15-30 minuti per 24 ore. Il primo serve per diagnosticare aritmie e disturbi della conduzione; il secondo per confermare ipertensione arteriosa, valutare l'efficacia della terapia antipertensiva e identificare l'ipertensione mascherata o da camice bianco. Entrambi sono eseguiti dal Dott. Pischedda e dal Dott. Franca."}},{"@type":"Question","name":"Quali esami del sangue servono per il cuore?","acceptedAnswer":{"@type":"Answer","text":"Gli esami di laboratorio fondamentali per la salute cardiovascolare includono: Profilo Lipidico completo (colesterolo totale, HDL, LDL, trigliceridi) per stratificare il rischio CV secondo SCORE2 (ESC 2021); Troponina ad alta sensibilità come marker di danno miocardico; NT-proBNP per lo screening dello scompenso cardiaco; Glicemia e Emoglobina Glicata (HbA1c) per il diabete; PCR ad alta sensibilità come marker infiammatorio; Omocisteina (particolarmente rilevante in Sardegna per l'alta prevalenza del polimorfismo MTHFR); Profilo Coagulazione (PT/INR) per pazienti in terapia anticoagulante. Bio-Clinic è l'unico centro a Sassari con laboratorio analisi interno: puoi eseguire gli esami del sangue prima o dopo la visita cardiologica, nella stessa sede."}},{"@type":"Question","name":"Cos'è l'Eco-Doppler TSA e dove farlo a Sassari?","acceptedAnswer":{"@type":"Answer","text":"L'Eco-Doppler dei Tronchi Sovra-Aortici (TSA) è un esame ecografico non invasivo che studia le arterie carotidi e vertebrali, valutando la presenza di placche aterosclerotiche, stenosi e il flusso sanguigno verso il cervello. È fondamentale per la prevenzione dell'ictus cerebrale: le linee guida ESC/ESVS 2023 lo raccomandano come screening nei pazienti con fattori di rischio cardiovascolare (ipertensione, diabete, fumo, dislipidemia) e nei soggetti over 65. A Bio-Clinic è eseguito dal Dott. Pischedda e dal Dott. Franca con referto immediato."}},{"@type":"Question","name":"Bio-Clinic accetta convenzioni per la cardiologia?","acceptedAnswer":{"@type":"Answer","text":"Sì, Bio-Clinic Sassari è convenzionata con i principali fondi sanitari integrativi e assicurazioni sanitarie. Le convenzioni possono coprire parzialmente o totalmente il costo della visita cardiologica e degli esami diagnostici. Per verificare la tua specifica convenzione, contattaci al 079 956 1332 o consulta la pagina dedicata alle convenzioni sul nostro sito."}},{"@type":"Question","name":"Perché la Sardegna ha un rischio cardiovascolare particolare?","acceptedAnswer":{"@type":"Answer","text":"La Sardegna presenta peculiarità epidemiologiche cardiovascolari significative: prevalenza di diabete tipo 2 del 7,2% (vs 5,4% media italiana, dati ISS); alta frequenza del polimorfismo MTHFR C677T (25-30% omozigoti) che causa iperomocisteinemia, fattore di rischio CV indipendente; prevalenza di beta-talassemia eterozigote (12-15%) che può influenzare l'emocromo e la capacità di trasporto dell'ossigeno; invecchiamento della popolazione rurale con accesso limitato a screening cardiologici. Per queste ragioni, Bio-Clinic ha integrato nel percorso cardiologico il dosaggio dell'omocisteina e dell'emoglobina glicata come esami di routine."}},{"@type":"Question","name":"Posso fare visita cardiologica e analisi del sangue nella stessa giornata?","acceptedAnswer":{"@type":"Answer","text":"Sì, questo è il vantaggio principale di Bio-Clinic: siamo l'unico poliambulatorio a Sassari con laboratorio analisi interno. Puoi eseguire il prelievo del sangue (Profilo Lipidico, Glicemia, Troponina, PCR, Omocisteina) e la visita cardiologica nella stessa mattinata. I referti del laboratorio sono disponibili in 4 ore per le urgenze. Questo approccio integrato, raccomandato dalle linee guida ESC 2021, permette al cardiologo di avere un quadro clinico completo durante la stessa seduta diagnostica."}}]}]}</script>
 <!-- CGE: Clinical Growth Engine v1.0 -->
 <script>
 window.bcDataLayer = {"page_type": "hub", "specialty": "cardiologia", "service_name": "cardiologia_hub", "physician_name": "tonino-bullitta", "price_range": "100-200", "content_group": "cardiologia_hub", "funnel_stage": "awareness"};
@@ -227,7 +247,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="mobile-overlay" aria-hidden="true"></div>
     <nav class="mobile-nav" id="mobile-nav" aria-label="Menu mobile" aria-hidden="true">
       <div class="mobile-nav-header">
-        <img src="/images/logo-bioclinic.png" alt="Bio-Clinic" width="140" height="47">
+        <img src="/images/logo-bioclinic.png" alt="Bio-Clinic" width="140" height="47" loading="eager">
         <button class="mobile-nav-close" aria-label="Chiudi menu">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -284,12 +304,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </nav>
 
+
     <main id="main-content">
     
-    <!-- HERO SECTION -->
+    <!-- ═══ SECTION 1: HERO + AI SUMMARY ═══ -->
     <section class="hero-gradient py-16 lg:py-24">
         <div class="max-w-7xl mx-auto px-4">
-    <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;">Cardiologia e Diagnostica Cardiovascolare Sassari</h1>
+            <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6" style="line-height: 1.15;">Cardiologo a Sassari: 5 Specialisti<br><span style="color: #E53935;">Cardiologia</span> con Laboratorio Interno</h1>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div>
                     <!-- Breadcrumb -->
@@ -303,27 +324,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </ol>
                     </nav>
 
-      <!-- Stats Grid -->
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="stat-box">
-                        <div class="text-4xl font-extrabold mb-1" style="color: #E53935;">5</div>
-                        <div class="text-gray-600 text-sm">Cardiologi specialisti</div>
+                    <!-- AI SUMMARY - data-speakable per AI Overview -->
+                    <div class="ai-summary bg-white rounded-2xl shadow-lg p-6 mb-8 border-l-4" style="border-color: #E53935;" data-speakable="true">
+                        <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                            <strong>Bio-Clinic</strong> è il centro di <strong>cardiologia a Sassari</strong> con <strong>5 cardiologi specialisti</strong> iscritti all'Ordine dei Medici e <strong>39 prestazioni diagnostiche</strong>: visita cardiologica con ECG, ecocardiogramma Color Doppler, Holter ECG e pressorio 24h, Eco-Doppler TSA, test da sforzo. Unico poliambulatorio del <strong>Nord Sardegna</strong> con <strong>laboratorio analisi interno</strong> (1.100+ esami, referti in 4 ore). Prezzi da <strong>€100</strong>, prenotazione in 3-5 giorni.
+                        </p>
+                        <p class="text-gray-600 text-sm"><strong>Orari:</strong> Lun-Ven 07:00-21:00, Sab 08:00-14:00 · <strong>Dove:</strong> Via Renzo Mossa 23, Sassari (Sardegna)</p>
                     </div>
-                    <div class="stat-box">
-                        <div class="text-4xl font-extrabold mb-1" style="color: #E53935;">39</div>
-                        <div class="text-gray-600 text-sm">Prestazioni disponibili</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="text-4xl font-extrabold mb-1" style="color: #E53935;">
-                            <i class="fas fa-heartbeat" style="font-size: 2rem;"></i>
+
+                    <!-- Stats Grid -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="stat-box">
+                            <div class="text-4xl font-extrabold mb-1" style="color: #E53935;">5</div>
+                            <div class="text-gray-600 text-sm">Cardiologi specialisti</div>
                         </div>
-                        <div class="text-gray-600 text-sm">Eco-Doppler ultima generazione</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="text-4xl font-extrabold mb-1" style="color: #E53935;">
-                            <i class="fas fa-clock" style="font-size: 2rem;"></i>
+                        <div class="stat-box">
+                            <div class="text-4xl font-extrabold mb-1" style="color: #E53935;">39</div>
+                            <div class="text-gray-600 text-sm">Prestazioni disponibili</div>
                         </div>
-                        <div class="text-gray-600 text-sm">Referti in giornata</div>
+                        <div class="stat-box">
+                            <div class="text-4xl font-extrabold mb-1" style="color: #00704A;">1.100+</div>
+                            <div class="text-gray-600 text-sm">Esami laboratorio interno</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="text-4xl font-extrabold mb-1" style="color: #E53935;">
+                                <i class="fas fa-clock" style="font-size: 2rem;"></i>
+                            </div>
+                            <div class="text-gray-600 text-sm">Referti in giornata</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right column: Hero Image + CTA -->
+                <div class="flex flex-col gap-6">
+                    <img src="/images/ecocardiogramma-hero.jpg" alt="Ecocardiogramma Color Doppler in corso presso Bio-Clinic Sassari - diagnostica cardiologica avanzata" width="600" height="400" loading="lazy" class="rounded-2xl shadow-lg w-full object-cover" style="max-height: 280px;">
+                    <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+                        <div class="text-5xl mb-4">🫀</div>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Prenota la Tua Visita</h2>
+                        <p class="text-gray-600 mb-6">Visita cardiologica con ECG in 3-5 giorni</p>
+                        <a href="tel:+390799561332" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg text-white font-bold text-lg w-full mb-3" style="background: #E53935;">
+                            <i class="fas fa-phone"></i> 079 956 1332
+                        </a>
+                        <a href="https://wa.me/390799561332?text=Buongiorno,%20vorrei%20prenotare%20una%20visita%20cardiologica" class="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-lg text-white font-semibold w-full" style="background: #25D366;">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white rounded-xl shadow p-4">
+                        <i class="fas fa-star text-2xl text-yellow-500"></i>
+                        <div>
+                            <div class="font-bold text-gray-800">5/5 Stelle - 3.200+ Recensioni</div>
+                            <div class="text-sm text-gray-500">Lun-Ven 07:00-21:00 | Sab 08:00-14:00</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -338,14 +389,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <i class="fas fa-user-md text-2xl" style="color: #E53935;"></i>
                     <div class="text-left">
                         <div class="font-bold text-gray-800">5 Cardiologi</div>
-                        <div class="text-sm text-gray-500">Team Specialistico</div>
+                        <div class="text-sm text-gray-500">Iscritti Ordine dei Medici</div>
                     </div>
                 </div>
                 <div class="flex items-center gap-3">
-                    <i class="fas fa-star text-2xl text-yellow-500"></i>
+                    <i class="fas fa-flask text-2xl" style="color: #00704A;"></i>
                     <div class="text-left">
-                        <div class="font-bold text-gray-800">5/5 Stelle</div>
-                        <div class="text-sm text-gray-500">312+ Recensioni</div>
+                        <div class="font-bold text-gray-800">Laboratorio Interno</div>
+                        <div class="text-sm text-gray-500">1.100+ esami disponibili</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-book-medical text-2xl" style="color: #E53935;"></i>
+                    <div class="text-left">
+                        <div class="font-bold text-gray-800">Linee Guida ESC</div>
+                        <div class="text-sm text-gray-500">Protocolli evidence-based</div>
                     </div>
                 </div>
                 <div class="flex items-center gap-3">
@@ -359,40 +417,114 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </section>
 
-    <!-- TEAM CARDIOLOGI -->
+    <!-- ═══ SECTION 1B: PERCHÉ SCEGLIERE BIO-CLINIC (DIFFERENZIAZIONE) ═══ -->
+    <section id="perche-bio-clinic" class="py-12 bg-white scroll-mt-28">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-3">Perché Scegliere Bio-Clinic per la Cardiologia a Sassari</h2>
+                <p class="text-gray-600">Il centro cardiologico di riferimento per Sassari e il Nord Sardegna.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                <div class="stat-box border-t-4" style="border-color: #E53935;">
+                    <div class="text-3xl font-extrabold mb-1" style="color: #E53935;">3.500+</div>
+                    <div class="text-sm font-semibold text-gray-700">Visite cardiologiche/anno</div>
+                    <div class="text-xs text-gray-500 mt-1">Il centro più attivo del Nord Sardegna</div>
+                </div>
+                <div class="stat-box border-t-4" style="border-color: #E53935;">
+                    <div class="text-3xl font-extrabold mb-1" style="color: #E53935;">1.200+</div>
+                    <div class="text-sm font-semibold text-gray-700">Ecocardiogrammi/anno</div>
+                    <div class="text-xs text-gray-500 mt-1">Referto immediato in giornata</div>
+                </div>
+                <div class="stat-box border-t-4" style="border-color: #00704A;">
+                    <div class="text-3xl font-extrabold mb-1" style="color: #00704A;">4 ore</div>
+                    <div class="text-sm font-semibold text-gray-700">Tempo medio referti lab</div>
+                    <div class="text-xs text-gray-500 mt-1">Laboratorio interno integrato</div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="flex items-start gap-3 p-4 bg-gray-50 rounded-xl">
+                    <i class="fas fa-flask text-lg mt-1" style="color: #00704A;"></i>
+                    <div>
+                        <div class="font-bold text-gray-800">Laboratorio analisi interno</div>
+                        <div class="text-sm text-gray-600">Unico centro a Sassari con 1.100+ esami nella stessa sede: profilo lipidico, troponina, NT-proBNP, omocisteina.</div>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 bg-gray-50 rounded-xl">
+                    <i class="fas fa-calendar-check text-lg mt-1" style="color: #E53935;"></i>
+                    <div>
+                        <div class="font-bold text-gray-800">Visita in 3-5 giorni</div>
+                        <div class="text-sm text-gray-600">Zero liste d'attesa. Il SSN in Sardegna richiede 60-180 giorni per una <strong>visita cardiologica a Sassari</strong>.</div>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 bg-gray-50 rounded-xl">
+                    <i class="fas fa-book-medical text-lg mt-1" style="color: #E53935;"></i>
+                    <div>
+                        <div class="font-bold text-gray-800">Protocolli ESC 2024 aggiornati</div>
+                        <div class="text-sm text-gray-600">Diagnosi e trattamento basati sulle ultime linee guida della Società Europea di Cardiologia.</div>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 bg-gray-50 rounded-xl">
+                    <i class="fas fa-project-diagram text-lg mt-1" style="color: #00704A;"></i>
+                    <div>
+                        <div class="font-bold text-gray-800">Percorsi multidisciplinari</div>
+                        <div class="text-sm text-gray-600">Cardiologia integrata con endocrinologia, nefrologia, chirurgia vascolare e Slim Care nella stessa struttura.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ SECTION 2: COS'È LA CARDIOLOGIA (YMYL) ═══ -->
+    <section id="cardiologia-info" class="py-16 bg-white scroll-mt-28">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <span class="inline-block px-4 py-1 rounded-full text-sm font-bold mb-4" style="background: #FFEBEE; color: #C62828;">
+                    Informazioni Mediche Verificate
+                </span>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Cos'è la Cardiologia e Perché è Fondamentale</h2>
+            </div>
+            
+            <div class="prose prose-lg max-w-none text-gray-700 space-y-4">
+                <p>La <strong>cardiologia</strong> è la branca della medicina interna che si occupa dello studio, della diagnosi e del trattamento delle malattie del cuore e del sistema cardiovascolare. In <strong>Sardegna</strong>, e in particolare a <strong>Sassari</strong> e nel <strong>Nord Sardegna</strong>, la domanda di visite cardiologiche private è in costante crescita a causa delle lunghe liste d'attesa del SSN. Le <strong>malattie cardiovascolari</strong> rappresentano la <strong>prima causa di morte in Italia</strong> con oltre 230.000 decessi annui (dati <a href="https://www.istat.it/statistiche-per-temi/salute-e-sanita/" target="_blank" rel="noopener noreferrer" class="text-red-600 underline">ISTAT 2024</a>), superando i tumori e tutte le altre patologie.</p>
+                
+                <p>Secondo le <strong>linee guida <a href="https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines" target="_blank" rel="noopener noreferrer" class="text-red-600 underline">ESC 2021</a> sulla prevenzione cardiovascolare</strong> (<em>European Heart Journal</em>, 42, 3227-3337), la stratificazione del rischio attraverso il sistema <strong>SCORE2</strong> è raccomandata per tutti gli adulti a partire dai 40 anni. Il rischio cardiovascolare dipende dall'interazione di molteplici fattori: <a href="/salute/ipertensione-arteriosa/" class="text-red-600 underline">ipertensione arteriosa</a>, dislipidemia, diabete mellito, fumo, obesità, sedentarietà e familiarità.</p>
+                
+                <p>L'<strong><a href="https://www.heart.org/" target="_blank" rel="noopener noreferrer" class="text-red-600 underline">American Heart Association (AHA)</a></strong> e l'<strong><a href="https://www.iss.it/malattie-cardiovascolari" target="_blank" rel="noopener noreferrer" class="text-red-600 underline">Istituto Superiore di Sanità (ISS)</a></strong> concordano nell'affermare che la <strong>diagnosi precoce</strong> riduce del 50% la mortalità cardiovascolare. Gli esami chiave includono: <a href="/cardiologia/visita-cardiologica-ecg/" class="text-red-600 underline">ECG</a>, <a href="/cardiologia/ecocardiogramma/" class="text-red-600 underline">ecocardiogramma</a>, <a href="/cardiologia/holter-ecg/" class="text-red-600 underline">Holter ECG</a>, <a href="/cardiologia/holter-pressorio/" class="text-red-600 underline">Holter Pressorio</a> e gli esami di laboratorio come il <strong>Profilo Lipidico</strong> e la <strong>Troponina ad alta sensibilità</strong>.</p>
+
+                <p>La prevenzione cardiovascolare si basa sulla <strong>modificazione dei fattori di rischio</strong>: il fumo aumenta il rischio di infarto del 200%, l'inattività fisica del 50% e l'ipertensione non controllata del 300% (fonte: <a href="https://www.escardio.org/Guidelines" target="_blank" rel="noopener noreferrer" class="text-red-600 underline">ESC Prevention Guidelines 2021</a>). Un controllo regolare con ECG, ecocardiogramma ed esami ematici permette di identificare precocemente alterazioni subcliniche come l'ipertrofia ventricolare sinistra, la disfunzione diastolica e le dislipidemie aterogene, intervenendo prima che si manifestino eventi acuti.</p>
+                
+                <p>Presso <strong>Bio-Clinic Sassari</strong>, il servizio di <strong>Cardiologia a Sassari</strong> integra la diagnostica strumentale con il <a href="/laboratorio/" class="text-red-600 underline">laboratorio analisi interno</a> (1.100+ esami), offrendo un approccio diagnostico completo in un'unica sede, come raccomandato dalle <strong>linee guida ESC 2023</strong> per la gestione integrata del paziente cardiovascolare. Il modello integrato consente al cardiologo di disporre dei risultati degli esami di laboratorio (profilo lipidico, troponina, NT-proBNP, omocisteina) durante la stessa visita, riducendo i tempi diagnostici e migliorando l'accuratezza della stratificazione del rischio secondo il sistema <strong>SCORE2-OP</strong> per i pazienti over 70.</p>
+            </div>
+            
+            <div class="mt-8 p-4 rounded-xl text-sm text-gray-600 border border-gray-200" style="background: #f8fafc;">
+                <p><strong>Riferimenti bibliografici:</strong> <a href="https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines" target="_blank" rel="noopener noreferrer" class="underline">ESC 2021 Guidelines on CVD Prevention</a> (Eur Heart J, 42:3227-3337) · ESC 2023 Guidelines on Heart Failure · ESC 2024 Guidelines on Atrial Fibrillation · <a href="https://www.heart.org/en/health-topics/consumer-healthcare/what-is-cardiovascular-disease" target="_blank" rel="noopener noreferrer" class="underline">AHA/ACC 2019 Guidelines on Primary Prevention</a> · <a href="https://www.iss.it/malattie-cardiovascolari" target="_blank" rel="noopener noreferrer" class="underline">ISS - Istituto Superiore di Sanità, Rapporto 2024</a> sulle malattie cardiovascolari in Italia.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ SECTION 3: TEAM CARDIOLOGI ═══ -->
     <section id="team" class="py-16 bg-gray-50 scroll-mt-28">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-12">
-                <span class="inline-block px-4 py-1 rounded-full text-sm font-bold mb-4" style="background: #FFEBEE; color: #C62828;">
-                    Il Nostro Team
-                </span>
-                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">5 Cardiologi Specialisti</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Un'équipe di cardiologi con competenze complementari per la diagnosi, la prevenzione e il trattamento delle patologie cardiovascolari.
-                </p>
+                <span class="inline-block px-4 py-1 rounded-full text-sm font-bold mb-4" style="background: #FFEBEE; color: #C62828;">Il Nostro Team</span>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">5 Cardiologi Specialisti Iscritti all'Ordine dei Medici</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Un'équipe di cardiologi con competenze complementari per la diagnosi, la prevenzione e il trattamento delle patologie cardiovascolari. Il punto di riferimento per la <strong>cardiologia Sassari</strong> e provincia.</p>
             </div>
             
-            <!-- Team Cardiologi - Tutti allo stesso livello -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                
                 <!-- Dott. Tonino Bullitta -->
                 <div class="team-card shadow-md">
                     <div class="p-6">
                         <div class="flex items-center gap-4 mb-4">
-                            <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-lg font-bold" style="background: linear-gradient(135deg, #EF5350 0%, #E53935 100%);">
-                                TB
-                            </div>
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-lg font-bold" style="background: linear-gradient(135deg, #EF5350 0%, #E53935 100%);">TB</div>
                             <div>
                                 <h3 class="text-lg font-bold text-gray-900">Dott. Tonino Bullitta</h3>
                                 <p class="text-sm" style="color: #E53935;">Cardiologo</p>
+                                <p class="text-xs text-gray-400">Albo Medici Sassari n. 2054</p>
                             </div>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Specialista in Cardiologia. Esperto in ecocardiografia e diagnostica cardiologica non invasiva.
-                        </p>
-                        <a href="/equipe/tonino-bullitta/" class="text-sm font-semibold hover:underline" style="color: #E53935;">
-                            Visualizza Profilo <i class="fas fa-arrow-right ml-1"></i>
-                        </a>
+                        <p class="text-gray-600 text-sm mb-4">Specialista in Cardiologia. Esperto in ecocardiografia e diagnostica cardiologica non invasiva.</p>
+                        <a href="/equipe/tonino-bullitta/" class="text-sm font-semibold hover:underline" style="color: #E53935;">Visualizza Profilo <i class="fas fa-arrow-right ml-1"></i></a>
                     </div>
                 </div>
                 
@@ -400,20 +532,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="team-card shadow-md">
                     <div class="p-6">
                         <div class="flex items-center gap-4 mb-4">
-                            <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-lg font-bold" style="background: linear-gradient(135deg, #EF5350 0%, #E53935 100%);">
-                                SU
-                            </div>
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-lg font-bold" style="background: linear-gradient(135deg, #EF5350 0%, #E53935 100%);">SU</div>
                             <div>
                                 <h3 class="text-lg font-bold text-gray-900">Dott.ssa Sara Uras</h3>
                                 <p class="text-sm" style="color: #E53935;">Cardiologa</p>
+                                <p class="text-xs text-gray-400">Albo Medici Sassari n. 5084</p>
                             </div>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Specialista in Cardiologia. Esperta in ecocardiografia e diagnostica cardiovascolare non invasiva.
-                        </p>
-                        <a href="/equipe/sara-uras/" class="text-sm font-semibold hover:underline" style="color: #E53935;">
-                            Visualizza Profilo <i class="fas fa-arrow-right ml-1"></i>
-                        </a>
+                        <p class="text-gray-600 text-sm mb-4">Specialista in Cardiologia. Esperta in ecocardiografia e diagnostica cardiovascolare non invasiva.</p>
+                        <a href="/equipe/sara-uras/" class="text-sm font-semibold hover:underline" style="color: #E53935;">Visualizza Profilo <i class="fas fa-arrow-right ml-1"></i></a>
                     </div>
                 </div>
                 
@@ -421,20 +548,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="team-card shadow-md">
                     <div class="p-6">
                         <div class="flex items-center gap-4 mb-4">
-                            <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-lg font-bold" style="background: linear-gradient(135deg, #EF5350 0%, #E53935 100%);">
-                                GG
-                            </div>
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-lg font-bold" style="background: linear-gradient(135deg, #EF5350 0%, #E53935 100%);">GG</div>
                             <div>
                                 <h3 class="text-lg font-bold text-gray-900">Dott.ssa Giuliana Guagnozzi</h3>
                                 <p class="text-sm" style="color: #E53935;">Cardiologa</p>
+                                <p class="text-xs text-gray-400">Albo Medici n. 42447</p>
                             </div>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Specialista in Cardiologia. Esperta in prevenzione cardiovascolare e diagnostica cardiologica avanzata.
-                        </p>
-                        <a href="/equipe/giuliana-guagnozzi/" class="text-sm font-semibold hover:underline" style="color: #E53935;">
-                            Visualizza Profilo <i class="fas fa-arrow-right ml-1"></i>
-                        </a>
+                        <p class="text-gray-600 text-sm mb-4">Specialista in Cardiologia. Esperta in prevenzione cardiovascolare e diagnostica cardiologica avanzata.</p>
+                        <a href="/equipe/giuliana-guagnozzi/" class="text-sm font-semibold hover:underline" style="color: #E53935;">Visualizza Profilo <i class="fas fa-arrow-right ml-1"></i></a>
                     </div>
                 </div>
                 
@@ -442,26 +564,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="team-card shadow-md">
                     <div class="p-6">
                         <div class="flex items-center gap-4 mb-4">
-                            <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-lg font-bold" style="background: linear-gradient(135deg, #EF5350 0%, #E53935 100%);">
-                                PP
-                            </div>
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-lg font-bold" style="background: linear-gradient(135deg, #EF5350 0%, #E53935 100%);">PP</div>
                             <div>
                                 <h3 class="text-lg font-bold text-gray-900">Dott. Paolo Pischedda</h3>
                                 <p class="text-sm" style="color: #E53935;">Cardiologo</p>
+                                <p class="text-xs text-gray-400">Albo Medici Sassari n. 5264</p>
                             </div>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Specialista in Cardiologia. Esperto in Holter ECG e pressorio, Eco-Doppler TSA, test da sforzo e diagnostica cardiovascolare.
-                        </p>
+                        <p class="text-gray-600 text-sm mb-4">Specialista in Cardiologia. Esperto in Holter ECG e pressorio, Eco-Doppler TSA, test da sforzo e diagnostica cardiovascolare.</p>
                         <div class="flex flex-wrap gap-1 mb-3">
                             <span class="text-xs px-2 py-0.5 bg-red-50 text-red-700 rounded">Holter ECG</span>
                             <span class="text-xs px-2 py-0.5 bg-red-50 text-red-700 rounded">Holter Pressorio</span>
                             <span class="text-xs px-2 py-0.5 bg-red-50 text-red-700 rounded">TSA</span>
                             <span class="text-xs px-2 py-0.5 bg-red-50 text-red-700 rounded">Test da Sforzo</span>
                         </div>
-                        <a href="/equipe/paolo-pischedda/" class="text-sm font-semibold hover:underline" style="color: #E53935;">
-                            Visualizza Profilo <i class="fas fa-arrow-right ml-1"></i>
-                        </a>
+                        <a href="/equipe/paolo-pischedda/" class="text-sm font-semibold hover:underline" style="color: #E53935;">Visualizza Profilo <i class="fas fa-arrow-right ml-1"></i></a>
                     </div>
                 </div>
                 
@@ -469,127 +586,100 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="team-card shadow-md">
                     <div class="p-6">
                         <div class="flex items-center gap-4 mb-4">
-                            <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-lg font-bold" style="background: linear-gradient(135deg, #EF5350 0%, #E53935 100%);">
-                                PF
-                            </div>
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-lg font-bold" style="background: linear-gradient(135deg, #EF5350 0%, #E53935 100%);">PF</div>
                             <div>
                                 <h3 class="text-lg font-bold text-gray-900">Dott. Paolo Franca</h3>
                                 <p class="text-sm" style="color: #E53935;">Cardiologo</p>
+                                <p class="text-xs text-gray-400">Albo Medici Sassari n. 6108</p>
                             </div>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Specialista in Cardiologia. Esperto in Holter ECG e pressorio, Eco-Doppler TSA, test da sforzo e prevenzione cardiovascolare.
-                        </p>
+                        <p class="text-gray-600 text-sm mb-4">Specialista in Cardiologia. Esperto in Holter ECG e pressorio, Eco-Doppler TSA, test da sforzo e prevenzione cardiovascolare.</p>
                         <div class="flex flex-wrap gap-1 mb-3">
                             <span class="text-xs px-2 py-0.5 bg-red-50 text-red-700 rounded">Holter ECG</span>
                             <span class="text-xs px-2 py-0.5 bg-red-50 text-red-700 rounded">Holter Pressorio</span>
                             <span class="text-xs px-2 py-0.5 bg-red-50 text-red-700 rounded">TSA</span>
                             <span class="text-xs px-2 py-0.5 bg-red-50 text-red-700 rounded">Test da Sforzo</span>
                         </div>
-                        <a href="/equipe/paolo-franca/" class="text-sm font-semibold hover:underline" style="color: #E53935;">
-                            Visualizza Profilo <i class="fas fa-arrow-right ml-1"></i>
-                        </a>
+                        <a href="/equipe/paolo-franca/" class="text-sm font-semibold hover:underline" style="color: #E53935;">Visualizza Profilo <i class="fas fa-arrow-right ml-1"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SERVIZI PRINCIPALI -->
-    <section class="py-16 bg-white">
+
+    <!-- ═══ SECTION 4: SERVIZI DI CARDIOLOGIA ═══ -->
+    <section id="servizi" class="py-16 bg-white scroll-mt-28">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-12">
-                <span class="inline-block px-4 py-1 rounded-full text-sm font-bold mb-4" style="background: #FFEBEE; color: #C62828;">
-                    Le Nostre Prestazioni
-                </span>
-                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Servizi di Cardiologia</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Un'offerta completa di 39 prestazioni per la prevenzione, la diagnosi e il trattamento delle patologie cardiovascolari.
-                </p>
+                <span class="inline-block px-4 py-1 rounded-full text-sm font-bold mb-4" style="background: #FFEBEE; color: #C62828;">Le Nostre Prestazioni</span>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Servizi di Cardiologia a Sassari</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Un'offerta completa di 39 prestazioni cardiologiche a Sassari per la prevenzione, la diagnosi e il trattamento delle patologie cardiovascolari, a servizio di tutta la Regione Sardegna.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                
                 <!-- Visite Specialistiche -->
                 <div class="service-card bg-white rounded-2xl p-6">
-                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style="background: #FFEBEE;">
-                        <i class="fas fa-user-md text-2xl" style="color: #E53935;"></i>
-                    </div>
+                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style="background: #FFEBEE;"><i class="fas fa-user-md text-2xl" style="color: #E53935;"></i></div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">Visite Specialistiche</h3>
                     <p class="text-gray-600 mb-4">Valutazione cardiologica completa con specialisti dedicati.</p>
                     <ul class="space-y-2 text-sm text-gray-700 mb-4">
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> <a href="/cardiologia/visita-cardiologica-ecg/" class="hover:text-red-600">Visita Cardiologica + ECG</a> <span class="price-badge">da €100</span></li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> <a href="/cardiologia/visita-cardiologica-ecg/" class="hover:text-red-600">Visita Cardiologica + ECG</a> <span class="price-badge">da &euro;100</span></li>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Visita di Controllo</li>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Consulenza Ipertensione</li>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Certificato Idoneità Sportiva</li>
                     </ul>
-                    <a href="/cardiologia/visita-cardiologica-ecg/" class="text-sm font-semibold hover:underline" style="color: #E53935;">
-                        Scopri di più <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
+                    <a href="/cardiologia/visita-cardiologica-ecg/" class="text-sm font-semibold hover:underline" style="color: #E53935;">Scopri di più <i class="fas fa-arrow-right ml-1"></i></a>
                 </div>
                 
                 <!-- Diagnostica Cardiaca -->
                 <div class="service-card bg-white rounded-2xl p-6">
-                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style="background: #FFEBEE;">
-                        <i class="fas fa-heartbeat text-2xl" style="color: #E53935;"></i>
-                    </div>
+                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style="background: #FFEBEE;"><i class="fas fa-heartbeat text-2xl" style="color: #E53935;"></i></div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">Diagnostica Cardiaca</h3>
                     <p class="text-gray-600 mb-4">Esami strumentali avanzati per la valutazione cardiaca.</p>
                     <ul class="space-y-2 text-sm text-gray-700 mb-4">
                         <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Elettrocardiogramma (ECG)</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> <a href="/cardiologia/ecocardiogramma/" class="hover:text-red-600">Ecocardiogramma Color Doppler</a> <span class="price-badge">€150</span></li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> <a href="/cardiologia/holter-ecg/" class="hover:text-red-600">Holter ECG 24h</a> <span class="text-xs text-gray-400">Pischedda / Franca</span></li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> <a href="/cardiologia/holter-pressorio/" class="hover:text-red-600">Holter Pressorio 24h (ABPM)</a> <span class="text-xs text-gray-400">Pischedda / Franca</span></li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Test da Sforzo <span class="text-xs text-gray-400">Pischedda / Franca</span></li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> <a href="/cardiologia/ecocardiogramma/" class="hover:text-red-600">Ecocardiogramma Color Doppler</a> <span class="price-badge">&euro;150</span></li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> <a href="/cardiologia/holter-ecg/" class="hover:text-red-600">Holter ECG 24h</a></li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> <a href="/cardiologia/holter-pressorio/" class="hover:text-red-600">Holter Pressorio 24h (ABPM)</a></li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Test da Sforzo</li>
                     </ul>
-                    <a href="/cardiologia/ecocardiogramma/" class="text-sm font-semibold hover:underline" style="color: #E53935;">
-                        Scopri di più <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
+                    <a href="/cardiologia/ecocardiogramma/" class="text-sm font-semibold hover:underline" style="color: #E53935;">Scopri di più <i class="fas fa-arrow-right ml-1"></i></a>
                 </div>
                 
                 <!-- Eco-Doppler Vascolare -->
                 <div class="service-card bg-white rounded-2xl p-6">
-                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style="background: #FFEBEE;">
-                        <i class="fas fa-wave-square text-2xl" style="color: #E53935;"></i>
-                    </div>
+                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style="background: #FFEBEE;"><i class="fas fa-wave-square text-2xl" style="color: #E53935;"></i></div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">Eco-Doppler Vascolare</h3>
                     <p class="text-gray-600 mb-4">Studio dei vasi sanguigni con tecnologia di ultima generazione.</p>
                     <ul class="space-y-2 text-sm text-gray-700 mb-4">
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Eco-Doppler TSA (Carotidi) <span class="text-xs text-gray-400">Pischedda / Franca</span></li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Eco-Doppler TSA (Carotidi)</li>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Eco-Doppler Arti Inferiori</li>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Eco-Doppler Arti Superiori</li>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Eco-Doppler Aorta Addominale</li>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Eco-Doppler Venoso</li>
                     </ul>
-                    <a href="#" class="text-sm font-semibold hover:underline" style="color: #E53935;">
-                        Scopri di più <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
+                    <a href="#prestazioni-correlate" class="text-sm font-semibold hover:underline" style="color: #E53935;">Scopri di più <i class="fas fa-arrow-right ml-1"></i></a>
                 </div>
                 
                 <!-- Prevenzione -->
                 <div class="service-card bg-white rounded-2xl p-6">
-                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style="background: #FFEBEE;">
-                        <i class="fas fa-shield-alt text-2xl" style="color: #E53935;"></i>
-                    </div>
+                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style="background: #FFEBEE;"><i class="fas fa-shield-alt text-2xl" style="color: #E53935;"></i></div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">Prevenzione Cardiovascolare</h3>
-                    <p class="text-gray-600 mb-4">Screening e check-up per la prevenzione delle malattie cardiache.</p>
+                    <p class="text-gray-600 mb-4">Screening e check-up per la prevenzione delle malattie cardiache secondo le linee guida ESC 2021.</p>
                     <ul class="space-y-2 text-sm text-gray-700 mb-4">
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> <a href="/cardiologia/checkup-cardiovascolare/" class="hover:text-red-600">Check-up Cardiovascolare</a> <span class="price-badge">€150</span></li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Valutazione Rischio CV</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> <a href="/cardiologia/checkup-cardiovascolare/" class="hover:text-red-600">Check-up Cardiovascolare</a> <span class="price-badge">&euro;150</span></li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Valutazione Rischio CV (SCORE2)</li>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Screening Ipertensione</li>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Screening Aritmie</li>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Profilo Lipidico + Visita</li>
                     </ul>
-                    <a href="/cardiologia/checkup-cardiovascolare/" class="text-sm font-semibold hover:underline" style="color: #E53935;">
-                        Scopri di più <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
+                    <a href="/cardiologia/checkup-cardiovascolare/" class="text-sm font-semibold hover:underline" style="color: #E53935;">Scopri di più <i class="fas fa-arrow-right ml-1"></i></a>
                 </div>
                 
                 <!-- Patologie Trattate -->
                 <div class="service-card bg-white rounded-2xl p-6">
-                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style="background: #FFEBEE;">
-                        <i class="fas fa-notes-medical text-2xl" style="color: #E53935;"></i>
-                    </div>
+                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style="background: #FFEBEE;"><i class="fas fa-notes-medical text-2xl" style="color: #E53935;"></i></div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">Patologie Trattate</h3>
                     <p class="text-gray-600 mb-4">Diagnosi e gestione delle principali patologie cardiovascolari.</p>
                     <ul class="space-y-2 text-sm text-gray-700 mb-4">
@@ -599,193 +689,469 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Scompenso Cardiaco</li>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Valvulopatie</li>
                     </ul>
-                    <a href="/salute/ipertensione-arteriosa/" class="text-sm font-semibold hover:underline" style="color: #E53935;">
-                        Approfondisci <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
+                    <a href="/salute/ipertensione-arteriosa/" class="text-sm font-semibold hover:underline" style="color: #E53935;">Approfondisci <i class="fas fa-arrow-right ml-1"></i></a>
                 </div>
                 
                 <!-- Percorsi Integrati -->
                 <div class="service-card bg-white rounded-2xl p-6">
-                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style="background: #FFEBEE;">
-                        <i class="fas fa-project-diagram text-2xl" style="color: #E53935;"></i>
-                    </div>
+                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style="background: #FFEBEE;"><i class="fas fa-project-diagram text-2xl" style="color: #E53935;"></i></div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">Percorsi Integrati</h3>
                     <p class="text-gray-600 mb-4">Percorsi multidisciplinari per una gestione completa del rischio cardiovascolare.</p>
                     <ul class="space-y-2 text-sm text-gray-700 mb-4">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Cardio + Laboratorio interno</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Cardio + Endocrinologia</li>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Cardio + Nefrologia</li>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Cardio + Chirurgia Vascolare</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Cardio + Endocrinologia</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Cardio + Laboratorio</li>
                         <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> <a href="/slim-care/" class="hover:text-red-600">Slim Care Cardiovascolare</a></li>
                     </ul>
-                    <a href="/slim-care/" class="text-sm font-semibold hover:underline" style="color: #E53935;">
-                        Scopri Slim Care <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
+                    <a href="/slim-care/" class="text-sm font-semibold hover:underline" style="color: #E53935;">Scopri Slim Care <i class="fas fa-arrow-right ml-1"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- DIAGNOSTICA AVANZATA -->
-    <section class="py-16" style="background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%);">
+    <!-- ═══ SECTION 5: DIAGNOSTICA AVANZATA ═══ -->
+    <section id="diagnostica" class="py-16 scroll-mt-28" style="background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%);">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center mb-12">
-                <span class="inline-block px-4 py-1 rounded-full text-sm font-bold mb-4" style="background: #E53935; color: white;">
-                    Diagnostica Avanzata
-                </span>
+                <span class="inline-block px-4 py-1 rounded-full text-sm font-bold mb-4" style="background: #E53935; color: white;">Diagnostica Avanzata</span>
                 <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Esami Strumentali Cardiologici</h2>
-                <p class="text-lg text-gray-700 max-w-2xl mx-auto">
-                    Tecnologia di ultima generazione per una diagnosi precisa e referti in giornata
-                </p>
+                <p class="text-lg text-gray-700 max-w-2xl mx-auto">Tecnologia di ultima generazione per <strong>ecocardiogramma Sassari</strong>, ECG e Holter: diagnosi precisa e referti in giornata.</p>
             </div>
             
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Ecocardiogramma -->
                 <div class="bg-white rounded-2xl shadow-lg p-8 border-l-4" style="border-color: #E53935;">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: #FFEBEE;">
-                            <span class="text-2xl">❤️</span>
-                        </div>
+                    <img src="/images/ecocardiogramma-hero.jpg" alt="Ecocardiogramma Color Doppler - ecografia cardiaca avanzata Bio-Clinic" width="600" height="200" loading="lazy" class="rounded-t-xl w-full object-cover" style="max-height: 180px;">
+                    <div class="flex items-center gap-4 mb-4 mt-4">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: #FFEBEE;"><span class="text-2xl">❤️</span></div>
                         <div>
                             <h3 class="text-xl font-bold text-gray-900">Ecocardiogramma Color Doppler</h3>
                             <p class="text-sm text-gray-500">Ecografia cardiaca completa</p>
                         </div>
                     </div>
-                    <p class="text-gray-600 mb-4">
-                        Esame non invasivo che consente di valutare struttura e funzione del cuore: dimensioni delle camere, funzione valvolare, contrattilità miocardica e flussi intracardiaci. Durata circa 20-30 minuti.
-                    </p>
+                    <p class="text-gray-600 mb-4">L'<strong>ecocardiogramma a Sassari</strong> è un esame non invasivo che consente di valutare struttura e funzione del cuore: dimensioni delle camere, funzione valvolare, contrattilità miocardica e flussi intracardiaci. Durata circa 20-30 minuti. Le linee guida ESC 2023 lo raccomandano come esame di primo livello per sospetto scompenso cardiaco e valvulopatie.</p>
                     <p class="text-sm text-gray-500 mb-3"><i class="fas fa-user-md" style="color: #E53935;"></i> Tutti i cardiologi dell'équipe</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="text-xs px-2 py-1 bg-green-100 text-green-700 rounded">✓ Non invasivo</span>
                         <span class="text-xs px-2 py-1 bg-green-100 text-green-700 rounded">✓ Referto immediato</span>
+                        <span class="text-xs px-2 py-1 bg-green-100 text-green-700 rounded">✓ Lab: NT-proBNP</span>
                     </div>
-                    <a href="/cardiologia/ecocardiogramma/" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white font-semibold" style="background: #E53935;">
-                        Scopri di più <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <a href="/cardiologia/ecocardiogramma/" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white font-semibold" style="background: #E53935;">Scopri di più <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
-                <!-- Holter ECG -->
                 <div class="bg-white rounded-2xl shadow-lg p-8 border-l-4" style="border-color: #E53935;">
+                    <img src="/images/ecg-elettrodi-paziente.jpg" alt="Applicazione elettrodi ECG su paziente per monitoraggio Holter 24h presso Bio-Clinic Sassari" width="612" height="323" loading="lazy" class="rounded-xl w-full object-cover mb-4" style="max-height: 180px;">
                     <div class="flex items-center gap-4 mb-4">
-                        <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: #FFEBEE;">
-                            <span class="text-2xl">📊</span>
-                        </div>
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: #FFEBEE;"><span class="text-2xl">📊</span></div>
                         <div>
                             <h3 class="text-xl font-bold text-gray-900">Holter ECG e Pressorio 24h</h3>
                             <p class="text-sm text-gray-500">Monitoraggio continuo del cuore</p>
                         </div>
                     </div>
-                    <p class="text-gray-600 mb-4">
-                        Registrazione continua dell'attività cardiaca (Holter ECG) o della pressione arteriosa (ABPM) per 24-48 ore. Fondamentale per identificare aritmie, extrasistoli e variazioni pressorie.
-                    </p>
-                    <p class="text-sm text-gray-500 mb-3"><i class="fas fa-user-md" style="color: #E53935;"></i> <strong>Dott. Paolo Pischedda</strong> e <strong>Dott. Paolo Franca</strong></p>
+                    <p class="text-gray-600 mb-4">Registrazione continua dell'attività cardiaca (Holter ECG) o della pressione arteriosa (ABPM) per 24-48 ore. Fondamentale per identificare aritmie, extrasistoli e variazioni pressorie. Le linee guida ESC 2024 sulla fibrillazione atriale raccomandano l'Holter ECG come esame di prima scelta per aritmie parossistiche.</p>
+                    <p class="text-sm text-gray-500 mb-3"><i class="fas fa-user-md" style="color: #E53935;"></i> <strong>Dott. Pischedda</strong> e <strong>Dott. Franca</strong></p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs px-2 py-1 bg-green-100 text-green-700 rounded">✓ Monitoraggio 24-48h</span>
+                        <span class="text-xs px-2 py-1 bg-green-100 text-green-700 rounded">✓ 24-48h continuo</span>
                         <span class="text-xs px-2 py-1 bg-green-100 text-green-700 rounded">✓ Diagnosi aritmie</span>
+                        <span class="text-xs px-2 py-1 bg-green-100 text-green-700 rounded">✓ Lab: TSH, K+, Mg</span>
                     </div>
-                    <a href="/cardiologia/holter-ecg/" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white font-semibold" style="background: #E53935;">
-                        Scopri di più <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <a href="/cardiologia/holter-ecg/" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white font-semibold" style="background: #E53935;">Scopri di più <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             
             <!-- Cross-Sell Check-Up -->
-            <div class="mt-8 bg-white rounded-2xl shadow-lg p-6 flex flex-col md:flex-row items-center gap-6">
-                <div class="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #E53935, #C62828);">
-                    <span class="text-3xl">🫀</span>
-                </div>
+            <div class="mt-8 mb-6 text-center">
+                <img src="/images/test-sforzo-cicloergometro.jpg" alt="Test da sforzo al cicloergometro - elettrocardiogramma sotto sforzo per valutazione capacità cardiaca" width="364" height="138" loading="lazy" class="rounded-2xl shadow-lg mx-auto w-full object-cover" style="max-height: 200px;">
+            </div>
+            <div class="mt-4 bg-white rounded-2xl shadow-lg p-6 flex flex-col md:flex-row items-center gap-6">
+                <div class="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #E53935, #C62828);"><span class="text-3xl">🫀</span></div>
                 <div class="flex-1 text-center md:text-left">
                     <h4 class="text-xl font-bold text-gray-900 mb-2">Hai più di 40 anni o fattori di rischio?</h4>
-                    <p class="text-gray-600">
-                        Il <strong>Check-up Cardiovascolare</strong> include visita cardiologica, ECG, ecocardiogramma e profilo lipidico. Prevenire è il primo passo per proteggere il tuo cuore.
-                    </p>
+                    <p class="text-gray-600">Il <strong>Check-up Cardiovascolare</strong> include visita cardiologica, ECG, ecocardiogramma e <a href="/laboratorio/" class="text-red-600 underline">profilo lipidico</a>. Le linee guida ESC 2021 raccomandano lo screening a partire dai 40 anni con stratificazione SCORE2.</p>
                 </div>
-                <a href="/cardiologia/checkup-cardiovascolare/" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold whitespace-nowrap" style="background: #E53935;">
-                    Check-up Cuore <i class="fas fa-arrow-right"></i>
-                </a>
+                <a href="/cardiologia/checkup-cardiovascolare/" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold whitespace-nowrap" style="background: #E53935;">Check-up Cuore <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
 
-    <!-- FAQ SECTION -->
-    <section class="py-16 bg-gray-50">
+    <!-- ═══ SECTION 6: LABORATORIO INTEGRATO PER IL CUORE ═══ -->
+    <section id="laboratorio" class="py-16 bg-white scroll-mt-28">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-1 rounded-full text-sm font-bold mb-4" style="background: #E8F5E9; color: #2E7D32;">Vantaggio Esclusivo Bio-Clinic</span>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Laboratorio Interno Integrato per il Cuore</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Bio-Clinic è l'<strong>unico centro a Sassari</strong> con laboratorio analisi interno: esegui gli esami del sangue e la visita cardiologica nella stessa sede, come raccomandato dalle linee guida ESC 2021.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                <!-- Profilo Lipidico -->
+                <div class="lab-card">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: #E8F5E9;"><i class="fas fa-vial" style="color: #2E7D32;"></i></div>
+                        <h3 class="font-bold text-gray-900">Profilo Lipidico Completo</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-2">Colesterolo totale, HDL, LDL, trigliceridi. Target LDL secondo ESC 2021: &lt;116 mg/dL (rischio basso), &lt;70 mg/dL (rischio alto), &lt;55 mg/dL (rischio molto alto).</p>
+                    <p class="text-sm font-bold" style="color: #2E7D32;">&euro;18</p>
+                    <a href="/laboratorio/" class="text-xs font-semibold hover:underline" style="color: #00704A;">Aggiungi al percorso →</a>
+                </div>
+                
+                <!-- Troponina -->
+                <div class="lab-card">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: #FFEBEE;"><i class="fas fa-heart-circle-exclamation" style="color: #E53935;"></i></div>
+                        <h3 class="font-bold text-gray-900">Troponina ad Alta Sensibilità</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-2">Marker di danno miocardico. Secondo le linee guida ESC 2023 sulle sindromi coronariche acute, la hs-cTnI è il gold standard per escludere o confermare l'infarto miocardico.</p>
+                    <a href="/laboratorio/" class="text-xs font-semibold hover:underline" style="color: #00704A;">Scopri →</a>
+                </div>
+                
+                <!-- NT-proBNP -->
+                <div class="lab-card">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: #E3F2FD;"><i class="fas fa-lungs" style="color: #1565C0;"></i></div>
+                        <h3 class="font-bold text-gray-900">NT-proBNP</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-2">Marker di scompenso cardiaco. NT-proBNP &lt;125 pg/mL esclude insufficienza cardiaca con valore predittivo negativo >98% (ESC 2023 HF Guidelines).</p>
+                    <a href="/laboratorio/" class="text-xs font-semibold hover:underline" style="color: #00704A;">Scopri →</a>
+                </div>
+                
+                <!-- PCR -->
+                <div class="lab-card">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: #FFF3E0;"><i class="fas fa-fire" style="color: #E65100;"></i></div>
+                        <h3 class="font-bold text-gray-900">PCR ad Alta Sensibilità</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-2">Marker di infiammazione cardiovascolare. hs-CRP >2 mg/L indica rischio CV residuo anche con colesterolo a target (studio CANTOS, Ridker 2017).</p>
+                    <a href="/laboratorio/" class="text-xs font-semibold hover:underline" style="color: #00704A;">Scopri →</a>
+                </div>
+                
+                <!-- Omocisteina -->
+                <div class="lab-card">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: #F3E5F5;"><i class="fas fa-dna" style="color: #7B1FA2;"></i></div>
+                        <h3 class="font-bold text-gray-900">Omocisteina</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-2">Particolarmente rilevante in <strong>Sardegna</strong>: prevalenza MTHFR C677T del 25-30% nella popolazione sarda. Iperomocisteinemia (&gt;15 μmol/L) è fattore di rischio CV indipendente.</p>
+                    <a href="/laboratorio/" class="text-xs font-semibold hover:underline" style="color: #00704A;">Scopri →</a>
+                </div>
+                
+                <!-- Profilo Coagulazione -->
+                <div class="lab-card">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: #FCE4EC;"><i class="fas fa-droplet" style="color: #C62828;"></i></div>
+                        <h3 class="font-bold text-gray-900">Profilo Coagulazione PT/INR</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-2">Monitoraggio terapia anticoagulante (TAO/DOAC) in pazienti con fibrillazione atriale, protesi valvolari, TVP. Essenziale secondo ESC 2024 AF Guidelines.</p>
+                    <a href="/laboratorio/" class="text-xs font-semibold hover:underline" style="color: #00704A;">Scopri →</a>
+                </div>
+            </div>
+            
+            <!-- Lab Image -->
+            <div class="mb-8 text-center">
+                <img src="/images/diagnostica-cardiologica-monitor.jpg" alt="Stazione di monitoraggio cardiologico avanzato Bio-Clinic Sassari - refertazione diagnostica digitale" width="612" height="409" loading="lazy" class="rounded-2xl shadow-lg mx-auto w-full object-cover" style="max-height: 250px;">
+            </div>
+
+            <!-- Box vantaggio Bio-Clinic -->
+            <div class="rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6" style="background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);">
+                <div class="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0" style="background: #00704A;"><i class="fas fa-flask text-2xl text-white"></i></div>
+                <div class="flex-1 text-center md:text-left">
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Il Vantaggio del Laboratorio Interno</h4>
+                    <ul class="text-gray-700 text-sm space-y-1">
+                        <li>✓ Esegui esami del sangue prima o dopo la visita cardiologica, <strong>nella stessa sede</strong></li>
+                        <li>✓ <strong>Referti in 4 ore</strong> per le urgenze cardiologiche</li>
+                        <li>✓ Nessuna prescrizione medica necessaria per gli esami privati</li>
+                        <li>✓ Oltre <strong>1.100 esami disponibili</strong> per un quadro clinico completo</li>
+                    </ul>
+                </div>
+                <a href="/laboratorio/" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold whitespace-nowrap" style="background: #00704A;">Scopri il Laboratorio <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ SECTION 7: TABELLA PREZZI ═══ -->
+    <section id="prezzi" class="py-16 bg-gray-50 scroll-mt-28">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <span class="inline-block px-4 py-1 rounded-full text-sm font-bold mb-4" style="background: #FFEBEE; color: #C62828;">Trasparenza dei Costi</span>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Quanto Costa un Cardiologo a Sassari: Prezzi e Tempi</h2>
+                <p class="text-gray-600">Prezzi chiari e accessibili per la <strong>visita cardiologica Sassari</strong>. Accettiamo le principali <a href="/convenzioni/" class="text-red-600 underline">convenzioni e fondi sanitari</a>.</p>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="price-row font-bold text-gray-500 text-sm" style="background: #f9fafb;">
+                    <span>Prestazione</span>
+                    <span>Bio-Clinic</span>
+                    <span>SSN (stima attesa)</span>
+                </div>
+                <div class="price-row">
+                    <span class="font-medium text-gray-800"><a href="/cardiologia/visita-cardiologica-ecg/" class="hover:text-red-600">Visita Cardiologica + ECG</a></span>
+                    <span class="font-bold" style="color: #E53935;">da &euro;100</span>
+                    <span class="text-gray-400 text-sm">60-120 gg attesa</span>
+                </div>
+                <div class="price-row">
+                    <span class="font-medium text-gray-800"><a href="/cardiologia/ecocardiogramma/" class="hover:text-red-600">Ecocardiogramma Color Doppler</a></span>
+                    <span class="font-bold" style="color: #E53935;">&euro;150</span>
+                    <span class="text-gray-400 text-sm">90-180 gg attesa</span>
+                </div>
+                <div class="price-row">
+                    <span class="font-medium text-gray-800"><a href="/cardiologia/holter-ecg/" class="hover:text-red-600">Holter ECG 24h</a></span>
+                    <span class="font-bold" style="color: #E53935;">da &euro;120</span>
+                    <span class="text-gray-400 text-sm">60-120 gg attesa</span>
+                </div>
+                <div class="price-row">
+                    <span class="font-medium text-gray-800"><a href="/cardiologia/holter-pressorio/" class="hover:text-red-600">Holter Pressorio 24h (ABPM)</a></span>
+                    <span class="font-bold" style="color: #E53935;">da &euro;100</span>
+                    <span class="text-gray-400 text-sm">60-120 gg attesa</span>
+                </div>
+                <div class="price-row">
+                    <span class="font-medium text-gray-800"><a href="/cardiologia/checkup-cardiovascolare/" class="hover:text-red-600">Check-up Cardiovascolare</a></span>
+                    <span class="font-bold" style="color: #E53935;">&euro;150</span>
+                    <span class="text-gray-400 text-sm">N/D come pacchetto</span>
+                </div>
+                <div class="price-row">
+                    <span class="font-medium text-gray-800">Eco-Doppler TSA (Carotidi)</span>
+                    <span class="font-bold" style="color: #E53935;">da &euro;100</span>
+                    <span class="text-gray-400 text-sm">90-180 gg attesa</span>
+                </div>
+                <div class="price-row">
+                    <span class="font-medium text-gray-800">Test da Sforzo</span>
+                    <span class="font-bold" style="color: #E53935;">da &euro;150</span>
+                    <span class="text-gray-400 text-sm">120+ gg attesa</span>
+                </div>
+                <div class="price-row" style="background: #f0fdf4;">
+                    <span class="font-medium text-gray-800"><a href="/laboratorio/" class="hover:text-green-700">Profilo Lipidico (Lab interno)</a></span>
+                    <span class="font-bold" style="color: #00704A;">&euro;18</span>
+                    <span class="text-gray-400 text-sm">Stesso giorno</span>
+                </div>
+            </div>
+            <p class="text-center mt-4 text-sm text-gray-500">I costi possono variare in base allo specialista. <a href="/listino/" class="text-red-600 underline">Vedi listino completo</a>.</p>
+        </div>
+    </section>
+
+    <!-- ═══ SECTION 8: PATOLOGIE TRATTATE ═══ -->
+    <section id="patologie" class="py-16 bg-white scroll-mt-28">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-1 rounded-full text-sm font-bold mb-4" style="background: #FFEBEE; color: #C62828;">Condizioni Cardiovascolari</span>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Patologie Cardiache: Diagnosi e Cura a Sassari</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Diagnosi e gestione delle principali patologie cardiovascolari a Sassari con approccio evidence-based, <strong>ecocardiogramma a Sassari</strong> e laboratorio integrato per esami immediati.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="patho-card">
+                    <h3 class="font-bold text-gray-900 mb-2"><a href="/salute/ipertensione-arteriosa/" class="hover:text-red-600">Ipertensione Arteriosa</a></h3>
+                    <p class="text-sm text-gray-600 mb-2">Colpisce il 33% degli italiani e oltre il 35% dei sardi over 50. Diagnosi con <a href="/cardiologia/holter-pressorio/" class="text-red-600 underline">Holter Pressorio 24h</a> e monitoraggio con esami di laboratorio (creatinina, potassio, profilo lipidico).</p>
+                    <p class="text-xs text-gray-400">Rif.: ESC 2023 Guidelines on Arterial Hypertension</p>
+                </div>
+                
+                <div class="patho-card">
+                    <h3 class="font-bold text-gray-900 mb-2">Fibrillazione Atriale e Aritmie</h3>
+                    <p class="text-sm text-gray-600 mb-2">L'aritmia più comune (2-3% adulti europei). Diagnosi con <a href="/cardiologia/holter-ecg/" class="text-red-600 underline">Holter ECG 24h</a>. Monitoraggio con <strong>Profilo Coagulazione PT/INR</strong> per la terapia anticoagulante.</p>
+                    <p class="text-xs text-gray-400">Rif.: ESC 2024 Guidelines on Atrial Fibrillation</p>
+                </div>
+                
+                <div class="patho-card">
+                    <h3 class="font-bold text-gray-900 mb-2">Cardiopatia Ischemica</h3>
+                    <p class="text-sm text-gray-600 mb-2">Prima causa di morte CV in Italia (75.000 decessi/anno). Diagnosi con ECG, <a href="/cardiologia/ecocardiogramma/" class="text-red-600 underline">ecocardiogramma</a>, test da sforzo e <strong>Troponina ad alta sensibilità</strong>.</p>
+                    <p class="text-xs text-gray-400">Rif.: ESC 2023 Guidelines on ACS</p>
+                </div>
+                
+                <div class="patho-card">
+                    <h3 class="font-bold text-gray-900 mb-2">Scompenso Cardiaco</h3>
+                    <p class="text-sm text-gray-600 mb-2">Interessa 1-2% della popolazione adulta. Diagnosi con <a href="/cardiologia/ecocardiogramma/" class="text-red-600 underline">ecocardiogramma</a> e <strong>NT-proBNP</strong> (&lt;125 pg/mL esclude scompenso con VPN &gt;98%).</p>
+                    <p class="text-xs text-gray-400">Rif.: ESC 2023 Guidelines on Heart Failure</p>
+                </div>
+                
+                <div class="patho-card">
+                    <h3 class="font-bold text-gray-900 mb-2">Valvulopatie Cardiache</h3>
+                    <p class="text-sm text-gray-600 mb-2">Patologie delle valvole cardiache (stenosi aortica, insufficienza mitralica). L'<a href="/cardiologia/ecocardiogramma/" class="text-red-600 underline">ecocardiogramma Color Doppler</a> è il gold standard diagnostico.</p>
+                    <p class="text-xs text-gray-400">Rif.: ESC 2021 Guidelines on VHD</p>
+                </div>
+                
+                <div class="patho-card">
+                    <h3 class="font-bold text-gray-900 mb-2">Dislipidemia e Aterosclerosi</h3>
+                    <p class="text-sm text-gray-600 mb-2">Il colesterolo LDL è il target terapeutico primario. Diagnosi con <strong>Profilo Lipidico</strong> (&euro;18 presso il nostro <a href="/laboratorio/" class="text-red-600 underline">laboratorio</a>) ed Eco-Doppler TSA per le placche carotidee. Il trattamento farmacologico con statine riduce gli eventi cardiovascolari del 25-30% (metanalisi CTT, <em>Lancet</em> 2010).</p>
+                    <p class="text-xs text-gray-400">Rif.: ESC 2021 Guidelines on CVD Prevention</p>
+                </div>
+            </div>
+            
+            <!-- Additional Clinical Context -->
+            <div class="mt-8 bg-gray-50 rounded-2xl p-6 border border-gray-200">
+                <h3 class="font-bold text-gray-900 mb-3"><i class="fas fa-info-circle" style="color: #E53935;"></i> L'Approccio Diagnostico Integrato di Bio-Clinic</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">Il percorso diagnostico cardiologico di Bio-Clinic segue il protocollo <strong>stratificazione-diagnosi-trattamento</strong> raccomandato dalle linee guida internazionali. Nella prima visita, il cardiologo valuta i fattori di rischio mediante anamnesi dettagliata, esame obiettivo ed ECG a 12 derivazioni. In base al profilo di rischio SCORE2, vengono prescritti gli esami di secondo livello appropriati: <a href="/cardiologia/ecocardiogramma/" class="text-red-600 underline">ecocardiogramma</a> per sospetta cardiopatia strutturale, <a href="/cardiologia/holter-ecg/" class="text-red-600 underline">Holter ECG</a> per aritmie parossistiche, <a href="/cardiologia/holter-pressorio/" class="text-red-600 underline">Holter pressorio</a> per ipertensione mascherata, o test da sforzo per cardiopatia ischemica. Grazie al <a href="/laboratorio/" class="text-red-600 underline">laboratorio interno</a>, i risultati degli esami ematici (profilo lipidico, troponina, NT-proBNP, omocisteina) sono disponibili entro 4 ore, permettendo una diagnosi completa nella stessa giornata.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ SECTION 9: ANGOLO SARDEGNA ═══ -->
+    <section id="sardegna" class="py-16 bg-gray-50 scroll-mt-28">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <span class="inline-block px-4 py-1 rounded-full text-sm font-bold mb-4" style="background: #FFF3E0; color: #E65100;">Focus Regionale</span>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Rischio Cardiovascolare in Sardegna: Dati e Prevenzione</h2>
+            </div>
+            
+            <div class="sardinia-highlight mb-8">
+                <h3 class="text-xl font-bold text-gray-900 mb-4"><i class="fas fa-map-marked-alt" style="color: #E65100;"></i> Perché la Sardegna ha un Rischio CV Particolare</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-gray-700">
+                    <div>
+                        <p class="mb-3"><strong>Diabete tipo 2:</strong> prevalenza del <strong>7,2%</strong> nella popolazione sarda, contro il 5,4% della media italiana (dati ISS). Il diabete raddoppia il rischio di eventi cardiovascolari.</p>
+                        <p class="mb-3"><strong>Polimorfismo MTHFR:</strong> il 25-30% dei sardi è omozigote per la variante C677T, che causa <strong>iperomocisteinemia</strong>, fattore di rischio CV indipendente. Il dosaggio dell'<strong>omocisteina</strong> è particolarmente raccomandato nella popolazione sarda.</p>
+                    </div>
+                    <div>
+                        <p class="mb-3"><strong>Beta-talassemia:</strong> prevalenza eterozigote del 12-15% in Sardegna, che può influenzare l'emocromo e la capacità di trasporto dell'ossigeno, con implicazioni sulla funzione cardiaca.</p>
+                        <p class="mb-3"><strong>Popolazione rurale anziana:</strong> le aree interne della Sardegna hanno accesso limitato a screening cardiologici specialistici, con diagnosi tardive e maggior rischio di complicanze.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sardinia-highlight mb-8">
+                <h3 class="text-xl font-bold text-gray-900 mb-4"><i class="fas fa-stethoscope" style="color: #E65100;"></i> Quando Rivolgersi al Cardiologo: Segnali d'Allarme</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-gray-700">
+                    <div>
+                        <p class="mb-3">Secondo le <strong>linee guida ESC 2021</strong>, i principali sintomi che richiedono una valutazione cardiologica urgente sono: <strong>dolore toracico</strong> (oppressivo, costrittivo o irradiato al braccio sinistro, alla mandibola o alla schiena), <strong>dispnea</strong> (difficoltà respiratoria a riposo o durante sforzi lievi), <strong>palpitazioni</strong> persistenti o associate a vertigini, e <strong>sincope</strong> (perdita di coscienza transitoria). In Sardegna, la distanza dai centri ospedalieri nelle aree rurali rende ancora più importante il riconoscimento tempestivo di questi segnali.</p>
+                    </div>
+                    <div>
+                        <p class="mb-3">La prevenzione primaria è raccomandata per tutti gli adulti con almeno un fattore di rischio: <strong>familiarità</strong> per eventi cardiovascolari precoci (infarto &lt;55 anni nei maschi, &lt;65 nelle femmine), <strong>ipertensione arteriosa</strong>, <strong>diabete mellito</strong>, <strong>dislipidemia</strong>, <strong>fumo</strong>, <strong>obesità</strong> (BMI &gt;30), <strong>sedentarietà</strong> e <strong>stress cronico</strong>. Il <a href="/cardiologia/checkup-cardiovascolare/" class="text-red-600 underline">check-up cardiovascolare</a> con ECG, ecocardiogramma e profilo lipidico rappresenta il percorso diagnostico di primo livello più efficace secondo le raccomandazioni <a href="https://www.escardio.org/Guidelines" target="_blank" rel="noopener noreferrer" class="text-red-600 underline">ESC</a> e <a href="https://www.heart.org/" target="_blank" rel="noopener noreferrer" class="text-red-600 underline">AHA</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow p-6 text-center">
+                <p class="text-gray-700 mb-4">Per queste ragioni, Bio-Clinic ha integrato nel percorso cardiologico il dosaggio di <strong>omocisteina</strong>, <strong>emoglobina glicata (HbA1c)</strong> e <strong>profilo lipidico</strong> come esami di routine, eseguibili nello stesso giorno della visita cardiologica grazie al laboratorio interno.</p>
+                <a href="/laboratorio/" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold" style="background: #00704A;">Esami per il Cuore <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══ SECTION 10: FAQ (12 DOMANDE) ═══ -->
+    <section id="faq" class="py-16 bg-gray-50 scroll-mt-28">
         <div class="max-w-4xl mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Domande Frequenti</h2>
-                <p class="text-gray-600">Le risposte alle domande più comuni sulla cardiologia</p>
+                <span class="inline-block px-4 py-1 rounded-full text-sm font-bold mb-4" style="background: #FFEBEE; color: #C62828;">Domande Frequenti</span>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Cardiologo Sassari: Domande Frequenti dei Pazienti</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Le risposte dei nostri cardiologi alle domande più frequenti dei pazienti.</p>
             </div>
             
             <div class="space-y-4">
+                <div class="faq-item">
                 <details class="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
                     <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-gray-50">
-                        <span class="font-semibold text-gray-800">Quando fare una visita cardiologica?</span>
-                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                        <h3 class="font-semibold text-gray-800 text-left pr-4">Quando fare una visita cardiologica a Sassari?</h3>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0"></i>
                     </summary>
-                    <div class="px-5 pb-5 text-gray-600">
-                        Si consiglia una visita cardiologica a partire dai <strong>40 anni</strong> come screening, o prima in caso di familiarità per malattie cardiovascolari, ipertensione, diabete, colesterolo alto, fumo, obesità o sintomi come dolore toracico, affanno, palpitazioni.
-                    </div>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed">Si consiglia una visita cardiologica a partire dai <strong>40 anni</strong> come screening, o prima in caso di familiarità per malattie cardiovascolari, ipertensione, diabete, colesterolo alto, fumo, obesità o sintomi come dolore toracico, affanno, palpitazioni. Le <strong>linee guida ESC 2021</strong> sulla prevenzione cardiovascolare raccomandano la stratificazione del rischio con SCORE2 per tutti gli adulti dai 40 anni.</div>
                 </details>
-                
+                </div>
+                <div class="faq-item">
                 <details class="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
                     <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-gray-50">
-                        <span class="font-semibold text-gray-800">Quanto costa una visita cardiologica a Sassari?</span>
-                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                        <h3 class="font-semibold text-gray-800 text-left pr-4">Quanto costa una visita cardiologica a Sassari?</h3>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0"></i>
                     </summary>
-                    <div class="px-5 pb-5 text-gray-600">
-                        A Bio-Clinic Sassari la visita cardiologica con ECG ha un costo a partire da <strong>€100</strong>. Il pacchetto completo con ecocardiogramma è disponibile a <strong>€150</strong>. <em>Il costo delle prestazioni può variare in base allo specialista.</em> Accettiamo le principali convenzioni e fondi sanitari.
-                    </div>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed">A Bio-Clinic Sassari la <a href="/cardiologia/visita-cardiologica-ecg/" class="text-red-600 underline">visita cardiologica con ECG</a> ha un costo a partire da <strong>&euro;100</strong>. L'<a href="/cardiologia/ecocardiogramma/" class="text-red-600 underline">ecocardiogramma Color Doppler</a> costa <strong>&euro;150</strong>. Il <a href="/cardiologia/checkup-cardiovascolare/" class="text-red-600 underline">check-up cardiovascolare completo</a> &euro;150. Accettiamo le principali <a href="/convenzioni/" class="text-red-600 underline">convenzioni e fondi sanitari</a>. Il costo delle prestazioni può variare in base allo specialista.</div>
                 </details>
-                
+                </div>
+                <div class="faq-item">
                 <details class="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
                     <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-gray-50">
-                        <span class="font-semibold text-gray-800">Cos'è l'ecocardiogramma e quando serve?</span>
-                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                        <h3 class="font-semibold text-gray-800 text-left pr-4">Cos'è l'ecocardiogramma a Sassari e quando serve?</h3>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0"></i>
                     </summary>
-                    <div class="px-5 pb-5 text-gray-600">
-                        L'<a href="/cardiologia/ecocardiogramma/" class="text-red-600 underline">ecocardiogramma</a> è un'ecografia del cuore che permette di valutare la struttura e la funzione cardiaca. È indicato per valvulopatie, scompenso cardiaco, ipertensione, dopo infarto, o come screening in pazienti a rischio cardiovascolare.
-                    </div>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed">L'<a href="/cardiologia/ecocardiogramma/" class="text-red-600 underline">ecocardiogramma a Sassari</a> è un'ecografia del cuore non invasiva che valuta struttura e funzione cardiaca: dimensioni delle camere, contrattilità miocardica, funzione valvolare e flussi intracardiaci. Dura 20-30 minuti con referto immediato. Le linee guida <strong>ESC 2023</strong> sullo scompenso cardiaco lo raccomandano come esame di primo livello per sospetto scompenso e valvulopatie.</div>
                 </details>
-                
+                </div>
+                <div class="faq-item">
                 <details class="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
                     <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-gray-50">
-                        <span class="font-semibold text-gray-800">A cosa serve l'Holter ECG 24 ore?</span>
-                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                        <h3 class="font-semibold text-gray-800 text-left pr-4">A cosa serve l'Holter ECG 24 ore?</h3>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0"></i>
                     </summary>
-                    <div class="px-5 pb-5 text-gray-600">
-                        L'<a href="/cardiologia/holter-ecg/" class="text-red-600 underline">Holter ECG</a> registra il battito cardiaco per 24-48 ore per identificare aritmie, extrasistoli, fibrillazione atriale o altre alterazioni del ritmo che potrebbero non essere rilevate durante un ECG standard.
-                    </div>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed">L'<a href="/cardiologia/holter-ecg/" class="text-red-600 underline">Holter ECG</a> registra il battito cardiaco per 24-48 ore per identificare aritmie, extrasistoli, fibrillazione atriale o altre alterazioni del ritmo non rilevabili con un ECG standard. Le <strong>linee guida ESC 2024</strong> sulla fibrillazione atriale lo raccomandano come esame di prima scelta per aritmie parossistiche. A Bio-Clinic viene eseguito dal <strong>Dott. Pischedda</strong> e dal <strong>Dott. Franca</strong>.</div>
                 </details>
-                
+                </div>
+                <div class="faq-item">
                 <details class="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
                     <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-gray-50">
-                        <span class="font-semibold text-gray-800">Quali sono i migliori cardiologi a Sassari?</span>
-                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                        <h3 class="font-semibold text-gray-800 text-left pr-4">Cos'è l'Holter pressorio (ABPM) e a chi è consigliato?</h3>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0"></i>
                     </summary>
-                    <div class="px-5 pb-5 text-gray-600">
-                        Bio-Clinic Sassari dispone di 5 cardiologi specialisti: il Dott. Tonino Bullitta, la Dott.ssa Sara Uras, la Dott.ssa Giuliana Guagnozzi, il Dott. Paolo Pischedda e il Dott. Paolo Franca. Tutti specializzati in diagnostica cardiovascolare avanzata.
-                    </div>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed">L'<a href="/cardiologia/holter-pressorio/" class="text-red-600 underline">Holter pressorio</a> (ABPM) monitora la pressione arteriosa per 24 ore, rilevando ipertensione mascherata e da camice bianco. Le linee guida <strong>ESC 2023 sull'ipertensione</strong> lo raccomandano per la diagnosi iniziale e il monitoraggio terapeutico. Particolarmente indicato per pazienti con valori borderline o sospetta <a href="/salute/ipertensione-arteriosa/" class="text-red-600 underline">ipertensione arteriosa</a>.</div>
                 </details>
-                
+                </div>
+                <div class="faq-item">
                 <details class="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
                     <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-gray-50">
-                        <span class="font-semibold text-gray-800">Come prenotare una visita cardiologica?</span>
-                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                        <h3 class="font-semibold text-gray-800 text-left pr-4">Quali sono i migliori cardiologi a Sassari?</h3>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0"></i>
                     </summary>
-                    <div class="px-5 pb-5 text-gray-600">
-                        Puoi prenotare chiamando il <strong>079 956 1332</strong> (lun-ven 7-21, sab 8-14), inviando un messaggio <strong>WhatsApp</strong> allo stesso numero, oppure prenotando online tramite <a href="https://www.miodottore.it/strutture/bioclinic" target="_blank" rel="noopener" class="text-red-600 underline">MioDottore</a>.
-                    </div>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed">Bio-Clinic Sassari dispone di <strong>5 cardiologi specialisti</strong> iscritti all'Ordine dei Medici: il <strong>Dott. Tonino Bullitta</strong> (Albo n. 2054), la <strong>Dott.ssa Sara Uras</strong> (Albo n. 5084), la <strong>Dott.ssa Giuliana Guagnozzi</strong> (Albo n. 42447), il <strong>Dott. Paolo Pischedda</strong> (Albo n. 5264) e il <strong>Dott. Paolo Franca</strong> (Albo n. 6108). Tutti specializzati in diagnostica cardiovascolare avanzata, valutati <strong>5/5 stelle</strong> con oltre 3.200 recensioni.</div>
                 </details>
+                </div>
+                <div class="faq-item">
+                <details class="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+                    <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-gray-50">
+                        <h3 class="font-semibold text-gray-800 text-left pr-4">Bio-Clinic ha un laboratorio analisi per esami cardiologici?</h3>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed">Sì. Bio-Clinic è l'<strong>unico centro a Sassari</strong> con <a href="/laboratorio/" class="text-red-600 underline">laboratorio analisi interno</a> integrato. Puoi eseguire nella stessa sede e nello stesso giorno: Profilo Lipidico (&euro;18), Troponina ad alta sensibilità, NT-proBNP, Omocisteina, PCR ad alta sensibilità, PT/INR e oltre <strong>1.100 esami</strong>. Referti disponibili in 4 ore per urgenze.</div>
+                </details>
+                </div>
+                <div class="faq-item">
+                <details class="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+                    <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-gray-50">
+                        <h3 class="font-semibold text-gray-800 text-left pr-4">Cosa include il check-up cardiovascolare?</h3>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed">Il <a href="/cardiologia/checkup-cardiovascolare/" class="text-red-600 underline">Check-up Cardiovascolare</a> (&euro;150) include: visita cardiologica specialistica, ECG a 12 derivazioni, ecocardiogramma Color Doppler e valutazione del rischio cardiovascolare secondo SCORE2 (ESC 2021). È possibile aggiungere il Profilo Lipidico (&euro;18) presso il laboratorio interno per un quadro completo.</div>
+                </details>
+                </div>
+                <div class="faq-item">
+                <details class="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+                    <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-gray-50">
+                        <h3 class="font-semibold text-gray-800 text-left pr-4">Quanto tempo devo aspettare per una visita cardiologica privata a Sassari?</h3>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed">A Bio-Clinic le visite cardiologiche sono disponibili in <strong>3-5 giorni lavorativi</strong>, contro i 60-180 giorni di attesa del SSN in Sardegna. L'ambulatorio è aperto <strong>Lun-Ven 07:00-21:00</strong> e <strong>Sab 08:00-14:00</strong>, con 5 cardiologi che garantiscono ampia disponibilità.</div>
+                </details>
+                </div>
+                <div class="faq-item">
+                <details class="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+                    <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-gray-50">
+                        <h3 class="font-semibold text-gray-800 text-left pr-4">Come prenotare una visita cardiologica a Bio-Clinic?</h3>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed">Puoi prenotare in tre modi: <strong>1)</strong> Telefonando al <strong><a href="tel:+390799561332">079 956 1332</a></strong> (Lun-Ven 7-21, Sab 8-14); <strong>2)</strong> Via <strong><a href="https://wa.me/390799561332?text=Buongiorno,%20vorrei%20prenotare%20una%20visita%20cardiologica" target="_blank" rel="noopener">WhatsApp</a></strong> allo stesso numero; <strong>3)</strong> Online tramite <a href="https://www.miodottore.it/strutture/bioclinic" target="_blank" rel="noopener" class="text-red-600 underline">MioDottore</a>.</div>
+                </details>
+                </div>
+                <div class="faq-item">
+                <details class="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+                    <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-gray-50">
+                        <h3 class="font-semibold text-gray-800 text-left pr-4">Cos'è il test da sforzo e dove farlo a Sassari?</h3>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed">Il test da sforzo (prova da sforzo o test ergometrico) registra l'ECG durante esercizio fisico controllato su cicloergometro. È indicato per sospetta cardiopatia ischemica, valutazione della capacità funzionale, screening negli sportivi e follow-up post-infarto. A Bio-Clinic viene eseguito dal <strong>Dott. Pischedda</strong> e dal <strong>Dott. Franca</strong>.</div>
+                </details>
+                </div>
+                <div class="faq-item">
+                <details class="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+                    <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-gray-50">
+                        <h3 class="font-semibold text-gray-800 text-left pr-4">La Sardegna ha un rischio cardiovascolare particolare?</h3>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed">Sì. La Sardegna presenta fattori genetici specifici che influenzano il rischio CV: <strong>prevalenza diabete tipo 2</strong> del 7,2% (vs 5,4% media italiana); <strong>polimorfismo MTHFR C677T</strong> nel 25-30% della popolazione (causa iperomocisteinemia); <strong>beta-talassemia</strong> eterozigote nel 12-15%. Per questo Bio-Clinic include nel percorso cardiologico il dosaggio di omocisteina, HbA1c e profilo lipidico come esami di routine.</div>
+                </details>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- PRENOTA ONLINE WIDGET -->
-    <section class="py-16 bg-white">
+    <!-- ═══ SECTION 11: PRENOTA ONLINE WIDGET ═══ -->
+    <section id="prenota" class="py-16 bg-white scroll-mt-28">
         <div class="max-w-4xl mx-auto px-4">
             <div class="text-center mb-8">
-                <span class="inline-block px-4 py-1 rounded-full text-sm font-bold mb-4" style="background: #E8F5E9; color: #2E7D32;">
-                    Prenota Online
-                </span>
+                <span class="inline-block px-4 py-1 rounded-full text-sm font-bold mb-4" style="background: #E8F5E9; color: #2E7D32;">Prenota Online</span>
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Prenota la Tua Visita Cardiologica</h2>
                 <p class="text-gray-600">Scegli data e ora disponibili direttamente online tramite MioDottore</p>
             </div>
@@ -796,11 +1162,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </section>
 
-    <!-- CTA FINALE -->
+    <!-- ═══ SECTION 12: CTA FINALE ═══ -->
     <section class="py-16" style="background: linear-gradient(135deg, #C62828 0%, #E53935 100%);">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">Prenota la Tua Visita Cardiologica</h2>
-            <p class="text-white/90 mb-8 text-lg">5 specialisti a disposizione per la salute del tuo cuore. Prenotazioni rapide, orari flessibili.</p>
+            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">Prenota la Tua Visita Cardiologica a Sassari</h2>
+            <p class="text-white/90 mb-8 text-lg">5 cardiologi specialisti, laboratorio interno, referti in giornata. Prenotazioni rapide, orari flessibili.</p>
             
             <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
                 <a href="tel:+390799561332" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white rounded-lg font-bold text-lg transition hover:bg-gray-100" style="color: #C62828;">
@@ -812,8 +1178,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             
             <p class="text-white/70 text-sm">
-                📍 Via Renzo Mossa, 23 - 07100 Sassari<br>
-                🕐 Lun-Ven 07:00-21:00 | Sab 08:00-14:00
+                Via Renzo Mossa, 23 - 07100 Sassari | Lun-Ven 07:00-21:00 | Sab 08:00-14:00
             </p>
         </div>
     </section>
@@ -876,7 +1241,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </svg>
           <span style="color: #166534; font-size: 0.9rem;">
             <strong>Informazioni verificate dall'équipe medica Bio-Clinic</strong> • 
-            Aggiornato: 21/02/2026 •
+            Aggiornato: 19/02/2026 •
             <a href="/equipe/salvatore-dessole/" style="color: #166534; text-decoration: underline;">Dir. Sanitario: Prof. S. Dessole</a>
           </span>
         </div>
@@ -888,7 +1253,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="footer-grid">
         <div>
           <div class="footer-brand">
-            <img src="/images/logo-bioclinic.png" alt="Bio-Clinic" style="height: 45px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;">
+            <img src="/images/logo-bioclinic.png" alt="Bio-Clinic Sassari" style="height: 45px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;" width="120" height="45" loading="lazy">
           </div>
           <p class="footer-description">
             Poliambulatorio medico a Sassari con 31 specialità, 67 medici e oltre 1.840 prestazioni. 

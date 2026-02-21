@@ -1,0 +1,1093 @@
+====================================================================================================
+REPORT SEO DETTAGLIATO - OTTIMIZZAZIONE PAGINE SPECIALITA BIO-CLINIC
+Benchmark di riferimento: /ginecologia/ (score 83%)
+Data analisi: 2026-02-19
+Pagine analizzate: 24
+====================================================================================================
+
+====================================================================================================
+SEZIONE 1: EXECUTIVE SUMMARY
+====================================================================================================
+
+Pagine ECCELLENTI (>= 75%): 2
+   84% | /cardiologia/
+   83% | /ginecologia/
+
+Pagine BUONE (60-74%): 3
+   70% | /endocrinologia/
+   68% | /dermatologia/
+   64% | /chirurgia-vascolare/
+
+Pagine DA MIGLIORARE (40-59%): 14
+   58% | /urologia/
+   54% | /visita-nefrologica/
+   52% | /genetica/
+   52% | /otorinolaringoiatria/
+   49% | /ortopedia/
+   45% | /laboratorio/
+   45% | /visita-medicina-sport/
+   43% | /ematologia/
+   43% | /gastroenterologia/
+   43% | /neurologia/
+   43% | /oculistica/
+   43% | /pneumologia/
+   43% | /reumatologia/
+   41% | /medicina-del-lavoro/
+
+Pagine CRITICHE (< 40%): 5
+   29% | /pma-fertilita/
+   20% | /visita-nutrizionale/
+   13% | /colloquio-psicologico/
+   12% | /visita-internistica/
+   12% | /visita-pediatrica/
+
+SCORE MEDIO SITO: 46%
+
+====================================================================================================
+SEZIONE 2: BENCHMARK /ginecologia/ - STANDARD DI RIFERIMENTO
+====================================================================================================
+
+La pagina /ginecologia/ rappresenta il gold standard con score 83%.
+
+CARATTERISTICHE DEL BENCHMARK:
+  - Title: Ginecologia Sassari | 6 Specialisti Ginecologi | Bio-Clinic (59 car.)
+  - Meta description: 145 caratteri
+  - Keywords: presente
+  - og:locale + Twitter Card: entrambi presenti
+  - Robots: index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
+  - Schema JSON-LD: MedicalClinic, MedicalWebPage, MedicalSpecialty, BreadcrumbList, Physician/Person
+  - H2: 6 | H3: 16
+  - Link interni unici: 55
+  - Link equipe: 8
+  - Link sotto-servizi: 21
+  - Menzioni medici: 16
+  - Prezzi (€): 11
+  - MioDottore: 6
+  - WhatsApp: 3
+  - Recensioni: Si
+  - Rating stelle: Si
+  - CTA Prenota: 10
+  - Sezioni: 10
+
+AREE DI MIGLIORAMENTO ANCHE PER GINECOLOGIA:
+
+  [CRITICO] Manca FAQPage schema JSON-LD
+  [CRITICO] Solo 2 FAQ HTML (minimo 3 con schema)
+
+====================================================================================================
+SEZIONE 3: TABELLA COMPARATIVA COMPLETA
+====================================================================================================
+
+PAGINA                        SCORE  DESC  FAQ  PHYS  EQ  SUB  H2   H3  LINK   €  DOC  MiD  WA  REV  TW
+---------------------------------------------------------------------------------------------------------
+cardiologia                    84%   158    Y     Y   7    5   5   11    43   2    6    3   0    N   N
+chirurgia-vascolare            64%   129    N     Y   3    3   5   10    38   7    0    0   0    N   N
+colloquio-psicologico          13%    72    N     N   3    0   6    5    33   0    2    0   4    N   N
+dermatologia                   68%   141    N     Y   5    2   7   14    33   3   10    4   2    N   N
+ematologia                     43%    97    N     Y   4    1   4    8    37   3    0    0   0    N   N
+endocrinologia                 70%   158    N     Y   4    3   6    8    39   2    5    3   0    N   N
+gastroenterologia              43%   106    N     Y   3    2   4    8    37   3    0    0   0    N   N
+genetica                       52%   159    Y     N   1    0   7   38    27  50    0    0   2    N   Y
+ginecologia                    83%   145    N     Y   8   21   6   16    55  11   16    6   3    Y   Y
+laboratorio                    45%   199    Y     N   2    8   8   21    41   8    0    0   4    Y   Y
+medicina-del-lavoro            41%   125    Y     N   1    0   6   17    27   6    0    0   2    N   Y
+neurologia                     43%   106    N     Y   4    2   4    8    37   2    0    0   0    N   N
+oculistica                     43%   109    N     Y   5    1   4    8    37   2    3    0   0    N   N
+ortopedia                      49%   104    N     Y   4    3   4    8    38   2    0    0   0    N   N
+otorinolaringoiatria           52%   107    N     Y   4    4   4    8    40   3    4    0   0    N   N
+pma-fertilita                  29%   158    N     N   2    0   6   17    34   0    4    5   0    N   N
+pneumologia                    43%    99    N     Y   3    1   4    8    36   3    0    0   0    N   N
+reumatologia                   43%    99    N     Y   3    1   4    8    36   2    0    0   0    N   N
+urologia                       58%   153    N     Y   3    3   4    8    38   3    0    0   0    N   N
+visita-internistica            12%    70    Y     N   2    0   4    6    32   0    0    0   2    N   N
+visita-medicina-sport          45%   153    Y     Y   3    0   6    4    31  25    0    0   3    N   N
+visita-nefrologica             54%   153    Y     Y   5    0   8   11    38  20    0    2   3    Y   N
+visita-nutrizionale            20%   132    Y     N   2    0   4    6    32   0    1    0   2    N   N
+visita-pediatrica              12%    68    Y     N   2    0   4    6    32   0    1    0   2    N   N
+
+LEGENDA: DESC=lunghezza meta description, FAQ=FAQPage schema, PHYS=Physician schema,
+EQ=link equipe, SUB=link sotto-servizi, H2/H3=headings, LINK=link interni unici,
+€=menzioni prezzi, DOC=nomi medici, MiD=MioDottore, WA=WhatsApp, REV=Recensioni, TW=Twitter Card
+TARGET:   120-160     Y       Y      3+   3+    5+  10+   40+   2+   5+    1+  1+    Y    Y
+
+====================================================================================================
+SEZIONE 4: ANALISI DETTAGLIATA PER SINGOLA PAGINA
+====================================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+  /cardiologia/
+  Score: 84% (29.0/34)
+  Dimensione: 49,787 bytes
+  Title: Cardiologia Sassari | 5 Specialisti | Bio-Clinic (48 car.)
+  Meta desc: 158 car.
+  Schema: FAQ=Y | Physician=Y | MedicalWebPage=Y | MedicalSpecialty=Y
+  Headings: H2=5 H3=11
+  Links: interni=43 equipe=7 sotto-servizi=5
+  Engagement: tel=4 prenota=7 MioDottore=3 WhatsApp=0
+  Trust: prezzi=2 medici=6 recensioni=N stelle=N
+  Social: og:locale=N Twitter=N
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Nessun badge/menzione recensioni
+    [!]   Nessun rating stelle
+    [!]   Manca og:locale
+    [!]   Mancano Twitter Card
+    [!]   Robots meta non completo (manca max-image-preview)
+  PROBLEMI A BASSA PRIORITA:
+    [~]   Nessun riferimento WhatsApp
+
+────────────────────────────────────────────────────────────────────────────────
+  /chirurgia-vascolare/
+  Score: 64% (22.0/34)
+  Dimensione: 42,880 bytes
+  Title: Chirurgia Vascolare Sassari | Bio-Clinic (40 car.)
+  Meta desc: 129 car.
+  Schema: FAQ=N | Physician=Y | MedicalWebPage=Y | MedicalSpecialty=Y
+  Headings: H2=5 H3=10
+  Links: interni=38 equipe=3 sotto-servizi=3
+  Engagement: tel=5 prenota=6 MioDottore=0 WhatsApp=0
+  Trust: prezzi=7 medici=0 recensioni=N stelle=N
+  Social: og:locale=N Twitter=N
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI CRITICI:
+    [!!!] Manca FAQPage schema JSON-LD
+  PROBLEMI AD ALTA PRIORITA:
+    [!!]  Solo 0 nomi medici (minimo 5)
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Nessun riferimento MioDottore
+    [!]   Nessun badge/menzione recensioni
+    [!]   Nessun rating stelle
+    [!]   Solo 38 link interni unici (minimo 40)
+    [!]   Manca og:locale
+    [!]   Mancano Twitter Card
+    [!]   Robots meta non completo (manca max-image-preview)
+  PROBLEMI A BASSA PRIORITA:
+    [~]   Nessun riferimento WhatsApp
+
+────────────────────────────────────────────────────────────────────────────────
+  /colloquio-psicologico/
+  Score: 13% (4.5/34)
+  Dimensione: 44,202 bytes
+  Title: Colloquio Psicologico Sassari | Bio-Clinic (42 car.)
+  Meta desc: 72 car.
+  Schema: FAQ=N | Physician=N | MedicalWebPage=N | MedicalSpecialty=N
+  Headings: H2=6 H3=5
+  Links: interni=33 equipe=3 sotto-servizi=0
+  Engagement: tel=5 prenota=9 MioDottore=0 WhatsApp=4
+  Trust: prezzi=0 medici=2 recensioni=N stelle=N
+  Social: og:locale=N Twitter=N
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI CRITICI:
+    [!!!] Meta description: 72 caratteri (target: 120-160)
+    [!!!] Manca FAQPage schema JSON-LD
+    [!!!] Solo 0 FAQ HTML (minimo 3 con schema)
+  PROBLEMI AD ALTA PRIORITA:
+    [!!]  Manca schema Physician/Person JSON-LD
+    [!!]  Solo 0 link sotto-servizi (minimo 3)
+    [!!]  Solo 0 menzioni prezzi (minimo 2)
+    [!!]  Solo 2 nomi medici (minimo 5)
+    [!!]  Manca MedicalWebPage schema
+    [!!]  Manca MedicalSpecialty schema
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Mancano meta keywords
+    [!]   Nessun riferimento MioDottore
+    [!]   Nessun badge/menzione recensioni
+    [!]   Nessun rating stelle
+    [!]   Solo 5 H3 (minimo 10)
+    [!]   Solo 33 link interni unici (minimo 40)
+    [!]   Manca og:locale
+    [!]   Mancano Twitter Card
+    [!]   Robots meta non completo (manca max-image-preview)
+
+────────────────────────────────────────────────────────────────────────────────
+  /dermatologia/
+  Score: 68% (23.5/34)
+  Dimensione: 55,498 bytes
+  Title: Dermatologia Sassari | 3 Dermatologhe Specializzate | Bio-Clinic (64 car.)
+  Meta desc: 141 car.
+  Schema: FAQ=N | Physician=Y | MedicalWebPage=Y | MedicalSpecialty=Y
+  Headings: H2=7 H3=14
+  Links: interni=33 equipe=5 sotto-servizi=2
+  Engagement: tel=5 prenota=11 MioDottore=4 WhatsApp=2
+  Trust: prezzi=3 medici=10 recensioni=N stelle=N
+  Social: og:locale=N Twitter=N
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI CRITICI:
+    [!!!] Manca FAQPage schema JSON-LD
+  PROBLEMI AD ALTA PRIORITA:
+    [!!]  Solo 2 link sotto-servizi (minimo 3)
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Nessun badge/menzione recensioni
+    [!]   Nessun rating stelle
+    [!]   Solo 33 link interni unici (minimo 40)
+    [!]   Manca og:locale
+    [!]   Mancano Twitter Card
+    [!]   Robots meta non completo (manca max-image-preview)
+
+────────────────────────────────────────────────────────────────────────────────
+  /ematologia/
+  Score: 43% (15.0/34)
+  Dimensione: 36,762 bytes
+  Title: Ematologia Sassari | Bio-Clinic (31 car.)
+  Meta desc: 97 car.
+  Schema: FAQ=N | Physician=Y | MedicalWebPage=Y | MedicalSpecialty=Y
+  Headings: H2=4 H3=8
+  Links: interni=37 equipe=4 sotto-servizi=1
+  Engagement: tel=4 prenota=5 MioDottore=0 WhatsApp=0
+  Trust: prezzi=3 medici=0 recensioni=N stelle=N
+  Social: og:locale=N Twitter=N
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI CRITICI:
+    [!!!] Meta description: 97 caratteri (target: 120-160)
+    [!!!] Manca FAQPage schema JSON-LD
+  PROBLEMI AD ALTA PRIORITA:
+    [!!]  Solo 1 link sotto-servizi (minimo 3)
+    [!!]  Solo 0 nomi medici (minimo 5)
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Nessun riferimento MioDottore
+    [!]   Nessun badge/menzione recensioni
+    [!]   Nessun rating stelle
+    [!]   Solo 4 H2 (minimo 5)
+    [!]   Solo 8 H3 (minimo 10)
+    [!]   Solo 37 link interni unici (minimo 40)
+    [!]   Manca og:locale
+    [!]   Mancano Twitter Card
+    [!]   Robots meta non completo (manca max-image-preview)
+  PROBLEMI A BASSA PRIORITA:
+    [~]   Nessun riferimento WhatsApp
+
+────────────────────────────────────────────────────────────────────────────────
+  /endocrinologia/
+  Score: 70% (24.0/34)
+  Dimensione: 40,729 bytes
+  Title: Endocrinologia Sassari | Tiroide | Bio-Clinic (45 car.)
+  Meta desc: 158 car.
+  Schema: FAQ=N | Physician=Y | MedicalWebPage=Y | MedicalSpecialty=Y
+  Headings: H2=6 H3=8
+  Links: interni=39 equipe=4 sotto-servizi=3
+  Engagement: tel=4 prenota=8 MioDottore=3 WhatsApp=0
+  Trust: prezzi=2 medici=5 recensioni=N stelle=N
+  Social: og:locale=N Twitter=N
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI CRITICI:
+    [!!!] Manca FAQPage schema JSON-LD
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Nessun badge/menzione recensioni
+    [!]   Nessun rating stelle
+    [!]   Solo 8 H3 (minimo 10)
+    [!]   Solo 39 link interni unici (minimo 40)
+    [!]   Manca og:locale
+    [!]   Mancano Twitter Card
+    [!]   Robots meta non completo (manca max-image-preview)
+  PROBLEMI A BASSA PRIORITA:
+    [~]   Nessun riferimento WhatsApp
+
+────────────────────────────────────────────────────────────────────────────────
+  /gastroenterologia/
+  Score: 43% (15.0/34)
+  Dimensione: 36,626 bytes
+  Title: Gastroenterologia Sassari | Bio-Clinic (38 car.)
+  Meta desc: 106 car.
+  Schema: FAQ=N | Physician=Y | MedicalWebPage=Y | MedicalSpecialty=Y
+  Headings: H2=4 H3=8
+  Links: interni=37 equipe=3 sotto-servizi=2
+  Engagement: tel=4 prenota=5 MioDottore=0 WhatsApp=0
+  Trust: prezzi=3 medici=0 recensioni=N stelle=N
+  Social: og:locale=N Twitter=N
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI CRITICI:
+    [!!!] Meta description: 106 caratteri (target: 120-160)
+    [!!!] Manca FAQPage schema JSON-LD
+  PROBLEMI AD ALTA PRIORITA:
+    [!!]  Solo 2 link sotto-servizi (minimo 3)
+    [!!]  Solo 0 nomi medici (minimo 5)
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Nessun riferimento MioDottore
+    [!]   Nessun badge/menzione recensioni
+    [!]   Nessun rating stelle
+    [!]   Solo 4 H2 (minimo 5)
+    [!]   Solo 8 H3 (minimo 10)
+    [!]   Solo 37 link interni unici (minimo 40)
+    [!]   Manca og:locale
+    [!]   Mancano Twitter Card
+    [!]   Robots meta non completo (manca max-image-preview)
+  PROBLEMI A BASSA PRIORITA:
+    [~]   Nessun riferimento WhatsApp
+
+────────────────────────────────────────────────────────────────────────────────
+  /genetica/
+  Score: 52% (18.0/34)
+  Dimensione: 68,777 bytes
+  Title: Genetica e DNA Sassari | Test NIPT, BRCA, Oncogenetica | Bio-Clinic (67 car.)
+  Meta desc: 159 car.
+  Schema: FAQ=Y | Physician=N | MedicalWebPage=Y | MedicalSpecialty=Y
+  Headings: H2=7 H3=38
+  Links: interni=27 equipe=1 sotto-servizi=0
+  Engagement: tel=5 prenota=3 MioDottore=0 WhatsApp=2
+  Trust: prezzi=50 medici=0 recensioni=N stelle=N
+  Social: og:locale=Y Twitter=Y
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI CRITICI:
+    [!!!] Solo 0 FAQ HTML (minimo 3 con schema)
+  PROBLEMI AD ALTA PRIORITA:
+    [!!]  Manca schema Physician/Person JSON-LD
+    [!!]  Solo 1 link equipe (minimo 3)
+    [!!]  Solo 0 link sotto-servizi (minimo 3)
+    [!!]  Solo 0 nomi medici (minimo 5)
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Nessun riferimento MioDottore
+    [!]   Nessun badge/menzione recensioni
+    [!]   Nessun rating stelle
+    [!]   Solo 27 link interni unici (minimo 40)
+    [!]   Robots meta non completo (manca max-image-preview)
+  PROBLEMI A BASSA PRIORITA:
+    [~]   Solo 3 CTA Prenota (minimo 5)
+
+────────────────────────────────────────────────────────────────────────────────
+  /laboratorio/
+  Score: 45% (15.5/34)
+  Dimensione: 101,151 bytes
+  Title: Laboratorio Analisi Sassari | Esami Sangue 07-21 | Referti 4h | Bio-Clinic (74 car.)
+  Meta desc: 199 car.
+  Schema: FAQ=Y | Physician=N | MedicalWebPage=N | MedicalSpecialty=N
+  Headings: H2=8 H3=21
+  Links: interni=41 equipe=2 sotto-servizi=8
+  Engagement: tel=7 prenota=67 MioDottore=0 WhatsApp=4
+  Trust: prezzi=8 medici=0 recensioni=Y stelle=N
+  Social: og:locale=Y Twitter=Y
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI CRITICI:
+    [!!!] Meta description: 199 caratteri (target: 120-160)
+    [!!!] Solo 0 FAQ HTML (minimo 3 con schema)
+  PROBLEMI AD ALTA PRIORITA:
+    [!!]  Manca schema Physician/Person JSON-LD
+    [!!]  Solo 2 link equipe (minimo 3)
+    [!!]  Solo 0 nomi medici (minimo 5)
+    [!!]  Manca MedicalWebPage schema
+    [!!]  Manca MedicalSpecialty schema
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Nessun riferimento MioDottore
+    [!]   Nessun rating stelle
+    [!]   Robots meta non completo (manca max-image-preview)
+
+────────────────────────────────────────────────────────────────────────────────
+  /medicina-del-lavoro/
+  Score: 41% (14.0/34)
+  Dimensione: 43,381 bytes
+  Title: Medicina del Lavoro Sassari | Sorveglianza Sanitaria Aziende | Bio-Clinic (73 car.)
+  Meta desc: 125 car.
+  Schema: FAQ=Y | Physician=N | MedicalWebPage=N | MedicalSpecialty=N
+  Headings: H2=6 H3=17
+  Links: interni=27 equipe=1 sotto-servizi=0
+  Engagement: tel=9 prenota=2 MioDottore=0 WhatsApp=2
+  Trust: prezzi=6 medici=0 recensioni=N stelle=N
+  Social: og:locale=Y Twitter=Y
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI CRITICI:
+    [!!!] Solo 0 FAQ HTML (minimo 3 con schema)
+  PROBLEMI AD ALTA PRIORITA:
+    [!!]  Manca schema Physician/Person JSON-LD
+    [!!]  Solo 1 link equipe (minimo 3)
+    [!!]  Solo 0 link sotto-servizi (minimo 3)
+    [!!]  Solo 0 nomi medici (minimo 5)
+    [!!]  Manca MedicalWebPage schema
+    [!!]  Manca MedicalSpecialty schema
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Nessun riferimento MioDottore
+    [!]   Nessun badge/menzione recensioni
+    [!]   Nessun rating stelle
+    [!]   Solo 27 link interni unici (minimo 40)
+    [!]   Robots meta non completo (manca max-image-preview)
+  PROBLEMI A BASSA PRIORITA:
+    [~]   Solo 2 CTA Prenota (minimo 5)
+
+────────────────────────────────────────────────────────────────────────────────
+  /neurologia/
+  Score: 43% (15.0/34)
+  Dimensione: 37,529 bytes
+  Title: Neurologia Sassari | 2 Specialisti | Bio-Clinic (47 car.)
+  Meta desc: 106 car.
+  Schema: FAQ=N | Physician=Y | MedicalWebPage=Y | MedicalSpecialty=Y
+  Headings: H2=4 H3=8
+  Links: interni=37 equipe=4 sotto-servizi=2
+  Engagement: tel=4 prenota=5 MioDottore=0 WhatsApp=0
+  Trust: prezzi=2 medici=0 recensioni=N stelle=N
+  Social: og:locale=N Twitter=N
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI CRITICI:
+    [!!!] Meta description: 106 caratteri (target: 120-160)
+    [!!!] Manca FAQPage schema JSON-LD
+  PROBLEMI AD ALTA PRIORITA:
+    [!!]  Solo 2 link sotto-servizi (minimo 3)
+    [!!]  Solo 0 nomi medici (minimo 5)
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Nessun riferimento MioDottore
+    [!]   Nessun badge/menzione recensioni
+    [!]   Nessun rating stelle
+    [!]   Solo 4 H2 (minimo 5)
+    [!]   Solo 8 H3 (minimo 10)
+    [!]   Solo 37 link interni unici (minimo 40)
+    [!]   Manca og:locale
+    [!]   Mancano Twitter Card
+    [!]   Robots meta non completo (manca max-image-preview)
+  PROBLEMI A BASSA PRIORITA:
+    [~]   Nessun riferimento WhatsApp
+
+────────────────────────────────────────────────────────────────────────────────
+  /oculistica/
+  Score: 43% (15.0/34)
+  Dimensione: 38,302 bytes
+  Title: Oculistica Sassari | 3 Specialisti | Bio-Clinic (47 car.)
+  Meta desc: 109 car.
+  Schema: FAQ=N | Physician=Y | MedicalWebPage=Y | MedicalSpecialty=Y
+  Headings: H2=4 H3=8
+  Links: interni=37 equipe=5 sotto-servizi=1
+  Engagement: tel=4 prenota=5 MioDottore=0 WhatsApp=0
+  Trust: prezzi=2 medici=3 recensioni=N stelle=N
+  Social: og:locale=N Twitter=N
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI CRITICI:
+    [!!!] Meta description: 109 caratteri (target: 120-160)
+    [!!!] Manca FAQPage schema JSON-LD
+  PROBLEMI AD ALTA PRIORITA:
+    [!!]  Solo 1 link sotto-servizi (minimo 3)
+    [!!]  Solo 3 nomi medici (minimo 5)
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Nessun riferimento MioDottore
+    [!]   Nessun badge/menzione recensioni
+    [!]   Nessun rating stelle
+    [!]   Solo 4 H2 (minimo 5)
+    [!]   Solo 8 H3 (minimo 10)
+    [!]   Solo 37 link interni unici (minimo 40)
+    [!]   Manca og:locale
+    [!]   Mancano Twitter Card
+    [!]   Robots meta non completo (manca max-image-preview)
+  PROBLEMI A BASSA PRIORITA:
+    [~]   Nessun riferimento WhatsApp
+
+────────────────────────────────────────────────────────────────────────────────
+  /ortopedia/
+  Score: 49% (17.0/34)
+  Dimensione: 38,087 bytes
+  Title: Ortopedia Sassari | 2 Specialisti | Bio-Clinic (46 car.)
+  Meta desc: 104 car.
+  Schema: FAQ=N | Physician=Y | MedicalWebPage=Y | MedicalSpecialty=Y
+  Headings: H2=4 H3=8
+  Links: interni=38 equipe=4 sotto-servizi=3
+  Engagement: tel=4 prenota=5 MioDottore=0 WhatsApp=0
+  Trust: prezzi=2 medici=0 recensioni=N stelle=N
+  Social: og:locale=N Twitter=N
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI CRITICI:
+    [!!!] Meta description: 104 caratteri (target: 120-160)
+    [!!!] Manca FAQPage schema JSON-LD
+  PROBLEMI AD ALTA PRIORITA:
+    [!!]  Solo 0 nomi medici (minimo 5)
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Nessun riferimento MioDottore
+    [!]   Nessun badge/menzione recensioni
+    [!]   Nessun rating stelle
+    [!]   Solo 4 H2 (minimo 5)
+    [!]   Solo 8 H3 (minimo 10)
+    [!]   Solo 38 link interni unici (minimo 40)
+    [!]   Manca og:locale
+    [!]   Mancano Twitter Card
+    [!]   Robots meta non completo (manca max-image-preview)
+  PROBLEMI A BASSA PRIORITA:
+    [~]   Nessun riferimento WhatsApp
+
+────────────────────────────────────────────────────────────────────────────────
+  /otorinolaringoiatria/
+  Score: 52% (18.0/34)
+  Dimensione: 37,963 bytes
+  Title: Otorinolaringoiatria Sassari | ORL | Bio-Clinic (47 car.)
+  Meta desc: 107 car.
+  Schema: FAQ=N | Physician=Y | MedicalWebPage=Y | MedicalSpecialty=Y
+  Headings: H2=4 H3=8
+  Links: interni=40 equipe=4 sotto-servizi=4
+  Engagement: tel=4 prenota=5 MioDottore=0 WhatsApp=0
+  Trust: prezzi=3 medici=4 recensioni=N stelle=N
+  Social: og:locale=N Twitter=N
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI CRITICI:
+    [!!!] Meta description: 107 caratteri (target: 120-160)
+    [!!!] Manca FAQPage schema JSON-LD
+  PROBLEMI AD ALTA PRIORITA:
+    [!!]  Solo 4 nomi medici (minimo 5)
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Nessun riferimento MioDottore
+    [!]   Nessun badge/menzione recensioni
+    [!]   Nessun rating stelle
+    [!]   Solo 4 H2 (minimo 5)
+    [!]   Solo 8 H3 (minimo 10)
+    [!]   Manca og:locale
+    [!]   Mancano Twitter Card
+    [!]   Robots meta non completo (manca max-image-preview)
+  PROBLEMI A BASSA PRIORITA:
+    [~]   Nessun riferimento WhatsApp
+
+────────────────────────────────────────────────────────────────────────────────
+  /pma-fertilita/
+  Score: 29% (10.0/34)
+  Dimensione: 54,273 bytes
+  Title: PMA Fertilità Sassari | Bio-Clinic (34 car.)
+  Meta desc: 158 car.
+  Schema: FAQ=N | Physician=N | MedicalWebPage=Y | MedicalSpecialty=N
+  Headings: H2=6 H3=17
+  Links: interni=34 equipe=2 sotto-servizi=0
+  Engagement: tel=4 prenota=10 MioDottore=5 WhatsApp=0
+  Trust: prezzi=0 medici=4 recensioni=N stelle=N
+  Social: og:locale=N Twitter=N
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI CRITICI:
+    [!!!] Manca FAQPage schema JSON-LD
+    [!!!] Solo 0 FAQ HTML (minimo 3 con schema)
+  PROBLEMI AD ALTA PRIORITA:
+    [!!]  Manca schema Physician/Person JSON-LD
+    [!!]  Solo 2 link equipe (minimo 3)
+    [!!]  Solo 0 link sotto-servizi (minimo 3)
+    [!!]  Solo 0 menzioni prezzi (minimo 2)
+    [!!]  Solo 4 nomi medici (minimo 5)
+    [!!]  Manca MedicalSpecialty schema
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Nessun badge/menzione recensioni
+    [!]   Nessun rating stelle
+    [!]   Solo 34 link interni unici (minimo 40)
+    [!]   Manca og:locale
+    [!]   Mancano Twitter Card
+    [!]   Robots meta non completo (manca max-image-preview)
+  PROBLEMI A BASSA PRIORITA:
+    [~]   Nessun riferimento WhatsApp
+
+────────────────────────────────────────────────────────────────────────────────
+  /pneumologia/
+  Score: 43% (15.0/34)
+  Dimensione: 35,887 bytes
+  Title: Pneumologia Sassari | Bio-Clinic (32 car.)
+  Meta desc: 99 car.
+  Schema: FAQ=N | Physician=Y | MedicalWebPage=Y | MedicalSpecialty=Y
+  Headings: H2=4 H3=8
+  Links: interni=36 equipe=3 sotto-servizi=1
+  Engagement: tel=4 prenota=5 MioDottore=0 WhatsApp=0
+  Trust: prezzi=3 medici=0 recensioni=N stelle=N
+  Social: og:locale=N Twitter=N
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI CRITICI:
+    [!!!] Meta description: 99 caratteri (target: 120-160)
+    [!!!] Manca FAQPage schema JSON-LD
+  PROBLEMI AD ALTA PRIORITA:
+    [!!]  Solo 1 link sotto-servizi (minimo 3)
+    [!!]  Solo 0 nomi medici (minimo 5)
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Nessun riferimento MioDottore
+    [!]   Nessun badge/menzione recensioni
+    [!]   Nessun rating stelle
+    [!]   Solo 4 H2 (minimo 5)
+    [!]   Solo 8 H3 (minimo 10)
+    [!]   Solo 36 link interni unici (minimo 40)
+    [!]   Manca og:locale
+    [!]   Mancano Twitter Card
+    [!]   Robots meta non completo (manca max-image-preview)
+  PROBLEMI A BASSA PRIORITA:
+    [~]   Nessun riferimento WhatsApp
+
+────────────────────────────────────────────────────────────────────────────────
+  /reumatologia/
+  Score: 43% (15.0/34)
+  Dimensione: 35,789 bytes
+  Title: Reumatologia Sassari | Bio-Clinic (33 car.)
+  Meta desc: 99 car.
+  Schema: FAQ=N | Physician=Y | MedicalWebPage=Y | MedicalSpecialty=Y
+  Headings: H2=4 H3=8
+  Links: interni=36 equipe=3 sotto-servizi=1
+  Engagement: tel=4 prenota=5 MioDottore=0 WhatsApp=0
+  Trust: prezzi=2 medici=0 recensioni=N stelle=N
+  Social: og:locale=N Twitter=N
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI CRITICI:
+    [!!!] Meta description: 99 caratteri (target: 120-160)
+    [!!!] Manca FAQPage schema JSON-LD
+  PROBLEMI AD ALTA PRIORITA:
+    [!!]  Solo 1 link sotto-servizi (minimo 3)
+    [!!]  Solo 0 nomi medici (minimo 5)
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Nessun riferimento MioDottore
+    [!]   Nessun badge/menzione recensioni
+    [!]   Nessun rating stelle
+    [!]   Solo 4 H2 (minimo 5)
+    [!]   Solo 8 H3 (minimo 10)
+    [!]   Solo 36 link interni unici (minimo 40)
+    [!]   Manca og:locale
+    [!]   Mancano Twitter Card
+    [!]   Robots meta non completo (manca max-image-preview)
+  PROBLEMI A BASSA PRIORITA:
+    [~]   Nessun riferimento WhatsApp
+
+────────────────────────────────────────────────────────────────────────────────
+  /urologia/
+  Score: 58% (20.0/34)
+  Dimensione: 37,848 bytes
+  Title: Urologia Sassari | Andrologo | Bio-Clinic (41 car.)
+  Meta desc: 153 car.
+  Schema: FAQ=N | Physician=Y | MedicalWebPage=Y | MedicalSpecialty=Y
+  Headings: H2=4 H3=8
+  Links: interni=38 equipe=3 sotto-servizi=3
+  Engagement: tel=4 prenota=5 MioDottore=0 WhatsApp=0
+  Trust: prezzi=3 medici=0 recensioni=N stelle=N
+  Social: og:locale=N Twitter=N
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI CRITICI:
+    [!!!] Manca FAQPage schema JSON-LD
+  PROBLEMI AD ALTA PRIORITA:
+    [!!]  Solo 0 nomi medici (minimo 5)
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Nessun riferimento MioDottore
+    [!]   Nessun badge/menzione recensioni
+    [!]   Nessun rating stelle
+    [!]   Solo 4 H2 (minimo 5)
+    [!]   Solo 8 H3 (minimo 10)
+    [!]   Solo 38 link interni unici (minimo 40)
+    [!]   Manca og:locale
+    [!]   Mancano Twitter Card
+    [!]   Robots meta non completo (manca max-image-preview)
+  PROBLEMI A BASSA PRIORITA:
+    [~]   Nessun riferimento WhatsApp
+
+────────────────────────────────────────────────────────────────────────────────
+  /visita-internistica/
+  Score: 12% (4.0/34)
+  Dimensione: 42,467 bytes
+  Title: Visita Internistica Sassari | Bio-Clinic (40 car.)
+  Meta desc: 70 car.
+  Schema: FAQ=Y | Physician=N | MedicalWebPage=N | MedicalSpecialty=N
+  Headings: H2=4 H3=6
+  Links: interni=32 equipe=2 sotto-servizi=0
+  Engagement: tel=4 prenota=9 MioDottore=0 WhatsApp=2
+  Trust: prezzi=0 medici=0 recensioni=N stelle=N
+  Social: og:locale=N Twitter=N
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI CRITICI:
+    [!!!] Meta description: 70 caratteri (target: 120-160)
+    [!!!] Solo 0 FAQ HTML (minimo 3 con schema)
+  PROBLEMI AD ALTA PRIORITA:
+    [!!]  Manca schema Physician/Person JSON-LD
+    [!!]  Solo 2 link equipe (minimo 3)
+    [!!]  Solo 0 link sotto-servizi (minimo 3)
+    [!!]  Solo 0 menzioni prezzi (minimo 2)
+    [!!]  Solo 0 nomi medici (minimo 5)
+    [!!]  Manca MedicalWebPage schema
+    [!!]  Manca MedicalSpecialty schema
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Mancano meta keywords
+    [!]   Nessun riferimento MioDottore
+    [!]   Nessun badge/menzione recensioni
+    [!]   Nessun rating stelle
+    [!]   Solo 4 H2 (minimo 5)
+    [!]   Solo 6 H3 (minimo 10)
+    [!]   Solo 32 link interni unici (minimo 40)
+    [!]   Manca og:locale
+    [!]   Mancano Twitter Card
+    [!]   Robots meta non completo (manca max-image-preview)
+  PROBLEMI A BASSA PRIORITA:
+    [~]   Solo 6 sezioni (minimo 8)
+
+────────────────────────────────────────────────────────────────────────────────
+  /visita-medicina-sport/
+  Score: 45% (15.5/34)
+  Dimensione: 65,050 bytes
+  Title: Visita Medicina dello Sport Sassari €45 | Certificato Agonistico €70 | Bio-Clinic (81 car.)
+  Meta desc: 153 car.
+  Schema: FAQ=Y | Physician=Y | MedicalWebPage=N | MedicalSpecialty=N
+  Headings: H2=6 H3=4
+  Links: interni=31 equipe=3 sotto-servizi=0
+  Engagement: tel=4 prenota=9 MioDottore=0 WhatsApp=3
+  Trust: prezzi=25 medici=0 recensioni=N stelle=N
+  Social: og:locale=N Twitter=N
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI CRITICI:
+    [!!!] Solo 0 FAQ HTML (minimo 3 con schema)
+  PROBLEMI AD ALTA PRIORITA:
+    [!!]  Solo 0 link sotto-servizi (minimo 3)
+    [!!]  Solo 0 nomi medici (minimo 5)
+    [!!]  Manca MedicalWebPage schema
+    [!!]  Manca MedicalSpecialty schema
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Nessun riferimento MioDottore
+    [!]   Nessun badge/menzione recensioni
+    [!]   Nessun rating stelle
+    [!]   Solo 4 H3 (minimo 10)
+    [!]   Solo 31 link interni unici (minimo 40)
+    [!]   Manca og:locale
+    [!]   Mancano Twitter Card
+    [!]   Robots meta non completo (manca max-image-preview)
+
+────────────────────────────────────────────────────────────────────────────────
+  /visita-nefrologica/
+  Score: 54% (18.5/34)
+  Dimensione: 64,136 bytes
+  Title: Visita Nefrologica Sassari €130 | Nefrologo Sotgia | Bio-Clinic (63 car.)
+  Meta desc: 153 car.
+  Schema: FAQ=Y | Physician=Y | MedicalWebPage=N | MedicalSpecialty=N
+  Headings: H2=8 H3=11
+  Links: interni=38 equipe=5 sotto-servizi=0
+  Engagement: tel=4 prenota=12 MioDottore=2 WhatsApp=3
+  Trust: prezzi=20 medici=0 recensioni=Y stelle=N
+  Social: og:locale=N Twitter=N
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI CRITICI:
+    [!!!] Solo 0 FAQ HTML (minimo 3 con schema)
+  PROBLEMI AD ALTA PRIORITA:
+    [!!]  Solo 0 link sotto-servizi (minimo 3)
+    [!!]  Solo 0 nomi medici (minimo 5)
+    [!!]  Manca MedicalWebPage schema
+    [!!]  Manca MedicalSpecialty schema
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Nessun rating stelle
+    [!]   Solo 38 link interni unici (minimo 40)
+    [!]   Manca og:locale
+    [!]   Mancano Twitter Card
+    [!]   Robots meta non completo (manca max-image-preview)
+
+────────────────────────────────────────────────────────────────────────────────
+  /visita-nutrizionale/
+  Score: 20% (7.0/34)
+  Dimensione: 42,526 bytes
+  Title: Visita Nutrizionale Sassari | Bio-Clinic (40 car.)
+  Meta desc: 132 car.
+  Schema: FAQ=Y | Physician=N | MedicalWebPage=N | MedicalSpecialty=N
+  Headings: H2=4 H3=6
+  Links: interni=32 equipe=2 sotto-servizi=0
+  Engagement: tel=4 prenota=8 MioDottore=0 WhatsApp=2
+  Trust: prezzi=0 medici=1 recensioni=N stelle=N
+  Social: og:locale=N Twitter=N
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI CRITICI:
+    [!!!] Solo 0 FAQ HTML (minimo 3 con schema)
+  PROBLEMI AD ALTA PRIORITA:
+    [!!]  Manca schema Physician/Person JSON-LD
+    [!!]  Solo 2 link equipe (minimo 3)
+    [!!]  Solo 0 link sotto-servizi (minimo 3)
+    [!!]  Solo 0 menzioni prezzi (minimo 2)
+    [!!]  Solo 1 nomi medici (minimo 5)
+    [!!]  Manca MedicalWebPage schema
+    [!!]  Manca MedicalSpecialty schema
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Mancano meta keywords
+    [!]   Nessun riferimento MioDottore
+    [!]   Nessun badge/menzione recensioni
+    [!]   Nessun rating stelle
+    [!]   Solo 4 H2 (minimo 5)
+    [!]   Solo 6 H3 (minimo 10)
+    [!]   Solo 32 link interni unici (minimo 40)
+    [!]   Manca og:locale
+    [!]   Mancano Twitter Card
+    [!]   Robots meta non completo (manca max-image-preview)
+  PROBLEMI A BASSA PRIORITA:
+    [~]   Solo 6 sezioni (minimo 8)
+
+────────────────────────────────────────────────────────────────────────────────
+  /visita-pediatrica/
+  Score: 12% (4.0/34)
+  Dimensione: 42,249 bytes
+  Title: Visita Pediatrica Sassari | Bio-Clinic (38 car.)
+  Meta desc: 68 car.
+  Schema: FAQ=Y | Physician=N | MedicalWebPage=N | MedicalSpecialty=N
+  Headings: H2=4 H3=6
+  Links: interni=32 equipe=2 sotto-servizi=0
+  Engagement: tel=4 prenota=10 MioDottore=0 WhatsApp=2
+  Trust: prezzi=0 medici=1 recensioni=N stelle=N
+  Social: og:locale=N Twitter=N
+────────────────────────────────────────────────────────────────────────────────
+  PROBLEMI CRITICI:
+    [!!!] Meta description: 68 caratteri (target: 120-160)
+    [!!!] Solo 0 FAQ HTML (minimo 3 con schema)
+  PROBLEMI AD ALTA PRIORITA:
+    [!!]  Manca schema Physician/Person JSON-LD
+    [!!]  Solo 2 link equipe (minimo 3)
+    [!!]  Solo 0 link sotto-servizi (minimo 3)
+    [!!]  Solo 0 menzioni prezzi (minimo 2)
+    [!!]  Solo 1 nomi medici (minimo 5)
+    [!!]  Manca MedicalWebPage schema
+    [!!]  Manca MedicalSpecialty schema
+  PROBLEMI A MEDIA PRIORITA:
+    [!]   Mancano meta keywords
+    [!]   Nessun riferimento MioDottore
+    [!]   Nessun badge/menzione recensioni
+    [!]   Nessun rating stelle
+    [!]   Solo 4 H2 (minimo 5)
+    [!]   Solo 6 H3 (minimo 10)
+    [!]   Solo 32 link interni unici (minimo 40)
+    [!]   Manca og:locale
+    [!]   Mancano Twitter Card
+    [!]   Robots meta non completo (manca max-image-preview)
+  PROBLEMI A BASSA PRIORITA:
+    [~]   Solo 6 sezioni (minimo 8)
+
+====================================================================================================
+SEZIONE 5: PROBLEMI PIU FREQUENTI (TRASVERSALI)
+====================================================================================================
+
+SEVERITA   FREQUENZA/24  PROBLEMA
+--------------------------------------------------------------------------------
+CRITICO       15/24   Manca FAQPage schema JSON-LD
+CRITICO       12/24   Meta description
+CRITICO       10/24   Solo 0 FAQ HTML
+CRITICO        1/24   Solo 2 FAQ HTML
+ALTO          14/24   Solo 0 nomi medici
+ALTO           9/24   Solo 0 link sotto-servizi
+ALTO           9/24   Manca MedicalSpecialty schema
+ALTO           8/24   Manca schema Physician/Person JSON-LD
+ALTO           8/24   Manca MedicalWebPage schema
+ALTO           5/24   Solo 0 menzioni prezzi
+ALTO           5/24   Solo 2 link equipe
+ALTO           4/24   Solo 1 link sotto-servizi
+ALTO           3/24   Solo 2 link sotto-servizi
+ALTO           2/24   Solo 1 link equipe
+ALTO           2/24   Solo 4 nomi medici
+ALTO           2/24   Solo 1 nomi medici
+ALTO           1/24   Solo 2 nomi medici
+ALTO           1/24   Solo 3 nomi medici
+MEDIO         23/24   Nessun rating stelle
+MEDIO         23/24   Robots meta non completo
+MEDIO         21/24   Nessun badge/menzione recensioni
+MEDIO         20/24   Manca og
+MEDIO         20/24   Mancano Twitter Card
+MEDIO         18/24   Nessun riferimento MioDottore
+MEDIO         12/24   Solo 4 H2
+MEDIO         10/24   Solo 8 H3
+MEDIO          4/24   Solo 38 link interni unici
+MEDIO          4/24   Mancano meta keywords
+MEDIO          4/24   Solo 37 link interni unici
+MEDIO          3/24   Solo 6 H3
+MEDIO          3/24   Solo 32 link interni unici
+MEDIO          2/24   Solo 33 link interni unici
+MEDIO          2/24   Solo 27 link interni unici
+MEDIO          2/24   Solo 36 link interni unici
+MEDIO          1/24   Solo 5 H3
+MEDIO          1/24   Solo 39 link interni unici
+MEDIO          1/24   Solo 34 link interni unici
+MEDIO          1/24   Solo 4 H3
+MEDIO          1/24   Solo 31 link interni unici
+BASSO         13/24   Nessun riferimento WhatsApp
+BASSO          3/24   Solo 6 sezioni
+BASSO          1/24   Solo 3 CTA Prenota
+BASSO          1/24   Solo 2 CTA Prenota
+
+====================================================================================================
+SEZIONE 6: PIANO DI AZIONE PRIORITIZZATO
+====================================================================================================
+
+FASE 1 - INTERVENTI CRITICI (impatto SEO immediato)
+----------------------------------------------------
+1.1  Aggiungere FAQPage schema JSON-LD a TUTTE le pagine specialita
+     Stato attuale: solo 5/24 pagine hanno FAQPage schema
+     Benchmark: ginecologia ha FAQ nel contenuto HTML ma manca lo schema dedicato
+     Azione: generare blocco JSON-LD FAQPage con minimo 5 domande per pagina
+     Pagine interessate: 19 pagine
+
+1.2  Ottimizzare meta description a 120-160 caratteri
+     Stato attuale: 14 pagine sotto i 120 caratteri
+     Azione: riscrivere le description con keyword primaria + USP + CTA
+     Esempio: "Cardiologia Sassari: 5 specialisti, ECG, ecocardiogramma, holter.
+               Dott. Bullitta. Prenota: 079 956 1332. Da € 80."
+
+1.3  Aggiungere FAQ HTML visibili (almeno 5 domande con accordion)
+     Stato attuale: 9 pagine con 0 FAQ HTML items
+     Azione: creare sezione FAQ con domande pertinenti alla specialita
+
+FASE 2 - INTERVENTI AD ALTA PRIORITA (E-E-A-T e Trust)
+--------------------------------------------------------
+2.1  Aggiungere Physician/Person schema a pagine senza
+     Pagine interessate: genetica, laboratorio, medicina-del-lavoro,
+     pma-fertilita, visita-internistica, visita-medicina-sport,
+     visita-nefrologica, visita-nutrizionale, visita-pediatrica
+
+2.2  Aumentare link a profili equipe (minimo 3 per pagina)
+     Pagine con < 3 link equipe: genetica (1), medicina-del-lavoro (1),
+     pma-fertilita (2), visita-internistica (2), visita-medicina-sport (1),
+     visita-nutrizionale (2), visita-pediatrica (2)
+
+2.3  Aggiungere MedicalWebPage e MedicalSpecialty schema dove mancano
+     Pagine senza MedicalWebPage: colloquio-psicologico, laboratorio,
+     medicina-del-lavoro, pma-fertilita, visita-internistica,
+     visita-medicina-sport, visita-nefrologica, visita-nutrizionale,
+     visita-pediatrica
+
+2.4  Aumentare menzioni medici con nome e cognome (minimo 5)
+     Stato attuale: 16/24 pagine sotto il minimo
+
+2.5  Aggiungere link a sotto-servizi (minimo 3 per pagina)
+     Pagine con 0 sotto-servizi: colloquio-psicologico, genetica,
+     medicina-del-lavoro, pma-fertilita, visita-internistica,
+     visita-nutrizionale, visita-pediatrica
+
+FASE 3 - INTERVENTI A MEDIA PRIORITA (Social, Trust signals)
+--------------------------------------------------------------
+3.1  Aggiungere og:locale="it_IT" a tutte le pagine
+     Pagine senza: 16/24
+
+3.2  Aggiungere Twitter Card a tutte le pagine
+     Pagine senza: 16/24
+
+3.3  Aggiungere robots meta completo con max-image-preview
+     Pagine senza: 23/24 (solo ginecologia lo ha)
+
+3.4  Aggiungere badge MioDottore dove possibile
+     Pagine senza: 16/24
+
+3.5  Aggiungere sezione recensioni/stelle
+     Pagine senza recensioni: 21/24
+     Pagine senza stelle: 23/24
+
+3.6  Aumentare H2 (minimo 5) e H3 (minimo 10)
+     17 pagine con < 10 H3
+
+3.7  Aumentare link interni unici a 40+
+     15 pagine sotto i 40 link interni unici
+
+FASE 4 - INTERVENTI A BASSA PRIORITA (UX e conversion)
+--------------------------------------------------------
+4.1  Aggiungere WhatsApp link/menzione
+     Pagine senza: 14/24
+
+4.2  Aumentare CTA "Prenota" (minimo 5)
+     2 pagine sotto il minimo
+
+4.3  Garantire almeno 8 sezioni HTML per pagina
+     3 pagine sotto il minimo
+
+
+====================================================================================================
+SEZIONE 7: CONFRONTO METRICHE CHIAVE vs BENCHMARK
+====================================================================================================
+
+METRICA                              GINECOLOGIA   MEDIA SITO   MINIMO  MASSIMO  DEFICIT %
+------------------------------------------------------------------------------------------
+Meta desc (car.)                             145        124.1       68      199        14%
+H2 count                                       6          5.1        4        8        14%
+H3 count                                      16         10.7        4       38        33%
+Link interni unici                            55         35.5       27       43        35%
+Link equipe                                    8          3.3        1        7        59%
+Link sotto-servizi                            21          1.7        0        8        92%
+Menzioni prezzi                               11          6.3        0       50        42%
+Nomi medici                                   16          1.6        0       10        90%
+MioDottore                                     6          0.7        0        5        88%
+WhatsApp                                       3          1.1        0        4        62%
+CTA Prenota                                   10          9.4        2       67         6%
+Sezioni                                       10          8.2        6       12        18%
+Tel links                                      4          4.5        4        9       -13%
+
+====================================================================================================
+SEZIONE 8: PAGINE CRITICHE - INTERVENTO IMMEDIATO
+====================================================================================================
+
+  *** /visita-internistica/ - Score 12% ***
+  Problemi totali: 20
+    [CRITICO] Meta description: 70 caratteri (target: 120-160)
+    [CRITICO] Solo 0 FAQ HTML (minimo 3 con schema)
+    [ALTO] Manca schema Physician/Person JSON-LD
+    [ALTO] Solo 2 link equipe (minimo 3)
+    [ALTO] Solo 0 link sotto-servizi (minimo 3)
+    [ALTO] Solo 0 menzioni prezzi (minimo 2)
+    [ALTO] Solo 0 nomi medici (minimo 5)
+    [ALTO] Manca MedicalWebPage schema
+    [ALTO] Manca MedicalSpecialty schema
+    [MEDIO] Mancano meta keywords
+    [MEDIO] Nessun riferimento MioDottore
+    [MEDIO] Nessun badge/menzione recensioni
+    [MEDIO] Nessun rating stelle
+    [MEDIO] Solo 4 H2 (minimo 5)
+    [MEDIO] Solo 6 H3 (minimo 10)
+    [MEDIO] Solo 32 link interni unici (minimo 40)
+    [MEDIO] Manca og:locale
+    [MEDIO] Mancano Twitter Card
+    [MEDIO] Robots meta non completo (manca max-image-preview)
+    [BASSO] Solo 6 sezioni (minimo 8)
+
+  *** /visita-pediatrica/ - Score 12% ***
+  Problemi totali: 20
+    [CRITICO] Meta description: 68 caratteri (target: 120-160)
+    [CRITICO] Solo 0 FAQ HTML (minimo 3 con schema)
+    [ALTO] Manca schema Physician/Person JSON-LD
+    [ALTO] Solo 2 link equipe (minimo 3)
+    [ALTO] Solo 0 link sotto-servizi (minimo 3)
+    [ALTO] Solo 0 menzioni prezzi (minimo 2)
+    [ALTO] Solo 1 nomi medici (minimo 5)
+    [ALTO] Manca MedicalWebPage schema
+    [ALTO] Manca MedicalSpecialty schema
+    [MEDIO] Mancano meta keywords
+    [MEDIO] Nessun riferimento MioDottore
+    [MEDIO] Nessun badge/menzione recensioni
+    [MEDIO] Nessun rating stelle
+    [MEDIO] Solo 4 H2 (minimo 5)
+    [MEDIO] Solo 6 H3 (minimo 10)
+    [MEDIO] Solo 32 link interni unici (minimo 40)
+    [MEDIO] Manca og:locale
+    [MEDIO] Mancano Twitter Card
+    [MEDIO] Robots meta non completo (manca max-image-preview)
+    [BASSO] Solo 6 sezioni (minimo 8)
+
+  *** /colloquio-psicologico/ - Score 13% ***
+  Problemi totali: 18
+    [CRITICO] Meta description: 72 caratteri (target: 120-160)
+    [CRITICO] Manca FAQPage schema JSON-LD
+    [CRITICO] Solo 0 FAQ HTML (minimo 3 con schema)
+    [ALTO] Manca schema Physician/Person JSON-LD
+    [ALTO] Solo 0 link sotto-servizi (minimo 3)
+    [ALTO] Solo 0 menzioni prezzi (minimo 2)
+    [ALTO] Solo 2 nomi medici (minimo 5)
+    [ALTO] Manca MedicalWebPage schema
+    [ALTO] Manca MedicalSpecialty schema
+    [MEDIO] Mancano meta keywords
+    [MEDIO] Nessun riferimento MioDottore
+    [MEDIO] Nessun badge/menzione recensioni
+    [MEDIO] Nessun rating stelle
+    [MEDIO] Solo 5 H3 (minimo 10)
+    [MEDIO] Solo 33 link interni unici (minimo 40)
+    [MEDIO] Manca og:locale
+    [MEDIO] Mancano Twitter Card
+    [MEDIO] Robots meta non completo (manca max-image-preview)
+
+  *** /visita-nutrizionale/ - Score 20% ***
+  Problemi totali: 19
+    [CRITICO] Solo 0 FAQ HTML (minimo 3 con schema)
+    [ALTO] Manca schema Physician/Person JSON-LD
+    [ALTO] Solo 2 link equipe (minimo 3)
+    [ALTO] Solo 0 link sotto-servizi (minimo 3)
+    [ALTO] Solo 0 menzioni prezzi (minimo 2)
+    [ALTO] Solo 1 nomi medici (minimo 5)
+    [ALTO] Manca MedicalWebPage schema
+    [ALTO] Manca MedicalSpecialty schema
+    [MEDIO] Mancano meta keywords
+    [MEDIO] Nessun riferimento MioDottore
+    [MEDIO] Nessun badge/menzione recensioni
+    [MEDIO] Nessun rating stelle
+    [MEDIO] Solo 4 H2 (minimo 5)
+    [MEDIO] Solo 6 H3 (minimo 10)
+    [MEDIO] Solo 32 link interni unici (minimo 40)
+    [MEDIO] Manca og:locale
+    [MEDIO] Mancano Twitter Card
+    [MEDIO] Robots meta non completo (manca max-image-preview)
+    [BASSO] Solo 6 sezioni (minimo 8)
+
+  *** /pma-fertilita/ - Score 29% ***
+  Problemi totali: 15
+    [CRITICO] Manca FAQPage schema JSON-LD
+    [CRITICO] Solo 0 FAQ HTML (minimo 3 con schema)
+    [ALTO] Manca schema Physician/Person JSON-LD
+    [ALTO] Solo 2 link equipe (minimo 3)
+    [ALTO] Solo 0 link sotto-servizi (minimo 3)
+    [ALTO] Solo 0 menzioni prezzi (minimo 2)
+    [ALTO] Solo 4 nomi medici (minimo 5)
+    [ALTO] Manca MedicalSpecialty schema
+    [MEDIO] Nessun badge/menzione recensioni
+    [MEDIO] Nessun rating stelle
+    [MEDIO] Solo 34 link interni unici (minimo 40)
+    [MEDIO] Manca og:locale
+    [MEDIO] Mancano Twitter Card
+    [MEDIO] Robots meta non completo (manca max-image-preview)
+    [BASSO] Nessun riferimento WhatsApp
+
+====================================================================================================
+FINE REPORT
+====================================================================================================
