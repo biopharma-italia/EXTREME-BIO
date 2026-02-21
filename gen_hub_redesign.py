@@ -1279,7 +1279,7 @@ if __name__ == '__main__':
     SKIP = {'cardiologia'}  # Gold standard - don't touch
     
     # Special pages that should NOT be redesigned (different structure)
-    SPECIAL_SKIP = set()
+    SPECIAL_SKIP = {'laboratorio', 'genetica'}  # Custom structure, not a standard specialty hub
     
     # Only process specific pages if arg provided
     if len(sys.argv) > 1:
@@ -1293,6 +1293,11 @@ if __name__ == '__main__':
     for slug in sorted(targets):
         if slug in SKIP:
             print(f'  SKIP (gold standard): {slug}')
+            skipped += 1
+            continue
+        
+        if slug in SPECIAL_SKIP:
+            print(f'  SKIP (custom structure): {slug}')
             skipped += 1
             continue
         
