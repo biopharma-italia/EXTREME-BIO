@@ -23,4 +23,4 @@ id = "f7eaf83738ea465baf6f043f9b94641a"
 
 [vars]
 ALLOWED_ORIGINS = "https://bio-clinic.it,https://bio-clinic.pages.dev"
-CONTACT_EMAIL = "info@bio-clinic.it"
+CONTACT_EMAIL = "gestione@bio-clinic.it"
