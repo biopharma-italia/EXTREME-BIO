@@ -148,9 +148,32 @@ function initForms() {
       submitBtn.textContent = 'Invio in corso...';
       
       try {
-        // Simulate form submission (replace with actual endpoint)
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
+        // Collect form data
+        const formData = new FormData(form);
+        const payload = {};
+        formData.forEach((value, key) => { payload[key] = value; });
+
+        // Add CGE tracking data if available
+        if (window.bcDataLayer) {
+          payload.specialty = window.bcDataLayer.specialty || '';
+          payload.bc_physician_name = window.bcDataLayer.physician_name || '';
+          payload.source_page = window.location.pathname;
+        }
+        payload.bc_device_type = /Mobi|Android/i.test(navigator.userAgent) ? 'mobile' : 'desktop';
+        payload.bc_referrer = document.referrer || '';
+
+        // Send to /api/contact
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.error || 'Errore invio');
+        }
+
         // Success message
         showNotification('Messaggio inviato con successo! Ti contatteremo presto.', 'success');
         form.reset();
