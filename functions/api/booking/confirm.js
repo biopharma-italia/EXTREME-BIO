@@ -418,7 +418,7 @@ async function sendConfirmationEmail(env, booking, service) {
             <tr><td style="padding:8px;font-weight:bold;">Data:</td><td style="padding:8px;">${dateFormatted}</td></tr>
             <tr><td style="padding:8px;font-weight:bold;">Ora:</td><td style="padding:8px;">${booking.booking_time}</td></tr>
             <tr><td style="padding:8px;font-weight:bold;">Paziente:</td><td style="padding:8px;">${booking.patient_name}</td></tr>
-            <tr><td style="padding:8px;font-weight:bold;">Importo:</td><td style="padding:8px;">\u20ac${booking.price_eur.toFixed(2)}</td></tr>
+            <tr><td style="padding:8px;font-weight:bold;color:#6b7280;">Importo:</td><td style="padding:8px;color:#6b7280;font-style:italic;">Il costo pu\u00f2 variare in base agli esami effettivamente richiesti</td></tr>
           </table>
           ${service.prep_instructions ? `
           <div style="margin-top:15px;padding:12px;background:#fff3cd;border-left:4px solid #f59e0b;border-radius:4px;">
