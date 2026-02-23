@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <!-- Bio-Clinic Sitemap - Generated 2026-02-18 -->
-  <!-- Total URLs: 148 -->
+  <!-- Total URLs: 149 -->
   <url>
     <loc>https://bio-clinic.it/</loc>
     <lastmod>2026-02-17</lastmod>
@@ -871,7 +871,7 @@
   </url>
   <url>
     <loc>https://bio-clinic.it/salute/</loc>
-    <lastmod>2026-02-22</lastmod>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -890,6 +890,12 @@
   <url>
     <loc>https://bio-clinic.it/salute/endometriosi-sintomi/</loc>
     <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bio-clinic.it/salute/diabete-tipo-2-sardegna/</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
