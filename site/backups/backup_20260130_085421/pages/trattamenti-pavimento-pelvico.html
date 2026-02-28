@@ -17,107 +17,127 @@
     
     <!-- Schema.org MedicalProcedure -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "MedicalClinic",
-                "@id": "https://bio-clinic.it/#clinic",
-                "name": "Bio-Clinic Sassari",
-                "url": "https://bio-clinic.it",
-                "telephone": "+39 079 956 1332",
-                "address": {
-                    "@type": "PostalAddress",
-                    "streetAddress": "Via Renzo Mossa, 23",
-                    "addressLocality": "Sassari",
-                    "postalCode": "07100",
-                    "addressCountry": "IT"
-                }
-            },
-            {
-                "@type": "MedicalProcedure",
-                "@id": "https://bio-clinic.it/pages/trattamenti-pavimento-pelvico.html#radiofrequenza",
-                "name": "Radiofrequenza Vaginale",
-                "description": "Trattamento non chirurgico per la rigenerazione dei tessuti vaginali mediante energia a radiofrequenza. Indicato per sindrome genito-urinaria, secchezza vaginale, lassità tissutale e incontinenza lieve.",
-                "procedureType": "https://schema.org/TherapeuticProcedure",
-                "howPerformed": "Trattamento ambulatoriale con sonda vaginale che emette energia a radiofrequenza controllata. Stimola la produzione di collagene e migliora la vascolarizzazione. Durata 20-30 minuti, ciclo di 3-4 sedute.",
-                "preparation": "Non è richiesta preparazione particolare. Si consiglia di non avere rapporti nelle 48 ore precedenti. Portare esito di pap test recente (ultimi 12 mesi).",
-                "followup": "Possibile ripresa immediata delle attività quotidiane. Astensione dai rapporti per 48-72 ore post-trattamento. Controllo dopo il ciclo completo per valutare i risultati.",
-                "relevantSpecialty": {
-                    "@type": "MedicalSpecialty",
-                    "name": "Ginecologia"
-                },
-                "provider": {"@id": "https://bio-clinic.it/#clinic"}
-            },
-            {
-                "@type": "MedicalTherapy",
-                "@id": "https://bio-clinic.it/pages/trattamenti-pavimento-pelvico.html#riabilitazione",
-                "name": "Riabilitazione Pavimento Pelvico",
-                "description": "Programma di riabilitazione del pavimento pelvico con dispositivi medicali (Perifit, CaressFlow) e tecniche specifiche per incontinenza, prolasso e disfunzioni sessuali.",
-                "medicineSystem": "https://schema.org/WesternConventional",
-                "relevantSpecialty": {
-                    "@type": "MedicalSpecialty",
-                    "name": "Ginecologia"
-                },
-                "provider": {"@id": "https://bio-clinic.it/#clinic"}
-            },
-            {
-                "@type": "FAQPage",
-                "@id": "https://bio-clinic.it/pages/trattamenti-pavimento-pelvico.html#faq",
-                "mainEntity": [
-                    {
-                        "@type": "Question",
-                        "name": "Cos'è la sindrome genito-urinaria della menopausa?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "La sindrome genito-urinaria della menopausa (GSM) è un insieme di sintomi causati dalla carenza estrogenica: secchezza vaginale, bruciore, prurito, dispareunia (dolore ai rapporti), urgenza urinaria, infezioni urinarie ricorrenti. Colpisce fino al 50% delle donne in menopausa e può essere trattata efficacemente."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "La radiofrequenza vaginale è dolorosa?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "No, il trattamento è indolore. Si avverte solo una sensazione di calore controllato durante la seduta. Non è richiesta anestesia e la paziente può riprendere le normali attività immediatamente dopo."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Quante sedute di radiofrequenza sono necessarie?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Il protocollo standard prevede 3-4 sedute a distanza di 3-4 settimane l'una dall'altra. I primi miglioramenti si notano già dopo la prima seduta, con risultati ottimali dopo il ciclo completo. Può essere consigliato un mantenimento annuale."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Cos'è il Perifit e come funziona?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Perifit è un dispositivo medico per la riabilitazione del pavimento pelvico da utilizzare a casa. Si connette via Bluetooth a un'app che guida gli esercizi attraverso videogiochi. Permette di rinforzare la muscolatura pelvica in modo efficace e divertente, con feedback in tempo reale sulla qualità delle contrazioni."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Cos'è il CaressFlow?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "CaressFlow è un dispositivo medico che combina elettrostimolazione e biofeedback per la riabilitazione del pavimento pelvico. Particolarmente indicato per incontinenza urinaria, prolasso lieve-moderato e recupero post-parto. Può essere utilizzato in ambulatorio o a domicilio secondo il programma personalizzato."
-                        }
-                    }
-                ]
-            },
-            {
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bio-clinic.it/"},
-                    {"@type": "ListItem", "position": 2, "name": "Ginecologia", "item": "https://bio-clinic.it/pages/ginecologia.html"},
-                    {"@type": "ListItem", "position": 3, "name": "Trattamenti Pavimento Pelvico", "item": "https://bio-clinic.it/pages/trattamenti-pavimento-pelvico.html"}
-                ]
-            }
-        ]
+      "@type": "MedicalClinic",
+      "@id": "https://bio-clinic.it/#clinic",
+      "name": "Bio-Clinic Sassari",
+      "url": "https://bio-clinic.it",
+      "telephone": "+39 079 956 1332",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Renzo Mossa, 23",
+        "addressLocality": "Sassari",
+        "postalCode": "07100",
+        "addressCountry": "IT"
+      }
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://bio-clinic.it/pages/trattamenti-pavimento-pelvico.html#radiofrequenza",
+      "name": "Radiofrequenza Vaginale",
+      "description": "Trattamento non chirurgico per la rigenerazione dei tessuti vaginali mediante energia a radiofrequenza. Indicato per sindrome genito-urinaria, secchezza vaginale, lassità tissutale e incontinenza lieve.",
+      "procedureType": "https://schema.org/TherapeuticProcedure",
+      "howPerformed": "Trattamento ambulatoriale con sonda vaginale che emette energia a radiofrequenza controllata. Stimola la produzione di collagene e migliora la vascolarizzazione. Durata 20-30 minuti, ciclo di 3-4 sedute.",
+      "preparation": "Non è richiesta preparazione particolare. Si consiglia di non avere rapporti nelle 48 ore precedenti. Portare esito di pap test recente (ultimi 12 mesi).",
+      "followup": "Possibile ripresa immediata delle attività quotidiane. Astensione dai rapporti per 48-72 ore post-trattamento. Controllo dopo il ciclo completo per valutare i risultati.",
+      "relevantSpecialty": {
+        "@type": "MedicalSpecialty",
+        "name": "Ginecologia"
+      },
+      "provider": {
+        "@id": "https://bio-clinic.it/#clinic"
+      }
+    },
+    {
+      "@type": "MedicalTherapy",
+      "@id": "https://bio-clinic.it/pages/trattamenti-pavimento-pelvico.html#riabilitazione",
+      "name": "Riabilitazione Pavimento Pelvico",
+      "description": "Programma di riabilitazione del pavimento pelvico con dispositivi medicali (Perifit, CaressFlow) e tecniche specifiche per incontinenza, prolasso e disfunzioni sessuali.",
+      "medicineSystem": "https://schema.org/WesternConventional",
+      "relevantSpecialty": {
+        "@type": "MedicalSpecialty",
+        "name": "Ginecologia"
+      },
+      "provider": {
+        "@id": "https://bio-clinic.it/#clinic"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://bio-clinic.it/pages/trattamenti-pavimento-pelvico.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Cos'è la sindrome genito-urinaria della menopausa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La sindrome genito-urinaria della menopausa (GSM) è un insieme di sintomi causati dalla carenza estrogenica: secchezza vaginale, bruciore, prurito, dispareunia (dolore ai rapporti), urgenza urinaria, infezioni urinarie ricorrenti. Colpisce fino al 50% delle donne in menopausa e può essere trattata efficacemente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "La radiofrequenza vaginale è dolorosa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, il trattamento è indolore. Si avverte solo una sensazione di calore controllato durante la seduta. Non è richiesta anestesia e la paziente può riprendere le normali attività immediatamente dopo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quante sedute di radiofrequenza sono necessarie?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Il protocollo standard prevede 3-4 sedute a distanza di 3-4 settimane l'una dall'altra. I primi miglioramenti si notano già dopo la prima seduta, con risultati ottimali dopo il ciclo completo. Può essere consigliato un mantenimento annuale."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cos'è il Perifit e come funziona?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Perifit è un dispositivo medico per la riabilitazione del pavimento pelvico da utilizzare a casa. Si connette via Bluetooth a un'app che guida gli esercizi attraverso videogiochi. Permette di rinforzare la muscolatura pelvica in modo efficace e divertente, con feedback in tempo reale sulla qualità delle contrazioni."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cos'è il CaressFlow?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CaressFlow è un dispositivo medico che combina elettrostimolazione e biofeedback per la riabilitazione del pavimento pelvico. Particolarmente indicato per incontinenza urinaria, prolasso lieve-moderato e recupero post-parto. Può essere utilizzato in ambulatorio o a domicilio secondo il programma personalizzato."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bio-clinic.it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Ginecologia",
+          "item": "https://bio-clinic.it/pages/ginecologia.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Trattamenti Pavimento Pelvico",
+          "item": "https://bio-clinic.it/pages/trattamenti-pavimento-pelvico.html"
+        }
+      ]
     }
-    </script>
+  ],
+  "dateModified": "2026-02-28"
+}
+</script>
     
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/header-spacing-fix.css">

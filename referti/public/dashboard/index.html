@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dashboard Referti Bio-Clinic Sassari. Gestisci referti, upload, validazione e rilascio.">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Dashboard | Referti Bio-Clinic Sassari</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <meta name="theme-color" content="#00704A">
+
+  <link rel="stylesheet" href="/css/dashboard.972cf585.css">
+</head>
+<body>
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar" aria-label="Menu principale">
+    <div class="sidebar-header">
+      <a href="/" class="sidebar-logo" aria-label="Bio-Clinic Home">
+        <img class="logo-icon" src="/images/logo-bio-clinic.png" alt="Bio-Clinic" width="36" height="36" style="border-radius:8px">
+        <span class="logo-text">Referti</span>
+      </a>
+      <button class="sidebar-close" id="sidebarClose" aria-label="Chiudi menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav" id="sidebarNav">
+      <!-- Patient section -->
+      <div class="nav-section" data-roles="patient,lab_technician,physician,admin,super_admin,ostetrica">
+        <span class="nav-section-title">Referti</span>
+        <a href="#my-reports" class="nav-item active" data-page="my-reports" data-roles="patient">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span>I Miei Referti</span>
+          <span class="nav-badge" id="badgeNewReports" hidden>0</span>
+        </a>
+        <a href="#my-profile" class="nav-item" data-page="my-profile" data-roles="patient">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Il Mio Profilo</span>
+        </a>
+      </div>
+
+      <!-- Lab section -->
+      <div class="nav-section" data-roles="lab_technician,admin,super_admin,ostetrica">
+        <span class="nav-section-title">Laboratorio</span>
+        <a href="#upload" class="nav-item" data-page="upload" data-roles="lab_technician,admin,super_admin,ostetrica">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <span>Carica Referti</span>
+        </a>
+        <a href="#queue" class="nav-item" data-page="queue" data-roles="lab_technician,admin,super_admin,ostetrica">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/></svg>
+          <span>Coda Validazione</span>
+          <span class="nav-badge badge-warning" id="badgePending" hidden>0</span>
+        </a>
+      </div>
+
+      <!-- Physician section -->
+      <div class="nav-section" data-roles="physician,admin,super_admin,ostetrica">
+        <span class="nav-section-title">Medico</span>
+        <a href="#sign-release" class="nav-item" data-page="sign-release" data-roles="physician,admin,super_admin,ostetrica">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          <span>Firma & Rilascio</span>
+          <span class="nav-badge badge-info" id="badgeSign" hidden>0</span>
+        </a>
+      </div>
+
+      <!-- Admin section -->
+      <div class="nav-section" data-roles="admin,super_admin,ostetrica">
+        <span class="nav-section-title">Amministrazione</span>
+        <a href="#all-reports" class="nav-item" data-page="all-reports" data-roles="admin,super_admin,ostetrica">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          <span>Tutti i Referti</span>
+        </a>
+        <a href="#users" class="nav-item" data-page="users" data-roles="admin,super_admin,ostetrica">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Gestione Utenti</span>
+        </a>
+        <a href="#audit" class="nav-item" data-page="audit" data-roles="admin,super_admin">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Audit Log</span>
+        </a>
+        <a href="#settings" class="nav-item" data-page="settings" data-roles="super_admin">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span>Impostazioni</span>
+        </a>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user" id="sidebarUser">
+        <div class="user-avatar" id="userAvatar"><img src="/images/logo-bio-clinic.png" alt="Bio-Clinic" class="avatar-logo"></div>
+        <div class="user-info">
+          <span class="user-name" id="userName">Caricamento...</span>
+          <span class="user-role" id="userRole">--</span>
+        </div>
+      </div>
+      <button class="sidebar-logout" id="logoutBtn" title="Esci">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        <span>Esci</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- OVERLAY (mobile) -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- MAIN -->
+  <main class="main" id="mainContent">
+    <!-- TOP BAR -->
+    <header class="topbar" id="topbar">
+      <div class="topbar-left">
+        <button class="topbar-menu" id="sidebarToggle" aria-label="Apri menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <h1 class="topbar-title" id="pageTitle">I Miei Referti</h1>
+      </div>
+      <div class="topbar-right">
+        <button class="topbar-btn" id="notifBtn" aria-label="Notifiche" title="Notifiche">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="notif-dot" id="notifDot" hidden></span>
+        </button>
+        <button class="topbar-btn" id="themeToggle" aria-label="Cambia tema" title="Tema scuro/chiaro">
+          <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- NOTIFICATION PANEL -->
+    <div class="notif-panel" id="notifPanel" hidden>
+      <div class="notif-panel-header">
+        <h3>Notifiche</h3>
+        <button class="notif-mark-all" id="markAllRead">Segna tutte lette</button>
+      </div>
+      <div class="notif-list" id="notifList">
+        <div class="notif-empty">Nessuna notifica</div>
+      </div>
+    </div>
+
+    <!-- ==================== PAGE: MY REPORTS (Patient) ==================== -->
+    <section class="page active" id="page-my-reports" data-title="I Miei Referti">
+      <div class="page-header">
+        <div class="page-header-info">
+          <p class="page-subtitle">Consulta e scarica i tuoi risultati di laboratorio</p>
+        </div>
+        <div class="page-header-actions">
+          <div class="search-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" id="searchMyReports" placeholder="Cerca referti..." class="search-input">
+          </div>
+          <select class="filter-select" id="filterMyStatus">
+            <option value="">Tutti gli stati</option>
+            <option value="released">Disponibili</option>
+            <option value="signed">In fase di rilascio</option>
+            <option value="validated">In validazione</option>
+            <option value="pending">In lavorazione</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Stats cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon stat-icon--green">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-value" id="statAvailable">-</span>
+            <span class="stat-label">Disponibili</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon stat-icon--blue">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-value" id="statInProgress">-</span>
+            <span class="stat-label">In lavorazione</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon stat-icon--purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-value" id="statDownloaded">-</span>
+            <span class="stat-label">Scaricati</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reports table -->
+      <div class="card">
+        <div class="table-responsive">
+          <table class="data-table" id="myReportsTable">
+            <thead>
+              <tr>
+                <th>N. Referto</th>
+                <th>Tipo Esame</th>
+                <th>Categoria</th>
+                <th>Data Prelievo</th>
+                <th>Stato</th>
+                <th>Azioni</th>
+              </tr>
+            </thead>
+            <tbody id="myReportsBody">
+              <tr class="table-empty"><td colspan="6">
+                <div class="empty-state">
+                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  <p>Nessun referto disponibile</p>
+                  <span>I tuoi referti appariranno qui quando saranno pronti</span>
+                </div>
+              </td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PAGE: MY PROFILE ==================== -->
+    <section class="page" id="page-my-profile" data-title="Il Mio Profilo" hidden>
+      <div class="page-header">
+        <p class="page-subtitle">Gestisci i tuoi dati personali e la sicurezza</p>
+      </div>
+      <div class="profile-grid">
+        <div class="card">
+          <h3 class="card-title">Dati Personali</h3>
+          <form id="profileForm" class="form-grid">
+            <div class="form-group">
+              <label for="profName">Nome</label>
+              <input type="text" id="profName" class="form-input" readonly>
+            </div>
+            <div class="form-group">
+              <label for="profSurname">Cognome</label>
+              <input type="text" id="profSurname" class="form-input" readonly>
+            </div>
+            <div class="form-group">
+              <label for="profEmail">Email</label>
+              <input type="email" id="profEmail" class="form-input" readonly>
+            </div>
+            <div class="form-group">
+              <label for="profFiscal">Codice Fiscale</label>
+              <input type="text" id="profFiscal" class="form-input" readonly>
+            </div>
+            <div class="form-group">
+              <label for="profPhone">Telefono</label>
+              <input type="tel" id="profPhone" class="form-input" placeholder="+39...">
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary" id="saveProfile">Salva Modifiche</button>
+            </div>
+            <div class="form-message" id="profileMessage"></div>
+          </form>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Sicurezza</h3>
+          <div class="security-item">
+            <div class="security-info">
+              <strong>Autenticazione a Due Fattori (2FA)</strong>
+              <p>Proteggi il tuo account con un codice TOTP</p>
+            </div>
+            <span class="badge badge-inactive" id="badge2fa">Non attiva</span>
+          </div>
+          <div class="security-item">
+            <div class="security-info">
+              <strong>Cambio Password</strong>
+              <p>Ultima modifica: <span id="lastPwChange">--</span></p>
+            </div>
+            <button class="btn btn-outline btn-sm" id="changePasswordBtn">Modifica</button>
+          </div>
+          <div class="security-item">
+            <div class="security-info">
+              <strong>Sessioni Attive</strong>
+              <p>Dispositivi attualmente collegati</p>
+            </div>
+            <button class="btn btn-outline btn-sm" id="viewSessionsBtn">Visualizza</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PAGE: UPLOAD REPORTS (Lab) ==================== -->
+    <section class="page" id="page-upload" data-title="Carica Referti" hidden>
+      <div class="page-header">
+        <p class="page-subtitle">Carica nuovi referti PDF e associali ai pazienti</p>
+      </div>
+
+      <div class="upload-grid">
+        <!-- Upload form -->
+        <div class="card card-upload">
+          <h3 class="card-title">Nuovo Referto</h3>
+          <form id="uploadForm">
+            <!-- Patient lookup -->
+            <div class="form-group">
+              <label for="uploadFiscal">Codice Fiscale Paziente *</label>
+              <div class="input-with-action">
+                <input type="text" id="uploadFiscal" class="form-input" placeholder="RSSMRA85M01H501Z" maxlength="16" required>
+                <button type="button" class="btn btn-outline btn-sm" id="lookupPatient">Cerca</button>
+              </div>
+              <div class="patient-found" id="patientFound" hidden>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span id="patientFoundName">--</span>
+              </div>
+              <div class="form-error" id="uploadFiscal-error"></div>
+              <button type="button" class="btn btn-primary btn-sm" id="invitePatientFromUpload" hidden style="margin-top:8px">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                Registra Paziente
+              </button>
+            </div>
+
+            <!-- Report details -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="uploadType">Tipo Esame *</label>
+                <select id="uploadType" class="form-input" required>
+                  <option value="">Seleziona...</option>
+                  <option value="emocromo">Emocromo completo</option>
+                  <option value="profilo_lipidico">Profilo Lipidico</option>
+                  <option value="profilo_tiroideo">Profilo Tiroideo</option>
+                  <option value="glicemia">Glicemia / HbA1c</option>
+                  <option value="esame_urine">Esame Urine</option>
+                  <option value="profilo_epatico">Profilo Epatico</option>
+                  <option value="profilo_renale">Profilo Renale</option>
+                  <option value="markers_tumorali">Markers Tumorali</option>
+                  <option value="coagulazione">Coagulazione</option>
+                  <option value="sierologia">Sierologia</option>
+                  <option value="microbiologia">Microbiologia</option>
+                  <option value="genetica">Genetica</option>
+                  <option value="pap_test">PAP Test</option>
+                  <option value="hpv_dna_test">HPV DNA Test</option>
+                  <option value="altro">Altro</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="uploadCategory">Categoria</label>
+                <select id="uploadCategory" class="form-input">
+                  <option value="laboratorio">Laboratorio</option>
+                  <option value="microbiologia">Microbiologia</option>
+                  <option value="genetica">Genetica</option>
+                  <option value="anatomia_patologica">Anatomia Patologica</option>
+                  <option value="citologia">Citologia</option>
+                  <option value="ostetricia">Ostetricia</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="uploadSampleDate">Data Prelievo *</label>
+                <input type="date" id="uploadSampleDate" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="uploadUrgent">
+                  <span class="checkmark"></span>
+                  Urgente
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" id="uploadAbnormal">
+                  <span class="checkmark"></span>
+                  Valori anomali
+                </label>
+              </div>
+            </div>
+
+            <!-- Drag & Drop -->
+            <div class="form-group">
+              <label>File PDF *</label>
+              <div class="drop-zone" id="dropZone">
+                <div class="drop-zone-content">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  <p>Trascina il PDF qui o <button type="button" class="drop-zone-browse" id="browseBtn">sfoglia</button></p>
+                  <span class="drop-zone-hint">Max 25 MB — Solo file PDF</span>
+                </div>
+                <div class="drop-zone-file" id="dropZoneFile" hidden>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  <div class="drop-zone-file-info">
+                    <span class="drop-zone-file-name" id="fileName">--</span>
+                    <span class="drop-zone-file-size" id="fileSize">--</span>
+                  </div>
+                  <button type="button" class="drop-zone-remove" id="removeFile" aria-label="Rimuovi file">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                  </button>
+                </div>
+                <input type="file" id="fileInput" accept=".pdf,application/pdf" hidden>
+              </div>
+              <div class="upload-progress" id="uploadProgress" hidden>
+                <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+                <span class="progress-text" id="progressText">0%</span>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="reset" class="btn btn-outline">Cancella</button>
+              <button type="submit" class="btn btn-primary" id="uploadSubmit">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                Carica Referto
+              </button>
+            </div>
+            <div class="form-message" id="uploadMessage"></div>
+          </form>
+        </div>
+
+        <!-- Recent uploads -->
+        <div class="card">
+          <h3 class="card-title">Ultimi Caricamenti</h3>
+          <div class="recent-uploads" id="recentUploads">
+            <div class="empty-state small">
+              <p>Nessun caricamento recente</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PAGE: VALIDATION QUEUE (Lab) ==================== -->
+    <section class="page" id="page-queue" data-title="Coda Validazione" hidden>
+      <div class="page-header">
+        <div class="page-header-info">
+          <p class="page-subtitle">Referti in attesa di validazione tecnica</p>
+        </div>
+        <div class="page-header-actions">
+          <select class="filter-select" id="filterQueueUrgent">
+            <option value="">Tutti</option>
+            <option value="urgent">Solo urgenti</option>
+            <option value="abnormal">Valori anomali</option>
+          </select>
+          <button class="btn btn-primary btn-sm" id="validateAllBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Valida Selezionati
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="table-responsive">
+          <table class="data-table" id="queueTable">
+            <thead>
+              <tr>
+                <th><input type="checkbox" id="selectAllQueue" aria-label="Seleziona tutti"></th>
+                <th>N. Referto</th>
+                <th>Paziente</th>
+                <th>Tipo Esame</th>
+                <th>Data Prelievo</th>
+                <th>Flag</th>
+                <th>Caricato</th>
+                <th>Azioni</th>
+              </tr>
+            </thead>
+            <tbody id="queueBody">
+              <tr class="table-empty"><td colspan="8">
+                <div class="empty-state">
+                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  <p>Nessun referto in coda</p>
+                  <span>Tutti i referti sono stati validati</span>
+                </div>
+              </td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PAGE: SIGN & RELEASE (Physician) ==================== -->
+    <section class="page" id="page-sign-release" data-title="Firma & Rilascio" hidden>
+      <div class="page-header">
+        <div class="page-header-info">
+          <p class="page-subtitle">Referti validati in attesa di firma medica e rilascio al paziente</p>
+        </div>
+        <div class="page-header-actions">
+          <select class="filter-select" id="filterSignStatus">
+            <option value="">Tutti</option>
+            <option value="validated">Da firmare</option>
+            <option value="signed">Da rilasciare</option>
+          </select>
+          <button class="btn btn-primary btn-sm" id="bulkReleaseBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Rilascia Tutti Firmati
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="table-responsive">
+          <table class="data-table" id="signTable">
+            <thead>
+              <tr>
+                <th>N. Referto</th>
+                <th>Paziente</th>
+                <th>Tipo Esame</th>
+                <th>Stato</th>
+                <th>Validato il</th>
+                <th>Flag</th>
+                <th>Azioni</th>
+              </tr>
+            </thead>
+            <tbody id="signBody">
+              <tr class="table-empty"><td colspan="7">
+                <div class="empty-state">
+                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                  <p>Nessun referto da firmare</p>
+                  <span>Tutti i referti sono stati firmati e rilasciati</span>
+                </div>
+              </td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PAGE: ALL REPORTS (Admin) ==================== -->
+    <section class="page" id="page-all-reports" data-title="Tutti i Referti" hidden>
+      <div class="page-header">
+        <div class="page-header-info">
+          <p class="page-subtitle">Panoramica completa di tutti i referti nel sistema</p>
+        </div>
+        <div class="page-header-actions">
+          <div class="search-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" id="searchAllReports" placeholder="Cerca per n. referto, paziente..." class="search-input">
+          </div>
+          <select class="filter-select" id="filterAllStatus">
+            <option value="">Tutti gli stati</option>
+            <option value="pending">In attesa</option>
+            <option value="validated">Validato</option>
+            <option value="signed">Firmato</option>
+            <option value="released">Rilasciato</option>
+            <option value="archived">Archiviato</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Admin stats -->
+      <div class="stats-grid stats-grid--4">
+        <div class="stat-card"><div class="stat-icon stat-icon--orange"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="stat-info"><span class="stat-value" id="statPending">-</span><span class="stat-label">In Attesa</span></div></div>
+        <div class="stat-card"><div class="stat-icon stat-icon--blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div class="stat-info"><span class="stat-value" id="statValidated">-</span><span class="stat-label">Validati</span></div></div>
+        <div class="stat-card"><div class="stat-icon stat-icon--green"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="stat-info"><span class="stat-value" id="statReleased">-</span><span class="stat-label">Rilasciati</span></div></div>
+        <div class="stat-card"><div class="stat-icon stat-icon--gray"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="stat-info"><span class="stat-value" id="statTotal">-</span><span class="stat-label">Totale</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="table-responsive">
+          <table class="data-table" id="allReportsTable">
+            <thead>
+              <tr>
+                <th>N. Referto</th>
+                <th>Paziente</th>
+                <th>Tipo</th>
+                <th>Data Prelievo</th>
+                <th>Stato</th>
+                <th>Flag</th>
+                <th>Aggiornato</th>
+                <th>Azioni</th>
+              </tr>
+            </thead>
+            <tbody id="allReportsBody">
+              <tr class="table-empty"><td colspan="8">
+                <div class="empty-state">
+                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                  <p>Nessun referto nel sistema</p>
+                </div>
+              </td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PAGE: USERS (Admin) ==================== -->
+    <section class="page" id="page-users" data-title="Gestione Utenti" hidden>
+      <div class="page-header">
+        <div class="page-header-info">
+          <p class="page-subtitle">Gestisci utenti, ruoli e permessi</p>
+        </div>
+        <div class="page-header-actions">
+          <div class="search-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" id="searchUsers" placeholder="Nome, email o codice fiscale..." class="search-input">
+          </div>
+          <select class="filter-select" id="filterUserRole">
+            <option value="">Tutti i ruoli</option>
+            <option value="patient">Paziente</option>
+            <option value="lab_technician">Tecnico Lab</option>
+            <option value="physician">Medico</option>
+            <option value="ostetrica">Ostetrica</option>
+            <option value="admin">Admin</option>
+            <option value="super_admin">Super Admin</option>
+          </select>
+          <button class="btn btn-primary btn-sm" id="inviteUserBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Invita Utente
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="table-responsive">
+          <table class="data-table" id="usersTable">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Codice Fiscale</th>
+                <th>Ruolo</th>
+                <th>Stato</th>
+                <th>2FA</th>
+                <th>Registrato</th>
+                <th>Azioni</th>
+              </tr>
+            </thead>
+            <tbody id="usersBody">
+              <tr class="table-empty"><td colspan="8">
+                <div class="empty-state"><p>Caricamento utenti...</p></div>
+              </td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PAGE: AUDIT LOG (Admin) ==================== -->
+    <section class="page" id="page-audit" data-title="Audit Log" hidden>
+      <div class="page-header">
+        <div class="page-header-info">
+          <p class="page-subtitle">Registro attivita e tracciamento sicurezza</p>
+        </div>
+        <div class="page-header-actions">
+          <select class="filter-select" id="filterAuditAction">
+            <option value="">Tutte le azioni</option>
+            <option value="login">Login</option>
+            <option value="login_failed">Login fallito</option>
+            <option value="report_create">Creazione referto</option>
+            <option value="report_validate">Validazione</option>
+            <option value="report_sign">Firma</option>
+            <option value="report_release">Rilascio</option>
+            <option value="report_download">Download</option>
+            <option value="password_change">Cambio password</option>
+          </select>
+          <select class="filter-select" id="filterAuditRisk">
+            <option value="">Tutti i livelli</option>
+            <option value="high">Alto rischio</option>
+            <option value="medium">Medio</option>
+            <option value="low">Basso</option>
+          </select>
+          <input type="date" class="form-input filter-date" id="filterAuditDate">
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="table-responsive">
+          <table class="data-table" id="auditTable">
+            <thead>
+              <tr>
+                <th>Data/Ora</th>
+                <th>Utente</th>
+                <th>Azione</th>
+                <th>Target</th>
+                <th>IP</th>
+                <th>Rischio</th>
+                <th>Dettagli</th>
+              </tr>
+            </thead>
+            <tbody id="auditBody">
+              <tr class="table-empty"><td colspan="7">
+                <div class="empty-state"><p>Nessuna attivita registrata</p></div>
+              </td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-pagination" id="auditPagination">
+          <button class="btn btn-outline btn-sm" id="auditPrev" disabled>Precedente</button>
+          <span class="pagination-info" id="auditPageInfo">Pagina 1</span>
+          <button class="btn btn-outline btn-sm" id="auditNext">Successiva</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PAGE: SETTINGS (Super Admin) ==================== -->
+    <section class="page" id="page-settings" data-title="Impostazioni" hidden>
+      <div class="page-header">
+        <p class="page-subtitle">Configurazione del sistema</p>
+      </div>
+      <div class="settings-grid">
+        <div class="card">
+          <h3 class="card-title">Generale</h3>
+          <div class="setting-item">
+            <div class="setting-info"><strong>Registrazione pazienti</strong><p>Consenti ai nuovi pazienti di registrarsi</p></div>
+            <label class="toggle"><input type="checkbox" id="settingSignup" checked><span class="toggle-slider"></span></label>
+          </div>
+          <div class="setting-item">
+            <div class="setting-info"><strong>2FA obbligatorio per staff</strong><p>Richiedi autenticazione a due fattori per lab, medici e admin</p></div>
+            <label class="toggle"><input type="checkbox" id="setting2faStaff"><span class="toggle-slider"></span></label>
+          </div>
+          <div class="setting-item">
+            <div class="setting-info"><strong>Notifiche email pazienti</strong><p>Invia email quando un referto viene rilasciato</p></div>
+            <label class="toggle"><input type="checkbox" id="settingNotifEmail" checked><span class="toggle-slider"></span></label>
+          </div>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Stato Sistema</h3>
+          <div class="system-stats">
+            <div class="sys-stat"><span class="sys-label">Database</span><span class="sys-value sys-ok">Connesso</span></div>
+            <div class="sys-stat"><span class="sys-label">Storage</span><span class="sys-value sys-ok">Operativo</span></div>
+            <div class="sys-stat"><span class="sys-label">Auth</span><span class="sys-value sys-ok">Attivo</span></div>
+            <div class="sys-stat"><span class="sys-label">Uptime</span><span class="sys-value" id="sysUptime">--</span></div>
+            <div class="sys-stat"><span class="sys-label">Spazio storage</span><span class="sys-value" id="sysStorage">--</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL (shared) -->
+  <div class="modal-overlay" id="modalOverlay" hidden>
+    <div class="modal" id="modal" role="dialog" aria-modal="true">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">--</h3>
+        <button class="modal-close" id="modalClose" aria-label="Chiudi">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="modal-body" id="modalBody">--</div>
+      <div class="modal-footer" id="modalFooter"></div>
+    </div>
+  </div>
+
+  <!-- INVITE USER MODAL (dedicated) -->
+  <div class="modal-overlay" id="inviteOverlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" style="max-width:480px">
+      <div class="modal-header">
+        <h3 class="modal-title">Invita Nuovo Utente</h3>
+        <button class="modal-close" id="inviteClose" aria-label="Chiudi">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="inviteForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="invFirstName">Nome *</label>
+              <input type="text" id="invFirstName" class="form-input" required placeholder="Mario">
+            </div>
+            <div class="form-group">
+              <label for="invLastName">Cognome *</label>
+              <input type="text" id="invLastName" class="form-input" required placeholder="Rossi">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="invEmail">Email *</label>
+            <input type="email" id="invEmail" class="form-input" required placeholder="nome@email.com">
+          </div>
+          <div class="form-group">
+            <label for="invRole">Ruolo *</label>
+            <select id="invRole" class="form-input" required>
+              <option value="patient">Paziente</option>
+              <option value="lab_technician">Tecnico Laboratorio</option>
+              <option value="physician">Medico</option>
+              <option value="ostetrica">Ostetrica</option>
+              <option value="admin">Amministratore</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="invFiscal"><span id="invFiscalLabel">Codice Fiscale</span></label>
+            <input type="text" id="invFiscal" class="form-input" placeholder="RSSMRA85M01H501Z" maxlength="16" style="text-transform:uppercase">
+          </div>
+          <!-- Extra patient fields (shown/hidden by JS) -->
+          <div id="invPatientFields" hidden>
+            <div class="form-group">
+              <label for="invPhone">Telefono</label>
+              <input type="tel" id="invPhone" class="form-input" placeholder="+39 079 123 4567">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="invDob">Data di Nascita</label>
+                <input type="date" id="invDob" class="form-input">
+              </div>
+              <div class="form-group">
+                <label for="invGender">Genere</label>
+                <select id="invGender" class="form-input">
+                  <option value="">--</option>
+                  <option value="M">Maschio</option>
+                  <option value="F">Femmina</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="invPassword">Password Temporanea *</label>
+            <input type="text" id="invPassword" class="form-input" required minlength="12" placeholder="Min 12 caratteri">
+            <button type="button" class="btn btn-outline btn-sm" id="genPassword" style="margin-top:0.35rem">Genera Password</button>
+          </div>
+          <div class="form-message" id="inviteMessage"></div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="inviteCancelBtn">Annulla</button>
+        <button class="btn btn-primary" id="inviteSubmitBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Crea Utente
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PASSWORD CHANGE MODAL -->
+  <div class="modal-overlay" id="pwChangeOverlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" style="max-width:420px">
+      <div class="modal-header">
+        <h3 class="modal-title">Cambio Password</h3>
+        <button class="modal-close" id="pwChangeClose" aria-label="Chiudi">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="pwChangeForm">
+          <div class="form-group">
+            <label for="pwCurrent">Password Attuale *</label>
+            <input type="password" id="pwCurrent" class="form-input" required placeholder="Inserisci la password attuale" autocomplete="current-password">
+          </div>
+          <div class="form-group">
+            <label for="pwNew">Nuova Password *</label>
+            <input type="password" id="pwNew" class="form-input" required minlength="12" placeholder="Min 12 caratteri, maiuscole, numeri, speciali" autocomplete="new-password">
+          </div>
+          <div class="form-group">
+            <label for="pwConfirm">Conferma Nuova Password *</label>
+            <input type="password" id="pwConfirm" class="form-input" required minlength="12" placeholder="Ripeti la nuova password" autocomplete="new-password">
+          </div>
+          <p style="font-size:0.78rem;color:var(--text-muted);margin:0.5rem 0 0">Requisiti: minimo 12 caratteri, una maiuscola, una minuscola, un numero, un carattere speciale.</p>
+          <div class="form-message" id="pwChangeMessage"></div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="pwChangeCancelBtn">Annulla</button>
+        <button class="btn btn-primary" id="pwChangeSubmitBtn">Aggiorna Password</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <script src="/js/dashboard.13250b8e.js"></script>
+</body>
+</html>

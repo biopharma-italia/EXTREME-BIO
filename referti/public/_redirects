@@ -1,0 +1,12 @@
+# Referti Bio-Clinic Redirects
+# Order: specific rules first, catch-all last
+# Static assets (/css/*, /js/*, /images/*) are served directly by CF Pages (higher priority than _redirects)
+
+# Reset password page
+/reset-password   /reset-password/index.html  200
+/reset-password/  /reset-password/index.html  200
+
+# Dashboard SPA route
+/dashboard       /dashboard/index.html  200
+/dashboard/      /dashboard/index.html  200
+/dashboard/*     /dashboard/index.html  200

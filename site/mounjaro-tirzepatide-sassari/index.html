@@ -75,7 +75,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="stylesheet" href="/css/tailwind-utilities.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <style>
+    <style id="critical-css">
+:root{--primary:#7CBA3D;--primary-dark:#008238;--primary-bg:#f0f7e6;--secondary:#43A140;--accent:#00d084;--white:#fff;--gray-50:#f9fafb;--gray-100:#f3f4f6;--gray-700:#374151;--gray-800:#1f2937;--font-primary:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;--font-heading:'Poppins',var(--font-primary)}
+*,::after,::before{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-primary);color:var(--gray-800);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;padding-top:100px!important}
+.header{position:fixed!important;top:0;left:0;right:0;z-index:9999;background:var(--white);box-shadow:0 2px 10px rgba(0,0,0,.1);transition:transform .3s}
+.header .container{max-width:1280px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:70px}
+.header .logo img{height:55px;width:auto}
+.nav-menu{display:flex;gap:0;list-style:none}
+.nav-menu a{display:block;padding:.75rem 1rem;color:var(--gray-700);font-weight:500;text-decoration:none;font-size:.9rem}
+.hero-section{padding:3rem 0;background:linear-gradient(135deg,var(--primary-bg) 0%,#e8f5e9 100%)}
+h1{font-family:var(--font-heading);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--gray-800);line-height:1.2}
+.container{max-width:1280px;margin:0 auto;padding:0 1.5rem}
+.breadcrumb{font-size:.85rem;color:var(--gray-500);margin-bottom:1rem}
+.breadcrumb a{color:var(--primary-dark);text-decoration:none}
+@media(max-width:768px){body{padding-top:70px!important}.header .container{height:60px}.header .logo img{height:40px}.nav-menu{display:none}}
+</style>
+<style>
         body { padding-top: 100px !important; margin: 0 !important; }
         .header { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 9999 !important; background: #fff !important; box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important; }
         
@@ -127,13 +143,524 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         details > div { animation: fadeIn 0.2s ease-in; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"MedicalWebPage","@id":"https://bio-clinic.it/mounjaro-tirzepatide-sassari/#webpage","url":"https://bio-clinic.it/mounjaro-tirzepatide-sassari/","name":"Mounjaro (Tirzepatide) Sassari - Trattamento Medico Obesità","description":"Guida completa al trattamento con Mounjaro (Tirzepatide) per obesità e sovrappeso a Sassari. Informazioni mediche validate, efficacia clinica, effetti collaterali e percorso terapeutico.","inLanguage":"it-IT","isPartOf":{"@id":"https://bio-clinic.it/#website"},"about":{"@id":"https://bio-clinic.it/mounjaro-tirzepatide-sassari/#drug"},"mainEntity":{"@id":"https://bio-clinic.it/mounjaro-tirzepatide-sassari/#drug"},"author":{"@id":"https://bio-clinic.it/#organization"},"reviewedBy":{"@id":"https://bio-clinic.it/#organization"},"lastReviewed":"2026-02-03","datePublished":"2024-06-01","dateModified":"2026-02-27","medicalAudience":{"@type":"MedicalAudience","audienceType":"Patient","healthCondition":{"@type":"MedicalCondition","name":"Obesità"}},"specialty":{"@type":"MedicalSpecialty","name":"Endocrinologia"}},{"@type":"Drug","@id":"https://bio-clinic.it/mounjaro-tirzepatide-sassari/#drug","name":"Mounjaro","alternateName":["Tirzepatide","Zepbound"],"activeIngredient":"Tirzepatide","drugClass":{"@type":"DrugClass","name":"Agonisti del recettore GLP-1/GIP"},"manufacturer":{"@type":"Organization","name":"Eli Lilly and Company","url":"https://www.lilly.com"},"administrationRoute":"Iniezione sottocutanea","dosageForm":"Penna preriempita","availableStrength":[{"@type":"DrugStrength","activeIngredient":"Tirzepatide","strengthValue":"2.5","strengthUnit":"mg"},{"@type":"DrugStrength","activeIngredient":"Tirzepatide","strengthValue":"5","strengthUnit":"mg"},{"@type":"DrugStrength","activeIngredient":"Tirzepatide","strengthValue":"7.5","strengthUnit":"mg"},{"@type":"DrugStrength","activeIngredient":"Tirzepatide","strengthValue":"10","strengthUnit":"mg"},{"@type":"DrugStrength","activeIngredient":"Tirzepatide","strengthValue":"12.5","strengthUnit":"mg"},{"@type":"DrugStrength","activeIngredient":"Tirzepatide","strengthValue":"15","strengthUnit":"mg"}],"mechanismOfAction":"Tirzepatide è un agonista duale dei recettori GLP-1 (glucagon-like peptide-1) e GIP (glucose-dependent insulinotropic polypeptide). Agisce riducendo l'appetito, rallentando lo svuotamento gastrico e migliorando il metabolismo del glucosio.","prescriptionStatus":"Prescrizione medica obbligatoria","legalStatus":{"@type":"DrugLegalStatus","applicableLocation":{"@type":"Country","name":"Italia"}},"warning":"Richiede prescrizione medica specialistica. Non adatto a pazienti con storia personale o familiare di carcinoma midollare della tiroide o MEN2.","clinicalPharmacology":"Emivita: circa 5 giorni. Somministrazione: una volta a settimana. Picco di concentrazione: 8-72 ore."},{"@type":"MedicalTherapy","@id":"https://bio-clinic.it/mounjaro-tirzepatide-sassari/#therapy","name":"Percorso SLIM CARE con Mounjaro","alternateName":"Terapia dimagrante con Tirzepatide Sassari","description":"Percorso medico di 3 mesi per il trattamento dell'obesità con Mounjaro (Tirzepatide). Include valutazione endocrinologica, prescrizione farmaco, monitoraggio VisBody 3D, analisi ematiche e supporto nutrizionale.","relevantSpecialty":[{"@type":"MedicalSpecialty","name":"Endocrinologia"},{"@type":"MedicalSpecialty","name":"Nutrizione Clinica"}],"studyDesign":"Trial clinici SURMOUNT-1, SURMOUNT-2, SURMOUNT-3, SURMOUNT-4","outcome":"Perdita peso media 15-22% in 72 settimane (studio SURMOUNT-1)","drug":{"@id":"https://bio-clinic.it/mounjaro-tirzepatide-sassari/#drug"},"contraindication":["Carcinoma midollare della tiroide","Neoplasia endocrina multipla tipo 2 (MEN2)","Gravidanza e allattamento","Pancreatite acuta in atto","Ipersensibilità al principio attivo"],"seriousAdverseOutcome":["Pancreatite (rara)","Ipoglicemia (in combinazione con insulina/sulfoniluree)","Reazioni nel sito di iniezione"],"typicalAgeRange":"Adulti ≥18 anni","provider":{"@id":"https://bio-clinic.it/#organization"}},{"@type":["MedicalClinic","MedicalBusiness","LocalBusiness"],"@id":"https://bio-clinic.it/#organization","name":"Bio-Clinic Sassari","alternateName":"Bio-Clinic Poliambulatorio","url":"https://bio-clinic.it","logo":"https://bio-clinic.it/images/logo-bioclinic.png","image":"https://bio-clinic.it/images/bio-clinic-sassari.jpg","telephone":"+39 079 956 1332","email":"info@bio-clinic.it","address":{"@type":"PostalAddress","streetAddress":"Via Renzo Mossa, 23","addressLocality":"Sassari","addressRegion":"SS","postalCode":"07100","addressCountry":"IT"},"geo":{"@type":"GeoCoordinates","latitude":40.7267,"longitude":8.5592},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"21:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"08:00","closes":"14:00"}],"priceRange":"€€","paymentAccepted":["Cash","Credit Card","Debit Card"],"currenciesAccepted":"EUR","medicalSpecialty":["Endocrinologia","Nutrizione Clinica","Medicina Interna"],"availableService":{"@id":"https://bio-clinic.it/mounjaro-tirzepatide-sassari/#therapy"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"3214","bestRating":"5","worstRating":"1"},"hasCredential":[{"@type":"EducationalOccupationalCredential","credentialCategory":"Accreditamento Regionale Sardegna"}],"areaServed":[{"@type":"City","name":"Sassari","sameAs":"https://it.wikipedia.org/wiki/Sassari"},{"@type":"AdministrativeArea","name":"Provincia di Sassari","sameAs":"https://it.wikipedia.org/wiki/Provincia_di_Sassari"},{"@type":"AdministrativeArea","name":"Nord Sardegna"}],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Prestazioni Endocrinologia Bio-Clinic","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"MedicalProcedure","name":"Visita Endocrinologica Mounjaro"},"price":"120.00","priceCurrency":"EUR"},{"@type":"Offer","itemOffered":{"@type":"MedicalProcedure","name":"Controllo Follow-up Mounjaro"},"price":"80.00","priceCurrency":"EUR"}]}},{"@type":"FAQPage","@id":"https://bio-clinic.it/mounjaro-tirzepatide-sassari/#faq","mainEntity":[{"@type":"Question","name":"Cos'è Mounjaro (Tirzepatide)?","acceptedAnswer":{"@type":"Answer","text":"Mounjaro è il nome commerciale del Tirzepatide, un farmaco iniettabile di Eli Lilly approvato per il trattamento dell'obesità e del diabete tipo 2. È il primo agonista duale GLP-1/GIP, con un meccanismo d'azione innovativo che lo rende più efficace rispetto ai farmaci GLP-1 puri come Wegovy (Semaglutide). Si assume una volta a settimana tramite iniezione sottocutanea."}},{"@type":"Question","name":"Quanto peso si perde con Mounjaro?","acceptedAnswer":{"@type":"Answer","text":"Negli studi clinici SURMOUNT, i pazienti trattati con Mounjaro hanno perso in media il 15-22% del peso corporeo in 72 settimane. Ad esempio, una persona di 100 kg può perdere 15-22 kg. I risultati variano in base al dosaggio (2.5-15 mg), all'aderenza alla terapia e allo stile di vita. Nel percorso SLIM CARE di Bio-Clinic, la perdita media è di 12-18 kg in 3 mesi."}},{"@type":"Question","name":"Mounjaro è meglio di Wegovy?","acceptedAnswer":{"@type":"Answer","text":"Gli studi comparativi mostrano che Mounjaro (Tirzepatide) produce una perdita di peso superiore rispetto a Wegovy (Semaglutide): 15-22% vs 10-15% del peso corporeo. Questo perché Mounjaro agisce su due recettori (GLP-1 e GIP) invece di uno solo. Tuttavia, la scelta tra i due farmaci dipende dalla valutazione medica individuale, considerando efficacia, tollerabilità e condizioni cliniche del paziente."}},{"@type":"Question","name":"Chi può usare Mounjaro per dimagrire?","acceptedAnswer":{"@type":"Answer","text":"Mounjaro è indicato per adulti con: 1) Obesità (BMI ≥ 30 kg/m²), oppure 2) Sovrappeso (BMI ≥ 27 kg/m²) con almeno una comorbidità correlata al peso come diabete tipo 2, ipertensione, dislipidemia o apnea ostruttiva del sonno. È controindicato in gravidanza, allattamento, e in pazienti con storia di carcinoma midollare della tiroide o MEN2. Richiede sempre prescrizione medica specialistica."}},{"@type":"Question","name":"Quali sono gli effetti collaterali di Mounjaro?","acceptedAnswer":{"@type":"Answer","text":"Gli effetti collaterali più comuni di Mounjaro sono gastrointestinali e generalmente transitori: nausea (20-30%), diarrea, vomito, costipazione, dolore addominale. Questi effetti tendono a diminuire con la titolazione graduale del dosaggio. Effetti collaterali rari ma seri includono pancreatite, colecistite, ipoglicemia (soprattutto con insulina/sulfoniluree). Il monitoraggio medico regolare è essenziale per gestire eventuali effetti avversi."}},{"@type":"Question","name":"Quanto costa Mounjaro a Sassari?","acceptedAnswer":{"@type":"Answer","text":"Il costo del farmaco Mounjaro varia in base al dosaggio (circa €150-300/mese). Bio-Clinic offre il percorso SLIM CARE che include: farmaco per 3 mesi, 3 scansioni VisBody 3D, 2 prelievi ematici completi, visite endocrinologiche di controllo e supporto nutrizionale. Per informazioni sui costi e per prenotare una consulenza, contattare Bio-Clinic al numero 079 956 1332."}},{"@type":"Question","name":"Come si assume Mounjaro?","acceptedAnswer":{"@type":"Answer","text":"Mounjaro si somministra una volta a settimana, lo stesso giorno ogni settimana, tramite iniezione sottocutanea nell'addome, coscia o parte superiore del braccio. Si inizia con la dose più bassa (2.5 mg) per 4 settimane, poi si aumenta gradualmente fino alla dose efficace (5-15 mg). L'iniezione può essere fatta in qualsiasi momento della giornata, con o senza cibo. La penna preriempita è facile da usare e monouso."}},{"@type":"Question","name":"Dove fare la terapia con Mounjaro a Sassari?","acceptedAnswer":{"@type":"Answer","text":"A Sassari, Bio-Clinic (Via Renzo Mossa 23) offre il percorso SLIM CARE con Mounjaro, supervisionato da endocrinologi specializzati. Il percorso include valutazione iniziale, prescrizione medica, monitoraggio con tecnologia VisBody 3D, analisi del sangue e supporto continuo. Per prenotare una consulenza: telefono 079 956 1332, WhatsApp o prenotazione online sul sito bio-clinic.it."}},{"@type":"Question","name":"Mounjaro è disponibile in Italia?","acceptedAnswer":{"@type":"Answer","text":"Sì, Mounjaro (Tirzepatide) è stato approvato in Italia dall'AIFA ed è disponibile con prescrizione medica. Per l'indicazione obesità/sovrappeso, richiede prescrizione specialistica (endocrinologo, diabetologo, internista). Non è attualmente rimborsato dal SSN per l'obesità, quindi è a carico del paziente. Bio-Clinic a Sassari offre consulenze specialistiche per la prescrizione di Mounjaro."}},{"@type":"Question","name":"Posso prendere Mounjaro senza ricetta?","acceptedAnswer":{"@type":"Answer","text":"No, Mounjaro richiede obbligatoriamente prescrizione medica specialistica. Non è possibile acquistarlo senza ricetta, né è sicuro farlo. L'automedicazione con farmaci come Tirzepatide può essere pericolosa. È fondamentale una valutazione medica per escludere controindicazioni, stabilire il dosaggio corretto e monitorare eventuali effetti collaterali. Bio-Clinic offre consulenze specialistiche per valutare l'idoneità al trattamento."}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://bio-clinic.it/"},{"@type":"ListItem","position":2,"name":"Slim Care Medical","item":"https://bio-clinic.it/pages/slim-care.html"},{"@type":"ListItem","position":3,"name":"Mounjaro (Tirzepatide) Sassari","item":"https://bio-clinic.it/mounjaro-tirzepatide-sassari/"}]},{"@type":"WebSite","@id":"https://bio-clinic.it/#website","url":"https://bio-clinic.it","name":"Bio-Clinic Sassari","publisher":{"@id":"https://bio-clinic.it/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://bio-clinic.it/search?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"OfferCatalog","@id":"https://bio-clinic.it/mounjaro-tirzepatide-sassari/#services","name":"Servizi di Terapia Mounjaro Bio-Clinic Sassari","itemListElement":[{"@type":"MedicalProcedure","name":"Visita Mounjaro Iniziale","offers":{"@type":"Offer","price":"250","priceCurrency":"EUR","availability":"https://schema.org/InStock"}},{"@type":"MedicalProcedure","name":"Follow-up Mensile","offers":{"@type":"Offer","price":"120","priceCurrency":"EUR","availability":"https://schema.org/InStock"}},{"@type":"MedicalProcedure","name":"Profilo Metabolico","offers":{"@type":"Offer","price":"60","priceCurrency":"EUR","availability":"https://schema.org/InStock"}},{"@type":"MedicalProcedure","name":"Ecografia Tiroidea","offers":{"@type":"Offer","price":"80","priceCurrency":"EUR","availability":"https://schema.org/InStock"}},{"@type":"MedicalProcedure","name":"Piano Nutrizionale","offers":{"@type":"Offer","price":"100","priceCurrency":"EUR","availability":"https://schema.org/InStock"}},{"@type":"MedicalProcedure","name":"Pacchetto 3 Mesi","offers":{"@type":"Offer","price":"600","priceCurrency":"EUR","availability":"https://schema.org/InStock"}}]},{"@type":"MedicalSpecialty","@id":"https://bio-clinic.it/mounjaro-tirzepatide-sassari/#specialty","name":"Endocrinologia"},{"@type":["Person","Physician"],"@id":"https://bio-clinic.it/equipe/carlo-burrai/#physician","name":"Dr. Carlo Burrai","url":"https://bio-clinic.it/equipe/carlo-burrai/","medicalSpecialty":{"@type":"MedicalSpecialty","name":"Endocrinologia"},"description":"Endocrinologo e Pediatra specializzato in patologie tiroidee e metaboliche pediatriche.","memberOf":{"@id":"https://bio-clinic.it/#organization"}},{"@type":["Person","Physician"],"@id":"https://bio-clinic.it/equipe/fabrizia-caucci/#physician","name":"Dott.ssa Fabrizia Caucci","url":"https://bio-clinic.it/equipe/fabrizia-caucci/","medicalSpecialty":{"@type":"MedicalSpecialty","name":"Endocrinologia"},"description":"Diabetologa ed Endocrinologa specializzata in diabete e patologie metaboliche. Responsabile percorsi Mounjaro.","memberOf":{"@id":"https://bio-clinic.it/#organization"}},{"@type":"AggregateOffer","lowPrice":"80.0","highPrice":"120.0","priceCurrency":"EUR","offerCount":"2"}]}</script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://bio-clinic.it/mounjaro-tirzepatide-sassari/#webpage",
+      "url": "https://bio-clinic.it/mounjaro-tirzepatide-sassari/",
+      "name": "Mounjaro (Tirzepatide) Sassari - Trattamento Medico Obesità",
+      "description": "Guida completa al trattamento con Mounjaro (Tirzepatide) per obesità e sovrappeso a Sassari. Informazioni mediche validate, efficacia clinica, effetti collaterali e percorso terapeutico.",
+      "inLanguage": "it-IT",
+      "isPartOf": {
+        "@id": "https://bio-clinic.it/#website"
+      },
+      "about": {
+        "@id": "https://bio-clinic.it/mounjaro-tirzepatide-sassari/#drug"
+      },
+      "mainEntity": {
+        "@id": "https://bio-clinic.it/mounjaro-tirzepatide-sassari/#drug"
+      },
+      "author": {
+        "@id": "https://bio-clinic.it/#organization"
+      },
+      "reviewedBy": {
+        "@id": "https://bio-clinic.it/#organization"
+      },
+      "lastReviewed": "2026-02-03",
+      "datePublished": "2024-06-01",
+      "dateModified": "2026-02-27",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".ai-summary", "h1", ".hero-subtitle", ".faq-answer"]
+      },
+      "medicalAudience": {
+        "@type": "MedicalAudience",
+        "audienceType": "Patient",
+        "healthCondition": {
+          "@type": "MedicalCondition",
+          "name": "Obesità"
+        }
+      },
+      "specialty": {
+        "@type": "MedicalSpecialty",
+        "name": "Endocrinologia"
+      }
+    },
+    {
+      "@type": "Drug",
+      "@id": "https://bio-clinic.it/mounjaro-tirzepatide-sassari/#drug",
+      "name": "Mounjaro",
+      "alternateName": [
+        "Tirzepatide",
+        "Zepbound"
+      ],
+      "activeIngredient": "Tirzepatide",
+      "drugClass": {
+        "@type": "DrugClass",
+        "name": "Agonisti del recettore GLP-1/GIP"
+      },
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "Eli Lilly and Company",
+        "url": "https://www.lilly.com"
+      },
+      "administrationRoute": "Iniezione sottocutanea",
+      "dosageForm": "Penna preriempita",
+      "availableStrength": [
+        {
+          "@type": "DrugStrength",
+          "activeIngredient": "Tirzepatide",
+          "strengthValue": "2.5",
+          "strengthUnit": "mg"
+        },
+        {
+          "@type": "DrugStrength",
+          "activeIngredient": "Tirzepatide",
+          "strengthValue": "5",
+          "strengthUnit": "mg"
+        },
+        {
+          "@type": "DrugStrength",
+          "activeIngredient": "Tirzepatide",
+          "strengthValue": "7.5",
+          "strengthUnit": "mg"
+        },
+        {
+          "@type": "DrugStrength",
+          "activeIngredient": "Tirzepatide",
+          "strengthValue": "10",
+          "strengthUnit": "mg"
+        },
+        {
+          "@type": "DrugStrength",
+          "activeIngredient": "Tirzepatide",
+          "strengthValue": "12.5",
+          "strengthUnit": "mg"
+        },
+        {
+          "@type": "DrugStrength",
+          "activeIngredient": "Tirzepatide",
+          "strengthValue": "15",
+          "strengthUnit": "mg"
+        }
+      ],
+      "mechanismOfAction": "Tirzepatide è un agonista duale dei recettori GLP-1 (glucagon-like peptide-1) e GIP (glucose-dependent insulinotropic polypeptide). Agisce riducendo l'appetito, rallentando lo svuotamento gastrico e migliorando il metabolismo del glucosio.",
+      "prescriptionStatus": "Prescrizione medica obbligatoria",
+      "legalStatus": {
+        "@type": "DrugLegalStatus",
+        "applicableLocation": {
+          "@type": "Country",
+          "name": "Italia"
+        }
+      },
+      "warning": "Richiede prescrizione medica specialistica. Non adatto a pazienti con storia personale o familiare di carcinoma midollare della tiroide o MEN2.",
+      "clinicalPharmacology": "Emivita: circa 5 giorni. Somministrazione: una volta a settimana. Picco di concentrazione: 8-72 ore."
+    },
+    {
+      "@type": "MedicalTherapy",
+      "@id": "https://bio-clinic.it/mounjaro-tirzepatide-sassari/#therapy",
+      "name": "Percorso SLIM CARE con Mounjaro",
+      "alternateName": "Terapia dimagrante con Tirzepatide Sassari",
+      "description": "Percorso medico di 3 mesi per il trattamento dell'obesità con Mounjaro (Tirzepatide). Include valutazione endocrinologica, prescrizione farmaco, monitoraggio VisBody 3D, analisi ematiche e supporto nutrizionale.",
+      "relevantSpecialty": [
+        {
+          "@type": "MedicalSpecialty",
+          "name": "Endocrinologia"
+        },
+        {
+          "@type": "MedicalSpecialty",
+          "name": "Nutrizione Clinica"
+        }
+      ],
+      "studyDesign": "Trial clinici SURMOUNT-1, SURMOUNT-2, SURMOUNT-3, SURMOUNT-4",
+      "outcome": "Perdita peso media 15-22% in 72 settimane (studio SURMOUNT-1)",
+      "drug": {
+        "@id": "https://bio-clinic.it/mounjaro-tirzepatide-sassari/#drug"
+      },
+      "contraindication": [
+        "Carcinoma midollare della tiroide",
+        "Neoplasia endocrina multipla tipo 2 (MEN2)",
+        "Gravidanza e allattamento",
+        "Pancreatite acuta in atto",
+        "Ipersensibilità al principio attivo"
+      ],
+      "seriousAdverseOutcome": [
+        "Pancreatite (rara)",
+        "Ipoglicemia (in combinazione con insulina/sulfoniluree)",
+        "Reazioni nel sito di iniezione"
+      ],
+      "typicalAgeRange": "Adulti ≥18 anni",
+      "provider": {
+        "@id": "https://bio-clinic.it/#organization"
+      }
+    },
+    {
+      "@type": [
+        "MedicalClinic",
+        "MedicalBusiness",
+        "LocalBusiness"
+      ],
+      "@id": "https://bio-clinic.it/#organization",
+      "name": "Bio-Clinic Sassari",
+      "alternateName": "Bio-Clinic Poliambulatorio",
+      "url": "https://bio-clinic.it",
+      "logo": "https://bio-clinic.it/images/logo-bioclinic.png",
+      "image": "https://bio-clinic.it/images/bio-clinic-sassari.jpg",
+      "telephone": "+39 079 956 1332",
+      "email": "info@bio-clinic.it",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Renzo Mossa, 23",
+        "addressLocality": "Sassari",
+        "addressRegion": "SS",
+        "postalCode": "07100",
+        "addressCountry": "IT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.7267,
+        "longitude": 8.5592
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "07:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:00",
+          "closes": "14:00"
+        }
+      ],
+      "priceRange": "€€",
+      "paymentAccepted": [
+        "Cash",
+        "Credit Card",
+        "Debit Card"
+      ],
+      "currenciesAccepted": "EUR",
+      "medicalSpecialty": [
+        "Endocrinologia",
+        "Nutrizione Clinica",
+        "Medicina Interna"
+      ],
+      "availableService": {
+        "@id": "https://bio-clinic.it/mounjaro-tirzepatide-sassari/#therapy"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "3214",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Accreditamento Regionale Sardegna"
+        }
+      ],
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Sassari",
+          "sameAs": "https://it.wikipedia.org/wiki/Sassari"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Provincia di Sassari",
+          "sameAs": "https://it.wikipedia.org/wiki/Provincia_di_Sassari"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Nord Sardegna"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Prestazioni Endocrinologia Bio-Clinic",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "MedicalProcedure",
+              "name": "Visita Endocrinologica Mounjaro"
+            },
+            "price": "120.00",
+            "priceCurrency": "EUR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "MedicalProcedure",
+              "name": "Controllo Follow-up Mounjaro"
+            },
+            "price": "80.00",
+            "priceCurrency": "EUR"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://bio-clinic.it/mounjaro-tirzepatide-sassari/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Cos'è Mounjaro (Tirzepatide)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mounjaro è il nome commerciale del Tirzepatide, un farmaco iniettabile di Eli Lilly approvato per il trattamento dell'obesità e del diabete tipo 2. È il primo agonista duale GLP-1/GIP, con un meccanismo d'azione innovativo che lo rende più efficace rispetto ai farmaci GLP-1 puri come Wegovy (Semaglutide). Si assume una volta a settimana tramite iniezione sottocutanea."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto peso si perde con Mounjaro?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Negli studi clinici SURMOUNT, i pazienti trattati con Mounjaro hanno perso in media il 15-22% del peso corporeo in 72 settimane. Ad esempio, una persona di 100 kg può perdere 15-22 kg. I risultati variano in base al dosaggio (2.5-15 mg), all'aderenza alla terapia e allo stile di vita. Nel percorso SLIM CARE di Bio-Clinic, la perdita media è di 12-18 kg in 3 mesi."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Mounjaro è meglio di Wegovy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gli studi comparativi mostrano che Mounjaro (Tirzepatide) produce una perdita di peso superiore rispetto a Wegovy (Semaglutide): 15-22% vs 10-15% del peso corporeo. Questo perché Mounjaro agisce su due recettori (GLP-1 e GIP) invece di uno solo. Tuttavia, la scelta tra i due farmaci dipende dalla valutazione medica individuale, considerando efficacia, tollerabilità e condizioni cliniche del paziente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Chi può usare Mounjaro per dimagrire?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mounjaro è indicato per adulti con: 1) Obesità (BMI ≥ 30 kg/m²), oppure 2) Sovrappeso (BMI ≥ 27 kg/m²) con almeno una comorbidità correlata al peso come diabete tipo 2, ipertensione, dislipidemia o apnea ostruttiva del sonno. È controindicato in gravidanza, allattamento, e in pazienti con storia di carcinoma midollare della tiroide o MEN2. Richiede sempre prescrizione medica specialistica."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quali sono gli effetti collaterali di Mounjaro?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gli effetti collaterali più comuni di Mounjaro sono gastrointestinali e generalmente transitori: nausea (20-30%), diarrea, vomito, costipazione, dolore addominale. Questi effetti tendono a diminuire con la titolazione graduale del dosaggio. Effetti collaterali rari ma seri includono pancreatite, colecistite, ipoglicemia (soprattutto con insulina/sulfoniluree). Il monitoraggio medico regolare è essenziale per gestire eventuali effetti avversi."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto costa Mounjaro a Sassari?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Il costo del farmaco Mounjaro varia in base al dosaggio (circa €150-300/mese). Bio-Clinic offre il percorso SLIM CARE che include: farmaco per 3 mesi, 3 scansioni VisBody 3D, 2 prelievi ematici completi, visite endocrinologiche di controllo e supporto nutrizionale. Per informazioni sui costi e per prenotare una consulenza, contattare Bio-Clinic al numero 079 956 1332."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come si assume Mounjaro?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mounjaro si somministra una volta a settimana, lo stesso giorno ogni settimana, tramite iniezione sottocutanea nell'addome, coscia o parte superiore del braccio. Si inizia con la dose più bassa (2.5 mg) per 4 settimane, poi si aumenta gradualmente fino alla dose efficace (5-15 mg). L'iniezione può essere fatta in qualsiasi momento della giornata, con o senza cibo. La penna preriempita è facile da usare e monouso."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Dove fare la terapia con Mounjaro a Sassari?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Sassari, Bio-Clinic (Via Renzo Mossa 23) offre il percorso SLIM CARE con Mounjaro, supervisionato da endocrinologi specializzati. Il percorso include valutazione iniziale, prescrizione medica, monitoraggio con tecnologia VisBody 3D, analisi del sangue e supporto continuo. Per prenotare una consulenza: telefono 079 956 1332, WhatsApp o prenotazione online sul sito bio-clinic.it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Mounjaro è disponibile in Italia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì, Mounjaro (Tirzepatide) è stato approvato in Italia dall'AIFA ed è disponibile con prescrizione medica. Per l'indicazione obesità/sovrappeso, richiede prescrizione specialistica (endocrinologo, diabetologo, internista). Non è attualmente rimborsato dal SSN per l'obesità, quindi è a carico del paziente. Bio-Clinic a Sassari offre consulenze specialistiche per la prescrizione di Mounjaro."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso prendere Mounjaro senza ricetta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, Mounjaro richiede obbligatoriamente prescrizione medica specialistica. Non è possibile acquistarlo senza ricetta, né è sicuro farlo. L'automedicazione con farmaci come Tirzepatide può essere pericolosa. È fondamentale una valutazione medica per escludere controindicazioni, stabilire il dosaggio corretto e monitorare eventuali effetti collaterali. Bio-Clinic offre consulenze specialistiche per valutare l'idoneità al trattamento."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bio-clinic.it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Slim Care Medical",
+          "item": "https://bio-clinic.it/pages/slim-care.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Mounjaro (Tirzepatide) Sassari",
+          "item": "https://bio-clinic.it/mounjaro-tirzepatide-sassari/"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://bio-clinic.it/#website",
+      "url": "https://bio-clinic.it",
+      "name": "Bio-Clinic Sassari",
+      "publisher": {
+        "@id": "https://bio-clinic.it/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://bio-clinic.it/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "OfferCatalog",
+      "@id": "https://bio-clinic.it/mounjaro-tirzepatide-sassari/#services",
+      "name": "Servizi di Terapia Mounjaro Bio-Clinic Sassari",
+      "itemListElement": [
+        {
+          "@type": "MedicalProcedure",
+          "name": "Visita Mounjaro Iniziale",
+          "offers": {
+            "@type": "Offer",
+            "price": "250",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock"
+          }
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Follow-up Mensile",
+          "offers": {
+            "@type": "Offer",
+            "price": "120",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock"
+          }
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Profilo Metabolico",
+          "offers": {
+            "@type": "Offer",
+            "price": "60",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock"
+          }
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Ecografia Tiroidea",
+          "offers": {
+            "@type": "Offer",
+            "price": "80",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock"
+          }
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Piano Nutrizionale",
+          "offers": {
+            "@type": "Offer",
+            "price": "100",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock"
+          }
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Pacchetto 3 Mesi",
+          "offers": {
+            "@type": "Offer",
+            "price": "600",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MedicalSpecialty",
+      "@id": "https://bio-clinic.it/mounjaro-tirzepatide-sassari/#specialty",
+      "name": "Endocrinologia"
+    },
+    {
+      "@type": [
+        "Person",
+        "Physician"
+      ],
+      "@id": "https://bio-clinic.it/equipe/carlo-burrai/#physician",
+      "name": "Dr. Carlo Burrai",
+      "url": "https://bio-clinic.it/equipe/carlo-burrai/",
+      "medicalSpecialty": {
+        "@type": "MedicalSpecialty",
+        "name": "Endocrinologia"
+      },
+      "description": "Endocrinologo e Pediatra specializzato in patologie tiroidee e metaboliche pediatriche.",
+      "memberOf": {
+        "@id": "https://bio-clinic.it/#organization"
+      }
+    },
+    {
+      "@type": [
+        "Person",
+        "Physician"
+      ],
+      "@id": "https://bio-clinic.it/equipe/fabrizia-caucci/#physician",
+      "name": "Dott.ssa Fabrizia Caucci",
+      "url": "https://bio-clinic.it/equipe/fabrizia-caucci/",
+      "medicalSpecialty": {
+        "@type": "MedicalSpecialty",
+        "name": "Endocrinologia"
+      },
+      "description": "Diabetologa ed Endocrinologa specializzata in diabete e patologie metaboliche. Responsabile percorsi Mounjaro.",
+      "memberOf": {
+        "@id": "https://bio-clinic.it/#organization"
+      }
+    },
+    {
+      "@type": "AggregateOffer",
+      "lowPrice": "80.0",
+      "highPrice": "120.0",
+      "priceCurrency": "EUR",
+      "offerCount": "2"
+    }
+  ],
+  "dateModified": "2026-02-28"
+}
+</script>
 <!-- CGE: Clinical Growth Engine v1.0 -->
 <script>
 window.bcDataLayer = {"page_type": "landing", "specialty": "none", "service_name": "none", "physician_name": "none", "price_range": "none", "content_group": "slim-care", "funnel_stage": "consideration"};
 </script>
 <script src="/js/cge-tracking.js?v=CGE_v4_20260217" defer></script>
 <!-- End CGE -->
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"QAPage","@id":"https://bio-clinic.it/mounjaro-tirzepatide-sassari/#qapage","mainEntity":[{"@type":"Question","name":"Cos'è Mounjaro (Tirzepatide)?","answerCount":1,"acceptedAnswer":{"@type":"Answer","text":"Mounjaro è il nome commerciale del Tirzepatide, un farmaco iniettabile di Eli Lilly approvato per il trattamento dell'obesità e del diabete tipo 2. È il primo agonista duale GLP-1/GIP, con un meccanismo d'azione innovativo che lo rende più efficace rispetto ai farmaci GLP-1 puri come Wegovy (Semaglutide). Si assume una volta a settimana tramite iniezione sottocutanea.","upvoteCount":0}},{"@type":"Question","name":"Quanto peso si perde con Mounjaro?","answerCount":1,"acceptedAnswer":{"@type":"Answer","text":"Negli studi clinici SURMOUNT, i pazienti trattati con Mounjaro hanno perso in media il 15-22% del peso corporeo in 72 settimane. Ad esempio, una persona di 100 kg può perdere 15-22 kg. I risultati variano in base al dosaggio (2.5-15 mg), all'aderenza alla terapia e allo stile di vita. Nel percorso SLIM CARE di Bio-Clinic, la perdita media è di 12-18 kg in 3 mesi.","upvoteCount":0}},{"@type":"Question","name":"Mounjaro è meglio di Wegovy?","answerCount":1,"acceptedAnswer":{"@type":"Answer","text":"Gli studi comparativi mostrano che Mounjaro (Tirzepatide) produce una perdita di peso superiore rispetto a Wegovy (Semaglutide): 15-22% vs 10-15% del peso corporeo. Questo perché Mounjaro agisce su due recettori (GLP-1 e GIP) invece di uno solo. Tuttavia, la scelta tra i due farmaci dipende dalla valutazione medica individuale, considerando efficacia, tollerabilità e condizioni cliniche del paziente.","upvoteCount":0}},{"@type":"Question","name":"Chi può usare Mounjaro per dimagrire?","answerCount":1,"acceptedAnswer":{"@type":"Answer","text":"Mounjaro è indicato per adulti con: 1) Obesità (BMI ≥ 30 kg/m²), oppure 2) Sovrappeso (BMI ≥ 27 kg/m²) con almeno una comorbidità correlata al peso come diabete tipo 2, ipertensione, dislipidemia o apnea ostruttiva del sonno. È controindicato in gravidanza, allattamento, e in pazienti con storia di carcinoma midollare della tiroide o MEN2. Richiede sempre prescrizione medica specialistica.","upvoteCount":0}},{"@type":"Question","name":"Quali sono gli effetti collaterali di Mounjaro?","answerCount":1,"acceptedAnswer":{"@type":"Answer","text":"Gli effetti collaterali più comuni di Mounjaro sono gastrointestinali e generalmente transitori: nausea (20-30%), diarrea, vomito, costipazione, dolore addominale. Questi effetti tendono a diminuire con la titolazione graduale del dosaggio. Effetti collaterali rari ma seri includono pancreatite, colecistite, ipoglicemia (soprattutto con insulina/sulfoniluree). Il monitoraggio medico regolare è essenziale per gestire eventuali effetti avversi.","upvoteCount":0}}]}</script>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Vai al contenuto principale</a>
@@ -144,98 +671,145 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
     <!-- HEADER -->
 <header class="header">
-<div class="container">
-<a class="logo" href="/" title="Torna alla Homepage Bio-Clinic">
-<img alt="Bio-Clinic Sassari - Poliambulatorio Medico" height="60" loading="eager" src="/images/logo-bioclinic.png" width="180"/>
-</a>
-<nav aria-label="Navigazione principale" class="nav">
-<ul class="nav-list">
-<li class="nav-item">
-<a class="nav-link" href="/" title="Torna alla Homepage Bio-Clinic">Home</a>
-</li>
-<li class="nav-item">
-<a aria-expanded="false" aria-haspopup="true" class="nav-link active" href="#" title="Percorsi Slim Care">Slim Care Medical</a>
-<div class="nav-dropdown" role="menu">
-<a href="/slim-care/" role="menuitem" title="Slim Care - Percorso Dimagrimento">
-<span style="color: #00A651;">💚</span> Slim Care
-              </a>
-<a href="/slim-care-donna/" role="menuitem" title="Slim Care Donna - Dimagrimento Femminile">
-<span style="color: #E91E8C;">💗</span> Slim Care Donna
-              </a>
-<hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;"/>
-<a href="/screening-inps/" role="menuitem" style="background: #E8F4FD;" title="Screening INPS Sardegna 2025-2026">
-<span>🏆</span> <strong>Screening INPS</strong> <span style="background: #0066CC; color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 10px; margin-left: 4px;">NEW</span>
-</a>
-<a href="/convenzioni/" role="menuitem" style="background: #F0FDF4;" title="Convenzioni Fondi Sanitari">
-<span>🏥</span> <strong>Convenzioni Fondi</strong>
-</a>
-</div>
-</li>
-<li class="nav-item">
-<a aria-expanded="false" aria-haspopup="true" class="nav-link" href="#" title="Laboratorio Analisi">Laboratorio</a>
-<div class="nav-dropdown" role="menu">
-<a href="/laboratorio/" role="menuitem" title="Laboratorio Analisi - 1.136 Esami">
-<span>🔬</span> Laboratorio Analisi
-              </a>
-<a href="/genetica/" role="menuitem" style="background: #EEF2FF;" title="Genetica e DNA">
-<span>🧬</span> <strong>Genetica &amp; DNA</strong> <span style="background: #6366f1; color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 10px; margin-left: 4px;">NEW</span>
-</a>
-<hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;"/>
-<a href="/preparazione-esami/" role="menuitem" title="Preparazione Esami">
-<span>📋</span> Preparazione Esami
-              </a>
-</div>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="/medicina-del-lavoro/" title="Medicina del Lavoro per Aziende">Aziende</a>
-</li>
-<li class="nav-item">
-<a aria-expanded="false" aria-haspopup="true" class="nav-link" href="#" title="Salute Donna e PMA">Donna &amp; PMA</a>
-<div class="nav-dropdown" role="menu">
-<a href="/ginecologia/" role="menuitem" title="Ginecologia e Ostetricia">
-<span>👩‍⚕️</span> Ginecologia
-              </a>
-<a href="/pma-fertilita/" role="menuitem" title="PMA e Fertilità">
-<span>👶</span> PMA / Fertilità
-              </a>
-</div>
-</li>
-<li class="nav-item">
-<a aria-expanded="false" aria-haspopup="true" class="nav-link" href="#" title="Specialità Mediche">Specialisti</a>
-<div class="nav-dropdown nav-dropdown-wide" role="menu">
-<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; min-width: 320px;">
-<a href="/cardiologia/" role="menuitem" title="Cardiologia">❤️ Cardiologia</a>
-<a href="/endocrinologia/" role="menuitem" title="Endocrinologia">🦋 Endocrinologia</a>
-<a href="/dermatologia/" role="menuitem" title="Dermatologia">🩺 Dermatologia</a>
-<a href="/neurologia/" role="menuitem" title="Neurologia">🧠 Neurologia</a>
-</div>
-<hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;"/>
-<a href="/specialita/" role="menuitem" style="font-weight: 600; color: var(--primary);" title="Tutte le Specialità">
-                Tutte le Specialità →
-              </a>
-<a href="/equipe/" role="menuitem" style="font-weight: 600;" title="Équipe Medica">
-                👨‍⚕️ Équipe Medica (48 Specialisti)
-              </a>
-</div>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="/contatti/" title="Contatti e Orari">Contatti</a>
-</li>
-</ul>
-<a class="btn btn-primary nav-cta" href="tel:+390799561332" style="background: #00704A; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; margin-left: 1rem;" title="Chiama per prenotare">
-<svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16">
-<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path>
-</svg>
-          Prenota
-        </a>
-</nav>
-<button aria-label="Apri menu" class="menu-toggle"><span></span><span></span><span></span></button>
-</div>
+  <div class="container">
+    <!-- Logo -->
+    <a href="/" class="logo" title="Torna alla Homepage Bio-Clinic">
+      <img src="/images/logo-bioclinic.png" alt="Bio-Clinic Sassari - Poliambulatorio Medico" width="180" height="60" loading="eager">
+    </a>
+    
+    <!-- Navigazione Desktop -->
+    <nav class="nav" aria-label="Navigazione principale">
+      <ul class="nav-list">
+        <!-- HOME -->
+        <li class="nav-item">
+          <a href="/" class="nav-link" title="Torna alla Homepage Bio-Clinic">Home</a>
+        </li>
+        
+        <!-- SLIM CARE MEDICAL -->
+        <li class="nav-item">
+          <a href="#" class="nav-link " title="Percorsi Slim Care" aria-haspopup="true" aria-expanded="false">Slim Care Medical</a>
+          <div class="nav-dropdown" role="menu">
+            <a href="/slim-care/" title="Slim Care - Percorso Dimagrimento" role="menuitem">
+              <span style="color: #00A651;">💚</span> Slim Care
+            </a>
+            <a href="/slim-care-donna/" title="Slim Care Donna - Dimagrimento Femminile" role="menuitem">
+              <span style="color: #E91E8C;">💗</span> Slim Care Donna
+            </a>
+            <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
+            <a href="/screening-inps/" title="Screening INPS Sardegna 2025-2026" role="menuitem" style="background: #E8F4FD;">
+              <span>🏆</span> <strong>Screening INPS</strong> <span style="background: #0066CC; color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 10px; margin-left: 4px;">NEW</span>
+            </a>
+            <a href="/convenzioni/" title="Convenzioni Fondi Sanitari" role="menuitem" style="background: #F0FDF4;">
+              <span>🏥</span> <strong>Convenzioni Fondi</strong>
+            </a>
+          </div>
+        </li>
+        
+        <!-- LABORATORIO -->
+        <li class="nav-item">
+          <a href="#" class="nav-link" title="Laboratorio Analisi" aria-haspopup="true" aria-expanded="false">Laboratorio</a>
+          <div class="nav-dropdown" role="menu">
+            <a href="/laboratorio/" title="Laboratorio Analisi - 1.136 Esami" role="menuitem">
+              <span>🔬</span> Laboratorio Analisi
+            </a>
+            <a href="/genetica/" title="Genetica e DNA" role="menuitem" style="background: #EEF2FF;">
+              <span>🧬</span> <strong>Genetica & DNA</strong> <span style="background: #6366f1; color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 10px; margin-left: 4px;">NEW</span>
+            </a>
+            <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
+            <a href="/preparazione-esami/" title="Preparazione Esami" role="menuitem">
+              <span>📋</span> Preparazione Esami
+            </a>
+          </div>
+        </li>
+        
+        <!-- AZIENDE -->
+        <li class="nav-item">
+          <a href="/medicina-del-lavoro/" class="nav-link" title="Medicina del Lavoro per Aziende">Aziende</a>
+        </li>
+        
+        <!-- DONNA & PMA -->
+        <li class="nav-item">
+          <a href="#" class="nav-link " title="Salute Donna e PMA" aria-haspopup="true" aria-expanded="false">Donna & PMA</a>
+          <div class="nav-dropdown" role="menu">
+            <a href="/ginecologia/" title="Ginecologia e Ostetricia" role="menuitem">
+              <span>👩‍⚕️</span> Ginecologia
+            </a>
+            <a href="/pma-fertilita/" title="PMA e Fertilità" role="menuitem">
+              <span>👶</span> PMA / Fertilità
+            </a>
+            <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
+            <span style="font-size: 0.7rem; color: #888; padding: 0.25rem 0.75rem; display: block;">Diagnostica Avanzata (Prof. Dessole)</span>
+            <a href="/ginecologia/isteroscopia/" title="Isteroscopia Diagnostica" role="menuitem">
+              <span>🔍</span> Isteroscopia Diagnostica
+            </a>
+            <a href="/ginecologia/isterosalpingografia/" title="Isterosalpingografia - Pervietà Tubarica" role="menuitem">
+              <span>🩺</span> Isterosalpingografia (Tube)
+            </a>
+          </div>
+        </li>
+        
+        <!-- SPECIALISTI -->
+        <li class="nav-item">
+          <a href="#" class="nav-link " title="Specialità Mediche" aria-haspopup="true" aria-expanded="false">Specialisti</a>
+          <div class="nav-dropdown nav-dropdown-wide" role="menu">
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; min-width: 320px;">
+              <a href="/cardiologia/" title="Cardiologia" role="menuitem">❤️ Cardiologia</a>
+              <a href="/endocrinologia/" title="Endocrinologia" role="menuitem">🦋 Endocrinologia</a>
+              <a href="/dermatologia/" title="Dermatologia" role="menuitem">🩺 Dermatologia</a>
+              <a href="/neurologia/" title="Neurologia" role="menuitem">🧠 Neurologia</a>
+              <a href="/oculistica/" title="Oculistica" role="menuitem">👁️ Oculistica</a>
+              <a href="/ortopedia/" title="Ortopedia" role="menuitem">🦴 Ortopedia</a>
+            </div>
+            <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
+            <a href="/specialita/" title="Tutte le Specialità" role="menuitem" style="font-weight: 600; color: var(--primary);">
+              Tutte le Specialità →
+            </a>
+            <a href="/equipe/" title="Équipe Medica" role="menuitem" style="font-weight: 600;">
+              👨‍⚕️ Équipe Medica (48 Specialisti)
+            </a>
+          </div>
+        </li>
+        
+        <!-- MEDICAL SHOP -->
+        <li class="nav-item">
+          <a href="/shop/" class="nav-link " title="Medical Shop - Dispositivi Medici">
+            Medical Shop
+            <span style="background: #E91E8C; color: white; font-size: 0.65rem; padding: 0.15rem 0.4rem; border-radius: 10px; margin-left: 0.3rem; vertical-align: middle;">NEW</span>
+          </a>
+        </li>
+        
+        <!-- SALUTE -->
+        <li class="nav-item">
+          <a href="/salute/" class="nav-link" title="Guida alla Salute - Articoli Medici">Salute</a>
+        </li>
+        
+        <!-- CONTATTI -->
+        <li class="nav-item">
+          <a href="/contatti/" class="nav-link " title="Contatti e Orari">Contatti</a>
+        </li>
+      </ul>
+      
+      <!-- PULSANTE PRENOTA (Verde Scuro) -->
+      <a href="tel:+390799561332" class="btn btn-primary nav-cta" title="Chiama per prenotare" style="background: #00704A; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; margin-left: 1rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        Prenota
+      </a>
+    </nav>
+    
+    <!-- Mobile Toggle -->
+    <button class="menu-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
 </header>
 <div aria-hidden="true" class="mobile-overlay"></div>
 <nav aria-hidden="true" aria-label="Menu mobile" class="mobile-nav" id="mobile-nav">
 <div class="mobile-nav-header">
-<img alt="Bio-Clinic" height="47" src="/images/logo-bioclinic.png" width="140"/>
+<img loading="eager" alt="Bio-Clinic" height="47" src="/images/logo-bioclinic.png" width="140"/>
 <button aria-label="Chiudi menu" class="mobile-nav-close">✕</button>
 </div>
 <ul class="mobile-nav-list">
@@ -693,33 +1267,89 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="footer-grid">
         <div>
           <div class="footer-brand">
-            <img src="/images/logo-bioclinic.png" alt="Bio-Clinic Sassari" style="height: 45px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;" width="120" height="45" loading="lazy">
+            <img loading="lazy" src="/images/logo-bioclinic.png" alt="Bio-Clinic" style="height: 45px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;">
           </div>
-          <p class="footer-description">Poliambulatorio medico a Sassari con 31 specialità, 67 medici e oltre 1.840 prestazioni.</p>
+          <p class="footer-description">
+            Poliambulatorio medico a Sassari con 31 specialità, 67 medici e oltre 1.840 prestazioni. 
+            Centro di eccellenza per Slim Care, Ginecologia e Cardiologia.
+          </p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/bioclinicss" target="_blank" rel="noopener" aria-label="Facebook" title="Visita la pagina Facebook di Bio-Clinic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/bioclinicss/" target="_blank" rel="noopener" aria-label="Instagram" title="Visita il profilo Instagram di Bio-Clinic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+          </div>
         </div>
+        
+        <div>
+          <h4 class="footer-title">Percorsi</h4>
+          <ul class="footer-links">
+            <li><a href="/slim-care/" title="Scopri il percorso Slim Care">Slim Care</a></li>
+            <li><a href="/slim-care-donna/" title="Scopri Slim Care Donna">Slim Care Donna</a></li>
+            <li><a href="/pma-fertilita/" title="Scopri il percorso PMA e Fertilità">PMA / Fertilità</a></li>
+            <li><a href="/cardiologia/" title="Vai alla sezione Cardiologia">Cardiovascolare</a></li>
+            <li><a href="/convenzioni/" title="Convenzioni Fondi Sanitari">Convenzioni</a></li>
+            <li><a href="/prevenzione/" title="Check-Up e Prevenzione">Prevenzione</a></li>
+            <li><a href="/chi-siamo/" title="Chi Siamo - Bio-Clinic Sassari">Chi Siamo</a></li>
+          </ul>
+        </div>
+        
         <div>
           <h4 class="footer-title">Specialità</h4>
           <ul class="footer-links">
-            <li><a href="/ginecologia/">Ginecologia</a></li>
-            <li><a href="/cardiologia/">Cardiologia</a></li>
-            <li><a href="/endocrinologia/">Endocrinologia</a></li>
-            <li><a href="/laboratorio/">Laboratorio</a></li>
-            <li><a href="/specialita/">Tutte le Specialità</a></li>
+            <li><a href="/ginecologia/" title="Vai alla sezione Ginecologia">Ginecologia</a></li>
+            <li><a href="/cardiologia/" title="Vai alla sezione Cardiologia">Cardiologia</a></li>
+            <li><a href="/endocrinologia/" title="Vai alla sezione Endocrinologia">Endocrinologia</a></li>
+            <li><a href="/laboratorio/" title="Vai al Laboratorio Analisi">Laboratorio</a></li>
+            <li><a href="/specialita/" title="Vedi tutte le specialità">Tutte le Specialità</a></li>
+            <li><a href="/screening-inps-sardegna/" title="Screening INPS Sardegna">Screening INPS</a></li>
           </ul>
         </div>
+        
         <div>
           <h4 class="footer-title">Contatti</h4>
           <ul class="footer-contact">
-            <li>Via Renzo Mossa, 23 - 07100 Sassari</li>
-            <li><a href="tel:+390799561332">079 956 1332</a></li>
-            <li><a href="mailto:gestione@bio-clinic.it">gestione@bio-clinic.it</a></li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span>Via Renzo Mossa, 23<br>07100 Sassari (SS)</span>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <a href="tel:+390799561332" title="Chiama Bio-Clinic Sassari">079 956 1332</a>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              <a href="mailto:gestione@bio-clinic.it" title="Invia email a Bio-Clinic">gestione@bio-clinic.it</a>
+            </li>
           </ul>
         </div>
       </div>
+      
       <div class="footer-bottom">
-        <p>&copy; 2026 Bio Pharma S.r.l. - P.IVA 02869450904</p>
         <div>
-          <a href="/privacy/">Privacy Policy</a> | <a href="/cookie/">Cookie Policy</a>
+          <p>&copy; 2026 Bio Pharma S.r.l. - P.IVA 02869450904 - REA SS-211220</p>
+          <p>Direttore Sanitario: <a href="/equipe/salvatore-dessole/" class="physician-link" title="Vedi profilo Prof. Salvatore Dessole">Prof. Emerito Salvatore Dessole</a></p>
+        </div>
+        <div>
+          <a href="/privacy/" title="Leggi la Privacy Policy">Privacy Policy</a> | 
+          <a href="/cookie/" title="Leggi la Cookie Policy">Cookie Policy</a> |
+          <a href="/listino/" class="text-xs" title="Listino prezzi completo laboratorio analisi">Listino Prezzi Completo</a>
         </div>
       </div>
     </div>

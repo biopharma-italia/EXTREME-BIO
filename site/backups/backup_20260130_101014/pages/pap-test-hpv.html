@@ -17,109 +17,132 @@
     
     <!-- Schema.org MedicalProcedure -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "MedicalClinic",
-                "@id": "https://bio-clinic.it/#clinic",
-                "name": "Bio-Clinic Sassari",
-                "url": "https://bio-clinic.it",
-                "telephone": "+39 079 956 1332",
-                "address": {
-                    "@type": "PostalAddress",
-                    "streetAddress": "Via Renzo Mossa, 23",
-                    "addressLocality": "Sassari",
-                    "postalCode": "07100",
-                    "addressCountry": "IT"
-                }
-            },
-            {
-                "@type": "MedicalProcedure",
-                "@id": "https://bio-clinic.it/pages/pap-test-hpv.html#procedure",
-                "name": "Pap Test e HPV Test",
-                "alternateName": ["Pap Test", "HPV Test", "Screening Cervicale", "Test Papanicolaou"],
-                "description": "Il Pap Test è un esame citologico che analizza le cellule del collo dell'utero per identificare alterazioni pre-cancerose. L'HPV Test rileva la presenza del Papilloma Virus Umano, principale causa del tumore cervicale. Insieme costituiscono lo screening più efficace per la prevenzione del cancro cervicale.",
-                "procedureType": "https://schema.org/DiagnosticProcedure",
-                "howPerformed": "Durante la visita ginecologica, il medico preleva delicatamente cellule dalla cervice usando una spatola e uno spazzolino (cytobrush). Il campione viene analizzato in laboratorio. Per l'HPV Test, lo stesso campione può essere testato per la presenza del virus.",
-                "preparation": "Non avere rapporti sessuali nelle 48 ore precedenti. Non utilizzare lavande vaginali, ovuli o creme vaginali nei 2 giorni prima. Evitare il periodo mestruale. Non è necessario il digiuno.",
-                "followup": "I risultati sono disponibili in 7-10 giorni. In caso di Pap Test anomalo, può essere indicata una colposcopia. Per HPV positivo ad alto rischio con Pap Test negativo, si programma un controllo a 12 mesi.",
-                "bodyLocation": "Cervice uterina",
-                "relevantSpecialty": {
-                    "@type": "MedicalSpecialty",
-                    "name": "Ginecologia"
-                },
-                "availableService": {
-                    "@type": "MedicalClinic",
-                    "@id": "https://bio-clinic.it/#clinic"
-                },
-                "provider": {"@id": "https://bio-clinic.it/#clinic"}
-            },
-            {
-                "@type": "FAQPage",
-                "@id": "https://bio-clinic.it/pages/pap-test-hpv.html#faq",
-                "mainEntity": [
-                    {
-                        "@type": "Question",
-                        "name": "Ogni quanto fare il Pap Test?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Le linee guida raccomandano: dai 25 ai 30 anni Pap Test ogni 3 anni; dai 30 ai 64 anni HPV Test ogni 5 anni (o Pap Test ogni 3 anni); dopo i 64 anni lo screening può essere sospeso se gli ultimi test erano negativi."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Che differenza c'è tra Pap Test e HPV Test?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Il Pap Test analizza le cellule cervicali cercando alterazioni anomale (lesioni pre-cancerose). L'HPV Test cerca la presenza del virus HPV, causa del 99% dei tumori cervicali. L'HPV Test è più sensibile e rileva il rischio prima che si sviluppino lesioni."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Il Pap Test è doloroso?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "No, il Pap Test non è doloroso. Può causare un leggero fastidio o sensazione di pressione durante il prelievo, che dura pochi secondi. Rilassarsi aiuta a rendere l'esame più confortevole."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Posso fare il Pap Test durante il ciclo?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "No, è preferibile evitare il periodo mestruale perché il sangue può interferire con la lettura del campione. Idealmente, programmare l'esame 10-20 giorni dopo l'inizio dell'ultimo ciclo."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Cosa significa HPV positivo?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Significa che è presente un'infezione da Papilloma Virus. L'HPV è molto comune e nella maggior parte dei casi l'organismo lo elimina spontaneamente. Solo l'infezione persistente da ceppi ad alto rischio (16, 18) può, nel tempo, causare alterazioni cellulari. Per questo si eseguono controlli regolari."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Se sono vaccinata contro l'HPV devo fare comunque il Pap Test?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Sì, il vaccino protegge dai ceppi HPV più pericolosi ma non da tutti. Lo screening rimane importante anche per le donne vaccinate, anche se il rischio è significativamente ridotto."
-                        }
-                    }
-                ]
-            },
-            {
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bio-clinic.it/"},
-                    {"@type": "ListItem", "position": 2, "name": "Ginecologia", "item": "https://bio-clinic.it/pages/ginecologia.html"},
-                    {"@type": "ListItem", "position": 3, "name": "Pap Test e HPV Test", "item": "https://bio-clinic.it/pages/pap-test-hpv.html"}
-                ]
-            }
-        ]
+      "@type": "MedicalClinic",
+      "@id": "https://bio-clinic.it/#clinic",
+      "name": "Bio-Clinic Sassari",
+      "url": "https://bio-clinic.it",
+      "telephone": "+39 079 956 1332",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Renzo Mossa, 23",
+        "addressLocality": "Sassari",
+        "postalCode": "07100",
+        "addressCountry": "IT"
+      }
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://bio-clinic.it/pages/pap-test-hpv.html#procedure",
+      "name": "Pap Test e HPV Test",
+      "alternateName": [
+        "Pap Test",
+        "HPV Test",
+        "Screening Cervicale",
+        "Test Papanicolaou"
+      ],
+      "description": "Il Pap Test è un esame citologico che analizza le cellule del collo dell'utero per identificare alterazioni pre-cancerose. L'HPV Test rileva la presenza del Papilloma Virus Umano, principale causa del tumore cervicale. Insieme costituiscono lo screening più efficace per la prevenzione del cancro cervicale.",
+      "procedureType": "https://schema.org/DiagnosticProcedure",
+      "howPerformed": "Durante la visita ginecologica, il medico preleva delicatamente cellule dalla cervice usando una spatola e uno spazzolino (cytobrush). Il campione viene analizzato in laboratorio. Per l'HPV Test, lo stesso campione può essere testato per la presenza del virus.",
+      "preparation": "Non avere rapporti sessuali nelle 48 ore precedenti. Non utilizzare lavande vaginali, ovuli o creme vaginali nei 2 giorni prima. Evitare il periodo mestruale. Non è necessario il digiuno.",
+      "followup": "I risultati sono disponibili in 7-10 giorni. In caso di Pap Test anomalo, può essere indicata una colposcopia. Per HPV positivo ad alto rischio con Pap Test negativo, si programma un controllo a 12 mesi.",
+      "bodyLocation": "Cervice uterina",
+      "relevantSpecialty": {
+        "@type": "MedicalSpecialty",
+        "name": "Ginecologia"
+      },
+      "availableService": {
+        "@type": "MedicalClinic",
+        "@id": "https://bio-clinic.it/#clinic"
+      },
+      "provider": {
+        "@id": "https://bio-clinic.it/#clinic"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://bio-clinic.it/pages/pap-test-hpv.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Ogni quanto fare il Pap Test?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Le linee guida raccomandano: dai 25 ai 30 anni Pap Test ogni 3 anni; dai 30 ai 64 anni HPV Test ogni 5 anni (o Pap Test ogni 3 anni); dopo i 64 anni lo screening può essere sospeso se gli ultimi test erano negativi."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Che differenza c'è tra Pap Test e HPV Test?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Il Pap Test analizza le cellule cervicali cercando alterazioni anomale (lesioni pre-cancerose). L'HPV Test cerca la presenza del virus HPV, causa del 99% dei tumori cervicali. L'HPV Test è più sensibile e rileva il rischio prima che si sviluppino lesioni."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Il Pap Test è doloroso?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, il Pap Test non è doloroso. Può causare un leggero fastidio o sensazione di pressione durante il prelievo, che dura pochi secondi. Rilassarsi aiuta a rendere l'esame più confortevole."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso fare il Pap Test durante il ciclo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, è preferibile evitare il periodo mestruale perché il sangue può interferire con la lettura del campione. Idealmente, programmare l'esame 10-20 giorni dopo l'inizio dell'ultimo ciclo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cosa significa HPV positivo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Significa che è presente un'infezione da Papilloma Virus. L'HPV è molto comune e nella maggior parte dei casi l'organismo lo elimina spontaneamente. Solo l'infezione persistente da ceppi ad alto rischio (16, 18) può, nel tempo, causare alterazioni cellulari. Per questo si eseguono controlli regolari."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Se sono vaccinata contro l'HPV devo fare comunque il Pap Test?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì, il vaccino protegge dai ceppi HPV più pericolosi ma non da tutti. Lo screening rimane importante anche per le donne vaccinate, anche se il rischio è significativamente ridotto."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bio-clinic.it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Ginecologia",
+          "item": "https://bio-clinic.it/pages/ginecologia.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Pap Test e HPV Test",
+          "item": "https://bio-clinic.it/pages/pap-test-hpv.html"
+        }
+      ]
     }
-    </script>
+  ],
+  "dateModified": "2026-02-28"
+}
+</script>
     
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/header-spacing-fix.css">

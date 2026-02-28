@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Reimposta la password del portale Referti Online Bio-Clinic Sassari.">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Reimposta Password | Referti Online | Bio-Clinic Sassari</title>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <meta name="theme-color" content="#00704A">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #7CBA3D;
+      --primary-dark: #008238;
+      --primary-darker: #00704A;
+      --primary-light: #9ccc65;
+      --primary-bg: #f0f7e6;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --white: #ffffff;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-heading: 'Poppins', 'Inter', sans-serif;
+      --gradient-brand: linear-gradient(135deg, #00704A 0%, #7CBA3D 100%);
+    }
+
+    body {
+      font-family: var(--font-primary);
+      background: linear-gradient(160deg, #f7faf2 0%, #eef5e6 30%, #e8f4fd 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      color: var(--gray-800);
+    }
+
+    .reset-container {
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      padding: 40px;
+      max-width: 440px;
+      width: 100%;
+    }
+
+    .logo-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .logo-header a {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-header img {
+      border-radius: 10px;
+    }
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+    .logo-name {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary-darker);
+    }
+    .logo-sub {
+      font-size: 12px;
+      color: var(--gray-500);
+      font-weight: 500;
+    }
+
+    .icon-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .icon-container svg {
+      color: var(--primary-darker);
+    }
+
+    h1 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 8px;
+      color: var(--gray-800);
+    }
+
+    .subtitle {
+      text-align: center;
+      color: var(--gray-500);
+      font-size: 14px;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray-700);
+      margin-bottom: 6px;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .input-icon {
+      position: absolute;
+      left: 14px;
+      color: var(--gray-400);
+      pointer-events: none;
+    }
+    .form-input {
+      width: 100%;
+      padding: 12px 14px 12px 44px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 10px;
+      font-size: 15px;
+      font-family: var(--font-primary);
+      color: var(--gray-800);
+      background: var(--gray-50);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(124,186,61,0.15);
+      background: var(--white);
+    }
+    .form-input.error {
+      border-color: var(--danger);
+      box-shadow: 0 0 0 3px rgba(239,68,68,0.10);
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--gray-400);
+      padding: 4px;
+    }
+    .toggle-password:hover {
+      color: var(--gray-600);
+    }
+
+    .password-strength {
+      margin-top: 8px;
+    }
+    .strength-bar {
+      height: 4px;
+      background: var(--gray-200);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 4px;
+    }
+    .strength-fill {
+      height: 100%;
+      border-radius: 2px;
+      width: 0%;
+      transition: width 0.3s, background 0.3s;
+    }
+    .strength-text {
+      font-size: 12px;
+      color: var(--gray-500);
+    }
+
+    .requirements {
+      background: var(--gray-50);
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 20px;
+    }
+    .requirements p {
+      font-size: 12px;
+      color: var(--gray-500);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .requirements ul {
+      list-style: none;
+      padding: 0;
+    }
+    .requirements li {
+      font-size: 12px;
+      color: var(--gray-400);
+      padding: 2px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .requirements li.met {
+      color: var(--success);
+    }
+    .requirements li .check {
+      width: 14px;
+      height: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: var(--font-primary);
+      cursor: pointer;
+      transition: all 0.2s;
+      width: 100%;
+    }
+    .btn--primary {
+      background: var(--gradient-brand);
+      color: var(--white);
+    }
+    .btn--primary:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(0,112,74,0.25);
+    }
+    .btn--primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .btn-loader {
+      display: none;
+    }
+    .btn.loading .btn-text { display: none; }
+    .btn.loading .btn-loader { display: inline-flex; }
+
+    .message {
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      line-height: 1.5;
+      margin-top: 16px;
+      display: none;
+    }
+    .message.show { display: block; }
+    .message--success {
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+    .message--error {
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+    .message--warning {
+      background: #fffbeb;
+      color: #92400e;
+      border: 1px solid #fde68a;
+    }
+
+    .success-container {
+      text-align: center;
+      display: none;
+    }
+    .success-container.show { display: block; }
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      background: #ecfdf5;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .success-icon svg {
+      color: var(--success);
+    }
+    .success-container h2 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      color: var(--gray-800);
+      margin-bottom: 12px;
+    }
+    .success-container p {
+      color: var(--gray-500);
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+    .btn--outline {
+      background: var(--white);
+      color: var(--primary-darker);
+      border: 1.5px solid var(--primary-darker);
+    }
+    .btn--outline:hover {
+      background: var(--primary-bg);
+    }
+
+    .error-container {
+      text-align: center;
+      display: none;
+    }
+    .error-container.show { display: block; }
+    .error-icon {
+      width: 64px;
+      height: 64px;
+      background: #fef2f2;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .error-icon svg {
+      color: var(--danger);
+    }
+    .error-container h2 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      color: var(--gray-800);
+      margin-bottom: 12px;
+    }
+    .error-container p {
+      color: var(--gray-500);
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    .loading-container {
+      text-align: center;
+      padding: 40px 0;
+    }
+    .spinner {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 16px;
+    }
+    .loading-container p {
+      color: var(--gray-500);
+      font-size: 14px;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 24px;
+      color: var(--gray-400);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .footer-note a {
+      color: var(--primary-darker);
+      text-decoration: none;
+    }
+    .footer-note a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      .reset-container { padding: 28px 20px; }
+      h1 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="reset-container">
+    <!-- Logo -->
+    <div class="logo-header">
+      <a href="https://referti.bio-clinic.it">
+        <img src="/images/logo-bio-clinic.png" alt="Bio-Clinic" width="42" height="42">
+        <div class="logo-text">
+          <span class="logo-name">Bio-Clinic</span>
+          <span class="logo-sub">Referti Online</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Loading State -->
+    <div class="loading-container" id="loadingState">
+      <div class="spinner">
+        <svg viewBox="0 0 24 24" width="40" height="40">
+          <circle cx="12" cy="12" r="10" stroke="#e5e7eb" stroke-width="3" fill="none"/>
+          <circle cx="12" cy="12" r="10" stroke="#00704A" stroke-width="3" fill="none"
+                  stroke-dasharray="31.4 31.4" stroke-linecap="round">
+            <animateTransform attributeName="transform" type="rotate" dur="1s" from="0 12 12" to="360 12 12" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+      </div>
+      <p>Verifica del link in corso...</p>
+    </div>
+
+    <!-- Reset Form -->
+    <div id="resetForm" style="display:none">
+      <div class="icon-container">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+      </div>
+      <h1>Nuova Password</h1>
+      <p class="subtitle">Inserisci la tua nuova password. Deve contenere almeno 12 caratteri.</p>
+
+      <form id="passwordForm" autocomplete="off">
+        <div class="form-group">
+          <label for="newPassword">Nuova Password</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <input type="password" id="newPassword" class="form-input" placeholder="Minimo 12 caratteri" required minlength="12" autocomplete="new-password">
+            <button type="button" class="toggle-password" id="toggleNew" aria-label="Mostra password">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+          <div class="password-strength" id="strengthMeter">
+            <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
+            <span class="strength-text" id="strengthText"></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Conferma Password</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <input type="password" id="confirmPassword" class="form-input" placeholder="Ripeti la nuova password" required minlength="12" autocomplete="new-password">
+            <button type="button" class="toggle-password" id="toggleConfirm" aria-label="Mostra password">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="requirements" id="reqBox">
+          <p>Requisiti password:</p>
+          <ul>
+            <li id="req-length"><span class="check">&#9675;</span> Almeno 12 caratteri</li>
+            <li id="req-upper"><span class="check">&#9675;</span> Una lettera maiuscola</li>
+            <li id="req-lower"><span class="check">&#9675;</span> Una lettera minuscola</li>
+            <li id="req-number"><span class="check">&#9675;</span> Un numero</li>
+            <li id="req-special"><span class="check">&#9675;</span> Un carattere speciale (!@#$%&*)</li>
+            <li id="req-match"><span class="check">&#9675;</span> Le password coincidono</li>
+          </ul>
+        </div>
+
+        <button type="submit" class="btn btn--primary" id="submitBtn" disabled>
+          <span class="btn-text">Reimposta Password</span>
+          <span class="btn-loader" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="31.4 31.4" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" dur="1s" from="0 12 12" to="360 12 12" repeatCount="indefinite"/></circle></svg>
+          </span>
+        </button>
+
+        <div class="message" id="formMessage" role="alert" aria-live="polite"></div>
+      </form>
+    </div>
+
+    <!-- Success State -->
+    <div class="success-container" id="successState">
+      <div class="success-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <h2>Password Aggiornata!</h2>
+      <p>La tua password è stata reimpostata con successo. Ora puoi accedere al portale con la nuova password.</p>
+      <a href="/" class="btn btn--primary" style="text-decoration:none">
+        Vai al Login
+      </a>
+    </div>
+
+    <!-- Error State (invalid/expired token) -->
+    <div class="error-container" id="errorState">
+      <div class="error-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
+        </svg>
+      </div>
+      <h2>Link Non Valido</h2>
+      <p id="errorMessage">Il link per il reset della password non è valido o è scaduto. Richiedi un nuovo link dalla pagina di login.</p>
+      <a href="/" class="btn btn--outline" style="text-decoration:none">
+        Torna al Login
+      </a>
+    </div>
+  </div>
+
+  <p class="footer-note">
+    Bio-Clinic Sassari &mdash; Via Renzo Mossa 23, 07100 Sassari<br>
+    <a href="mailto:gestione@bio-clinic.it">gestione@bio-clinic.it</a> | <a href="tel:+390799561332">079 956 1332</a>
+  </p>
+
+  <script>
+  (function () {
+    'use strict';
+
+    // ── API endpoint (our own backend — NO direct Supabase calls) ────
+    var API_BASE = '/api/auth/reset-password';
+
+    // ── DOM refs ────────────────────────────────────────────────────
+    var loadingState    = document.getElementById('loadingState');
+    var resetFormDiv    = document.getElementById('resetForm');
+    var successState    = document.getElementById('successState');
+    var errorState      = document.getElementById('errorState');
+    var errorMessage    = document.getElementById('errorMessage');
+    var passwordForm    = document.getElementById('passwordForm');
+    var newPassword     = document.getElementById('newPassword');
+    var confirmPassword = document.getElementById('confirmPassword');
+    var submitBtn       = document.getElementById('submitBtn');
+    var formMessage     = document.getElementById('formMessage');
+    var strengthFill    = document.getElementById('strengthFill');
+    var strengthText    = document.getElementById('strengthText');
+
+    // ── Parse token from URL ────────────────────────────────────────
+    // Our email sends: /reset-password?token_hash=xxx&type=recovery
+    // Old Supabase emails redirect with: #access_token=xxx&type=recovery
+    var tokenHash = null;
+
+    function parseParams() {
+      // 1. Query params: ?token_hash=xxx (our Resend emails)
+      var searchParams = new URLSearchParams(window.location.search);
+      if (searchParams.get('token_hash')) {
+        tokenHash = searchParams.get('token_hash');
+        return true;
+      }
+
+      // 2. Hash fragment: #access_token=xxx&type=recovery (old Supabase emails)
+      //    In this case, we already have an access_token (session was created by
+      //    Supabase during redirect). We store it as tokenHash and handle it
+      //    differently in the submit handler.
+      var hash = window.location.hash.substring(1);
+      if (hash) {
+        var hashParams = new URLSearchParams(hash);
+        if (hashParams.get('token_hash')) {
+          tokenHash = hashParams.get('token_hash');
+          return true;
+        }
+        // Legacy: access_token from Supabase redirect — not compatible with
+        // our backend flow, but we show the form and handle the error gracefully
+        if (hashParams.get('type') === 'recovery' && hashParams.get('access_token')) {
+          // We can't use access_token with our backend API, but the user
+          // reached this page with a valid recovery. We'll try anyway.
+          tokenHash = '__access_token__' + hashParams.get('access_token');
+          return true;
+        }
+      }
+
+      // 3. Hash fragment token_hash: #token_hash=xxx
+      if (hash) {
+        var hashParams2 = new URLSearchParams(hash);
+        if (hashParams2.get('token_hash')) {
+          tokenHash = hashParams2.get('token_hash');
+          return true;
+        }
+      }
+
+      // 4. PKCE code param
+      if (searchParams.get('code')) {
+        tokenHash = searchParams.get('code');
+        return true;
+      }
+
+      return false;
+    }
+
+    // ── Show states ─────────────────────────────────────────────────
+    function showForm() {
+      loadingState.style.display = 'none';
+      resetFormDiv.style.display = 'block';
+      errorState.classList.remove('show');
+      successState.classList.remove('show');
+    }
+
+    function showError(msg) {
+      loadingState.style.display = 'none';
+      resetFormDiv.style.display = 'none';
+      successState.classList.remove('show');
+      errorMessage.textContent = msg || 'Il link per il reset della password non \u00e8 valido o \u00e8 scaduto.';
+      errorState.classList.add('show');
+    }
+
+    function showSuccess() {
+      loadingState.style.display = 'none';
+      resetFormDiv.style.display = 'none';
+      errorState.classList.remove('show');
+      successState.classList.add('show');
+    }
+
+    function showMessage(text, type) {
+      formMessage.textContent = text;
+      formMessage.className = 'message show message--' + type;
+    }
+
+    // ── Password strength ───────────────────────────────────────────
+    var reqs = {
+      length:  function (p) { return p.length >= 12; },
+      upper:   function (p) { return /[A-Z]/.test(p); },
+      lower:   function (p) { return /[a-z]/.test(p); },
+      number:  function (p) { return /[0-9]/.test(p); },
+      special: function (p) { return /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~]/.test(p); }
+    };
+
+    function checkRequirements() {
+      var pw = newPassword.value;
+      var cpw = confirmPassword.value;
+      var met = 0;
+      var total = 6;
+
+      Object.keys(reqs).forEach(function (key) {
+        var el = document.getElementById('req-' + key);
+        var ok = reqs[key](pw);
+        if (ok) met++;
+        el.className = ok ? 'met' : '';
+        el.querySelector('.check').innerHTML = ok ? '&#10003;' : '&#9675;';
+      });
+
+      // Match check
+      var matchEl = document.getElementById('req-match');
+      var matchOk = pw.length > 0 && pw === cpw;
+      if (matchOk) met++;
+      matchEl.className = matchOk ? 'met' : '';
+      matchEl.querySelector('.check').innerHTML = matchOk ? '&#10003;' : '&#9675;';
+
+      // Strength bar
+      var pct = Math.round((met / total) * 100);
+      strengthFill.style.width = pct + '%';
+      if (pct <= 33) {
+        strengthFill.style.background = '#ef4444';
+        strengthText.textContent = 'Debole';
+        strengthText.style.color = '#ef4444';
+      } else if (pct <= 66) {
+        strengthFill.style.background = '#f59e0b';
+        strengthText.textContent = 'Media';
+        strengthText.style.color = '#f59e0b';
+      } else if (pct < 100) {
+        strengthFill.style.background = '#3b82f6';
+        strengthText.textContent = 'Buona';
+        strengthText.style.color = '#3b82f6';
+      } else {
+        strengthFill.style.background = '#10b981';
+        strengthText.textContent = 'Ottima';
+        strengthText.style.color = '#10b981';
+      }
+
+      submitBtn.disabled = (met < total);
+    }
+
+    newPassword.addEventListener('input', checkRequirements);
+    confirmPassword.addEventListener('input', checkRequirements);
+
+    // Toggle password visibility
+    function toggleVis(btnId, inputId) {
+      var btn = document.getElementById(btnId);
+      var inp = document.getElementById(inputId);
+      if (!btn || !inp) return;
+      btn.addEventListener('click', function () {
+        var isPass = inp.type === 'password';
+        inp.type = isPass ? 'text' : 'password';
+        btn.querySelector('svg').style.opacity = isPass ? '0.6' : '1';
+      });
+    }
+    toggleVis('toggleNew', 'newPassword');
+    toggleVis('toggleConfirm', 'confirmPassword');
+
+    // ── Submit handler ──────────────────────────────────────────────
+    // Sends { token_hash, password } to our backend API.
+    // The backend verifies the token and updates the password server-side.
+    // No direct Supabase calls from the browser.
+    passwordForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      formMessage.className = 'message';
+
+      var pw = newPassword.value;
+      var cpw = confirmPassword.value;
+
+      if (pw !== cpw) {
+        showMessage('Le password non coincidono.', 'error');
+        return;
+      }
+      if (pw.length < 12) {
+        showMessage('La password deve contenere almeno 12 caratteri.', 'error');
+        return;
+      }
+
+      if (!tokenHash) {
+        showError('Parametri di reset mancanti. Richiedi un nuovo link.');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.classList.add('loading');
+
+      // Send to our backend — token verification + password update happen server-side
+      fetch(API_BASE, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          token_hash: tokenHash,
+          password: pw
+        })
+      })
+      .then(function (res) {
+        return res.json().then(function (data) {
+          return { ok: res.ok, status: res.status, data: data };
+        });
+      })
+      .then(function (result) {
+        if (result.ok && result.data.success) {
+          showSuccess();
+        } else {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('loading');
+
+          var err = result.data.error || '';
+          var code = result.data.code || '';
+
+          if (code === 'TOKEN_EXPIRED' || code === 'TOKEN_INVALID' ||
+              err.indexOf('scaduto') !== -1 || err.indexOf('non valido') !== -1) {
+            showError(err || 'Il link \u00e8 scaduto. Richiedi un nuovo link dalla pagina di login.');
+          } else if (result.data.details) {
+            // Validation errors
+            var details = result.data.details;
+            if (Array.isArray(details)) {
+              showMessage(details.join('. '), 'error');
+            } else {
+              showMessage(err || 'Errore nella validazione della password.', 'error');
+            }
+          } else {
+            showMessage(err || 'Errore durante il reset. Riprova o richiedi un nuovo link.', 'error');
+          }
+        }
+      })
+      .catch(function (err) {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('loading');
+        showMessage('Errore di rete. Verifica la connessione e riprova.', 'error');
+      });
+    });
+
+    // ── Init ────────────────────────────────────────────────────────
+    if (parseParams()) {
+      showForm();
+    } else {
+      showError('Il link per il reset della password non \u00e8 valido o \u00e8 scaduto. Richiedi un nuovo link dalla pagina di login.');
+    }
+
+  })();
+  </script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 {
-  "version": "1.0.0",
-  "last_updated": "2026-01-27",
-  "total_procedures": 678,
+  "version": "3.0",
+  "last_updated": "2026-02-28T19:26:41Z",
+  "total_procedures": 38,
   "procedures": [
     {
       "id": "visita-ginecologica",
@@ -1434,26 +1434,11 @@
       ]
     }
   ],
-  "categories": {
-    "visita": {
-      "name": "Visite Specialistiche",
-      "icon": "🩺",
-      "priority": 1
-    },
-    "diagnostica": {
-      "name": "Diagnostica per Immagini",
-      "icon": "📊",
-      "priority": 2
-    },
-    "esame": {
-      "name": "Esami e Test",
-      "icon": "🔬",
-      "priority": 3
-    },
-    "prelievo": {
-      "name": "Prelievi",
-      "icon": "💉",
-      "priority": 4
-    }
-  }
+  "categories": [
+    "diagnostica",
+    "esame",
+    "prelievo",
+    "trattamento",
+    "visita"
+  ]
 }

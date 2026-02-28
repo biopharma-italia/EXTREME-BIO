@@ -1,87 +1,173 @@
 {
-  "version": "1.0.0",
+  "version": "3.0",
   "generated": "2026-01-27T10:00:00Z",
   "description": "Dizionario sinonimi per ricerca clinica - Bio-Clinic",
   "synonyms": {
     "medici": {
       "primary": "medici",
-      "alternatives": ["dottori", "specialisti", "professionisti", "equipe", "team medico"]
+      "alternatives": [
+        "dottori",
+        "specialisti",
+        "professionisti",
+        "equipe",
+        "team medico"
+      ]
     },
     "visita": {
       "primary": "visita",
-      "alternatives": ["controllo", "consulto", "appuntamento", "consultazione"]
+      "alternatives": [
+        "controllo",
+        "consulto",
+        "appuntamento",
+        "consultazione"
+      ]
     },
     "ecografia": {
       "primary": "ecografia",
-      "alternatives": ["eco", "ultrasuoni", "ecografo"]
+      "alternatives": [
+        "eco",
+        "ultrasuoni",
+        "ecografo"
+      ]
     },
     "esame": {
       "primary": "esame",
-      "alternatives": ["test", "analisi", "accertamento", "indagine"]
+      "alternatives": [
+        "test",
+        "analisi",
+        "accertamento",
+        "indagine"
+      ]
     },
     "prenotare": {
       "primary": "prenotare",
-      "alternatives": ["fissare", "prendere appuntamento", "booking"]
+      "alternatives": [
+        "fissare",
+        "prendere appuntamento",
+        "booking"
+      ]
     },
     "tiroide": {
       "primary": "tiroide",
-      "alternatives": ["ghiandola tiroidea", "collo"]
+      "alternatives": [
+        "ghiandola tiroidea",
+        "collo"
+      ]
     },
     "cuore": {
       "primary": "cuore",
-      "alternatives": ["cardiaco", "cardiovascolare", "petto"]
+      "alternatives": [
+        "cardiaco",
+        "cardiovascolare",
+        "petto"
+      ]
     },
     "stomaco": {
       "primary": "stomaco",
-      "alternatives": ["gastrico", "addome", "pancia"]
+      "alternatives": [
+        "gastrico",
+        "addome",
+        "pancia"
+      ]
     },
     "fegato": {
       "primary": "fegato",
-      "alternatives": ["epatico", "transaminasi"]
+      "alternatives": [
+        "epatico",
+        "transaminasi"
+      ]
     },
     "reni": {
       "primary": "reni",
-      "alternatives": ["renale", "nefrologico", "urina"]
+      "alternatives": [
+        "renale",
+        "nefrologico",
+        "urina"
+      ]
     },
     "sangue": {
       "primary": "sangue",
-      "alternatives": ["ematico", "prelievo", "analisi del sangue"]
+      "alternatives": [
+        "ematico",
+        "prelievo",
+        "analisi del sangue"
+      ]
     },
     "gravidanza": {
       "primary": "gravidanza",
-      "alternatives": ["incinta", "gestazione", "maternità", "aspettare un bambino"]
+      "alternatives": [
+        "incinta",
+        "gestazione",
+        "maternità",
+        "aspettare un bambino"
+      ]
     },
     "dimagrire": {
       "primary": "dimagrire",
-      "alternatives": ["perdere peso", "dieta", "snellire", "calare di peso"]
+      "alternatives": [
+        "perdere peso",
+        "dieta",
+        "snellire",
+        "calare di peso"
+      ]
     },
     "stanchezza": {
       "primary": "stanchezza",
-      "alternatives": ["affaticamento", "debolezza", "spossatezza", "astenia"]
+      "alternatives": [
+        "affaticamento",
+        "debolezza",
+        "spossatezza",
+        "astenia"
+      ]
     },
     "dolore": {
       "primary": "dolore",
-      "alternatives": ["male", "fastidio", "sofferenza"]
+      "alternatives": [
+        "male",
+        "fastidio",
+        "sofferenza"
+      ]
     },
     "prevenzione": {
       "primary": "prevenzione",
-      "alternatives": ["screening", "controllo periodico", "check-up"]
+      "alternatives": [
+        "screening",
+        "controllo periodico",
+        "check-up"
+      ]
     },
     "anziano": {
       "primary": "anziano",
-      "alternatives": ["over 60", "terza età", "senior"]
+      "alternatives": [
+        "over 60",
+        "terza età",
+        "senior"
+      ]
     },
     "bambino": {
       "primary": "bambino",
-      "alternatives": ["pediatrico", "minore", "figlio", "bimbo"]
+      "alternatives": [
+        "pediatrico",
+        "minore",
+        "figlio",
+        "bimbo"
+      ]
     },
     "donna": {
       "primary": "donna",
-      "alternatives": ["femminile", "signora", "femmina"]
+      "alternatives": [
+        "femminile",
+        "signora",
+        "femmina"
+      ]
     },
     "uomo": {
       "primary": "uomo",
-      "alternatives": ["maschile", "signore", "maschio"]
+      "alternatives": [
+        "maschile",
+        "signore",
+        "maschio"
+      ]
     }
   },
   "abbreviations": {
@@ -116,35 +202,128 @@
     "nt": "translucenza nucale"
   },
   "body_parts": {
-    "testa": ["cefalea", "mal di testa", "emicrania", "vertigini"],
-    "occhi": ["vista", "visione", "retina", "cornea", "glaucoma", "cataratta"],
-    "orecchie": ["udito", "otite", "acufeni"],
-    "naso": ["sinusite", "rinite", "allergia"],
-    "gola": ["tonsille", "faringite", "laringite"],
-    "collo": ["tiroide", "linfonodi", "cervicale"],
-    "petto": ["cuore", "polmoni", "seno", "mammella"],
-    "addome": ["stomaco", "intestino", "fegato", "milza", "pancreas"],
-    "schiena": ["colonna", "vertebre", "lombare", "dorsale"],
-    "braccia": ["spalla", "gomito", "polso", "mano"],
-    "gambe": ["anca", "ginocchio", "caviglia", "piede"],
-    "pelle": ["derma", "cute", "epidermide", "nei"]
+    "testa": [
+      "cefalea",
+      "mal di testa",
+      "emicrania",
+      "vertigini"
+    ],
+    "occhi": [
+      "vista",
+      "visione",
+      "retina",
+      "cornea",
+      "glaucoma",
+      "cataratta"
+    ],
+    "orecchie": [
+      "udito",
+      "otite",
+      "acufeni"
+    ],
+    "naso": [
+      "sinusite",
+      "rinite",
+      "allergia"
+    ],
+    "gola": [
+      "tonsille",
+      "faringite",
+      "laringite"
+    ],
+    "collo": [
+      "tiroide",
+      "linfonodi",
+      "cervicale"
+    ],
+    "petto": [
+      "cuore",
+      "polmoni",
+      "seno",
+      "mammella"
+    ],
+    "addome": [
+      "stomaco",
+      "intestino",
+      "fegato",
+      "milza",
+      "pancreas"
+    ],
+    "schiena": [
+      "colonna",
+      "vertebre",
+      "lombare",
+      "dorsale"
+    ],
+    "braccia": [
+      "spalla",
+      "gomito",
+      "polso",
+      "mano"
+    ],
+    "gambe": [
+      "anca",
+      "ginocchio",
+      "caviglia",
+      "piede"
+    ],
+    "pelle": [
+      "derma",
+      "cute",
+      "epidermide",
+      "nei"
+    ]
   },
   "symptoms_to_specialty": {
-    "mal di testa": ["neurologia"],
-    "vertigini": ["neurologia", "oculistica"],
-    "stanchezza": ["endocrinologia", "ematologia"],
-    "dolore petto": ["cardiologia"],
-    "affanno": ["cardiologia", "pneumologia"],
-    "palpitazioni": ["cardiologia"],
-    "dolore addominale": ["gastroenterologia"],
-    "nausea": ["gastroenterologia"],
-    "prurito": ["dermatologia"],
-    "eruzione cutanea": ["dermatologia"],
-    "dolore articolare": ["ortopedia", "reumatologia"],
-    "formicolio": ["neurologia"],
-    "irregolarità mestruale": ["ginecologia"],
-    "difficoltà urinarie": ["urologia"],
-    "problemi vista": ["oculistica"]
+    "mal di testa": [
+      "neurologia"
+    ],
+    "vertigini": [
+      "neurologia",
+      "oculistica"
+    ],
+    "stanchezza": [
+      "endocrinologia",
+      "ematologia"
+    ],
+    "dolore petto": [
+      "cardiologia"
+    ],
+    "affanno": [
+      "cardiologia",
+      "pneumologia"
+    ],
+    "palpitazioni": [
+      "cardiologia"
+    ],
+    "dolore addominale": [
+      "gastroenterologia"
+    ],
+    "nausea": [
+      "gastroenterologia"
+    ],
+    "prurito": [
+      "dermatologia"
+    ],
+    "eruzione cutanea": [
+      "dermatologia"
+    ],
+    "dolore articolare": [
+      "ortopedia",
+      "reumatologia"
+    ],
+    "formicolio": [
+      "neurologia"
+    ],
+    "irregolarità mestruale": [
+      "ginecologia"
+    ],
+    "difficoltà urinarie": [
+      "urologia"
+    ],
+    "problemi vista": [
+      "oculistica"
+    ]
   },
   "common_misspellings": {
     "tiroyde": "tiroide",
@@ -174,5 +353,6 @@
     "prosstata": "prostata",
     "ferittina": "ferritina",
     "feritina": "ferritina"
-  }
+  },
+  "updated": "2026-02-28T19:26:41Z"
 }

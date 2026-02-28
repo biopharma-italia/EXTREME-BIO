@@ -10,6 +10,9 @@ Allow: /
 # Block legacy /pages/ directory (all content now at root URLs)
 Disallow: /pages/
 
+# Block admin panel
+Disallow: /admin/
+
 # Block utility paths
 Disallow: /components/
 Disallow: /templates/
@@ -20,9 +23,13 @@ Disallow: /reports/
 Disallow: /backups/
 Disallow: /docs/
 Disallow: /shop/
+Disallow: /_components/
 Disallow: /*.py$
 Disallow: /*.sh$
 Disallow: /*.backup*
+
+# Block draft content
+Disallow: /salute/_drafts/
 
 # Sitemap
 Sitemap: https://bio-clinic.it/sitemap.xml

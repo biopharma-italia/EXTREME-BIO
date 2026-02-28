@@ -66,13 +66,142 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta property="og:locale" content="it_IT">
   <link rel="stylesheet" href="/css/header-spacing-fix.css?v=1769644194">
 
+<style id="critical-css">
+:root{--primary:#7CBA3D;--primary-dark:#008238;--primary-bg:#f0f7e6;--secondary:#43A140;--accent:#00d084;--white:#fff;--gray-50:#f9fafb;--gray-100:#f3f4f6;--gray-700:#374151;--gray-800:#1f2937;--font-primary:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;--font-heading:'Poppins',var(--font-primary)}
+*,::after,::before{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-primary);color:var(--gray-800);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;padding-top:100px!important}
+.header{position:fixed!important;top:0;left:0;right:0;z-index:9999;background:var(--white);box-shadow:0 2px 10px rgba(0,0,0,.1);transition:transform .3s}
+.header .container{max-width:1280px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:70px}
+.header .logo img{height:55px;width:auto}
+.nav-menu{display:flex;gap:0;list-style:none}
+.nav-menu a{display:block;padding:.75rem 1rem;color:var(--gray-700);font-weight:500;text-decoration:none;font-size:.9rem}
+.hero-section{padding:3rem 0;background:linear-gradient(135deg,var(--primary-bg) 0%,#e8f5e9 100%)}
+h1{font-family:var(--font-heading);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--gray-800);line-height:1.2}
+.container{max-width:1280px;margin:0 auto;padding:0 1.5rem}
+.breadcrumb{font-size:.85rem;color:var(--gray-500);margin-bottom:1rem}
+.breadcrumb a{color:var(--primary-dark);text-decoration:none}
+@media(max-width:768px){body{padding-top:70px!important}.header .container{height:60px}.header .logo img{height:40px}.nav-menu{display:none}}
+</style>
 <style>
 /* CRITICAL FIX v4 - Header Layout con spazio corretto */
 body{padding-top:100px!important;margin:0!important}
 .header{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:9999!important;background:#fff!important;box-shadow:0 2px 10px rgba(0,0,0,0.1)!important}
 .trust-bar{margin-top:15px!important;padding-top:1.5rem!important}
 </style>
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["MedicalClinic","MedicalBusiness","LocalBusiness"],"@id":"https://bio-clinic.it/#organization","name":"Bio-Clinic Sassari","url":"https://bio-clinic.it","telephone":"+39 079 956 1332","address":{"@type":"PostalAddress","streetAddress":"Via Renzo Mossa, 23","addressLocality":"Sassari","postalCode":"07100","addressCountry":"IT"},"dateModified":"2026-02-27","alternateName":"Bio-Clinic Poliambulatorio Sassari","email":"gestione@bio-clinic.it","priceRange":"€18-€200","currenciesAccepted":"EUR","paymentAccepted":"Cash, Credit Card, Debit Card","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"21:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"08:00","closes":"14:00"}],"areaServed":[{"@type":"City","name":"Sassari","sameAs":"https://it.wikipedia.org/wiki/Sassari"},{"@type":"AdministrativeArea","name":"Provincia di Sassari","sameAs":"https://it.wikipedia.org/wiki/Provincia_di_Sassari"},{"@type":"AdministrativeArea","name":"Nord Sardegna"}],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Prestazioni Salute Bio-Clinic","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"MedicalProcedure","name":"Salute"},"priceCurrency":"EUR"}]}},{"@type":"CollectionPage","@id":"https://bio-clinic.it/salute/","url":"https://bio-clinic.it/salute/","name":"Guida alla Salute - Bio-Clinic Sassari","description":"Articoli medici verificati su cause, sintomi e cura delle principali patologie. Scritti e revisionati dagli specialisti Bio-Clinic Sassari.","dateModified":"2026-02-27","isPartOf":{"@id":"https://bio-clinic.it/#website"},"publisher":{"@id":"https://bio-clinic.it/#organization"},"inLanguage":"it-IT"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://bio-clinic.it/"},{"@type":"ListItem","position":2,"name":"Guida alla Salute","item":"https://bio-clinic.it/salute/"}]}]}</script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "MedicalClinic",
+        "MedicalBusiness",
+        "LocalBusiness"
+      ],
+      "@id": "https://bio-clinic.it/#organization",
+      "name": "Bio-Clinic Sassari",
+      "url": "https://bio-clinic.it",
+      "telephone": "+39 079 956 1332",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Renzo Mossa, 23",
+        "addressLocality": "Sassari",
+        "postalCode": "07100",
+        "addressCountry": "IT"
+      },
+      "dateModified": "2026-02-27",
+      "alternateName": "Bio-Clinic Poliambulatorio Sassari",
+      "email": "gestione@bio-clinic.it",
+      "priceRange": "€18-€200",
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Cash, Credit Card, Debit Card",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "07:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:00",
+          "closes": "14:00"
+        }
+      ],
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Sassari",
+          "sameAs": "https://it.wikipedia.org/wiki/Sassari"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Provincia di Sassari",
+          "sameAs": "https://it.wikipedia.org/wiki/Provincia_di_Sassari"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Nord Sardegna"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Prestazioni Salute Bio-Clinic",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "MedicalProcedure",
+              "name": "Salute"
+            },
+            "priceCurrency": "EUR"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://bio-clinic.it/salute/",
+      "url": "https://bio-clinic.it/salute/",
+      "name": "Guida alla Salute - Bio-Clinic Sassari",
+      "description": "Articoli medici verificati su cause, sintomi e cura delle principali patologie. Scritti e revisionati dagli specialisti Bio-Clinic Sassari.",
+      "dateModified": "2026-02-27",
+      "isPartOf": {
+        "@id": "https://bio-clinic.it/#website"
+      },
+      "publisher": {
+        "@id": "https://bio-clinic.it/#organization"
+      },
+      "inLanguage": "it-IT"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bio-clinic.it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Guida alla Salute",
+          "item": "https://bio-clinic.it/salute/"
+        }
+      ]
+    }
+  ],
+  "dateModified": "2026-02-28"
+}
+</script>
 <!-- CGE: Clinical Growth Engine v1.0 -->
 <script>
 window.bcDataLayer = {"page_type": "hub", "specialty": "salute", "service_name": "salute_hub", "physician_name": "none", "price_range": "none", "content_group": "salute", "funnel_stage": "awareness"};
@@ -132,7 +261,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span>🔬</span> Laboratorio Analisi
             </a>
             <a href="/genetica/" title="Genetica e DNA" role="menuitem" style="background: #EEF2FF;">
-              <span>🧬</span> <strong>Genetica e DNA</strong>
+              <span>🧬</span> <strong>Genetica & DNA</strong> <span style="background: #6366f1; color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 10px; margin-left: 4px;">NEW</span>
             </a>
             <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
             <a href="/preparazione-esami/" title="Preparazione Esami" role="menuitem">
@@ -157,11 +286,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span>👶</span> PMA / Fertilità
             </a>
             <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
+            <span style="font-size: 0.7rem; color: #888; padding: 0.25rem 0.75rem; display: block;">Diagnostica Avanzata (Prof. Dessole)</span>
             <a href="/ginecologia/isteroscopia/" title="Isteroscopia Diagnostica" role="menuitem">
-              <span>🔍</span> Isteroscopia
+              <span>🔍</span> Isteroscopia Diagnostica
             </a>
             <a href="/ginecologia/isterosalpingografia/" title="Isterosalpingografia - Pervietà Tubarica" role="menuitem">
-              <span>🩺</span> Isterosalpingografia
+              <span>🩺</span> Isterosalpingografia (Tube)
             </a>
           </div>
         </li>
@@ -170,7 +300,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li class="nav-item">
           <a href="#" class="nav-link " title="Specialità Mediche" aria-haspopup="true" aria-expanded="false">Specialisti</a>
           <div class="nav-dropdown nav-dropdown-wide" role="menu">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px;">
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; min-width: 320px;">
               <a href="/cardiologia/" title="Cardiologia" role="menuitem">❤️ Cardiologia</a>
               <a href="/endocrinologia/" title="Endocrinologia" role="menuitem">🦋 Endocrinologia</a>
               <a href="/dermatologia/" title="Dermatologia" role="menuitem">🩺 Dermatologia</a>
@@ -180,10 +310,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
             <a href="/specialita/" title="Tutte le Specialità" role="menuitem" style="font-weight: 600; color: var(--primary);">
-              → Tutte le 31 Specialità
+              Tutte le Specialità →
             </a>
             <a href="/equipe/" title="Équipe Medica" role="menuitem" style="font-weight: 600;">
-              👨‍⚕️ Équipe (48 Medici)
+              👨‍⚕️ Équipe Medica (48 Specialisti)
             </a>
           </div>
         </li>
@@ -198,7 +328,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         
         <!-- SALUTE -->
         <li class="nav-item">
-          <a href="/salute/" class="nav-link active" title="Guida alla Salute - Articoli Medici">Salute</a>
+          <a href="/salute/" class="nav-link" title="Guida alla Salute - Articoli Medici">Salute</a>
         </li>
         
         <!-- CONTATTI -->
@@ -233,7 +363,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Mobile Navigation -->
 <nav class="mobile-nav" id="mobile-nav" aria-label="Menu mobile" aria-hidden="true">
   <div class="mobile-nav-header">
-    <img src="/images/logo-bioclinic.png" alt="Bio-Clinic" width="140" height="47">
+    <img loading="eager" src="/images/logo-bioclinic.png" alt="Bio-Clinic" width="140" height="47">
     <button class="mobile-nav-close" aria-label="Chiudi menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -251,6 +381,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </ul>
     </li>
     <li><a href="/laboratorio/" title="Laboratorio">🔬 Laboratorio Analisi</a></li>
+    <li class="mobile-nav-section">
+      <span class="mobile-nav-section-title">Laboratorio</span>
+      <ul>
+        <li><a href="/genetica/">🧬 Genetica & DNA</a></li>
+        <li><a href="/preparazione-esami/">📋 Preparazione Esami</a></li>
+      </ul>
+    </li>
+    <li><a href="/medicina-del-lavoro/" title="Aziende">🏢 Medicina del Lavoro</a></li>
     <li class="mobile-nav-section">
       <span class="mobile-nav-section-title">Donna & PMA</span>
       <ul>
@@ -490,12 +628,556 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- Footer -->
   </main>
+
+<!-- Articles Grid - Auto-generated by P2 optimizer -->
+<section class="articles-all-section" style="padding: 3rem 0;">
+  <div class="container">
+    <h2 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 2rem; color: var(--gray-800);">Tutti gli Articoli (64 guide)</h2>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-bg); padding-bottom: 0.5rem;">Cardiologia (5)</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/aritmie-cardiache/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Aritmie Cardiache: Extrasistole, Tachicardia e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Aritmie Cardiache: Extrasistole, Tachicardia e Cura. Holter ECG 24h disponibile per diagnosi precisa...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/check-up-cardiovascolare/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Check-Up Cardiovascolare: Esami e Prevenzione a Sassari</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Check-Up Cardiovascolare: Esami e Prevenzione a Sassari. Prevenzione primaria fondamentale in Sardeg...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/colesterolo-alto/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Colesterolo Alto: Cause, Rischi e Come Abbassarlo</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Colesterolo Alto: Cause, Rischi e Come Abbassarlo. Ipercolesterolemia familiare frequente in Sardegn...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/fibrillazione-atriale/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Fibrillazione Atriale: Sintomi, Rischi e Trattamento</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Fibrillazione Atriale: Sintomi, Rischi e Trattamento. Incidenza crescente nella popolazione anziana ...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/ipertensione-arteriosa/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Ipertensione Arteriosa: Cause, Sintomi e Cura a Sassari</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Ipertensione arteriosa: cause, sintomi, diagnosi e cura a Sassari. La Sardegna presenta tassi superi...</p>
+          
+        </a>
+      </article>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-bg); padding-bottom: 0.5rem;">Chirurgia Vascolare (2)</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/ernia-inguinale/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Ernia Inguinale: Sintomi, Intervento e Recupero</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Ernia Inguinale: Sintomi, Intervento e Recupero. Tra gli interventi chirurgici più comuni; approccio...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/insufficienza-venosa/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Insufficienza Venosa e Vene Varicose: Sintomi e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Insufficienza Venosa e Vene Varicose: Sintomi e Cura. Molto diffusa in Sardegna, professioni in pied...</p>
+          
+        </a>
+      </article>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-bg); padding-bottom: 0.5rem;">Dermatologia (5)</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/acne-adulti/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Acne negli Adulti: Cause, Cura e Trattamenti</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Acne negli Adulti: Cause, Cura e Trattamenti. Non solo adolescenti: acne tardiva frequente, soprattu...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/dermatite-atopica/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Dermatite Atopica: Sintomi, Cause e Cura a Sassari</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Dermatite Atopica: Sintomi, Cause e Cura a Sassari. Clima secco estivo sardo e predisposizione genet...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/eczema-mani/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Eczema alle Mani: Cause, Prevenzione e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Eczema alle Mani: Cause, Prevenzione e Cura. Frequente in lavoratori esposti a detergenti e agenti c...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/nei-melanoma-prevenzione/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Nei e Melanoma: Prevenzione e Mappatura a Sassari</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Nei e Melanoma: Prevenzione e Mappatura a Sassari. Esposizione solare intensa in Sardegna aumenta il...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/psoriasi/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Psoriasi: Cause, Sintomi e Cura a Sassari</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Psoriasi: Cause, Sintomi e Cura a Sassari. Componente autoimmune amplificata dal profilo genetico is...</p>
+          
+        </a>
+      </article>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-bg); padding-bottom: 0.5rem;">Ematologia (1)</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/anemia-mediterranea-talassemia/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Anemia Mediterranea (Talassemia) in Sardegna: Guida Completa</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Anemia Mediterranea (Talassemia) in Sardegna: Guida Completa. 12-13% dei sardi portatore del tratto ...</p>
+          
+        </a>
+      </article>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-bg); padding-bottom: 0.5rem;">Endocrinologia (6)</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/vitamina-d-carenza/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Carenza di Vitamina D: Sintomi, Esami e Integrazione</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Carenza di Vitamina D: Sintomi, Esami e Integrazione. Paradosso sardo: nonostante il sole, carenza d...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/diabete-tipo-2-sardegna/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Diabete di Tipo 2 in Sardegna: Sintomi, Rischi e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Diabete di Tipo 2 in Sardegna: Sintomi, Rischi e Cura. Sardegna: primato mondiale diabete tipo 1, pr...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/ipertiroidismo/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Ipertiroidismo e Morbo di Basedow: Sintomi e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Ipertiroidismo e Morbo di Basedow: Sintomi e Cura. Morbo di Basedow-Graves con prevalenza elevata in...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/ipotiroidismo/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Ipotiroidismo: Sintomi, Diagnosi e Cura in Sardegna</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Ipotiroidismo: Sintomi, Diagnosi e Cura in Sardegna. Tiroidite di Hashimoto con prevalenza elevata i...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/noduli-tiroidei/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Noduli Tiroidei: Quando Preoccuparsi e Cosa Fare</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Noduli Tiroidei: Quando Preoccuparsi e Cosa Fare. Prevalenza elevata in Sardegna per storica carenza...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/tiroide-gravidanza/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Tiroide e Gravidanza: Controlli e Rischi</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Tiroide e Gravidanza: Controlli e Rischi. Fondamentale il controllo tiroideo in gravidanza, specialm...</p>
+          
+        </a>
+      </article>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-bg); padding-bottom: 0.5rem;">Gastroenterologia (5)</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/celiachia-sardegna/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Celiachia in Sardegna: Sintomi, Diagnosi e Dieta</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Celiachia in Sardegna: Sintomi, Diagnosi e Dieta. Sardegna: incidenza di celiachia 2-3 volte superio...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/gastrite-cronica/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Gastrite Cronica: Sintomi, Cause e Alimentazione</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Gastrite Cronica: Sintomi, Cause e Alimentazione. Abitudini alimentari sarde (vino, insaccati, forma...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/helicobacter-pylori/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Helicobacter Pylori: Test, Sintomi e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Helicobacter Pylori: Test, Sintomi e Cura. 30-50% popolazione adulta italiana, variazioni regionali ...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/reflusso-gastroesofageo/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Reflusso Gastroesofageo: Sintomi, Cause e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Reflusso Gastroesofageo: Sintomi, Cause e Cura. Dieta sarda con vino e formaggi stagionati può aggra...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/sindrome-intestino-irritabile/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Sindrome dell&#x27;Intestino Irritabile (IBS): Sintomi e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Sindrome dell&#x27;Intestino Irritabile (IBS): Sintomi e Cura. Tra le più frequenti patologie gastro...</p>
+          
+        </a>
+      </article>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-bg); padding-bottom: 0.5rem;">Ginecologia (7)</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/ecografia-gravidanza/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Ecografia in Gravidanza: Quando Farla e Cosa Si Vede</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Ecografia in Gravidanza: Quando Farla e Cosa Si Vede. Centro ecografia 3D/4D di riferimento nel nord...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/endometriosi-sintomi/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Endometriosi: Sintomi, Diagnosi e Trattamento a Sassari</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Endometriosi: Sintomi, Diagnosi e Trattamento a Sassari. Diagnosi ritardata di 7-10 anni in Sardegna...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/incontinenza-urinaria/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Incontinenza Urinaria Femminile: Cause e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Incontinenza Urinaria Femminile: Cause e Cura. Problema spesso sottovalutato; trattamento con Perifi...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/infertilita-femminile/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Infertilità Femminile: Cause, Diagnosi e Percorsi PMA</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Infertilità Femminile: Cause, Diagnosi e Percorsi PMA. Centro PMA di riferimento per il nord Sardegn...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/menopausa-sintomi/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Menopausa: Sintomi, Rimedi e Terapia Ormonale Sostitutiva</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Menopausa: Sintomi, Rimedi e Terapia Ormonale Sostitutiva. Lunga aspettativa di vita in Sardegna ren...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/pap-test-hpv/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Pap Test e HPV: Screening per la Prevenzione del Tumore Cervicale</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Pap Test e HPV: Screening per la Prevenzione del Tumore Cervicale. Screening fondamentale; Bio-Clini...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/sindrome-ovaio-policistico/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Sindrome dell&#x27;Ovaio Policistico (PCOS): Sintomi e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Sindrome dell&#x27;Ovaio Policistico (PCOS): Sintomi e Cura. Principale causa di infertilità, tema s...</p>
+          
+        </a>
+      </article>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-bg); padding-bottom: 0.5rem;">Laboratorio Analisi (1)</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/analisi-sangue-guida/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Analisi del Sangue: Guida Completa ai Valori Normali</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Analisi del Sangue: Guida Completa ai Valori Normali. Laboratorio ad accesso diretto 07:00-20:30, 1....</p>
+          
+        </a>
+      </article>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-bg); padding-bottom: 0.5rem;">Medicina Interna (1)</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/epatite-steatosi-epatica/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Steatosi Epatica (Fegato Grasso): Cause e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Steatosi Epatica (Fegato Grasso): Cause e Cura. In Sardegna alta prevalenza di steatosi legata a die...</p>
+          
+        </a>
+      </article>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-bg); padding-bottom: 0.5rem;">Medicina del Lavoro (1)</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/medicina-lavoro-sassari/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Medicina del Lavoro a Sassari: Visite e Sorveglianza Sanitaria</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Medicina del Lavoro a Sassari: Visite e Sorveglianza Sanitaria. Servizio dedicato alle aziende del n...</p>
+          
+        </a>
+      </article>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-bg); padding-bottom: 0.5rem;">Medicina dello Sport (1)</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/visita-medicina-sport/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Visita Medico Sportiva: Certificato Idoneità a Sassari</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Visita Medico Sportiva: Certificato Idoneità a Sassari. Obbligatoria per attività agonistica; centro...</p>
+          
+        </a>
+      </article>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-bg); padding-bottom: 0.5rem;">Nefrologia (2)</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/calcoli-renali/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Calcoli Renali: Sintomi, Colica Renale e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Calcoli Renali: Sintomi, Colica Renale e Cura. Il clima caldo sardo e la disidratazione aumentano il...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/nefropatia-diabetica/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Nefropatia Diabetica: Prevenzione e Cura a Sassari</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Nefropatia Diabetica: Prevenzione e Cura a Sassari. In Sardegna alta prevalenza diabetica rende la n...</p>
+          
+        </a>
+      </article>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-bg); padding-bottom: 0.5rem;">Neurologia (3)</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/cefalea-emicrania/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Cefalea ed Emicrania: Sintomi, Cause e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Cefalea ed Emicrania: Sintomi, Cause e Cura. Patologia molto diffusa, accesso rapido a diagnostica n...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/neuropatia-periferica/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Neuropatia Periferica: Formicolio a Mani e Piedi</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Neuropatia Periferica: Formicolio a Mani e Piedi. Frequente complicanza del diabete, molto diffuso i...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/sclerosi-multipla-sardegna/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Sclerosi Multipla in Sardegna: la Seconda Incidenza al Mondo</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Sclerosi Multipla in Sardegna: la Seconda Incidenza al Mondo. Sardegna ha la 2° più alta incidenza d...</p>
+          
+        </a>
+      </article>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-bg); padding-bottom: 0.5rem;">Nutrizione (2)</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/alimentazione-sport/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Alimentazione e Sport: Guida Nutrizionale per l&#x27;Atleta</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Alimentazione e Sport: Guida Nutrizionale per l&#x27;Atleta. Supporto nutrizionale personalizzato pe...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/obesita-sindrome-metabolica/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Obesità e Sindrome Metabolica: Rischi e Trattamento</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Obesità e Sindrome Metabolica: Rischi e Trattamento. Il sovrappeso è in aumento in Sardegna, con imp...</p>
+          
+        </a>
+      </article>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-bg); padding-bottom: 0.5rem;">Oculistica (2)</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/cataratta/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Cataratta: Sintomi, Intervento e Tempi di Recupero</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Cataratta: Sintomi, Intervento e Tempi di Recupero. Elevata esposizione solare in Sardegna come fatt...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/glaucoma/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Glaucoma: Sintomi, Diagnosi Precoce e Cura a Sassari</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Glaucoma: Sintomi, Diagnosi Precoce e Cura a Sassari. Screening fondamentale dopo i 40 anni; accesso...</p>
+          
+        </a>
+      </article>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-bg); padding-bottom: 0.5rem;">Ortopedia (5)</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/cervicalgia-dolore-collo/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Cervicalgia: Cause, Sintomi e Rimedi per il Dolore al Collo</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Cervicalgia: Cause, Sintomi e Rimedi per il Dolore al Collo. Prima causa visita specialistica in Sar...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/dolore-spalla/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Dolore alla Spalla e Cuffia dei Rotatori: Cause e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Dolore alla Spalla e Cuffia dei Rotatori: Cause e Cura. Patologia frequente tra sportivi e lavorator...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/ernia-disco-lombare/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Ernia del Disco Lombare: Sintomi, Diagnosi e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Ernia del Disco Lombare: Sintomi, Diagnosi e Cura. Tra le principali ragioni di visita ortopedica ne...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/scoliosi-postura/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Scoliosi e Difetti Posturali: Diagnosi e Trattamento</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Scoliosi e Difetti Posturali: Diagnosi e Trattamento. Screening posturale fondamentale in età scolar...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/tunnel-carpale/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Sindrome del Tunnel Carpale: Sintomi, Diagnosi e Intervento</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Sindrome del Tunnel Carpale: Sintomi, Diagnosi e Intervento. Molto diffusa tra lavoratori manuali e ...</p>
+          
+        </a>
+      </article>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-bg); padding-bottom: 0.5rem;">Otorinolaringoiatria (3)</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/allergie-stagionali/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Allergie Stagionali e Rinite Allergica: Sintomi e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Allergie Stagionali e Rinite Allergica: Sintomi e Cura. Pollini di ulivo, parietaria e graminacee ti...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/otite-acufeni/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Otite e Acufeni: Cause, Sintomi e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Otite e Acufeni: Cause, Sintomi e Cura. Acufeni e otiti frequenti, legati anche al vento (mistral) e...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/vertigini-labirintite/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Vertigini e Labirintite: Cause, Diagnosi e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Vertigini e Labirintite: Cause, Diagnosi e Cura. Vertigini posizionali molto frequenti; accesso rapi...</p>
+          
+        </a>
+      </article>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-bg); padding-bottom: 0.5rem;">Pediatria (2)</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/endocrinologo-pediatrico/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Endocrinologia Pediatrica: Crescita, Tiroide e Diabete nei Bambini</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Endocrinologia Pediatrica: Crescita, Tiroide e Diabete nei Bambini. In Sardegna alta incidenza di di...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/controllo-nei-bambini/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Visita Pediatrica a Sassari: Bilancio di Salute e Controlli</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Visita Pediatrica a Sassari: Bilancio di Salute e Controlli. Servizio pediatrico dedicato a Bio-Clin...</p>
+          
+        </a>
+      </article>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-bg); padding-bottom: 0.5rem;">Pneumologia (2)</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/apnee-notturne/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Apnee Notturne (OSAS): Cause, Rischi e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Apnee Notturne (OSAS): Cause, Rischi e Cura. OSAS sottostimata in Sardegna, correlata a ipertensione...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/asma-bronchiale/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Asma Bronchiale: Sintomi, Diagnosi e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Asma Bronchiale: Sintomi, Diagnosi e Cura. Trigger ambientali specifici: pollini, mistral, inquiname...</p>
+          
+        </a>
+      </article>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-bg); padding-bottom: 0.5rem;">Psicologia (1)</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/ansia-attacchi-panico/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Ansia e Attacchi di Panico: Sintomi e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Ansia e Attacchi di Panico: Sintomi e Cura. Disturbi d&#x27;ansia in aumento nel post-pandemia, supp...</p>
+          
+        </a>
+      </article>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-bg); padding-bottom: 0.5rem;">Reumatologia (3)</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/artrite-reumatoide-sardegna/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Artrite Reumatoide in Sardegna: Sintomi, Diagnosi e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Artrite Reumatoide in Sardegna: Sintomi, Diagnosi e Cura. Più alta prevalenza di AR in Italia, legat...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/fibromialgia/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Fibromialgia: Sintomi, Diagnosi e Trattamento</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Fibromialgia: Sintomi, Diagnosi e Trattamento. Prevalenza in aumento, approccio multidisciplinare fo...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/osteoporosi-prevenzione/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Osteoporosi: Prevenzione, MOC-DEXA e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Osteoporosi: Prevenzione, MOC-DEXA e Cura. Popolazione anziana sarda a rischio elevato; MOC-DEXA dis...</p>
+          
+        </a>
+      </article>
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-dark); border-bottom: 2px solid var(--primary-bg); padding-bottom: 0.5rem;">Urologia (4)</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/cistite-ricorrente/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Cistite Ricorrente: Cause, Cura e Prevenzione</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Cistite Ricorrente: Cause, Cura e Prevenzione. Picco estivo in Sardegna per disidratazione e bagni i...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/infertilita-maschile/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Infertilità Maschile: Cause, Spermiogramma e Percorsi PMA</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Infertilità Maschile: Cause, Spermiogramma e Percorsi PMA. Centro PMA di riferimento nel nord Sardeg...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/ipertrofia-prostatica/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Ipertrofia Prostatica Benigna: Sintomi e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Ipertrofia Prostatica Benigna: Sintomi e Cura. Colpisce oltre il 50% degli uomini sopra i 50 anni; d...</p>
+          
+        </a>
+      </article>
+      <article style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s; background: var(--white);">
+        <a href="/salute/prostatite/" style="text-decoration: none; color: inherit;">
+          <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--gray-800); margin-bottom: 0.5rem; line-height: 1.3;">Prostatite: Sintomi, Diagnosi e Cura</h4>
+          <p style="font-size: 0.82rem; color: var(--gray-500); line-height: 1.4; margin: 0;">Prostatite: Sintomi, Diagnosi e Cura. Frequenti episodi correlati a stress e sedentarietà. Guida com...</p>
+          
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- End Articles Grid -->
 <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div>
           <div class="footer-brand">
-            <img src="/images/logo-bioclinic.png" alt="Bio-Clinic" style="height: 45px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;">
+            <img loading="lazy" src="/images/logo-bioclinic.png" alt="Bio-Clinic" style="height: 45px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;">
           </div>
           <p class="footer-description">
             Poliambulatorio medico a Sassari con 31 specialità, 67 medici e oltre 1.840 prestazioni. 
@@ -525,6 +1207,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li><a href="/pma-fertilita/" title="Scopri il percorso PMA e Fertilità">PMA / Fertilità</a></li>
             <li><a href="/cardiologia/" title="Vai alla sezione Cardiologia">Cardiovascolare</a></li>
             <li><a href="/convenzioni/" title="Convenzioni Fondi Sanitari">Convenzioni</a></li>
+            <li><a href="/prevenzione/" title="Check-Up e Prevenzione">Prevenzione</a></li>
+            <li><a href="/chi-siamo/" title="Chi Siamo - Bio-Clinic Sassari">Chi Siamo</a></li>
           </ul>
         </div>
         
@@ -535,8 +1219,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li><a href="/cardiologia/" title="Vai alla sezione Cardiologia">Cardiologia</a></li>
             <li><a href="/endocrinologia/" title="Vai alla sezione Endocrinologia">Endocrinologia</a></li>
             <li><a href="/laboratorio/" title="Vai al Laboratorio Analisi">Laboratorio</a></li>
-            <li><a href="/salute/" title="Guida alla Salute">Guida alla Salute</a></li>
             <li><a href="/specialita/" title="Vedi tutte le specialità">Tutte le Specialità</a></li>
+            <li><a href="/screening-inps-sardegna/" title="Screening INPS Sardegna">Screening INPS</a></li>
           </ul>
         </div>
         
@@ -574,7 +1258,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div>
           <a href="/privacy/" title="Leggi la Privacy Policy">Privacy Policy</a> | 
-          <a href="/cookie/" title="Leggi la Cookie Policy">Cookie Policy</a>
+          <a href="/cookie/" title="Leggi la Cookie Policy">Cookie Policy</a> |
+          <a href="/listino/" class="text-xs" title="Listino prezzi completo laboratorio analisi">Listino Prezzi Completo</a>
         </div>
       </div>
     </div>

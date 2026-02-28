@@ -1,0 +1,283 @@
+{
+  "clinic": {
+    "name": "Bio-Clinic Sassari",
+    "legal": "Bio Pharma S.r.l.",
+    "address": "Via Renzo Mossa 23, 07100 Sassari (SS)",
+    "phone": "079 956 1332",
+    "email": "gestione@bio-clinic.it",
+    "hours": {
+      "lun-ven": "07:00-21:00",
+      "sab": "08:00-14:00",
+      "dom": "Chiuso"
+    },
+    "booking_url": "https://www.miodottore.it/strutture/bioclinic",
+    "lab_booking_url": "https://bio-clinic.it/laboratorio/prenota/",
+    "website": "https://bio-clinic.it",
+    "reviews": "3.214 recensioni 5 stelle",
+    "parking": "Posti auto gratuiti per i pazienti",
+    "accessibility": "Nessuna barriera architettonica"
+  },
+  "specialties": [
+    {
+      "name": "Ginecologia e Ostetricia",
+      "slug": "ginecologia",
+      "url": "https://bio-clinic.it/ginecologia/"
+    },
+    {
+      "name": "Cardiologia",
+      "slug": "cardiologia",
+      "url": "https://bio-clinic.it/cardiologia/"
+    },
+    {
+      "name": "Endocrinologia",
+      "slug": "endocrinologia",
+      "url": "https://bio-clinic.it/endocrinologia/"
+    },
+    {
+      "name": "Dermatologia e Venereologia",
+      "slug": "dermatologia",
+      "url": "https://bio-clinic.it/dermatologia/"
+    },
+    {
+      "name": "Laboratorio Analisi",
+      "slug": "laboratorio",
+      "url": "https://bio-clinic.it/laboratorio/"
+    }
+  ],
+  "doctors_summary": [
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    },
+    {
+      "name": "",
+      "specialty": "",
+      "url": "https://bio-clinic.it/equipe//"
+    }
+  ],
+  "services_top": [
+    {
+      "name": "Laboratorio Analisi",
+      "desc": "Oltre 1.100 esami disponibili con risultati rapidi",
+      "url": "https://bio-clinic.it/laboratorio/"
+    },
+    {
+      "name": "Ginecologia",
+      "desc": "94 prestazioni, 6 specialisti, ecografie 3D/4D",
+      "url": "https://bio-clinic.it/ginecologia/"
+    },
+    {
+      "name": "Cardiologia",
+      "desc": "ECG, ecocardiogramma, holter ECG e pressorio",
+      "url": "https://bio-clinic.it/cardiologia/"
+    },
+    {
+      "name": "Dermatologia",
+      "desc": "Mappatura nei, dermatoscopia, trattamenti estetici",
+      "url": "https://bio-clinic.it/dermatologia/"
+    },
+    {
+      "name": "Ortopedia",
+      "desc": "Visite specialistiche, ecografie, infiltrazioni",
+      "url": "https://bio-clinic.it/ortopedia/"
+    },
+    {
+      "name": "Endocrinologia",
+      "desc": "Tiroide, diabete, metabolismo",
+      "url": "https://bio-clinic.it/endocrinologia/"
+    },
+    {
+      "name": "Otorinolaringoiatria",
+      "desc": "Audiometria, fibroscopia, visite ORL",
+      "url": "https://bio-clinic.it/otorinolaringoiatria/"
+    },
+    {
+      "name": "PMA e Fertilità",
+      "desc": "Percorsi di procreazione assistita",
+      "url": "https://bio-clinic.it/pma-fertilita/"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Come prenoto una visita?",
+      "a": "Puoi prenotare online su miodottore.it/strutture/bioclinic, telefonando allo 079 956 1332, o tramite il sito bio-clinic.it."
+    },
+    {
+      "q": "Come prenoto analisi del sangue?",
+      "a": "Vai su bio-clinic.it/laboratorio/prenota/ per prenotare le analisi. Puoi anche chiamare lo 079 956 1332."
+    },
+    {
+      "q": "Quali sono gli orari?",
+      "a": "Lunedì-Venerdì 07:00-21:00, Sabato 08:00-14:00, Domenica chiuso."
+    },
+    {
+      "q": "Dove si trova Bio-Clinic?",
+      "a": "Via Renzo Mossa 23, 07100 Sassari. Parcheggio gratuito e nessuna barriera architettonica."
+    },
+    {
+      "q": "Servono impegnativa e tessera sanitaria?",
+      "a": "Per le analisi convenzionate SSN servono impegnativa e tessera sanitaria. Per visite private non serve impegnativa."
+    },
+    {
+      "q": "Quanto costano le analisi?",
+      "a": "I prezzi variano. Consulta il listino completo su bio-clinic.it/listino/ o chiama lo 079 956 1332."
+    },
+    {
+      "q": "Come ritiro i referti?",
+      "a": "I referti sono disponibili online su referti.bio-clinic.it oppure ritirali di persona presso la segreteria."
+    },
+    {
+      "q": "Accettate pagamenti con carta?",
+      "a": "Sì, accettiamo contanti, bancomat, carte di credito e pagamento elettronico."
+    },
+    {
+      "q": "Fate visite a domicilio?",
+      "a": "Alcuni servizi sono disponibili a domicilio. Contattaci allo 079 956 1332 per informazioni."
+    },
+    {
+      "q": "Quanto tempo per i risultati delle analisi?",
+      "a": "La maggior parte dei risultati è disponibile entro 24-72 ore. Esami particolari possono richiedere tempi più lunghi."
+    }
+  ]
+}

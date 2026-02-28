@@ -42,7 +42,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css?v=20260218-fix1">
   <link rel="icon" href="/images/favicon-v2.png" type="image/png">
-  <style>
+  <style id="critical-css">
+:root{--primary:#7CBA3D;--primary-dark:#008238;--primary-bg:#f0f7e6;--secondary:#43A140;--accent:#00d084;--white:#fff;--gray-50:#f9fafb;--gray-100:#f3f4f6;--gray-700:#374151;--gray-800:#1f2937;--font-primary:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;--font-heading:'Poppins',var(--font-primary)}
+*,::after,::before{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-primary);color:var(--gray-800);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;padding-top:100px!important}
+.header{position:fixed!important;top:0;left:0;right:0;z-index:9999;background:var(--white);box-shadow:0 2px 10px rgba(0,0,0,.1);transition:transform .3s}
+.header .container{max-width:1280px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:70px}
+.header .logo img{height:55px;width:auto}
+.nav-menu{display:flex;gap:0;list-style:none}
+.nav-menu a{display:block;padding:.75rem 1rem;color:var(--gray-700);font-weight:500;text-decoration:none;font-size:.9rem}
+.hero-section{padding:3rem 0;background:linear-gradient(135deg,var(--primary-bg) 0%,#e8f5e9 100%)}
+h1{font-family:var(--font-heading);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--gray-800);line-height:1.2}
+.container{max-width:1280px;margin:0 auto;padding:0 1.5rem}
+.breadcrumb{font-size:.85rem;color:var(--gray-500);margin-bottom:1rem}
+.breadcrumb a{color:var(--primary-dark);text-decoration:none}
+@media(max-width:768px){body{padding-top:70px!important}.header .container{height:60px}.header .logo img{height:40px}.nav-menu{display:none}}
+</style>
+<style>
     .shop-hero {
       background: linear-gradient(135deg, #E91E8C 0%, #00A651 100%);
       color: white;
@@ -96,13 +112,244 @@ body{padding-top:100px!important;margin:0!important}
 .header{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:9999!important;background:#fff!important;box-shadow:0 2px 10px rgba(0,0,0,0.1)!important}
 .trust-bar{margin-top:15px!important;padding-top:1.5rem!important}
 </style>
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"Store","name":"Medical Shop Bio-Clinic","description":"Dispositivi medici certificati e prodotti per la salute disponibili presso Bio-Clinic Sassari.","url":"https://bio-clinic.it/shop/","telephone":"+39079270753","address":{"@type":"PostalAddress","streetAddress":"Via Rockefeller 11/A","addressLocality":"Sassari","addressRegion":"SS","postalCode":"07100","addressCountry":"IT"},"parentOrganization":{"@type":"MedicalClinic","name":"Bio-Clinic Sassari","url":"https://bio-clinic.it/"}},{"@type":["MedicalClinic","MedicalBusiness","LocalBusiness"],"@id":"https://bio-clinic.it/#organization","name":"Bio-Clinic Sassari","url":"https://bio-clinic.it","telephone":"+39 079 956 1332","address":{"@type":"PostalAddress","streetAddress":"Via Renzo Mossa, 23","addressLocality":"Sassari","addressRegion":"SS","postalCode":"07100","addressCountry":"IT"},"areaServed":[{"@type":"City","name":"Sassari","sameAs":"https://it.wikipedia.org/wiki/Sassari"},{"@type":"AdministrativeArea","name":"Provincia di Sassari","sameAs":"https://it.wikipedia.org/wiki/Provincia_di_Sassari"},{"@type":"AdministrativeArea","name":"Nord Sardegna"}],"dateModified":"2026-02-27","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday"],"opens":"08:00","closes":"13:00"}],"priceRange":"€10–€500","medicalSpecialty":"Medical Shop","alternateName":"Bio-Clinic Poliambulatorio Sassari","email":"gestione@bio-clinic.it","currenciesAccepted":"EUR","paymentAccepted":"Cash, Credit Card, Debit Card"},{"@type":"FAQPage","@id":"https://bio-clinic.it/shop/#faq","mainEntity":[{"@type":"Question","name":"Dove si trova il Medical Shop?","acceptedAnswer":{"@type":"Answer","text":"Presso Bio-Clinic, Via Renzo Mossa 23, 07100 Sassari."}},{"@type":"Question","name":"Serve la ricetta medica?","acceptedAnswer":{"@type":"Answer","text":"Per dispositivi medici no. Per alcuni integratori specifici può essere richiesta."}},{"@type":"Question","name":"Orari del Medical Shop?","acceptedAnswer":{"@type":"Answer","text":"Lun-Ven 07:00-20:00, Sabato 08:00-13:00."}},{"@type":"Question","name":"Come acquistare?","acceptedAnswer":{"@type":"Answer","text":"In sede o contattando il 079 956 1332 per informazioni sui prodotti."}},{"@type":"Question","name":"Prodotti certificati?","acceptedAnswer":{"@type":"Answer","text":"Sì, tutti i prodotti sono conformi CE e selezionati dai nostri specialisti."}},{"@type":"Question","name":"Spedizione disponibile?","acceptedAnswer":{"@type":"Answer","text":"Per informazioni su spedizioni, contatta il 079 956 1332 o WhatsApp."}},{"@type":"Question","name":"Integratori per la tiroide?","acceptedAnswer":{"@type":"Answer","text":"Sì, integratori selezionati dai nostri endocrinologi per il supporto tiroideo."}},{"@type":"Question","name":"Sconti per pazienti Bio-Clinic?","acceptedAnswer":{"@type":"Answer","text":"Sì, tariffe agevolate per i pazienti in cura presso Bio-Clinic Sassari."}}]},{"@type":"OfferCatalog","@id":"https://bio-clinic.it/shop/#services","name":"Servizi di Medical Shop Bio-Clinic Sassari","itemListElement":[{"@type":"MedicalProcedure","name":"Integratori Tiroide","offers":{"@type":"Offer","price":"25","priceCurrency":"EUR","availability":"https://schema.org/InStock"}},{"@type":"MedicalProcedure","name":"Vitamine D3+K2","offers":{"@type":"Offer","price":"18","priceCurrency":"EUR","availability":"https://schema.org/InStock"}},{"@type":"MedicalProcedure","name":"Probiotici","offers":{"@type":"Offer","price":"22","priceCurrency":"EUR","availability":"https://schema.org/InStock"}},{"@type":"MedicalProcedure","name":"Kit Automonitoraggio","offers":{"@type":"Offer","price":"35","priceCurrency":"EUR","availability":"https://schema.org/InStock"}},{"@type":"MedicalProcedure","name":"Creme Dermatologiche","offers":{"@type":"Offer","price":"20","priceCurrency":"EUR","availability":"https://schema.org/InStock"}},{"@type":"MedicalProcedure","name":"Integratori Metabolismo","offers":{"@type":"Offer","price":"28","priceCurrency":"EUR","availability":"https://schema.org/InStock"}}]}]}</script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Store",
+      "name": "Medical Shop Bio-Clinic",
+      "description": "Dispositivi medici certificati e prodotti per la salute disponibili presso Bio-Clinic Sassari.",
+      "url": "https://bio-clinic.it/shop/",
+      "telephone": "+39 079 956 1332",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Renzo Mossa, 23",
+        "addressLocality": "Sassari",
+        "addressRegion": "SS",
+        "postalCode": "07100",
+        "addressCountry": "IT"
+      },
+      "parentOrganization": {
+        "@type": "MedicalClinic",
+        "name": "Bio-Clinic Sassari",
+        "url": "https://bio-clinic.it/"
+      }
+    },
+    {
+      "@type": [
+        "MedicalClinic",
+        "MedicalBusiness",
+        "LocalBusiness"
+      ],
+      "@id": "https://bio-clinic.it/#organization",
+      "name": "Bio-Clinic Sassari",
+      "url": "https://bio-clinic.it",
+      "telephone": "+39 079 956 1332",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Renzo Mossa, 23",
+        "addressLocality": "Sassari",
+        "addressRegion": "SS",
+        "postalCode": "07100",
+        "addressCountry": "IT"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Sassari",
+          "sameAs": "https://it.wikipedia.org/wiki/Sassari"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Provincia di Sassari",
+          "sameAs": "https://it.wikipedia.org/wiki/Provincia_di_Sassari"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Nord Sardegna"
+        }
+      ],
+      "dateModified": "2026-02-27",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "07:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday"
+          ],
+          "opens": "08:00",
+          "closes": "13:00"
+        }
+      ],
+      "priceRange": "€10–€500",
+      "medicalSpecialty": "Medical Shop",
+      "alternateName": "Bio-Clinic Poliambulatorio Sassari",
+      "email": "gestione@bio-clinic.it",
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Cash, Credit Card, Debit Card"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://bio-clinic.it/shop/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Dove si trova il Medical Shop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Presso Bio-Clinic, Via Renzo Mossa 23, 07100 Sassari."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Serve la ricetta medica?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Per dispositivi medici no. Per alcuni integratori specifici può essere richiesta."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Orari del Medical Shop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lun-Ven 07:00-20:00, Sabato 08:00-13:00."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come acquistare?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In sede o contattando il 079 956 1332 per informazioni sui prodotti."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Prodotti certificati?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì, tutti i prodotti sono conformi CE e selezionati dai nostri specialisti."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Spedizione disponibile?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Per informazioni su spedizioni, contatta il 079 956 1332 o WhatsApp."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Integratori per la tiroide?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì, integratori selezionati dai nostri endocrinologi per il supporto tiroideo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Sconti per pazienti Bio-Clinic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì, tariffe agevolate per i pazienti in cura presso Bio-Clinic Sassari."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "OfferCatalog",
+      "@id": "https://bio-clinic.it/shop/#services",
+      "name": "Servizi di Medical Shop Bio-Clinic Sassari",
+      "itemListElement": [
+        {
+          "@type": "MedicalProcedure",
+          "name": "Integratori Tiroide",
+          "offers": {
+            "@type": "Offer",
+            "price": "25",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock"
+          }
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Vitamine D3+K2",
+          "offers": {
+            "@type": "Offer",
+            "price": "18",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock"
+          }
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Probiotici",
+          "offers": {
+            "@type": "Offer",
+            "price": "22",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock"
+          }
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Kit Automonitoraggio",
+          "offers": {
+            "@type": "Offer",
+            "price": "35",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock"
+          }
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Creme Dermatologiche",
+          "offers": {
+            "@type": "Offer",
+            "price": "20",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock"
+          }
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Integratori Metabolismo",
+          "offers": {
+            "@type": "Offer",
+            "price": "28",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      ]
+    }
+  ],
+  "dateModified": "2026-02-28"
+}
+</script>
 <!-- CGE: Clinical Growth Engine v1.0 -->
 <script>
 window.bcDataLayer = {"page_type": "shop", "specialty": "none", "service_name": "none", "physician_name": "none", "price_range": "none", "content_group": "shop", "funnel_stage": "action"};
 </script>
 <script src="/js/cge-tracking.js?v=CGE_v4_20260217" defer></script>
 <!-- End CGE -->
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"QAPage","@id":"https://bio-clinic.it/shop/#qapage","mainEntity":[{"@type":"Question","name":"Dove si trova il Medical Shop?","answerCount":1,"acceptedAnswer":{"@type":"Answer","text":"Presso Bio-Clinic, Via Renzo Mossa 23, 07100 Sassari.","upvoteCount":0}},{"@type":"Question","name":"Serve la ricetta medica?","answerCount":1,"acceptedAnswer":{"@type":"Answer","text":"Per dispositivi medici no. Per alcuni integratori specifici può essere richiesta.","upvoteCount":0}},{"@type":"Question","name":"Orari del Medical Shop?","answerCount":1,"acceptedAnswer":{"@type":"Answer","text":"Lun-Ven 07:00-20:00, Sabato 08:00-13:00.","upvoteCount":0}},{"@type":"Question","name":"Come acquistare?","answerCount":1,"acceptedAnswer":{"@type":"Answer","text":"In sede o contattando il 079 956 1332 per informazioni sui prodotti.","upvoteCount":0}},{"@type":"Question","name":"Prodotti certificati?","answerCount":1,"acceptedAnswer":{"@type":"Answer","text":"Sì, tutti i prodotti sono conformi CE e selezionati dai nostri specialisti.","upvoteCount":0}}]}</script>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Vai al contenuto principale</a>
@@ -125,7 +372,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <ul class="nav-list">
         <!-- HOME -->
         <li class="nav-item">
-          <a href="/" class="nav-link " title="Torna alla Homepage Bio-Clinic">Home</a>
+          <a href="/" class="nav-link" title="Torna alla Homepage Bio-Clinic">Home</a>
         </li>
         
         <!-- SLIM CARE MEDICAL -->
@@ -138,12 +385,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <a href="/slim-care-donna/" title="Slim Care Donna - Dimagrimento Femminile" role="menuitem">
               <span style="color: #E91E8C;">💗</span> Slim Care Donna
             </a>
+            <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
+            <a href="/screening-inps/" title="Screening INPS Sardegna 2025-2026" role="menuitem" style="background: #E8F4FD;">
+              <span>🏆</span> <strong>Screening INPS</strong> <span style="background: #0066CC; color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 10px; margin-left: 4px;">NEW</span>
+            </a>
+            <a href="/convenzioni/" title="Convenzioni Fondi Sanitari" role="menuitem" style="background: #F0FDF4;">
+              <span>🏥</span> <strong>Convenzioni Fondi</strong>
+            </a>
           </div>
         </li>
         
         <!-- LABORATORIO -->
         <li class="nav-item">
-          <a href="/laboratorio/" class="nav-link " title="Laboratorio Analisi - 1.136 Esami">Laboratorio</a>
+          <a href="#" class="nav-link" title="Laboratorio Analisi" aria-haspopup="true" aria-expanded="false">Laboratorio</a>
+          <div class="nav-dropdown" role="menu">
+            <a href="/laboratorio/" title="Laboratorio Analisi - 1.136 Esami" role="menuitem">
+              <span>🔬</span> Laboratorio Analisi
+            </a>
+            <a href="/genetica/" title="Genetica e DNA" role="menuitem" style="background: #EEF2FF;">
+              <span>🧬</span> <strong>Genetica & DNA</strong> <span style="background: #6366f1; color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 10px; margin-left: 4px;">NEW</span>
+            </a>
+            <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
+            <a href="/preparazione-esami/" title="Preparazione Esami" role="menuitem">
+              <span>📋</span> Preparazione Esami
+            </a>
+          </div>
         </li>
         
         <!-- AZIENDE -->
@@ -160,6 +426,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </a>
             <a href="/pma-fertilita/" title="PMA e Fertilità" role="menuitem">
               <span>👶</span> PMA / Fertilità
+            </a>
+            <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
+            <span style="font-size: 0.7rem; color: #888; padding: 0.25rem 0.75rem; display: block;">Diagnostica Avanzata (Prof. Dessole)</span>
+            <a href="/ginecologia/isteroscopia/" title="Isteroscopia Diagnostica" role="menuitem">
+              <span>🔍</span> Isteroscopia Diagnostica
+            </a>
+            <a href="/ginecologia/isterosalpingografia/" title="Isterosalpingografia - Pervietà Tubarica" role="menuitem">
+              <span>🩺</span> Isterosalpingografia (Tube)
             </a>
           </div>
         </li>
@@ -188,7 +462,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         
         <!-- MEDICAL SHOP -->
         <li class="nav-item">
-          <a href="/shop/" class="nav-link active" title="Medical Shop - Dispositivi Medici">
+          <a href="/shop/" class="nav-link " title="Medical Shop - Dispositivi Medici">
             Medical Shop
             <span style="background: #E91E8C; color: white; font-size: 0.65rem; padding: 0.15rem 0.4rem; border-radius: 10px; margin-left: 0.3rem; vertical-align: middle;">NEW</span>
           </a>
@@ -250,10 +524,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </li>
     <li><a href="/laboratorio/" title="Laboratorio">🔬 Laboratorio Analisi</a></li>
     <li class="mobile-nav-section">
+      <span class="mobile-nav-section-title">Laboratorio</span>
+      <ul>
+        <li><a href="/genetica/">🧬 Genetica & DNA</a></li>
+        <li><a href="/preparazione-esami/">📋 Preparazione Esami</a></li>
+      </ul>
+    </li>
+    <li><a href="/medicina-del-lavoro/" title="Aziende">🏢 Medicina del Lavoro</a></li>
+    <li class="mobile-nav-section">
       <span class="mobile-nav-section-title">Donna & PMA</span>
       <ul>
         <li><a href="/ginecologia/">👩‍⚕️ Ginecologia</a></li>
         <li><a href="/pma-fertilita/">👶 PMA / Fertilità</a></li>
+        <li style="padding-top: 0.5rem; border-top: 1px solid #eee; margin-top: 0.5rem;">
+          <span style="font-size: 0.7rem; color: #888;">Diagnostica Avanzata</span>
+        </li>
+        <li><a href="/ginecologia/isteroscopia/">🔍 Isteroscopia</a></li>
+        <li><a href="/ginecologia/isterosalpingografia/">🩺 Isterosalpingografia</a></li>
       </ul>
     </li>
     <li class="mobile-nav-section">
