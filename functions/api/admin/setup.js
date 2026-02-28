@@ -43,10 +43,16 @@ export async function onRequestPost(context) {
     }
 
     const SUPABASE_URL = env.SUPABASE_URL;
-    const SERVICE_KEY = env.SUPABASE_SERVICE_KEY;
+    // Try env secret first, fall back to request body (one-time setup only)
+    const SERVICE_KEY = env.SUPABASE_SERVICE_KEY || body.service_key;
 
     if (!SUPABASE_URL || !SERVICE_KEY) {
-      return jsonRes({ error: 'Missing SUPABASE_URL or SUPABASE_SERVICE_KEY in environment' }, 500);
+      return jsonRes({ 
+        error: 'Missing SUPABASE_URL or SUPABASE_SERVICE_KEY',
+        hint: 'Pass service_key in request body if not set in env',
+        has_url: !!SUPABASE_URL,
+        has_key: !!env.SUPABASE_SERVICE_KEY,
+      }, 500);
     }
 
     const email = body.email || 'admin@bio-clinic.it';
