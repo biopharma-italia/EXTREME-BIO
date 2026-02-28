@@ -594,6 +594,12 @@ export async function onRequestGet(context) {
     const { env, request } = ctx;
     const db = createSupabaseAdmin(env);
 
+    // Safe query helper - returns empty result if table doesn't exist
+    const safeQuery = async (table, opts) => {
+      try { return await db.query(table, opts); }
+      catch (e) { return { data: [], count: 0 }; }
+    };
+
     try {
       // Parallel queries for dashboard data
       const [
@@ -608,24 +614,24 @@ export async function onRequestGet(context) {
         recentContactsRes,
         bookingsRes,
       ] = await Promise.all([
-        db.query('specialties', { select: 'id', filter: 'status=eq.active', count: true }),
-        db.query('physicians', { select: 'id', filter: 'status=eq.active', count: true }),
-        db.query('procedures', { select: 'id', filter: 'status=eq.active', count: true }),
-        db.query('lab_tests', { select: 'id', filter: 'status=eq.active', count: true }),
-        db.query('packs', { select: 'id', filter: 'status=eq.active', count: true }),
-        db.query('pathways', { select: 'id', filter: 'status=eq.active', count: true }),
-        db.query('contacts', { select: 'id', filter: 'status=eq.new', count: true }),
-        db.query('contacts', {
+        safeQuery('specialties', { select: 'id', filter: 'status=eq.active', count: true }),
+        safeQuery('physicians', { select: 'id', filter: 'status=eq.active', count: true }),
+        safeQuery('procedures', { select: 'id', filter: 'status=eq.active', count: true }),
+        safeQuery('lab_tests', { select: 'id', filter: 'status=eq.active', count: true }),
+        safeQuery('packs', { select: 'id', filter: 'status=eq.active', count: true }),
+        safeQuery('pathways', { select: 'id', filter: 'status=eq.active', count: true }),
+        safeQuery('contacts', { select: 'id', filter: 'status=eq.new', count: true }),
+        safeQuery('contacts', {
           select: 'id',
           filter: `created_at=gte.${new Date(Date.now() - 7 * 86400000).toISOString()}`,
           count: true,
         }),
-        db.query('contacts', {
+        safeQuery('contacts', {
           select: 'id,name,phone,email,service,status,created_at',
           order: 'created_at.desc',
           limit: 10,
         }),
-        db.query('bookings_sync', {
+        safeQuery('bookings_sync', {
           select: 'id,patient_name,service_name,booking_date,booking_time,status',
           filter: `booking_date=gte.${new Date().toISOString().split('T')[0]}`,
           order: 'booking_date.asc,booking_time.asc',
