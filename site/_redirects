@@ -4,6 +4,8 @@
 # Format: source destination status_code
 
 # === Semantic redirects (procedure shortcut -> specialty/procedure) ===
+/salute/diabete-tipo-2 /salute/diabete-tipo-2-sardegna/ 301
+/salute/diabete-tipo-2/ /salute/diabete-tipo-2-sardegna/ 301
 /agoaspirato-tiroide/ /endocrinologia/ecografia-tiroidea/ 301
 /assistenza-ostetrica/ /ginecologia/assistenza-ostetrica/ 301
 /audiometria /otorinolaringoiatria/audiometria/ 301
