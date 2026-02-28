@@ -1,0 +1,43 @@
+{
+  "name": "referti-bio-clinic",
+  "version": "1.0.0",
+  "description": "Enterprise portal for laboratory report management - referti.bio-clinic.it",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:unit": "vitest run tests/unit/",
+    "test:integration": "vitest run tests/integration/",
+    "test:security": "vitest run tests/security/",
+    "test:e2e": "playwright test",
+    "lint": "eslint src/ functions/ --ext .ts,.svelte",
+    "typecheck": "tsc --noEmit",
+    "deploy:staging": "npm run build && wrangler pages deploy dist --project-name=referti-bioclinic --branch=develop",
+    "deploy:production": "npm run build && wrangler pages deploy dist --project-name=referti-bioclinic --branch=main",
+    "db:migrate": "supabase db push",
+    "db:reset": "supabase db reset",
+    "db:seed": "supabase db seed"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "astro": "^4.15.0",
+    "@astrojs/svelte": "^5.7.0",
+    "@astrojs/cloudflare": "^11.0.0",
+    "svelte": "^4.2.0",
+    "otplib": "^12.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0",
+    "@vitest/coverage-v8": "^2.0.0",
+    "eslint": "^9.0.0",
+    "@playwright/test": "^1.45.0",
+    "wrangler": "^3.60.0",
+    "supabase": "^1.180.0"
+  }
+}

@@ -1,135 +1,7 @@
 {
-  "version": "2.0.0",
-  "generated": "2026-01-28",
-  "total": 51,
-  "widget_script": "<script>!function($_x,_s,id){var js,fjs=$_x.getElementsByTagName(_s)[0];if(!$_x.getElementById(id)){js=$_x.createElement(_s);js.id=id;js.src=\"//platform.docplanner.com/js/widget.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"zl-widget-s\");</script>",
-  "specialties": {
-    "ginecologia": {
-      "name": "Ginecologia e Ostetricia",
-      "page": "/ginecologia/",
-      "color": "#E91E8C"
-    },
-    "ostetricia": {
-      "name": "Ostetricia",
-      "page": "/ginecologia/",
-      "color": "#E91E8C"
-    },
-    "cardiologia": {
-      "name": "Cardiologia",
-      "page": "/cardiologia/",
-      "color": "#E53935"
-    },
-    "dermatologia": {
-      "name": "Dermatologia",
-      "page": "/dermatologia/",
-      "color": "#8E24AA"
-    },
-    "endocrinologia": {
-      "name": "Endocrinologia",
-      "page": "/endocrinologia/",
-      "color": "#43A047"
-    },
-    "neurologia": {
-      "name": "Neurologia",
-      "page": "/neurologia/",
-      "color": "#5C6BC0"
-    },
-    "oculistica": {
-      "name": "Oculistica",
-      "page": "/oculistica/",
-      "color": "#00ACC1"
-    },
-    "otorinolaringoiatria": {
-      "name": "Otorinolaringoiatria",
-      "page": "/otorinolaringoiatria/",
-      "color": "#F4511E"
-    },
-    "ortopedia": {
-      "name": "Ortopedia e Traumatologia",
-      "page": "/ortopedia/",
-      "color": "#6D4C41"
-    },
-    "gastroenterologia": {
-      "name": "Gastroenterologia",
-      "page": "/gastroenterologia/",
-      "color": "#FF8F00"
-    },
-    "medicina-interna": {
-      "name": "Medicina Interna",
-      "page": null,
-      "color": "#546E7A"
-    },
-    "nefrologia": {
-      "name": "Nefrologia",
-      "page": null,
-      "color": "#7B1FA2"
-    },
-    "pneumologia": {
-      "name": "Pneumologia",
-      "page": "/pneumologia/",
-      "color": "#0288D1"
-    },
-    "ematologia": {
-      "name": "Ematologia",
-      "page": "/ematologia/",
-      "color": "#C62828"
-    },
-    "reumatologia": {
-      "name": "Reumatologia",
-      "page": "/reumatologia/",
-      "color": "#00796B"
-    },
-    "urologia": {
-      "name": "Urologia e Andrologia",
-      "page": "/urologia/",
-      "color": "#1565C0"
-    },
-    "chirurgia-vascolare": {
-      "name": "Chirurgia Vascolare",
-      "page": "/chirurgia-vascolare/",
-      "color": "#AD1457"
-    },
-    "ecografia": {
-      "name": "Ecografia",
-      "page": null,
-      "color": "#757575"
-    },
-    "medicina-sport": {
-      "name": "Medicina dello Sport",
-      "page": null,
-      "color": "#2E7D32"
-    },
-    "medicina-lavoro": {
-      "name": "Medicina del Lavoro",
-      "page": null,
-      "color": "#455A64"
-    },
-    "fisiatria": {
-      "name": "Fisiatria",
-      "page": null,
-      "color": "#00838F"
-    },
-    "pediatria": {
-      "name": "Pediatria",
-      "page": null,
-      "color": "#EC407A"
-    },
-    "psicologia": {
-      "name": "Psicologia e Psicoterapia",
-      "page": null,
-      "color": "#7E57C2"
-    },
-    "nutrizione": {
-      "name": "Nutrizione Clinica",
-      "page": null,
-      "color": "#66BB6A"
-    },
-    "laboratorio": {
-      "name": "Laboratorio Analisi",
-      "page": "/laboratorio/",
-      "color": "#26A69A"
-    }
-  },
+  "version": "3.0",
+  "generated": "2026-02-28T19:26:41Z",
+  "total": 50,
   "physicians": [
     {
       "id": "francesco-dessole",
@@ -420,7 +292,6 @@
       "booking_enabled": true,
       "photo_url": null
     },
-    
     {
       "id": "giovanna-costa",
       "slug": "giovanna-costa",
@@ -1251,10 +1122,5 @@
       "booking_enabled": false,
       "photo_url": null
     }
-  ],
-  "metadata": {
-    "total_physicians": 51,
-    "generated": "2026-01-28T16:30:00",
-    "version": "2.1.0"
-  }
+  ]
 }

@@ -72,7 +72,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <style>
+    <style id="critical-css">
+:root{--primary:#7CBA3D;--primary-dark:#008238;--primary-bg:#f0f7e6;--secondary:#43A140;--accent:#00d084;--white:#fff;--gray-50:#f9fafb;--gray-100:#f3f4f6;--gray-700:#374151;--gray-800:#1f2937;--font-primary:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;--font-heading:'Poppins',var(--font-primary)}
+*,::after,::before{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-primary);color:var(--gray-800);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;padding-top:100px!important}
+.header{position:fixed!important;top:0;left:0;right:0;z-index:9999;background:var(--white);box-shadow:0 2px 10px rgba(0,0,0,.1);transition:transform .3s}
+.header .container{max-width:1280px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:70px}
+.header .logo img{height:55px;width:auto}
+.nav-menu{display:flex;gap:0;list-style:none}
+.nav-menu a{display:block;padding:.75rem 1rem;color:var(--gray-700);font-weight:500;text-decoration:none;font-size:.9rem}
+.hero-section{padding:3rem 0;background:linear-gradient(135deg,var(--primary-bg) 0%,#e8f5e9 100%)}
+h1{font-family:var(--font-heading);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--gray-800);line-height:1.2}
+.container{max-width:1280px;margin:0 auto;padding:0 1.5rem}
+.breadcrumb{font-size:.85rem;color:var(--gray-500);margin-bottom:1rem}
+.breadcrumb a{color:var(--primary-dark);text-decoration:none}
+@media(max-width:768px){body{padding-top:70px!important}.header .container{height:60px}.header .logo img{height:40px}.nav-menu{display:none}}
+</style>
+<style>
         /* Header Fix */
         body { padding-top: 100px !important; margin: 0 !important; }
         .header { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 9999 !important; background: #fff !important; box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important; }
@@ -90,13 +106,261 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .page-content { font-family: 'Inter', sans-serif; }
     </style>
 <!-- DEEP DIVE CONTENT INJECTED -->
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["MedicalClinic","MedicalBusiness","LocalBusiness"],"@id":"https://bio-clinic.it/#organization","name":"Bio-Clinic Sassari","url":"https://bio-clinic.it","telephone":"+39 079 956 1332","address":{"@type":"PostalAddress","streetAddress":"Via Renzo Mossa, 23","addressLocality":"Sassari","postalCode":"07100","addressCountry":"IT"},"geo":{"@type":"GeoCoordinates","latitude":40.7267,"longitude":8.5592},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5","reviewCount":"3214","bestRating":"5","worstRating":"1"},"areaServed":[{"@type":"City","name":"Sassari","sameAs":"https://it.wikipedia.org/wiki/Sassari"},{"@type":"AdministrativeArea","name":"Provincia di Sassari","sameAs":"https://it.wikipedia.org/wiki/Provincia_di_Sassari"},{"@type":"AdministrativeArea","name":"Nord Sardegna"}],"dateModified":"2026-02-21","alternateName":"Bio-Clinic Poliambulatorio Sassari","email":"gestione@bio-clinic.it","priceRange":"€18-€200","currenciesAccepted":"EUR","paymentAccepted":"Cash, Credit Card, Debit Card","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"21:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"08:00","closes":"14:00"}],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Prestazioni Gastroenterologia Bio-Clinic","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"MedicalProcedure","name":"Ecografia Addominale"},"priceCurrency":"EUR"}]}},{"@type":"MedicalWebPage","@id":"https://bio-clinic.it/gastroenterologia/ecografia-addominale/","url":"https://bio-clinic.it/gastroenterologia/ecografia-addominale/","name":"Ecografia Addominale","dateModified":"2026-02-27","lastReviewed":"2026-02-16","medicalAudience":{"@type":"MedicalAudience","audienceType":"Patient"},"speakable":{"@type":"SpeakableSpecification","cssSelector":[".ai-summary","h1",".faq-item h3",".faq-item h4"]},"mainEntity":{"@id":"https://bio-clinic.it/gastroenterologia/ecografia-addominale/#procedure"},"reviewedBy":{"@type":"Person","name":"Dott. Angelo Ferruccio Deplano","jobTitle":"Gastroenterologo","url":"https://bio-clinic.it/equipe/angelo-deplano/"}},{"@type":"MedicalProcedure","@id":"https://bio-clinic.it/gastroenterologia/ecografia-addominale/#procedure","name":"Ecografia Addominale","description":"Ecografia Addominale presso Bio-Clinic Sassari","procedureType":"MedicalProcedure","relevantSpecialty":{"@type":"MedicalSpecialty","name":"Gastroenterologia"},"provider":{"@id":"https://bio-clinic.it/#organization"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://bio-clinic.it/"},{"@type":"ListItem","position":2,"name":"Gastroenterologia","item":"https://bio-clinic.it/gastroenterologia/"},{"@type":"ListItem","position":3,"name":"Ecografia Addominale","item":"https://bio-clinic.it/gastroenterologia/ecografia-addominale/"}]},{"@type":["Person","Physician"],"@id":"https://bio-clinic.it/equipe/angelo-deplano/","name":"Dott. Angelo Ferruccio Deplano","givenName":"Angelo Ferruccio","familyName":"Deplano","jobTitle":"Gastroenterologo","url":"https://bio-clinic.it/equipe/angelo-deplano/","worksFor":{"@id":"https://bio-clinic.it/#organization"},"medicalSpecialty":"Gastroenterologia","description":"Gastroenterologo con esperienza in endoscopia digestiva e patologie gastrointestinali presso Bio-Clinic Sassari."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Cos'e' l'ecografia addominale?","acceptedAnswer":{"@type":"Answer","text":"L'ecografia addominale e' un esame diagnostico non invasivo che utilizza gli ultrasuoni per visualizzare gli organi addominali: fegato, colecisti, pancreas, milza, reni, aorta e vie biliari."}},{"@type":"Question","name":"L'ecografia addominale richiede il digiuno?","acceptedAnswer":{"@type":"Answer","text":"Si', e' necessario il digiuno di almeno 6-8 ore per una corretta visualizzazione degli organi. Si puo' bere acqua. Evitare alimenti che producono gas (legumi, bevande gassate) il giorno precedente."}},{"@type":"Question","name":"Quando e' indicata l'ecografia addominale?","acceptedAnswer":{"@type":"Answer","text":"L'ecografia addominale e' indicata per: dolore addominale, alterazioni degli esami del fegato, sospetti calcoli biliari o renali, monitoraggio di cisti o lesioni epatiche, e screening generale."}}]},{"@type":"HowTo","name":"Come si svolge l'Ecografia Addominale","description":"Procedura dell'ecografia addominale presso Bio-Clinic Sassari.","totalTime":"PT20M","step":[{"@type":"HowToStep","position":1,"name":"Preparazione","text":"Digiuno di almeno 6-8 ore. Evitare alimenti che producono gas il giorno precedente (legumi, bevande gassate)."},{"@type":"HowToStep","position":2,"name":"Posizionamento","text":"Il paziente si sdraia sul lettino. Il medico applica gel ecografico sull'addome."},{"@type":"HowToStep","position":3,"name":"Scansione sistematica","text":"Visualizzazione di fegato, colecisti, vie biliari, pancreas, milza, reni, aorta e principali vasi addominali."},{"@type":"HowToStep","position":4,"name":"Referto immediato","text":"Il medico consegna il referto con immagini, misurazioni e indicazioni cliniche."}],"tool":{"@type":"HowToTool","name":"Attrezzatura Gastroenterologia Bio-Clinic"},"supply":{"@type":"HowToSupply","name":"Tessera sanitaria e documentazione medica precedente"}}]}</script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "MedicalClinic",
+        "MedicalBusiness",
+        "LocalBusiness"
+      ],
+      "@id": "https://bio-clinic.it/#organization",
+      "name": "Bio-Clinic Sassari",
+      "url": "https://bio-clinic.it",
+      "telephone": "+39 079 956 1332",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Renzo Mossa, 23",
+        "addressLocality": "Sassari",
+        "postalCode": "07100",
+        "addressCountry": "IT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.7267,
+        "longitude": 8.5592
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "3214",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Sassari",
+          "sameAs": "https://it.wikipedia.org/wiki/Sassari"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Provincia di Sassari",
+          "sameAs": "https://it.wikipedia.org/wiki/Provincia_di_Sassari"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Nord Sardegna"
+        }
+      ],
+      "dateModified": "2026-02-21",
+      "alternateName": "Bio-Clinic Poliambulatorio Sassari",
+      "email": "gestione@bio-clinic.it",
+      "priceRange": "€18-€200",
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Cash, Credit Card, Debit Card",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "07:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:00",
+          "closes": "14:00"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Prestazioni Gastroenterologia Bio-Clinic",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "MedicalProcedure",
+              "name": "Ecografia Addominale"
+            },
+            "priceCurrency": "EUR"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://bio-clinic.it/gastroenterologia/ecografia-addominale/",
+      "url": "https://bio-clinic.it/gastroenterologia/ecografia-addominale/",
+      "name": "Ecografia Addominale",
+      "dateModified": "2026-02-27",
+      "lastReviewed": "2026-02-16",
+      "medicalAudience": {
+        "@type": "MedicalAudience",
+        "audienceType": "Patient"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".ai-summary",
+          "h1",
+          ".faq-item h3",
+          ".faq-item h4"
+        ]
+      },
+      "mainEntity": {
+        "@id": "https://bio-clinic.it/gastroenterologia/ecografia-addominale/#procedure"
+      },
+      "reviewedBy": {
+        "@type": "Person",
+        "name": "Dott. Angelo Ferruccio Deplano",
+        "jobTitle": "Gastroenterologo",
+        "url": "https://bio-clinic.it/equipe/angelo-deplano/"
+      }
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://bio-clinic.it/gastroenterologia/ecografia-addominale/#procedure",
+      "name": "Ecografia Addominale",
+      "description": "Ecografia Addominale presso Bio-Clinic Sassari",
+      "procedureType": "MedicalProcedure",
+      "relevantSpecialty": {
+        "@type": "MedicalSpecialty",
+        "name": "Gastroenterologia"
+      },
+      "provider": {
+        "@id": "https://bio-clinic.it/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bio-clinic.it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Gastroenterologia",
+          "item": "https://bio-clinic.it/gastroenterologia/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Ecografia Addominale",
+          "item": "https://bio-clinic.it/gastroenterologia/ecografia-addominale/"
+        }
+      ]
+    },
+    {
+      "@type": [
+        "Person",
+        "Physician"
+      ],
+      "@id": "https://bio-clinic.it/equipe/angelo-deplano/",
+      "name": "Dott. Angelo Ferruccio Deplano",
+      "givenName": "Angelo Ferruccio",
+      "familyName": "Deplano",
+      "jobTitle": "Gastroenterologo",
+      "url": "https://bio-clinic.it/equipe/angelo-deplano/",
+      "worksFor": {
+        "@id": "https://bio-clinic.it/#organization"
+      },
+      "medicalSpecialty": "Gastroenterologia",
+      "description": "Gastroenterologo con esperienza in endoscopia digestiva e patologie gastrointestinali presso Bio-Clinic Sassari."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Cos'e' l'ecografia addominale?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'ecografia addominale e' un esame diagnostico non invasivo che utilizza gli ultrasuoni per visualizzare gli organi addominali: fegato, colecisti, pancreas, milza, reni, aorta e vie biliari."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "L'ecografia addominale richiede il digiuno?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Si', e' necessario il digiuno di almeno 6-8 ore per una corretta visualizzazione degli organi. Si puo' bere acqua. Evitare alimenti che producono gas (legumi, bevande gassate) il giorno precedente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quando e' indicata l'ecografia addominale?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'ecografia addominale e' indicata per: dolore addominale, alterazioni degli esami del fegato, sospetti calcoli biliari o renali, monitoraggio di cisti o lesioni epatiche, e screening generale."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "Come si svolge l'Ecografia Addominale",
+      "description": "Procedura dell'ecografia addominale presso Bio-Clinic Sassari.",
+      "totalTime": "PT20M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Preparazione",
+          "text": "Digiuno di almeno 6-8 ore. Evitare alimenti che producono gas il giorno precedente (legumi, bevande gassate)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Posizionamento",
+          "text": "Il paziente si sdraia sul lettino. Il medico applica gel ecografico sull'addome."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Scansione sistematica",
+          "text": "Visualizzazione di fegato, colecisti, vie biliari, pancreas, milza, reni, aorta e principali vasi addominali."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Referto immediato",
+          "text": "Il medico consegna il referto con immagini, misurazioni e indicazioni cliniche."
+        }
+      ],
+      "tool": {
+        "@type": "HowToTool",
+        "name": "Attrezzatura Gastroenterologia Bio-Clinic"
+      },
+      "supply": {
+        "@type": "HowToSupply",
+        "name": "Tessera sanitaria e documentazione medica precedente"
+      }
+    }
+  ],
+  "dateModified": "2026-02-28"
+}
+</script>
 <!-- CGE: Clinical Growth Engine v1.0 -->
 <script>
 window.bcDataLayer = {"page_type": "service", "specialty": "gastroenterologia", "service_name": "ecografia-addominale", "physician_name": "gavino-porcu", "price_range": "60-100", "content_group": "gastroenterologia_servizi", "funnel_stage": "consideration"};
 </script>
 <script src="/js/cge-tracking.js?v=CGE_v4_20260217" defer></script>
 <!-- End CGE -->
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"QAPage","@id":"https://bio-clinic.it/gastroenterologia/ecografia-addominale/#qapage","mainEntity":[{"@type":"Question","name":"Cos'e' l'ecografia addominale?","answerCount":1,"acceptedAnswer":{"@type":"Answer","text":"L'ecografia addominale e' un esame diagnostico non invasivo che utilizza gli ultrasuoni per visualizzare gli organi addominali: fegato, colecisti, pancreas, milza, reni, aorta e vie biliari.","upvoteCount":0}},{"@type":"Question","name":"L'ecografia addominale richiede il digiuno?","answerCount":1,"acceptedAnswer":{"@type":"Answer","text":"Si', e' necessario il digiuno di almeno 6-8 ore per una corretta visualizzazione degli organi. Si puo' bere acqua. Evitare alimenti che producono gas (legumi, bevande gassate) il giorno precedente.","upvoteCount":0}},{"@type":"Question","name":"Quando e' indicata l'ecografia addominale?","answerCount":1,"acceptedAnswer":{"@type":"Answer","text":"L'ecografia addominale e' indicata per: dolore addominale, alterazioni degli esami del fegato, sospetti calcoli biliari o renali, monitoraggio di cisti o lesioni epatiche, e screening generale.","upvoteCount":0}}]}</script>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Vai al contenuto principale</a>
@@ -107,30 +371,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
     <!-- HEADER PRINCIPALE (Standard del sito) -->
     <header class="header">
-      <div class="container">
-        <!-- Logo -->
-        <a href="/" class="logo" title="Torna alla Homepage Bio-Clinic">
-          <img src="/images/logo-bioclinic.png" alt="Bio-Clinic Sassari - Poliambulatorio Medico" width="180" height="60" loading="eager">
-        </a>
+  <div class="container">
+    <!-- Logo -->
+    <a href="/" class="logo" title="Torna alla Homepage Bio-Clinic">
+      <img src="/images/logo-bioclinic.png" alt="Bio-Clinic Sassari - Poliambulatorio Medico" width="180" height="60" loading="eager">
+    </a>
+    
+    <!-- Navigazione Desktop -->
+    <nav class="nav" aria-label="Navigazione principale">
+      <ul class="nav-list">
+        <!-- HOME -->
+        <li class="nav-item">
+          <a href="/" class="nav-link" title="Torna alla Homepage Bio-Clinic">Home</a>
+        </li>
         
-        <!-- Navigazione Desktop -->
-        <nav class="nav" aria-label="Navigazione principale">
-          <ul class="nav-list">
-            <!-- HOME -->
-            <li class="nav-item">
-              <a href="/" class="nav-link" title="Torna alla Homepage Bio-Clinic">Home</a>
-            </li>
-            
-            <!-- SLIM CARE MEDICAL -->
-            <li class="nav-item">
-              <a href="#" class="nav-link" title="Percorsi Slim Care" aria-haspopup="true" aria-expanded="false">Slim Care Medical</a>
-              <div class="nav-dropdown" role="menu">
-                <a href="/slim-care/" title="Slim Care - Percorso Dimagrimento" role="menuitem">
-                  <span style="color: #00A651;">💚</span> Slim Care
-                </a>
-                <a href="/slim-care-donna/" title="Slim Care Donna - Dimagrimento Femminile" role="menuitem">
-                  <span style="color: #E91E8C;">💗</span> Slim Care Donna
-                </a>
+        <!-- SLIM CARE MEDICAL -->
+        <li class="nav-item">
+          <a href="#" class="nav-link " title="Percorsi Slim Care" aria-haspopup="true" aria-expanded="false">Slim Care Medical</a>
+          <div class="nav-dropdown" role="menu">
+            <a href="/slim-care/" title="Slim Care - Percorso Dimagrimento" role="menuitem">
+              <span style="color: #00A651;">💚</span> Slim Care
+            </a>
+            <a href="/slim-care-donna/" title="Slim Care Donna - Dimagrimento Femminile" role="menuitem">
+              <span style="color: #E91E8C;">💗</span> Slim Care Donna
+            </a>
             <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
             <a href="/screening-inps/" title="Screening INPS Sardegna 2025-2026" role="menuitem" style="background: #E8F4FD;">
               <span>🏆</span> <strong>Screening INPS</strong> <span style="background: #0066CC; color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 10px; margin-left: 4px;">NEW</span>
@@ -139,140 +403,180 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span>🏥</span> <strong>Convenzioni Fondi</strong>
             </a>
           </div>
-            </li>
-            
-            <!-- LABORATORIO -->
-            <li class="nav-item">
-              <a href="/laboratorio/" class="nav-link" title="Laboratorio Analisi - 1.136 Esami">Laboratorio</a>
-            </li>
-            
+        </li>
+        
+        <!-- LABORATORIO -->
+        <li class="nav-item">
+          <a href="#" class="nav-link" title="Laboratorio Analisi" aria-haspopup="true" aria-expanded="false">Laboratorio</a>
+          <div class="nav-dropdown" role="menu">
+            <a href="/laboratorio/" title="Laboratorio Analisi - 1.136 Esami" role="menuitem">
+              <span>🔬</span> Laboratorio Analisi
+            </a>
+            <a href="/genetica/" title="Genetica e DNA" role="menuitem" style="background: #EEF2FF;">
+              <span>🧬</span> <strong>Genetica & DNA</strong> <span style="background: #6366f1; color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 10px; margin-left: 4px;">NEW</span>
+            </a>
+            <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
+            <a href="/preparazione-esami/" title="Preparazione Esami" role="menuitem">
+              <span>📋</span> Preparazione Esami
+            </a>
+          </div>
+        </li>
         
         <!-- AZIENDE -->
         <li class="nav-item">
           <a href="/medicina-del-lavoro/" class="nav-link" title="Medicina del Lavoro per Aziende">Aziende</a>
         </li>
         
-            <!-- DONNA & PMA -->
-            <li class="nav-item">
-              <a href="#" class="nav-link" title="Salute Donna e PMA" aria-haspopup="true" aria-expanded="false">Donna & PMA</a>
-              <div class="nav-dropdown" role="menu">
-                <a href="/ginecologia/" title="Ginecologia e Ostetricia" role="menuitem">
-                  <span>👩‍⚕️</span> Ginecologia
-                </a>
-                <a href="/pma-fertilita/" title="PMA e Fertilità" role="menuitem">
-                  <span>👶</span> PMA / Fertilità
-                </a>
-              </div>
-            </li>
-            
-            <!-- SPECIALISTI -->
-            <li class="nav-item">
-              <a href="#" class="nav-link" title="Specialità Mediche" aria-haspopup="true" aria-expanded="false">Specialisti</a>
-              <div class="nav-dropdown nav-dropdown-wide" role="menu">
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; min-width: 320px;">
-                  <a href="/cardiologia/" title="Cardiologia" role="menuitem">❤️ Cardiologia</a>
-                  <a href="/endocrinologia/" title="Endocrinologia" role="menuitem">🦋 Endocrinologia</a>
-                  <a href="/dermatologia/" title="Dermatologia" role="menuitem">🩺 Dermatologia</a>
-                  <a href="/neurologia/" title="Neurologia" role="menuitem">🧠 Neurologia</a>
-                  <a href="/oculistica/" title="Oculistica" role="menuitem">👁️ Oculistica</a>
-                  <a href="/ortopedia/" title="Ortopedia" role="menuitem">🦴 Ortopedia</a>
-                </div>
-                <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
-                <a href="/specialita/" title="Tutte le Specialità" role="menuitem" style="font-weight: 600; color: var(--primary);">
-                  Tutte le Specialità →
-                </a>
-                <a href="/equipe/" title="Équipe Medica" role="menuitem" style="font-weight: 600;">
-                  👨‍⚕️ Équipe Medica (51 Specialisti)
-                </a>
-              </div>
-            </li>
-            
-            <!-- MEDICAL SHOP -->
-            <li class="nav-item">
-              <a href="/shop/" class="nav-link" title="Medical Shop - Dispositivi Medici">
-                Medical Shop
-                <span style="background: #E91E8C; color: white; font-size: 0.65rem; padding: 0.15rem 0.4rem; border-radius: 10px; margin-left: 0.3rem; vertical-align: middle;">NEW</span>
-              </a>
-            </li>
-            
-            <!-- CONTATTI -->
-            <li class="nav-item">
-              <a href="/contatti/" class="nav-link" title="Contatti e Orari">Contatti</a>
-            </li>
-          </ul>
-          
-          <!-- PULSANTE PRENOTA -->
-          <a href="tel:+390799561332" class="btn btn-primary nav-cta" title="Chiama per prenotare" style="background: #00704A; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; margin-left: 1rem;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
-            Prenota
-          </a>
-        </nav>
+        <!-- DONNA & PMA -->
+        <li class="nav-item">
+          <a href="#" class="nav-link " title="Salute Donna e PMA" aria-haspopup="true" aria-expanded="false">Donna & PMA</a>
+          <div class="nav-dropdown" role="menu">
+            <a href="/ginecologia/" title="Ginecologia e Ostetricia" role="menuitem">
+              <span>👩‍⚕️</span> Ginecologia
+            </a>
+            <a href="/pma-fertilita/" title="PMA e Fertilità" role="menuitem">
+              <span>👶</span> PMA / Fertilità
+            </a>
+            <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
+            <span style="font-size: 0.7rem; color: #888; padding: 0.25rem 0.75rem; display: block;">Diagnostica Avanzata (Prof. Dessole)</span>
+            <a href="/ginecologia/isteroscopia/" title="Isteroscopia Diagnostica" role="menuitem">
+              <span>🔍</span> Isteroscopia Diagnostica
+            </a>
+            <a href="/ginecologia/isterosalpingografia/" title="Isterosalpingografia - Pervietà Tubarica" role="menuitem">
+              <span>🩺</span> Isterosalpingografia (Tube)
+            </a>
+          </div>
+        </li>
         
-        <!-- Mobile Toggle -->
-        <button class="menu-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="mobile-nav">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </header>
+        <!-- SPECIALISTI -->
+        <li class="nav-item">
+          <a href="#" class="nav-link " title="Specialità Mediche" aria-haspopup="true" aria-expanded="false">Specialisti</a>
+          <div class="nav-dropdown nav-dropdown-wide" role="menu">
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; min-width: 320px;">
+              <a href="/cardiologia/" title="Cardiologia" role="menuitem">❤️ Cardiologia</a>
+              <a href="/endocrinologia/" title="Endocrinologia" role="menuitem">🦋 Endocrinologia</a>
+              <a href="/dermatologia/" title="Dermatologia" role="menuitem">🩺 Dermatologia</a>
+              <a href="/neurologia/" title="Neurologia" role="menuitem">🧠 Neurologia</a>
+              <a href="/oculistica/" title="Oculistica" role="menuitem">👁️ Oculistica</a>
+              <a href="/ortopedia/" title="Ortopedia" role="menuitem">🦴 Ortopedia</a>
+            </div>
+            <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
+            <a href="/specialita/" title="Tutte le Specialità" role="menuitem" style="font-weight: 600; color: var(--primary);">
+              Tutte le Specialità →
+            </a>
+            <a href="/equipe/" title="Équipe Medica" role="menuitem" style="font-weight: 600;">
+              👨‍⚕️ Équipe Medica (48 Specialisti)
+            </a>
+          </div>
+        </li>
+        
+        <!-- MEDICAL SHOP -->
+        <li class="nav-item">
+          <a href="/shop/" class="nav-link " title="Medical Shop - Dispositivi Medici">
+            Medical Shop
+            <span style="background: #E91E8C; color: white; font-size: 0.65rem; padding: 0.15rem 0.4rem; border-radius: 10px; margin-left: 0.3rem; vertical-align: middle;">NEW</span>
+          </a>
+        </li>
+        
+        <!-- SALUTE -->
+        <li class="nav-item">
+          <a href="/salute/" class="nav-link" title="Guida alla Salute - Articoli Medici">Salute</a>
+        </li>
+        
+        <!-- CONTATTI -->
+        <li class="nav-item">
+          <a href="/contatti/" class="nav-link " title="Contatti e Orari">Contatti</a>
+        </li>
+      </ul>
+      
+      <!-- PULSANTE PRENOTA (Verde Scuro) -->
+      <a href="tel:+390799561332" class="btn btn-primary nav-cta" title="Chiama per prenotare" style="background: #00704A; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; margin-left: 1rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        Prenota
+      </a>
+    </nav>
+    
+    <!-- Mobile Toggle -->
+    <button class="menu-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
 
     <!-- Mobile Overlay -->
     <div class="mobile-overlay" aria-hidden="true"></div>
 
     <!-- Mobile Navigation -->
     <nav class="mobile-nav" id="mobile-nav" aria-label="Menu mobile" aria-hidden="true">
-      <div class="mobile-nav-header">
-        <img src="/images/logo-bioclinic.png" alt="Bio-Clinic" width="140" height="47">
-        <button class="mobile-nav-close" aria-label="Chiudi menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-      <ul class="mobile-nav-list">
-        <li><a href="/" title="Home">🏠 Home</a></li>
-        <li class="mobile-nav-section">
-          <span class="mobile-nav-section-title">Slim Care Medical</span>
-          <ul>
-            <li><a href="/slim-care/">💚 Slim Care</a></li>
-            <li><a href="/slim-care-donna/">💗 Slim Care Donna</a></li>
-        <li><a href="/screening-inps/" style="background: #E8F4FD; color: #0066CC; font-weight: 600;">🏆 Screening INPS</a></li>
+  <div class="mobile-nav-header">
+    <img loading="eager" src="/images/logo-bioclinic.png" alt="Bio-Clinic" width="140" height="47">
+    <button class="mobile-nav-close" aria-label="Chiudi menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+  <ul class="mobile-nav-list">
+    <li><a href="/" title="Home">🏠 Home</a></li>
+    <li class="mobile-nav-section">
+      <span class="mobile-nav-section-title">Slim Care Medical</span>
+      <ul>
+        <li><a href="/slim-care/">💚 Slim Care</a></li>
+        <li><a href="/slim-care-donna/">💗 Slim Care Donna</a></li>
       </ul>
+    </li>
+    <li><a href="/laboratorio/" title="Laboratorio">🔬 Laboratorio Analisi</a></li>
+    <li class="mobile-nav-section">
+      <span class="mobile-nav-section-title">Laboratorio</span>
+      <ul>
+        <li><a href="/genetica/">🧬 Genetica & DNA</a></li>
+        <li><a href="/preparazione-esami/">📋 Preparazione Esami</a></li>
+      </ul>
+    </li>
+    <li><a href="/medicina-del-lavoro/" title="Aziende">🏢 Medicina del Lavoro</a></li>
+    <li class="mobile-nav-section">
+      <span class="mobile-nav-section-title">Donna & PMA</span>
+      <ul>
+        <li><a href="/ginecologia/">👩‍⚕️ Ginecologia</a></li>
+        <li><a href="/pma-fertilita/">👶 PMA / Fertilità</a></li>
+        <li style="padding-top: 0.5rem; border-top: 1px solid #eee; margin-top: 0.5rem;">
+          <span style="font-size: 0.7rem; color: #888;">Diagnostica Avanzata</span>
         </li>
-        <li><a href="/laboratorio/" title="Laboratorio">🔬 Laboratorio Analisi</a></li>
-        <li class="mobile-nav-section">
-          <span class="mobile-nav-section-title">Donna & PMA</span>
-          <ul>
-            <li><a href="/ginecologia/">👩‍⚕️ Ginecologia</a></li>
-            <li><a href="/pma-fertilita/">👶 PMA / Fertilità</a></li>
-          </ul>
-        </li>
-        <li class="mobile-nav-section">
-          <span class="mobile-nav-section-title">Specialisti</span>
-          <ul>
-            <li><a href="/cardiologia/">❤️ Cardiologia</a></li>
-            <li><a href="/endocrinologia/">🦋 Endocrinologia</a></li>
-            <li><a href="/specialita/" style="font-weight: 600;">→ Tutte le Specialità</a></li>
-            <li><a href="/equipe/" style="font-weight: 600;">👨‍⚕️ Équipe (51 Medici)</a></li>
-          </ul>
-        </li>
-        <li><a href="/shop/" title="Medical Shop">🛒 Medical Shop <span style="background: #E91E8C; color: white; font-size: 0.65rem; padding: 0.1rem 0.3rem; border-radius: 8px;">NEW</span></a></li>
-        <li><a href="/salute/" title="Guida alla Salute" style="font-weight: 600;">📰 Guida alla Salute</a></li>
+        <li><a href="/ginecologia/isteroscopia/">🔍 Isteroscopia</a></li>
+        <li><a href="/ginecologia/isterosalpingografia/">🩺 Isterosalpingografia</a></li>
+      </ul>
+    </li>
+    <li class="mobile-nav-section">
+      <span class="mobile-nav-section-title">Specialisti</span>
+      <ul>
+        <li><a href="/cardiologia/">❤️ Cardiologia</a></li>
+        <li><a href="/endocrinologia/">🦋 Endocrinologia</a></li>
+        <li><a href="/dermatologia/">🩺 Dermatologia</a></li>
+        <li><a href="/neurologia/">🧠 Neurologia</a></li>
+        <li><a href="/oculistica/">👁️ Oculistica</a></li>
+        <li><a href="/ortopedia/">🦴 Ortopedia</a></li>
+        <li><a href="/specialita/" style="font-weight: 600;">→ Tutte le Specialità</a></li>
+        <li><a href="/equipe/" style="font-weight: 600;">👨‍⚕️ Équipe (48 Medici)</a></li>
+      </ul>
+    </li>
+    <li><a href="/shop/" title="Medical Shop">🛒 Medical Shop <span style="background: #E91E8C; color: white; font-size: 0.65rem; padding: 0.1rem 0.3rem; border-radius: 8px;">NEW</span></a></li>
+    <li><a href="/salute/" title="Guida alla Salute" style="font-weight: 600;">📰 Guida alla Salute</a></li>
     <li><a href="/contatti/" title="Contatti">📍 Contatti</a></li>
-      </ul>
-      <div class="mobile-nav-footer">
-        <a href="tel:+390799561332" class="btn btn-primary" style="width: 100%; justify-content: center; background: #00704A;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-          </svg>
-          Chiama: 079 956 1332
-        </a>
-      </div>
-    </nav>
+  </ul>
+  <div class="mobile-nav-footer">
+    <a href="tel:+390799561332" class="btn btn-primary" style="width: 100%; justify-content: center; background: #00704A;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+      Chiama: 079 956 1332
+    </a>
+  </div>
+</nav>
     <!-- END MASTER HEADER -->
 
     <!-- PAGE CONTENT (Tailwind) -->
@@ -659,7 +963,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="footer-grid">
         <div>
           <div class="footer-brand">
-            <img src="/images/logo-bioclinic.png" alt="Bio-Clinic" style="height: 45px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;">
+            <img loading="lazy" src="/images/logo-bioclinic.png" alt="Bio-Clinic" style="height: 45px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;">
           </div>
           <p class="footer-description">
             Poliambulatorio medico a Sassari con 31 specialità, 67 medici e oltre 1.840 prestazioni. 
@@ -689,6 +993,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li><a href="/pma-fertilita/" title="Scopri il percorso PMA e Fertilità">PMA / Fertilità</a></li>
             <li><a href="/cardiologia/" title="Vai alla sezione Cardiologia">Cardiovascolare</a></li>
             <li><a href="/convenzioni/" title="Convenzioni Fondi Sanitari">Convenzioni</a></li>
+            <li><a href="/prevenzione/" title="Check-Up e Prevenzione">Prevenzione</a></li>
+            <li><a href="/chi-siamo/" title="Chi Siamo - Bio-Clinic Sassari">Chi Siamo</a></li>
           </ul>
         </div>
         
@@ -699,8 +1005,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li><a href="/cardiologia/" title="Vai alla sezione Cardiologia">Cardiologia</a></li>
             <li><a href="/endocrinologia/" title="Vai alla sezione Endocrinologia">Endocrinologia</a></li>
             <li><a href="/laboratorio/" title="Vai al Laboratorio Analisi">Laboratorio</a></li>
-            <li><a href="/listino/" title="Listino Prezzi Completo">Listino Prezzi</a></li>
             <li><a href="/specialita/" title="Vedi tutte le specialità">Tutte le Specialità</a></li>
+            <li><a href="/screening-inps-sardegna/" title="Screening INPS Sardegna">Screening INPS</a></li>
           </ul>
         </div>
         
@@ -738,7 +1044,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div>
           <a href="/privacy/" title="Leggi la Privacy Policy">Privacy Policy</a> | 
-          <a href="/cookie/" title="Leggi la Cookie Policy">Cookie Policy</a>
+          <a href="/cookie/" title="Leggi la Cookie Policy">Cookie Policy</a> |
+          <a href="/listino/" class="text-xs" title="Listino prezzi completo laboratorio analisi">Listino Prezzi Completo</a>
         </div>
       </div>
     </div>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel — Bio-Clinic Sassari</title>
+  <meta name="robots" content="noindex, nofollow">
+  <!-- Favicon (identico al sito principale bio-clinic.it) -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/admin/css/admin.css">
+</head>
+<body>
+  <!-- ===== LOGIN SCREEN (fullscreen, no sidebar) ===== -->
+  <div id="login-screen" class="login-screen">
+    <div class="login-card">
+      <img src="/images/logo-bioclinic.png" alt="Bio-Clinic" class="login-logo" width="200">
+      <h1>Admin Panel</h1>
+      <p class="login-subtitle">Bio-Clinic Sassari — Gestione Interna</p>
+      <form id="login-form" autocomplete="on">
+        <div class="form-group">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" name="email" required placeholder="admin@bio-clinic.it" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" name="password" required placeholder="••••••••" autocomplete="current-password">
+        </div>
+        <button type="submit" id="login-btn" class="btn btn-primary btn-block">Accedi</button>
+        <div id="login-error" class="error-box" hidden>
+          <span class="error-icon">&#9888;</span>
+          <span id="login-error-text"></span>
+        </div>
+      </form>
+      <div class="login-divider"><span>oppure</span></div>
+      <button type="button" id="demo-btn" class="btn btn-demo btn-block">
+        Modalit&agrave; Demo (senza Supabase)
+      </button>
+      <p class="demo-hint">Esplora il pannello con i dati reali del progetto, senza connessione al database.</p>
+    </div>
+    <div class="login-footer">
+      &copy; 2026 Bio-Clinic Sassari &mdash; v2.0.0
+    </div>
+  </div>
+
+  <!-- ===== MAIN APP (completely hidden until authenticated or demo) ===== -->
+  <div id="app" class="app" style="display:none">
+    <!-- Demo Banner -->
+    <div id="demo-banner" class="demo-banner" style="display:none">
+      <span>&#9881; <strong>Modalit&agrave; Demo</strong> — Dati di sola lettura dal progetto. Le modifiche non verranno salvate.</span>
+      <button type="button" id="exit-demo-btn" class="btn btn-sm btn-outline" style="color:#fff;border-color:rgba(255,255,255,.5)">Esci dalla Demo</button>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <img src="/images/logo-bioclinic.png" alt="Bio-Clinic" width="140">
+        <span class="sidebar-badge">Admin</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#dashboard" class="nav-item active" data-section="dashboard">
+          <span class="nav-icon">&#128202;</span> Dashboard
+        </a>
+        <div class="nav-group-label">Entit&agrave; Cliniche</div>
+        <a href="#specialties" class="nav-item" data-section="specialties">
+          <span class="nav-icon">&#127973;</span> Specialit&agrave;
+          <span class="nav-count" id="count-specialties">&mdash;</span>
+        </a>
+        <a href="#physicians" class="nav-item" data-section="physicians">
+          <span class="nav-icon">&#129489;&#8205;&#9877;&#65039;</span> Medici
+          <span class="nav-count" id="count-physicians">&mdash;</span>
+        </a>
+        <a href="#procedures" class="nav-item" data-section="procedures">
+          <span class="nav-icon">&#129658;</span> Prestazioni
+          <span class="nav-count" id="count-procedures">&mdash;</span>
+        </a>
+        <a href="#lab-tests" class="nav-item" data-section="lab-tests">
+          <span class="nav-icon">&#129514;</span> Laboratorio
+          <span class="nav-count" id="count-lab-tests">&mdash;</span>
+        </a>
+        <a href="#packs" class="nav-item" data-section="packs">
+          <span class="nav-icon">&#128230;</span> Pack / Check-up
+          <span class="nav-count" id="count-packs">&mdash;</span>
+        </a>
+        <a href="#pathways" class="nav-item" data-section="pathways">
+          <span class="nav-icon">&#128740;&#65039;</span> Percorsi Clinici
+          <span class="nav-count" id="count-pathways">&mdash;</span>
+        </a>
+        <div class="nav-group-label">Operativo</div>
+        <a href="#contacts" class="nav-item" data-section="contacts">
+          <span class="nav-icon">&#128232;</span> Contatti / Lead
+          <span class="nav-count nav-count-alert" id="count-contacts">&mdash;</span>
+        </a>
+        <a href="#bookings" class="nav-item" data-section="bookings">
+          <span class="nav-icon">&#128197;</span> Prenotazioni
+        </a>
+        <a href="https://referti.bio-clinic.it" class="nav-item" target="_blank" rel="noopener">
+          <span class="nav-icon">&#128203;</span> Referti Online
+          <span style="margin-left:auto;font-size:10px;opacity:.5">&#8599;</span>
+        </a>
+        <div class="nav-group-label">Sistema</div>
+        <a href="#settings" class="nav-item" data-section="settings">
+          <span class="nav-icon">&#9881;&#65039;</span> Impostazioni
+        </a>
+        <a href="#users" class="nav-item" data-section="users">
+          <span class="nav-icon">&#128101;</span> Utenti Admin
+        </a>
+        <a href="#audit" class="nav-item" data-section="audit">
+          <span class="nav-icon">&#128203;</span> Audit Log
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <span id="user-email">&mdash;</span>
+          <span id="user-role" class="role-badge">&mdash;</span>
+        </div>
+        <button id="logout-btn" class="btn btn-sm btn-outline">Esci</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Top Bar -->
+      <header class="topbar">
+        <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle sidebar">&#9776;</button>
+        <h2 id="page-title">Dashboard</h2>
+        <div class="topbar-actions">
+          <span id="last-sync" class="sync-label"></span>
+        </div>
+      </header>
+
+      <!-- Content Area -->
+      <div id="content-area" class="content-area">
+
+        <!-- DASHBOARD -->
+        <section id="section-dashboard" class="section active">
+          <div class="stats-grid" id="stats-grid">
+            <div class="stat-card">
+              <div class="stat-value" id="stat-specialties">&mdash;</div>
+              <div class="stat-label">Specialit&agrave;</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="stat-physicians">&mdash;</div>
+              <div class="stat-label">Medici</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="stat-procedures">&mdash;</div>
+              <div class="stat-label">Prestazioni</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="stat-lab-tests">&mdash;</div>
+              <div class="stat-label">Esami Lab</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="stat-packs">&mdash;</div>
+              <div class="stat-label">Pack</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="stat-pathways">&mdash;</div>
+              <div class="stat-label">Percorsi</div>
+            </div>
+            <div class="stat-card stat-card-alert">
+              <div class="stat-value" id="stat-contacts">&mdash;</div>
+              <div class="stat-label">Nuovi Contatti</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="stat-contacts-7d">&mdash;</div>
+              <div class="stat-label">Contatti 7gg</div>
+            </div>
+          </div>
+
+          <div class="dashboard-grid">
+            <div class="card">
+              <h3>Ultimi Contatti</h3>
+              <div id="recent-contacts-list" class="list-compact">
+                <p class="text-muted">Caricamento...</p>
+              </div>
+            </div>
+            <div class="card">
+              <h3>Prossime Prenotazioni</h3>
+              <div id="upcoming-bookings-list" class="list-compact">
+                <p class="text-muted">Caricamento...</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- GENERIC ENTITY SECTION (reused for specialties, physicians, etc.) -->
+        <section id="section-entity" class="section" hidden>
+          <!-- Toolbar -->
+          <div class="entity-toolbar">
+            <div class="toolbar-left">
+              <input type="search" id="entity-search" class="search-input" placeholder="Cerca...">
+              <select id="entity-status-filter" class="select-filter">
+                <option value="">Tutti gli stati</option>
+                <option value="active">Attivo</option>
+                <option value="inactive">Inattivo</option>
+                <option value="hidden">Nascosto</option>
+              </select>
+            </div>
+            <div class="toolbar-right">
+              <button id="entity-export-btn" class="btn btn-outline btn-sm">Esporta CSV</button>
+              <button id="entity-add-btn" class="btn btn-primary btn-sm">+ Aggiungi</button>
+            </div>
+          </div>
+
+          <!-- Table -->
+          <div class="table-wrapper">
+            <table id="entity-table" class="data-table">
+              <thead id="entity-thead"></thead>
+              <tbody id="entity-tbody"></tbody>
+            </table>
+          </div>
+
+          <!-- Pagination -->
+          <div class="pagination" id="entity-pagination">
+            <button id="page-prev" class="btn btn-sm btn-outline" disabled>&larr; Prec</button>
+            <span id="page-info" class="page-info">Pagina 1 di 1</span>
+            <button id="page-next" class="btn btn-sm btn-outline" disabled>Succ &rarr;</button>
+          </div>
+        </section>
+
+        <!-- EDIT MODAL -->
+        <div id="edit-modal" class="modal" hidden>
+          <div class="modal-backdrop"></div>
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 id="modal-title">Modifica</h3>
+              <button class="modal-close" id="modal-close-btn">&times;</button>
+            </div>
+            <form id="edit-form" class="modal-body">
+              <!-- Dynamic fields injected by JS -->
+            </form>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline" id="modal-cancel-btn">Annulla</button>
+              <button type="button" class="btn btn-primary" id="modal-save-btn">Salva</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SETTINGS (M10) -->
+        <section id="section-settings" class="section" hidden>
+          <div class="settings-header">
+            <h3>Impostazioni Sito</h3>
+            <div class="settings-actions">
+              <button class="btn btn-outline btn-sm" id="settings-reset-btn" title="Ripristina valori originali">Ripristina</button>
+              <button class="btn btn-primary btn-sm" id="settings-save-btn">Salva Impostazioni</button>
+            </div>
+          </div>
+          <div class="settings-tabs">
+            <button class="settings-tab active" data-tab="generale">Generale</button>
+            <button class="settings-tab" data-tab="orari">Orari &amp; Apertura</button>
+            <button class="settings-tab" data-tab="contatti">Contatti &amp; Social</button>
+            <button class="settings-tab" data-tab="seo">SEO &amp; Metadata</button>
+            <button class="settings-tab" data-tab="prenotazioni">Prenotazioni</button>
+            <button class="settings-tab" data-tab="notifiche">Notifiche</button>
+          </div>
+          <div id="settings-form-area" class="settings-panels">
+            <p class="text-muted">Caricamento impostazioni...</p>
+          </div>
+          <div id="settings-dirty-bar" class="settings-dirty-bar" style="display:none">
+            <span>Ci sono modifiche non salvate</span>
+            <button class="btn btn-primary btn-sm" id="settings-dirty-save">Salva Ora</button>
+          </div>
+        </section>
+
+        <!-- ADMIN USERS (M13) -->
+        <section id="section-users" class="section" hidden>
+          <div class="entity-toolbar">
+            <div class="toolbar-left">
+              <input type="search" id="users-search" class="search-input" placeholder="Cerca utente...">
+              <select id="users-role-filter" class="select-filter">
+                <option value="">Tutti i ruoli</option>
+                <option value="super_admin">Super Admin</option>
+                <option value="admin">Admin</option>
+                <option value="editor">Editor</option>
+                <option value="viewer">Viewer</option>
+              </select>
+            </div>
+            <div class="toolbar-right">
+              <button class="btn btn-primary btn-sm" id="users-invite-btn">+ Invita Utente</button>
+            </div>
+          </div>
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Email</th>
+                  <th>Nome</th>
+                  <th style="width:110px">Ruolo</th>
+                  <th style="width:110px">Stato</th>
+                  <th style="width:130px">Ultimo Accesso</th>
+                  <th style="width:100px">Azioni</th>
+                </tr>
+              </thead>
+              <tbody id="users-tbody">
+                <tr><td colspan="6" class="text-muted" style="text-align:center;padding:32px">Caricamento...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- BOOKINGS (read-only from D1) -->
+        <section id="section-bookings" class="section" hidden>
+          <div class="card">
+            <h3>Prenotazioni Laboratorio</h3>
+            <p class="text-muted" style="margin-bottom:16px">
+              Dati sincronizzati da Cloudflare D1. Gestione completa su bio-clinic.it/api/booking.
+            </p>
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Paziente</th>
+                    <th>Servizio</th>
+                    <th>Data</th>
+                    <th>Ora</th>
+                    <th>Stato</th>
+                    <th>Fonte</th>
+                  </tr>
+                </thead>
+                <tbody id="bookings-tbody">
+                  <tr><td colspan="6" class="text-muted" style="text-align:center;padding:32px">Caricamento...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- AUDIT LOG -->
+        <section id="section-audit" class="section" hidden>
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th>Utente</th>
+                  <th>Azione</th>
+                  <th>Entit&agrave;</th>
+                  <th>ID</th>
+                </tr>
+              </thead>
+              <tbody id="audit-tbody">
+                <tr><td colspan="5" class="text-muted">Caricamento...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Toast notifications -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts: demo data → Supabase → core → phase 2 enhancements -->
+  <script src="/admin/js/demo-data.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="/admin/js/admin.js"></script>
+  <script src="/admin/js/admin-phase2.js"></script>
+</body>
+</html>

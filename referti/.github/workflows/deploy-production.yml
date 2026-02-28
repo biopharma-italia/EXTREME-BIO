@@ -1,0 +1,45 @@
+name: Deploy Production
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Run all tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to Cloudflare Pages (production)
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=referti-bioclinic --branch=main
+
+      - name: Smoke test
+        run: |
+          sleep 10
+          curl -f https://referti.bio-clinic.it/ || echo "Smoke test warning"
+
+      - name: Tag release
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          git tag -a "v${VERSION}" -m "Release v${VERSION}" || true
+          git push origin "v${VERSION}" || true

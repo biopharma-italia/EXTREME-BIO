@@ -1,0 +1,13 @@
+[project]
+id = "YOUR_PROJECT_REF"
+name = "referti-bio-clinic"
+
+[api]
+port = 54321
+schemas = ["public"]
+
+[auth]
+site_url = "https://referti.bio-clinic.it"
+additional_redirect_urls = ["http://localhost:4321", "https://referti.bio-clinic.it/*"]
+jwt_expiry = 3600
+enable_signup = true

@@ -80,7 +80,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="stylesheet" href="/css/tailwind-utilities.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <style>
+    <style id="critical-css">
+:root{--primary:#7CBA3D;--primary-dark:#008238;--primary-bg:#f0f7e6;--secondary:#43A140;--accent:#00d084;--white:#fff;--gray-50:#f9fafb;--gray-100:#f3f4f6;--gray-700:#374151;--gray-800:#1f2937;--font-primary:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;--font-heading:'Poppins',var(--font-primary)}
+*,::after,::before{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-primary);color:var(--gray-800);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;padding-top:100px!important}
+.header{position:fixed!important;top:0;left:0;right:0;z-index:9999;background:var(--white);box-shadow:0 2px 10px rgba(0,0,0,.1);transition:transform .3s}
+.header .container{max-width:1280px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:70px}
+.header .logo img{height:55px;width:auto}
+.nav-menu{display:flex;gap:0;list-style:none}
+.nav-menu a{display:block;padding:.75rem 1rem;color:var(--gray-700);font-weight:500;text-decoration:none;font-size:.9rem}
+.hero-section{padding:3rem 0;background:linear-gradient(135deg,var(--primary-bg) 0%,#e8f5e9 100%)}
+h1{font-family:var(--font-heading);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--gray-800);line-height:1.2}
+.container{max-width:1280px;margin:0 auto;padding:0 1.5rem}
+.breadcrumb{font-size:.85rem;color:var(--gray-500);margin-bottom:1rem}
+.breadcrumb a{color:var(--primary-dark);text-decoration:none}
+@media(max-width:768px){body{padding-top:70px!important}.header .container{height:60px}.header .logo img{height:40px}.nav-menu{display:none}}
+</style>
+<style>
         body { padding-top: 100px !important; margin: 0 !important; }
         .header { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 9999 !important; background: #fff !important; box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important; }
         
@@ -133,13 +149,611 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         details > div { animation: fadeIn 0.2s ease-in; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["MedicalClinic","MedicalBusiness","LocalBusiness"],"@id":"https://bio-clinic.it/#organization","name":"Bio-Clinic Sassari","alternateName":"Bio-Clinic Poliambulatorio Sassari","url":"https://bio-clinic.it","telephone":"+39 079 956 1332","email":"gestione@bio-clinic.it","priceRange":"€18-€200","currenciesAccepted":"EUR","paymentAccepted":"Cash, Credit Card, Debit Card","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"21:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"08:00","closes":"14:00"}],"address":{"@type":"PostalAddress","streetAddress":"Via Renzo Mossa, 23","addressLocality":"Sassari","addressRegion":"Sardegna","postalCode":"07100","addressCountry":"IT"},"geo":{"@type":"GeoCoordinates","latitude":40.7267,"longitude":8.5592},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5","reviewCount":"3214","bestRating":"5","worstRating":"1"},"areaServed":[{"@type":"City","name":"Sassari","sameAs":"https://it.wikipedia.org/wiki/Sassari"},{"@type":"AdministrativeArea","name":"Provincia di Sassari","sameAs":"https://it.wikipedia.org/wiki/Provincia_di_Sassari"},{"@type":"AdministrativeArea","name":"Nord Sardegna"}],"medicalSpecialty":[{"@type":"MedicalSpecialty","name":"Cardiologia"},{"@type":"MedicalSpecialty","name":"Laboratorio Analisi"}],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Prestazioni Cardiologiche Bio-Clinic","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"MedicalProcedure","name":"Visita Cardiologica con ECG"},"price":"100.00","priceCurrency":"EUR"},{"@type":"Offer","itemOffered":{"@type":"MedicalProcedure","name":"Ecocardiogramma Color Doppler"},"price":"150.00","priceCurrency":"EUR"},{"@type":"Offer","itemOffered":{"@type":"MedicalProcedure","name":"Holter ECG 24h"},"price":"120.00","priceCurrency":"EUR"},{"@type":"Offer","itemOffered":{"@type":"MedicalProcedure","name":"Holter Pressorio 24h (ABPM)"},"price":"100.00","priceCurrency":"EUR"},{"@type":"Offer","itemOffered":{"@type":"MedicalProcedure","name":"Check-up Cardiovascolare"},"price":"150.00","priceCurrency":"EUR"},{"@type":"Offer","itemOffered":{"@type":"MedicalProcedure","name":"Eco-Doppler TSA"},"price":"100.00","priceCurrency":"EUR"},{"@type":"Offer","itemOffered":{"@type":"MedicalProcedure","name":"Test da Sforzo"},"price":"150.00","priceCurrency":"EUR"}]},"dateModified":"2026-02-19"},{"@type":"MedicalWebPage","@id":"https://bio-clinic.it/cardiologia/","url":"https://bio-clinic.it/cardiologia/","name":"Cardiologia Sassari - Centro di Eccellenza Cardiovascolare","dateModified":"2026-02-27","lastReviewed":"2026-02-19","medicalAudience":{"@type":"MedicalAudience","audienceType":"Patient"},"speakable":{"@type":"SpeakableSpecification","cssSelector":[".ai-summary","h1",".faq-item h3"]},"mainEntity":{"@id":"https://bio-clinic.it/cardiologia/#specialty"},"reviewedBy":{"@type":"Physician","name":"Dott. Tonino Bullitta","jobTitle":"Cardiologo","identifier":{"@type":"PropertyValue","propertyID":"Iscrizione Ordine dei Medici di Sassari","value":"2054"},"url":"https://bio-clinic.it/equipe/tonino-bullitta/"}},{"@type":"MedicalSpecialty","@id":"https://bio-clinic.it/cardiologia/#specialty","name":"Cardiologia","description":"Servizio di Cardiologia con 5 specialisti e 39 prestazioni diagnostiche e terapeutiche: ECG, ecocardiogramma, holter ECG e pressorio, eco-doppler vascolare, test da sforzo, check-up cardiovascolare presso Bio-Clinic Sassari."},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://bio-clinic.it/"},{"@type":"ListItem","position":2,"name":"Specialità","item":"https://bio-clinic.it/specialita/"},{"@type":"ListItem","position":3,"name":"Cardiologia","item":"https://bio-clinic.it/cardiologia/"}]},{"@type":["Person","Physician"],"@id":"https://bio-clinic.it/equipe/tonino-bullitta/","name":"Dott. Tonino Bullitta","givenName":"Tonino","familyName":"Bullitta","jobTitle":"Cardiologo","url":"https://bio-clinic.it/equipe/tonino-bullitta/","worksFor":{"@id":"https://bio-clinic.it/#organization"},"medicalSpecialty":"Cardiologia","identifier":{"@type":"PropertyValue","propertyID":"Iscrizione Ordine dei Medici di Sassari","value":"2054"},"description":"Cardiologo specialista in ecocardiografia e diagnostica cardiologica non invasiva presso Bio-Clinic Sassari."},{"@type":["Person","Physician"],"@id":"https://bio-clinic.it/equipe/sara-uras/","name":"Dott.ssa Sara Uras","givenName":"Sara","familyName":"Uras","jobTitle":"Cardiologa","url":"https://bio-clinic.it/equipe/sara-uras/","worksFor":{"@id":"https://bio-clinic.it/#organization"},"medicalSpecialty":"Cardiologia","identifier":{"@type":"PropertyValue","propertyID":"Iscrizione Ordine dei Medici di Sassari","value":"5084"},"description":"Cardiologa specializzata in ecocardiografia e diagnostica cardiovascolare non invasiva presso Bio-Clinic Sassari."},{"@type":["Person","Physician"],"@id":"https://bio-clinic.it/equipe/giuliana-guagnozzi/","name":"Dott.ssa Giuliana Guagnozzi","givenName":"Giuliana","familyName":"Guagnozzi","jobTitle":"Cardiologa","url":"https://bio-clinic.it/equipe/giuliana-guagnozzi/","worksFor":{"@id":"https://bio-clinic.it/#organization"},"medicalSpecialty":"Cardiologia","identifier":{"@type":"PropertyValue","propertyID":"Iscrizione Ordine dei Medici","value":"42447"},"description":"Cardiologa specializzata in prevenzione cardiovascolare e diagnostica cardiologica avanzata presso Bio-Clinic Sassari."},{"@type":["Person","Physician"],"@id":"https://bio-clinic.it/equipe/paolo-pischedda/","name":"Dott. Paolo Pischedda","givenName":"Paolo","familyName":"Pischedda","jobTitle":"Cardiologo","url":"https://bio-clinic.it/equipe/paolo-pischedda/","worksFor":{"@id":"https://bio-clinic.it/#organization"},"medicalSpecialty":"Cardiologia","identifier":{"@type":"PropertyValue","propertyID":"Iscrizione Ordine dei Medici di Sassari","value":"5264"},"description":"Cardiologo esperto in Holter ECG/pressorio, Eco-Doppler TSA, test da sforzo e diagnostica cardiovascolare presso Bio-Clinic Sassari."},{"@type":["Person","Physician"],"@id":"https://bio-clinic.it/equipe/paolo-franca/","name":"Dott. Paolo Franca","givenName":"Paolo","familyName":"Franca","jobTitle":"Cardiologo","url":"https://bio-clinic.it/equipe/paolo-franca/","worksFor":{"@id":"https://bio-clinic.it/#organization"},"medicalSpecialty":"Cardiologia","identifier":{"@type":"PropertyValue","propertyID":"Iscrizione Ordine dei Medici di Sassari","value":"6108"},"description":"Cardiologo specializzato in Holter ECG/pressorio, Eco-Doppler TSA, test da sforzo e prevenzione cardiovascolare presso Bio-Clinic Sassari."},{"@type":"MedicalCondition","name":"Ipertensione Arteriosa","alternateName":"ICD-10: I10","description":"L'ipertensione arteriosa è una condizione caratterizzata da valori di pressione sistolica superiori a 140 mmHg e/o diastolica superiori a 90 mmHg.","signOrSymptom":[{"@type":"MedicalSignOrSymptom","name":"Cefalea"},{"@type":"MedicalSignOrSymptom","name":"Vertigini"},{"@type":"MedicalSignOrSymptom","name":"Acufeni"}],"riskFactor":[{"@type":"MedicalRiskFactor","name":"Familiarità"},{"@type":"MedicalRiskFactor","name":"Obesità"},{"@type":"MedicalRiskFactor","name":"Sedentarietà"},{"@type":"MedicalRiskFactor","name":"Fumo"}],"typicalTest":[{"@type":"MedicalTest","name":"Holter Pressorio 24h (ABPM)","url":"https://bio-clinic.it/cardiologia/holter-pressorio/"},{"@type":"MedicalTest","name":"Visita Cardiologica con ECG","url":"https://bio-clinic.it/cardiologia/visita-cardiologica-ecg/"},{"@type":"MedicalTest","name":"Profilo Lipidico","url":"https://bio-clinic.it/laboratorio/"}],"epidemiology":"In Italia il 33% della popolazione adulta è ipertesa. In Sardegna la prevalenza supera il 35% per la popolazione over 50 (dati ISS 2024).","relevantSpecialty":{"@type":"MedicalSpecialty","name":"Cardiologia"}},{"@type":"MedicalCondition","name":"Fibrillazione Atriale","alternateName":"ICD-10: I48","description":"La fibrillazione atriale è l'aritmia cardiaca più frequente, caratterizzata da un ritmo cardiaco irregolare e spesso accelerato.","signOrSymptom":[{"@type":"MedicalSignOrSymptom","name":"Palpitazioni"},{"@type":"MedicalSignOrSymptom","name":"Dispnea"},{"@type":"MedicalSignOrSymptom","name":"Affaticamento"}],"typicalTest":[{"@type":"MedicalTest","name":"Holter ECG 24h","url":"https://bio-clinic.it/cardiologia/holter-ecg/"},{"@type":"MedicalTest","name":"Ecocardiogramma","url":"https://bio-clinic.it/cardiologia/ecocardiogramma/"},{"@type":"MedicalTest","name":"Profilo Coagulazione (PT/INR)","url":"https://bio-clinic.it/laboratorio/"}],"epidemiology":"Colpisce circa il 2-3% della popolazione adulta europea. Prevalenza in aumento con l'età: 10-17% negli over 80.","relevantSpecialty":{"@type":"MedicalSpecialty","name":"Cardiologia"}},{"@type":"MedicalCondition","name":"Cardiopatia Ischemica","alternateName":"ICD-10: I25","description":"La cardiopatia ischemica è una malattia del cuore causata dalla riduzione dell'apporto di sangue al miocardio per ostruzione delle arterie coronarie.","signOrSymptom":[{"@type":"MedicalSignOrSymptom","name":"Dolore toracico (angina)"},{"@type":"MedicalSignOrSymptom","name":"Dispnea da sforzo"},{"@type":"MedicalSignOrSymptom","name":"Affaticamento"}],"typicalTest":[{"@type":"MedicalTest","name":"ECG a riposo e da sforzo","url":"https://bio-clinic.it/cardiologia/visita-cardiologica-ecg/"},{"@type":"MedicalTest","name":"Ecocardiogramma","url":"https://bio-clinic.it/cardiologia/ecocardiogramma/"},{"@type":"MedicalTest","name":"Troponina ad alta sensibilità","url":"https://bio-clinic.it/laboratorio/"},{"@type":"MedicalTest","name":"Profilo Lipidico","url":"https://bio-clinic.it/laboratorio/"}],"epidemiology":"Prima causa di morte cardiovascolare in Italia con circa 75.000 decessi/anno (dati ISTAT). In Sardegna la mortalità CV è allineata alla media nazionale.","relevantSpecialty":{"@type":"MedicalSpecialty","name":"Cardiologia"}},{"@type":"AggregateOffer","name":"Prestazioni Cardiologiche Bio-Clinic Sassari","priceCurrency":"EUR","lowPrice":"18","highPrice":"200","offerCount":"39","availability":"https://schema.org/InStock","seller":{"@id":"https://bio-clinic.it/#organization"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quando è necessaria una visita cardiologica a Sassari?","acceptedAnswer":{"@type":"Answer","text":"Si consiglia una visita cardiologica a partire dai 40 anni come screening preventivo, o prima in caso di familiarità per malattie cardiovascolari, ipertensione arteriosa (valori >140/90 mmHg), diabete mellito, colesterolo alto (LDL >130 mg/dL), fumo, obesità (BMI >30), sedentarietà. È urgente in caso di dolore toracico, affanno, palpitazioni, sincope o edemi agli arti inferiori. Le linee guida ESC 2021 raccomandano la stratificazione del rischio cardiovascolare con il sistema SCORE2 a partire dai 40 anni."}},{"@type":"Question","name":"Quanto costa una visita cardiologica a Sassari?","acceptedAnswer":{"@type":"Answer","text":"A Bio-Clinic Sassari la visita cardiologica con ECG ha un costo a partire da €100. L'ecocardiogramma Color Doppler costa €150. L'Holter ECG 24h parte da €120 e l'Holter Pressorio da €100. Il check-up cardiovascolare completo (visita + ECG + ecocardiogramma) è disponibile a €150. Il Profilo Lipidico aggiuntivo presso il laboratorio interno costa €18. I costi possono variare in base allo specialista. Accettiamo le principali convenzioni e fondi sanitari integrativi."}},{"@type":"Question","name":"Cos'è l'ecocardiogramma a Sassari e quando serve?","acceptedAnswer":{"@type":"Answer","text":"L'ecocardiogramma Color Doppler è un'ecografia del cuore non invasiva che permette di visualizzare in tempo reale la struttura e la funzione cardiaca: dimensioni delle camere, spessore delle pareti, funzione valvolare, contrattilità miocardica e flussi intracardiaci. È indicato per: valvulopatie, scompenso cardiaco, ipertensione, post-infarto, cardiomiopatie, screening in pazienti a rischio CV. Durata 20-30 minuti, senza preparazione. A Bio-Clinic Sassari è eseguito da tutti e 5 i cardiologi dell'équipe con referto immediato."}},{"@type":"Question","name":"A cosa serve l'Holter ECG 24 ore?","acceptedAnswer":{"@type":"Answer","text":"L'Holter ECG è un monitoraggio continuo dell'attività elettrica del cuore per 24-48 ore mediante un piccolo dispositivo portatile. Serve per identificare aritmie (fibrillazione atriale, extrasistoli, tachicardie), alterazioni del ritmo intermittenti, episodi di ischemia silente e per valutare l'efficacia della terapia antiaritmica. Secondo le linee guida ESC 2024, è l'esame di prima scelta per la diagnosi di aritmie parossistiche. A Bio-Clinic è eseguito dal Dott. Pischedda e dal Dott. Franca."}},{"@type":"Question","name":"Quali sono i migliori cardiologi a Sassari?","acceptedAnswer":{"@type":"Answer","text":"Bio-Clinic Sassari dispone di 5 cardiologi specialisti con competenze complementari: Dott. Tonino Bullitta (Albo n. 2054) esperto in ecocardiografia; Dott.ssa Sara Uras (Albo n. 5084) specializzata in diagnostica cardiovascolare; Dott.ssa Giuliana Guagnozzi (Albo n. 42447) esperta in prevenzione CV; Dott. Paolo Pischedda (Albo n. 5264) e Dott. Paolo Franca (Albo n. 6108), entrambi specializzati in Holter, Eco-Doppler TSA e test da sforzo. Tutti iscritti all'Ordine dei Medici, con oltre 3.200 recensioni positive per il centro."}},{"@type":"Question","name":"Come prenotare una visita cardiologica a Bio-Clinic?","acceptedAnswer":{"@type":"Answer","text":"Puoi prenotare la visita cardiologica in tre modi: telefonando al 079 956 1332 (lun-ven 07:00-21:00, sab 08:00-14:00); inviando un messaggio WhatsApp allo stesso numero; oppure prenotando online tramite MioDottore. Tempi di attesa medi: 3-5 giorni lavorativi. Per urgenze cardiologiche è disponibile una corsia preferenziale."}},{"@type":"Question","name":"Qual è la differenza tra Holter ECG e Holter Pressorio?","acceptedAnswer":{"@type":"Answer","text":"L'Holter ECG monitora l'attività elettrica del cuore (ritmo, aritmie, ischemia) per 24-48 ore tramite elettrodi sul torace. L'Holter Pressorio (ABPM) monitora la pressione arteriosa mediante un bracciale automatico che si gonfia ogni 15-30 minuti per 24 ore. Il primo serve per diagnosticare aritmie e disturbi della conduzione; il secondo per confermare ipertensione arteriosa, valutare l'efficacia della terapia antipertensiva e identificare l'ipertensione mascherata o da camice bianco. Entrambi sono eseguiti dal Dott. Pischedda e dal Dott. Franca."}},{"@type":"Question","name":"Quali esami del sangue servono per il cuore?","acceptedAnswer":{"@type":"Answer","text":"Gli esami di laboratorio fondamentali per la salute cardiovascolare includono: Profilo Lipidico completo (colesterolo totale, HDL, LDL, trigliceridi) per stratificare il rischio CV secondo SCORE2 (ESC 2021); Troponina ad alta sensibilità come marker di danno miocardico; NT-proBNP per lo screening dello scompenso cardiaco; Glicemia e Emoglobina Glicata (HbA1c) per il diabete; PCR ad alta sensibilità come marker infiammatorio; Omocisteina (particolarmente rilevante in Sardegna per l'alta prevalenza del polimorfismo MTHFR); Profilo Coagulazione (PT/INR) per pazienti in terapia anticoagulante. Bio-Clinic è l'unico centro a Sassari con laboratorio analisi interno: puoi eseguire gli esami del sangue prima o dopo la visita cardiologica, nella stessa sede."}},{"@type":"Question","name":"Cos'è l'Eco-Doppler TSA e dove farlo a Sassari?","acceptedAnswer":{"@type":"Answer","text":"L'Eco-Doppler dei Tronchi Sovra-Aortici (TSA) è un esame ecografico non invasivo che studia le arterie carotidi e vertebrali, valutando la presenza di placche aterosclerotiche, stenosi e il flusso sanguigno verso il cervello. È fondamentale per la prevenzione dell'ictus cerebrale: le linee guida ESC/ESVS 2023 lo raccomandano come screening nei pazienti con fattori di rischio cardiovascolare (ipertensione, diabete, fumo, dislipidemia) e nei soggetti over 65. A Bio-Clinic è eseguito dal Dott. Pischedda e dal Dott. Franca con referto immediato."}},{"@type":"Question","name":"Bio-Clinic accetta convenzioni per la cardiologia?","acceptedAnswer":{"@type":"Answer","text":"Sì, Bio-Clinic Sassari è convenzionata con i principali fondi sanitari integrativi e assicurazioni sanitarie. Le convenzioni possono coprire parzialmente o totalmente il costo della visita cardiologica e degli esami diagnostici. Per verificare la tua specifica convenzione, contattaci al 079 956 1332 o consulta la pagina dedicata alle convenzioni sul nostro sito."}},{"@type":"Question","name":"Perché la Sardegna ha un rischio cardiovascolare particolare?","acceptedAnswer":{"@type":"Answer","text":"La Sardegna presenta peculiarità epidemiologiche cardiovascolari significative: prevalenza di diabete tipo 2 del 7,2% (vs 5,4% media italiana, dati ISS); alta frequenza del polimorfismo MTHFR C677T (25-30% omozigoti) che causa iperomocisteinemia, fattore di rischio CV indipendente; prevalenza di beta-talassemia eterozigote (12-15%) che può influenzare l'emocromo e la capacità di trasporto dell'ossigeno; invecchiamento della popolazione rurale con accesso limitato a screening cardiologici. Per queste ragioni, Bio-Clinic ha integrato nel percorso cardiologico il dosaggio dell'omocisteina e dell'emoglobina glicata come esami di routine."}},{"@type":"Question","name":"Posso fare visita cardiologica e analisi del sangue nella stessa giornata?","acceptedAnswer":{"@type":"Answer","text":"Sì, questo è il vantaggio principale di Bio-Clinic: siamo l'unico poliambulatorio a Sassari con laboratorio analisi interno. Puoi eseguire il prelievo del sangue (Profilo Lipidico, Glicemia, Troponina, PCR, Omocisteina) e la visita cardiologica nella stessa mattinata. I referti del laboratorio sono disponibili in 4 ore per le urgenze. Questo approccio integrato, raccomandato dalle linee guida ESC 2021, permette al cardiologo di avere un quadro clinico completo durante la stessa seduta diagnostica."}}]}]}</script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "MedicalClinic",
+        "MedicalBusiness",
+        "LocalBusiness"
+      ],
+      "@id": "https://bio-clinic.it/#organization",
+      "name": "Bio-Clinic Sassari",
+      "alternateName": "Bio-Clinic Poliambulatorio Sassari",
+      "url": "https://bio-clinic.it",
+      "telephone": "+39 079 956 1332",
+      "email": "gestione@bio-clinic.it",
+      "priceRange": "€18-€200",
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Cash, Credit Card, Debit Card",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "07:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:00",
+          "closes": "14:00"
+        }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Renzo Mossa, 23",
+        "addressLocality": "Sassari",
+        "addressRegion": "Sardegna",
+        "postalCode": "07100",
+        "addressCountry": "IT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.7267,
+        "longitude": 8.5592
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "3214",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Sassari",
+          "sameAs": "https://it.wikipedia.org/wiki/Sassari"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Provincia di Sassari",
+          "sameAs": "https://it.wikipedia.org/wiki/Provincia_di_Sassari"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Nord Sardegna"
+        }
+      ],
+      "medicalSpecialty": [
+        {
+          "@type": "MedicalSpecialty",
+          "name": "Cardiologia"
+        },
+        {
+          "@type": "MedicalSpecialty",
+          "name": "Laboratorio Analisi"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Prestazioni Cardiologiche Bio-Clinic",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "MedicalProcedure",
+              "name": "Visita Cardiologica con ECG"
+            },
+            "price": "100.00",
+            "priceCurrency": "EUR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "MedicalProcedure",
+              "name": "Ecocardiogramma Color Doppler"
+            },
+            "price": "150.00",
+            "priceCurrency": "EUR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "MedicalProcedure",
+              "name": "Holter ECG 24h"
+            },
+            "price": "120.00",
+            "priceCurrency": "EUR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "MedicalProcedure",
+              "name": "Holter Pressorio 24h (ABPM)"
+            },
+            "price": "100.00",
+            "priceCurrency": "EUR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "MedicalProcedure",
+              "name": "Check-up Cardiovascolare"
+            },
+            "price": "150.00",
+            "priceCurrency": "EUR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "MedicalProcedure",
+              "name": "Eco-Doppler TSA"
+            },
+            "price": "100.00",
+            "priceCurrency": "EUR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "MedicalProcedure",
+              "name": "Test da Sforzo"
+            },
+            "price": "150.00",
+            "priceCurrency": "EUR"
+          }
+        ]
+      },
+      "dateModified": "2026-02-19"
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://bio-clinic.it/cardiologia/",
+      "url": "https://bio-clinic.it/cardiologia/",
+      "name": "Cardiologia Sassari - Centro di Eccellenza Cardiovascolare",
+      "dateModified": "2026-02-27",
+      "lastReviewed": "2026-02-19",
+      "medicalAudience": {
+        "@type": "MedicalAudience",
+        "audienceType": "Patient"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".ai-summary",
+          "h1",
+          ".faq-item h3"
+        ]
+      },
+      "mainEntity": {
+        "@id": "https://bio-clinic.it/cardiologia/#specialty"
+      },
+      "reviewedBy": {
+        "@type": "Physician",
+        "name": "Dott. Tonino Bullitta",
+        "jobTitle": "Cardiologo",
+        "identifier": {
+          "@type": "PropertyValue",
+          "propertyID": "Iscrizione Ordine dei Medici di Sassari",
+          "value": "2054"
+        },
+        "url": "https://bio-clinic.it/equipe/tonino-bullitta/"
+      }
+    },
+    {
+      "@type": "MedicalSpecialty",
+      "@id": "https://bio-clinic.it/cardiologia/#specialty",
+      "name": "Cardiologia",
+      "description": "Servizio di Cardiologia con 5 specialisti e 39 prestazioni diagnostiche e terapeutiche: ECG, ecocardiogramma, holter ECG e pressorio, eco-doppler vascolare, test da sforzo, check-up cardiovascolare presso Bio-Clinic Sassari."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bio-clinic.it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Specialità",
+          "item": "https://bio-clinic.it/specialita/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Cardiologia",
+          "item": "https://bio-clinic.it/cardiologia/"
+        }
+      ]
+    },
+    {
+      "@type": [
+        "Person",
+        "Physician"
+      ],
+      "@id": "https://bio-clinic.it/equipe/tonino-bullitta/",
+      "name": "Dott. Tonino Bullitta",
+      "givenName": "Tonino",
+      "familyName": "Bullitta",
+      "jobTitle": "Cardiologo",
+      "url": "https://bio-clinic.it/equipe/tonino-bullitta/",
+      "worksFor": {
+        "@id": "https://bio-clinic.it/#organization"
+      },
+      "medicalSpecialty": "Cardiologia",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "Iscrizione Ordine dei Medici di Sassari",
+        "value": "2054"
+      },
+      "description": "Cardiologo specialista in ecocardiografia e diagnostica cardiologica non invasiva presso Bio-Clinic Sassari."
+    },
+    {
+      "@type": [
+        "Person",
+        "Physician"
+      ],
+      "@id": "https://bio-clinic.it/equipe/sara-uras/",
+      "name": "Dott.ssa Sara Uras",
+      "givenName": "Sara",
+      "familyName": "Uras",
+      "jobTitle": "Cardiologa",
+      "url": "https://bio-clinic.it/equipe/sara-uras/",
+      "worksFor": {
+        "@id": "https://bio-clinic.it/#organization"
+      },
+      "medicalSpecialty": "Cardiologia",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "Iscrizione Ordine dei Medici di Sassari",
+        "value": "5084"
+      },
+      "description": "Cardiologa specializzata in ecocardiografia e diagnostica cardiovascolare non invasiva presso Bio-Clinic Sassari."
+    },
+    {
+      "@type": [
+        "Person",
+        "Physician"
+      ],
+      "@id": "https://bio-clinic.it/equipe/giuliana-guagnozzi/",
+      "name": "Dott.ssa Giuliana Guagnozzi",
+      "givenName": "Giuliana",
+      "familyName": "Guagnozzi",
+      "jobTitle": "Cardiologa",
+      "url": "https://bio-clinic.it/equipe/giuliana-guagnozzi/",
+      "worksFor": {
+        "@id": "https://bio-clinic.it/#organization"
+      },
+      "medicalSpecialty": "Cardiologia",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "Iscrizione Ordine dei Medici",
+        "value": "42447"
+      },
+      "description": "Cardiologa specializzata in prevenzione cardiovascolare e diagnostica cardiologica avanzata presso Bio-Clinic Sassari."
+    },
+    {
+      "@type": [
+        "Person",
+        "Physician"
+      ],
+      "@id": "https://bio-clinic.it/equipe/paolo-pischedda/",
+      "name": "Dott. Paolo Pischedda",
+      "givenName": "Paolo",
+      "familyName": "Pischedda",
+      "jobTitle": "Cardiologo",
+      "url": "https://bio-clinic.it/equipe/paolo-pischedda/",
+      "worksFor": {
+        "@id": "https://bio-clinic.it/#organization"
+      },
+      "medicalSpecialty": "Cardiologia",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "Iscrizione Ordine dei Medici di Sassari",
+        "value": "5264"
+      },
+      "description": "Cardiologo esperto in Holter ECG/pressorio, Eco-Doppler TSA, test da sforzo e diagnostica cardiovascolare presso Bio-Clinic Sassari."
+    },
+    {
+      "@type": [
+        "Person",
+        "Physician"
+      ],
+      "@id": "https://bio-clinic.it/equipe/paolo-franca/",
+      "name": "Dott. Paolo Franca",
+      "givenName": "Paolo",
+      "familyName": "Franca",
+      "jobTitle": "Cardiologo",
+      "url": "https://bio-clinic.it/equipe/paolo-franca/",
+      "worksFor": {
+        "@id": "https://bio-clinic.it/#organization"
+      },
+      "medicalSpecialty": "Cardiologia",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "Iscrizione Ordine dei Medici di Sassari",
+        "value": "6108"
+      },
+      "description": "Cardiologo specializzato in Holter ECG/pressorio, Eco-Doppler TSA, test da sforzo e prevenzione cardiovascolare presso Bio-Clinic Sassari."
+    },
+    {
+      "@type": "MedicalCondition",
+      "name": "Ipertensione Arteriosa",
+      "alternateName": "ICD-10: I10",
+      "description": "L'ipertensione arteriosa è una condizione caratterizzata da valori di pressione sistolica superiori a 140 mmHg e/o diastolica superiori a 90 mmHg.",
+      "signOrSymptom": [
+        {
+          "@type": "MedicalSignOrSymptom",
+          "name": "Cefalea"
+        },
+        {
+          "@type": "MedicalSignOrSymptom",
+          "name": "Vertigini"
+        },
+        {
+          "@type": "MedicalSignOrSymptom",
+          "name": "Acufeni"
+        }
+      ],
+      "riskFactor": [
+        {
+          "@type": "MedicalRiskFactor",
+          "name": "Familiarità"
+        },
+        {
+          "@type": "MedicalRiskFactor",
+          "name": "Obesità"
+        },
+        {
+          "@type": "MedicalRiskFactor",
+          "name": "Sedentarietà"
+        },
+        {
+          "@type": "MedicalRiskFactor",
+          "name": "Fumo"
+        }
+      ],
+      "typicalTest": [
+        {
+          "@type": "MedicalTest",
+          "name": "Holter Pressorio 24h (ABPM)",
+          "url": "https://bio-clinic.it/cardiologia/holter-pressorio/"
+        },
+        {
+          "@type": "MedicalTest",
+          "name": "Visita Cardiologica con ECG",
+          "url": "https://bio-clinic.it/cardiologia/visita-cardiologica-ecg/"
+        },
+        {
+          "@type": "MedicalTest",
+          "name": "Profilo Lipidico",
+          "url": "https://bio-clinic.it/laboratorio/"
+        }
+      ],
+      "epidemiology": "In Italia il 33% della popolazione adulta è ipertesa. In Sardegna la prevalenza supera il 35% per la popolazione over 50 (dati ISS 2024).",
+      "relevantSpecialty": {
+        "@type": "MedicalSpecialty",
+        "name": "Cardiologia"
+      }
+    },
+    {
+      "@type": "MedicalCondition",
+      "name": "Fibrillazione Atriale",
+      "alternateName": "ICD-10: I48",
+      "description": "La fibrillazione atriale è l'aritmia cardiaca più frequente, caratterizzata da un ritmo cardiaco irregolare e spesso accelerato.",
+      "signOrSymptom": [
+        {
+          "@type": "MedicalSignOrSymptom",
+          "name": "Palpitazioni"
+        },
+        {
+          "@type": "MedicalSignOrSymptom",
+          "name": "Dispnea"
+        },
+        {
+          "@type": "MedicalSignOrSymptom",
+          "name": "Affaticamento"
+        }
+      ],
+      "typicalTest": [
+        {
+          "@type": "MedicalTest",
+          "name": "Holter ECG 24h",
+          "url": "https://bio-clinic.it/cardiologia/holter-ecg/"
+        },
+        {
+          "@type": "MedicalTest",
+          "name": "Ecocardiogramma",
+          "url": "https://bio-clinic.it/cardiologia/ecocardiogramma/"
+        },
+        {
+          "@type": "MedicalTest",
+          "name": "Profilo Coagulazione (PT/INR)",
+          "url": "https://bio-clinic.it/laboratorio/"
+        }
+      ],
+      "epidemiology": "Colpisce circa il 2-3% della popolazione adulta europea. Prevalenza in aumento con l'età: 10-17% negli over 80.",
+      "relevantSpecialty": {
+        "@type": "MedicalSpecialty",
+        "name": "Cardiologia"
+      }
+    },
+    {
+      "@type": "MedicalCondition",
+      "name": "Cardiopatia Ischemica",
+      "alternateName": "ICD-10: I25",
+      "description": "La cardiopatia ischemica è una malattia del cuore causata dalla riduzione dell'apporto di sangue al miocardio per ostruzione delle arterie coronarie.",
+      "signOrSymptom": [
+        {
+          "@type": "MedicalSignOrSymptom",
+          "name": "Dolore toracico (angina)"
+        },
+        {
+          "@type": "MedicalSignOrSymptom",
+          "name": "Dispnea da sforzo"
+        },
+        {
+          "@type": "MedicalSignOrSymptom",
+          "name": "Affaticamento"
+        }
+      ],
+      "typicalTest": [
+        {
+          "@type": "MedicalTest",
+          "name": "ECG a riposo e da sforzo",
+          "url": "https://bio-clinic.it/cardiologia/visita-cardiologica-ecg/"
+        },
+        {
+          "@type": "MedicalTest",
+          "name": "Ecocardiogramma",
+          "url": "https://bio-clinic.it/cardiologia/ecocardiogramma/"
+        },
+        {
+          "@type": "MedicalTest",
+          "name": "Troponina ad alta sensibilità",
+          "url": "https://bio-clinic.it/laboratorio/"
+        },
+        {
+          "@type": "MedicalTest",
+          "name": "Profilo Lipidico",
+          "url": "https://bio-clinic.it/laboratorio/"
+        }
+      ],
+      "epidemiology": "Prima causa di morte cardiovascolare in Italia con circa 75.000 decessi/anno (dati ISTAT). In Sardegna la mortalità CV è allineata alla media nazionale.",
+      "relevantSpecialty": {
+        "@type": "MedicalSpecialty",
+        "name": "Cardiologia"
+      }
+    },
+    {
+      "@type": "AggregateOffer",
+      "name": "Prestazioni Cardiologiche Bio-Clinic Sassari",
+      "priceCurrency": "EUR",
+      "lowPrice": "18",
+      "highPrice": "200",
+      "offerCount": "39",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@id": "https://bio-clinic.it/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quando è necessaria una visita cardiologica a Sassari?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Si consiglia una visita cardiologica a partire dai 40 anni come screening preventivo, o prima in caso di familiarità per malattie cardiovascolari, ipertensione arteriosa (valori >140/90 mmHg), diabete mellito, colesterolo alto (LDL >130 mg/dL), fumo, obesità (BMI >30), sedentarietà. È urgente in caso di dolore toracico, affanno, palpitazioni, sincope o edemi agli arti inferiori. Le linee guida ESC 2021 raccomandano la stratificazione del rischio cardiovascolare con il sistema SCORE2 a partire dai 40 anni."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto costa una visita cardiologica a Sassari?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Bio-Clinic Sassari la visita cardiologica con ECG ha un costo a partire da €100. L'ecocardiogramma Color Doppler costa €150. L'Holter ECG 24h parte da €120 e l'Holter Pressorio da €100. Il check-up cardiovascolare completo (visita + ECG + ecocardiogramma) è disponibile a €150. Il Profilo Lipidico aggiuntivo presso il laboratorio interno costa €18. I costi possono variare in base allo specialista. Accettiamo le principali convenzioni e fondi sanitari integrativi."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cos'è l'ecocardiogramma a Sassari e quando serve?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'ecocardiogramma Color Doppler è un'ecografia del cuore non invasiva che permette di visualizzare in tempo reale la struttura e la funzione cardiaca: dimensioni delle camere, spessore delle pareti, funzione valvolare, contrattilità miocardica e flussi intracardiaci. È indicato per: valvulopatie, scompenso cardiaco, ipertensione, post-infarto, cardiomiopatie, screening in pazienti a rischio CV. Durata 20-30 minuti, senza preparazione. A Bio-Clinic Sassari è eseguito da tutti e 5 i cardiologi dell'équipe con referto immediato."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A cosa serve l'Holter ECG 24 ore?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'Holter ECG è un monitoraggio continuo dell'attività elettrica del cuore per 24-48 ore mediante un piccolo dispositivo portatile. Serve per identificare aritmie (fibrillazione atriale, extrasistoli, tachicardie), alterazioni del ritmo intermittenti, episodi di ischemia silente e per valutare l'efficacia della terapia antiaritmica. Secondo le linee guida ESC 2024, è l'esame di prima scelta per la diagnosi di aritmie parossistiche. A Bio-Clinic è eseguito dal Dott. Pischedda e dal Dott. Franca."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quali sono i migliori cardiologi a Sassari?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bio-Clinic Sassari dispone di 5 cardiologi specialisti con competenze complementari: Dott. Tonino Bullitta (Albo n. 2054) esperto in ecocardiografia; Dott.ssa Sara Uras (Albo n. 5084) specializzata in diagnostica cardiovascolare; Dott.ssa Giuliana Guagnozzi (Albo n. 42447) esperta in prevenzione CV; Dott. Paolo Pischedda (Albo n. 5264) e Dott. Paolo Franca (Albo n. 6108), entrambi specializzati in Holter, Eco-Doppler TSA e test da sforzo. Tutti iscritti all'Ordine dei Medici, con oltre 3.200 recensioni positive per il centro."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come prenotare una visita cardiologica a Bio-Clinic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Puoi prenotare la visita cardiologica in tre modi: telefonando al 079 956 1332 (lun-ven 07:00-21:00, sab 08:00-14:00); inviando un messaggio WhatsApp allo stesso numero; oppure prenotando online tramite MioDottore. Tempi di attesa medi: 3-5 giorni lavorativi. Per urgenze cardiologiche è disponibile una corsia preferenziale."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual è la differenza tra Holter ECG e Holter Pressorio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'Holter ECG monitora l'attività elettrica del cuore (ritmo, aritmie, ischemia) per 24-48 ore tramite elettrodi sul torace. L'Holter Pressorio (ABPM) monitora la pressione arteriosa mediante un bracciale automatico che si gonfia ogni 15-30 minuti per 24 ore. Il primo serve per diagnosticare aritmie e disturbi della conduzione; il secondo per confermare ipertensione arteriosa, valutare l'efficacia della terapia antipertensiva e identificare l'ipertensione mascherata o da camice bianco. Entrambi sono eseguiti dal Dott. Pischedda e dal Dott. Franca."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quali esami del sangue servono per il cuore?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gli esami di laboratorio fondamentali per la salute cardiovascolare includono: Profilo Lipidico completo (colesterolo totale, HDL, LDL, trigliceridi) per stratificare il rischio CV secondo SCORE2 (ESC 2021); Troponina ad alta sensibilità come marker di danno miocardico; NT-proBNP per lo screening dello scompenso cardiaco; Glicemia e Emoglobina Glicata (HbA1c) per il diabete; PCR ad alta sensibilità come marker infiammatorio; Omocisteina (particolarmente rilevante in Sardegna per l'alta prevalenza del polimorfismo MTHFR); Profilo Coagulazione (PT/INR) per pazienti in terapia anticoagulante. Bio-Clinic è l'unico centro a Sassari con laboratorio analisi interno: puoi eseguire gli esami del sangue prima o dopo la visita cardiologica, nella stessa sede."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cos'è l'Eco-Doppler TSA e dove farlo a Sassari?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'Eco-Doppler dei Tronchi Sovra-Aortici (TSA) è un esame ecografico non invasivo che studia le arterie carotidi e vertebrali, valutando la presenza di placche aterosclerotiche, stenosi e il flusso sanguigno verso il cervello. È fondamentale per la prevenzione dell'ictus cerebrale: le linee guida ESC/ESVS 2023 lo raccomandano come screening nei pazienti con fattori di rischio cardiovascolare (ipertensione, diabete, fumo, dislipidemia) e nei soggetti over 65. A Bio-Clinic è eseguito dal Dott. Pischedda e dal Dott. Franca con referto immediato."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Bio-Clinic accetta convenzioni per la cardiologia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì, Bio-Clinic Sassari è convenzionata con i principali fondi sanitari integrativi e assicurazioni sanitarie. Le convenzioni possono coprire parzialmente o totalmente il costo della visita cardiologica e degli esami diagnostici. Per verificare la tua specifica convenzione, contattaci al 079 956 1332 o consulta la pagina dedicata alle convenzioni sul nostro sito."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Perché la Sardegna ha un rischio cardiovascolare particolare?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La Sardegna presenta peculiarità epidemiologiche cardiovascolari significative: prevalenza di diabete tipo 2 del 7,2% (vs 5,4% media italiana, dati ISS); alta frequenza del polimorfismo MTHFR C677T (25-30% omozigoti) che causa iperomocisteinemia, fattore di rischio CV indipendente; prevalenza di beta-talassemia eterozigote (12-15%) che può influenzare l'emocromo e la capacità di trasporto dell'ossigeno; invecchiamento della popolazione rurale con accesso limitato a screening cardiologici. Per queste ragioni, Bio-Clinic ha integrato nel percorso cardiologico il dosaggio dell'omocisteina e dell'emoglobina glicata come esami di routine."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso fare visita cardiologica e analisi del sangue nella stessa giornata?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì, questo è il vantaggio principale di Bio-Clinic: siamo l'unico poliambulatorio a Sassari con laboratorio analisi interno. Puoi eseguire il prelievo del sangue (Profilo Lipidico, Glicemia, Troponina, PCR, Omocisteina) e la visita cardiologica nella stessa mattinata. I referti del laboratorio sono disponibili in 4 ore per le urgenze. Questo approccio integrato, raccomandato dalle linee guida ESC 2021, permette al cardiologo di avere un quadro clinico completo durante la stessa seduta diagnostica."
+          }
+        }
+      ]
+    }
+  ],
+  "dateModified": "2026-02-28",
+  "name": "Cardiologia"
+}
+</script>
 <!-- CGE: Clinical Growth Engine v1.0 -->
 <script>
 window.bcDataLayer = {"page_type": "hub", "specialty": "cardiologia", "service_name": "cardiologia_hub", "physician_name": "tonino-bullitta", "price_range": "100-200", "content_group": "cardiologia_hub", "funnel_stage": "awareness"};
 </script>
 <script src="/js/cge-tracking.js?v=CGE_v4_20260217" defer></script>
 <!-- End CGE -->
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"QAPage","@id":"https://bio-clinic.it/cardiologia/#qapage","mainEntity":[{"@type":"Question","name":"Quando è necessaria una visita cardiologica a Sassari?","answerCount":1,"acceptedAnswer":{"@type":"Answer","text":"Si consiglia una visita cardiologica a partire dai 40 anni come screening preventivo, o prima in caso di familiarità per malattie cardiovascolari, ipertensione arteriosa (valori >140/90 mmHg), diabete mellito, colesterolo alto (LDL >130 mg/dL), fumo, obesità (BMI >30), sedentarietà. È urgente in caso di dolore toracico, affanno, palpitazioni, sincope o edemi agli arti inferiori. Le linee guida ESC 2021 raccomandano la stratificazione del rischio cardiovascolare con il sistema SCORE2 a partire dai 40 anni.","upvoteCount":0}},{"@type":"Question","name":"Quanto costa una visita cardiologica a Sassari?","answerCount":1,"acceptedAnswer":{"@type":"Answer","text":"A Bio-Clinic Sassari la visita cardiologica con ECG ha un costo a partire da €100. L'ecocardiogramma Color Doppler costa €150. L'Holter ECG 24h parte da €120 e l'Holter Pressorio da €100. Il check-up cardiovascolare completo (visita + ECG + ecocardiogramma) è disponibile a €150. Il Profilo Lipidico aggiuntivo presso il laboratorio interno costa €18. I costi possono variare in base allo specialista. Accettiamo le principali convenzioni e fondi sanitari integrativi.","upvoteCount":0}},{"@type":"Question","name":"Cos'è l'ecocardiogramma a Sassari e quando serve?","answerCount":1,"acceptedAnswer":{"@type":"Answer","text":"L'ecocardiogramma Color Doppler è un'ecografia del cuore non invasiva che permette di visualizzare in tempo reale la struttura e la funzione cardiaca: dimensioni delle camere, spessore delle pareti, funzione valvolare, contrattilità miocardica e flussi intracardiaci. È indicato per: valvulopatie, scompenso cardiaco, ipertensione, post-infarto, cardiomiopatie, screening in pazienti a rischio CV. Durata 20-30 minuti, senza preparazione. A Bio-Clinic Sassari è eseguito da tutti e 5 i cardiologi dell'équipe con referto immediato.","upvoteCount":0}},{"@type":"Question","name":"A cosa serve l'Holter ECG 24 ore?","answerCount":1,"acceptedAnswer":{"@type":"Answer","text":"L'Holter ECG è un monitoraggio continuo dell'attività elettrica del cuore per 24-48 ore mediante un piccolo dispositivo portatile. Serve per identificare aritmie (fibrillazione atriale, extrasistoli, tachicardie), alterazioni del ritmo intermittenti, episodi di ischemia silente e per valutare l'efficacia della terapia antiaritmica. Secondo le linee guida ESC 2024, è l'esame di prima scelta per la diagnosi di aritmie parossistiche. A Bio-Clinic è eseguito dal Dott. Pischedda e dal Dott. Franca.","upvoteCount":0}},{"@type":"Question","name":"Quali sono i migliori cardiologi a Sassari?","answerCount":1,"acceptedAnswer":{"@type":"Answer","text":"Bio-Clinic Sassari dispone di 5 cardiologi specialisti con competenze complementari: Dott. Tonino Bullitta (Albo n. 2054) esperto in ecocardiografia; Dott.ssa Sara Uras (Albo n. 5084) specializzata in diagnostica cardiovascolare; Dott.ssa Giuliana Guagnozzi (Albo n. 42447) esperta in prevenzione CV; Dott. Paolo Pischedda (Albo n. 5264) e Dott. Paolo Franca (Albo n. 6108), entrambi specializzati in Holter, Eco-Doppler TSA e test da sforzo. Tutti iscritti all'Ordine dei Medici, con oltre 3.200 recensioni positive per il centro.","upvoteCount":0}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"DefinedTermSet","@id":"https://bio-clinic.it/cardiologia/#glossario-medico","name":"Glossario Medico Cardiologia","description":"Terminologia medica di cardiologia utilizzata da Bio-Clinic Sassari","hasDefinedTerm":[{"@type":"DefinedTerm","name":"ECG (Elettrocardiogramma)","description":"Esame non invasivo che registra l'attività elettrica del cuore mediante elettrodi posizionati sul torace e sugli arti.","inDefinedTermSet":"https://bio-clinic.it/cardiologia/#glossario-medico"},{"@type":"DefinedTerm","name":"Ecocardiogramma","description":"Ecografia del cuore che permette di visualizzare la struttura e la funzione delle camere cardiache e delle valvole.","inDefinedTermSet":"https://bio-clinic.it/cardiologia/#glossario-medico"},{"@type":"DefinedTerm","name":"Holter ECG","description":"Monitoraggio continuo dell'attività cardiaca per 24-48 ore tramite un registratore portatile.","inDefinedTermSet":"https://bio-clinic.it/cardiologia/#glossario-medico"},{"@type":"DefinedTerm","name":"Holter Pressorio","description":"Monitoraggio automatico della pressione arteriosa nell'arco di 24 ore durante le normali attività quotidiane.","inDefinedTermSet":"https://bio-clinic.it/cardiologia/#glossario-medico"}]}</script>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Vai al contenuto principale</a>
@@ -150,159 +764,209 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
     <!-- HEADER -->
     <header class="header">
-      <div class="container">
-        <a href="/" class="logo" title="Torna alla Homepage Bio-Clinic">
-          <img src="/images/logo-bioclinic.png" alt="Bio-Clinic Sassari - Poliambulatorio Medico" width="180" height="60" loading="eager">
-        </a>
-        <nav class="nav" aria-label="Navigazione principale">
-          <ul class="nav-list">
-            <li class="nav-item">
-              <a href="/" class="nav-link" title="Torna alla Homepage Bio-Clinic">Home</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link" title="Percorsi Slim Care" aria-haspopup="true" aria-expanded="false">Slim Care Medical</a>
-              <div class="nav-dropdown" role="menu">
-                <a href="/slim-care/" title="Slim Care - Percorso Dimagrimento" role="menuitem">
-                  <span style="color: #00A651;">💚</span> Slim Care
-                </a>
-                <a href="/slim-care-donna/" title="Slim Care Donna - Dimagrimento Femminile" role="menuitem">
-                  <span style="color: #E91E8C;">💗</span> Slim Care Donna
-                </a>
-                <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
-                <a href="/screening-inps/" title="Screening INPS Sardegna 2025-2026" role="menuitem" style="background: #E8F4FD;">
-                  <span>🏆</span> <strong>Screening INPS</strong> <span style="background: #0066CC; color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 10px; margin-left: 4px;">NEW</span>
-                </a>
-                <a href="/convenzioni/" title="Convenzioni Fondi Sanitari" role="menuitem" style="background: #F0FDF4;">
-                  <span>🏥</span> <strong>Convenzioni Fondi</strong>
-                </a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a href="/laboratorio/" class="nav-link" title="Laboratorio Analisi - 1.136 Esami">Laboratorio</a>
-            </li>
-            <li class="nav-item">
-              <a href="/medicina-del-lavoro/" class="nav-link" title="Medicina del Lavoro per Aziende">Aziende</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link" title="Salute Donna e PMA" aria-haspopup="true" aria-expanded="false">Donna & PMA</a>
-              <div class="nav-dropdown" role="menu">
-                <a href="/ginecologia/" title="Ginecologia e Ostetricia" role="menuitem">
-                  <span>👩‍⚕️</span> Ginecologia
-                </a>
-                <a href="/pma-fertilita/" title="PMA e Fertilità" role="menuitem">
-                  <span>👶</span> PMA / Fertilità
-                </a>
-                <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
-                <span style="font-size: 0.7rem; color: #888; padding: 0.25rem 0.75rem; display: block;">Diagnostica Avanzata (Prof. Dessole)</span>
-                <a href="/ginecologia/isteroscopia/" title="Isteroscopia Diagnostica" role="menuitem">
-                  <span>🔍</span> Isteroscopia Diagnostica
-                </a>
-                <a href="/ginecologia/isterosalpingografia/" title="Isterosalpingografia - Pervietà Tubarica" role="menuitem">
-                  <span>🩺</span> Isterosalpingografia (Tube)
-                </a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link" title="Specialità Mediche" aria-haspopup="true" aria-expanded="false">Specialisti</a>
-              <div class="nav-dropdown nav-dropdown-wide" role="menu">
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; min-width: 320px;">
-                  <a href="/cardiologia/" title="Cardiologia" role="menuitem">❤️ Cardiologia</a>
-                  <a href="/endocrinologia/" title="Endocrinologia" role="menuitem">🦋 Endocrinologia</a>
-                  <a href="/dermatologia/" title="Dermatologia" role="menuitem">🩺 Dermatologia</a>
-                  <a href="/neurologia/" title="Neurologia" role="menuitem">🧠 Neurologia</a>
-                  <a href="/oculistica/" title="Oculistica" role="menuitem">👁️ Oculistica</a>
-                  <a href="/ortopedia/" title="Ortopedia" role="menuitem">🦴 Ortopedia</a>
-                </div>
-                <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
-                <a href="/specialita/" title="Tutte le Specialità" role="menuitem" style="font-weight: 600; color: var(--primary);">
-                  Tutte le Specialità →
-                </a>
-                <a href="/equipe/" title="Équipe Medica" role="menuitem" style="font-weight: 600;">
-                  👨‍⚕️ Équipe Medica (48 Specialisti)
-                </a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a href="/shop/" class="nav-link" title="Medical Shop - Dispositivi Medici">
-                Medical Shop
-                <span style="background: #E91E8C; color: white; font-size: 0.65rem; padding: 0.15rem 0.4rem; border-radius: 10px; margin-left: 0.3rem; vertical-align: middle;">NEW</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/salute/" class="nav-link" title="Guida alla Salute - Articoli Medici">Salute</a>
-            </li>
-            <li class="nav-item">
-              <a href="/contatti/" class="nav-link" title="Contatti e Orari">Contatti</a>
-            </li>
-          </ul>
-          <a href="tel:+390799561332" class="btn btn-primary nav-cta" title="Chiama per prenotare" style="background: #00704A; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; margin-left: 1rem;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Prenota
+  <div class="container">
+    <!-- Logo -->
+    <a href="/" class="logo" title="Torna alla Homepage Bio-Clinic">
+      <img src="/images/logo-bioclinic.png" alt="Bio-Clinic Sassari - Poliambulatorio Medico" width="180" height="60" loading="eager">
+    </a>
+    
+    <!-- Navigazione Desktop -->
+    <nav class="nav" aria-label="Navigazione principale">
+      <ul class="nav-list">
+        <!-- HOME -->
+        <li class="nav-item">
+          <a href="/" class="nav-link" title="Torna alla Homepage Bio-Clinic">Home</a>
+        </li>
+        
+        <!-- SLIM CARE MEDICAL -->
+        <li class="nav-item">
+          <a href="#" class="nav-link " title="Percorsi Slim Care" aria-haspopup="true" aria-expanded="false">Slim Care Medical</a>
+          <div class="nav-dropdown" role="menu">
+            <a href="/slim-care/" title="Slim Care - Percorso Dimagrimento" role="menuitem">
+              <span style="color: #00A651;">💚</span> Slim Care
+            </a>
+            <a href="/slim-care-donna/" title="Slim Care Donna - Dimagrimento Femminile" role="menuitem">
+              <span style="color: #E91E8C;">💗</span> Slim Care Donna
+            </a>
+            <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
+            <a href="/screening-inps/" title="Screening INPS Sardegna 2025-2026" role="menuitem" style="background: #E8F4FD;">
+              <span>🏆</span> <strong>Screening INPS</strong> <span style="background: #0066CC; color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 10px; margin-left: 4px;">NEW</span>
+            </a>
+            <a href="/convenzioni/" title="Convenzioni Fondi Sanitari" role="menuitem" style="background: #F0FDF4;">
+              <span>🏥</span> <strong>Convenzioni Fondi</strong>
+            </a>
+          </div>
+        </li>
+        
+        <!-- LABORATORIO -->
+        <li class="nav-item">
+          <a href="#" class="nav-link" title="Laboratorio Analisi" aria-haspopup="true" aria-expanded="false">Laboratorio</a>
+          <div class="nav-dropdown" role="menu">
+            <a href="/laboratorio/" title="Laboratorio Analisi - 1.136 Esami" role="menuitem">
+              <span>🔬</span> Laboratorio Analisi
+            </a>
+            <a href="/genetica/" title="Genetica e DNA" role="menuitem" style="background: #EEF2FF;">
+              <span>🧬</span> <strong>Genetica & DNA</strong> <span style="background: #6366f1; color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 10px; margin-left: 4px;">NEW</span>
+            </a>
+            <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
+            <a href="/preparazione-esami/" title="Preparazione Esami" role="menuitem">
+              <span>📋</span> Preparazione Esami
+            </a>
+          </div>
+        </li>
+        
+        <!-- AZIENDE -->
+        <li class="nav-item">
+          <a href="/medicina-del-lavoro/" class="nav-link" title="Medicina del Lavoro per Aziende">Aziende</a>
+        </li>
+        
+        <!-- DONNA & PMA -->
+        <li class="nav-item">
+          <a href="#" class="nav-link " title="Salute Donna e PMA" aria-haspopup="true" aria-expanded="false">Donna & PMA</a>
+          <div class="nav-dropdown" role="menu">
+            <a href="/ginecologia/" title="Ginecologia e Ostetricia" role="menuitem">
+              <span>👩‍⚕️</span> Ginecologia
+            </a>
+            <a href="/pma-fertilita/" title="PMA e Fertilità" role="menuitem">
+              <span>👶</span> PMA / Fertilità
+            </a>
+            <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
+            <span style="font-size: 0.7rem; color: #888; padding: 0.25rem 0.75rem; display: block;">Diagnostica Avanzata (Prof. Dessole)</span>
+            <a href="/ginecologia/isteroscopia/" title="Isteroscopia Diagnostica" role="menuitem">
+              <span>🔍</span> Isteroscopia Diagnostica
+            </a>
+            <a href="/ginecologia/isterosalpingografia/" title="Isterosalpingografia - Pervietà Tubarica" role="menuitem">
+              <span>🩺</span> Isterosalpingografia (Tube)
+            </a>
+          </div>
+        </li>
+        
+        <!-- SPECIALISTI -->
+        <li class="nav-item">
+          <a href="#" class="nav-link " title="Specialità Mediche" aria-haspopup="true" aria-expanded="false">Specialisti</a>
+          <div class="nav-dropdown nav-dropdown-wide" role="menu">
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; min-width: 320px;">
+              <a href="/cardiologia/" title="Cardiologia" role="menuitem">❤️ Cardiologia</a>
+              <a href="/endocrinologia/" title="Endocrinologia" role="menuitem">🦋 Endocrinologia</a>
+              <a href="/dermatologia/" title="Dermatologia" role="menuitem">🩺 Dermatologia</a>
+              <a href="/neurologia/" title="Neurologia" role="menuitem">🧠 Neurologia</a>
+              <a href="/oculistica/" title="Oculistica" role="menuitem">👁️ Oculistica</a>
+              <a href="/ortopedia/" title="Ortopedia" role="menuitem">🦴 Ortopedia</a>
+            </div>
+            <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
+            <a href="/specialita/" title="Tutte le Specialità" role="menuitem" style="font-weight: 600; color: var(--primary);">
+              Tutte le Specialità →
+            </a>
+            <a href="/equipe/" title="Équipe Medica" role="menuitem" style="font-weight: 600;">
+              👨‍⚕️ Équipe Medica (48 Specialisti)
+            </a>
+          </div>
+        </li>
+        
+        <!-- MEDICAL SHOP -->
+        <li class="nav-item">
+          <a href="/shop/" class="nav-link " title="Medical Shop - Dispositivi Medici">
+            Medical Shop
+            <span style="background: #E91E8C; color: white; font-size: 0.65rem; padding: 0.15rem 0.4rem; border-radius: 10px; margin-left: 0.3rem; vertical-align: middle;">NEW</span>
           </a>
-        </nav>
-        <button class="menu-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
-      </div>
-    </header>
+        </li>
+        
+        <!-- SALUTE -->
+        <li class="nav-item">
+          <a href="/salute/" class="nav-link" title="Guida alla Salute - Articoli Medici">Salute</a>
+        </li>
+        
+        <!-- CONTATTI -->
+        <li class="nav-item">
+          <a href="/contatti/" class="nav-link " title="Contatti e Orari">Contatti</a>
+        </li>
+      </ul>
+      
+      <!-- PULSANTE PRENOTA (Verde Scuro) -->
+      <a href="tel:+390799561332" class="btn btn-primary nav-cta" title="Chiama per prenotare" style="background: #00704A; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; margin-left: 1rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        Prenota
+      </a>
+    </nav>
+    
+    <!-- Mobile Toggle -->
+    <button class="menu-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
 
     <div class="mobile-overlay" aria-hidden="true"></div>
     <nav class="mobile-nav" id="mobile-nav" aria-label="Menu mobile" aria-hidden="true">
-      <div class="mobile-nav-header">
-        <img src="/images/logo-bioclinic.png" alt="Bio-Clinic" width="140" height="47" loading="eager">
-        <button class="mobile-nav-close" aria-label="Chiudi menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-      <ul class="mobile-nav-list">
-        <li><a href="/" title="Home">🏠 Home</a></li>
-        <li class="mobile-nav-section">
-          <span class="mobile-nav-section-title">Slim Care Medical</span>
-          <ul>
-            <li><a href="/slim-care/">💚 Slim Care</a></li>
-            <li><a href="/slim-care-donna/">💗 Slim Care Donna</a></li>
-          </ul>
-        </li>
-        <li><a href="/laboratorio/" title="Laboratorio">🔬 Laboratorio Analisi</a></li>
-        <li class="mobile-nav-section">
-          <span class="mobile-nav-section-title">Donna & PMA</span>
-          <ul>
-            <li><a href="/ginecologia/">👩‍⚕️ Ginecologia</a></li>
-            <li><a href="/pma-fertilita/">👶 PMA / Fertilità</a></li>
-            <li style="padding-top: 0.5rem; border-top: 1px solid #eee; margin-top: 0.5rem;">
-              <span style="font-size: 0.7rem; color: #888;">Diagnostica Avanzata</span>
-            </li>
-            <li><a href="/ginecologia/isteroscopia/">🔍 Isteroscopia</a></li>
-            <li><a href="/ginecologia/isterosalpingografia/">🩺 Isterosalpingografia</a></li>
-          </ul>
-        </li>
-        <li class="mobile-nav-section">
-          <span class="mobile-nav-section-title">Specialisti</span>
-          <ul>
-            <li><a href="/cardiologia/">❤️ Cardiologia</a></li>
-            <li><a href="/endocrinologia/">🦋 Endocrinologia</a></li>
-            <li><a href="/dermatologia/">🩺 Dermatologia</a></li>
-            <li><a href="/neurologia/">🧠 Neurologia</a></li>
-            <li><a href="/oculistica/">👁️ Oculistica</a></li>
-            <li><a href="/ortopedia/">🦴 Ortopedia</a></li>
-            <li><a href="/specialita/" style="font-weight: 600;">→ Tutte le Specialità</a></li>
-            <li><a href="/equipe/" style="font-weight: 600;">👨‍⚕️ Équipe (48 Medici)</a></li>
-          </ul>
-        </li>
-        <li><a href="/shop/" title="Medical Shop">🛒 Medical Shop <span style="background: #E91E8C; color: white; font-size: 0.65rem; padding: 0.1rem 0.3rem; border-radius: 8px;">NEW</span></a></li>
-        <li><a href="/salute/" title="Guida alla Salute" style="font-weight: 600;">📰 Guida alla Salute</a></li>
-        <li><a href="/contatti/" title="Contatti">📍 Contatti</a></li>
+  <div class="mobile-nav-header">
+    <img loading="eager" src="/images/logo-bioclinic.png" alt="Bio-Clinic" width="140" height="47">
+    <button class="mobile-nav-close" aria-label="Chiudi menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+  <ul class="mobile-nav-list">
+    <li><a href="/" title="Home">🏠 Home</a></li>
+    <li class="mobile-nav-section">
+      <span class="mobile-nav-section-title">Slim Care Medical</span>
+      <ul>
+        <li><a href="/slim-care/">💚 Slim Care</a></li>
+        <li><a href="/slim-care-donna/">💗 Slim Care Donna</a></li>
       </ul>
-      <div class="mobile-nav-footer">
-        <a href="tel:+390799561332" class="btn btn-primary" style="width: 100%; justify-content: center; background: #00704A;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-          </svg>
-          Chiama: 079 956 1332
-        </a>
-      </div>
-    </nav>
+    </li>
+    <li><a href="/laboratorio/" title="Laboratorio">🔬 Laboratorio Analisi</a></li>
+    <li class="mobile-nav-section">
+      <span class="mobile-nav-section-title">Laboratorio</span>
+      <ul>
+        <li><a href="/genetica/">🧬 Genetica & DNA</a></li>
+        <li><a href="/preparazione-esami/">📋 Preparazione Esami</a></li>
+      </ul>
+    </li>
+    <li><a href="/medicina-del-lavoro/" title="Aziende">🏢 Medicina del Lavoro</a></li>
+    <li class="mobile-nav-section">
+      <span class="mobile-nav-section-title">Donna & PMA</span>
+      <ul>
+        <li><a href="/ginecologia/">👩‍⚕️ Ginecologia</a></li>
+        <li><a href="/pma-fertilita/">👶 PMA / Fertilità</a></li>
+        <li style="padding-top: 0.5rem; border-top: 1px solid #eee; margin-top: 0.5rem;">
+          <span style="font-size: 0.7rem; color: #888;">Diagnostica Avanzata</span>
+        </li>
+        <li><a href="/ginecologia/isteroscopia/">🔍 Isteroscopia</a></li>
+        <li><a href="/ginecologia/isterosalpingografia/">🩺 Isterosalpingografia</a></li>
+      </ul>
+    </li>
+    <li class="mobile-nav-section">
+      <span class="mobile-nav-section-title">Specialisti</span>
+      <ul>
+        <li><a href="/cardiologia/">❤️ Cardiologia</a></li>
+        <li><a href="/endocrinologia/">🦋 Endocrinologia</a></li>
+        <li><a href="/dermatologia/">🩺 Dermatologia</a></li>
+        <li><a href="/neurologia/">🧠 Neurologia</a></li>
+        <li><a href="/oculistica/">👁️ Oculistica</a></li>
+        <li><a href="/ortopedia/">🦴 Ortopedia</a></li>
+        <li><a href="/specialita/" style="font-weight: 600;">→ Tutte le Specialità</a></li>
+        <li><a href="/equipe/" style="font-weight: 600;">👨‍⚕️ Équipe (48 Medici)</a></li>
+      </ul>
+    </li>
+    <li><a href="/shop/" title="Medical Shop">🛒 Medical Shop <span style="background: #E91E8C; color: white; font-size: 0.65rem; padding: 0.1rem 0.3rem; border-radius: 8px;">NEW</span></a></li>
+    <li><a href="/salute/" title="Guida alla Salute" style="font-weight: 600;">📰 Guida alla Salute</a></li>
+    <li><a href="/contatti/" title="Contatti">📍 Contatti</a></li>
+  </ul>
+  <div class="mobile-nav-footer">
+    <a href="tel:+390799561332" class="btn btn-primary" style="width: 100%; justify-content: center; background: #00704A;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+      Chiama: 079 956 1332
+    </a>
+  </div>
+</nav>
 
 
     <main id="main-content">
@@ -1250,12 +1914,74 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     </main>
 
+
+    <!-- Guida alla Salute — Cross-link SEO -->
+    
+
+<section class="salute-crosslinks" style="padding: 2.5rem 0; background: var(--gray-50, #f9fafb);">
+  <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 1.5rem;">
+    <h2 style="font-family: var(--font-heading, 'Poppins', sans-serif); font-size: 1.5rem; color: var(--gray-800, #1f2937); margin-bottom: 1.5rem;">
+      📚 Guide alla Salute — Cardiologia
+    </h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;">
+      <a href="/salute/aritmie-cardiache/" style="display: block; padding: 1.25rem; background: white; border-radius: 8px; border: 1px solid #e5e7eb; text-decoration: none; transition: box-shadow 0.2s;">
+        <h3 style="font-size: 0.95rem; font-weight: 600; color: #1f2937; margin: 0 0 0.5rem;">Aritmie Cardiache: Extrasistole, Tachicardia e Cura</h3>
+        <p style="font-size: 0.82rem; color: #6b7280; margin: 0; line-height: 1.4;">Aritmie Cardiache: Extrasistole, Tachicardia e Cura. Holter ECG 24h disponibile per diagno...</p>
+      </a>
+      <a href="/salute/check-up-cardiovascolare/" style="display: block; padding: 1.25rem; background: white; border-radius: 8px; border: 1px solid #e5e7eb; text-decoration: none; transition: box-shadow 0.2s;">
+        <h3 style="font-size: 0.95rem; font-weight: 600; color: #1f2937; margin: 0 0 0.5rem;">Check-Up Cardiovascolare: Esami e Prevenzione a Sassari</h3>
+        <p style="font-size: 0.82rem; color: #6b7280; margin: 0; line-height: 1.4;">Check-Up Cardiovascolare: Esami e Prevenzione a Sassari. Prevenzione primaria fondamentale...</p>
+      </a>
+      <a href="/salute/colesterolo-alto/" style="display: block; padding: 1.25rem; background: white; border-radius: 8px; border: 1px solid #e5e7eb; text-decoration: none; transition: box-shadow 0.2s;">
+        <h3 style="font-size: 0.95rem; font-weight: 600; color: #1f2937; margin: 0 0 0.5rem;">Colesterolo Alto: Cause, Rischi e Come Abbassarlo</h3>
+        <p style="font-size: 0.82rem; color: #6b7280; margin: 0; line-height: 1.4;">Colesterolo Alto: Cause, Rischi e Come Abbassarlo. Ipercolesterolemia familiare frequente ...</p>
+      </a>
+      <a href="/salute/fibrillazione-atriale/" style="display: block; padding: 1.25rem; background: white; border-radius: 8px; border: 1px solid #e5e7eb; text-decoration: none; transition: box-shadow 0.2s;">
+        <h3 style="font-size: 0.95rem; font-weight: 600; color: #1f2937; margin: 0 0 0.5rem;">Fibrillazione Atriale: Sintomi, Rischi e Trattamento</h3>
+        <p style="font-size: 0.82rem; color: #6b7280; margin: 0; line-height: 1.4;">Fibrillazione Atriale: Sintomi, Rischi e Trattamento. Incidenza crescente nella popolazion...</p>
+      </a>
+      <a href="/salute/ipertensione-arteriosa/" style="display: block; padding: 1.25rem; background: white; border-radius: 8px; border: 1px solid #e5e7eb; text-decoration: none; transition: box-shadow 0.2s;">
+        <h3 style="font-size: 0.95rem; font-weight: 600; color: #1f2937; margin: 0 0 0.5rem;">Ipertensione Arteriosa: Cause, Sintomi e Cura a Sassari</h3>
+        <p style="font-size: 0.82rem; color: #6b7280; margin: 0; line-height: 1.4;">Ipertensione arteriosa: cause, sintomi, diagnosi e cura a Sassari. La Sardegna presenta ta...</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="glossario-medico" class="glossary-section" style="padding: 2.5rem 0; background: var(--gray-50, #f9fafb);">
+  <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 0 1.5rem;">
+    <h2 style="font-family: var(--font-heading, 'Poppins', sans-serif); font-size: 1.5rem; color: var(--gray-800, #1f2937); margin-bottom: 1.5rem;">
+      Glossario Medico — Cardiologia
+    </h2>
+    <p style="color: var(--gray-600, #4b5563); margin-bottom: 1.5rem; font-size: 0.95rem;">
+      Terminologia medica essenziale per comprendere le prestazioni di cardiologia offerte da Bio-Clinic Sassari.
+    </p>
+    <dl style="display: grid; gap: 1rem;">
+      <div style="background: white; padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--primary, #7CBA3D);">
+        <dt style="font-weight: 700; color: var(--gray-800, #1f2937); font-size: 1rem; margin-bottom: 0.5rem;">ECG (Elettrocardiogramma)</dt>
+        <dd style="color: var(--gray-600, #4b5563); font-size: 0.9rem; line-height: 1.6; margin: 0;">Esame non invasivo che registra l'attività elettrica del cuore mediante elettrodi posizionati sul torace e sugli arti.</dd>
+      </div>
+      <div style="background: white; padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--primary, #7CBA3D);">
+        <dt style="font-weight: 700; color: var(--gray-800, #1f2937); font-size: 1rem; margin-bottom: 0.5rem;">Ecocardiogramma</dt>
+        <dd style="color: var(--gray-600, #4b5563); font-size: 0.9rem; line-height: 1.6; margin: 0;">Ecografia del cuore che permette di visualizzare la struttura e la funzione delle camere cardiache e delle valvole.</dd>
+      </div>
+      <div style="background: white; padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--primary, #7CBA3D);">
+        <dt style="font-weight: 700; color: var(--gray-800, #1f2937); font-size: 1rem; margin-bottom: 0.5rem;">Holter ECG</dt>
+        <dd style="color: var(--gray-600, #4b5563); font-size: 0.9rem; line-height: 1.6; margin: 0;">Monitoraggio continuo dell'attività cardiaca per 24-48 ore tramite un registratore portatile.</dd>
+      </div>
+      <div style="background: white; padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--primary, #7CBA3D);">
+        <dt style="font-weight: 700; color: var(--gray-800, #1f2937); font-size: 1rem; margin-bottom: 0.5rem;">Holter Pressorio</dt>
+        <dd style="color: var(--gray-600, #4b5563); font-size: 0.9rem; line-height: 1.6; margin: 0;">Monitoraggio automatico della pressione arteriosa nell'arco di 24 ore durante le normali attività quotidiane.</dd>
+      </div>
+    </dl>
+  </div>
+</section>
 <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div>
           <div class="footer-brand">
-            <img src="/images/logo-bioclinic.png" alt="Bio-Clinic Sassari" style="height: 45px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;" width="120" height="45" loading="lazy">
+            <img loading="lazy" src="/images/logo-bioclinic.png" alt="Bio-Clinic" style="height: 45px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;">
           </div>
           <p class="footer-description">
             Poliambulatorio medico a Sassari con 31 specialità, 67 medici e oltre 1.840 prestazioni. 
@@ -1285,6 +2011,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li><a href="/pma-fertilita/" title="Scopri il percorso PMA e Fertilità">PMA / Fertilità</a></li>
             <li><a href="/cardiologia/" title="Vai alla sezione Cardiologia">Cardiovascolare</a></li>
             <li><a href="/convenzioni/" title="Convenzioni Fondi Sanitari">Convenzioni</a></li>
+            <li><a href="/prevenzione/" title="Check-Up e Prevenzione">Prevenzione</a></li>
+            <li><a href="/chi-siamo/" title="Chi Siamo - Bio-Clinic Sassari">Chi Siamo</a></li>
           </ul>
         </div>
         
@@ -1295,9 +2023,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li><a href="/cardiologia/" title="Vai alla sezione Cardiologia">Cardiologia</a></li>
             <li><a href="/endocrinologia/" title="Vai alla sezione Endocrinologia">Endocrinologia</a></li>
             <li><a href="/laboratorio/" title="Vai al Laboratorio Analisi">Laboratorio</a></li>
-            <li><a href="/listino/" title="Listino Prezzi Completo">Listino Prezzi</a></li>
-            <li><a href="/salute/" title="Guida alla Salute">Guida alla Salute</a></li>
             <li><a href="/specialita/" title="Vedi tutte le specialità">Tutte le Specialità</a></li>
+            <li><a href="/screening-inps-sardegna/" title="Screening INPS Sardegna">Screening INPS</a></li>
           </ul>
         </div>
         
@@ -1335,7 +2062,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div>
           <a href="/privacy/" title="Leggi la Privacy Policy">Privacy Policy</a> | 
-          <a href="/cookie/" title="Leggi la Cookie Policy">Cookie Policy</a>
+          <a href="/cookie/" title="Leggi la Cookie Policy">Cookie Policy</a> |
+          <a href="/listino/" class="text-xs" title="Listino prezzi completo laboratorio analisi">Listino Prezzi Completo</a>
         </div>
       </div>
     </div>

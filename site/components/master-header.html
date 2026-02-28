@@ -48,8 +48,8 @@
 <header class="header">
   <div class="container">
     <!-- Logo -->
-    <a href="{{ROOT_PATH}}index.html" class="logo" title="Torna alla Homepage Bio-Clinic">
-      <img src="{{ROOT_PATH}}images/logo-bioclinic.png" alt="Bio-Clinic Sassari - Poliambulatorio Medico" width="180" height="60" loading="eager">
+    <a href="/" class="logo" title="Torna alla Homepage Bio-Clinic">
+      <img src="/images/logo-bioclinic.png" alt="Bio-Clinic Sassari - Poliambulatorio Medico" width="180" height="60" loading="eager">
     </a>
     
     <!-- Navigazione Desktop -->
@@ -57,57 +57,89 @@
       <ul class="nav-list">
         <!-- HOME -->
         <li class="nav-item">
-          <a href="{{ROOT_PATH}}index.html" class="nav-link {{ACTIVE_HOME}}" title="Torna alla Homepage Bio-Clinic">Home</a>
+          <a href="/" class="nav-link" title="Torna alla Homepage Bio-Clinic">Home</a>
         </li>
         
         <!-- SLIM CARE MEDICAL -->
         <li class="nav-item">
-          <a href="#" class="nav-link {{ACTIVE_SLIMCARE}}" title="Percorsi Slim Care" aria-haspopup="true" aria-expanded="false">Slim Care Medical</a>
+          <a href="#" class="nav-link " title="Percorsi Slim Care" aria-haspopup="true" aria-expanded="false">Slim Care Medical</a>
           <div class="nav-dropdown" role="menu">
-            <a href="{{PAGES_PATH}}slim-care.html" title="Slim Care - Percorso Dimagrimento" role="menuitem">
+            <a href="/slim-care/" title="Slim Care - Percorso Dimagrimento" role="menuitem">
               <span style="color: #00A651;">💚</span> Slim Care
             </a>
-            <a href="{{PAGES_PATH}}slim-care-donna.html" title="Slim Care Donna - Dimagrimento Femminile" role="menuitem">
+            <a href="/slim-care-donna/" title="Slim Care Donna - Dimagrimento Femminile" role="menuitem">
               <span style="color: #E91E8C;">💗</span> Slim Care Donna
+            </a>
+            <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
+            <a href="/screening-inps/" title="Screening INPS Sardegna 2025-2026" role="menuitem" style="background: #E8F4FD;">
+              <span>🏆</span> <strong>Screening INPS</strong> <span style="background: #0066CC; color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 10px; margin-left: 4px;">NEW</span>
+            </a>
+            <a href="/convenzioni/" title="Convenzioni Fondi Sanitari" role="menuitem" style="background: #F0FDF4;">
+              <span>🏥</span> <strong>Convenzioni Fondi</strong>
             </a>
           </div>
         </li>
         
         <!-- LABORATORIO -->
         <li class="nav-item">
-          <a href="{{ROOT_PATH}}laboratorio/index.html" class="nav-link {{ACTIVE_LAB}}" title="Laboratorio Analisi - 1.136 Esami">Laboratorio</a>
+          <a href="#" class="nav-link" title="Laboratorio Analisi" aria-haspopup="true" aria-expanded="false">Laboratorio</a>
+          <div class="nav-dropdown" role="menu">
+            <a href="/laboratorio/" title="Laboratorio Analisi - 1.136 Esami" role="menuitem">
+              <span>🔬</span> Laboratorio Analisi
+            </a>
+            <a href="/genetica/" title="Genetica e DNA" role="menuitem" style="background: #EEF2FF;">
+              <span>🧬</span> <strong>Genetica & DNA</strong> <span style="background: #6366f1; color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 10px; margin-left: 4px;">NEW</span>
+            </a>
+            <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
+            <a href="/preparazione-esami/" title="Preparazione Esami" role="menuitem">
+              <span>📋</span> Preparazione Esami
+            </a>
+          </div>
+        </li>
+        
+        <!-- AZIENDE -->
+        <li class="nav-item">
+          <a href="/medicina-del-lavoro/" class="nav-link" title="Medicina del Lavoro per Aziende">Aziende</a>
         </li>
         
         <!-- DONNA & PMA -->
         <li class="nav-item">
-          <a href="#" class="nav-link {{ACTIVE_DONNA}}" title="Salute Donna e PMA" aria-haspopup="true" aria-expanded="false">Donna & PMA</a>
+          <a href="#" class="nav-link " title="Salute Donna e PMA" aria-haspopup="true" aria-expanded="false">Donna & PMA</a>
           <div class="nav-dropdown" role="menu">
-            <a href="{{PAGES_PATH}}ginecologia.html" title="Ginecologia e Ostetricia" role="menuitem">
+            <a href="/ginecologia/" title="Ginecologia e Ostetricia" role="menuitem">
               <span>👩‍⚕️</span> Ginecologia
             </a>
-            <a href="{{PAGES_PATH}}pma-fertilita.html" title="PMA e Fertilità" role="menuitem">
+            <a href="/pma-fertilita/" title="PMA e Fertilità" role="menuitem">
               <span>👶</span> PMA / Fertilità
+            </a>
+            <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
+            <span style="font-size: 0.7rem; color: #888; padding: 0.25rem 0.75rem; display: block;">Diagnostica Avanzata (Prof. Dessole)</span>
+            <a href="/ginecologia/isteroscopia/" title="Isteroscopia Diagnostica" role="menuitem">
+              <span>🔍</span> Isteroscopia Diagnostica
+            </a>
+            <a href="/ginecologia/isterosalpingografia/" title="Isterosalpingografia - Pervietà Tubarica" role="menuitem">
+              <span>🩺</span> Isterosalpingografia (Tube)
             </a>
           </div>
         </li>
         
         <!-- SPECIALISTI -->
         <li class="nav-item">
-          <a href="#" class="nav-link {{ACTIVE_SPEC}}" title="Specialità Mediche" aria-haspopup="true" aria-expanded="false">Specialisti</a>
+          <a href="#" class="nav-link " title="Specialità Mediche" aria-haspopup="true" aria-expanded="false">Specialisti</a>
           <div class="nav-dropdown nav-dropdown-wide" role="menu">
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; min-width: 320px;">
-              <a href="{{PAGES_PATH}}cardiologia.html" title="Cardiologia" role="menuitem">❤️ Cardiologia</a>
-              <a href="{{PAGES_PATH}}endocrinologia.html" title="Endocrinologia" role="menuitem">🦋 Endocrinologia</a>
-              <a href="{{PAGES_PATH}}dermatologia.html" title="Dermatologia" role="menuitem">🩺 Dermatologia</a>
-              <a href="{{PAGES_PATH}}neurologia.html" title="Neurologia" role="menuitem">🧠 Neurologia</a>
-              <a href="{{PAGES_PATH}}oculistica.html" title="Oculistica" role="menuitem">👁️ Oculistica</a>
-              <a href="{{PAGES_PATH}}ortopedia.html" title="Ortopedia" role="menuitem">🦴 Ortopedia</a>
+              <a href="/cardiologia/" title="Cardiologia" role="menuitem">❤️ Cardiologia</a>
+              <a href="/endocrinologia/" title="Endocrinologia" role="menuitem">🦋 Endocrinologia</a>
+              <a href="/dermatologia/" title="Dermatologia" role="menuitem">🩺 Dermatologia</a>
+              <a href="/neurologia/" title="Neurologia" role="menuitem">🧠 Neurologia</a>
+              <a href="/oculistica/" title="Oculistica" role="menuitem">👁️ Oculistica</a>
+              <a href="/ortopedia/" title="Ortopedia" role="menuitem">🦴 Ortopedia</a>
             </div>
             <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
-            <a href="{{PAGES_PATH}}specialita.html" title="Tutte le Specialità" role="menuitem" style="font-weight: 600; color: var(--primary);">
+            <a href="/specialita/" title="Tutte le Specialità" role="menuitem" style="font-weight: 600; color: var(--primary);">
               Tutte le Specialità →
             </a>
-            <a href="{{ROOT_PATH}}equipe/index.html" title="Équipe Medica" role="menuitem" style="font-weight: 600;">
+            <a href="/equipe/" title="Équipe Medica" role="menuitem" style="font-weight: 600;">
               👨‍⚕️ Équipe Medica (48 Specialisti)
             </a>
           </div>
@@ -115,7 +147,7 @@
         
         <!-- MEDICAL SHOP -->
         <li class="nav-item">
-          <a href="{{ROOT_PATH}}shop/index.html" class="nav-link {{ACTIVE_SHOP}}" title="Medical Shop - Dispositivi Medici">
+          <a href="/shop/" class="nav-link " title="Medical Shop - Dispositivi Medici">
             Medical Shop
             <span style="background: #E91E8C; color: white; font-size: 0.65rem; padding: 0.15rem 0.4rem; border-radius: 10px; margin-left: 0.3rem; vertical-align: middle;">NEW</span>
           </a>
@@ -123,12 +155,12 @@
         
         <!-- SALUTE -->
         <li class="nav-item">
-          <a href="/salute/" class="nav-link {{ACTIVE_SALUTE}}" title="Guida alla Salute - Articoli Medici">Salute</a>
+          <a href="/salute/" class="nav-link" title="Guida alla Salute - Articoli Medici">Salute</a>
         </li>
         
         <!-- CONTATTI -->
         <li class="nav-item">
-          <a href="{{PAGES_PATH}}contatti.html" class="nav-link {{ACTIVE_CONTATTI}}" title="Contatti e Orari">Contatti</a>
+          <a href="/contatti/" class="nav-link " title="Contatti e Orari">Contatti</a>
         </li>
       </ul>
       
@@ -156,7 +188,7 @@
 <!-- Mobile Navigation -->
 <nav class="mobile-nav" id="mobile-nav" aria-label="Menu mobile" aria-hidden="true">
   <div class="mobile-nav-header">
-    <img src="{{ROOT_PATH}}images/logo-bioclinic.png" alt="Bio-Clinic" width="140" height="47">
+    <img src="/images/logo-bioclinic.png" alt="Bio-Clinic" width="140" height="47">
     <button class="mobile-nav-close" aria-label="Chiudi menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -165,38 +197,51 @@
     </button>
   </div>
   <ul class="mobile-nav-list">
-    <li><a href="{{ROOT_PATH}}index.html" title="Home">🏠 Home</a></li>
+    <li><a href="/" title="Home">🏠 Home</a></li>
     <li class="mobile-nav-section">
       <span class="mobile-nav-section-title">Slim Care Medical</span>
       <ul>
-        <li><a href="{{PAGES_PATH}}slim-care.html">💚 Slim Care</a></li>
-        <li><a href="{{PAGES_PATH}}slim-care-donna.html">💗 Slim Care Donna</a></li>
+        <li><a href="/slim-care/">💚 Slim Care</a></li>
+        <li><a href="/slim-care-donna/">💗 Slim Care Donna</a></li>
       </ul>
     </li>
-    <li><a href="{{ROOT_PATH}}laboratorio/index.html" title="Laboratorio">🔬 Laboratorio Analisi</a></li>
+    <li><a href="/laboratorio/" title="Laboratorio">🔬 Laboratorio Analisi</a></li>
+    <li class="mobile-nav-section">
+      <span class="mobile-nav-section-title">Laboratorio</span>
+      <ul>
+        <li><a href="/genetica/">🧬 Genetica & DNA</a></li>
+        <li><a href="/preparazione-esami/">📋 Preparazione Esami</a></li>
+      </ul>
+    </li>
+    <li><a href="/medicina-del-lavoro/" title="Aziende">🏢 Medicina del Lavoro</a></li>
     <li class="mobile-nav-section">
       <span class="mobile-nav-section-title">Donna & PMA</span>
       <ul>
-        <li><a href="{{PAGES_PATH}}ginecologia.html">👩‍⚕️ Ginecologia</a></li>
-        <li><a href="{{PAGES_PATH}}pma-fertilita.html">👶 PMA / Fertilità</a></li>
+        <li><a href="/ginecologia/">👩‍⚕️ Ginecologia</a></li>
+        <li><a href="/pma-fertilita/">👶 PMA / Fertilità</a></li>
+        <li style="padding-top: 0.5rem; border-top: 1px solid #eee; margin-top: 0.5rem;">
+          <span style="font-size: 0.7rem; color: #888;">Diagnostica Avanzata</span>
+        </li>
+        <li><a href="/ginecologia/isteroscopia/">🔍 Isteroscopia</a></li>
+        <li><a href="/ginecologia/isterosalpingografia/">🩺 Isterosalpingografia</a></li>
       </ul>
     </li>
     <li class="mobile-nav-section">
       <span class="mobile-nav-section-title">Specialisti</span>
       <ul>
-        <li><a href="{{PAGES_PATH}}cardiologia.html">❤️ Cardiologia</a></li>
-        <li><a href="{{PAGES_PATH}}endocrinologia.html">🦋 Endocrinologia</a></li>
-        <li><a href="{{PAGES_PATH}}dermatologia.html">🩺 Dermatologia</a></li>
-        <li><a href="{{PAGES_PATH}}neurologia.html">🧠 Neurologia</a></li>
-        <li><a href="{{PAGES_PATH}}oculistica.html">👁️ Oculistica</a></li>
-        <li><a href="{{PAGES_PATH}}ortopedia.html">🦴 Ortopedia</a></li>
-        <li><a href="{{PAGES_PATH}}specialita.html" style="font-weight: 600;">→ Tutte le Specialità</a></li>
-        <li><a href="{{ROOT_PATH}}equipe/index.html" style="font-weight: 600;">👨‍⚕️ Équipe (48 Medici)</a></li>
+        <li><a href="/cardiologia/">❤️ Cardiologia</a></li>
+        <li><a href="/endocrinologia/">🦋 Endocrinologia</a></li>
+        <li><a href="/dermatologia/">🩺 Dermatologia</a></li>
+        <li><a href="/neurologia/">🧠 Neurologia</a></li>
+        <li><a href="/oculistica/">👁️ Oculistica</a></li>
+        <li><a href="/ortopedia/">🦴 Ortopedia</a></li>
+        <li><a href="/specialita/" style="font-weight: 600;">→ Tutte le Specialità</a></li>
+        <li><a href="/equipe/" style="font-weight: 600;">👨‍⚕️ Équipe (48 Medici)</a></li>
       </ul>
     </li>
-    <li><a href="{{ROOT_PATH}}shop/index.html" title="Medical Shop">🛒 Medical Shop <span style="background: #E91E8C; color: white; font-size: 0.65rem; padding: 0.1rem 0.3rem; border-radius: 8px;">NEW</span></a></li>
+    <li><a href="/shop/" title="Medical Shop">🛒 Medical Shop <span style="background: #E91E8C; color: white; font-size: 0.65rem; padding: 0.1rem 0.3rem; border-radius: 8px;">NEW</span></a></li>
     <li><a href="/salute/" title="Guida alla Salute" style="font-weight: 600;">📰 Guida alla Salute</a></li>
-    <li><a href="{{PAGES_PATH}}contatti.html" title="Contatti">📍 Contatti</a></li>
+    <li><a href="/contatti/" title="Contatti">📍 Contatti</a></li>
   </ul>
   <div class="mobile-nav-footer">
     <a href="tel:+390799561332" class="btn btn-primary" style="width: 100%; justify-content: center; background: #00704A;">

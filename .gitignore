@@ -1,1 +1,9 @@
 site/backups/
+referti/package-lock.json
+
+# Credenziali e file sensibili — MAI committare
+BIO-CLINIC-CREDENZIALI-PROGETTO.md
+.cloudflare-config
+*.env
+*.env.local
+.env.*

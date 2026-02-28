@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "last_updated": "2026-02-17",
+  "version": "3.0",
+  "last_updated": "2026-02-28T19:26:41Z",
   "total_packs": 12,
   "packs": [
     {
@@ -490,46 +490,14 @@
       }
     }
   ],
-  "categories": {
-    "prevenzione": {
-      "name": "Prevenzione",
-      "icon": "🛡️",
-      "description": "Check-up per la prevenzione generale"
-    },
-    "endocrinologia": {
-      "name": "Endocrinologia",
-      "icon": "⚗️",
-      "description": "Profili ormonali e tiroidei"
-    },
-    "cardiologia": {
-      "name": "Cardiologia",
-      "icon": "❤️",
-      "description": "Rischio cardiovascolare"
-    },
-    "metabolismo": {
-      "name": "Metabolismo",
-      "icon": "🔬",
-      "description": "Diabete e metabolismo"
-    },
-    "epatologia": {
-      "name": "Epatologia",
-      "icon": "🫀",
-      "description": "Funzione epatica"
-    },
-    "nefrologia": {
-      "name": "Nefrologia",
-      "icon": "💧",
-      "description": "Funzione renale"
-    },
-    "ematologia": {
-      "name": "Ematologia",
-      "icon": "🩸",
-      "description": "Sangue e anemia"
-    },
-    "urologia": {
-      "name": "Urologia",
-      "icon": "♂️",
-      "description": "Prostata e vie urinarie"
-    }
-  }
+  "categories": [
+    "cardiologia",
+    "ematologia",
+    "endocrinologia",
+    "epatologia",
+    "metabolismo",
+    "nefrologia",
+    "prevenzione",
+    "urologia"
+  ]
 }
