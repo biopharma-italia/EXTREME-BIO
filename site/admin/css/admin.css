@@ -708,3 +708,42 @@ body {
   .setting-row { grid-template-columns: 1fr; gap: 4px; }
   .settings-dirty-bar { left: 0; }
 }
+
+/* ---------- Photo Manager ---------- */
+.photo-manager .photo-thumb {
+  transition: border-color .2s;
+}
+.photo-manager .photo-thumb:hover {
+  border-color: var(--primary) !important;
+}
+
+/* ---------- Tags Input ---------- */
+.tags-container {
+  min-height: 32px;
+}
+.tag-item {
+  animation: tagIn .2s ease;
+}
+@keyframes tagIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+.tag-remove:hover {
+  color: var(--danger) !important;
+  transform: scale(1.2);
+}
+
+/* ---------- Procedure & Physician Cross-links ---------- */
+.procedure-link:hover, .physician-link:hover {
+  border-color: var(--primary) !important;
+  background: var(--primary-light) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,.08);
+}
+
+/* ---------- Modal scroll improvement ---------- */
+.modal-body {
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 8px;
+}

@@ -61,11 +61,18 @@ const ENTITIES = {
       { key: 'title', label: 'Titolo', type: 'select', options: ['Prof.', 'Dott.', 'Dott.ssa'], required: true },
       { key: 'first_name', label: 'Nome', type: 'text', required: true },
       { key: 'last_name', label: 'Cognome', type: 'text', required: true },
-      { key: 'specialty_id', label: 'Specialita', type: 'text', required: true },
+      { key: 'specialty_id', label: 'Specialita Principale', type: 'text', required: true },
+      { key: 'specialties_secondary', label: 'Specialita Secondarie', type: 'tags', placeholder: 'es. endocrinologia, ecografia' },
       { key: 'job_title', label: 'Ruolo / Qualifica', type: 'text' },
+      { key: 'role_badges', label: 'Badge Ruolo', type: 'tags', placeholder: 'es. Responsabile, Referente' },
+      { key: 'is_director', label: 'Direttore Sanitario', type: 'checkbox' },
       { key: 'bio_short', label: 'Bio Breve', type: 'textarea' },
+      { key: 'photo_url', label: 'Foto Profilo', type: 'photo' },
       { key: 'booking_enabled', label: 'Prenotazione Abilitata', type: 'checkbox' },
+      { key: 'show_in_equipe', label: 'Mostra in Equipe', type: 'checkbox' },
+      { key: 'show_in_specialty', label: 'Mostra in Specialita', type: 'checkbox' },
       { key: 'miodottore_url', label: 'URL MioDottore', type: 'url' },
+      { key: 'miodottore_id', label: 'ID MioDottore', type: 'text' },
       { key: 'priority_order', label: 'Ordine Priorita', type: 'number' },
       { key: 'featured_on_homepage', label: 'In Homepage', type: 'checkbox' },
       { key: 'status', label: 'Stato', type: 'select', options: ['active', 'inactive', 'hidden'] },
@@ -85,14 +92,20 @@ const ENTITIES = {
     fields: [
       { key: 'id', label: 'ID (slug)', type: 'text', required: true },
       { key: 'name', label: 'Nome', type: 'text', required: true },
+      { key: 'name_extended', label: 'Nome Esteso', type: 'text' },
       { key: 'slug', label: 'Slug URL', type: 'text', required: true },
       { key: 'specialty_id', label: 'Specialita', type: 'text', required: true },
       { key: 'category', label: 'Categoria', type: 'select', options: ['visita', 'diagnostica', 'esame', 'trattamento', 'intervento', 'terapia'], required: true },
       { key: 'page_type', label: 'Tipo Pagina', type: 'select', options: ['A', 'B', 'C', 'D'] },
       { key: 'description_short', label: 'Descrizione', type: 'textarea' },
       { key: 'duration_minutes', label: 'Durata (min)', type: 'number' },
+      { key: 'preparation_required', label: 'Preparazione Richiesta', type: 'checkbox' },
+      { key: 'fasting_required', label: 'Digiuno Richiesto', type: 'checkbox' },
       { key: 'show_price', label: 'Mostra Prezzo', type: 'checkbox' },
       { key: 'price', label: 'Prezzo (EUR)', type: 'number', step: '0.01' },
+      { key: 'price_note', label: 'Note Prezzo', type: 'text' },
+      { key: 'booking_priority', label: 'Priorita Prenotazione', type: 'number' },
+      { key: 'page_url', label: 'URL Pagina', type: 'url' },
       { key: 'status', label: 'Stato', type: 'select', options: ['active', 'inactive', 'hidden'] },
     ],
   },
@@ -810,6 +823,56 @@ function openModal(title, fields, record) {
         <label for="${id}" style="margin:0">${f.label}</label>
       </div>`;
     }
+    // Photo field with preview and upload/remove
+    if (f.type === 'photo') {
+      const photoUrl = val || '';
+      const hasPhoto = !!photoUrl;
+      return `<div class="form-group">
+        <label>${f.label}</label>
+        <div class="photo-manager" id="photo-manager-${f.key}">
+          <div class="photo-preview" style="display:flex;align-items:center;gap:16px;margin-bottom:8px">
+            <div class="photo-thumb" style="width:80px;height:80px;border-radius:50%;overflow:hidden;background:var(--gray-200);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:2px solid var(--gray-300)">
+              ${hasPhoto
+                ? `<img src="${esc(photoUrl)}" alt="Foto" style="width:100%;height:100%;object-fit:cover" id="photo-img-${f.key}">`
+                : `<span style="font-size:32px;color:var(--gray-400)" id="photo-placeholder-${f.key}">&#128100;</span>`}
+            </div>
+            <div style="flex:1">
+              <input type="url" id="${id}" name="${f.key}" value="${esc(String(photoUrl))}" placeholder="URL immagine (https://...)" ${readOnly}
+                style="width:100%;margin-bottom:6px">
+              <div style="display:flex;gap:6px;flex-wrap:wrap">
+                ${!isDemoMode ? `
+                  <label class="btn btn-sm btn-outline" style="cursor:pointer;margin:0;font-size:11px">
+                    <input type="file" accept="image/*" id="photo-upload-${f.key}" style="display:none" onchange="handlePhotoUpload(this, '${f.key}')">
+                    &#128247; Carica Foto
+                  </label>
+                  ${hasPhoto ? `<button type="button" class="btn btn-sm btn-outline" style="color:var(--danger);border-color:var(--danger);font-size:11px" onclick="removePhoto('${f.key}')">&#128465; Rimuovi</button>` : ''}
+                ` : ''}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    }
+    // Tags field (arrays like specialties_secondary, role_badges)
+    if (f.type === 'tags') {
+      const tagsArray = Array.isArray(val) ? val : (val ? String(val).split(',').map(s => s.trim()).filter(Boolean) : []);
+      const tagsHtml = tagsArray.map(t =>
+        `<span class="tag-item" style="display:inline-flex;align-items:center;gap:4px;padding:3px 10px;background:var(--primary-light);color:var(--primary-dark);border-radius:12px;font-size:12px;font-weight:500">
+          ${esc(t)}
+          ${!isDemoMode ? `<button type="button" class="tag-remove" onclick="removeTag(this,'${f.key}')" style="background:none;border:none;cursor:pointer;font-size:14px;color:var(--danger);padding:0 2px;line-height:1">&times;</button>` : ''}
+        </span>`
+      ).join('');
+      return `<div class="form-group">
+        <label for="${id}">${f.label}</label>
+        <div class="tags-container" id="tags-${f.key}" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px">${tagsHtml}</div>
+        <div style="display:flex;gap:6px">
+          <input type="text" id="${id}" placeholder="${f.placeholder || 'Aggiungi...' }" ${readOnly} style="flex:1"
+            onkeydown="if(event.key==='Enter'){event.preventDefault();addTag('${f.key}')}">
+          ${!isDemoMode ? `<button type="button" class="btn btn-sm btn-outline" onclick="addTag('${f.key}')">+ Aggiungi</button>` : ''}
+        </div>
+        <input type="hidden" name="${f.key}" id="tags-hidden-${f.key}" value="${esc(JSON.stringify(tagsArray))}">
+      </div>`;
+    }
 
     const inputType = f.type || 'text';
     const step = f.step ? `step="${f.step}"` : '';
@@ -880,6 +943,13 @@ async function handleModalSave() {
       formData[f.key] = el.checked;
     } else if (f.type === 'number') {
       formData[f.key] = el.value ? parseFloat(el.value) : null;
+    } else if (f.type === 'tags') {
+      // Parse JSON from hidden input
+      try {
+        formData[f.key] = JSON.parse(el.value || '[]');
+      } catch { formData[f.key] = []; }
+    } else if (f.type === 'photo') {
+      formData[f.key] = el.value || null;
     } else {
       formData[f.key] = el.value || null;
     }
@@ -1400,6 +1470,139 @@ async function loadAuditLog() {
     tbody.innerHTML = '<tr><td colspan="5" class="text-muted">Audit log non disponibile</td></tr>';
   }
 }
+
+// ============================================================================
+// PHOTO & TAGS MANAGEMENT
+// ============================================================================
+
+/**
+ * Handle photo file upload — converts to base64 data URL or uploads to external service.
+ * For now, uses URL input. Future: integrate with Supabase Storage / Cloudflare R2.
+ */
+window.handlePhotoUpload = function(input, fieldKey) {
+  const file = input.files?.[0];
+  if (!file) return;
+
+  // Validate file type and size
+  if (!file.type.startsWith('image/')) {
+    toast('Seleziona un file immagine valido (JPG, PNG, WebP)', 'error');
+    return;
+  }
+  if (file.size > 5 * 1024 * 1024) {
+    toast('Immagine troppo grande. Massimo 5MB.', 'error');
+    return;
+  }
+
+  // Read as data URL for preview; set the URL field
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const dataUrl = e.target.result;
+
+    // Update preview
+    const thumb = document.querySelector(`#photo-manager-${fieldKey} .photo-thumb`);
+    if (thumb) {
+      thumb.innerHTML = `<img src="${dataUrl}" alt="Foto" style="width:100%;height:100%;object-fit:cover" id="photo-img-${fieldKey}">`;
+    }
+
+    // For now, set as data URL; in production, upload to storage and get permanent URL
+    const urlField = document.querySelector(`[name="${fieldKey}"]`);
+    if (urlField) {
+      // Generate a clean URL path based on the physician ID
+      const physicianId = document.querySelector('[name="id"]')?.value || 'unknown';
+      const ext = file.name.split('.').pop()?.toLowerCase() || 'jpg';
+      const suggestedPath = `/images/equipe/${physicianId}.${ext}`;
+
+      // Prompt user for the URL or use suggested path
+      const url = prompt(
+        `Inserisci l'URL della foto caricata:\n\n` +
+        `Percorso suggerito: ${suggestedPath}\n\n` +
+        `Opzioni:\n` +
+        `1. Carica l'immagine nel CMS/CDN e incolla l'URL\n` +
+        `2. Usa il percorso locale suggerito (assicurati che il file sia in /site${suggestedPath})`,
+        suggestedPath
+      );
+
+      if (url) {
+        urlField.value = url;
+        toast('URL foto impostato: ' + url, 'success');
+      }
+    }
+  };
+  reader.readAsDataURL(file);
+};
+
+/**
+ * Remove photo URL and clear preview
+ */
+window.removePhoto = function(fieldKey) {
+  if (!confirm('Rimuovere la foto profilo?')) return;
+
+  const urlField = document.querySelector(`[name="${fieldKey}"]`);
+  if (urlField) urlField.value = '';
+
+  const thumb = document.querySelector(`#photo-manager-${fieldKey} .photo-thumb`);
+  if (thumb) {
+    thumb.innerHTML = `<span style="font-size:32px;color:var(--gray-400)" id="photo-placeholder-${fieldKey}">&#128100;</span>`;
+  }
+
+  toast('Foto rimossa', 'success');
+};
+
+/**
+ * Add a tag to a tags field
+ */
+window.addTag = function(fieldKey) {
+  const input = document.getElementById(`field-${fieldKey}`);
+  if (!input) return;
+
+  const value = input.value.trim();
+  if (!value) return;
+
+  const hiddenInput = document.getElementById(`tags-hidden-${fieldKey}`);
+  const container = document.getElementById(`tags-${fieldKey}`);
+  if (!hiddenInput || !container) return;
+
+  let tags;
+  try { tags = JSON.parse(hiddenInput.value || '[]'); } catch { tags = []; }
+
+  // Avoid duplicates
+  if (tags.includes(value)) {
+    toast('Tag gia presente', 'warning');
+    return;
+  }
+
+  tags.push(value);
+  hiddenInput.value = JSON.stringify(tags);
+
+  // Add visual tag
+  const span = document.createElement('span');
+  span.className = 'tag-item';
+  span.style.cssText = 'display:inline-flex;align-items:center;gap:4px;padding:3px 10px;background:var(--primary-light);color:var(--primary-dark);border-radius:12px;font-size:12px;font-weight:500';
+  span.innerHTML = `${esc(value)}<button type="button" class="tag-remove" onclick="removeTag(this,'${fieldKey}')" style="background:none;border:none;cursor:pointer;font-size:14px;color:var(--danger);padding:0 2px;line-height:1">&times;</button>`;
+  container.appendChild(span);
+
+  input.value = '';
+  input.focus();
+};
+
+/**
+ * Remove a tag from a tags field
+ */
+window.removeTag = function(btn, fieldKey) {
+  const tagSpan = btn.closest('.tag-item');
+  if (!tagSpan) return;
+
+  const tagText = tagSpan.textContent.replace('×', '').trim();
+  const hiddenInput = document.getElementById(`tags-hidden-${fieldKey}`);
+  if (hiddenInput) {
+    let tags;
+    try { tags = JSON.parse(hiddenInput.value || '[]'); } catch { tags = []; }
+    tags = tags.filter(t => t !== tagText);
+    hiddenInput.value = JSON.stringify(tags);
+  }
+
+  tagSpan.remove();
+};
 
 // ============================================================================
 // UTILITIES

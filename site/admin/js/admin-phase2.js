@@ -246,6 +246,131 @@ function getRelatedIds(record, relKey, relConfig) {
 
 
 // ============================================================================
+// PHYSICIAN ↔ PROCEDURE CROSS-LINKING
+// ============================================================================
+
+/**
+ * Load procedures for a physician and render cross-link UI in the modal.
+ * Since we don't have a join table, we link by specialty_id match.
+ * Procedures with the same specialty_id as the physician are "linked".
+ */
+async function loadPhysicianProcedures(physician) {
+  const modal = document.getElementById('edit-form');
+  if (!modal || !physician.specialty_id) return;
+
+  let procedures = [];
+  if (isDemoMode && typeof DEMO_DATA !== 'undefined') {
+    procedures = DEMO_DATA.procedures || [];
+  } else {
+    try {
+      const data = await apiRequest(`/procedures?limit=100&status=active&specialty_id=${physician.specialty_id}`);
+      procedures = data.data || [];
+    } catch (err) {
+      console.warn('Could not fetch procedures:', err.message);
+      return;
+    }
+  }
+
+  // Filter procedures matching physician's specialty
+  const matchingProcs = procedures.filter(p => p.specialty_id === physician.specialty_id);
+  
+  // Also get all procedures for secondary specialties
+  let secondaryProcs = [];
+  const secondarySpecs = physician.specialties_secondary || [];
+  if (secondarySpecs.length > 0 && !isDemoMode) {
+    for (const specId of secondarySpecs) {
+      try {
+        const data = await apiRequest(`/procedures?limit=100&status=active&specialty_id=${specId}`);
+        secondaryProcs.push(...(data.data || []));
+      } catch { /* ignore */ }
+    }
+  }
+
+  const allProcs = [...matchingProcs, ...secondaryProcs];
+  if (allProcs.length === 0) return;
+
+  // Build cross-link section
+  let html = `
+    <div class="procedures-crosslink" style="margin-top:20px;padding-top:16px;border-top:2px solid var(--gray-200)">
+      <h4 style="margin-bottom:12px;color:var(--primary);display:flex;align-items:center;gap:8px">
+        <span style="font-size:18px">&#129658;</span>
+        Prestazioni Collegate
+        <span style="font-weight:400;color:var(--gray-500);font-size:12px">(${allProcs.length} nella specialita)</span>
+      </h4>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+  `;
+
+  for (const proc of allProcs) {
+    const priceStr = proc.price ? ` — €${parseFloat(proc.price).toFixed(0)}` : '';
+    const catBadge = proc.category || '';
+    html += `
+      <a href="#procedures" onclick="closeModal();setTimeout(()=>{navigateTo('procedures');setTimeout(()=>{document.getElementById('entity-search').value='${esc(proc.name.replace(/'/g, ''))}';handleEntitySearch()},300)},100)" 
+        class="procedure-link" style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--radius);font-size:12px;text-decoration:none;color:var(--gray-800);transition:all .15s;cursor:pointer"
+        onmouseover="this.style.borderColor='var(--primary)';this.style.background='var(--primary-light)'"
+        onmouseout="this.style.borderColor='var(--gray-200)';this.style.background='var(--gray-50)'">
+        <span style="font-size:10px;padding:1px 6px;background:var(--gray-200);border-radius:4px;text-transform:uppercase;font-weight:600;color:var(--gray-600)">${esc(catBadge)}</span>
+        ${esc(proc.name)}${priceStr}
+      </a>
+    `;
+  }
+
+  html += `</div></div>`;
+  modal.insertAdjacentHTML('beforeend', html);
+}
+
+/**
+ * Load physicians for a procedure and render cross-link UI in the modal.
+ */
+async function loadProcedurePhysicians(procedure) {
+  const modal = document.getElementById('edit-form');
+  if (!modal || !procedure.specialty_id) return;
+
+  let physicians = [];
+  if (isDemoMode && typeof DEMO_DATA !== 'undefined') {
+    physicians = (DEMO_DATA.physicians || []).filter(p => p.specialty_id === procedure.specialty_id);
+  } else {
+    try {
+      const data = await apiRequest(`/physicians?limit=100&status=active&specialty_id=${procedure.specialty_id}`);
+      physicians = data.data || [];
+    } catch (err) {
+      console.warn('Could not fetch physicians:', err.message);
+      return;
+    }
+  }
+
+  if (physicians.length === 0) return;
+
+  let html = `
+    <div class="physicians-crosslink" style="margin-top:20px;padding-top:16px;border-top:2px solid var(--gray-200)">
+      <h4 style="margin-bottom:12px;color:var(--primary);display:flex;align-items:center;gap:8px">
+        <span style="font-size:18px">&#129489;&#8205;&#9877;&#65039;</span>
+        Medici Collegati
+        <span style="font-weight:400;color:var(--gray-500);font-size:12px">(${physicians.length} nella specialita)</span>
+      </h4>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+  `;
+
+  for (const doc of physicians) {
+    const photoHtml = doc.photo_url
+      ? `<img src="${esc(doc.photo_url)}" alt="" style="width:24px;height:24px;border-radius:50%;object-fit:cover">`
+      : `<span style="width:24px;height:24px;border-radius:50%;background:var(--gray-200);display:inline-flex;align-items:center;justify-content:center;font-size:12px">&#128100;</span>`;
+    html += `
+      <a href="#physicians" onclick="closeModal();setTimeout(()=>{navigateTo('physicians');setTimeout(()=>{document.getElementById('entity-search').value='${esc((doc.last_name || '').replace(/'/g, ''))}';handleEntitySearch()},300)},100)" 
+        class="physician-link" style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--radius);font-size:12px;text-decoration:none;color:var(--gray-800);transition:all .15s;cursor:pointer"
+        onmouseover="this.style.borderColor='var(--primary)';this.style.background='var(--primary-light)'"
+        onmouseout="this.style.borderColor='var(--gray-200)';this.style.background='var(--gray-50)'">
+        ${photoHtml}
+        ${esc(doc.display_name || doc.name || '')}
+      </a>
+    `;
+  }
+
+  html += `</div></div>`;
+  modal.insertAdjacentHTML('beforeend', html);
+}
+
+
+// ============================================================================
 // BUILD PIPELINE TRIGGER (Admin UI)
 // ============================================================================
 
@@ -611,7 +736,7 @@ function enhanceSpecialtySelector() {
   }
 }
 
-function enhanceModalFields() {
+async function enhanceModalFields() {
   // Enhance specialty_id field to dropdown
   const specField = document.querySelector('[name="specialty_id"]');
   if (specField && specField.tagName === 'INPUT') {
@@ -626,6 +751,18 @@ function enhanceModalFields() {
     let specialties = [];
     if (isDemoMode && typeof DEMO_DATA !== 'undefined') {
       specialties = DEMO_DATA.specialties || [];
+    } else {
+      // Fetch specialties from API in live mode
+      try {
+        const data = await apiRequest('/specialties?limit=100&status=active');
+        specialties = (data.data || []).map(s => ({ id: s.id, name: s.name }));
+        // Cache for future use
+        window._cachedSpecialties = specialties;
+      } catch (err) {
+        // Use cached data if available
+        specialties = window._cachedSpecialties || [];
+        console.warn('Could not fetch specialties:', err.message);
+      }
     }
 
     select.innerHTML = '<option value="">— Seleziona specialita —</option>' +
@@ -644,6 +781,14 @@ function enhanceModalFields() {
   const record = typeof modalRecord !== 'undefined' ? modalRecord : null;
   if (record && record.id) {
     addRelationsTab(record);
+    // Load and render procedure cross-links for physicians
+    if (currentEntity === 'physicians') {
+      await loadPhysicianProcedures(record);
+    }
+    // Load and render physician cross-links for procedures
+    if (currentEntity === 'procedures') {
+      await loadProcedurePhysicians(record);
+    }
   }
 }
 
