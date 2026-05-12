@@ -12,7 +12,7 @@ AGGREGATE_RATING = ''',
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "5",
-            "reviewCount": "3214",
+            "reviewCount": "3445",
             "bestRating": "5",
             "worstRating": "1"
           }'''
