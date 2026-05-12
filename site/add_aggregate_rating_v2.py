@@ -11,7 +11,7 @@ AGGREGATE_RATING_BLOCK = '''
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5",
-        "reviewCount": "3445",
+        "reviewCount": "3903",
         "bestRating": "5",
         "worstRating": "1"
       },'''
@@ -49,7 +49,7 @@ def process_file(filepath):
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5",
-        "reviewCount": "3445",
+        "reviewCount": "3903",
         "bestRating": "5",
         "worstRating": "1"
       }\2'''
