@@ -1,0 +1,54 @@
+# Verifica che i 3 numeri recensioni negli HTML del sito coincidano sempre
+# con il source-of-truth site/data/reviews.json.
+# Se qualcuno modifica un HTML senza aggiornare reviews.json (o viceversa),
+# questo workflow fallisce e Cloudflare Pages NON pubblica il deploy.
+
+name: Check reviews coherence
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**/*.html'
+      - 'site/data/reviews.json'
+      - 'scripts/apply-reviews.py'
+  pull_request:
+    paths:
+      - 'site/**/*.html'
+      - 'site/data/reviews.json'
+      - 'scripts/apply-reviews.py'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate reviews.json structure
+        run: |
+          python3 -c "
+          import json, sys
+          d = json.load(open('site/data/reviews.json'))
+          for k in ('miodottore', 'google', 'total'):
+              v = d.get(k)
+              assert isinstance(v, int) and 10 < v < 100000, f'invalid {k}: {v!r}'
+          assert d['total'] == d['miodottore'] + d['google'], \
+              f'total != md + gg: {d[\"total\"]} != {d[\"miodottore\"]} + {d[\"google\"]}'
+          print('✅ reviews.json valid')
+          "
+
+      - name: Check HTML coherence with reviews.json
+        run: python3 scripts/apply-reviews.py --check
+
+      - name: Suggest fix if check fails
+        if: failure()
+        run: |
+          echo "::error::HTML files are out of sync with site/data/reviews.json."
+          echo "::error::To fix locally:"
+          echo "::error::  python3 scripts/apply-reviews.py"
+          echo "::error::  git add -A && git commit -am 'fix: re-sync reviews'"
+          echo "::error::  git push"

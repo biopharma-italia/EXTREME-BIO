@@ -1,0 +1,14 @@
+{
+  "miodottore": 3445,
+  "google": 458,
+  "total": 3903,
+  "updated_at": "2026-05-12T18:50:00+02:00",
+  "_meta": {
+    "description": "Source of truth for review counts displayed on bio-clinic.it. Updated automatically by OpenClaw weekly cron. DO NOT edit HTML files directly: edit this file and run scripts/apply-reviews.py.",
+    "managed_by": "https://github.com/biopharma-italia/EXTREME-BIO/blob/main/scripts/apply-reviews.py",
+    "sources": {
+      "miodottore": "https://www.miodottore.it/strutture/bioclinic",
+      "google": "Bio Clinic, Via Renzo Mossa 23 Sassari (Google Maps)"
+    }
+  }
+}
