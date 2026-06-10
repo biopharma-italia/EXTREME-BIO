@@ -67,6 +67,9 @@
           <span class="nav-icon">&#9776;</span> Protocolli
         </a>
         <div class="nav-divider">SISTEMA</div>
+        <a href="#utenti" class="nav-item nav-mc-only" data-section="utenti">
+          <span class="nav-icon">&#128101;</span> Utenti
+        </a>
         <a href="#impostazioni" class="nav-item" data-section="impostazioni">
           <span class="nav-icon">&#9881;</span> Impostazioni
         </a>
@@ -318,11 +321,33 @@
         </section>
 
         <!-- ═══ IMPOSTAZIONI ═══ -->
+        <!-- ═══ GESTIONE UTENTI (MC/SA only) ═══ -->
+        <section id="sec-utenti" class="section d-none">
+          <div class="section-toolbar">
+            <h3 style="font-size:1rem;font-weight:600">Gestione Utenti</h3>
+            <div style="display:flex;gap:.5rem;align-items:center">
+              <input id="userSearch" type="text" class="form-control" placeholder="Cerca per nome o email..." style="width:220px">
+              <select id="userRoleFilter" class="form-control" style="width:180px">
+                <option value="">Tutti i ruoli</option>
+                <option value="super_admin">Super Admin</option>
+                <option value="medico_competente">Medico Competente</option>
+                <option value="medico_collaboratore">Medico Collaboratore</option>
+                <option value="segreteria_mdl">Segreteria</option>
+                <option value="datore_lavoro">Datore di Lavoro</option>
+                <option value="rspp">RSPP</option>
+                <option value="lavoratore">Lavoratore</option>
+              </select>
+              <button id="btnNewUser" class="btn btn-primary" onclick="window.__mdl_openUserForm()">+ Nuovo Utente</button>
+            </div>
+          </div>
+          <div id="usersTableContainer" class="table-responsive"></div>
+        </section>
+
         <section id="sec-impostazioni" class="section d-none">
           <div class="placeholder-section">
             <div class="placeholder-icon">&#9881;</div>
             <div class="placeholder-title">Impostazioni</div>
-            <div class="placeholder-desc">Configurazione account, gestione utenti, parametri sistema. Modulo in sviluppo.</div>
+            <div class="placeholder-desc">Configurazione account, parametri sistema. Modulo in sviluppo.</div>
           </div>
         </section>
 

@@ -101,6 +101,48 @@ export function isCompanyRole(role: Role): boolean {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
+//  USER MANAGEMENT PERMISSIONS
+// ═══════════════════════════════════════════════════════════════════════════
+
+/** Roles allowed to list / view all users. */
+export const USER_MANAGER_ROLES = ['super_admin', 'medico_competente'] as const;
+
+/** Can the role manage (list, create, update, disable) platform users? */
+export function canManageUsers(role: Role): boolean {
+  return (USER_MANAGER_ROLES as readonly string[]).includes(role);
+}
+
+/**
+ * Roles that a given manager role is allowed to CREATE.
+ * - super_admin: can create ANY role
+ * - medico_competente: can create collaboratore, segreteria, DL, RSPP, lavoratore
+ *   (cannot create super_admin or another medico_competente)
+ */
+export function creatableRolesFor(role: Role): string[] {
+  if (role === 'super_admin') {
+    return ['super_admin', 'medico_competente', 'medico_collaboratore', 'segreteria_mdl', 'datore_lavoro', 'rspp', 'lavoratore'];
+  }
+  if (role === 'medico_competente') {
+    return ['medico_collaboratore', 'segreteria_mdl', 'datore_lavoro', 'rspp', 'lavoratore'];
+  }
+  return [];
+}
+
+/**
+ * Can the actor role modify/disable the target role?
+ * - super_admin can modify anyone
+ * - medico_competente can modify anyone EXCEPT super_admin
+ */
+export function canModifyUserRole(actorRole: Role, targetRole: Role): boolean {
+  if (actorRole === 'super_admin') return true;
+  if (actorRole === 'medico_competente') return targetRole !== 'super_admin';
+  return false;
+}
+
+/** Roles that require a company_id when creating. */
+export const COMPANY_BOUND_ROLES = ['datore_lavoro', 'rspp', 'lavoratore'] as const;
+
+// ═══════════════════════════════════════════════════════════════════════════
 //  DATA SANITISATION HELPERS
 // ═══════════════════════════════════════════════════════════════════════════
 

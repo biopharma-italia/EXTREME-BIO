@@ -204,6 +204,11 @@
   function showApp() {
     hide('loginPage'); show('appShell');
     updateUserUI();
+    // Show/hide nav items based on role
+    var canMgUsers = state.user && ['super_admin','medico_competente'].indexOf(state.user.role) >= 0;
+    document.querySelectorAll('.nav-mc-only').forEach(function(el) {
+      el.style.display = canMgUsers ? '' : 'none';
+    });
     var hash = window.location.hash.slice(1);
     if (hash.indexOf('azienda/') === 0) {
       navigateTo('aziende');
@@ -251,7 +256,8 @@
       dashboard: 'Dashboard', aziende: 'Aziende Clienti',
       lavoratori: 'Lavoratori', visite: 'Visite Mediche',
       agenda: 'Agenda', scadenzario: 'Scadenzario',
-      'protocolli-globale': 'Protocolli Sanitari', impostazioni: 'Impostazioni'
+      'protocolli-globale': 'Protocolli Sanitari', utenti: 'Gestione Utenti',
+      impostazioni: 'Impostazioni'
     };
 
     if (section === 'company-detail' && state.activeCompany) {
@@ -280,7 +286,8 @@
       lavoratori: loadLavoratoriGlobal,
       visite: loadVisiteGlobal,
       scadenzario: loadScadenzarioGlobale,
-      'protocolli-globale': loadProtocolliGlobale
+      'protocolli-globale': loadProtocolliGlobale,
+      utenti: loadUtenti
     };
     if (loaders[section]) loaders[section]();
   }
@@ -2777,6 +2784,204 @@
   function closeModal() { hide('modalOverlay'); }
 
   /* ═══════════════════════════════════════════════════════════════ */
+  /*  GESTIONE UTENTI (MC/SA only)                                  */
+  /* ═══════════════════════════════════════════════════════════════ */
+
+  var ROLE_OPTIONS = [
+    { value: 'super_admin', label: 'Super Admin' },
+    { value: 'medico_competente', label: 'Medico Competente' },
+    { value: 'medico_collaboratore', label: 'Medico Collaboratore' },
+    { value: 'segreteria_mdl', label: 'Segreteria' },
+    { value: 'datore_lavoro', label: 'Datore di Lavoro' },
+    { value: 'rspp', label: 'RSPP' },
+    { value: 'lavoratore', label: 'Lavoratore' }
+  ];
+  var COMPANY_BOUND = ['datore_lavoro', 'rspp', 'lavoratore'];
+  var ROLE_BADGES = {
+    super_admin: 'badge-danger', medico_competente: 'badge-primary',
+    medico_collaboratore: 'badge-info', segreteria_mdl: 'badge-warning',
+    datore_lavoro: 'badge-success', rspp: 'badge-success', lavoratore: 'badge-secondary'
+  };
+
+  function loadUtenti() {
+    var container = $('usersTableContainer');
+    if (!container) return;
+    container.innerHTML = '<p style="padding:1rem;color:var(--text-muted)">Caricamento utenti...</p>';
+
+    var search = ($('userSearch') || {}).value || '';
+    var roleFilter = ($('userRoleFilter') || {}).value || '';
+    var params = '?limit=50';
+    if (search) params += '&search=' + encodeURIComponent(search);
+    if (roleFilter) params += '&role=' + encodeURIComponent(roleFilter);
+
+    apiFetch('/users' + params).then(function (r) {
+      if (!r.success) { container.innerHTML = '<p class="text-danger">Errore: ' + esc(r.error) + '</p>'; return; }
+      var users = r.data || [];
+      if (!users.length) {
+        container.innerHTML = '<p style="padding:1rem;color:var(--text-muted)">Nessun utente trovato.</p>';
+        return;
+      }
+      var html = '<table class="data-table"><thead><tr>' +
+        '<th>Nome</th><th>Email</th><th>Ruolo</th><th>Azienda</th><th>Ultimo accesso</th><th>Stato</th><th>Azioni</th>' +
+        '</tr></thead><tbody>';
+      users.forEach(function (u) {
+        var compName = u.mdl_companies ? u.mdl_companies.business_name : '—';
+        var lastLogin = u.last_login_at ? new Date(u.last_login_at).toLocaleDateString('it-IT') : 'Mai';
+        var statusBadge = u.is_active
+          ? '<span class="badge badge-success">Attivo</span>'
+          : '<span class="badge badge-secondary">Disattivato</span>';
+        var roleBadge = '<span class="badge ' + (ROLE_BADGES[u.role] || 'badge-secondary') + '">' + (ROLE_LABELS[u.role] || u.role) + '</span>';
+        var isSelf = state.user && u.id === state.user.id;
+        var actions = isSelf ? '<span style="color:var(--text-muted);font-size:.85em">Tu</span>' :
+          '<button class="btn btn-sm btn-outline" onclick="window.__mdl_editUser(\'' + u.id + '\')">Modifica</button>';
+        html += '<tr>' +
+          '<td><strong>' + esc(u.last_name) + '</strong> ' + esc(u.first_name) + '</td>' +
+          '<td>' + esc(u.email) + '</td>' +
+          '<td>' + roleBadge + '</td>' +
+          '<td>' + esc(compName) + '</td>' +
+          '<td>' + lastLogin + '</td>' +
+          '<td>' + statusBadge + '</td>' +
+          '<td>' + actions + '</td></tr>';
+      });
+      html += '</tbody></table>';
+      container.innerHTML = html;
+    });
+  }
+
+  // Cached companies for user form
+  var _companiesCache = null;
+  function getCompanies() {
+    if (_companiesCache) return Promise.resolve(_companiesCache);
+    return apiFetch('/companies?limit=100&active=true').then(function (r) {
+      _companiesCache = (r.data || []).filter(function (c) {
+        return c.business_name !== '__CATALOGO_PROTOCOLLI_STANDARD__';
+      });
+      return _companiesCache;
+    });
+  }
+
+  function openUserForm(userId) {
+    var isEdit = !!userId;
+    var title = isEdit ? 'Modifica Utente' : 'Nuovo Utente';
+
+    var loadData = isEdit
+      ? apiFetch('/users/' + userId)
+      : Promise.resolve({ success: true, data: {} });
+
+    Promise.all([loadData, getCompanies()]).then(function (results) {
+      var userData = results[0].data || {};
+      var companies = results[1];
+
+      if (isEdit && !results[0].success) {
+        toast('Utente non trovato', 'error');
+        return;
+      }
+
+      // Build role options (respect creatableRolesFor)
+      var myRole = state.user ? state.user.role : '';
+      var creatableMap = {
+        super_admin: ['super_admin','medico_competente','medico_collaboratore','segreteria_mdl','datore_lavoro','rspp','lavoratore'],
+        medico_competente: ['medico_collaboratore','segreteria_mdl','datore_lavoro','rspp','lavoratore']
+      };
+      var creatableRoles = creatableMap[myRole] || [];
+
+      var roleOpts = ROLE_OPTIONS.filter(function (ro) {
+        return creatableRoles.indexOf(ro.value) >= 0;
+      }).map(function (ro) {
+        var sel = userData.role === ro.value ? ' selected' : '';
+        return '<option value="' + ro.value + '"' + sel + '>' + ro.label + '</option>';
+      }).join('');
+
+      var compOpts = '<option value="">— Nessuna —</option>' + companies.map(function (c) {
+        var sel = userData.company_id === c.id ? ' selected' : '';
+        return '<option value="' + c.id + '"' + sel + '>' + esc(c.business_name) + '</option>';
+      }).join('');
+
+      var needsCompany = userData.role && COMPANY_BOUND.indexOf(userData.role) >= 0;
+
+      var body = '<form id="userForm" class="form-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">' +
+        '<div class="form-group"><label>Nome *</label><input id="uf_first_name" class="form-control" value="' + esc(userData.first_name || '') + '" required></div>' +
+        '<div class="form-group"><label>Cognome *</label><input id="uf_last_name" class="form-control" value="' + esc(userData.last_name || '') + '" required></div>' +
+        '<div class="form-group"><label>Email *</label><input id="uf_email" type="email" class="form-control" value="' + esc(userData.email || '') + '"' + (isEdit ? ' readonly style="background:#f0f0f0"' : ' required') + '></div>' +
+        '<div class="form-group"><label>Telefono</label><input id="uf_phone" class="form-control" value="' + esc(userData.phone || '') + '"></div>' +
+        '<div class="form-group"><label>Codice Fiscale</label><input id="uf_fiscal_code" class="form-control" maxlength="16" value="' + esc(userData.fiscal_code || '') + '"></div>' +
+        '<div class="form-group"><label>Ruolo *</label><select id="uf_role" class="form-control" onchange="window.__mdl_toggleCompanyField()">' + roleOpts + '</select></div>' +
+        '<div class="form-group" id="uf_company_group" style="' + (needsCompany ? '' : 'display:none') + '"><label>Azienda</label><select id="uf_company_id" class="form-control">' + compOpts + '</select></div>' +
+        (isEdit ? '' : '<div class="form-group"><label>Password *</label><input id="uf_password" type="password" class="form-control" minlength="8" placeholder="Minimo 8 caratteri" required></div>') +
+        (isEdit ? '<div class="form-group"><label>Nuova Password</label><input id="uf_password" type="password" class="form-control" minlength="8" placeholder="Lascia vuoto per non cambiare"></div>' : '') +
+        (isEdit ? '<div class="form-group"><label>Stato</label><select id="uf_is_active" class="form-control"><option value="true"' + (userData.is_active !== false ? ' selected' : '') + '>Attivo</option><option value="false"' + (userData.is_active === false ? ' selected' : '') + '>Disattivato</option></select></div>' : '') +
+        '</form>';
+
+      var footer = '<button class="btn btn-outline" onclick="MDL.closeModal()">Annulla</button> ' +
+        '<button class="btn btn-primary" onclick="window.__mdl_saveUser(\'' + (userId || '') + '\')">' + (isEdit ? 'Salva Modifiche' : 'Crea Utente') + '</button>';
+
+      openModal(title, body, footer);
+    });
+  }
+
+  function toggleCompanyField() {
+    var role = ($('uf_role') || {}).value || '';
+    var grp = $('uf_company_group');
+    if (grp) grp.style.display = COMPANY_BOUND.indexOf(role) >= 0 ? '' : 'none';
+  }
+
+  function saveUser(userId) {
+    var isEdit = !!userId;
+    var data = {
+      first_name: ($('uf_first_name') || {}).value || '',
+      last_name: ($('uf_last_name') || {}).value || '',
+      role: ($('uf_role') || {}).value || '',
+      phone: ($('uf_phone') || {}).value || '',
+      fiscal_code: ($('uf_fiscal_code') || {}).value || '',
+      company_id: ($('uf_company_id') || {}).value || null,
+    };
+
+    var pw = ($('uf_password') || {}).value || '';
+    if (!isEdit) {
+      data.email = ($('uf_email') || {}).value || '';
+      data.password = pw;
+    } else if (pw) {
+      data.password = pw;
+    }
+
+    // Validate
+    if (!data.first_name || !data.last_name || !data.role) {
+      toast('Compila tutti i campi obbligatori', 'error'); return;
+    }
+    if (!isEdit && (!data.email || !data.password)) {
+      toast('Email e password sono obbligatori', 'error'); return;
+    }
+    if (pw && pw.length < 8) {
+      toast('La password deve essere di almeno 8 caratteri', 'error'); return;
+    }
+
+    // is_active for edit
+    if (isEdit) {
+      var activeVal = ($('uf_is_active') || {}).value;
+      if (activeVal !== undefined) data.is_active = activeVal === 'true';
+    }
+
+    var method = isEdit ? 'PATCH' : 'POST';
+    var url = isEdit ? '/users/' + userId : '/users';
+
+    apiFetch(url, { method: method, body: JSON.stringify(data) }).then(function (r) {
+      if (r.success) {
+        toast(isEdit ? 'Utente aggiornato' : 'Utente creato', 'success');
+        closeModal();
+        loadUtenti();
+      } else {
+        toast(r.error || 'Errore', 'error');
+      }
+    });
+  }
+
+  // Expose to global for onclick handlers
+  window.__mdl_openUserForm = function (id) { openUserForm(id); };
+  window.__mdl_editUser = function (id) { openUserForm(id); };
+  window.__mdl_saveUser = function (id) { saveUser(id); };
+  window.__mdl_toggleCompanyField = toggleCompanyField;
+
+  /* ═══════════════════════════════════════════════════════════════ */
   /*  INIT                                                          */
   /* ═══════════════════════════════════════════════════════════════ */
   function init() {
@@ -2864,6 +3069,10 @@
     on('filterVisiteGlobalStatus', 'change', loadVisiteGlobal);
     on('filterVisiteAzienda', 'change', loadVisiteGlobal);
     on('btnNuovaVisitaGlobal', 'click', function () { showNewVisitModal(); });
+
+    // Utenti events
+    on('userSearch', 'input', debounce(loadUtenti, 400));
+    on('userRoleFilter', 'change', loadUtenti);
 
     // Check session
     if (loadSession()) { showApp(); } else { showLogin(); }

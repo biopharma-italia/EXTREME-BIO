@@ -379,6 +379,7 @@ textarea.form-input { min-height: 80px; resize: vertical; }
 .badge-primary { background: var(--primary-light); color: var(--primary); }
 .badge-gray { background: var(--gray-100); color: var(--gray-600); }
 .badge-info { background: #dbeafe; color: #1e40af; }
+.badge-secondary { background: #e5e7eb; color: #6b7280; }
 
 /* ═══ MODAL ═══ */
 .modal-overlay {
