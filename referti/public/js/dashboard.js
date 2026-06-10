@@ -15,7 +15,8 @@
 
   var ROLE_LABELS = {
     patient: 'Paziente', lab_technician: 'Tecnico Lab',
-    physician: 'Medico', admin: 'Amministratore', super_admin: 'Super Admin'
+    physician: 'Medico', admin: 'Amministratore', super_admin: 'Super Admin',
+    ostetrica: 'Ostetrica'
   };
   var STATUS_LABELS = {
     pending: 'In Attesa', validated: 'Validato', signed: 'Firmato',
@@ -327,7 +328,7 @@
       navigateTo(hash);
     } else if (role === 'patient') {
       navigateTo('my-reports');
-    } else if (role === 'lab_technician') {
+    } else if (role === 'lab_technician' || role === 'ostetrica') {
       navigateTo('upload');
     } else if (role === 'physician') {
       navigateTo('sign-release');
@@ -551,12 +552,12 @@
 
   function loadDashboardBadges(role) {
     // Load badge counts for sidebar
-    if (role === 'lab_technician' || role === 'admin' || role === 'super_admin') {
+    if (role === 'lab_technician' || role === 'admin' || role === 'super_admin' || role === 'ostetrica') {
       sbGet('reports', 'status=eq.pending&select=id&limit=200').then(function (data) {
         updateBadge('badgePending', data ? data.length : 0);
       });
     }
-    if (role === 'physician' || role === 'admin' || role === 'super_admin') {
+    if (role === 'physician' || role === 'admin' || role === 'super_admin' || role === 'ostetrica') {
       sbGet('reports', 'or=(status.eq.validated,status.eq.signed)&select=id&limit=200').then(function (data) {
         updateBadge('badgeSign', data ? data.length : 0);
       });
@@ -1149,7 +1150,7 @@
       body.innerHTML = '<tr class="table-empty"><td colspan="8"><div class="empty-state"><p>Nessun referto</p></div></td></tr>';
       return;
     }
-    var isAdmin = state.profile && (state.profile.role === 'admin' || state.profile.role === 'super_admin');
+    var isAdmin = state.profile && (state.profile.role === 'admin' || state.profile.role === 'super_admin' || state.profile.role === 'ostetrica');
     body.innerHTML = data.map(function (r) {
       var pName = r.patient ? (r.patient.first_name + ' ' + r.patient.last_name) : (r.patient_fiscal_code || '--');
       var flags = '';

@@ -1,0 +1,19 @@
+{
+  "name": "mdl-bioclinic",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MDL Bio-Clinic — Medicina del Lavoro, sorveglianza sanitaria D.Lgs. 81/2008 (Cloudflare Pages Functions + Supabase)",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "deploy": "wrangler pages deploy ./public --project-name mdl-bioclinic"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240909.0",
+    "typescript": "^5.5.4",
+    "wrangler": "^3.78.0"
+  }
+}

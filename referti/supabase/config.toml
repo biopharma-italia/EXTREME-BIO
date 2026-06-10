@@ -1,6 +1,4 @@
-[project]
-id = "YOUR_PROJECT_REF"
-name = "referti-bio-clinic"
+project_id = "mdxqgzkxrcrotxxbhoai"
 
 [api]
 port = 54321

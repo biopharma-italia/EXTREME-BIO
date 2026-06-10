@@ -7,6 +7,7 @@
 import { createClient } from '@supabase/supabase-js';
 import { requireRole, jsonResponse } from '../../_middleware';
 import { validateUuid } from '../../../../src/lib/validators';
+import { reportReleasedEmail } from '../../../../src/lib/email-templates';
 import type { RequestContext } from '../../../../src/lib/types';
 
 interface Env {
@@ -92,6 +93,47 @@ export async function onRequestPost(context: {
         provider: channel === 'email' ? 'resend' : null,
       });
       notificationsQueued++;
+    }
+
+    // P2-3: Actually send email notification (was previously only queued)
+    if (channels.includes('email') && patient.email && env.RESEND_API_KEY) {
+      try {
+        const emailFrom = env.EMAIL_FROM || 'Bio-Clinic Referti <referti@bio-clinic.it>';
+        const appUrl = env.APP_URL || 'https://referti.bio-clinic.it';
+
+        const emailResp = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+          },
+          body: JSON.stringify({
+            from: emailFrom,
+            to: patient.email,
+            subject: `Referto disponibile — ${report.report_number}`,
+            html: reportReleasedEmail(
+              patient.first_name,
+              report.report_number,
+              report.report_type || '--',
+              report.sample_date || '--',
+              appUrl
+            ),
+          }),
+        });
+
+        const emailSent = emailResp.ok;
+        await adminClient.from('notifications')
+          .update({ status: emailSent ? 'sent' : 'failed', sent_at: emailSent ? new Date().toISOString() : null })
+          .eq('report_id', reportId)
+          .eq('channel', 'email')
+          .eq('status', 'queued');
+
+        if (!emailSent) {
+          console.error('[BulkRelease] Email failed for report', report.report_number, ':', emailResp.status);
+        }
+      } catch (err) {
+        console.error('[BulkRelease] Email error for report', report.report_number, ':', err);
+      }
     }
   }
 

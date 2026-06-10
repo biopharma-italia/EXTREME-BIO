@@ -586,6 +586,10 @@ async function sendConfirmationEmail(env, booking, service) {
             <tr><td style="padding:8px;font-weight:bold;">Data:</td><td style="padding:8px;">${dateFormatted}</td></tr>
             <tr><td style="padding:8px;font-weight:bold;">Ora:</td><td style="padding:8px;">${booking.booking_time}</td></tr>
             <tr><td style="padding:8px;font-weight:bold;">Paziente:</td><td style="padding:8px;">${booking.patient_name}</td></tr>
+            <tr><td style="padding:8px;font-weight:bold;">Telefono:</td><td style="padding:8px;"><a href="tel:${booking.patient_phone}" style="color:#008238;">${booking.patient_phone}</a></td></tr>
+            ${booking.patient_email ? `<tr><td style="padding:8px;font-weight:bold;">Email:</td><td style="padding:8px;"><a href="mailto:${booking.patient_email}" style="color:#008238;">${booking.patient_email}</a></td></tr>` : ''}
+            ${booking.patient_fiscal_code ? `<tr><td style="padding:8px;font-weight:bold;">Codice Fiscale:</td><td style="padding:8px;">${booking.patient_fiscal_code}</td></tr>` : ''}
+            ${booking.notes ? `<tr><td style="padding:8px;font-weight:bold;">Note:</td><td style="padding:8px;">${booking.notes}</td></tr>` : ''}
             <tr><td style="padding:8px;font-weight:bold;color:#6b7280;">Importo:</td><td style="padding:8px;color:#6b7280;font-style:italic;">Il costo pu\u00f2 variare in base agli esami effettivamente richiesti</td></tr>
           </table>
           ${service.prep_instructions ? `

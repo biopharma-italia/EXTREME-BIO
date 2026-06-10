@@ -1,5 +1,7 @@
 site/backups/
 referti/package-lock.json
+package.json
+package-lock.json
 
 # Credenziali e file sensibili — MAI committare
 BIO-CLINIC-CREDENZIALI-PROGETTO.md
@@ -7,3 +9,8 @@ BIO-CLINIC-CREDENZIALI-PROGETTO.md
 *.env
 *.env.local
 .env.*
+.deploy-staging/
+.wrangler/
+node_modules/
+tmp/
+tmp/

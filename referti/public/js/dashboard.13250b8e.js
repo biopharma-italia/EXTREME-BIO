@@ -90,13 +90,18 @@
       return r.json();
     });
   }
-  function sbPatch(table, query, data) {
+  function sbPatch(table, query, data, opts) {
     return fetch(SB_URL + '/rest/v1/' + table + '?' + query, {
       method: 'PATCH', headers: Object.assign({}, sbHeaders(), { 'Prefer': 'return=representation' }),
       body: JSON.stringify(data)
     }).then(function (r) {
       if (!r.ok) return r.json().then(function (e) { throw e; });
       return r.json();
+    }).then(function (result) {
+      if (opts && opts.requireMatch && Array.isArray(result) && result.length === 0) {
+        throw new Error('Permesso negato: nessun record aggiornato (verifica il tuo ruolo)');
+      }
+      return result;
     });
   }
   function sbRpc(fn, args) {
@@ -761,6 +766,18 @@
         $('invRole').disabled = true;
         $('invFiscal').value = fc;
         togglePatientFields();
+
+        // Pre-compilare con dati GIPO se disponibili
+        if (state._gipoData) {
+          var g = state._gipoData;
+          if (g.first_name) $('invFirstName').value = g.first_name;
+          if (g.last_name) $('invLastName').value = g.last_name;
+          if (g.email) $('invEmail').value = g.email;
+          if (g.phone && $('invPhone')) $('invPhone').value = g.phone;
+          if (g.date_of_birth && $('invDob')) $('invDob').value = g.date_of_birth;
+          if (g.gender && $('invGender')) $('invGender').value = g.gender;
+        }
+
         // Set a flag so that after creation we return to upload and re-search
         state._inviteFromUpload = true;
         state._inviteFromUploadFC = fc;
@@ -798,21 +815,65 @@
     $('uploadFiscal-error').textContent = '';
     $('patientFound').hidden = true;
     $('invitePatientFromUpload').hidden = true;
+    state._gipoData = null;
 
-    sbGet('users', 'fiscal_code=eq.' + encodeURIComponent(fc) + '&role=eq.patient&select=id,first_name,last_name,email').then(function (data) {
-      if (data && data.length > 0) {
-        var p = data[0];
+    // Step 1: cerca in "users" (paziente già registrato nel portale referti)
+    fetch('/api/admin/users/lookup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + state.token },
+      body: JSON.stringify({ fiscal_code: fc })
+    }).then(function (r) { return r.json(); }).then(function (res) {
+      if (res.success && res.data) {
+        // Trovato in users — paziente già registrato
+        var p = res.data;
         $('patientFoundName').textContent = p.first_name + ' ' + p.last_name + ' (' + p.email + ')';
         $('patientFound').hidden = false;
         $('patientFound').dataset.patientId = p.id;
         $('invitePatientFromUpload').hidden = true;
       } else {
-        $('uploadFiscal-error').textContent = 'Paziente non trovato nel sistema';
-        $('invitePatientFromUpload').hidden = false;
+        // Step 2: non in users — cerca nell'anagrafica GIPO
+        lookupGipoPatient(fc);
       }
     }).catch(function () {
       $('uploadFiscal-error').textContent = 'Errore nella ricerca';
       $('invitePatientFromUpload').hidden = true;
+    });
+  }
+
+  // Cerca il CF nell'anagrafica GIPO per pre-compilare il form di creazione
+  function lookupGipoPatient(fc) {
+    fetch('/api/admin/gipo/lookup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + state.token },
+      body: JSON.stringify({ fiscal_code: fc })
+    }).then(function (r) { return r.json(); }).then(function (res) {
+      if (res.success && res.data) {
+        // Trovato in GIPO — mostra messaggio e prepara i dati per pre-compilazione
+        var g = res.data;
+        state._gipoData = g;
+        $('uploadFiscal-error').textContent = '';
+        var infoText = 'Trovato in GIPO: ' + esc(g.first_name) + ' ' + esc(g.last_name);
+        if (g.email) infoText += ' (' + esc(g.email) + ')';
+        infoText += ' — Clicca "Registra Paziente" per creare l\'account (dati pre-compilati)';
+        $('uploadFiscal-error').textContent = infoText;
+        $('uploadFiscal-error').style.color = '#00704A';
+        $('invitePatientFromUpload').hidden = false;
+        $('invitePatientFromUpload').textContent = 'Registra Paziente (dati GIPO)';
+      } else {
+        // Non trovato neanche in GIPO
+        state._gipoData = null;
+        $('uploadFiscal-error').textContent = 'Paziente non trovato nel sistema';
+        $('uploadFiscal-error').style.color = '';
+        $('invitePatientFromUpload').hidden = false;
+        $('invitePatientFromUpload').textContent = 'Registra Paziente';
+      }
+    }).catch(function () {
+      // GIPO lookup fallita — mostra comunque il pulsante registra
+      state._gipoData = null;
+      $('uploadFiscal-error').textContent = 'Paziente non trovato nel sistema';
+      $('uploadFiscal-error').style.color = '';
+      $('invitePatientFromUpload').hidden = false;
+      $('invitePatientFromUpload').textContent = 'Registra Paziente';
     });
   }
 
@@ -988,10 +1049,7 @@
 
     if (!$('filterQueueUrgent')._bound) {
       $('filterQueueUrgent').addEventListener('change', loadQueue);
-      // Hide bulk validate button for ostetrica
-      if (state.profile && state.profile.role === 'ostetrica') {
-        $('validateAllBtn').style.display = 'none';
-      }
+      // Bulk validate visible for ostetrica, lab_technician, admin, super_admin
       $('selectAllQueue').addEventListener('change', function () {
         var checked = this.checked;
         $$('#queueBody input[type="checkbox"]').forEach(function (cb) { cb.checked = checked; });
@@ -1020,9 +1078,7 @@
         '<td>' + fmtDate(r.sample_date) + '</td>' +
         '<td>' + (flags || '--') + '</td>' +
         '<td>' + timeAgo(r.created_at) + '</td>' +
-        '<td>' + (state.profile && state.profile.role !== 'ostetrica'
-          ? '<button class="btn btn-primary btn-sm" onclick="window._validateReport(\'' + r.id + '\')">Valida</button> '
-          : '') +
+        '<td>' + '<button class="btn btn-primary btn-sm" onclick="window._validateReport(\'' + r.id + '\')">Valida</button> ' +
         (!r.has_abnormal_values
           ? '<button class="btn btn-sm" style="background:#6366f1;color:#fff;border:0" onclick="window._fastTrackReport(\'' + r.id + '\')">Fast-Track</button> '
           : '') +
@@ -1069,12 +1125,7 @@
     if (!$('filterSignStatus')._bound) {
       $('filterSignStatus').addEventListener('change', loadSignRelease);
       if ($('bulkReleaseBtn')) {
-        // Hide bulk release button for ostetrica (view-only)
-        if (state.profile && state.profile.role === 'ostetrica') {
-          $('bulkReleaseBtn').style.display = 'none';
-        } else {
-          $('bulkReleaseBtn').addEventListener('click', bulkRelease);
-        }
+        $('bulkReleaseBtn').addEventListener('click', bulkRelease);
       }
       $('filterSignStatus')._bound = true;
     }
@@ -1093,15 +1144,13 @@
       if (r.has_abnormal_values) flags += '<span class="badge badge-abnormal">Anomalo</span>';
 
       var actions = '';
-      if (state.profile && state.profile.role !== 'ostetrica') {
-        if (r.status === 'validated') {
-          actions = '<button class="btn btn-primary btn-sm" onclick="window._signReport(\'' + r.id + '\')">Firma</button>';
-          if (!r.has_abnormal_values) {
-            actions += ' <button class="btn btn-sm" style="background:#6366f1;color:#fff;border:0" onclick="window._fastTrackSign(\'' + r.id + '\')">Firma & Rilascia</button>';
-          }
-        } else if (r.status === 'signed') {
-          actions = '<button class="btn btn-primary btn-sm" onclick="window._releaseReport(\'' + r.id + '\')">Rilascia</button>';
+      if (r.status === 'validated') {
+        actions = '<button class="btn btn-primary btn-sm" onclick="window._signReport(\'' + r.id + '\')">Firma</button>';
+        if (!r.has_abnormal_values) {
+          actions += ' <button class="btn btn-sm" style="background:#6366f1;color:#fff;border:0" onclick="window._fastTrackSign(\'' + r.id + '\')">Firma & Rilascia</button>';
         }
+      } else if (r.status === 'signed') {
+        actions = '<button class="btn btn-primary btn-sm" onclick="window._releaseReport(\'' + r.id + '\')">Rilascia</button>';
       }
       actions += ' <button class="btn btn-outline btn-sm" onclick="window._previewReport(\'' + r.id + '\')">Vedi</button>';
 
@@ -1235,8 +1284,13 @@
         }
       }
       if (isOstetrica) {
-        if (r.status === 'pending' && canFastTrack) {
-          actions += ' <button class="btn btn-sm" style="background:#6366f1;color:#fff;border:0" onclick="window._fastTrackReport(\'' + r.id + '\')">Fast-Track</button>';
+        if (r.status === 'pending') {
+          actions += ' <button class="btn btn-primary btn-sm" onclick="window._validateReport(\'' + r.id + '\')">Valida</button>';
+          if (canFastTrack) actions += ' <button class="btn btn-sm" style="background:#6366f1;color:#fff;border:0" onclick="window._fastTrackReport(\'' + r.id + '\')">Fast-Track</button>';
+        } else if (r.status === 'validated') {
+          actions += ' <button class="btn btn-primary btn-sm" onclick="window._signReport(\'' + r.id + '\')">Firma</button>';
+        } else if (r.status === 'signed') {
+          actions += ' <button class="btn btn-primary btn-sm" onclick="window._releaseReport(\'' + r.id + '\')">Rilascia</button>';
         }
         if (r.status === 'released') {
           actions += ' <button class="btn btn-sm" style="background:#22c55e;color:#fff;border:0" onclick="window._downloadReport(\'' + r.id + '\')">Scarica</button>';
@@ -1749,7 +1803,7 @@
       status: 'validated',
       validated_at: new Date().toISOString(),
       validated_by: state.profile ? state.profile.id : null
-    }).then(function () {
+    }, {requireMatch: true}).then(function () {
       closeModal();
       toast('Referto validato', 'success');
       if (state.currentPage === 'all-reports') loadAllReports();
@@ -1773,7 +1827,7 @@
       signed_at: new Date().toISOString(),
       signed_by: state.profile ? state.profile.id : null,
       physician_notes: notes || null
-    }).then(function () {
+    }, {requireMatch: true}).then(function () {
       closeModal();
       toast('Referto firmato', 'success');
       if (state.currentPage === 'all-reports') loadAllReports();
@@ -1795,7 +1849,7 @@
       status: 'released',
       released_at: new Date().toISOString(),
       released_by: state.profile ? state.profile.id : null
-    }).then(function () {
+    }, {requireMatch: true}).then(function () {
       closeModal();
       toast('Referto rilasciato al paziente', 'success');
       // Send email notification to patient
@@ -1929,16 +1983,16 @@
         // Step 1: Validate
         sbPatch('reports', 'id=eq.' + id, {
           status: 'validated', validated_at: now, validated_by: userId
-        }).then(function () {
+        }, {requireMatch: true}).then(function () {
           // Step 2: Sign
           return sbPatch('reports', 'id=eq.' + id, {
             status: 'signed', signed_at: now, signed_by: userId, physician_notes: notes || null
-          });
+          }, {requireMatch: true});
         }).then(function () {
           // Step 3: Release
           return sbPatch('reports', 'id=eq.' + id, {
             status: 'released', released_at: now, released_by: userId
-          });
+          }, {requireMatch: true});
         }).then(function () {
           closeModal();
           toast('Referto validato, firmato e rilasciato al paziente!', 'success');
@@ -1973,11 +2027,11 @@
         // Step 1: Sign
         sbPatch('reports', 'id=eq.' + id, {
           status: 'signed', signed_at: now, signed_by: userId, physician_notes: notes || null
-        }).then(function () {
+        }, {requireMatch: true}).then(function () {
           // Step 2: Release
           return sbPatch('reports', 'id=eq.' + id, {
             status: 'released', released_at: now, released_by: userId
-          });
+          }, {requireMatch: true});
         }).then(function () {
           closeModal();
           toast('Referto firmato e rilasciato al paziente!', 'success');
@@ -2006,16 +2060,35 @@
   window._doDelete = function (id) {
     var btn = $('confirmDelete_' + id);
     if (btn) { btn.disabled = true; btn.textContent = 'Eliminazione...'; }
-    fetch('/api/reports/' + id, {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + state.token }
-    }).then(function (r) { return r.json(); }).then(function (data) {
+    // First delete associated files from storage
+    sbGet('report_files', 'report_id=eq.' + id + '&select=storage_path').then(function (files) {
+      if (files && files.length > 0) {
+        var paths = files.map(function (f) { return f.storage_path; });
+        return fetch(SB_URL + '/storage/v1/object/referti', {
+          method: 'DELETE',
+          headers: Object.assign({}, sbHeaders()),
+          body: JSON.stringify({ prefixes: paths })
+        }).catch(function () { /* ignore storage errors */ });
+      }
+    }).then(function () {
+      // Delete report_files records
+      return fetch(SB_URL + '/rest/v1/report_files?report_id=eq.' + id, {
+        method: 'DELETE',
+        headers: sbHeaders()
+      });
+    }).then(function () {
+      // Delete the report record
+      return fetch(SB_URL + '/rest/v1/reports?id=eq.' + id, {
+        method: 'DELETE',
+        headers: sbHeaders()
+      });
+    }).then(function (r) {
       closeModal();
-      if (data.success) {
+      if (r.ok) {
         toast('Referto eliminato con successo', 'success');
         loadPageData(state.currentPage);
       } else {
-        toast(data.error || 'Errore nella cancellazione', 'error');
+        toast('Errore nella cancellazione (permesso negato)', 'error');
       }
     }).catch(function () {
       closeModal();

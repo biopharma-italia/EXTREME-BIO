@@ -305,13 +305,30 @@
           </div>
         </section>
 
-        <!-- BOOKINGS (read-only from D1) -->
+        <!-- BOOKINGS (D1 + Supabase sync) -->
         <section id="section-bookings" class="section" hidden>
           <div class="card">
-            <h3>Prenotazioni Laboratorio</h3>
-            <p class="text-muted" style="margin-bottom:16px">
-              Dati sincronizzati da Cloudflare D1. Gestione completa su bio-clinic.it/api/booking.
-            </p>
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px">
+              <h3 style="margin:0">Prenotazioni Laboratorio</h3>
+              <span id="bookings-source" class="status-badge status-active" style="font-size:11px"></span>
+            </div>
+
+            <!-- Filters toolbar -->
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;align-items:center">
+              <input type="text" id="bookings-search" placeholder="Cerca paziente, telefono..." style="flex:1;min-width:180px;padding:7px 12px;border:1px solid var(--gray-300);border-radius:var(--radius);font-size:13px">
+              <select id="bookings-status-filter" style="padding:7px 12px;border:1px solid var(--gray-300);border-radius:var(--radius);font-size:13px">
+                <option value="">Tutti gli stati</option>
+                <option value="confirmed">Confermata</option>
+                <option value="completed">Completata</option>
+                <option value="pending">In attesa</option>
+                <option value="cancelled">Cancellata</option>
+                <option value="no_show">No-show</option>
+              </select>
+              <input type="date" id="bookings-date-from" style="padding:7px 12px;border:1px solid var(--gray-300);border-radius:var(--radius);font-size:13px" title="Da data">
+              <input type="date" id="bookings-date-to" style="padding:7px 12px;border:1px solid var(--gray-300);border-radius:var(--radius);font-size:13px" title="A data">
+              <button id="bookings-refresh-btn" class="btn btn-sm btn-outline" title="Aggiorna">&#x21BB; Aggiorna</button>
+            </div>
+
             <div class="table-wrapper">
               <table class="data-table">
                 <thead>
@@ -320,14 +337,24 @@
                     <th>Servizio</th>
                     <th>Data</th>
                     <th>Ora</th>
-                    <th>Stato</th>
-                    <th>Fonte</th>
+                    <th style="width:90px">Stato</th>
+                    <th style="width:80px">Fonte</th>
+                    <th style="width:90px">Azioni</th>
                   </tr>
                 </thead>
                 <tbody id="bookings-tbody">
-                  <tr><td colspan="6" class="text-muted" style="text-align:center;padding:32px">Caricamento...</td></tr>
+                  <tr><td colspan="7" class="text-muted" style="text-align:center;padding:32px">Caricamento...</td></tr>
                 </tbody>
               </table>
+            </div>
+
+            <!-- Pagination -->
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px;font-size:13px">
+              <span id="bookings-page-info" class="text-muted"></span>
+              <div style="display:flex;gap:6px">
+                <button id="bookings-page-prev" class="btn btn-sm btn-outline" disabled>&laquo; Prec</button>
+                <button id="bookings-page-next" class="btn btn-sm btn-outline" disabled>Succ &raquo;</button>
+              </div>
             </div>
           </div>
         </section>
@@ -373,7 +400,7 @@
           </svg>
           <span style="color: #166534; font-size: 0.9rem;">
             <strong>Informazioni verificate dall&apos;équipe medica Bio-Clinic</strong> &bull;
-            Aggiornato: 13/05/2026 &bull;
+            Aggiornato: 10/06/2026 &bull;
             <a href="/equipe/salvatore-dessole/" style="color: #166534; text-decoration: underline;">Dir. Sanitario: Prof. S. Dessole</a>
           </span>
         </div>

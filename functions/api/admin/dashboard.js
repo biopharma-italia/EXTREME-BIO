@@ -593,15 +593,28 @@ export async function onRequestGet(context) {
   return withAdminAuth(context, async (ctx, user) => {
     const { env, request } = ctx;
     const db = createSupabaseAdmin(env);
+    const d1 = env.BOOKING_DB;
 
-    // Safe query helper - returns empty result if table doesn't exist
+    // Safe Supabase query helper
     const safeQuery = async (table, opts) => {
       try { return await db.query(table, opts); }
       catch (e) { return { data: [], count: 0 }; }
     };
 
+    // Safe D1 query helper
+    const safeD1 = async (sql, bindings = []) => {
+      if (!d1) return { results: [], count: 0 };
+      try {
+        const stmt = bindings.length ? d1.prepare(sql).bind(...bindings) : d1.prepare(sql);
+        return await stmt.all();
+      } catch (e) { return { results: [], count: 0 }; }
+    };
+
     try {
-      // Parallel queries for dashboard data
+      const today = new Date().toISOString().split('T')[0];
+      const sevenDaysAgo = new Date(Date.now() - 7 * 86400000).toISOString();
+
+      // Parallel queries: Supabase for catalog data, D1 for contacts + bookings
       const [
         specialtiesRes,
         physiciansRes,
@@ -609,10 +622,10 @@ export async function onRequestGet(context) {
         labTestsRes,
         packsRes,
         pathwaysRes,
-        contactsNewRes,
-        contacts7dRes,
-        recentContactsRes,
-        bookingsRes,
+        contactsNewD1,
+        contacts7dD1,
+        recentContactsD1,
+        upcomingBookingsD1,
       ] = await Promise.all([
         safeQuery('specialties', { select: 'id', filter: 'status=eq.active', count: true }),
         safeQuery('physicians', { select: 'id', filter: 'status=eq.active', count: true }),
@@ -620,23 +633,15 @@ export async function onRequestGet(context) {
         safeQuery('lab_tests', { select: 'id', filter: 'status=eq.active', count: true }),
         safeQuery('packs', { select: 'id', filter: 'status=eq.active', count: true }),
         safeQuery('pathways', { select: 'id', filter: 'status=eq.active', count: true }),
-        safeQuery('contacts', { select: 'id', filter: 'status=eq.new', count: true }),
-        safeQuery('contacts', {
-          select: 'id',
-          filter: `created_at=gte.${new Date(Date.now() - 7 * 86400000).toISOString()}`,
-          count: true,
-        }),
-        safeQuery('contacts', {
-          select: 'id,name,phone,email,service,status,created_at',
-          order: 'created_at.desc',
-          limit: 10,
-        }),
-        safeQuery('bookings_sync', {
-          select: 'id,patient_name,service_name,booking_date,booking_time,status',
-          filter: `booking_date=gte.${new Date().toISOString().split('T')[0]}`,
-          order: 'booking_date.asc,booking_time.asc',
-          limit: 15,
-        }),
+        // Contacts from D1
+        safeD1("SELECT COUNT(*) as cnt FROM contacts WHERE status = 'new'"),
+        safeD1("SELECT COUNT(*) as cnt FROM contacts WHERE created_at >= ?", [sevenDaysAgo]),
+        safeD1("SELECT id, lead_id, name, phone, email, service, specialty, status, created_at FROM contacts ORDER BY created_at DESC LIMIT 10"),
+        // Bookings from D1
+        safeD1(
+          "SELECT id, patient_name, service_id, booking_date, booking_time, status, patient_phone, patient_email FROM bookings WHERE booking_date >= ? ORDER BY booking_date ASC, booking_time ASC LIMIT 15",
+          [today]
+        ),
       ]);
 
       return jsonResponse({
@@ -647,11 +652,29 @@ export async function onRequestGet(context) {
           active_lab_tests: labTestsRes.count || labTestsRes.data?.length || 0,
           active_packs: packsRes.count || packsRes.data?.length || 0,
           active_pathways: pathwaysRes.count || pathwaysRes.data?.length || 0,
-          new_contacts: contactsNewRes.count || contactsNewRes.data?.length || 0,
-          contacts_last_7d: contacts7dRes.count || contacts7dRes.data?.length || 0,
+          new_contacts: contactsNewD1.results?.[0]?.cnt || 0,
+          contacts_last_7d: contacts7dD1.results?.[0]?.cnt || 0,
         },
-        recent_contacts: recentContactsRes.data || [],
-        upcoming_bookings: bookingsRes.data || [],
+        recent_contacts: (recentContactsD1.results || []).map(c => ({
+          id: c.id,
+          lead_id: c.lead_id,
+          name: c.name,
+          phone: c.phone,
+          email: c.email,
+          service: c.service || c.specialty || 'Generico',
+          status: c.status,
+          created_at: c.created_at,
+        })),
+        upcoming_bookings: (upcomingBookingsD1.results || []).map(b => ({
+          id: b.id,
+          patient_name: b.patient_name,
+          service_name: b.service_id?.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) || '',
+          booking_date: b.booking_date,
+          booking_time: b.booking_time,
+          status: b.status,
+          patient_phone: b.patient_phone,
+          patient_email: b.patient_email,
+        })),
         generated_at: new Date().toISOString(),
         user: { email: user.email, role: user.role },
       }, 200, request);

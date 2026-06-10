@@ -12,6 +12,7 @@
 import { createClient } from '@supabase/supabase-js';
 import { jsonResponse } from '../_middleware';
 import { validateEmail, sanitizeInput } from '../../../src/lib/validators';
+import { passwordResetEmail } from '../../../src/lib/email-templates';
 import type { RequestContext } from '../../../src/lib/types';
 
 interface Env {
@@ -114,50 +115,7 @@ export async function onRequestPost(context: {
     const emailFrom = env.EMAIL_FROM || 'Bio-Clinic Referti <referti@bio-clinic.it>';
     const firstName = sanitizeInput(userProfile?.first_name || '', 100) || 'Utente';
 
-    const emailHtml = `<!DOCTYPE html>
-<html lang="it">
-<head><meta charset="UTF-8"></head>
-<body style="font-family:'Segoe UI',Arial,sans-serif;max-width:600px;margin:0 auto;background:#f7f9fc;padding:20px">
-  <div style="background:white;border-radius:12px;padding:32px;box-shadow:0 2px 8px rgba(0,0,0,0.06)">
-    <div style="text-align:center;margin-bottom:24px">
-      <div style="background:#00704A;color:white;display:inline-block;padding:8px 20px;border-radius:8px;font-size:18px;font-weight:600">
-        Bio-Clinic Sassari
-      </div>
-    </div>
-
-    <h2 style="color:#1a1a2e;margin:0 0 16px">Gentile ${firstName},</h2>
-
-    <p style="color:#444;line-height:1.6">
-      Abbiamo ricevuto una richiesta per reimpostare la password del tuo account sul portale
-      <strong>Referti Online</strong> di Bio-Clinic Sassari.
-    </p>
-
-    <div style="text-align:center;margin:28px 0">
-      <a href="${resetUrl}"
-         style="background:#00704A;color:white;padding:14px 32px;border-radius:8px;text-decoration:none;display:inline-block;font-weight:600;font-size:15px">
-        Reimposta Password
-      </a>
-    </div>
-
-    <div style="background:#fef3cd;border-radius:8px;padding:14px;margin:20px 0;border-left:4px solid #f59e0b">
-      <p style="margin:0;color:#92400e;font-size:13px;line-height:1.5">
-        <strong>Attenzione:</strong> Il link \u00e8 valido per <strong>60 minuti</strong>.
-        Se non hai richiesto il reset della password, puoi ignorare questa email in sicurezza.
-      </p>
-    </div>
-
-    <p style="color:#666;font-size:13px;line-height:1.5">
-      Se il pulsante non funziona, copia e incolla questo link nel tuo browser:<br>
-      <a href="${resetUrl}" style="color:#00704A;word-break:break-all;font-size:12px">${resetUrl}</a>
-    </p>
-
-    <p style="color:#888;font-size:12px;line-height:1.5;margin-top:24px;border-top:1px solid #eee;padding-top:16px">
-      Bio-Clinic Sassari \u2014 Via Renzo Mossa 23, 07100 Sassari<br>
-      Tel: 079 956 1332 | <a href="mailto:gestione@bio-clinic.it" style="color:#00704A">gestione@bio-clinic.it</a>
-    </p>
-  </div>
-</body>
-</html>`;
+    const emailHtml = passwordResetEmail(firstName, resetUrl);
 
     const emailRes = await fetch('https://api.resend.com/emails', {
       method: 'POST',

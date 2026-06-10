@@ -15,6 +15,7 @@ import {
   validatePhone,
   sanitizeInput,
 } from '../../../src/lib/validators';
+import { welcomeEmail } from '../../../src/lib/email-templates';
 import type { RequestContext } from '../../../src/lib/types';
 
 interface Env {
@@ -273,42 +274,7 @@ export async function onRequestPost(context: {
           from: emailFrom,
           to: body.email.toLowerCase().trim(),
           subject: 'Benvenuto su Bio-Clinic Referti Online',
-          html: `
-<!DOCTYPE html>
-<html lang="it">
-<head><meta charset="UTF-8"></head>
-<body style="font-family:'Segoe UI',Arial,sans-serif;max-width:600px;margin:0 auto;background:#f7f9fc;padding:20px">
-  <div style="background:white;border-radius:12px;padding:32px;box-shadow:0 2px 8px rgba(0,0,0,0.06)">
-    <div style="text-align:center;margin-bottom:24px">
-      <div style="background:#00704A;color:white;display:inline-block;padding:8px 20px;border-radius:8px;font-size:18px;font-weight:600">
-        Bio-Clinic Sassari
-      </div>
-    </div>
-    <h2 style="color:#1a1a2e;margin:0 0 16px">Benvenuto, ${sanitizeInput(body.first_name, 100)}!</h2>
-    <p style="color:#444;line-height:1.6">
-      Il suo account per il portale Referti Online di Bio-Clinic Sassari \u00e8 stato creato con successo.
-    </p>
-    <p style="color:#444;line-height:1.6">
-      Da questo portale potr\u00e0 consultare e scaricare i suoi referti di laboratorio in modo sicuro e riservato.
-    </p>
-    <div style="background:#f0faf5;border-radius:8px;padding:16px;margin:20px 0;border-left:4px solid #00704A">
-      <p style="margin:0;color:#333;font-size:14px"><strong>Le sue credenziali:</strong></p>
-      <p style="margin:4px 0 0;color:#555;font-size:14px">Email: <strong>${body.email.toLowerCase().trim()}</strong></p>
-      <p style="margin:4px 0 0;color:#888;font-size:12px">Password: quella scelta durante la registrazione</p>
-    </div>
-    <div style="text-align:center;margin:28px 0">
-      <a href="${appUrl}/dashboard/"
-         style="background:#00704A;color:white;padding:14px 32px;border-radius:8px;text-decoration:none;display:inline-block;font-weight:600;font-size:15px">
-        Accedi al Portale
-      </a>
-    </div>
-    <p style="color:#888;font-size:12px;line-height:1.5;margin-top:24px;border-top:1px solid #eee;padding-top:16px">
-      Bio-Clinic Sassari \u2014 Via Renzo Mossa 23, 07100 Sassari<br>
-      Tel: 079 956 1332 | <a href="mailto:gestione@bio-clinic.it" style="color:#00704A">gestione@bio-clinic.it</a>
-    </p>
-  </div>
-</body>
-</html>`,
+          html: welcomeEmail(sanitizeInput(body.first_name, 100), body.email.toLowerCase().trim(), appUrl),
         }),
       });
     } catch (err) {
