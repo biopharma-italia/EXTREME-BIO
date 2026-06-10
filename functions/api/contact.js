@@ -75,13 +75,33 @@ export async function onRequestPost(context) {
       ip_city: request.cf?.city || 'unknown',
     };
 
-    // Store lead in KV if available
-    if (env.LEADS_KV) {
+    // Store lead in D1 database (primary storage)
+    if (env.BOOKING_DB) {
       try {
-        await env.LEADS_KV.put(
-          lead.lead_id,
+        const now = new Date().toISOString();
+        await env.BOOKING_DB.prepare(
+          `INSERT INTO contacts (id, lead_id, name, phone, email, message, service, specialty, physician, source_page, utm_source, utm_medium, utm_campaign, bc_user_id, bc_session_id, bc_device_type, referrer, ip_country, ip_city, status, created_at, updated_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'new', ?, ?)`
+        ).bind(
+          lead.lead_id, lead.lead_id, lead.name, lead.phone, lead.email,
+          lead.message, lead.service, lead.specialty, lead.physician,
+          lead.source_page,
+          sanitize(body.utm_source || ''), sanitize(body.utm_medium || ''), sanitize(body.utm_campaign || ''),
+          lead.bc_user_id, lead.bc_session_id, lead.bc_device_type, lead.referrer,
+          lead.ip_country, lead.ip_city, now, now
+        ).run();
+      } catch (dbError) {
+        console.error('D1 storage error:', dbError);
+      }
+    }
+
+    // Fallback: store in KV if D1 unavailable
+    if (!env.BOOKING_DB && env.BOOKING_KV) {
+      try {
+        await env.BOOKING_KV.put(
+          `lead:${lead.lead_id}`,
           JSON.stringify(lead),
-          { expirationTtl: 60 * 60 * 24 * 365 } // 1 year
+          { expirationTtl: 60 * 60 * 24 * 365 }
         );
       } catch (kvError) {
         console.error('KV storage error:', kvError);

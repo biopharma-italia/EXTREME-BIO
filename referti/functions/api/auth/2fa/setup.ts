@@ -10,6 +10,13 @@ import { jsonResponse } from '../../_middleware';
 import { encryptTotpSecret, bytesToHex } from '../../../../src/lib/encryption';
 import type { RequestContext } from '../../../../src/lib/types';
 
+// Hash a backup code with SHA-256 for secure storage
+async function hashBackupCode(code: string): Promise<string> {
+  const data = new TextEncoder().encode(code.trim().toUpperCase());
+  const hash = await crypto.subtle.digest('SHA-256', data);
+  return bytesToHex(new Uint8Array(hash));
+}
+
 interface Env {
   SUPABASE_URL: string;
   SUPABASE_SERVICE_KEY: string;
@@ -71,11 +78,17 @@ export async function onRequestPost(context: {
     ctx.user.id
   );
 
+  // Hash backup codes for secure storage (P1-2 fix: never store plaintext)
+  const backupCodesHashes: string[] = [];
+  for (const code of backupCodes) {
+    backupCodesHashes.push(await hashBackupCode(code));
+  }
+
   // Upsert TOTP record (not yet verified)
   await adminClient.from('totp_secrets').upsert({
     user_id: ctx.user.id,
     encrypted_secret: `${encrypted}:${iv}`,
-    backup_codes: JSON.stringify(backupCodes),
+    backup_codes_hashes: JSON.stringify(backupCodesHashes),
     backup_codes_remaining: 10,
     is_verified: false,
   }, { onConflict: 'user_id' });

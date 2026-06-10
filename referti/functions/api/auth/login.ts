@@ -8,6 +8,7 @@
 
 import { createClient } from '@supabase/supabase-js';
 import { jsonResponse } from '../_middleware';
+import { signJwt } from '../../../src/lib/jwt';
 import type { RequestContext, LoginResponse } from '../../../src/lib/types';
 
 interface Env {
@@ -121,7 +122,7 @@ export async function onRequestPost(context: {
     // Sign out the Supabase session (we'll re-create after 2FA)
     await anonClient.auth.signOut();
 
-    // Create a short-lived temp token (stored in KV or JWT)
+    // Create a short-lived HMAC-signed temp token
     const tempPayload = {
       sub: authData.user.id,
       scope: '2fa_pending',
@@ -130,8 +131,8 @@ export async function onRequestPost(context: {
       iat: Math.floor(Date.now() / 1000),
     };
 
-    // Encode as base64 JWT-like token (for simplicity; in production use proper JWT signing)
-    const tempToken = btoa(JSON.stringify(tempPayload));
+    // Sign with HMAC-SHA256 using service key to prevent forgery
+    const tempToken = await signJwt(tempPayload, env.SUPABASE_SERVICE_KEY);
 
     const response: LoginResponse = {
       success: true,

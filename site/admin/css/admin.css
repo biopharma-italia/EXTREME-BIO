@@ -448,6 +448,7 @@ body {
 .status-confirmed { background: var(--success); color: var(--white); }
 .status-cancelled { background: var(--danger); color: var(--white); }
 .status-spam { background: var(--gray-800); color: var(--white); }
+.status-no_show { background: #6c757d; color: var(--white); }
 
 .actions-cell { white-space: nowrap; }
 .actions-cell button { padding: 4px 8px; font-size: 12px; margin-right: 4px; }

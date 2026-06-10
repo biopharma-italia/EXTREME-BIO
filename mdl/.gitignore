@@ -1,0 +1,10 @@
+# Il .gitignore di root ignora package.json/package-lock.json globalmente.
+# Per il modulo MDL queste dipendenze DEVONO essere versionate, altrimenti
+# il build di Cloudflare Pages non risolve '@supabase/supabase-js' e il
+# deploy fallisce. Le re-includiamo qui.
+!package.json
+!package-lock.json
+
+# Le dipendenze installate restano fuori dal versionamento.
+node_modules/
+dist/

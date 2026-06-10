@@ -11,28 +11,29 @@
   'use strict';
 
   // ============================================
-  // Supabase Configuration
+  // Configuration (no direct Supabase calls — all auth goes through /api/)
   // ============================================
-  var SUPABASE_URL = 'https://mdxqgzkxrcrotxxbhoai.supabase.co';
-  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1keHFnemt4cmNyb3R4eGJob2FpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODYxMzIsImV4cCI6MjA4NzU2MjEzMn0.HHExeiCGqnx4di_u9gghUnTfgQVAIjKuN6kt_vLFddA';
 
-  // Supabase REST helpers
-  var SupabaseAuth = {
+  // Auth helpers — routes through backend API (no direct Supabase calls)
+  var AuthAPI = {
     /**
-     * Sign up with email, password, and user metadata
+     * Sign up via backend /api/auth/register
      */
-    signUp: function (email, password, metadata) {
-      return fetch(SUPABASE_URL + '/auth/v1/signup', {
+    signUp: function (email, password, metadata, consents) {
+      return fetch('/api/auth/register', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': SUPABASE_ANON_KEY
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email: email,
           password: password,
-          data: metadata,
-          gotrue_meta_security: { captcha_token: '' }
+          first_name: metadata.first_name,
+          last_name: metadata.last_name,
+          fiscal_code: metadata.fiscal_code,
+          consents: consents || {
+            privacy_policy: true,
+            health_data_processing: true,
+            electronic_delivery: true
+          }
         })
       }).then(function (res) {
         return res.json().then(function (data) {
@@ -43,19 +44,13 @@
     },
 
     /**
-     * Sign in with email and password
+     * Sign in via backend /api/auth/login (enforces lockout, audit, rate limit)
      */
     signIn: function (email, password) {
-      return fetch(SUPABASE_URL + '/auth/v1/token?grant_type=password', {
+      return fetch('/api/auth/login', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': SUPABASE_ANON_KEY
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, password: password })
       }).then(function (res) {
         return res.json().then(function (data) {
           if (!res.ok) throw { status: res.status, data: data };
@@ -65,20 +60,13 @@
     },
 
     /**
-     * Verify TOTP code for 2FA
+     * Verify TOTP code via backend /api/auth/verify-2fa
      */
-    verifyTOTP: function (factorId, code, challengeId, accessToken) {
-      return fetch(SUPABASE_URL + '/auth/v1/factors/' + factorId + '/verify', {
+    verifyTOTP: function (tempToken, code) {
+      return fetch('/api/auth/verify-2fa', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': SUPABASE_ANON_KEY,
-          'Authorization': 'Bearer ' + accessToken
-        },
-        body: JSON.stringify({
-          challenge_id: challengeId,
-          code: code
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ temp_token: tempToken, totp_code: code })
       }).then(function (res) {
         return res.json().then(function (data) {
           if (!res.ok) throw { status: res.status, data: data };
@@ -88,36 +76,13 @@
     },
 
     /**
-     * Create a TOTP challenge
-     */
-    challengeTOTP: function (factorId, accessToken) {
-      return fetch(SUPABASE_URL + '/auth/v1/factors/' + factorId + '/challenge', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': SUPABASE_ANON_KEY,
-          'Authorization': 'Bearer ' + accessToken
-        }
-      }).then(function (res) {
-        return res.json().then(function (data) {
-          if (!res.ok) throw { status: res.status, data: data };
-          return data;
-        });
-      });
-    },
-
-    /**
-     * Reset password (send email) — via our API that sets proper redirectTo
+     * Reset password (send email) — via our API
      */
     resetPassword: function (email) {
       return fetch('/api/auth/forgot-password', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email: email
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
       }).then(function (res) {
         return res.json().then(function (data) {
           if (!res.ok) throw { status: res.status, data: data };
@@ -127,30 +92,8 @@
     },
 
     /**
-     * Insert user profile into public.users table via REST API
-     */
-    createUserProfile: function (accessToken, userData) {
-      return fetch(SUPABASE_URL + '/rest/v1/users', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': SUPABASE_ANON_KEY,
-          'Authorization': 'Bearer ' + accessToken,
-          'Prefer': 'return=minimal,resolution=ignore-duplicates'
-        },
-        body: JSON.stringify(userData)
-      }).then(function (res) {
-        if (!res.ok && res.status !== 409) {
-          return res.json().then(function (data) {
-            throw { status: res.status, data: data };
-          });
-        }
-        return { success: true };
-      });
-    },
-
-    /**
-     * Store session in localStorage
+     * Store session in localStorage (shared across pages — dashboard reads from localStorage)
+     * Note: Full httpOnly cookie migration requires backend BFF — this is an intermediate step
      */
     storeSession: function (session) {
       try {
@@ -194,12 +137,43 @@
 
   // Temporary state for 2FA flow
   var pendingAuth = {
-    accessToken: null,
-    refreshToken: null,
-    factorId: null,
-    challengeId: null,
+    tempToken: null,
     user: null
   };
+
+  /**
+   * Decode JWT payload (no verification — just extract claims).
+   * The dashboard needs the Supabase auth user object (with id=sub, user_metadata, email).
+   */
+  function decodeJwtPayload(token) {
+    try {
+      var parts = token.split('.');
+      if (parts.length !== 3) return null;
+      var payload = parts[1].replace(/-/g, '+').replace(/_/g, '/');
+      while (payload.length % 4) payload += '=';
+      return JSON.parse(atob(payload));
+    } catch (e) {
+      return null;
+    }
+  }
+
+  /**
+   * Build a Supabase-compatible user object from JWT claims.
+   * Dashboard expects: user.id (auth UUID = JWT sub), user.email, user.user_metadata
+   */
+  function buildAuthUser(token, apiUser) {
+    var claims = decodeJwtPayload(token);
+    if (!claims) return apiUser || null;
+    return {
+      id: claims.sub,
+      email: claims.email || (apiUser && apiUser.email) || '',
+      user_metadata: claims.user_metadata || {},
+      app_metadata: claims.app_metadata || {},
+      aal: claims.aal,
+      role: claims.role,
+      created_at: (apiUser && apiUser.created_at) || ''
+    };
+  }
 
   // ============================================
   // DOM Ready
@@ -270,7 +244,7 @@
   // Check Existing Session
   // ============================================
   function checkExistingSession() {
-    var session = SupabaseAuth.getSession();
+    var session = AuthAPI.getSession();
     if (session && session.access_token) {
       // User already logged in — show welcome state
       showLoggedInState(session.user);
@@ -319,7 +293,7 @@
       var logoutBtn = document.getElementById('logoutBtn');
       if (logoutBtn) {
         logoutBtn.addEventListener('click', function () {
-          SupabaseAuth.clearSession();
+          AuthAPI.clearSession();
           window.location.reload();
         });
       }
@@ -588,8 +562,8 @@
   function validatePassword(pw) {
     var errors = [];
     if (pw.length < 12) errors.push('Minimo 12 caratteri');
-    if (!/[A-Z]/.test(pw)) errors.push('Almeno una lettera maiuscola');
-    if (!/[a-z]/.test(pw)) errors.push('Almeno una lettera minuscola');
+    if (!/[A-Z]/.test(pw)) errors.push('Almeno una maiuscola');
+    if (!/[a-z]/.test(pw)) errors.push('Almeno una minuscola');
     if (!/[0-9]/.test(pw)) errors.push('Almeno un numero');
     if (!/[^A-Za-z0-9]/.test(pw)) errors.push('Almeno un carattere speciale');
     return errors;
@@ -642,35 +616,51 @@
   }
 
   /**
-   * Map Supabase error messages to Italian
+   * Map API error responses to Italian user-friendly messages
+   * P1-3: Distinguishes network errors from auth/server errors
    */
   function translateAuthError(error) {
+    // Network error (fetch threw — no response at all)
+    if (error && error.isNetworkError) {
+      return 'Impossibile contattare il server. Verifica la connessione internet e riprova.';
+    }
+
     if (!error || !error.data) return 'Si è verificato un errore. Riprova più tardi.';
 
-    var msg = (error.data.message || error.data.msg || error.data.error_description || '').toLowerCase();
+    var msg = (error.data.message || error.data.error || error.data.msg || error.data.error_description || '').toLowerCase();
 
-    if (msg.includes('invalid login credentials') || msg.includes('invalid_credentials')) {
+    if (msg.includes('invalid login credentials') || msg.includes('invalid_credentials') || msg.includes('email o password')) {
       return 'Email o password non corretti.';
     }
-    if (msg.includes('email not confirmed')) {
+    if (msg.includes('email non ancora verificata') || msg.includes('email not confirmed')) {
       return 'Email non ancora verificata. Controlla la tua casella di posta.';
     }
-    if (msg.includes('user already registered') || msg.includes('already been registered')) {
+    if (msg.includes('user_exists') || msg.includes('già registrata') || msg.includes('already been registered')) {
       return 'Questa email è già registrata. Prova ad accedere o recupera la password.';
     }
-    if (msg.includes('rate limit') || msg.includes('too many requests')) {
+    if (msg.includes('troppi tentativi') || msg.includes('rate limit') || msg.includes('too many requests')) {
       return 'Troppi tentativi. Attendi qualche minuto prima di riprovare.';
     }
-    if (msg.includes('password') && msg.includes('weak')) {
+    if (msg.includes('bloccato') || msg.includes('locked')) {
+      return 'Account temporaneamente bloccato per troppi tentativi. Riprova più tardi.';
+    }
+    if (msg.includes('password') && (msg.includes('weak') || msg.includes('requisiti'))) {
       return 'La password non soddisfa i requisiti minimi di sicurezza.';
     }
-    if (msg.includes('signup is disabled') || msg.includes('signups not allowed')) {
+    if (msg.includes('disabilitata') || msg.includes('signups not allowed')) {
       return 'La registrazione è temporaneamente disabilitata.';
     }
     if (msg.includes('email') && msg.includes('invalid')) {
       return 'Indirizzo email non valido.';
     }
-    if (error.status === 422) {
+    if (msg.includes('codice fiscale') && msg.includes('già')) {
+      return 'Codice fiscale già registrato.';
+    }
+    if (error.status === 422 || msg.includes('validation_error')) {
+      // Show first detail if available
+      if (error.data.details && error.data.details.length > 0) {
+        return error.data.details[0];
+      }
       return 'Dati non validi. Controlla i campi e riprova.';
     }
     if (error.status === 429) {
@@ -681,6 +671,15 @@
     }
 
     return 'Si è verificato un errore. Riprova più tardi.';
+  }
+
+  /**
+   * Wrapper for fetch that catches network errors and marks them distinctly
+   */
+  function safeFetch(url, opts) {
+    return fetch(url, opts).catch(function (networkErr) {
+      throw { isNetworkError: true, originalError: networkErr };
+    });
   }
 
   // ============================================
@@ -727,42 +726,34 @@
 
       setButtonLoading('loginSubmit', true);
 
-      SupabaseAuth.signIn(email, password)
+      // P1-1: Route login through backend API (enforces lockout, audit, rate limit)
+      AuthAPI.signIn(email, password)
         .then(function (data) {
           setButtonLoading('loginSubmit', false);
 
-          // Check if user has MFA factors
-          if (data.user && data.user.factors && data.user.factors.length > 0) {
-            // User has TOTP 2FA enabled — need verification
-            var totpFactor = data.user.factors.find(function (f) {
-              return f.factor_type === 'totp' && f.status === 'verified';
-            });
-
-            if (totpFactor) {
-              // Store partial session for 2FA
-              pendingAuth.accessToken = data.access_token;
-              pendingAuth.refreshToken = data.refresh_token;
-              pendingAuth.factorId = totpFactor.id;
-              pendingAuth.user = data.user;
-
-              // Create a challenge
-              SupabaseAuth.challengeTOTP(totpFactor.id, data.access_token)
-                .then(function (challenge) {
-                  pendingAuth.challengeId = challenge.id;
-                  showPanel('twofa-panel');
-                  clearOtpInputs();
-                })
-                .catch(function () {
-                  // If challenge fails, still show 2FA panel
-                  showPanel('twofa-panel');
-                  clearOtpInputs();
-                });
-              return;
-            }
+          // Backend returns { requires_2fa: true, temp_token: '...' } if 2FA is needed
+          if (data.requires_2fa && data.temp_token) {
+            pendingAuth.tempToken = data.temp_token;
+            pendingAuth.user = data.user || null;
+            showPanel('twofa-panel');
+            clearOtpInputs();
+            return;
           }
 
-          // No 2FA — login complete
-          SupabaseAuth.storeSession(data);
+          // No 2FA — login complete, backend returns session tokens
+          // Build a complete session object for localStorage
+          // Dashboard expects user.id = Supabase auth UUID (JWT sub), not profile UUID
+          var sess = data.session || data;
+          var authUser = buildAuthUser(sess.access_token, data.user);
+          var fullSession = {
+            access_token: sess.access_token,
+            refresh_token: sess.refresh_token,
+            expires_at: sess.expires_at || (sess.expires_in
+              ? Math.floor(Date.now() / 1000) + sess.expires_in
+              : Math.floor(Date.now() / 1000) + 3600),
+            user: authUser
+          };
+          AuthAPI.storeSession(fullSession);
           showFormMessage('loginMessage', 'Accesso effettuato. Reindirizzamento alla dashboard...', 'success');
 
           setTimeout(function () {
@@ -835,9 +826,9 @@
       }
 
       // Check consents
-      var consents = form.querySelectorAll('input[type="checkbox"][required]');
+      var consentInputs = form.querySelectorAll('input[type="checkbox"][required]');
       var allChecked = true;
-      consents.forEach(function (cb) {
+      consentInputs.forEach(function (cb) {
         if (!cb.checked) allChecked = false;
       });
       if (!allChecked) {
@@ -849,57 +840,30 @@
 
       setButtonLoading('registerSubmit', true);
 
-      // Sign up with Supabase Auth
-      SupabaseAuth.signUp(email, password, {
+      // Collect consent values from form checkboxes
+      var consentsData = {
+        privacy_policy: true,
+        health_data_processing: true,
+        electronic_delivery: true,
+        email_notifications: !!form.querySelector('#consent-email-notif:checked'),
+        sms_notifications: !!form.querySelector('#consent-sms-notif:checked'),
+        marketing: !!form.querySelector('#consent-marketing:checked')
+      };
+
+      // P1-1: Register through backend API (creates auth user + profile + consents)
+      AuthAPI.signUp(email, password, {
         first_name: name,
         last_name: surname,
         fiscal_code: fiscal.toUpperCase(),
         role: 'patient'
-      })
+      }, consentsData)
         .then(function (data) {
           setButtonLoading('registerSubmit', false);
 
-          // Create profile in public.users as safety net (DB trigger should also do this)
-          if (data.user && data.session) {
-            SupabaseAuth.createUserProfile(data.session.access_token, {
-              auth_id: data.user.id,
-              email: email,
-              first_name: name,
-              last_name: surname,
-              fiscal_code: fiscal.toUpperCase(),
-              role: 'patient',
-              is_active: true,
-              is_email_verified: true,
-              language: 'it',
-              timezone: 'Europe/Rome'
-            }).catch(function () {
-              // Profile may already exist via DB trigger — ignore conflict
-            });
-          }
-
-          // Check confirmation requirement
-          if (data.user && !data.session) {
-            // Email confirmation required
-            showFormMessage('registerMessage',
-              'Account creato con successo! Controlla la tua email (' + escapeHtml(email) + ') per verificare l\'account. Il link di verifica è valido per 24 ore.',
-              'success'
-            );
-          } else if (data.user && data.session) {
-            // Auto-confirmed (e.g., during development)
-            SupabaseAuth.storeSession(data.session);
-            showFormMessage('registerMessage',
-              'Account creato con successo! Reindirizzamento alla dashboard...',
-              'success'
-            );
-            setTimeout(function () {
-              window.location.href = '/dashboard';
-            }, 1500);
-          } else {
-            showFormMessage('registerMessage',
-              'Registrazione completata. Controlla la tua email per confermare l\'account.',
-              'success'
-            );
-          }
+          showFormMessage('registerMessage',
+            'Account creato con successo! Controlla la tua email (' + escapeHtml(email) + ') per verificare l\'account. Il link di verifica è valido per 24 ore.',
+            'success'
+          );
 
           form.reset();
 
@@ -933,7 +897,7 @@
   }
 
   function handleOtpSubmit(code) {
-    if (!pendingAuth.accessToken || !pendingAuth.factorId) {
+    if (!pendingAuth.tempToken) {
       showFormMessage('twofaMessage', 'Sessione scaduta. Effettua nuovamente il login.', 'error');
       return;
     }
@@ -941,46 +905,28 @@
     setButtonLoading('verifyOtpBtn', true);
     clearFormMessage('twofaMessage');
 
-    // If we have a challengeId, verify directly
-    var verifyPromise;
-    if (pendingAuth.challengeId) {
-      verifyPromise = SupabaseAuth.verifyTOTP(
-        pendingAuth.factorId,
-        code,
-        pendingAuth.challengeId,
-        pendingAuth.accessToken
-      );
-    } else {
-      // Create challenge first, then verify
-      verifyPromise = SupabaseAuth.challengeTOTP(pendingAuth.factorId, pendingAuth.accessToken)
-        .then(function (challenge) {
-          pendingAuth.challengeId = challenge.id;
-          return SupabaseAuth.verifyTOTP(
-            pendingAuth.factorId,
-            code,
-            challenge.id,
-            pendingAuth.accessToken
-          );
-        });
-    }
-
-    verifyPromise
+    // P1-1: Verify 2FA through backend (validates signed temp_token, creates real session)
+    AuthAPI.verifyTOTP(pendingAuth.tempToken, code)
       .then(function (data) {
         setButtonLoading('verifyOtpBtn', false);
 
-        // 2FA verified — store full session
-        var session = {
-          access_token: data.access_token || pendingAuth.accessToken,
-          refresh_token: data.refresh_token || pendingAuth.refreshToken,
-          expires_at: data.expires_at,
-          user: pendingAuth.user
+        // Backend returns real session tokens — build complete session with auth user from JWT
+        var sess2fa = data.session || data;
+        var authUser2fa = buildAuthUser(sess2fa.access_token, data.user || pendingAuth.user);
+        var fullSession2fa = {
+          access_token: sess2fa.access_token,
+          refresh_token: sess2fa.refresh_token,
+          expires_at: sess2fa.expires_at || (sess2fa.expires_in
+            ? Math.floor(Date.now() / 1000) + sess2fa.expires_in
+            : Math.floor(Date.now() / 1000) + 3600),
+          user: authUser2fa
         };
-        SupabaseAuth.storeSession(session);
+        AuthAPI.storeSession(fullSession2fa);
 
         showFormMessage('twofaMessage', 'Verifica completata. Reindirizzamento...', 'success');
 
         // Clear pending auth
-        pendingAuth = { accessToken: null, refreshToken: null, factorId: null, challengeId: null, user: null };
+        pendingAuth = { tempToken: null, user: null };
 
         setTimeout(function () {
           window.location.href = '/dashboard';
@@ -990,7 +936,7 @@
         setButtonLoading('verifyOtpBtn', false);
         clearOtpInputs();
 
-        if (error && error.data && error.data.message && error.data.message.toLowerCase().includes('invalid')) {
+        if (error && error.data && (error.data.error || '').toLowerCase().includes('invalid')) {
           showFormMessage('twofaMessage', 'Codice non valido. Riprova.', 'error');
         } else {
           showFormMessage('twofaMessage', translateAuthError(error), 'error');
@@ -1005,21 +951,14 @@
     link.addEventListener('click', function (e) {
       e.preventDefault();
 
-      if (!pendingAuth.accessToken || !pendingAuth.factorId) {
+      if (!pendingAuth.tempToken) {
         showFormMessage('twofaMessage', 'Sessione scaduta. Effettua nuovamente il login.', 'error');
         return;
       }
 
-      // Create a new challenge
-      SupabaseAuth.challengeTOTP(pendingAuth.factorId, pendingAuth.accessToken)
-        .then(function (challenge) {
-          pendingAuth.challengeId = challenge.id;
-          clearOtpInputs();
-          showFormMessage('twofaMessage', 'Nuovo codice richiesto. Usa la tua app authenticator.', 'success');
-        })
-        .catch(function () {
-          showFormMessage('twofaMessage', 'Errore nel generare un nuovo codice. Riprova.', 'error');
-        });
+      // For TOTP-based 2FA, the code refreshes automatically in the authenticator app
+      clearOtpInputs();
+      showFormMessage('twofaMessage', 'Inserisci il codice corrente dalla tua app authenticator.', 'success');
     });
   }
 
@@ -1028,7 +967,7 @@
     if (!btn) return;
 
     btn.addEventListener('click', function () {
-      pendingAuth = { accessToken: null, refreshToken: null, factorId: null, challengeId: null, user: null };
+      pendingAuth = { tempToken: null, user: null };
       hidePanel('twofa-panel');
       showAuthTabs();
       var loginPanel = document.getElementById('login-panel');
@@ -1069,7 +1008,7 @@
 
       setButtonLoading('forgotSubmit', true);
 
-      SupabaseAuth.resetPassword(email)
+      AuthAPI.resetPassword(email)
         .then(function () {
           setButtonLoading('forgotSubmit', false);
           showFormMessage('forgotMessage',

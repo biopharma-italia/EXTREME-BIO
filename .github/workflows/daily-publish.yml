@@ -1,0 +1,103 @@
+name: Daily Article Publisher & Deploy
+
+on:
+  schedule:
+    # Every weekday (Mon-Fri) at 05:00 UTC = 07:00 CET (06:00 in summer CEST)
+    - cron: '0 5 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Override publish date (YYYY-MM-DD). Leave empty for today.'
+        required: false
+        default: ''
+      dry_run:
+        description: 'Dry run - preview without publishing (true/false)'
+        required: false
+        default: 'false'
+
+permissions:
+  contents: write
+
+jobs:
+  publish-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Determine date
+        id: date
+        run: |
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            echo "date=${{ github.event.inputs.date }}" >> $GITHUB_OUTPUT
+          else
+            echo "date=$(TZ='Europe/Rome' date +%Y-%m-%d)" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run daily publisher
+        id: publish
+        run: |
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            python3 scripts/daily-publish.py --date "${{ steps.date.outputs.date }}" --dry-run
+            echo "published=false" >> $GITHUB_OUTPUT
+          else
+            python3 scripts/daily-publish.py --date "${{ steps.date.outputs.date }}" | tee /tmp/publish-output.txt
+            # Check if any articles were actually published
+            if grep -q "PUBLISHED:" /tmp/publish-output.txt; then
+              echo "published=true" >> $GITHUB_OUTPUT
+            else
+              echo "published=false" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --quiet && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit changes
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          DATE="${{ steps.date.outputs.date }}"
+          if [ "${{ steps.publish.outputs.published }}" = "true" ]; then
+            git commit -m "feat(salute): auto-publish articles for $DATE"
+          else
+            git commit -m "chore(salute): rebuild hub page $DATE"
+          fi
+
+      - name: Push changes
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git push origin main
+
+      - name: Install Wrangler
+        if: steps.changes.outputs.changed == 'true'
+        run: npm install -g wrangler@latest
+
+      - name: Deploy to Cloudflare Pages
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          bash deploy-cloudflare.sh
+
+      - name: Summary
+        run: |
+          echo "## Daily Publisher Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- **Date**: ${{ steps.date.outputs.date }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Articles published**: ${{ steps.publish.outputs.published }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Changes committed**: ${{ steps.changes.outputs.changed }}" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            echo "- **Mode**: DRY-RUN (no changes applied)" >> $GITHUB_STEP_SUMMARY
+          fi

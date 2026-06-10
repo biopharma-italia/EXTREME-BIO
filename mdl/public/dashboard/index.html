@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MDL Dashboard | Medicina del Lavoro Bio-Clinic</title>
+  <meta name="description" content="Gestionale Medicina del Lavoro - Sorveglianza Sanitaria D.Lgs. 81/2008">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/css/mdl.css?v=20260610b">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- ═══ LOGIN ═══ -->
+  <div id="loginPage" class="login-page">
+    <div class="login-card">
+      <div class="login-logo">
+        <img src="/images/logo-bio-clinic.png" alt="Bio-Clinic" width="160">
+        <h2>Medicina del Lavoro</h2>
+        <p class="login-subtitle">Sorveglianza Sanitaria — D.Lgs. 81/2008</p>
+      </div>
+      <form id="loginForm" class="login-form">
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" class="form-input" placeholder="email@azienda.it" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-full" id="loginBtn">Accedi</button>
+        <p id="loginError" class="form-error"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══ APP SHELL ═══ -->
+  <div id="appShell" class="app-shell d-none">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="/images/logo-bio-clinic.png" alt="Bio-Clinic" class="sidebar-logo">
+        <span class="sidebar-title">MDL</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#dashboard" class="nav-item active" data-section="dashboard">
+          <span class="nav-icon">&#9632;</span> Dashboard
+        </a>
+        <div class="nav-divider">SORVEGLIANZA</div>
+        <a href="#aziende" class="nav-item" data-section="aziende">
+          <span class="nav-icon">&#9830;</span> Aziende Clienti
+        </a>
+        <a href="#lavoratori" class="nav-item" data-section="lavoratori">
+          <span class="nav-icon">&#9823;</span> Lavoratori
+        </a>
+        <a href="#visite" class="nav-item" data-section="visite">
+          <span class="nav-icon">&#9829;</span> Visite Mediche
+        </a>
+        <a href="#agenda" class="nav-item" data-section="agenda">
+          <span class="nav-icon">&#9998;</span> Agenda
+        </a>
+        <a href="#scadenzario" class="nav-item" data-section="scadenzario">
+          <span class="nav-icon">&#9200;</span> Scadenzario
+        </a>
+        <a href="#protocolli" class="nav-item" data-section="protocolli-globale">
+          <span class="nav-icon">&#9776;</span> Protocolli
+        </a>
+        <div class="nav-divider">SISTEMA</div>
+        <a href="#impostazioni" class="nav-item" data-section="impostazioni">
+          <span class="nav-icon">&#9881;</span> Impostazioni
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-badge">
+          <span id="userInitials" class="user-avatar">MC</span>
+          <div class="user-info">
+            <span id="userName" class="user-name">Caricamento...</span>
+            <span id="userRole" class="user-role-label">—</span>
+          </div>
+        </div>
+        <button id="logoutBtn" class="btn btn-outline btn-sm btn-full">Esci</button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <div class="header-left">
+          <nav id="breadcrumb" class="breadcrumb">
+            <span class="breadcrumb-item">Dashboard</span>
+          </nav>
+          <h1 id="pageTitle">Dashboard</h1>
+        </div>
+        <div class="header-actions">
+          <span id="todayDate" class="header-date"></span>
+        </div>
+      </header>
+
+      <div class="content-area" id="contentArea">
+
+        <!-- ═══ DASHBOARD ═══ -->
+        <section id="sec-dashboard" class="section">
+          <div class="stats-grid">
+            <div class="stat-card"><div class="stat-value" id="statAziende">0</div><div class="stat-label">Aziende Attive</div></div>
+            <div class="stat-card"><div class="stat-value" id="statLavoratori">0</div><div class="stat-label">Lavoratori</div></div>
+            <div class="stat-card stat-warning"><div class="stat-value" id="statScadenze30">0</div><div class="stat-label">Scadenze 30gg</div></div>
+            <div class="stat-card stat-danger"><div class="stat-value" id="statVisiteOggi">0</div><div class="stat-label">Visite Oggi</div></div>
+          </div>
+          <div class="dashboard-panels">
+            <div class="panel">
+              <h3 class="panel-title">Prossime Visite</h3>
+              <div id="upcomingVisits" class="panel-body"><p class="text-muted">Caricamento...</p></div>
+            </div>
+            <div class="panel">
+              <h3 class="panel-title">Scadenze Imminenti</h3>
+              <div id="expiringItems" class="panel-body"><p class="text-muted">Caricamento...</p></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══ AZIENDE (elenco) ═══ -->
+        <section id="sec-aziende" class="section d-none">
+          <div class="section-toolbar">
+            <input type="text" id="searchAziende" class="form-input search-input" placeholder="Cerca per ragione sociale, P.IVA...">
+            <button class="btn btn-primary" id="btnNuovaAzienda">+ Nuova Azienda</button>
+          </div>
+          <div id="aziendeGrid" class="company-grid">
+            <!-- JS populates company cards here -->
+          </div>
+        </section>
+
+        <!-- ═══ SCHEDA AZIENDA (detail con tab) ═══ -->
+        <section id="sec-company-detail" class="section d-none">
+          <!-- Company Header -->
+          <div class="company-header" id="companyHeader">
+            <!-- JS populates -->
+          </div>
+
+          <!-- Tabs -->
+          <div class="tab-bar" id="companyTabs">
+            <button class="tab-btn active" data-tab="tab-dipendenti">Dipendenti</button>
+            <button class="tab-btn" data-tab="tab-mansioni">Mansioni e Rischi</button>
+            <button class="tab-btn" data-tab="tab-visite">Visite Mediche</button>
+            <button class="tab-btn" data-tab="tab-scadenze">Scadenze</button>
+            <button class="tab-btn" data-tab="tab-protocolli">Protocolli</button>
+            <button class="tab-btn" data-tab="tab-documenti">Documenti</button>
+            <button class="tab-btn" data-tab="tab-info">Dati Azienda</button>
+          </div>
+
+          <!-- Tab: Dipendenti -->
+          <div id="tab-dipendenti" class="tab-panel active">
+            <div class="section-toolbar">
+              <input type="text" id="searchDipendenti" class="form-input search-input" placeholder="Cerca dipendente...">
+              <button class="btn btn-primary" id="btnNuovoDipendente">+ Nuovo Dipendente</button>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead><tr>
+                  <th>Cognome Nome</th><th>Cod. Fiscale</th><th>Mansione</th>
+                  <th>Ultima Visita</th><th>Scadenza</th><th>Idoneita</th><th>Azioni</th>
+                </tr></thead>
+                <tbody id="dipendentiBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Tab: Mansioni e Rischi -->
+          <div id="tab-mansioni" class="tab-panel">
+            <div class="section-toolbar">
+              <button class="btn btn-primary" id="btnNuovaMansione">+ Nuova Mansione</button>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead><tr>
+                  <th>Mansione</th><th>Livello Rischio</th><th>Fattori di Rischio</th>
+                  <th>N. Lavoratori</th><th>Stato</th><th>Azioni</th>
+                </tr></thead>
+                <tbody id="mansioniBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Tab: Visite Mediche -->
+          <div id="tab-visite" class="tab-panel">
+            <div class="section-toolbar">
+              <select id="filterVisitStatus" class="form-input filter-select">
+                <option value="">Tutti gli stati</option>
+                <option value="programmata">Programmate</option>
+                <option value="completata">Completate</option>
+                <option value="non_presentato">Non presentati</option>
+              </select>
+              <button class="btn btn-primary" id="btnNuovaVisita">+ Programma Visita</button>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead><tr>
+                  <th>Data</th><th>Ora</th><th>Lavoratore</th>
+                  <th>Tipo</th><th>Stato</th><th>Giudizio</th><th>Azioni</th>
+                </tr></thead>
+                <tbody id="visiteBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Tab: Scadenze -->
+          <div id="tab-scadenze" class="tab-panel">
+            <div class="stats-grid" style="grid-template-columns: repeat(3,1fr)">
+              <div class="stat-card stat-danger"><div class="stat-value" id="cmpStatScadute">0</div><div class="stat-label">Scadute</div></div>
+              <div class="stat-card stat-warning"><div class="stat-value" id="cmpStatScad30">0</div><div class="stat-label">Entro 30gg</div></div>
+              <div class="stat-card"><div class="stat-value" id="cmpStatScad90">0</div><div class="stat-label">Entro 90gg</div></div>
+            </div>
+            <div id="scadenzeList" class="table-container" style="padding:1rem">
+              <p class="text-muted">Caricamento scadenze...</p>
+            </div>
+          </div>
+
+          <!-- Tab: Protocolli -->
+          <div id="tab-protocolli" class="tab-panel">
+            <div id="protocolliContent">
+              <!-- JS populates protocol cards grouped by job role -->
+            </div>
+          </div>
+
+          <!-- Tab: Documenti Aziendali -->
+          <div id="tab-documenti" class="tab-panel">
+            <div id="companyDocsGrid">
+              <!-- JS populates document cards -->
+            </div>
+          </div>
+
+          <!-- Tab: Dati Azienda -->
+          <div id="tab-info" class="tab-panel">
+            <div id="companyInfoGrid" class="detail-grid">
+              <!-- JS populates -->
+            </div>
+            <div id="companySafetyContacts"></div>
+            <div style="margin-top:1.5rem;display:flex;gap:0.5rem">
+              <button class="btn btn-primary" id="btnEditAzienda">Modifica Dati</button>
+              <button class="btn btn-danger btn-sm" id="btnDisattivaAzienda">Disattiva Azienda</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══ LAVORATORI (global view) ═══ -->
+        <section id="sec-lavoratori" class="section d-none">
+          <div class="section-toolbar">
+            <input type="text" id="searchLavoratoriGlobal" class="form-input search-input" placeholder="Cerca per nome, cognome, CF...">
+            <select id="filterLavAzienda" class="form-input filter-select">
+              <option value="">Tutte le aziende</option>
+            </select>
+            <button class="btn btn-primary" id="btnNuovoLavGlobal">+ Nuovo Lavoratore</button>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead><tr>
+                <th>Cognome Nome</th><th>Cod. Fiscale</th><th>Azienda</th>
+                <th>Mansione</th><th>Ultima Visita</th><th>Scadenza</th><th>Azioni</th>
+              </tr></thead>
+              <tbody id="lavoratoriGlobalBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ═══ VISITE (global view) ═══ -->
+        <section id="sec-visite" class="section d-none">
+          <div class="section-toolbar">
+            <select id="filterVisiteGlobalStatus" class="form-input filter-select">
+              <option value="">Tutti gli stati</option>
+              <option value="programmata">Programmate</option>
+              <option value="completata">Completate</option>
+              <option value="non_presentato">Non presentati</option>
+            </select>
+            <select id="filterVisiteAzienda" class="form-input filter-select">
+              <option value="">Tutte le aziende</option>
+            </select>
+            <button class="btn btn-primary" id="btnNuovaVisitaGlobal">+ Programma Visita</button>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead><tr>
+                <th>Data</th><th>Ora</th><th>Lavoratore</th><th>Azienda</th>
+                <th>Tipo</th><th>Stato</th><th>Azioni</th>
+              </tr></thead>
+              <tbody id="visiteGlobalBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ═══ AGENDA ═══ -->
+        <section id="sec-agenda" class="section d-none">
+          <div class="placeholder-section">
+            <div class="placeholder-icon">&#9998;</div>
+            <div class="placeholder-title">Agenda</div>
+            <div class="placeholder-desc">Calendario visite e appuntamenti. Modulo in sviluppo.</div>
+          </div>
+        </section>
+
+        <!-- ═══ PROTOCOLLI GLOBALE ═══ -->
+        <section id="sec-protocolli-globale" class="section d-none">
+          <div class="placeholder-section">
+            <div class="placeholder-icon">&#9776;</div>
+            <div class="placeholder-title">Protocolli Sanitari</div>
+            <div class="placeholder-desc">Gestione protocolli sanitari per mansione. Modulo in sviluppo.</div>
+          </div>
+        </section>
+
+        <!-- ═══ SCADENZARIO GLOBALE ═══ -->
+        <section id="sec-scadenzario" class="section d-none">
+          <div class="stats-grid">
+            <div class="stat-card stat-danger"><div class="stat-value" id="globStatScadute">0</div><div class="stat-label">Scadute</div></div>
+            <div class="stat-card stat-warning"><div class="stat-value" id="globStatScad30">0</div><div class="stat-label">Entro 30gg</div></div>
+            <div class="stat-card"><div class="stat-value" id="globStatScad60">0</div><div class="stat-label">Entro 60gg</div></div>
+            <div class="stat-card"><div class="stat-value" id="globStatScad90">0</div><div class="stat-label">Entro 90gg</div></div>
+          </div>
+          <div id="scadenzarioGlobal" class="table-container" style="padding:1rem">
+            <p class="text-muted">Caricamento scadenze globali...</p>
+          </div>
+        </section>
+
+        <!-- ═══ IMPOSTAZIONI ═══ -->
+        <section id="sec-impostazioni" class="section d-none">
+          <div class="placeholder-section">
+            <div class="placeholder-icon">&#9881;</div>
+            <div class="placeholder-title">Impostazioni</div>
+            <div class="placeholder-desc">Configurazione account, gestione utenti, parametri sistema. Modulo in sviluppo.</div>
+          </div>
+        </section>
+
+        <!-- ═══ SCHEDA LAVORATORE (worker detail) ═══ -->
+        <section id="sec-worker-detail" class="section d-none">
+          <div id="workerDetailContent">
+            <!-- JS populates: worker header, tabs, tab panels -->
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div id="modalOverlay" class="modal-overlay d-none">
+    <div class="modal" id="modalDialog">
+      <div class="modal-header">
+        <h3 id="modalTitle">—</h3>
+        <button class="modal-close" id="modalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-footer" id="modalFooter"></div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <script src="/js/mdl.js?v=20260610b"></script>
+</body>
+</html>

@@ -90,13 +90,18 @@
       return r.json();
     });
   }
-  function sbPatch(table, query, data) {
+  function sbPatch(table, query, data, opts) {
     return fetch(SB_URL + '/rest/v1/' + table + '?' + query, {
       method: 'PATCH', headers: Object.assign({}, sbHeaders(), { 'Prefer': 'return=representation' }),
       body: JSON.stringify(data)
     }).then(function (r) {
       if (!r.ok) return r.json().then(function (e) { throw e; });
       return r.json();
+    }).then(function (result) {
+      if (opts && opts.requireMatch && Array.isArray(result) && result.length === 0) {
+        throw new Error('Permesso negato: nessun record aggiornato (verifica il tuo ruolo)');
+      }
+      return result;
     });
   }
   function sbRpc(fn, args) {
@@ -386,6 +391,7 @@
       case 'all-reports': loadAllReports(); break;
       case 'users': loadUsers(); break;
       case 'audit': loadAuditLog(); break;
+      case 'ai-report': initAIReport(); break;
     }
   }
 
@@ -761,6 +767,18 @@
         $('invRole').disabled = true;
         $('invFiscal').value = fc;
         togglePatientFields();
+
+        // Pre-compilare con dati GIPO se disponibili
+        if (state._gipoData) {
+          var g = state._gipoData;
+          if (g.first_name) $('invFirstName').value = g.first_name;
+          if (g.last_name) $('invLastName').value = g.last_name;
+          if (g.email) $('invEmail').value = g.email;
+          if (g.phone && $('invPhone')) $('invPhone').value = g.phone;
+          if (g.date_of_birth && $('invDob')) $('invDob').value = g.date_of_birth;
+          if (g.gender && $('invGender')) $('invGender').value = g.gender;
+        }
+
         // Set a flag so that after creation we return to upload and re-search
         state._inviteFromUpload = true;
         state._inviteFromUploadFC = fc;
@@ -798,21 +816,65 @@
     $('uploadFiscal-error').textContent = '';
     $('patientFound').hidden = true;
     $('invitePatientFromUpload').hidden = true;
+    state._gipoData = null;
 
-    sbGet('users', 'fiscal_code=eq.' + encodeURIComponent(fc) + '&role=eq.patient&select=id,first_name,last_name,email').then(function (data) {
-      if (data && data.length > 0) {
-        var p = data[0];
+    // Step 1: cerca in "users" (paziente già registrato nel portale referti)
+    fetch('/api/admin/users/lookup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + state.token },
+      body: JSON.stringify({ fiscal_code: fc })
+    }).then(function (r) { return r.json(); }).then(function (res) {
+      if (res.success && res.data) {
+        // Trovato in users — paziente già registrato
+        var p = res.data;
         $('patientFoundName').textContent = p.first_name + ' ' + p.last_name + ' (' + p.email + ')';
         $('patientFound').hidden = false;
         $('patientFound').dataset.patientId = p.id;
         $('invitePatientFromUpload').hidden = true;
       } else {
-        $('uploadFiscal-error').textContent = 'Paziente non trovato nel sistema';
-        $('invitePatientFromUpload').hidden = false;
+        // Step 2: non in users — cerca nell'anagrafica GIPO
+        lookupGipoPatient(fc);
       }
     }).catch(function () {
       $('uploadFiscal-error').textContent = 'Errore nella ricerca';
       $('invitePatientFromUpload').hidden = true;
+    });
+  }
+
+  // Cerca il CF nell'anagrafica GIPO per pre-compilare il form di creazione
+  function lookupGipoPatient(fc) {
+    fetch('/api/admin/gipo/lookup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + state.token },
+      body: JSON.stringify({ fiscal_code: fc })
+    }).then(function (r) { return r.json(); }).then(function (res) {
+      if (res.success && res.data) {
+        // Trovato in GIPO — mostra messaggio e prepara i dati per pre-compilazione
+        var g = res.data;
+        state._gipoData = g;
+        $('uploadFiscal-error').textContent = '';
+        var infoText = 'Trovato in GIPO: ' + esc(g.first_name) + ' ' + esc(g.last_name);
+        if (g.email) infoText += ' (' + esc(g.email) + ')';
+        infoText += ' — Clicca "Registra Paziente" per creare l\'account (dati pre-compilati)';
+        $('uploadFiscal-error').textContent = infoText;
+        $('uploadFiscal-error').style.color = '#00704A';
+        $('invitePatientFromUpload').hidden = false;
+        $('invitePatientFromUpload').textContent = 'Registra Paziente (dati GIPO)';
+      } else {
+        // Non trovato neanche in GIPO
+        state._gipoData = null;
+        $('uploadFiscal-error').textContent = 'Paziente non trovato nel sistema';
+        $('uploadFiscal-error').style.color = '';
+        $('invitePatientFromUpload').hidden = false;
+        $('invitePatientFromUpload').textContent = 'Registra Paziente';
+      }
+    }).catch(function () {
+      // GIPO lookup fallita — mostra comunque il pulsante registra
+      state._gipoData = null;
+      $('uploadFiscal-error').textContent = 'Paziente non trovato nel sistema';
+      $('uploadFiscal-error').style.color = '';
+      $('invitePatientFromUpload').hidden = false;
+      $('invitePatientFromUpload').textContent = 'Registra Paziente';
     });
   }
 
@@ -988,10 +1050,7 @@
 
     if (!$('filterQueueUrgent')._bound) {
       $('filterQueueUrgent').addEventListener('change', loadQueue);
-      // Hide bulk validate button for ostetrica
-      if (state.profile && state.profile.role === 'ostetrica') {
-        $('validateAllBtn').style.display = 'none';
-      }
+      // Bulk validate visible for ostetrica, lab_technician, admin, super_admin
       $('selectAllQueue').addEventListener('change', function () {
         var checked = this.checked;
         $$('#queueBody input[type="checkbox"]').forEach(function (cb) { cb.checked = checked; });
@@ -1020,9 +1079,7 @@
         '<td>' + fmtDate(r.sample_date) + '</td>' +
         '<td>' + (flags || '--') + '</td>' +
         '<td>' + timeAgo(r.created_at) + '</td>' +
-        '<td>' + (state.profile && state.profile.role !== 'ostetrica'
-          ? '<button class="btn btn-primary btn-sm" onclick="window._validateReport(\'' + r.id + '\')">Valida</button> '
-          : '') +
+        '<td>' + '<button class="btn btn-primary btn-sm" onclick="window._validateReport(\'' + r.id + '\')">Valida</button> ' +
         (!r.has_abnormal_values
           ? '<button class="btn btn-sm" style="background:#6366f1;color:#fff;border:0" onclick="window._fastTrackReport(\'' + r.id + '\')">Fast-Track</button> '
           : '') +
@@ -1069,12 +1126,7 @@
     if (!$('filterSignStatus')._bound) {
       $('filterSignStatus').addEventListener('change', loadSignRelease);
       if ($('bulkReleaseBtn')) {
-        // Hide bulk release button for ostetrica (view-only)
-        if (state.profile && state.profile.role === 'ostetrica') {
-          $('bulkReleaseBtn').style.display = 'none';
-        } else {
-          $('bulkReleaseBtn').addEventListener('click', bulkRelease);
-        }
+        $('bulkReleaseBtn').addEventListener('click', bulkRelease);
       }
       $('filterSignStatus')._bound = true;
     }
@@ -1093,15 +1145,13 @@
       if (r.has_abnormal_values) flags += '<span class="badge badge-abnormal">Anomalo</span>';
 
       var actions = '';
-      if (state.profile && state.profile.role !== 'ostetrica') {
-        if (r.status === 'validated') {
-          actions = '<button class="btn btn-primary btn-sm" onclick="window._signReport(\'' + r.id + '\')">Firma</button>';
-          if (!r.has_abnormal_values) {
-            actions += ' <button class="btn btn-sm" style="background:#6366f1;color:#fff;border:0" onclick="window._fastTrackSign(\'' + r.id + '\')">Firma & Rilascia</button>';
-          }
-        } else if (r.status === 'signed') {
-          actions = '<button class="btn btn-primary btn-sm" onclick="window._releaseReport(\'' + r.id + '\')">Rilascia</button>';
+      if (r.status === 'validated') {
+        actions = '<button class="btn btn-primary btn-sm" onclick="window._signReport(\'' + r.id + '\')">Firma</button>';
+        if (!r.has_abnormal_values) {
+          actions += ' <button class="btn btn-sm" style="background:#6366f1;color:#fff;border:0" onclick="window._fastTrackSign(\'' + r.id + '\')">Firma & Rilascia</button>';
         }
+      } else if (r.status === 'signed') {
+        actions = '<button class="btn btn-primary btn-sm" onclick="window._releaseReport(\'' + r.id + '\')">Rilascia</button>';
       }
       actions += ' <button class="btn btn-outline btn-sm" onclick="window._previewReport(\'' + r.id + '\')">Vedi</button>';
 
@@ -1235,8 +1285,13 @@
         }
       }
       if (isOstetrica) {
-        if (r.status === 'pending' && canFastTrack) {
-          actions += ' <button class="btn btn-sm" style="background:#6366f1;color:#fff;border:0" onclick="window._fastTrackReport(\'' + r.id + '\')">Fast-Track</button>';
+        if (r.status === 'pending') {
+          actions += ' <button class="btn btn-primary btn-sm" onclick="window._validateReport(\'' + r.id + '\')">Valida</button>';
+          if (canFastTrack) actions += ' <button class="btn btn-sm" style="background:#6366f1;color:#fff;border:0" onclick="window._fastTrackReport(\'' + r.id + '\')">Fast-Track</button>';
+        } else if (r.status === 'validated') {
+          actions += ' <button class="btn btn-primary btn-sm" onclick="window._signReport(\'' + r.id + '\')">Firma</button>';
+        } else if (r.status === 'signed') {
+          actions += ' <button class="btn btn-primary btn-sm" onclick="window._releaseReport(\'' + r.id + '\')">Rilascia</button>';
         }
         if (r.status === 'released') {
           actions += ' <button class="btn btn-sm" style="background:#22c55e;color:#fff;border:0" onclick="window._downloadReport(\'' + r.id + '\')">Scarica</button>';
@@ -1436,6 +1491,17 @@
               setTimeout(function () { lookupPatient(); }, 600);
             }
             toast('Paziente registrato — puoi caricare il referto', 'success');
+          } else if (state._inviteFromAI && role === 'patient') {
+            state._inviteFromAI = false;
+            $('inviteOverlay').hidden = true;
+            $('invRole').disabled = false;
+            // Re-search the CF to find the just-created patient in AI page
+            var fcAI = state._inviteFromAIFC || '';
+            if (fcAI) {
+              $('aiFiscal').value = fcAI;
+              setTimeout(function () { aiLookupPatient(); }, 600);
+            }
+            toast('Paziente registrato — dati importati nel modulo AI', 'success');
           } else {
             showMsg('inviteMessage', msg, 'success');
             loadUsers();
@@ -1749,7 +1815,7 @@
       status: 'validated',
       validated_at: new Date().toISOString(),
       validated_by: state.profile ? state.profile.id : null
-    }).then(function () {
+    }, {requireMatch: true}).then(function () {
       closeModal();
       toast('Referto validato', 'success');
       if (state.currentPage === 'all-reports') loadAllReports();
@@ -1773,7 +1839,7 @@
       signed_at: new Date().toISOString(),
       signed_by: state.profile ? state.profile.id : null,
       physician_notes: notes || null
-    }).then(function () {
+    }, {requireMatch: true}).then(function () {
       closeModal();
       toast('Referto firmato', 'success');
       if (state.currentPage === 'all-reports') loadAllReports();
@@ -1795,7 +1861,7 @@
       status: 'released',
       released_at: new Date().toISOString(),
       released_by: state.profile ? state.profile.id : null
-    }).then(function () {
+    }, {requireMatch: true}).then(function () {
       closeModal();
       toast('Referto rilasciato al paziente', 'success');
       // Send email notification to patient
@@ -1856,10 +1922,14 @@
       if (!data || data.length === 0) return;
       var u = data[0];
       var html = '<form id="editUserForm"><div class="form-grid">' +
-        '<div class="form-group"><label>Nome</label><input class="form-input" value="' + esc(u.first_name) + '" readonly></div>' +
-        '<div class="form-group"><label>Cognome</label><input class="form-input" value="' + esc(u.last_name) + '" readonly></div>' +
-        '<div class="form-group"><label>Email</label><input class="form-input" value="' + esc(u.email) + '" readonly></div>' +
-        '<div class="form-group"><label>Codice Fiscale</label><input class="form-input" value="' + esc(u.fiscal_code || '--') + '" readonly></div>' +
+        '<div class="form-group"><label>Nome</label><input class="form-input" id="editUserFirstName" value="' + esc(u.first_name || '') + '"></div>' +
+        '<div class="form-group"><label>Cognome</label><input class="form-input" id="editUserLastName" value="' + esc(u.last_name || '') + '"></div>' +
+        '<div class="form-group"><label>Email</label><input class="form-input" id="editUserEmail" type="email" value="' + esc(u.email || '') + '"></div>' +
+        '<div class="form-group"><label>Codice Fiscale</label><input class="form-input" id="editUserCf" value="' + esc(u.fiscal_code || '') + '" maxlength="16" style="text-transform:uppercase"></div>' +
+        '<div class="form-group"><label>Data di nascita</label><input class="form-input" id="editUserDob" type="date" value="' + esc(u.date_of_birth || '') + '"></div>' +
+        '<div class="form-group"><label>Telefono</label><input class="form-input" id="editUserPhone" value="' + esc(u.phone || '') + '"></div>' +
+        '<div class="form-group"><label>Genere</label><select class="form-input" id="editUserGender">' +
+        '<option value="">—</option><option value="F"' + (u.gender === 'F' ? ' selected' : '') + '>Femmina</option><option value="M"' + (u.gender === 'M' ? ' selected' : '') + '>Maschio</option><option value="ALTRO"' + (u.gender === 'ALTRO' ? ' selected' : '') + '>Altro</option></select></div>' +
         '<div class="form-group"><label>Ruolo</label><select class="form-input" id="editUserRole">' +
         Object.keys(ROLE_LABELS).map(function (k) { return '<option value="' + k + '"' + (k === u.role ? ' selected' : '') + '>' + ROLE_LABELS[k] + '</option>'; }).join('') +
         '</select></div>' +
@@ -1875,14 +1945,26 @@
     });
   };
   window._saveUser = function (id) {
-    sbPatch('users', 'id=eq.' + id, {
+    var patch = {
+      first_name: ($('editUserFirstName').value || '').trim(),
+      last_name: ($('editUserLastName').value || '').trim(),
+      email: ($('editUserEmail').value || '').trim(),
+      fiscal_code: ($('editUserCf').value || '').trim().toUpperCase(),
+      date_of_birth: $('editUserDob').value || null,
+      phone: ($('editUserPhone').value || '').trim() || null,
+      gender: $('editUserGender').value || null,
       role: $('editUserRole').value,
       is_active: $('editUserActive').checked
-    }).then(function () {
+    };
+    if (!patch.first_name || !patch.last_name) {
+      toast('Nome e cognome sono obbligatori', 'warning');
+      return;
+    }
+    sbPatch('users', 'id=eq.' + id, patch).then(function () {
       closeModal();
       toast('Utente aggiornato', 'success');
       loadUsers();
-    }).catch(function () { toast('Errore', 'error'); });
+    }).catch(function () { toast('Errore nel salvataggio', 'error'); });
   };
   window._deactivateUser = function (id) {
     sbPatch('users', 'id=eq.' + id, { is_active: false }).then(function () {
@@ -1929,16 +2011,16 @@
         // Step 1: Validate
         sbPatch('reports', 'id=eq.' + id, {
           status: 'validated', validated_at: now, validated_by: userId
-        }).then(function () {
+        }, {requireMatch: true}).then(function () {
           // Step 2: Sign
           return sbPatch('reports', 'id=eq.' + id, {
             status: 'signed', signed_at: now, signed_by: userId, physician_notes: notes || null
-          });
+          }, {requireMatch: true});
         }).then(function () {
           // Step 3: Release
           return sbPatch('reports', 'id=eq.' + id, {
             status: 'released', released_at: now, released_by: userId
-          });
+          }, {requireMatch: true});
         }).then(function () {
           closeModal();
           toast('Referto validato, firmato e rilasciato al paziente!', 'success');
@@ -1973,11 +2055,11 @@
         // Step 1: Sign
         sbPatch('reports', 'id=eq.' + id, {
           status: 'signed', signed_at: now, signed_by: userId, physician_notes: notes || null
-        }).then(function () {
+        }, {requireMatch: true}).then(function () {
           // Step 2: Release
           return sbPatch('reports', 'id=eq.' + id, {
             status: 'released', released_at: now, released_by: userId
-          });
+          }, {requireMatch: true});
         }).then(function () {
           closeModal();
           toast('Referto firmato e rilasciato al paziente!', 'success');
@@ -2006,16 +2088,35 @@
   window._doDelete = function (id) {
     var btn = $('confirmDelete_' + id);
     if (btn) { btn.disabled = true; btn.textContent = 'Eliminazione...'; }
-    fetch('/api/reports/' + id, {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + state.token }
-    }).then(function (r) { return r.json(); }).then(function (data) {
+    // First delete associated files from storage
+    sbGet('report_files', 'report_id=eq.' + id + '&select=storage_path').then(function (files) {
+      if (files && files.length > 0) {
+        var paths = files.map(function (f) { return f.storage_path; });
+        return fetch(SB_URL + '/storage/v1/object/referti', {
+          method: 'DELETE',
+          headers: Object.assign({}, sbHeaders()),
+          body: JSON.stringify({ prefixes: paths })
+        }).catch(function () { /* ignore storage errors */ });
+      }
+    }).then(function () {
+      // Delete report_files records
+      return fetch(SB_URL + '/rest/v1/report_files?report_id=eq.' + id, {
+        method: 'DELETE',
+        headers: sbHeaders()
+      });
+    }).then(function () {
+      // Delete the report record
+      return fetch(SB_URL + '/rest/v1/reports?id=eq.' + id, {
+        method: 'DELETE',
+        headers: sbHeaders()
+      });
+    }).then(function (r) {
       closeModal();
-      if (data.success) {
+      if (r.ok) {
         toast('Referto eliminato con successo', 'success');
         loadPageData(state.currentPage);
       } else {
-        toast(data.error || 'Errore nella cancellazione', 'error');
+        toast('Errore nella cancellazione (permesso negato)', 'error');
       }
     }).catch(function () {
       closeModal();
@@ -2141,5 +2242,1452 @@
       timer = setTimeout(fn, ms);
     };
   }
+
+  // ── AI REPORT GENERATION ─────────────────────────────────────────────────
+  var _aiInitialized = false;
+  var _aiTimerInterval = null;
+
+  function initAIReport() {
+    if (_aiInitialized) return;
+    _aiInitialized = true;
+
+    // Set default date to today
+    var today = new Date().toISOString().split('T')[0];
+    if ($('aiDataEsame')) $('aiDataEsame').value = today;
+
+    // CF Lookup button
+    $('aiLookupBtn').addEventListener('click', aiLookupPatient);
+    // Allow Enter key on CF field
+    $('aiFiscal').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); aiLookupPatient(); }
+    });
+    // Register patient button (opens invite modal with pre-filled GIPO data)
+    $('aiRegisterPatientBtn').addEventListener('click', function () {
+      var fc = $('aiFiscal').value.trim().toUpperCase();
+      $('inviteOverlay').hidden = false;
+      $('inviteForm').reset();
+      $('inviteMessage').textContent = '';
+      $('invPassword').value = genPassword(16);
+      $('invRole').value = 'patient';
+      $('invRole').disabled = true;
+      $('invFiscal').value = fc;
+      togglePatientFields();
+      // Pre-fill with GIPO data if available
+      if (state._aiGipoData) {
+        var g = state._aiGipoData;
+        if (g.first_name) $('invFirstName').value = g.first_name;
+        if (g.last_name) $('invLastName').value = g.last_name;
+        if (g.email) $('invEmail').value = g.email;
+        if (g.phone && $('invPhone')) $('invPhone').value = g.phone;
+        if (g.date_of_birth && $('invDob')) $('invDob').value = g.date_of_birth;
+        if (g.gender && $('invGender')) $('invGender').value = g.gender;
+      }
+      // Flag so after creation we re-search the CF in AI page
+      state._inviteFromAI = true;
+      state._inviteFromAIFC = fc;
+    });
+
+    // MOC PDF upload zone
+    initAiMocUpload();
+
+    // Generate button
+    $('aiGenerateBtn').addEventListener('click', aiGenerateReport);
+
+    // Clear button
+    $('aiClearBtn').addEventListener('click', function () {
+      ['aiSpecialty','aiPatNome','aiPatCognome','aiPatDob','aiPatAltezza','aiPatPeso',
+       'aiIndicazione','aiTecnica','aiValori','aiNoteTecniche','aiStorico',
+       'aiValidatore','aiMedico','aiNoteAnamnesi'].forEach(function (id) {
+        var el = $(id);
+        if (el) el.value = '';
+      });
+      $('aiPatSesso').value = 'F';
+      $('aiPatMenopausa').value = 'SCONOSCIUTO';
+      $('aiFratture').checked = false;
+      $('aiPatologie').value = '';
+      $('aiTerapie').value = '';
+      $('aiFattoriRischio').value = '';
+      $('aiDataEsame').value = today;
+      // Also clear CF lookup state
+      if ($('aiFiscal')) $('aiFiscal').value = '';
+      if ($('aiPatientFound')) $('aiPatientFound').hidden = true;
+      if ($('aiFiscal-error')) { $('aiFiscal-error').textContent = ''; $('aiFiscal-error').style.color = ''; }
+      if ($('aiRegisterPatientBtn')) $('aiRegisterPatientBtn').hidden = true;
+      state._aiGipoData = null;
+      state._aiPatientId = null;
+      // Clear MOC upload
+      state._aiMocFile = null;
+      state._aiMocData = null;
+      if ($('aiMocFileInfo')) $('aiMocFileInfo').hidden = true;
+      if ($('aiMocDropContent')) $('aiMocDropContent').style.display = '';
+      if ($('aiMocVerifyAlert')) $('aiMocVerifyAlert').hidden = true;
+      if ($('aiMocError')) $('aiMocError').textContent = '';
+      toast('Campi puliti', 'info');
+    });
+
+    // New generation button
+    $('aiNewBtn').addEventListener('click', function () {
+      $('aiResult').hidden = true;
+      $('aiStep1').hidden = false;
+      // Reset edit mode
+      if ($('aiReportEdit')) {
+        $('aiReportEdit').style.display = 'none';
+        $('aiReportText').style.display = '';
+        if ($('aiEditHint')) $('aiEditHint').style.display = 'none';
+        if ($('aiDraftBadge')) $('aiDraftBadge').textContent = 'DRAFT — DA VALIDARE';
+      }
+      state._aiEditMode = false;
+    });
+
+    // Edit toggle button
+    if ($('aiEditToggleBtn')) {
+      $('aiEditToggleBtn').addEventListener('click', function () {
+        var editArea = $('aiReportEdit');
+        var viewArea = $('aiReportText');
+        var hint = $('aiEditHint');
+        var badge = $('aiDraftBadge');
+
+        if (!state._aiEditMode) {
+          // Switch to edit mode
+          // Get plain text from the raw AI response (not the HTML-formatted version)
+          var rawText = state._aiLastResult ? (state._aiLastResult.report_text || state._aiLastResult.raw_response || '') : viewArea.innerText;
+          // Remove JSON block if present
+          rawText = rawText.replace(/```json[\s\S]*?```/g, '').trim();
+          editArea.value = rawText;
+          editArea.style.display = '';
+          viewArea.style.display = 'none';
+          if (hint) hint.style.display = '';
+          if (badge) { badge.textContent = 'IN MODIFICA'; badge.style.background = '#dbeafe'; badge.style.color = '#1d4ed8'; }
+          this.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:0.3rem"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Anteprima';
+          state._aiEditMode = true;
+          editArea.focus();
+        } else {
+          // Switch back to view mode — use edited text
+          var editedText = editArea.value;
+          // Store edited text for PDF generation and finalization
+          state._aiEditedText = editedText;
+          // Re-render with formatting
+          var formatted = editedText;
+          formatted = formatted.replace(/^### (\d+)\. (.+)$/gm, '<h4 style="color:var(--primary);margin:1.2rem 0 0.5rem;font-size:1rem">$1. $2</h4>');
+          formatted = formatted.replace(/^### (.+)$/gm, '<h4 style="color:var(--primary);margin:1.2rem 0 0.5rem;font-size:1rem">$1</h4>');
+          formatted = formatted.replace(/^## (.+)$/gm, '<h3 style="margin:1rem 0 0.5rem">$1</h3>');
+          formatted = formatted.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+          formatted = formatted.replace(/^---$/gm, '<hr style="border:none;border-top:1px solid var(--border-color);margin:1rem 0">');
+          viewArea.innerHTML = formatted;
+          editArea.style.display = 'none';
+          viewArea.style.display = '';
+          if (hint) hint.style.display = 'none';
+          if (badge) { badge.textContent = 'MODIFICATO'; badge.style.background = '#dcfce7'; badge.style.color = '#166534'; }
+          this.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:0.3rem"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Modifica';
+          state._aiEditMode = false;
+          toast('Modifiche salvate. Usa "Stampa PDF" o "Valida e Rilascia" per procedere.', 'info');
+        }
+      });
+    }
+
+    // Print PDF button
+    if ($('aiPrintPdfBtn')) {
+      $('aiPrintPdfBtn').addEventListener('click', function () {
+        aiPrintReportPdf();
+      });
+    }
+
+    // Copy button
+    $('aiCopyBtn').addEventListener('click', function () {
+      var text = state._aiEditedText || (state._aiEditMode ? $('aiReportEdit').value : $('aiReportText').innerText);
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(function () {
+          toast('Referto copiato negli appunti', 'success');
+        });
+      } else {
+        // Fallback
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        toast('Referto copiato negli appunti', 'success');
+      }
+    });
+
+    // JSON toggle
+    $('aiJsonBtn').addEventListener('click', function () {
+      var viewer = $('aiJsonViewer');
+      viewer.hidden = !viewer.hidden;
+      this.textContent = viewer.hidden ? 'Vedi JSON Strutturato' : 'Nascondi JSON';
+    });
+  }
+
+  /* ── AI CF Lookup (mirrors Upload page lookupPatient/lookupGipoPatient) ── */
+  function aiLookupPatient() {
+    var fc = $('aiFiscal').value.trim().toUpperCase();
+    $('aiFiscal').value = fc;
+    if (fc.length !== 16) {
+      $('aiFiscal-error').textContent = 'Il codice fiscale deve essere di 16 caratteri';
+      $('aiFiscal-error').style.color = '';
+      $('aiPatientFound').hidden = true;
+      $('aiRegisterPatientBtn').hidden = true;
+      return;
+    }
+    $('aiFiscal-error').textContent = '';
+    $('aiFiscal-error').style.color = '';
+    $('aiPatientFound').hidden = true;
+    $('aiRegisterPatientBtn').hidden = true;
+    state._aiGipoData = null;
+    state._aiPatientId = null;
+
+    // Step 1: search local users table
+    fetch('/api/admin/users/lookup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + state.token },
+      body: JSON.stringify({ fiscal_code: fc })
+    }).then(function (r) { return r.json(); }).then(function (res) {
+      if (res.success && res.data) {
+        // Found in users DB — auto-fill patient fields
+        var p = res.data;
+        state._aiPatientId = p.id;
+        $('aiPatientFoundName').textContent = p.first_name + ' ' + p.last_name + (p.email ? ' (' + p.email + ')' : '');
+        $('aiPatientFound').hidden = false;
+        // Auto-fill form fields
+        if (p.first_name) $('aiPatNome').value = p.first_name;
+        if (p.last_name) $('aiPatCognome').value = p.last_name;
+        if (p.date_of_birth) $('aiPatDob').value = p.date_of_birth;
+        if (p.gender) $('aiPatSesso').value = p.gender;
+        toast('Paziente trovato nel sistema', 'success');
+      } else {
+        // Step 2: not in users — try GIPO
+        aiLookupGipoPatient(fc);
+      }
+    }).catch(function () {
+      $('aiFiscal-error').textContent = 'Errore nella ricerca';
+      $('aiFiscal-error').style.color = '';
+    });
+  }
+
+  function aiLookupGipoPatient(fc) {
+    fetch('/api/admin/gipo/lookup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + state.token },
+      body: JSON.stringify({ fiscal_code: fc })
+    }).then(function (r) { return r.json(); }).then(function (res) {
+      if (res.success && res.data) {
+        // Found in GIPO — auto-fill patient fields + offer registration
+        var g = res.data;
+        state._aiGipoData = g;
+        var infoText = 'Trovato in GIPO: ' + esc(g.first_name) + ' ' + esc(g.last_name);
+        if (g.email) infoText += ' (' + esc(g.email) + ')';
+        $('aiFiscal-error').textContent = infoText;
+        $('aiFiscal-error').style.color = '#00704A';
+        $('aiRegisterPatientBtn').hidden = false;
+        $('aiRegisterPatientBtn').innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg> Registra Paziente';
+        // Auto-fill form fields from GIPO data
+        if (g.first_name) $('aiPatNome').value = g.first_name;
+        if (g.last_name) $('aiPatCognome').value = g.last_name;
+        if (g.date_of_birth) $('aiPatDob').value = g.date_of_birth;
+        if (g.gender) $('aiPatSesso').value = g.gender;
+        toast('Paziente trovato in GIPO — dati importati', 'success');
+        // Cross-verify with MOC PDF if loaded
+        if (state._aiMocData) aiVerifyPatientCrossCheck();
+      } else {
+        // Not found anywhere
+        state._aiGipoData = null;
+        $('aiFiscal-error').textContent = 'Paziente non trovato. Compilare i dati manualmente.';
+        $('aiFiscal-error').style.color = '';
+        $('aiRegisterPatientBtn').hidden = true;
+      }
+    }).catch(function () {
+      state._aiGipoData = null;
+      $('aiFiscal-error').textContent = 'Errore nella ricerca GIPO';
+      $('aiFiscal-error').style.color = '';
+    });
+  }
+
+  /* ── MOC-DXA PDF Upload & Parsing (client-side with pdf.js) ── */
+
+  function initAiMocUpload() {
+    var dropZone = $('aiMocDropZone');
+    var fileInput = $('aiMocFileInput');
+    var browseBtn = $('aiMocBrowseBtn');
+    var removeBtn = $('aiMocRemoveFile');
+    if (!dropZone || !fileInput) return;
+
+    browseBtn.addEventListener('click', function () { fileInput.click(); });
+    fileInput.addEventListener('change', function () {
+      if (fileInput.files && fileInput.files[0]) aiHandleMocFile(fileInput.files[0]);
+    });
+    removeBtn.addEventListener('click', function () {
+      state._aiMocFile = null;
+      state._aiMocData = null;
+      fileInput.value = '';
+      $('aiMocFileInfo').hidden = true;
+      $('aiMocDropContent').style.display = '';
+      $('aiMocVerifyAlert').hidden = true;
+      $('aiMocError').textContent = '';
+    });
+
+    // Drag & drop
+    dropZone.addEventListener('dragover', function (e) { e.preventDefault(); dropZone.classList.add('drag-over'); });
+    dropZone.addEventListener('dragleave', function () { dropZone.classList.remove('drag-over'); });
+    dropZone.addEventListener('drop', function (e) {
+      e.preventDefault();
+      dropZone.classList.remove('drag-over');
+      var files = e.dataTransfer && e.dataTransfer.files;
+      if (files && files[0]) aiHandleMocFile(files[0]);
+    });
+  }
+
+  function aiHandleMocFile(file) {
+    if (!file || file.type !== 'application/pdf') {
+      $('aiMocError').textContent = 'Solo file PDF accettati';
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      $('aiMocError').textContent = 'File troppo grande (max 5 MB)';
+      return;
+    }
+    $('aiMocError').textContent = '';
+    state._aiMocFile = file;
+
+    // Show file info
+    $('aiMocFileName').textContent = file.name;
+    $('aiMocFileSize').textContent = fmtSize(file.size);
+    $('aiMocFileInfo').hidden = false;
+    $('aiMocDropContent').style.display = 'none';
+
+    // Parse PDF
+    toast('Analisi PDF MOC in corso...', 'info');
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      var typedArray = new Uint8Array(e.target.result);
+      extractMocPdfText(typedArray).then(function (fullText) {
+        var parsed = parseMocEconetText(fullText);
+        if (!parsed) {
+          $('aiMocError').textContent = 'Formato PDF non riconosciuto. Assicurarsi che sia un referto ECONET.';
+          toast('Errore: formato PDF non riconosciuto', 'error');
+          return;
+        }
+        state._aiMocData = parsed;
+        aiAutoFillFromMoc(parsed);
+        aiVerifyPatientCrossCheck();
+        toast('Dati MOC estratti e compilati automaticamente', 'success');
+      }).catch(function (err) {
+        console.error('MOC PDF parse error:', err);
+        $('aiMocError').textContent = 'Errore nella lettura del PDF: ' + (err.message || err);
+        toast('Errore lettura PDF', 'error');
+      });
+    };
+    reader.readAsArrayBuffer(file);
+  }
+
+  function extractMocPdfText(typedArray) {
+    if (!window.pdfjsLib) return Promise.reject(new Error('pdf.js non caricato'));
+    return window.pdfjsLib.getDocument({ data: typedArray }).promise.then(function (pdf) {
+      var pages = [];
+      var chain = Promise.resolve('');
+      // Extract text from all pages (but skip body composition)
+      for (var i = 1; i <= pdf.numPages; i++) {
+        (function (pageNum) {
+          chain = chain.then(function (accumulated) {
+            return pdf.getPage(pageNum).then(function (page) {
+              return page.getTextContent().then(function (tc) {
+                var pageText = tc.items.map(function (item) { return item.str; }).join(' ');
+                return accumulated + '\n=== PAGE ' + pageNum + ' ===\n' + pageText;
+              });
+            });
+          });
+        })(i);
+      }
+      return chain;
+    });
+  }
+
+  /**
+   * Parse ECONET MOC-DXA PDF text into structured data.
+   * Expects: patient header, Colonna AP table, Femore table, Body Composition (skipped).
+   */
+  function parseMocEconetText(text) {
+    if (!text || text.indexOf('BIOCLINIC') === -1) return null;
+
+    var data = { paziente: {}, colonna_ap: {}, femore: {}, dosimetria: {} };
+
+    // ─── Patient data ───
+    var m;
+    m = text.match(/Cognome\s+e\s+Nome[\.\s]+([\w\s]+?)(?:\s{2,}|Data di nascita)/i);
+    if (m) {
+      var parts = m[1].trim().split(/\s+/);
+      if (parts.length >= 2) {
+        data.paziente.cognome = parts[0];
+        data.paziente.nome = parts.slice(1).join(' ');
+      }
+    }
+
+    m = text.match(/Data\s+di\s+nascita[\.\s]+([\d]{2})-([\d]{2})-([\d]{4})\s*\(([\d.]+)\)/i);
+    if (m) {
+      data.paziente.data_nascita = m[3] + '-' + m[2] + '-' + m[1]; // YYYY-MM-DD
+      data.paziente.eta = parseFloat(m[4]);
+    }
+
+    m = text.match(/Sesso[\.\s]+(Femmina|Maschio|Female|Male)/i);
+    if (m) data.paziente.sesso = (m[1].charAt(0) === 'F' || m[1].charAt(0) === 'f') ? 'F' : 'M';
+
+    m = text.match(/Altezza[\.\s]+([\d.]+)\s*cm/i);
+    if (m) data.paziente.altezza_cm = parseFloat(m[1]);
+
+    m = text.match(/Peso[\.\s]+([\d.]+)\s*kg/i);
+    if (m) data.paziente.peso_kg = parseFloat(m[1]);
+
+    m = text.match(/Menopausa[\.\s]+(Si|No|Yes|Sì)/i);
+    if (m) data.paziente.menopausa = (m[1] === 'No') ? 'PREMENOPAUSA' : 'POSTMENOPAUSA';
+
+    m = text.match(/Fratture\s+da\s+fragilit[àa][\.\s]+(Si|No|Yes|Sì)/i);
+    if (m) data.paziente.fratture_fragilita = (m[1] !== 'No');
+
+    m = text.match(/Etnia[\.\s]+([A-Z]+)/i);
+    if (m) data.paziente.etnia = m[1];
+
+    m = text.match(/Medico[\.\s]+(Dott\.?(?:ssa)?\.?\s+[^\n]+?)(?:\s{2,}|Etnia)/i);
+    if (m) data.paziente.medico = m[1].trim();
+
+    m = text.match(/ID\s+Paziente[\.\s]+(\d+)/i);
+    if (m) data.paziente.id_densitometro = m[1];
+
+    // ─── Exam date ───
+    m = text.match(/Data\s+di\s+stampa\s*:\s*([\d]{4}-[\d]{2}-[\d]{2})/i);
+    if (m) data.data_esame = m[1];
+
+    // ─── Colonna AP (Spine) ───
+    // Find the first Colonna AP section - parse the table rows
+    // Format: Region BMD T-Score Z-Score BMC Area
+    // BMD pattern: must be decimal like 0.685 or 1.281 (not chart axis like 20, 30)
+    // T/Z score: can be negative, like -2.2 or 0.8
+    var bmdPat = '(\\d\\.\\d{2,3})';
+    var scorePat = '([-]?\\d+\\.\\d+)';
+    var numPat = '(\\d+\\.\\d+)';
+
+    var spineRegions = ['L1', 'L2', 'L3', 'L4', 'L1-L2', 'L1-L3', 'L1-L4', 'L2-L3', 'L2-L4', 'L3-L4'];
+    spineRegions.forEach(function (region) {
+      var safeRegion = region.replace('-', '[-\\s]');
+      var rx = new RegExp(
+        '(?:^|[\\s])' + safeRegion + '\\s+' + bmdPat + '\\s+' + scorePat + '\\s+' + scorePat + '\\s+' + numPat + '\\s+' + numPat,
+        'm'
+      );
+      var match = text.match(rx);
+      if (match) {
+        data.colonna_ap[region] = {
+          bmd: parseFloat(match[1]),
+          t_score: parseFloat(match[2]),
+          z_score: parseFloat(match[3]),
+          bmc: parseFloat(match[4]),
+          area: parseFloat(match[5])
+        };
+      }
+    });
+
+    // ─── Femore (Hip) ───
+    var hipRegions = ['Collo', 'Triangolo di Ward', 'Trocantere', 'Totale'];
+    hipRegions.forEach(function (region) {
+      var safeRegion = region.replace(/\s+/g, '\\s+');
+      var rx = new RegExp(
+        safeRegion + '\\s+' + bmdPat + '\\s+' + scorePat + '\\s+' + scorePat + '\\s+' + numPat + '\\s+' + numPat,
+        'm'
+      );
+      var match = text.match(rx);
+      if (match) {
+        var key = region.toLowerCase().replace(/\s+di\s+/g, '_').replace(/\s+/g, '_');
+        data.femore[key] = {
+          bmd: parseFloat(match[1]),
+          t_score: parseFloat(match[2]),
+          z_score: parseFloat(match[3]),
+          bmc: parseFloat(match[4]),
+          area: parseFloat(match[5])
+        };
+      }
+    });
+    // Asse row has " - " for T/Z scores — parse separately
+    var asseRx = /Asse\s+(\d\.\d{2,3})\s+[-]\s+[-]\s+(\d+\.\d+)\s+(\d+\.\d+)/m;
+    var asseMatch = text.match(asseRx);
+    if (asseMatch) {
+      data.femore.asse = {
+        bmd: parseFloat(asseMatch[1]),
+        t_score: null,
+        z_score: null,
+        bmc: parseFloat(asseMatch[2]),
+        area: parseFloat(asseMatch[3])
+      };
+    }
+
+    // ─── Dosimetry ───
+    m = text.match(/ESD\s+([\d.]+)\s*μGy/i);
+    if (m) data.dosimetria.esd_ugy = parseFloat(m[1]);
+    m = text.match(/DAP\s+([\d.]+)\s*cGy/i);
+    if (m) data.dosimetria.dap_cgy_cm2 = parseFloat(m[1]);
+    m = text.match(/Tensione\s*\(kV\)\s+([\d.]+)/i);
+    if (m) data.dosimetria.tensione_kv = parseFloat(m[1]);
+    m = text.match(/Corrente\s*\(mA\)\s+([\d.]+)/i);
+    if (m) data.dosimetria.corrente_ma = parseFloat(m[1]);
+    m = text.match(/Tempo\s+di\s+scansione\s+([\d:]+)/i);
+    if (m) data.dosimetria.tempo_scansione = m[1];
+
+    // ─── BMI (from body composition page, just the number) ───
+    m = text.match(/Total\s+Body\s+BMI\s*:\s*([\d.]+)/i);
+    if (m) data.paziente.bmi = parseFloat(m[1]);
+
+    // Validate: must have at least spine OR femur data
+    var hasSpine = Object.keys(data.colonna_ap).length > 0;
+    var hasFemur = Object.keys(data.femore).length > 0;
+    if (!hasSpine && !hasFemur) return null;
+
+    return data;
+  }
+
+  /**
+   * Auto-fill the AI report form fields from parsed MOC data.
+   */
+  function aiAutoFillFromMoc(d) {
+    if (!d) return;
+
+    // Specialty
+    $('aiSpecialty').value = 'MOC_DXA';
+
+    // Patient data
+    if (d.paziente.nome) $('aiPatNome').value = d.paziente.nome;
+    if (d.paziente.cognome) $('aiPatCognome').value = d.paziente.cognome;
+    if (d.paziente.data_nascita) $('aiPatDob').value = d.paziente.data_nascita;
+    if (d.paziente.sesso) $('aiPatSesso').value = d.paziente.sesso;
+    if (d.paziente.altezza_cm) $('aiPatAltezza').value = d.paziente.altezza_cm;
+    if (d.paziente.peso_kg) $('aiPatPeso').value = d.paziente.peso_kg;
+    if (d.paziente.menopausa) $('aiPatMenopausa').value = d.paziente.menopausa;
+    if (d.paziente.fratture_fragilita) $('aiFratture').checked = true;
+    else $('aiFratture').checked = false;
+
+    // Exam data
+    if (d.data_esame) $('aiDataEsame').value = d.data_esame;
+    if (d.paziente.medico) $('aiMedico').value = d.paziente.medico;
+
+    // Technique
+    $('aiTecnica').value = 'DXA ECONET InusD — Colonna AP + Femore destro';
+
+    // Build structured values JSON (only densitometric data, no body composition)
+    var valori = {};
+    if (d.colonna_ap && Object.keys(d.colonna_ap).length > 0) {
+      valori.colonna_ap = {};
+      Object.keys(d.colonna_ap).forEach(function (k) {
+        var v = d.colonna_ap[k];
+        valori.colonna_ap[k] = { bmd: v.bmd, t_score: v.t_score, z_score: v.z_score };
+      });
+    }
+    if (d.femore && Object.keys(d.femore).length > 0) {
+      valori.femore_destro = {};
+      Object.keys(d.femore).forEach(function (k) {
+        var v = d.femore[k];
+        valori.femore_destro[k] = { bmd: v.bmd, t_score: v.t_score, z_score: v.z_score };
+      });
+    }
+    if (d.paziente.bmi) valori.bmi = d.paziente.bmi;
+    if (d.paziente.etnia) valori.popolazione_riferimento = d.paziente.etnia;
+
+    $('aiValori').value = JSON.stringify(valori, null, 2);
+
+    // Dosimetry in technical notes
+    if (d.dosimetria && Object.keys(d.dosimetria).length > 0) {
+      var notes = [];
+      if (d.dosimetria.esd_ugy) notes.push('ESD: ' + d.dosimetria.esd_ugy + ' μGy');
+      if (d.dosimetria.dap_cgy_cm2) notes.push('DAP: ' + d.dosimetria.dap_cgy_cm2 + ' cGy·cm²');
+      if (d.dosimetria.tensione_kv) notes.push('Tensione: ' + d.dosimetria.tensione_kv + ' kV');
+      if (d.dosimetria.corrente_ma) notes.push('Corrente: ' + d.dosimetria.corrente_ma + ' mA');
+      if (d.dosimetria.tempo_scansione) notes.push('Tempo scansione: ' + d.dosimetria.tempo_scansione);
+      $('aiNoteTecniche').value = notes.join(' | ');
+    }
+
+    // Clinical indication
+    if (!$('aiIndicazione').value) {
+      $('aiIndicazione').value = 'Valutazione densità minerale ossea';
+    }
+  }
+
+  /**
+   * Cross-verify: compare patient data from PDF with CF lookup data.
+   * Shows green check if matching, yellow warning if mismatch.
+   */
+  function aiVerifyPatientCrossCheck() {
+    var alert = $('aiMocVerifyAlert');
+    var icon = $('aiMocVerifyIcon');
+    var text = $('aiMocVerifyText');
+    if (!alert) return;
+
+    var mocData = state._aiMocData;
+    // Check if we have CF lookup data (from DB or GIPO)
+    var cfName = $('aiPatNome').value.trim();
+    var cfSurname = $('aiPatCognome').value.trim();
+    var cfDob = $('aiPatDob').value;
+
+    // If no CF lookup was done yet, just show info
+    if (!state._aiPatientId && !state._aiGipoData) {
+      // No CF lookup done - remind user to verify
+      if (mocData && mocData.paziente.nome) {
+        alert.hidden = false;
+        alert.style.background = '#eff6ff';
+        alert.style.border = '1px solid #93c5fd';
+        alert.style.color = '#1e40af';
+        icon.setAttribute('stroke', '#3b82f6');
+        text.innerHTML = '<strong>Dati estratti dal PDF:</strong> ' +
+          esc(mocData.paziente.cognome || '') + ' ' + esc(mocData.paziente.nome || '') +
+          (mocData.paziente.data_nascita ? ' — nato/a ' + mocData.paziente.data_nascita : '') +
+          '<br><em>Inserire il Codice Fiscale e cliccare "Cerca" per la verifica incrociata.</em>';
+      }
+      return;
+    }
+
+    // We have both PDF and CF data — cross-check
+    if (!mocData || !mocData.paziente) return;
+
+    var pdfNome = (mocData.paziente.nome || '').toUpperCase().trim();
+    var pdfCognome = (mocData.paziente.cognome || '').toUpperCase().trim();
+    var pdfDob = mocData.paziente.data_nascita || '';
+
+    var dbNome = cfName.toUpperCase().trim();
+    var dbCognome = cfSurname.toUpperCase().trim();
+    var dbDob = cfDob;
+
+    var mismatches = [];
+    if (dbCognome && pdfCognome && dbCognome !== pdfCognome) {
+      mismatches.push('Cognome: DB="' + dbCognome + '" / PDF="' + pdfCognome + '"');
+    }
+    if (dbNome && pdfNome && dbNome !== pdfNome) {
+      mismatches.push('Nome: DB="' + dbNome + '" / PDF="' + pdfNome + '"');
+    }
+    if (dbDob && pdfDob && dbDob !== pdfDob) {
+      mismatches.push('Data nascita: DB="' + dbDob + '" / PDF="' + pdfDob + '"');
+    }
+
+    alert.hidden = false;
+    if (mismatches.length === 0) {
+      // Match
+      alert.style.background = '#f0fdf4';
+      alert.style.border = '1px solid #86efac';
+      alert.style.color = '#166534';
+      icon.setAttribute('stroke', '#22c55e');
+      icon.innerHTML = '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>';
+      text.innerHTML = '<strong>Verifica incrociata OK</strong> — I dati paziente del PDF corrispondono all\'anagrafica.';
+    } else {
+      // Mismatch!
+      alert.style.background = '#fef3c7';
+      alert.style.border = '1px solid #fbbf24';
+      alert.style.color = '#92400e';
+      icon.setAttribute('stroke', '#f59e0b');
+      icon.innerHTML = '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>';
+      text.innerHTML = '<strong>ATTENZIONE — Discrepanza dati paziente!</strong><br>' +
+        mismatches.map(function (m) { return '• ' + esc(m); }).join('<br>') +
+        '<br><em>Verificare manualmente prima di generare il referto.</em>';
+      toast('Attenzione: discrepanza dati paziente PDF vs anagrafica', 'warning');
+    }
+  }
+
+  function aiGenerateReport() {
+    // Validate required fields
+    var specialty = $('aiSpecialty').value;
+    if (!specialty) {
+      toast('Seleziona una specialità', 'warning');
+      $('aiSpecialty').focus();
+      return;
+    }
+
+    var valori = $('aiValori').value.trim();
+    if (!valori) {
+      toast('Inserisci i valori dell\'esame', 'warning');
+      $('aiValori').focus();
+      return;
+    }
+
+    // Parse values — try JSON first, fall back to text
+    var valoriStrutturati;
+    try {
+      valoriStrutturati = JSON.parse(valori);
+    } catch (e) {
+      // Treat as free text — wrap in object
+      valoriStrutturati = { testo_libero: valori };
+    }
+
+    // Parse multi-line text fields
+    function parseLines(id) {
+      var val = $(id).value.trim();
+      if (!val) return [];
+      return val.split('\n').map(function (l) { return l.trim(); }).filter(Boolean);
+    }
+
+    // Build input JSON
+    var inputData = {
+      paziente: {
+        nome: $('aiPatNome').value.trim() || undefined,
+        cognome: $('aiPatCognome').value.trim() || undefined,
+        data_nascita: $('aiPatDob').value || undefined,
+        sesso: $('aiPatSesso').value,
+        altezza_cm: $('aiPatAltezza').value ? Number($('aiPatAltezza').value) : undefined,
+        peso_kg: $('aiPatPeso').value ? Number($('aiPatPeso').value) : undefined,
+        stato_menopausale: $('aiPatMenopausa').value
+      },
+      anamnesi: {
+        fratture_fragilita: $('aiFratture').checked,
+        patologie_note: parseLines('aiPatologie'),
+        terapie_in_corso: parseLines('aiTerapie'),
+        fattori_rischio: parseLines('aiFattoriRischio'),
+        note_libere: $('aiNoteAnamnesi').value.trim() || undefined
+      },
+      esame_attuale: {
+        specialita: specialty,
+        data_esame: $('aiDataEsame').value || undefined,
+        struttura: 'Bio-Clinic S.r.l. — Sassari',
+        medico_esecutore: $('aiMedico').value.trim() || undefined,
+        indicazione_clinica: $('aiIndicazione').value.trim() || undefined,
+        tecnica: $('aiTecnica').value.trim() || undefined,
+        valori_strutturati: valoriStrutturati,
+        note_tecniche: $('aiNoteTecniche').value.trim() || undefined
+      },
+      workflow: {
+        id_referto_temp: 'REF-AI-' + Date.now(),
+        stato_corrente: 'DRAFT_DA_VALIDARE',
+        medico_validatore_atteso: $('aiValidatore').value.trim() || undefined
+      }
+    };
+
+    // Parse storico if provided
+    var storicoText = $('aiStorico').value.trim();
+    if (storicoText) {
+      try {
+        inputData.storico_referti = JSON.parse(storicoText);
+      } catch (e) {
+        inputData.storico_referti = [{ testo: storicoText }];
+      }
+    }
+
+    // Show loading
+    $('aiStep1').hidden = true;
+    $('aiResult').hidden = true;
+    $('aiLoading').hidden = false;
+
+    var startTime = Date.now();
+    if (_aiTimerInterval) clearInterval(_aiTimerInterval);
+    $('aiTimer').textContent = '0s';
+    _aiTimerInterval = setInterval(function () {
+      var elapsed = Math.round((Date.now() - startTime) / 1000);
+      $('aiTimer').textContent = elapsed + 's';
+    }, 1000);
+
+    // Call API
+    var token = state.token;
+    fetch('/api/ai/generate-report', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify(inputData)
+    })
+    .then(function (resp) {
+      // Guard: if response is not JSON, handle gracefully
+      var ct = resp.headers.get('content-type') || '';
+      if (!resp.ok && !ct.includes('application/json')) {
+        throw new Error('Errore server (' + resp.status + '). Riprovare.');
+      }
+      return resp.text().then(function (text) {
+        try {
+          return JSON.parse(text);
+        } catch (e) {
+          console.error('[AI] Response parse error. Status:', resp.status, 'Body:', text.substring(0, 500));
+          throw new Error('Risposta non valida dal server (status ' + resp.status + '). Riprovare tra qualche istante.');
+        }
+      });
+    })
+    .then(function (result) {
+      clearInterval(_aiTimerInterval);
+      $('aiLoading').hidden = true;
+
+      if (!result.success) {
+        $('aiStep1').hidden = false;
+        toast(result.error || 'Errore nella generazione', 'error');
+        return;
+      }
+
+      // Display results
+      displayAIResult(result.data);
+    })
+    .catch(function (err) {
+      clearInterval(_aiTimerInterval);
+      $('aiLoading').hidden = true;
+      $('aiStep1').hidden = false;
+      toast('Errore: ' + (err.message || err), 'error');
+    });
+  }
+
+  function displayAIResult(data) {
+    // Report text — format markdown-like headers
+    var text = data.report_text || data.raw_response || 'Nessun testo generato';
+    // Convert markdown headers to styled HTML
+    text = text.replace(/^### (\d+)\. (.+)$/gm, '<h4 style="color:var(--primary);margin:1.2rem 0 0.5rem;font-size:1rem">$1. $2</h4>');
+    text = text.replace(/^### (.+)$/gm, '<h4 style="color:var(--primary);margin:1.2rem 0 0.5rem;font-size:1rem">$1</h4>');
+    text = text.replace(/^## (.+)$/gm, '<h3 style="margin:1rem 0 0.5rem">$1</h3>');
+    text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    text = text.replace(/^---$/gm, '<hr style="border:none;border-top:1px solid var(--border-color);margin:1rem 0">');
+    // Format tables
+    text = text.replace(/\|(.+)\|/g, function (match) {
+      var cells = match.split('|').filter(Boolean).map(function (c) { return c.trim(); });
+      if (cells.every(function (c) { return /^[-:]+$/.test(c); })) return ''; // skip separator rows
+      return '<tr>' + cells.map(function (c) { return '<td style="padding:0.3rem 0.6rem;border:1px solid var(--border-color)">' + c + '</td>'; }).join('') + '</tr>';
+    });
+    // Wrap consecutive <tr> in table
+    text = text.replace(/((?:<tr>.*<\/tr>\n?)+)/g, '<div style="overflow-x:auto"><table style="border-collapse:collapse;width:100%;margin:0.5rem 0;font-size:0.85rem">$1</table></div>');
+
+    $('aiReportText').innerHTML = text;
+
+    // Alerts
+    var alertsHtml = '';
+    if (data.report_json) {
+      var rj = data.report_json;
+      if (rj.alert_rosso) {
+        alertsHtml += '<div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:0.75rem 1rem;margin-bottom:0.5rem;display:flex;align-items:center;gap:0.5rem">' +
+          '<span style="font-size:1.3rem">&#9888;</span>' +
+          '<strong style="color:#dc2626">ALERT ROSSO — Richiede valutazione specialistica tempestiva</strong></div>';
+      }
+      if (rj.richiede_consulto_specialistico) {
+        alertsHtml += '<div style="background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:0.75rem 1rem;margin-bottom:0.5rem">' +
+          '<strong style="color:#d97706">Consulto specialistico raccomandato</strong></div>';
+      }
+      alertsHtml += '<div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:0.75rem 1rem;margin-bottom:0.5rem">' +
+        '<strong style="color:#2563eb">Stato: ' + (rj.stato || 'DRAFT_DA_VALIDARE') + '</strong>' +
+        ' &mdash; Fascia: ' + (rj.fascia_refertazione || 'N/D') +
+        ' &mdash; Specialità: ' + (rj.specialita || 'N/D') + '</div>';
+    }
+    $('aiAlerts').innerHTML = alertsHtml;
+
+    // Criticità
+    if (data.report_json && data.report_json.criticita && data.report_json.criticita.length > 0) {
+      var critHtml = data.report_json.criticita.map(function (c) {
+        var color = c.gravita === 'ALTA' ? '#dc2626' : (c.gravita === 'MEDIA' ? '#d97706' : '#059669');
+        var bgColor = c.gravita === 'ALTA' ? '#fef2f2' : (c.gravita === 'MEDIA' ? '#fffbeb' : '#ecfdf5');
+        return '<div style="background:' + bgColor + ';border-left:4px solid ' + color + ';padding:0.75rem 1rem;margin-bottom:0.5rem;border-radius:0 8px 8px 0">' +
+          '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem">' +
+          '<strong style="color:' + color + '">' + esc(c.tipo) + '</strong>' +
+          '<span class="badge" style="background:' + color + ';color:#fff;font-size:0.7rem">' + esc(c.gravita) + '</span></div>' +
+          '<p style="margin:0.3rem 0;font-size:0.9rem">' + esc(c.descrizione) + '</p>' +
+          '<p style="margin:0;font-size:0.82rem;color:var(--text-secondary)"><em>Azione: ' + esc(c.azione_consigliata) + '</em></p></div>';
+      }).join('');
+      $('aiCriticita').innerHTML = critHtml;
+      $('aiCriticitaCard').hidden = false;
+    } else {
+      $('aiCriticitaCard').hidden = true;
+    }
+
+    // Metadata
+    if (data.metadata) {
+      var m = data.metadata;
+      $('aiMetadata').innerHTML =
+        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.5rem">' +
+        '<div><strong>Modello:</strong> ' + esc(m.model || '--') + '</div>' +
+        '<div><strong>Token input:</strong> ' + (m.input_tokens || 0).toLocaleString() + '</div>' +
+        '<div><strong>Token output:</strong> ' + (m.output_tokens || 0).toLocaleString() + '</div>' +
+        '<div><strong>Tempo:</strong> ' + ((m.elapsed_ms || 0) / 1000).toFixed(1) + 's</div>' +
+        '<div><strong>Prompt:</strong> ' + esc(m.prompt_version || 'v1.0') + '</div>' +
+        '<div><strong>Stop reason:</strong> ' + esc(m.stop_reason || '--') + '</div></div>';
+    }
+
+    // JSON viewer
+    if (data.report_json) {
+      $('aiJsonContent').textContent = JSON.stringify(data.report_json, null, 2);
+    } else {
+      $('aiJsonContent').textContent = '// JSON non disponibile — verifica la risposta AI';
+    }
+    $('aiJsonViewer').hidden = true;
+
+    // Show result
+    $('aiResult').hidden = false;
+
+    // Store last AI result for finalize — reset edit state
+    state._aiLastResult = data;
+    state._aiEditedText = null;
+    state._aiEditMode = false;
+    // Reset edit UI
+    if ($('aiReportEdit')) $('aiReportEdit').style.display = 'none';
+    if ($('aiReportText')) $('aiReportText').style.display = '';
+    if ($('aiEditHint')) $('aiEditHint').style.display = 'none';
+    if ($('aiDraftBadge')) { $('aiDraftBadge').textContent = 'DRAFT — DA VALIDARE'; $('aiDraftBadge').style.background = ''; $('aiDraftBadge').style.color = ''; }
+    if ($('aiEditToggleBtn')) $('aiEditToggleBtn').innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:0.3rem"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Modifica';
+    // Reset finalize button
+    if ($('aiFinalizeBtn')) { $('aiFinalizeBtn').textContent = ''; $('aiFinalizeBtn').innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:0.4rem"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Valida e Rilascia al Paziente'; $('aiFinalizeBtn').style.background = '#00704A'; }
+    if ($('aiFinalizeProgress')) $('aiFinalizeProgress').hidden = true;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════════════
+   * PDF GENERATION — pdf-lib + jsPDF
+   * ══════════════════════════════════════════════════════════════════════════ */
+
+  /**
+   * Print/Download the report as PDF (independent from finalization).
+   * Uses the edited text if available, otherwise the original AI text.
+   * Includes MOC PDF pages at the beginning if available.
+   */
+  function aiPrintReportPdf() {
+    // Get the current report text (edited takes priority)
+    var reportText = getEditedReportText();
+    if (!reportText || reportText.length < 20) {
+      toast('Nessun testo del referto disponibile per la stampa', 'warning');
+      return;
+    }
+
+    var patientName = (($('aiPatNome').value || '') + ' ' + ($('aiPatCognome').value || '')).trim();
+    var patientCf = ($('aiFiscal') && $('aiFiscal').value.trim().toUpperCase()) || '';
+    var patientDob = $('aiPatDob').value || '';
+    var examDate = $('aiDataEsame').value || new Date().toISOString().slice(0, 10);
+    var doctorName = $('aiMedico').value.trim() || $('aiValidatore').value.trim() || '';
+
+    toast('Generazione PDF in corso...', 'info');
+
+    generateFullReportPdf({
+      reportText: reportText,
+      patientName: patientName,
+      patientDob: patientDob,
+      patientCf: patientCf,
+      examDate: examDate,
+      doctorName: doctorName,
+      mocFile: state._aiMocFile || null
+    }).then(function (blob) {
+      var url = URL.createObjectURL(blob);
+      var filename = 'Referto_MOC_DXA' + (patientCf ? '_' + patientCf : '') + '_' + examDate + '.pdf';
+
+      // Open in new tab for print
+      var newTab = window.open(url, '_blank');
+      if (newTab) {
+        setTimeout(function () {
+          try { newTab.print(); } catch (e) { /* user prints manually */ }
+        }, 1500);
+        toast('PDF aperto in nuova scheda — pronto per la stampa', 'success');
+      } else {
+        // Popup blocked — download
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        toast('PDF scaricato: ' + filename, 'success');
+      }
+      setTimeout(function () { URL.revokeObjectURL(url); }, 120000);
+    }).catch(function (err) {
+      toast('Errore generazione PDF: ' + err.message, 'error');
+      console.error('[PDF]', err);
+    });
+  }
+
+  /**
+   * Get the current report text — prioritizes edited text.
+   */
+  function getEditedReportText() {
+    if (state._aiEditedText) return state._aiEditedText;
+    if (state._aiEditMode && $('aiReportEdit')) return $('aiReportEdit').value;
+    if (state._aiLastResult) return state._aiLastResult.report_text || state._aiLastResult.raw_response || '';
+    return $('aiReportText') ? $('aiReportText').innerText : '';
+  }
+
+  // Logo bytes cache
+  var _logoPngBytes = null;
+  var _logoFetched = false;
+
+  function fetchLogoPng() {
+    if (_logoFetched) return Promise.resolve(_logoPngBytes);
+    return fetch('/images/logo-bioclinic-referto.png')
+      .then(function (r) { return r.ok ? r.arrayBuffer() : null; })
+      .then(function (buf) { _logoPngBytes = buf; _logoFetched = true; return buf; })
+      .catch(function () { _logoFetched = true; return null; });
+  }
+
+  /**
+   * Generate the full report PDF using pdf-lib.
+   * Structure:
+   *   1. MOC PDF original pages (if available)
+   *   2. Report cover page (logo, patient info)
+   *   3. Report body pages (AI text, formatted)
+   *   4. Signature page
+   *
+   * Returns: Promise<Blob>
+   */
+  function generateFullReportPdf(opts) {
+    var PDFLib = window.PDFLib;
+    if (!PDFLib) {
+      return Promise.reject(new Error('pdf-lib non caricato. Ricaricare la pagina.'));
+    }
+
+    var PDFDocument = PDFLib.PDFDocument;
+    var rgb = PDFLib.rgb;
+    var StandardFonts = PDFLib.StandardFonts;
+
+    return fetchLogoPng().then(function (logoBytes) {
+      return PDFDocument.create().then(function (pdfDoc) {
+
+        // ── Colors (matching logo: gray tones + green accent) ──────────
+        var GRAY_DARK = rgb(0.27, 0.27, 0.27);     // #454545 — body text
+        var GRAY_MED = rgb(0.45, 0.45, 0.45);      // #737373 — secondary
+        var GRAY_LIGHT = rgb(0.62, 0.62, 0.62);    // #9e9e9e — footer
+        var GREEN_ACCENT = rgb(0.22, 0.55, 0.22);  // #388E3C — green leaf
+        var LINE_COLOR = rgb(0.78, 0.78, 0.78);    // #c7c7c7 — separator
+
+        // ── Fonts ─────────────────────────────────────────────────────
+        return Promise.all([
+          pdfDoc.embedFont(StandardFonts.Helvetica),
+          pdfDoc.embedFont(StandardFonts.HelveticaBold)
+        ]).then(function (fonts) {
+          var fontRegular = fonts[0];
+          var fontBold = fonts[1];
+
+          // ── STEP 1: Embed MOC PDF pages at beginning ────────────────
+          var embedMocPromise;
+          if (opts.mocFile) {
+            embedMocPromise = opts.mocFile.arrayBuffer().then(function (mocBuffer) {
+              return PDFDocument.load(new Uint8Array(mocBuffer), { ignoreEncryption: true }).then(function (mocDoc) {
+                var pageCount = mocDoc.getPageCount();
+                return pdfDoc.copyPages(mocDoc, Array.from({length: pageCount}, function(_, i) { return i; })).then(function (copiedPages) {
+                  copiedPages.forEach(function (p) { pdfDoc.addPage(p); });
+                  return pageCount;
+                });
+              });
+            }).catch(function (err) {
+              console.warn('[PDF] Could not embed MOC pages:', err.message);
+              return 0;
+            });
+          } else {
+            embedMocPromise = Promise.resolve(0);
+          }
+
+          return embedMocPromise.then(function (mocPageCount) {
+
+            // ── Page dimensions ────────────────────────────────────────
+            var W = 595.28; // A4 width in points
+            var H = 841.89; // A4 height in points
+            var ML = 56;    // margin left (20mm)
+            var MR = 56;    // margin right
+            var MT = 45;    // margin top
+            var MB = 50;    // margin bottom
+            var CW = W - ML - MR; // content width
+
+            // ── Helper: add footer to a page ──────────────────────────
+            function drawFooter(page, pageNum) {
+              var footerY = 30;
+              page.drawLine({ start: { x: ML, y: footerY + 8 }, end: { x: W - MR, y: footerY + 8 }, thickness: 0.5, color: LINE_COLOR });
+              page.drawText('Bio-Clinic S.r.l. — Via Renzo Mossa 23, 07100 Sassari — referti.bio-clinic.it', {
+                x: ML, y: footerY, size: 7, font: fontRegular, color: GRAY_LIGHT
+              });
+              page.drawText('Pag. ' + pageNum, {
+                x: W - MR - 25, y: footerY, size: 7, font: fontRegular, color: GRAY_LIGHT
+              });
+            }
+
+            // ── Helper: draw logo on a page ───────────────────────────
+            var logoImage = null;
+            var embedLogoPromise;
+            if (logoBytes) {
+              embedLogoPromise = pdfDoc.embedPng(logoBytes).then(function (img) { logoImage = img; });
+            } else {
+              embedLogoPromise = Promise.resolve();
+            }
+
+            return embedLogoPromise.then(function () {
+
+              // ═══════════════════════════════════════════════════════════
+              // PAGE: Report cover / header
+              // ═══════════════════════════════════════════════════════════
+              var page = pdfDoc.addPage([W, H]);
+              var y = H - MT;
+              var currentPageNum = mocPageCount + 1;
+
+              // Logo
+              if (logoImage) {
+                var logoW = 180;
+                var logoH = logoW * (logoImage.height / logoImage.width);
+                page.drawImage(logoImage, { x: ML, y: y - logoH, width: logoW, height: logoH });
+                y -= logoH + 12;
+              } else {
+                page.drawText('bioclinic', { x: ML, y: y - 20, size: 22, font: fontBold, color: GRAY_DARK });
+                y -= 32;
+              }
+
+              // Clinic address
+              page.drawText('Via Renzo Mossa 23, 07100 Sassari — Tel. 079 956 1332 — gestione@bio-clinic.it', {
+                x: ML, y: y, size: 8, font: fontRegular, color: GRAY_MED
+              });
+              y -= 16;
+
+              // Green separator line
+              page.drawLine({ start: { x: ML, y: y }, end: { x: W - MR, y: y }, thickness: 1.5, color: GREEN_ACCENT });
+              y -= 25;
+
+              // Title
+              page.drawText('REFERTO DENSITOMETRIA OSSEA (MOC-DXA)', {
+                x: ML, y: y, size: 13, font: fontBold, color: GRAY_DARK
+              });
+              y -= 25;
+
+              // Patient info box
+              var infoLines = [];
+              if (opts.patientName) infoLines.push(['Paziente:', opts.patientName]);
+              if (opts.patientCf) infoLines.push(['Codice Fiscale:', opts.patientCf]);
+              if (opts.patientDob) infoLines.push(['Data di nascita:', opts.patientDob]);
+              if (opts.examDate) infoLines.push(['Data esame:', opts.examDate]);
+
+              infoLines.forEach(function (pair) {
+                page.drawText(pair[0], { x: ML, y: y, size: 9.5, font: fontBold, color: GRAY_DARK });
+                page.drawText(pair[1], { x: ML + 100, y: y, size: 9.5, font: fontRegular, color: GRAY_DARK });
+                y -= 16;
+              });
+
+              y -= 10;
+              page.drawLine({ start: { x: ML, y: y }, end: { x: W - MR, y: y }, thickness: 0.5, color: LINE_COLOR });
+              y -= 20;
+
+              // ═══════════════════════════════════════════════════════════
+              // REPORT BODY TEXT
+              // ═══════════════════════════════════════════════════════════
+              var plainText = opts.reportText || '';
+              plainText = plainText.replace(/```json[\s\S]*?```/g, '');
+              plainText = plainText.replace(/```[\s\S]*?```/g, '');
+
+              var textLines = plainText.split('\n');
+              var fontSize = 9;
+              var lineHeight = 14;
+              var headerSize = 10.5;
+
+              for (var i = 0; i < textLines.length; i++) {
+                var rawLine = textLines[i];
+
+                // Check if we need a new page
+                if (y < MB + 20) {
+                  drawFooter(page, currentPageNum);
+                  page = pdfDoc.addPage([W, H]);
+                  currentPageNum++;
+                  y = H - MT;
+                }
+
+                // Detect headers
+                var isHeader = /^#{2,3}\s/.test(rawLine) || /^\d+\.\s+[A-Z]/.test(rawLine);
+                var cleanLine = rawLine.replace(/^#{2,3}\s*/, '').replace(/\*\*(.+?)\*\*/g, '$1').replace(/^---$/, '');
+
+                if (rawLine.trim() === '---') {
+                  // Separator
+                  y -= 5;
+                  page.drawLine({ start: { x: ML, y: y }, end: { x: W - MR, y: y }, thickness: 0.5, color: LINE_COLOR });
+                  y -= 10;
+                  continue;
+                }
+
+                if (!cleanLine.trim()) {
+                  y -= lineHeight * 0.6;
+                  continue;
+                }
+
+                var currentFont = isHeader ? fontBold : fontRegular;
+                var currentSize = isHeader ? headerSize : fontSize;
+                var currentColor = isHeader ? GRAY_DARK : GRAY_DARK;
+
+                if (isHeader) y -= 4; // extra space before header
+
+                // Word wrap
+                var words = cleanLine.split(' ');
+                var wrappedLines = [];
+                var currentLine = '';
+                for (var w = 0; w < words.length; w++) {
+                  var testLine = currentLine ? currentLine + ' ' + words[w] : words[w];
+                  var testWidth = currentFont.widthOfTextAtSize(testLine, currentSize);
+                  if (testWidth > CW && currentLine) {
+                    wrappedLines.push(currentLine);
+                    currentLine = words[w];
+                  } else {
+                    currentLine = testLine;
+                  }
+                }
+                if (currentLine) wrappedLines.push(currentLine);
+
+                for (var wl = 0; wl < wrappedLines.length; wl++) {
+                  if (y < MB + 20) {
+                    drawFooter(page, currentPageNum);
+                    page = pdfDoc.addPage([W, H]);
+                    currentPageNum++;
+                    y = H - MT;
+                  }
+                  page.drawText(wrappedLines[wl], {
+                    x: ML, y: y, size: currentSize, font: currentFont, color: currentColor
+                  });
+                  y -= lineHeight;
+                }
+
+                if (isHeader) y -= 2; // extra space after header
+              }
+
+              // ═══════════════════════════════════════════════════════════
+              // SIGNATURE SECTION
+              // ═══════════════════════════════════════════════════════════
+              if (y < MB + 80) {
+                drawFooter(page, currentPageNum);
+                page = pdfDoc.addPage([W, H]);
+                currentPageNum++;
+                y = H - MT;
+              }
+
+              y -= 30;
+
+              // Date
+              var today = new Date().toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' });
+              page.drawText('Sassari, ' + today, {
+                x: ML, y: y, size: 9.5, font: fontRegular, color: GRAY_DARK
+              });
+              y -= 30;
+
+              // Doctor signature
+              var sigX = W - MR - 170;
+              page.drawText('Il Medico Refertante', {
+                x: sigX, y: y, size: 9.5, font: fontBold, color: GRAY_DARK
+              });
+              y -= 16;
+              page.drawText(opts.doctorName || 'Dott./Dott.ssa', {
+                x: sigX, y: y, size: 9.5, font: fontRegular, color: GRAY_DARK
+              });
+              y -= 20;
+              page.drawLine({ start: { x: sigX, y: y }, end: { x: sigX + 150, y: y }, thickness: 0.5, color: GRAY_MED });
+              y -= 10;
+              page.drawText('(firma digitale / autografa)', {
+                x: sigX, y: y, size: 7.5, font: fontRegular, color: GRAY_LIGHT
+              });
+
+              // Footer on last page
+              drawFooter(page, currentPageNum);
+
+              // ═══════════════════════════════════════════════════════════
+              // SAVE
+              // ═══════════════════════════════════════════════════════════
+              return pdfDoc.save();
+            });
+          });
+        });
+      });
+    }).then(function (pdfBytes) {
+      return new Blob([pdfBytes], { type: 'application/pdf' });
+    });
+  }
+
+  /**
+   * Generate report PDF blob for upload (used by finalize workflow).
+   * Same as generateFullReportPdf but without MOC pages (those are uploaded separately).
+   */
+  function generateReportPdfForUpload(opts) {
+    return generateFullReportPdf({
+      reportText: opts.reportText,
+      patientName: opts.patientName,
+      patientDob: opts.patientDob,
+      patientCf: opts.patientCf,
+      examDate: opts.examDate,
+      doctorName: opts.doctorName,
+      mocFile: null // MOC uploaded separately in finalize
+    });
+  }
+
+  /* ══════════════════════════════════════════════════════════════════════════
+   * FINALIZE REPORT WORKFLOW
+   * ══════════════════════════════════════════════════════════════════════════ */
+
+  function initFinalizeButton() {
+    var btn = $('aiFinalizeBtn');
+    if (!btn) return;
+
+    btn.addEventListener('click', function () {
+      // Confirm before proceeding
+      if (!confirm('Stai per:\n1. Generare il PDF del referto\n2. Caricare il PDF MOC originale e il referto\n3. Validare, firmare e rilasciare al paziente\n4. Inviare notifica email\n\nConfermi?')) {
+        return;
+      }
+      startFinalizeWorkflow();
+    });
+  }
+
+  function startFinalizeWorkflow() {
+    var progressEl = $('aiFinalizeProgress');
+    var stepsEl = $('aiFinalizeSteps');
+    var barEl = $('aiFinalizeBar');
+    var btn = $('aiFinalizeBtn');
+
+    if (!progressEl || !stepsEl || !barEl) return;
+
+    // Disable button
+    btn.disabled = true;
+    btn.style.opacity = '0.6';
+    progressEl.hidden = false;
+    stepsEl.innerHTML = '';
+    barEl.style.width = '0%';
+
+    function addStep(text, status) {
+      var icon = status === 'ok' ? '&#10003;' : (status === 'error' ? '&#10007;' : '&#9679;');
+      var color = status === 'ok' ? '#22c55e' : (status === 'error' ? '#dc2626' : '#f59e0b');
+      stepsEl.innerHTML += '<div style="display:flex;align-items:center;gap:0.5rem">' +
+        '<span style="color:' + color + ';font-weight:bold">' + icon + '</span> ' + text + '</div>';
+    }
+
+    function setProgress(pct) {
+      barEl.style.width = pct + '%';
+    }
+
+    // ── Gather data ─────────────────────────────────────────────────────
+    var fiscalCode = ($('aiFiscal') && $('aiFiscal').value.trim().toUpperCase()) || '';
+    var patientName = (($('aiPatNome').value || '') + ' ' + ($('aiPatCognome').value || '')).trim();
+    var patientDob = $('aiPatDob').value || '';
+    var examDate = $('aiDataEsame').value || new Date().toISOString().slice(0, 10);
+    var doctorName = $('aiMedico').value.trim() || $('aiValidatore').value.trim() || '';
+    var patientGender = $('aiPatSesso').value || '';
+
+    if (!fiscalCode || fiscalCode.length !== 16) {
+      addStep('Codice Fiscale mancante o non valido', 'error');
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      toast('Inserire il Codice Fiscale del paziente prima di finalizzare', 'error');
+      return;
+    }
+
+    if (!patientName || patientName.length < 3) {
+      addStep('Nome/cognome paziente mancante', 'error');
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      toast('Inserire nome e cognome del paziente', 'error');
+      return;
+    }
+
+    if (!state._aiLastResult) {
+      addStep('Nessun referto AI generato', 'error');
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      toast('Generare il referto AI prima di finalizzare', 'error');
+      return;
+    }
+
+    addStep('Preparazione dati...', 'ok');
+    setProgress(10);
+
+    // ── Step 1: Generate PDF report ──────────────────────────────────────
+    addStep('Generazione PDF referto...', 'pending');
+    setProgress(20);
+
+    var reportText = getEditedReportText();
+
+    generateReportPdfForUpload({
+      reportText: reportText,
+      patientName: patientName,
+      patientDob: patientDob,
+      patientCf: fiscalCode,
+      examDate: examDate,
+      doctorName: doctorName
+    }).then(function (reportBlob) {
+
+      // Update step to OK
+      var stepDivs = stepsEl.querySelectorAll('div');
+      if (stepDivs.length >= 2) {
+        stepDivs[stepDivs.length - 1].querySelector('span').innerHTML = '&#10003;';
+        stepDivs[stepDivs.length - 1].querySelector('span').style.color = '#22c55e';
+      }
+      setProgress(40);
+
+      // ── Step 2: Prepare FormData and call finalize API ──────────────
+      addStep('Caricamento file e finalizzazione...', 'pending');
+      setProgress(50);
+
+      var formData = new FormData();
+      formData.append('report_pdf', reportBlob, 'referto_moc_dxa.pdf');
+
+      // Add original MOC PDF if available
+      if (state._aiMocFile) {
+        formData.append('moc_pdf', state._aiMocFile, state._aiMocFile.name || 'moc_originale.pdf');
+      }
+
+      // Patient data
+      formData.append('patient_data', JSON.stringify({
+        fiscal_code: fiscalCode,
+        first_name: $('aiPatNome').value.trim(),
+        last_name: $('aiPatCognome').value.trim(),
+        date_of_birth: patientDob || undefined,
+        gender: patientGender || undefined
+      }));
+
+      // Report data
+      var hasAbnormal = !!(state._aiLastResult.report_json && state._aiLastResult.report_json.alert_rosso);
+      formData.append('report_data', JSON.stringify({
+        report_type: 'MOC-DXA Densitometria Ossea',
+        category: 'densitometria',
+        sample_date: examDate,
+        doctor_name: doctorName,
+        is_urgent: false,
+        has_abnormal_values: hasAbnormal
+      }));
+
+      return fetch('/api/ai/finalize-report', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer ' + state.token
+        },
+        body: formData
+      })
+      .then(function (resp) {
+        return resp.text().then(function (text) {
+          try {
+            return JSON.parse(text);
+          } catch (e) {
+            console.error('[Finalize] Response parse error. Status:', resp.status, 'Body:', text.substring(0, 500));
+            throw new Error('Risposta non valida dal server (status ' + resp.status + '). Dettaglio: ' + text.substring(0, 200));
+          }
+        });
+      })
+      .then(function (result) {
+        // Update step
+        var lastStep = stepsEl.querySelectorAll('div');
+        if (lastStep.length >= 3) {
+          lastStep[lastStep.length - 1].querySelector('span').innerHTML = '&#10003;';
+          lastStep[lastStep.length - 1].querySelector('span').style.color = '#22c55e';
+        }
+        setProgress(80);
+
+        if (!result.success) {
+          addStep('Errore: ' + (result.error || 'Errore sconosciuto'), 'error');
+          btn.disabled = false;
+          btn.style.opacity = '1';
+          toast('Errore nella finalizzazione: ' + (result.error || ''), 'error');
+          return;
+        }
+
+        // Success!
+        setProgress(100);
+        addStep('Referto creato: ' + result.data.report_number, 'ok');
+        addStep('Stato: RILASCIATO al paziente', 'ok');
+        if (result.data.email_sent) {
+          addStep('Email notifica inviata', 'ok');
+        } else {
+          addStep('Email: non inviata (verificare configurazione)', 'pending');
+        }
+
+        // Show steps detail
+        if (result.data.steps) {
+          var detail = result.data.steps.map(function (s) {
+            return s.replace(/_/g, ' ');
+          }).join(' \u2192 ');
+          addStep('Pipeline: ' + detail, 'ok');
+        }
+
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        btn.textContent = 'Completato \u2713';
+        btn.style.background = '#22c55e';
+
+        toast('Referto ' + result.data.report_number + ' rilasciato con successo al paziente ' + (result.data.patient_name || ''), 'success');
+      });
+    }).catch(function (err) {
+      addStep('Errore: ' + (err.message || err), 'error');
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      toast('Errore durante la finalizzazione: ' + (err.message || ''), 'error');
+    });
+  }
+
+  // Wire finalize button after AI report section is ready
+  initFinalizeButton();
 
 })();

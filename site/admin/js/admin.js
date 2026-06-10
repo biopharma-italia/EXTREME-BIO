@@ -618,7 +618,7 @@ async function loadDashboard() {
     const contactsList = document.getElementById('recent-contacts-list');
     contactsList.innerHTML = (data.recent_contacts || []).slice(0, 8).map(c =>
       `<div class="list-compact-item">
-        <span><strong>${esc(c.name)}</strong> — ${esc(c.service || 'Generico')}</span>
+        <span><strong>${esc(c.name)}</strong> — ${esc(c.service || 'Generico')}${c.phone ? ' — <a href="tel:' + esc(c.phone) + '">' + esc(c.phone) + '</a>' : ''}</span>
         <span class="status-badge status-${c.status}">${c.status}</span>
       </div>`
     ).join('') || '<p class="text-muted">Nessun contatto recente</p>';
@@ -627,7 +627,7 @@ async function loadDashboard() {
     const bookingsList = document.getElementById('upcoming-bookings-list');
     bookingsList.innerHTML = (data.upcoming_bookings || []).slice(0, 8).map(b =>
       `<div class="list-compact-item">
-        <span><strong>${esc(b.patient_name)}</strong> — ${esc(b.service_name || '')}</span>
+        <span><strong>${esc(b.patient_name)}</strong> — ${esc(b.service_name || '')}${b.patient_phone ? ' — <a href="tel:' + esc(b.patient_phone) + '">' + esc(b.patient_phone) + '</a>' : ''}</span>
         <span>${b.booking_date} ${b.booking_time || ''}</span>
       </div>`
     ).join('') || '<p class="text-muted">Nessuna prenotazione</p>';
@@ -1023,48 +1023,271 @@ function changePage(delta) {
 // SETTINGS, BOOKINGS & AUDIT
 // ============================================================================
 
+// ── Bookings state ──
+let bookingsPage = 1;
+const bookingsLimit = 30;
+let bookingsData = [];
+let bookingsListenersAttached = false;
+
 async function loadBookings() {
   const tbody = document.getElementById('bookings-tbody');
   if (!tbody) return;
 
+  // Attach filter listeners once
+  if (!bookingsListenersAttached) {
+    bookingsListenersAttached = true;
+    const searchEl = document.getElementById('bookings-search');
+    const statusEl = document.getElementById('bookings-status-filter');
+    const dateFromEl = document.getElementById('bookings-date-from');
+    const dateToEl = document.getElementById('bookings-date-to');
+    const refreshBtn = document.getElementById('bookings-refresh-btn');
+    const prevBtn = document.getElementById('bookings-page-prev');
+    const nextBtn = document.getElementById('bookings-page-next');
+
+    if (searchEl) searchEl.addEventListener('input', debounce(() => { bookingsPage = 1; loadBookings(); }, 400));
+    if (statusEl) statusEl.addEventListener('change', () => { bookingsPage = 1; loadBookings(); });
+    if (dateFromEl) dateFromEl.addEventListener('change', () => { bookingsPage = 1; loadBookings(); });
+    if (dateToEl) dateToEl.addEventListener('change', () => { bookingsPage = 1; loadBookings(); });
+    if (refreshBtn) refreshBtn.addEventListener('click', () => loadBookings());
+    if (prevBtn) prevBtn.addEventListener('click', () => { bookingsPage = Math.max(1, bookingsPage - 1); loadBookings(); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { bookingsPage++; loadBookings(); });
+
+    // Default: show today onwards
+    if (dateFromEl && !dateFromEl.value) {
+      dateFromEl.value = new Date().toISOString().split('T')[0];
+    }
+  }
+
+  // ── Demo mode ──
   if (isDemoMode) {
     const demoBookings = [
-      { patient_name: 'Maria Rossi', service_name: 'Analisi del Sangue', booking_date: '2026-03-01', booking_time: '08:30', status: 'confirmed', source: 'website' },
-      { patient_name: 'Luca Melis', service_name: 'Profilo Tiroide', booking_date: '2026-03-01', booking_time: '09:00', status: 'confirmed', source: 'phone' },
-      { patient_name: 'Sara Deiana', service_name: 'Check-up Base', booking_date: '2026-03-01', booking_time: '09:30', status: 'pending', source: 'website' },
-      { patient_name: 'Marco Pili', service_name: 'Emocromo Completo', booking_date: '2026-03-02', booking_time: '08:00', status: 'confirmed', source: 'website' },
-      { patient_name: 'Anna Cossu', service_name: 'Profilo Lipidico', booking_date: '2026-03-02', booking_time: '08:30', status: 'pending', source: 'whatsapp' },
-      { patient_name: 'Paolo Ferraro', service_name: 'Check-up Tiroide', booking_date: '2026-03-03', booking_time: '09:00', status: 'confirmed', source: 'website' },
+      { id: 'demo-1', patient_name: 'Maria Rossi', patient_phone: '+39 345 1234567', patient_email: 'maria@example.it', service_name: 'Analisi del Sangue', booking_date: '2026-03-12', booking_time: '08:30', status: 'confirmed', source: 'website', price_eur: 5.00 },
+      { id: 'demo-2', patient_name: 'Luca Melis', patient_phone: '+39 333 9876543', patient_email: '', service_name: 'Profilo Tiroide', booking_date: '2026-03-12', booking_time: '09:00', status: 'confirmed', source: 'phone', price_eur: 35.00 },
+      { id: 'demo-3', patient_name: 'Sara Deiana', patient_phone: '+39 320 5551234', patient_email: 'sara.d@example.it', service_name: 'Emocromo Completo', booking_date: '2026-03-13', booking_time: '09:30', status: 'pending', source: 'website', price_eur: 8.00 },
+      { id: 'demo-4', patient_name: 'Marco Pili', patient_phone: '+39 347 0001122', patient_email: '', service_name: 'Curva Glicemica', booking_date: '2026-03-13', booking_time: '08:00', status: 'confirmed', source: 'website', price_eur: 25.00 },
+      { id: 'demo-5', patient_name: 'Anna Cossu', patient_phone: '+39 380 4445566', patient_email: 'anna.cossu@example.it', service_name: 'Profilo Lipidico', booking_date: '2026-03-14', booking_time: '08:30', status: 'pending', source: 'whatsapp', price_eur: 15.00 },
+      { id: 'demo-6', patient_name: 'Paolo Ferraro', patient_phone: '+39 349 7778899', patient_email: '', service_name: 'Profilo Tiroide', booking_date: '2026-03-14', booking_time: '09:00', status: 'completed', source: 'website', price_eur: 35.00 },
     ];
-    tbody.innerHTML = demoBookings.map(b =>
-      `<tr>
-        <td><strong>${esc(b.patient_name)}</strong></td>
-        <td>${esc(b.service_name)}</td>
-        <td>${b.booking_date}</td>
-        <td>${b.booking_time}</td>
-        <td><span class="status-badge status-${b.status}">${b.status}</span></td>
-        <td>${esc(b.source)}</td>
-      </tr>`
-    ).join('');
+    bookingsData = demoBookings;
+    renderBookingsTable(demoBookings, { page: 1, limit: 30, total: 6, total_pages: 1 });
+    const srcEl = document.getElementById('bookings-source');
+    if (srcEl) { srcEl.textContent = 'Demo'; srcEl.className = 'status-badge status-pending'; }
+    return;
+  }
+
+  // ── Live mode: call API ──
+  tbody.innerHTML = '<tr><td colspan="7" class="text-muted" style="text-align:center;padding:32px">Caricamento prenotazioni...</td></tr>';
+
+  try {
+    const search = document.getElementById('bookings-search')?.value || '';
+    const status = document.getElementById('bookings-status-filter')?.value || '';
+    const dateFrom = document.getElementById('bookings-date-from')?.value || '';
+    const dateTo = document.getElementById('bookings-date-to')?.value || '';
+
+    let params = `?page=${bookingsPage}&limit=${bookingsLimit}`;
+    if (search) params += `&search=${encodeURIComponent(search)}`;
+    if (status) params += `&status=${status}`;
+    if (dateFrom) params += `&date_from=${dateFrom}`;
+    if (dateTo) params += `&date_to=${dateTo}`;
+    params += '&sort=booking_date&order=asc';
+
+    const result = await apiRequest(`/bookings${params}`);
+    bookingsData = result.data || [];
+
+    renderBookingsTable(bookingsData, result.pagination || {});
+
+    // Show source badge
+    const srcEl = document.getElementById('bookings-source');
+    if (srcEl) {
+      const src = result._source || 'api';
+      srcEl.textContent = src === 'd1' ? 'D1 Live' : src === 'supabase' ? 'Supabase Sync' : src;
+      srcEl.className = `status-badge ${src === 'd1' ? 'status-active' : 'status-pending'}`;
+    }
+  } catch (err) {
+    console.error('Bookings load error:', err);
+    tbody.innerHTML = `<tr><td colspan="7" class="text-muted" style="text-align:center;padding:32px">
+      Prenotazioni non disponibili<br><small>${esc(err.message)}</small></td></tr>`;
+
+    const srcEl = document.getElementById('bookings-source');
+    if (srcEl) { srcEl.textContent = 'Errore'; srcEl.className = 'status-badge status-inactive'; }
+  }
+}
+
+function renderBookingsTable(bookings, pag) {
+  const tbody = document.getElementById('bookings-tbody');
+
+  if (!bookings || bookings.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="7" class="text-muted" style="text-align:center;padding:32px">Nessuna prenotazione trovata</td></tr>';
+    updateBookingsPagination(pag);
+    return;
+  }
+
+  const statusLabels = {
+    confirmed: 'Confermata',
+    completed: 'Completata',
+    pending: 'In attesa',
+    cancelled: 'Cancellata',
+    no_show: 'No-show',
+  };
+
+  tbody.innerHTML = bookings.map(b => {
+    const dateFormatted = b.booking_date
+      ? new Date(b.booking_date + 'T00:00:00').toLocaleDateString('it-IT', { weekday: 'short', day: '2-digit', month: 'short' })
+      : '';
+    const statusLabel = statusLabels[b.status] || b.status || 'pending';
+    const statusClass = b.status || 'pending';
+
+    return `<tr style="cursor:pointer" onclick="viewBookingDetail('${esc(b.id || '')}')">
+      <td>
+        <strong>${esc(b.patient_name || '')}</strong>
+        ${b.patient_phone ? `<br><small class="text-muted">${esc(b.patient_phone)}</small>` : ''}
+      </td>
+      <td>${esc(b.service_name || b.service_id || '')}</td>
+      <td>${dateFormatted}</td>
+      <td>${b.booking_time || ''}</td>
+      <td><span class="status-badge status-${statusClass}">${statusLabel}</span></td>
+      <td><small>${esc(b.source || b.lead_source || '')}</small></td>
+      <td class="actions-cell">
+        <button class="btn btn-sm btn-outline" onclick="event.stopPropagation();viewBookingDetail('${esc(b.id || '')}')" title="Dettagli">&#128269;</button>
+        ${!isDemoMode && b.status === 'confirmed' ? `<button class="btn btn-sm btn-outline" onclick="event.stopPropagation();updateBookingStatus('${esc(b.id)}','completed')" title="Completa">&#9989;</button>` : ''}
+      </td>
+    </tr>`;
+  }).join('');
+
+  updateBookingsPagination(pag);
+}
+
+function updateBookingsPagination(pag) {
+  const totalPages = pag.total_pages || 1;
+  const infoEl = document.getElementById('bookings-page-info');
+  const prevBtn = document.getElementById('bookings-page-prev');
+  const nextBtn = document.getElementById('bookings-page-next');
+
+  if (infoEl) infoEl.textContent = `Pagina ${bookingsPage} di ${totalPages} (${pag.total || 0} prenotazioni)`;
+  if (prevBtn) prevBtn.disabled = bookingsPage <= 1;
+  if (nextBtn) nextBtn.disabled = bookingsPage >= totalPages;
+}
+
+/**
+ * Show booking detail in modal
+ */
+window.viewBookingDetail = function(id) {
+  const booking = bookingsData.find(b => b.id === id);
+  if (!booking) { toast('Prenotazione non trovata', 'error'); return; }
+
+  const dateFormatted = booking.booking_date
+    ? new Date(booking.booking_date + 'T00:00:00').toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
+    : '';
+
+  const statusLabels = { confirmed: 'Confermata', completed: 'Completata', pending: 'In attesa', cancelled: 'Cancellata', no_show: 'No-show' };
+
+  // Build fields for the modal
+  const detailFields = [
+    { key: '_patient_header', label: 'PAZIENTE', type: 'header' },
+    { key: 'patient_name', label: 'Nome', type: 'text' },
+    { key: 'patient_phone', label: 'Telefono', type: 'text' },
+    { key: 'patient_email', label: 'Email', type: 'text' },
+    { key: 'patient_fiscal_code', label: 'Codice Fiscale', type: 'text' },
+    { key: '_booking_header', label: 'PRENOTAZIONE', type: 'header' },
+    { key: 'id', label: 'ID Prenotazione', type: 'text' },
+    { key: 'transaction_id', label: 'ID Transazione', type: 'text' },
+    { key: 'service_name', label: 'Servizio', type: 'text' },
+    { key: '_date_display', label: 'Data e Ora', type: 'text' },
+    { key: 'price_eur', label: 'Importo', type: 'text' },
+    { key: 'status', label: 'Stato', type: isDemoMode ? 'text' : 'select', options: ['confirmed', 'completed', 'pending', 'cancelled', 'no_show'] },
+    { key: '_source_header', label: 'ATTRIBUZIONE', type: 'header' },
+    { key: 'source', label: 'Fonte', type: 'text' },
+    { key: 'source_page', label: 'Pagina Origine', type: 'text' },
+    { key: 'utm_campaign', label: 'Campagna UTM', type: 'text' },
+    { key: 'gclid', label: 'GCLID', type: 'text' },
+    { key: 'notes', label: 'Note', type: isDemoMode ? 'text' : 'textarea' },
+  ];
+
+  const record = {
+    ...booking,
+    _date_display: `${dateFormatted} ore ${booking.booking_time || ''}`,
+    price_eur: booking.price_eur != null ? `\u20AC ${parseFloat(booking.price_eur).toFixed(2)}` : '',
+    status: statusLabels[booking.status] || booking.status,
+  };
+
+  // Use existing modal with custom rendering
+  const modalTitle = `Prenotazione: ${booking.patient_name || 'Dettaglio'}`;
+  document.getElementById('modal-title').textContent = modalTitle;
+
+  const form = document.getElementById('edit-form');
+  form.innerHTML = detailFields.map(f => {
+    if (f.type === 'header') {
+      return `<div style="margin-top:16px;padding:6px 0;border-bottom:2px solid var(--primary-light);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--primary)">${f.label}</div>`;
+    }
+    const val = record[f.key] ?? '';
+    if (!val && f.key !== 'status' && f.key !== 'notes') return ''; // Skip empty fields
+
+    if (f.type === 'select' && !isDemoMode) {
+      const opts = (f.options || []).map(o =>
+        `<option value="${o}" ${booking.status === o ? 'selected' : ''}>${statusLabels[o] || o}</option>`
+      ).join('');
+      return `<div class="form-group">
+        <label>${f.label}</label>
+        <select name="booking_status">${opts}</select>
+      </div>`;
+    }
+    if (f.type === 'textarea' && !isDemoMode) {
+      return `<div class="form-group">
+        <label>${f.label}</label>
+        <textarea name="booking_notes" rows="2">${esc(String(booking.notes || ''))}</textarea>
+      </div>`;
+    }
+
+    return `<div class="form-group">
+      <label>${f.label}</label>
+      <input type="text" value="${esc(String(val))}" readonly disabled style="background:var(--gray-100)">
+    </div>`;
+  }).filter(Boolean).join('');
+
+  // Configure modal buttons
+  modalRecord = booking;
+  modalIsNew = false;
+
+  const saveBtn = document.getElementById('modal-save-btn');
+  if (isDemoMode) {
+    saveBtn.style.display = 'none';
+  } else {
+    saveBtn.style.display = '';
+    saveBtn.textContent = 'Aggiorna Stato';
+    saveBtn.onclick = async function() {
+      const newStatus = form.querySelector('[name="booking_status"]')?.value;
+      const newNotes = form.querySelector('[name="booking_notes"]')?.value;
+      if (newStatus) {
+        await updateBookingStatus(booking.id, newStatus, newNotes);
+        closeModal();
+      }
+    };
+  }
+
+  document.getElementById('modal-cancel-btn').textContent = isDemoMode ? 'Chiudi' : 'Annulla';
+  document.getElementById('edit-modal').hidden = false;
+};
+
+/**
+ * Update booking status via API
+ */
+window.updateBookingStatus = async function(id, status, notes) {
+  if (isDemoMode) {
+    toast('Modalita Demo: modifica non disponibile', 'warning');
     return;
   }
 
   try {
-    const data = await apiRequest('/bookings?limit=50');
-    tbody.innerHTML = (data.data || []).map(b =>
-      `<tr>
-        <td><strong>${esc(b.patient_name || '')}</strong></td>
-        <td>${esc(b.service_name || '')}</td>
-        <td>${b.booking_date || ''}</td>
-        <td>${b.booking_time || ''}</td>
-        <td><span class="status-badge status-${b.status || 'pending'}">${b.status || 'pending'}</span></td>
-        <td>${esc(b.source || '')}</td>
-      </tr>`
-    ).join('') || '<tr><td colspan="6" class="text-muted" style="text-align:center">Nessuna prenotazione</td></tr>';
+    const body = { id, status };
+    if (notes !== undefined) body.notes = notes;
+
+    await apiRequest('/bookings', { method: 'PATCH', body });
+    toast(`Prenotazione aggiornata: ${status}`, 'success');
+    loadBookings(); // Refresh
   } catch (err) {
-    tbody.innerHTML = '<tr><td colspan="6" class="text-muted" style="text-align:center">Prenotazioni non disponibili</td></tr>';
+    toast('Errore aggiornamento: ' + err.message, 'error');
   }
-}
+};
 
 // ============================================================================
 // SETTINGS (M10) — Full editable grouped settings

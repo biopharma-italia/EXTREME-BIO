@@ -42,16 +42,26 @@ export async function onRequestGet(context: {
     adminClient.from('audit_log').select('*').eq('user_id', ctx.user.id).order('created_at', { ascending: false }).limit(1000),
   ]);
 
+  // P1-6: Use explicit field whitelist to prevent leaking internal fields
   const exportData = {
     export_date: new Date().toISOString(),
-    export_version: '1.0',
-    personal_data: {
-      ...profile,
-      // Redact internal fields
-      auth_id: undefined,
-      failed_login_count: undefined,
-      locked_until: undefined,
-    },
+    export_version: '1.1',
+    personal_data: profile ? {
+      email: profile.email,
+      first_name: profile.first_name,
+      last_name: profile.last_name,
+      fiscal_code: profile.fiscal_code,
+      phone: profile.phone,
+      date_of_birth: profile.date_of_birth,
+      gender: profile.gender,
+      role: profile.role,
+      language: profile.language,
+      timezone: profile.timezone,
+      is_email_verified: profile.is_email_verified,
+      preferred_notification_channel: profile.preferred_notification_channel,
+      created_at: profile.created_at,
+      updated_at: profile.updated_at,
+    } : null,
     consents: consents || [],
     reports: (reports || []).map((r: Record<string, unknown>) => ({
       report_number: r.report_number,

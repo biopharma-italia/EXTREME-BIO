@@ -221,7 +221,7 @@ def rebuild_hub_page(articles, today_str):
 
     # Update the "Ultimi Articoli" header with count
     hub_html = re.sub(
-        r'<h2[^>]*>Ultimi Articoli</h2>',
+        r'<h2[^>]*>Ultimi Articoli(?: \(\d+\))?</h2>',
         f'<h2 style="font-family: \'Poppins\', sans-serif; font-size: 1.3em; color: #1a1a1a; margin: 0 0 1.5rem;">Ultimi Articoli ({len(published)})</h2>',
         hub_html
     )

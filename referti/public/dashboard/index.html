@@ -69,6 +69,15 @@
         </a>
       </div>
 
+      <!-- AI Refertation section -->
+      <div class="nav-section" data-roles="physician,admin,super_admin,ostetrica">
+        <span class="nav-section-title">Intelligenza Artificiale</span>
+        <a href="#ai-report" class="nav-item" data-page="ai-report" data-roles="physician,admin,super_admin,ostetrica">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4v1h1a3 3 0 0 1 3 3v1a3 3 0 0 1-3 3h-1v4a4 4 0 0 1-8 0v-4H7a3 3 0 0 1-3-3v-1a3 3 0 0 1 3-3h1V6a4 4 0 0 1 4-4z"/><circle cx="9" cy="13" r="1"/><circle cx="15" cy="13" r="1"/></svg>
+          <span>Refertazione AI</span>
+        </a>
+      </div>
+
       <!-- Admin section -->
       <div class="nav-section" data-roles="admin,super_admin,ostetrica">
         <span class="nav-section-title">Amministrazione</span>
@@ -333,6 +342,7 @@
                   <option value="genetica">Genetica</option>
                   <option value="pap_test">PAP Test</option>
                   <option value="hpv_dna_test">HPV DNA Test</option>
+                  <option value="isteroscopia">Isteroscopia</option>
                   <option value="altro">Altro</option>
                 </select>
               </div>
@@ -345,6 +355,7 @@
                   <option value="anatomia_patologica">Anatomia Patologica</option>
                   <option value="citologia">Citologia</option>
                   <option value="ostetricia">Ostetricia</option>
+                  <option value="diagnostica">Diagnostica</option>
                 </select>
               </div>
             </div>
@@ -714,6 +725,306 @@
       </div>
     </section>
 
+    <!-- ==================== PAGE: AI REPORT GENERATION ==================== -->
+    <section class="page" id="page-ai-report" data-title="Refertazione AI" hidden>
+      <div class="page-header">
+        <div class="page-header-info">
+          <p class="page-subtitle">Genera bozze di referto assistite dall'intelligenza artificiale</p>
+        </div>
+      </div>
+
+      <!-- Step 1: Input Form -->
+      <div id="aiStep1" class="card" style="margin-bottom:1.5rem">
+        <h3 class="card-title" style="margin-bottom:1rem">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:0.5rem"><path d="M12 2a4 4 0 0 1 4 4v1h1a3 3 0 0 1 3 3v1a3 3 0 0 1-3 3h-1v4a4 4 0 0 1-8 0v-4H7a3 3 0 0 1-3-3v-1a3 3 0 0 1 3-3h1V6a4 4 0 0 1 4-4z"/></svg>
+          Dati per la Refertazione
+        </h3>
+
+        <!-- Specialty selector -->
+        <div class="form-group" style="margin-bottom:1rem">
+          <label for="aiSpecialty"><strong>Specialità *</strong></label>
+          <select id="aiSpecialty" class="form-input" style="padding:0.6rem 0.85rem">
+            <option value="">— Seleziona specialità —</option>
+            <option value="MOC_DXA">MOC-DXA (Densitometria ossea)</option>
+            <option value="COLPOSCOPIA">Colposcopia</option>
+            <option value="ISTEROSCOPIA">Isteroscopia</option>
+            <option value="RADIOFREQUENZA_VAGINALE">Radiofrequenza vaginale</option>
+            <option value="ELETTROPORAZIONE">Elettroporazione</option>
+            <option value="ENDOCRINOLOGIA">Endocrinologia</option>
+          </select>
+        </div>
+
+        <!-- Patient lookup by CF -->
+        <div class="form-group" style="margin-bottom:1rem">
+          <label for="aiFiscal"><strong>Codice Fiscale Paziente</strong></label>
+          <div class="input-with-action">
+            <input type="text" id="aiFiscal" class="form-input" placeholder="RSSMRA85M01H501Z" maxlength="16" style="text-transform:uppercase">
+            <button type="button" class="btn btn-outline btn-sm" id="aiLookupBtn">Cerca</button>
+          </div>
+          <div class="patient-found" id="aiPatientFound" hidden>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span id="aiPatientFoundName">--</span>
+          </div>
+          <div class="form-error" id="aiFiscal-error"></div>
+          <button type="button" class="btn btn-primary btn-sm" id="aiRegisterPatientBtn" hidden style="margin-top:8px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+            Registra Paziente
+          </button>
+        </div>
+
+        <!-- PDF MOC Upload -->
+        <div class="form-group" style="margin-bottom:1rem">
+          <label><strong>Carica PDF MOC-DXA</strong> <span style="color:var(--text-secondary);font-weight:400;font-size:0.85rem">(formato ECONET — estrae dati automaticamente)</span></label>
+          <div class="drop-zone" id="aiMocDropZone" style="padding:1.2rem;min-height:auto">
+            <div class="drop-zone-content" id="aiMocDropContent">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:0.3rem"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              <p style="margin:0;font-size:0.9rem">Trascina il PDF MOC qui o <button type="button" class="drop-zone-browse" id="aiMocBrowseBtn">sfoglia</button></p>
+              <span class="drop-zone-hint">PDF dal densitometro ECONET — i campi verranno compilati automaticamente</span>
+            </div>
+            <div class="drop-zone-file" id="aiMocFileInfo" hidden>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/></svg>
+              <div class="drop-zone-file-info">
+                <span class="drop-zone-file-name" id="aiMocFileName">--</span>
+                <span class="drop-zone-file-size" id="aiMocFileSize">--</span>
+              </div>
+              <button type="button" class="drop-zone-remove" id="aiMocRemoveFile" aria-label="Rimuovi file">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+            <input type="file" id="aiMocFileInput" accept=".pdf,application/pdf" hidden>
+          </div>
+          <!-- Cross-verification alert -->
+          <div id="aiMocVerifyAlert" hidden style="margin-top:0.5rem;padding:0.6rem 0.85rem;border-radius:6px;font-size:0.85rem;display:flex;align-items:flex-start;gap:0.5rem">
+            <svg id="aiMocVerifyIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span id="aiMocVerifyText"></span>
+          </div>
+          <div class="form-error" id="aiMocError"></div>
+        </div>
+
+        <!-- Patient data -->
+        <fieldset style="border:1px solid var(--border-color);border-radius:8px;padding:1rem;margin-bottom:1rem">
+          <legend style="font-weight:600;padding:0 0.5rem;font-size:0.9rem">Dati Paziente</legend>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
+            <div class="form-group">
+              <label for="aiPatNome">Nome</label>
+              <input type="text" id="aiPatNome" class="form-input" placeholder="Nome">
+            </div>
+            <div class="form-group">
+              <label for="aiPatCognome">Cognome</label>
+              <input type="text" id="aiPatCognome" class="form-input" placeholder="Cognome">
+            </div>
+            <div class="form-group">
+              <label for="aiPatDob">Data di nascita</label>
+              <input type="date" id="aiPatDob" class="form-input">
+            </div>
+            <div class="form-group">
+              <label for="aiPatSesso">Sesso</label>
+              <select id="aiPatSesso" class="form-input" style="padding:0.6rem 0.85rem">
+                <option value="F">Femmina</option>
+                <option value="M">Maschio</option>
+                <option value="ALTRO">Altro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="aiPatAltezza">Altezza (cm)</label>
+              <input type="number" id="aiPatAltezza" class="form-input" placeholder="162">
+            </div>
+            <div class="form-group">
+              <label for="aiPatPeso">Peso (kg)</label>
+              <input type="number" id="aiPatPeso" class="form-input" placeholder="58">
+            </div>
+            <div class="form-group" style="grid-column:span 2">
+              <label for="aiPatMenopausa">Stato menopausale</label>
+              <select id="aiPatMenopausa" class="form-input" style="padding:0.6rem 0.85rem">
+                <option value="SCONOSCIUTO">Sconosciuto</option>
+                <option value="PREMENOPAUSA">Premenopausa</option>
+                <option value="PERIMENOPAUSA">Perimenopausa</option>
+                <option value="POSTMENOPAUSA">Postmenopausa</option>
+                <option value="NON_APPLICABILE">Non applicabile</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Anamnesi -->
+        <fieldset style="border:1px solid var(--border-color);border-radius:8px;padding:1rem;margin-bottom:1rem">
+          <legend style="font-weight:600;padding:0 0.5rem;font-size:0.9rem">Anamnesi</legend>
+          <div class="form-group" style="margin-bottom:0.75rem">
+            <label><input type="checkbox" id="aiFratture"> Fratture da fragilità pregresse</label>
+          </div>
+          <div class="form-group" style="margin-bottom:0.75rem">
+            <label for="aiPatologie">Patologie note (una per riga)</label>
+            <textarea id="aiPatologie" class="form-input" rows="2" style="padding-left:0.85rem" placeholder="Es: Tiroidite di Hashimoto&#10;Artrite reumatoide"></textarea>
+          </div>
+          <div class="form-group" style="margin-bottom:0.75rem">
+            <label for="aiTerapie">Terapie in corso (una per riga)</label>
+            <textarea id="aiTerapie" class="form-input" rows="2" style="padding-left:0.85rem" placeholder="Es: Colecalciferolo 1000 UI/die&#10;Levotiroxina 50 mcg/die"></textarea>
+          </div>
+          <div class="form-group" style="margin-bottom:0.75rem">
+            <label for="aiFattoriRischio">Fattori di rischio (una per riga)</label>
+            <textarea id="aiFattoriRischio" class="form-input" rows="2" style="padding-left:0.85rem" placeholder="Es: Familiarità per frattura di femore&#10;Fumo"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="aiNoteAnamnesi">Note libere anamnesi</label>
+            <textarea id="aiNoteAnamnesi" class="form-input" rows="2" style="padding-left:0.85rem" placeholder="Altre informazioni cliniche rilevanti..."></textarea>
+          </div>
+        </fieldset>
+
+        <!-- Exam data -->
+        <fieldset style="border:1px solid var(--border-color);border-radius:8px;padding:1rem;margin-bottom:1rem">
+          <legend style="font-weight:600;padding:0 0.5rem;font-size:0.9rem">Dati Esame</legend>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
+            <div class="form-group">
+              <label for="aiDataEsame">Data esame</label>
+              <input type="date" id="aiDataEsame" class="form-input">
+            </div>
+            <div class="form-group">
+              <label for="aiMedico">Medico esecutore</label>
+              <input type="text" id="aiMedico" class="form-input" placeholder="Dott./Dott.ssa...">
+            </div>
+          </div>
+          <div class="form-group" style="margin-top:0.75rem">
+            <label for="aiIndicazione">Indicazione clinica / motivo esame</label>
+            <textarea id="aiIndicazione" class="form-input" rows="2" style="padding-left:0.85rem" placeholder="Motivo dell'esame..."></textarea>
+          </div>
+          <div class="form-group" style="margin-top:0.75rem">
+            <label for="aiTecnica">Tecnica utilizzata</label>
+            <input type="text" id="aiTecnica" class="form-input" placeholder="Es: DXA Hologic Horizon A / Colposcopio Leisegang...">
+          </div>
+          <div class="form-group" style="margin-top:0.75rem">
+            <label for="aiValori">Valori strutturati (JSON o testo libero) *</label>
+            <textarea id="aiValori" class="form-input" rows="8" style="padding-left:0.85rem;font-family:monospace;font-size:0.85rem" placeholder='Inserire i valori dell&#39;esame. Esempio MOC-DXA:
+{
+  "L1_bmd": 0.782, "L1_tscore": -2.1,
+  "L2_bmd": 0.801, "L2_tscore": -1.9,
+  "L3_bmd": 0.755, "L3_tscore": -2.4,
+  "L4_bmd": 0.770, "L4_tscore": -2.2,
+  "collo_femorale_bmd": 0.620, "collo_femorale_tscore": -2.6,
+  "femore_totale_bmd": 0.735, "femore_totale_tscore": -2.0
+}
+
+Oppure testo libero con i risultati dell&#39;esame.'></textarea>
+          </div>
+          <div class="form-group" style="margin-top:0.75rem">
+            <label for="aiNoteTecniche">Note tecniche / Artefatti</label>
+            <textarea id="aiNoteTecniche" class="form-input" rows="2" style="padding-left:0.85rem" placeholder="Eventuali artefatti, limiti tecnici, note operative..."></textarea>
+          </div>
+        </fieldset>
+
+        <!-- Historical reports (optional) -->
+        <fieldset style="border:1px solid var(--border-color);border-radius:8px;padding:1rem;margin-bottom:1rem">
+          <legend style="font-weight:600;padding:0 0.5rem;font-size:0.9rem">Storico Referti Precedenti (opzionale)</legend>
+          <div class="form-group">
+            <label for="aiStorico">Inserire dati di esami precedenti per confronto</label>
+            <textarea id="aiStorico" class="form-input" rows="4" style="padding-left:0.85rem;font-family:monospace;font-size:0.85rem" placeholder='Esempio:
+Data: 15/09/2024 - MOC-DXA
+L1-L4 BMD: 0.790, T-score: -2.0
+Collo femorale BMD: 0.645, T-score: -2.3
+Femore totale BMD: 0.750, T-score: -1.8'></textarea>
+          </div>
+        </fieldset>
+
+        <!-- Workflow -->
+        <fieldset style="border:1px solid var(--border-color);border-radius:8px;padding:1rem;margin-bottom:1.5rem">
+          <legend style="font-weight:600;padding:0 0.5rem;font-size:0.9rem">Workflow</legend>
+          <div class="form-group">
+            <label for="aiValidatore">Medico validatore atteso</label>
+            <input type="text" id="aiValidatore" class="form-input" placeholder="Dott./Dott.ssa che firmerà il referto">
+          </div>
+        </fieldset>
+
+        <div style="display:flex;gap:1rem;justify-content:flex-end">
+          <button class="btn btn-outline" id="aiClearBtn" type="button">Pulisci Campi</button>
+          <button class="btn btn-primary" id="aiGenerateBtn" type="button" style="min-width:200px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:0.4rem"><path d="M12 2a4 4 0 0 1 4 4v1h1a3 3 0 0 1 3 3v1a3 3 0 0 1-3 3h-1v4a4 4 0 0 1-8 0v-4H7a3 3 0 0 1-3-3v-1a3 3 0 0 1 3-3h1V6a4 4 0 0 1 4-4z"/></svg>
+            Genera Bozza Referto
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: Loading -->
+      <div id="aiLoading" class="card" style="margin-bottom:1.5rem;text-align:center;padding:3rem" hidden>
+        <div class="spinner" style="margin:0 auto 1rem"></div>
+        <p style="font-size:1.1rem;font-weight:600;margin-bottom:0.5rem">Generazione referto in corso...</p>
+        <p style="color:var(--text-secondary);font-size:0.9rem">Claude sta analizzando i dati clinici. Può richiedere 15-30 secondi.</p>
+        <p id="aiTimer" style="color:var(--text-secondary);font-size:0.85rem;margin-top:0.5rem">0s</p>
+      </div>
+
+      <!-- Step 3: Result -->
+      <div id="aiResult" hidden>
+        <!-- Alert badges -->
+        <div id="aiAlerts" style="margin-bottom:1rem"></div>
+
+        <!-- Report text (editable) -->
+        <div class="card" style="margin-bottom:1.5rem">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem">
+            <h3 class="card-title" style="margin:0">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:0.4rem"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Bozza Referto
+            </h3>
+            <div style="display:flex;align-items:center;gap:0.75rem">
+              <button class="btn btn-outline" id="aiEditToggleBtn" type="button" style="font-size:0.8rem;padding:0.4rem 0.8rem">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:0.3rem"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                Modifica
+              </button>
+              <span class="badge badge-pending" style="font-size:0.8rem" id="aiDraftBadge">DRAFT — DA VALIDARE</span>
+            </div>
+          </div>
+          <p style="font-size:0.8rem;color:var(--text-secondary);margin:0 0 0.75rem;display:none" id="aiEditHint">
+            Modifica liberamente il testo del referto. Le modifiche saranno incluse nel PDF e nella validazione.
+          </p>
+          <!-- Read-only formatted view -->
+          <div id="aiReportText" style="white-space:pre-wrap;font-family:'Segoe UI',system-ui,sans-serif;font-size:0.92rem;line-height:1.7;padding:1rem;background:var(--bg-secondary);border-radius:8px;border:1px solid var(--border-color);max-height:600px;overflow-y:auto"></div>
+          <!-- Editable textarea (hidden by default) -->
+          <textarea id="aiReportEdit" style="display:none;width:100%;min-height:500px;font-family:'Segoe UI',system-ui,sans-serif;font-size:0.9rem;line-height:1.7;padding:1rem;background:#fff;border-radius:8px;border:2px solid #00704A;resize:vertical;box-sizing:border-box" spellcheck="true"></textarea>
+        </div>
+
+        <!-- Criticità -->
+        <div class="card" style="margin-bottom:1.5rem" id="aiCriticitaCard">
+          <h3 class="card-title" style="margin-bottom:1rem">Criticità Rilevate</h3>
+          <div id="aiCriticita"></div>
+        </div>
+
+        <!-- Metadata -->
+        <div class="card" style="margin-bottom:1.5rem">
+          <h3 class="card-title" style="margin-bottom:1rem">Metadati Generazione</h3>
+          <div id="aiMetadata" style="font-size:0.85rem;color:var(--text-secondary)"></div>
+        </div>
+
+        <!-- Actions -->
+        <div style="display:flex;gap:1rem;justify-content:flex-end;flex-wrap:wrap;margin-bottom:2rem">
+          <button class="btn btn-outline" id="aiNewBtn" type="button">Nuova Generazione</button>
+          <button class="btn btn-outline" id="aiCopyBtn" type="button">Copia Referto</button>
+          <button class="btn btn-outline" id="aiJsonBtn" type="button">Vedi JSON Strutturato</button>
+          <button class="btn" id="aiPrintPdfBtn" type="button" style="background:#2563eb;color:#fff;font-weight:600;padding:0.7rem 1.5rem">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:0.4rem"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Stampa PDF
+          </button>
+          <button class="btn" id="aiFinalizeBtn" type="button" style="background:#00704A;color:#fff;font-weight:600;padding:0.7rem 1.5rem">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:0.4rem"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Valida e Rilascia al Paziente
+          </button>
+        </div>
+
+        <!-- Finalize progress -->
+        <div id="aiFinalizeProgress" class="card" style="margin-bottom:1.5rem" hidden>
+          <h3 class="card-title" style="margin-bottom:1rem">Finalizzazione in corso...</h3>
+          <div id="aiFinalizeSteps" style="font-size:0.9rem;line-height:2"></div>
+          <div style="margin-top:1rem">
+            <div style="background:var(--border-color);border-radius:4px;height:6px;overflow:hidden">
+              <div id="aiFinalizeBar" style="background:#00704A;height:100%;width:0%;transition:width 0.5s ease"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- JSON viewer (hidden by default) -->
+        <div id="aiJsonViewer" class="card" style="margin-bottom:1.5rem" hidden>
+          <h3 class="card-title" style="margin-bottom:1rem">JSON Strutturato</h3>
+          <pre id="aiJsonContent" style="white-space:pre-wrap;font-size:0.8rem;background:var(--bg-secondary);padding:1rem;border-radius:8px;border:1px solid var(--border-color);max-height:500px;overflow-y:auto"></pre>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- MODAL (shared) -->
@@ -845,6 +1156,10 @@
   <!-- TOAST container -->
   <div class="toast-container" id="toastContainer" aria-live="polite"></div>
 
-  <script src="/js/dashboard.13250b8e.js"></script>
+  <script src="/js/pdf.min.js"></script>
+  <script>if(window.pdfjsLib)window.pdfjsLib.GlobalWorkerOptions.workerSrc='/js/pdf.worker.min.js';</script>
+  <script src="/js/jspdf.umd.min.js"></script>
+  <script src="/js/pdf-lib.min.js"></script>
+  <script src="/js/dashboard.284d2328.js"></script>
 </body>
 </html>

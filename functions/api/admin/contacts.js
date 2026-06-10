@@ -577,19 +577,152 @@ function createCrudHandlers(table, config = {}) {
  * Bio-Clinic Admin API — Contacts / Leads
  * GET/PATCH /api/admin/contacts
  * ==========================================
- * Contact lead management: list, filter, update status, assign.
+ * Contact lead management from D1 database.
+ * List, filter, search, update status, assign.
  *
- * @version 1.0.0
- * @date 2026-02-28
+ * @version 2.0.0
+ * @date 2026-03-13
  */
 
-const handlers = createCrudHandlers('contacts', {
-  selectFields: 'id,lead_id,name,phone,email,service,message,source_page,utm_source,utm_medium,utm_campaign,status,assigned_to,notes,follow_up_date,created_at,updated_at',
-  searchFields: ['name', 'phone', 'email', 'service', 'message'],
-  defaultSort: 'created_at',
-  defaultOrder: 'desc',
-  requiredFields: [],  // Contacts are created by the contact form, not admin
-  allowDelete: false,  // Never delete leads
-});
+// --- D1-based contacts handlers ---
 
-export const { onRequestGet, onRequestPatch, onRequestOptions } = handlers;
+export async function onRequestGet(context) {
+  return withAdminAuth(context, async (ctx, user) => {
+    const { env, request } = ctx;
+    const d1 = env.BOOKING_DB;
+
+    if (!d1) {
+      return errorResponse('Database not available', 503, request);
+    }
+
+    try {
+      const url = new URL(request.url);
+      const id = url.searchParams.get('id');
+
+      // Single record by ID
+      if (id) {
+        const record = await d1.prepare(
+          'SELECT * FROM contacts WHERE id = ?'
+        ).bind(id).first();
+
+        if (!record) {
+          return errorResponse('Contact not found', 404, request);
+        }
+        return jsonResponse({ data: record }, 200, request);
+      }
+
+      // List with pagination, search, filters
+      const page = Math.max(1, parseInt(url.searchParams.get('page') || '1'));
+      const limit = Math.min(100, Math.max(1, parseInt(url.searchParams.get('limit') || '20')));
+      const offset = (page - 1) * limit;
+      const search = url.searchParams.get('search') || '';
+      const status = url.searchParams.get('status') || '';
+      const sort = url.searchParams.get('sort') || 'created_at';
+      const order = url.searchParams.get('order') || 'desc';
+
+      let whereClause = '1=1';
+      const bindings = [];
+
+      // Status filter
+      if (status && ['new', 'contacted', 'scheduled', 'completed', 'lost', 'spam'].includes(status)) {
+        whereClause += ' AND status = ?';
+        bindings.push(status);
+      }
+
+      // Search by name, phone, email, service, message
+      if (search) {
+        whereClause += ' AND (name LIKE ? OR phone LIKE ? OR email LIKE ? OR service LIKE ? OR message LIKE ?)';
+        const pattern = `%${search}%`;
+        bindings.push(pattern, pattern, pattern, pattern, pattern);
+      }
+
+      // Count
+      const countResult = await d1.prepare(
+        `SELECT COUNT(*) as total FROM contacts WHERE ${whereClause}`
+      ).bind(...bindings).first();
+      const total = countResult?.total || 0;
+
+      // Validate sort field
+      const allowedSorts = ['created_at', 'name', 'status', 'phone', 'email', 'service'];
+      const sortField = allowedSorts.includes(sort) ? sort : 'created_at';
+      const sortDir = order === 'asc' ? 'ASC' : 'DESC';
+
+      // Data query
+      const dataResult = await d1.prepare(
+        `SELECT id, lead_id, name, phone, email, service, specialty, message, source_page,
+                utm_source, utm_medium, utm_campaign, status, assigned_to, notes,
+                follow_up_date, ip_country, ip_city, created_at, updated_at
+         FROM contacts WHERE ${whereClause}
+         ORDER BY ${sortField} ${sortDir}
+         LIMIT ? OFFSET ?`
+      ).bind(...bindings, limit, offset).all();
+
+      return jsonResponse({
+        data: dataResult.results || [],
+        pagination: { page, limit, total, total_pages: Math.ceil(total / limit) },
+      }, 200, request);
+    } catch (err) {
+      console.error('[Contacts GET Error]', err);
+      return errorResponse('Failed to query contacts: ' + err.message, 500, request);
+    }
+  });
+}
+
+export async function onRequestPatch(context) {
+  return withAdminAuth(context, async (ctx, user) => {
+    const { env, request } = ctx;
+    const d1 = env.BOOKING_DB;
+
+    if (!d1) {
+      return errorResponse('Database not available', 503, request);
+    }
+
+    try {
+      const body = await request.json();
+      const id = body.id || new URL(request.url).searchParams.get('id');
+
+      if (!id) {
+        return errorResponse('Missing id for update', 400, request);
+      }
+
+      // Build SET clause dynamically
+      const allowedFields = ['status', 'assigned_to', 'notes', 'follow_up_date'];
+      const updates = [];
+      const values = [];
+
+      for (const field of allowedFields) {
+        if (body[field] !== undefined) {
+          updates.push(`${field} = ?`);
+          values.push(body[field]);
+        }
+      }
+
+      if (updates.length === 0) {
+        return errorResponse('No valid fields to update', 400, request);
+      }
+
+      updates.push('updated_at = ?');
+      values.push(new Date().toISOString());
+      values.push(id);
+
+      await d1.prepare(
+        `UPDATE contacts SET ${updates.join(', ')} WHERE id = ?`
+      ).bind(...values).run();
+
+      // Fetch updated record
+      const updated = await d1.prepare('SELECT * FROM contacts WHERE id = ?').bind(id).first();
+
+      return jsonResponse({
+        data: updated,
+        message: 'Contact updated successfully',
+      }, 200, request);
+    } catch (err) {
+      console.error('[Contacts PATCH Error]', err);
+      return errorResponse('Failed to update contact: ' + err.message, 500, request);
+    }
+  });
+}
+
+export async function onRequestOptions(context) {
+  return new Response(null, { status: 204, headers: corsHeaders(context.request) });
+}
