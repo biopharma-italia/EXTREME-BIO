@@ -112,12 +112,24 @@ export const onRequestPost: PagesFunction = async (context) => {
     // Get worker to determine company
     const { data: worker } = await supabaseAdmin
       .from('mdl_workers')
-      .select('id, company_id')
+      .select('id, company_id, fiscal_code, date_of_birth')
       .eq('id', body.worker_id)
       .single();
 
     if (!worker) {
       return Response.json({ success: false, error: 'Lavoratore non trovato' }, { status: 404 });
+    }
+
+    // Profile completeness check: CF and DOB required before scheduling visits
+    if (!worker.fiscal_code || !worker.date_of_birth) {
+      const missing = [];
+      if (!worker.fiscal_code) missing.push('Codice Fiscale');
+      if (!worker.date_of_birth) missing.push('Data di Nascita');
+      return Response.json({
+        success: false,
+        error: 'Profilo lavoratore incompleto. Compilare: ' + missing.join(', ') + ' prima di programmare visite.',
+        code: 'PROFILE_INCOMPLETE',
+      }, { status: 422 });
     }
 
     // Get current protocol for worker's job role

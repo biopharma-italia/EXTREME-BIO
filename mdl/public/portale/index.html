@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portale Lavoratore | Bio-Clinic MDL</title>
+  <meta name="description" content="Portale Lavoratore - Sorveglianza Sanitaria D.Lgs. 81/2008">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/css/mdl.css?v=20260611c">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .portale-hero{background:linear-gradient(135deg,var(--primary),#0066b3);color:#fff;padding:2rem;border-radius:12px;margin-bottom:1.5rem}
+    .portale-hero h1{font-size:1.5rem;margin:0 0 .3rem}
+    .portale-hero p{margin:0;opacity:.85;font-size:.9rem}
+    .portale-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.25rem}
+    .portale-card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+    .portale-card h3{font-size:1rem;margin:0 0 .75rem;display:flex;align-items:center;gap:.5rem}
+    .portale-card .card-icon{font-size:1.3rem}
+    .portale-empty{color:#9ca3af;font-size:.85rem;text-align:center;padding:1.5rem}
+    .info-row{display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid #f3f4f6;font-size:.85rem}
+    .info-row:last-child{border-bottom:none}
+    .info-label{color:#6b7280;min-width:130px}
+    .info-value{font-weight:500;text-align:right}
+    .visit-item{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid #f3f4f6;font-size:.85rem}
+    .visit-item:last-child{border-bottom:none}
+    .fitness-big{text-align:center;padding:1rem 0}
+    .fitness-big .semaforo{font-size:2rem}
+    .fitness-big .judgment{font-size:1rem;font-weight:600;margin-top:.3rem}
+    .scadenza-row{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid #f3f4f6;font-size:.85rem}
+    .scadenza-row:last-child{border-bottom:none}
+    .portale-nav{display:flex;justify-content:space-between;align-items:center;padding:.75rem 1.25rem;background:#fff;border-bottom:1px solid #e5e7eb}
+    .portale-nav img{height:28px}
+    .portale-footer{text-align:center;padding:2rem 1rem;color:#9ca3af;font-size:.78rem}
+  </style>
+</head>
+<body style="background:#f9fafb">
+
+  <!-- Login -->
+  <div id="loginPage" class="login-page">
+    <div class="login-card">
+      <div class="login-logo">
+        <img src="/images/logo-bio-clinic.png" alt="Bio-Clinic" width="160">
+        <h2>Portale Lavoratore</h2>
+        <p class="login-subtitle">Sorveglianza Sanitaria — D.Lgs. 81/2008</p>
+      </div>
+      <form id="loginForm" class="login-form">
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" class="form-input" placeholder="email@azienda.it" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" class="form-input" placeholder="Password" required autocomplete="current-password">
+        </div>
+        <div id="loginError" class="login-error"></div>
+        <button type="submit" id="loginBtn" class="btn btn-primary btn-block">Accedi</button>
+      </form>
+      <div style="margin-top:1rem;text-align:center;font-size:.82rem">
+        <a href="/portale-lavoratore/" style="color:var(--primary)">Portale Lavoratore avanzato &rarr;</a>
+        <span style="margin:0 .5rem;color:var(--gray-300)">|</span>
+        <a href="/dashboard/" style="color:var(--primary)">Accesso operatori &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- App -->
+  <div id="appShell" class="d-none" style="min-height:100vh;display:flex;flex-direction:column">
+    <!-- Nav -->
+    <nav class="portale-nav">
+      <img src="/images/logo-bio-clinic.png" alt="Bio-Clinic">
+      <div style="display:flex;align-items:center;gap:1rem">
+        <span id="userNameDisplay" style="font-size:.85rem;font-weight:500"></span>
+        <button class="btn btn-outline btn-sm" id="logoutBtn">Esci</button>
+      </div>
+    </nav>
+
+    <!-- Content -->
+    <main style="flex:1;max-width:960px;width:100%;margin:0 auto;padding:1.5rem 1rem">
+      <div id="portaleContent">
+        <div style="text-align:center;padding:3rem;color:#9ca3af">Caricamento dati...</div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="portale-footer">
+      Bio-Clinic S.r.l. — Portale Lavoratore — Medicina del Lavoro D.Lgs. 81/2008
+    </footer>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <script>
+  (function () {
+    'use strict';
+    var API = '/api';
+    var state = { session: null, user: null };
+
+    function $(id) { return document.getElementById(id); }
+    function esc(s) { var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+    function show(el) { if (typeof el === 'string') el = $(el); if (el) el.classList.remove('d-none'); }
+    function hide(el) { if (typeof el === 'string') el = $(el); if (el) el.classList.add('d-none'); }
+
+    function toast(msg, type) {
+      var c = $('toastContainer'); if (!c) return;
+      var t = document.createElement('div');
+      t.className = 'toast toast-' + (type || 'info');
+      t.textContent = msg;
+      c.appendChild(t);
+      setTimeout(function () { if (t.parentNode) t.remove(); }, 4000);
+    }
+
+    function api(method, path, body) {
+      var opts = { method: method, headers: {} };
+      if (state.session) opts.headers['Authorization'] = 'Bearer ' + state.session.access_token;
+      if (body) { opts.headers['Content-Type'] = 'application/json'; opts.body = JSON.stringify(body); }
+      return fetch(API + path, opts).then(function (r) {
+        if (r.status === 401) { clearSession(); showLogin(); throw new Error('Sessione scaduta'); }
+        return r.json().then(function (data) {
+          if (!r.ok) throw new Error(data.error || 'Errore');
+          return data;
+        });
+      });
+    }
+
+    function fmtDate(d) {
+      if (!d) return '—';
+      return new Date(d).toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    }
+
+    function daysUntil(dateStr) {
+      if (!dateStr) return null;
+      var now = new Date(); now.setHours(0,0,0,0);
+      var target = new Date(dateStr); target.setHours(0,0,0,0);
+      return Math.ceil((target - now) / 86400000);
+    }
+
+    // Auth
+    function loadSession() {
+      try {
+        var s = localStorage.getItem('mdl_session');
+        var u = localStorage.getItem('mdl_user');
+        if (s && u) { state.session = JSON.parse(s); state.user = JSON.parse(u); return true; }
+      } catch (e) {}
+      return false;
+    }
+    function saveSession(ses, usr) {
+      state.session = ses; state.user = usr;
+      localStorage.setItem('mdl_session', JSON.stringify(ses));
+      localStorage.setItem('mdl_user', JSON.stringify(usr));
+    }
+    function clearSession() {
+      state.session = null; state.user = null;
+      localStorage.removeItem('mdl_session'); localStorage.removeItem('mdl_user');
+    }
+    function showLogin() { show('loginPage'); hide('appShell'); }
+    function showApp() { hide('loginPage'); show('appShell'); loadPortaleData(); }
+
+    // Auto-refresh token
+    var refreshTimer = null;
+    function startAutoRefresh() {
+      if (refreshTimer) clearInterval(refreshTimer);
+      refreshTimer = setInterval(function () {
+        if (!state.session || !state.session.refresh_token) return;
+        fetch(API + '/auth/refresh', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ refresh_token: state.session.refresh_token })
+        }).then(function (r) { return r.json(); }).then(function (r) {
+          if (r.success && r.session) {
+            state.session.access_token = r.session.access_token;
+            state.session.refresh_token = r.session.refresh_token;
+            localStorage.setItem('mdl_session', JSON.stringify(state.session));
+          }
+        }).catch(function () {});
+      }, 50 * 60 * 1000);
+    }
+
+    var FITNESS_LABELS = {
+      idoneo: 'Idoneo', idoneo_con_prescrizioni: 'Idoneo con prescrizioni',
+      idoneo_con_limitazioni: 'Idoneo con limitazioni', temporaneamente_non_idoneo: 'Temp. non idoneo',
+      non_idoneo: 'Non idoneo'
+    };
+    var FITNESS_COLORS = {
+      idoneo: '#16a34a', idoneo_con_prescrizioni: '#ca8a04', idoneo_con_limitazioni: '#ea580c',
+      temporaneamente_non_idoneo: '#dc2626', non_idoneo: '#dc2626'
+    };
+    var VISIT_LABELS = {
+      preventiva: 'Preventiva', periodica: 'Periodica', straordinaria: 'Straordinaria',
+      cambio_mansione: 'Cambio Mansione', rientro_malattia: 'Rientro Malattia',
+      cessazione: 'Cessazione', pre_assuntiva: 'Pre-Assuntiva'
+    };
+    var STATUS_LABELS = {
+      programmata: 'Programmata', completata: 'Completata', non_presentato: 'Non presentato', annullata: 'Annullata'
+    };
+
+    function loadPortaleData() {
+      $('userNameDisplay').textContent = (state.user.first_name || '') + ' ' + (state.user.last_name || '');
+
+      // Lavoratore role sees only their own data via /workers (filtered by backend)
+      // We need to find the worker record that matches this user
+      api('GET', '/workers?limit=1').then(function (r) {
+        if (!r.data || r.data.length === 0) {
+          $('portaleContent').innerHTML = '<div class="portale-hero"><h1>Benvenuto/a, ' + esc(state.user.first_name) + '</h1>' +
+            '<p>Il tuo profilo lavoratore non e ancora stato associato. Contatta la segreteria.</p></div>';
+          return;
+        }
+        var worker = r.data[0];
+        // Load full worker detail
+        api('GET', '/workers/' + worker.id).then(function (detail) {
+          renderPortale(detail.data);
+        }).catch(function (e) {
+          $('portaleContent').innerHTML = '<div style="color:#dc2626;padding:2rem;text-align:center">Errore: ' + esc(e.message) + '</div>';
+        });
+      }).catch(function (e) {
+        $('portaleContent').innerHTML = '<div style="color:#dc2626;padding:2rem;text-align:center">Errore: ' + esc(e.message) + '</div>';
+      });
+    }
+
+    function renderPortale(data) {
+      var w = data.worker;
+      var currentJob = (w.mdl_worker_jobs || []).find(function (j) { return j.is_current; });
+      var roleName = currentJob && currentJob.mdl_job_roles ? currentJob.mdl_job_roles.role_name : '—';
+      var companyName = w.mdl_companies ? w.mdl_companies.business_name : '—';
+      var fitness = data.currentFitness;
+      var visits = data.visits || [];
+
+      // Hero
+      var html = '<div class="portale-hero">' +
+        '<h1>Benvenuto/a, ' + esc(w.first_name) + ' ' + esc(w.last_name) + '</h1>' +
+        '<p>' + esc(companyName) + ' &mdash; Mansione: ' + esc(roleName) + '</p>' +
+      '</div>';
+
+      html += '<div class="portale-grid">';
+
+      // ── Idoneita Card ──
+      html += '<div class="portale-card">' +
+        '<h3><span class="card-icon">&#9889;</span> Idoneita Attuale</h3>';
+      if (fitness) {
+        var color = FITNESS_COLORS[fitness.judgment_type] || '#6b7280';
+        html += '<div class="fitness-big">' +
+          '<div class="semaforo" style="color:' + color + '">&#9679;</div>' +
+          '<div class="judgment" style="color:' + color + '">' + esc(FITNESS_LABELS[fitness.judgment_type] || fitness.judgment_type) + '</div>' +
+          '</div>' +
+          '<div class="info-row"><span class="info-label">Data emissione</span><span class="info-value">' + fmtDate(fitness.issued_date) + '</span></div>' +
+          (fitness.next_visit_date ? '<div class="info-row"><span class="info-label">Prossima visita</span><span class="info-value">' + fmtDate(fitness.next_visit_date) + '</span></div>' : '') +
+          (fitness.prescriptions ? '<div class="info-row"><span class="info-label">Prescrizioni</span><span class="info-value" style="text-align:right;max-width:200px">' + esc(fitness.prescriptions) + '</span></div>' : '') +
+          (fitness.limitations ? '<div class="info-row"><span class="info-label">Limitazioni</span><span class="info-value" style="text-align:right;max-width:200px">' + esc(fitness.limitations) + '</span></div>' : '');
+      } else {
+        html += '<div class="portale-empty">Nessuna idoneita registrata</div>';
+      }
+      html += '</div>';
+
+      // ── Visite Card ──
+      html += '<div class="portale-card">' +
+        '<h3><span class="card-icon">&#128197;</span> Visite Mediche</h3>';
+      if (visits.length > 0) {
+        var programmate = visits.filter(function (v) { return v.status === 'programmata'; });
+        if (programmate.length > 0) {
+          html += '<div style="margin-bottom:.75rem;padding:.5rem .75rem;background:#eff6ff;border-radius:6px;font-size:.85rem">' +
+            '<strong>Prossima visita:</strong> ' + fmtDate(programmate[0].scheduled_date) +
+            (programmate[0].scheduled_time ? ' ore ' + programmate[0].scheduled_time.slice(0, 5) : '') +
+            (programmate[0].location ? ' — ' + esc(programmate[0].location) : '') +
+          '</div>';
+        }
+        visits.slice(0, 8).forEach(function (v) {
+          var statusBadge = v.status === 'completata' ? 'badge-success' : v.status === 'programmata' ? 'badge-info' : 'badge-gray';
+          html += '<div class="visit-item">' +
+            '<span><span class="badge ' + statusBadge + '">' + esc(STATUS_LABELS[v.status] || v.status) + '</span> ' +
+            '<span>' + esc(VISIT_LABELS[v.visit_type] || v.visit_type) + '</span></span>' +
+            '<span>' + fmtDate(v.scheduled_date) + '</span>' +
+          '</div>';
+        });
+      } else {
+        html += '<div class="portale-empty">Nessuna visita registrata</div>';
+      }
+      html += '</div>';
+
+      // ── Dati Anagrafici Card ──
+      html += '<div class="portale-card">' +
+        '<h3><span class="card-icon">&#128100;</span> I Miei Dati</h3>' +
+        '<div class="info-row"><span class="info-label">Cognome Nome</span><span class="info-value">' + esc(w.last_name + ' ' + w.first_name) + '</span></div>' +
+        '<div class="info-row"><span class="info-label">Codice Fiscale</span><span class="info-value"><code>' + esc(w.fiscal_code || '—') + '</code></span></div>' +
+        '<div class="info-row"><span class="info-label">Data Nascita</span><span class="info-value">' + fmtDate(w.date_of_birth) + '</span></div>' +
+        '<div class="info-row"><span class="info-label">Azienda</span><span class="info-value">' + esc(companyName) + '</span></div>' +
+        '<div class="info-row"><span class="info-label">Mansione</span><span class="info-value">' + esc(roleName) + '</span></div>' +
+        (w.department ? '<div class="info-row"><span class="info-label">Reparto</span><span class="info-value">' + esc(w.department) + '</span></div>' : '') +
+        '<div class="info-row"><span class="info-label">Assunzione</span><span class="info-value">' + fmtDate(w.hire_date) + '</span></div>' +
+        '<div class="info-row"><span class="info-label">Contratto</span><span class="info-value">' + esc(w.contract_type || '—') + '</span></div>' +
+        (w.email ? '<div class="info-row"><span class="info-label">Email</span><span class="info-value">' + esc(w.email) + '</span></div>' : '') +
+        (w.phone ? '<div class="info-row"><span class="info-label">Telefono</span><span class="info-value">' + esc(w.phone) + '</span></div>' : '') +
+      '</div>';
+
+      // ── Protocollo Sanitario Card ──
+      html += '<div class="portale-card">' +
+        '<h3><span class="card-icon">&#128203;</span> Protocollo Sanitario</h3>';
+      if (data.protocol) {
+        html += '<div style="font-size:.85rem;margin-bottom:.5rem"><strong>' + esc(data.protocol.protocol_name) + '</strong></div>';
+        var exams = data.protocolExams || [];
+        var completed = exams.filter(function (e) { return e.completed; }).length;
+        html += '<div style="font-size:.82rem;color:#6b7280;margin-bottom:.75rem">Esami completati: ' + completed + '/' + exams.length + '</div>';
+        if (exams.length > 0) {
+          html += '<div style="display:flex;flex-wrap:wrap;gap:.3rem">';
+          exams.forEach(function (e) {
+            var cls = e.completed ? 'badge-success' : 'badge-gray';
+            html += '<span class="badge ' + cls + '" style="font-size:.72rem" title="' + esc(e.exam_name) + '">' + esc(e.exam_code) + '</span>';
+          });
+          html += '</div>';
+        }
+      } else {
+        html += '<div class="portale-empty">Nessun protocollo assegnato</div>';
+      }
+      html += '</div>';
+
+      // ── Storico Idoneita Card ──
+      var judgments = data.fitnessJudgments || [];
+      html += '<div class="portale-card">' +
+        '<h3><span class="card-icon">&#128221;</span> Storico Idoneita</h3>';
+      if (judgments.length > 0) {
+        judgments.slice(0, 6).forEach(function (f) {
+          var color = FITNESS_COLORS[f.judgment_type] || '#6b7280';
+          html += '<div class="scadenza-row">' +
+            '<span style="color:' + color + ';font-weight:500">' + esc(FITNESS_LABELS[f.judgment_type] || f.judgment_type) + '</span>' +
+            '<span>' + fmtDate(f.issued_date) + '</span>' +
+          '</div>';
+        });
+      } else {
+        html += '<div class="portale-empty">Nessuna idoneita nello storico</div>';
+      }
+      html += '</div>';
+
+      // ── Scadenze Card ──
+      html += '<div class="portale-card">' +
+        '<h3><span class="card-icon">&#9200;</span> Prossime Scadenze</h3>';
+      var nextVisit = fitness && fitness.next_visit_date ? fitness.next_visit_date : null;
+      var programmate2 = visits.filter(function (v) { return v.status === 'programmata'; });
+      if (nextVisit || programmate2.length > 0) {
+        if (nextVisit) {
+          var days = daysUntil(nextVisit);
+          var urgency = days !== null && days < 0 ? 'color:#dc2626;font-weight:600' : days !== null && days <= 30 ? 'color:#ca8a04;font-weight:600' : '';
+          html += '<div class="scadenza-row"><span>Scadenza idoneita</span><span style="' + urgency + '">' + fmtDate(nextVisit) + (days !== null ? ' (' + days + 'gg)' : '') + '</span></div>';
+        }
+        programmate2.forEach(function (v) {
+          html += '<div class="scadenza-row"><span>' + esc(VISIT_LABELS[v.visit_type] || 'Visita') + '</span><span>' + fmtDate(v.scheduled_date) + '</span></div>';
+        });
+      } else {
+        html += '<div class="portale-empty">Nessuna scadenza imminente</div>';
+      }
+      html += '</div>';
+
+      html += '</div>'; // close portale-grid
+      $('portaleContent').innerHTML = html;
+    }
+
+    // ── Init ──
+    function init() {
+      var form = $('loginForm');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var email = $('loginEmail').value.trim();
+          var password = $('loginPassword').value;
+          var errEl = $('loginError');
+          errEl.classList.remove('visible'); errEl.textContent = '';
+          $('loginBtn').disabled = true; $('loginBtn').textContent = 'Accesso...';
+
+          api('POST', '/auth/login', { email: email, password: password }).then(function (r) {
+            if (r.success) {
+              saveSession(r.session, r.user);
+              showApp();
+              startAutoRefresh();
+            } else {
+              errEl.textContent = r.error || 'Errore login'; errEl.classList.add('visible');
+            }
+          }).catch(function (err) {
+            errEl.textContent = err.message; errEl.classList.add('visible');
+          }).finally(function () {
+            $('loginBtn').disabled = false; $('loginBtn').textContent = 'Accedi';
+          });
+        });
+      }
+
+      $('logoutBtn').addEventListener('click', function () {
+        clearSession(); showLogin();
+      });
+
+      if (loadSession()) { showApp(); startAutoRefresh(); }
+      else { showLogin(); }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+  </script>
+</body>
+</html>

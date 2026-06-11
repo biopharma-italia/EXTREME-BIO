@@ -7,7 +7,7 @@
   <meta name="description" content="Gestionale Medicina del Lavoro - Sorveglianza Sanitaria D.Lgs. 81/2008">
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="/css/mdl.css?v=20260611a">
+  <link rel="stylesheet" href="/css/mdl.css?v=20260611b">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -65,6 +65,9 @@
         </a>
         <a href="#protocolli" class="nav-item" data-section="protocolli-globale">
           <span class="nav-icon">&#9776;</span> Protocolli
+        </a>
+        <a href="#formazione" class="nav-item" data-section="formazione">
+          <span class="nav-icon">&#127891;</span> Formazione
         </a>
         <div class="nav-divider">SISTEMA</div>
         <a href="#utenti" class="nav-item nav-mc-only" data-section="utenti">
@@ -160,6 +163,8 @@
             <button class="tab-btn" data-tab="tab-scadenze">Scadenze</button>
             <button class="tab-btn" data-tab="tab-protocolli">Protocolli</button>
             <button class="tab-btn" data-tab="tab-documenti">Documenti</button>
+            <button class="tab-btn" data-tab="tab-sedi">Sedi</button>
+            <button class="tab-btn" data-tab="tab-sicurezza">Figure Sicurezza</button>
             <button class="tab-btn" data-tab="tab-info">Dati Azienda</button>
           </div>
 
@@ -167,6 +172,8 @@
           <div id="tab-dipendenti" class="tab-panel active">
             <div class="section-toolbar">
               <input type="text" id="searchDipendenti" class="form-input search-input" placeholder="Cerca dipendente...">
+              <button class="btn btn-outline btn-sm" id="btnImportCSV" title="Importa CSV">📥 Importa CSV</button>
+              <button class="btn btn-outline btn-sm" id="btnExportDipendenti" title="Esporta CSV">📤 Esporta</button>
               <button class="btn btn-primary" id="btnNuovoDipendente">+ Nuovo Dipendente</button>
             </div>
             <div class="table-container">
@@ -244,14 +251,43 @@
             </div>
           </div>
 
+          <!-- Tab: Sedi Operative -->
+          <div id="tab-sedi" class="tab-panel">
+            <div class="section-toolbar">
+              <span style="font-weight:600;font-size:0.9rem">Sedi Operative</span>
+              <button class="btn btn-primary btn-sm" id="btnNuovaSede">+ Nuova Sede</button>
+            </div>
+            <div id="sediContent" class="table-container" style="padding:1rem">
+              <p class="text-muted">Caricamento sedi...</p>
+            </div>
+          </div>
+
+          <!-- Tab: Figure Sicurezza -->
+          <div id="tab-sicurezza" class="tab-panel">
+            <div class="section-toolbar">
+              <span style="font-weight:600;font-size:0.9rem">Figure della Sicurezza</span>
+              <button class="btn btn-primary btn-sm" id="btnNuovaFigura">+ Nuova Figura</button>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead><tr>
+                  <th>Ruolo</th><th>Nome</th><th>Email</th><th>Telefono</th>
+                  <th>Sede</th><th>Scadenza</th><th>Azioni</th>
+                </tr></thead>
+                <tbody id="sicurezzaBody"></tbody>
+              </table>
+            </div>
+          </div>
+
           <!-- Tab: Dati Azienda -->
           <div id="tab-info" class="tab-panel">
             <div id="companyInfoGrid" class="detail-grid">
               <!-- JS populates -->
             </div>
             <div id="companySafetyContacts"></div>
-            <div style="margin-top:1.5rem;display:flex;gap:0.5rem">
+            <div style="margin-top:1.5rem;display:flex;gap:0.5rem;flex-wrap:wrap">
               <button class="btn btn-primary" id="btnEditAzienda">Modifica Dati</button>
+              <button class="btn btn-outline btn-sm" id="btnAllegato3B" title="Relazione Sanitaria Annuale">&#128203; Allegato 3B</button>
               <button class="btn btn-danger btn-sm" id="btnDisattivaAzienda">Disattiva Azienda</button>
             </div>
           </div>
@@ -264,6 +300,8 @@
             <select id="filterLavAzienda" class="form-input filter-select">
               <option value="">Tutte le aziende</option>
             </select>
+            <button class="btn btn-outline btn-sm" id="btnImportCSVGlobal" title="Importa CSV">📥 Importa CSV</button>
+            <button class="btn btn-outline btn-sm" id="btnExportLavGlobal" title="Esporta CSV">📤 Esporta</button>
             <button class="btn btn-primary" id="btnNuovoLavGlobal">+ Nuovo Lavoratore</button>
           </div>
           <div class="table-container">
@@ -347,6 +385,48 @@
           </div>
           <div id="protGlobContent">
             <div style="text-align:center;padding:2rem;color:#9ca3af">Caricamento protocolli...</div>
+          </div>
+        </section>
+
+        <!-- ═══ FORMAZIONE GLOBALE ═══ -->
+        <section id="sec-formazione" class="section d-none">
+          <div class="section-toolbar" id="formazioneToolbar">
+            <input type="text" id="searchFormazione" class="form-input search-input" placeholder="Cerca corso, lavoratore...">
+            <select id="filterFormazioneType" class="form-input filter-select">
+              <option value="">Tutti i tipi</option>
+              <option value="generale_4h">Generale 4h</option>
+              <option value="specifica_basso_4h">Specifica Basso 4h</option>
+              <option value="specifica_medio_8h">Specifica Medio 8h</option>
+              <option value="specifica_alto_12h">Specifica Alto 12h</option>
+              <option value="aggiornamento_6h">Aggiornamento 6h</option>
+              <option value="preposti_8h">Preposti 8h</option>
+              <option value="dirigenti_16h">Dirigenti 16h</option>
+              <option value="rls_32h">RLS 32h</option>
+              <option value="rls_aggiornamento">RLS Aggiornamento</option>
+              <option value="primo_soccorso_16h">Primo Soccorso 16h</option>
+              <option value="primo_soccorso_aggiornamento">Primo Soccorso Agg.</option>
+              <option value="antincendio_livello1">Antincendio L1</option>
+              <option value="antincendio_livello2">Antincendio L2</option>
+              <option value="antincendio_livello3">Antincendio L3</option>
+              <option value="carrellisti">Carrellisti</option>
+              <option value="gru">Gru</option>
+              <option value="ple">PLE</option>
+              <option value="dpi_terza_categoria">DPI III Cat.</option>
+              <option value="spazi_confinati">Spazi Confinati</option>
+              <option value="lavori_quota">Lavori Quota</option>
+              <option value="rischio_elettrico">Rischio Elettrico</option>
+              <option value="altro">Altro</option>
+            </select>
+            <select id="filterFormazioneExpiry" class="form-input filter-select">
+              <option value="">Tutte le scadenze</option>
+              <option value="expired">Scadute</option>
+              <option value="expiring30">In scadenza (30gg)</option>
+              <option value="valid">Valide</option>
+            </select>
+            <button class="btn btn-primary btn-sm" id="btnAddFormazione">+ Nuovo Corso</button>
+          </div>
+          <div id="formazioneContent">
+            <div style="text-align:center;padding:2rem;color:#9ca3af">Caricamento formazione...</div>
           </div>
         </section>
 
@@ -472,6 +552,6 @@
   <!-- Toast -->
   <div id="toastContainer" class="toast-container"></div>
 
-  <script src="/js/mdl.js?v=20260611a"></script>
+  <script src="/js/mdl.js?v=20260611c"></script>
 </body>
 </html>
