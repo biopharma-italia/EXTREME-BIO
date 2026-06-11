@@ -733,6 +733,7 @@ textarea.form-input { min-height: 80px; resize: vertical; }
 .semaforo { font-size: 1.4rem; line-height: 1; }
 .semaforo-verde { color: #16a34a; }
 .semaforo-giallo { color: #d97706; }
+.semaforo-arancione { color: #ea580c; }
 .semaforo-rosso { color: #dc2626; }
 .semaforo-grigio { color: #9ca3af; }
 .semaforo-label { font-size: 0.82rem; font-weight: 500; color: var(--gray-700); }

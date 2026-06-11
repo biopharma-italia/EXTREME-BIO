@@ -95,18 +95,24 @@ export const onRequestPost: PagesFunction = async (context) => {
   try {
     const body = await context.request.json() as any;
 
-    // Validation
-    const required = ['company_id', 'fiscal_code', 'first_name', 'last_name', 'date_of_birth', 'gender'];
+    // Validation — minimum required fields for initial insertion
+    // fiscal_code and date_of_birth are NOT required at creation (can be added later)
+    // They become mandatory before profile validation / scheduling visits
+    const required = ['company_id', 'first_name', 'last_name', 'gender'];
     for (const field of required) {
       if (!body[field]) {
         return Response.json({ success: false, error: `Campo obbligatorio mancante: ${field}` }, { status: 400 });
       }
     }
 
-    // Validate CF format (basic)
-    const cf = body.fiscal_code.trim().toUpperCase();
-    if (!/^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/.test(cf)) {
-      return Response.json({ success: false, error: 'Codice fiscale non valido' }, { status: 400 });
+    // Validate CF format if provided (basic)
+    let cf: string | null = null;
+    if (body.fiscal_code && body.fiscal_code.trim()) {
+      const cfValue = body.fiscal_code.trim().toUpperCase();
+      if (!/^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/.test(cfValue)) {
+        return Response.json({ success: false, error: 'Codice fiscale non valido' }, { status: 400 });
+      }
+      cf = cfValue;
     }
 
     // Check company exists
@@ -120,16 +126,18 @@ export const onRequestPost: PagesFunction = async (context) => {
       return Response.json({ success: false, error: 'Azienda non trovata' }, { status: 404 });
     }
 
-    // Check duplicate CF in same company
-    const { data: existing } = await supabaseAdmin
-      .from('mdl_workers')
-      .select('id')
-      .eq('company_id', body.company_id)
-      .eq('fiscal_code', cf)
-      .maybeSingle();
+    // Check duplicate CF in same company (only if CF provided)
+    if (cf) {
+      const { data: existing } = await supabaseAdmin
+        .from('mdl_workers')
+        .select('id')
+        .eq('company_id', body.company_id)
+        .eq('fiscal_code', cf)
+        .maybeSingle();
 
-    if (existing) {
-      return Response.json({ success: false, error: 'Lavoratore con questo CF gia presente in azienda' }, { status: 409 });
+      if (existing) {
+        return Response.json({ success: false, error: 'Lavoratore con questo CF gia presente in azienda' }, { status: 409 });
+      }
     }
 
     // ── FIX: Segreteria cannot set sensitive flags ───────────────────────
@@ -138,10 +146,10 @@ export const onRequestPost: PagesFunction = async (context) => {
     const insertData: Record<string, any> = {
       company_id: body.company_id,
       site_id: body.site_id || null,
-      fiscal_code: cf,
+      fiscal_code: cf || null,
       first_name: body.first_name.trim(),
       last_name: body.last_name.trim(),
-      date_of_birth: body.date_of_birth,
+      date_of_birth: body.date_of_birth || null,
       place_of_birth: body.place_of_birth?.trim() || null,
       gender: body.gender,
       address_street: body.address_street?.trim() || null,
@@ -198,7 +206,7 @@ export const onRequestPost: PagesFunction = async (context) => {
       target_id: data.id,
       company_id: body.company_id,
       ip_address: ctx.ip,
-      details: { fiscal_code: cf, name: `${data.first_name} ${data.last_name}` },
+      details: { fiscal_code: cf || null, name: `${data.first_name} ${data.last_name}` },
     });
 
     return Response.json({ success: true, data }, { status: 201 });

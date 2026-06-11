@@ -256,7 +256,8 @@
       dashboard: 'Dashboard', aziende: 'Aziende Clienti',
       lavoratori: 'Lavoratori', visite: 'Visite Mediche',
       agenda: 'Agenda', scadenzario: 'Scadenzario',
-      'protocolli-globale': 'Protocolli Sanitari', utenti: 'Gestione Utenti',
+      'protocolli-globale': 'Protocolli Sanitari', formazione: 'Formazione',
+      utenti: 'Gestione Utenti',
       impostazioni: 'Impostazioni'
     };
 
@@ -288,6 +289,7 @@
       agenda: loadAgenda,
       scadenzario: loadScadenzarioGlobale,
       'protocolli-globale': loadProtocolliGlobale,
+      formazione: loadFormazioneGlobale,
       utenti: loadUtenti,
       impostazioni: loadImpostazioni
     };
@@ -550,6 +552,8 @@
       'tab-scadenze': function () { loadScadenze(cid); },
       'tab-protocolli': function () { loadProtocolli(); },
       'tab-documenti': function () { loadDocumenti(cid); },
+      'tab-sedi': function () { loadSedi(cid); },
+      'tab-sicurezza': function () { loadSafetyContacts(cid); },
       'tab-info': function () { loadCompanyInfo(); }
     };
     if (loaders[tabId]) loaders[tabId]();
@@ -574,13 +578,21 @@
       tbody.innerHTML = r.data.map(function (w) {
         var currentJob = (w.mdl_worker_jobs || []).find(function (j) { return j.is_current; });
         var roleName = currentJob && currentJob.mdl_job_roles ? currentJob.mdl_job_roles.role_name : '—';
+        var profileIncomplete = !w.fiscal_code || !w.date_of_birth;
+        var profileBadge = profileIncomplete ? ' <span class="badge badge-warning" title="Profilo incompleto: CF o Data Nascita mancante">⚠ Incompleto</span>' : '';
+        var validBadge = w.is_validated
+          ? ' <span class="badge badge-success" title="Validato dal MC">✓ Validato</span>'
+          : ' <span class="badge badge-gray" title="In attesa di validazione MC">⏳ Da validare</span>';
+        var isSegreteria = state.user && state.user.role === 'segreteria_mdl';
+        var canDeleteThis = isSegreteria && !w.is_validated;
+        var deleteBtn = canDeleteThis ? ' <button class="btn btn-danger btn-sm" onclick="MDL.deleteWorker(\'' + w.id + '\',\'' + esc(w.last_name + ' ' + w.first_name) + '\')">Elimina</button>' : '';
         return '<tr>' +
-          '<td><strong>' + esc(w.last_name) + ' ' + esc(w.first_name) + '</strong></td>' +
-          '<td><code>' + esc(w.fiscal_code) + '</code></td>' +
+          '<td><strong>' + esc(w.last_name) + ' ' + esc(w.first_name) + '</strong>' + profileBadge + validBadge + '</td>' +
+          '<td><code>' + esc(w.fiscal_code || '—') + '</code></td>' +
           '<td>' + esc(roleName) + '</td>' +
           '<td>—</td><td>—</td><td>—</td>' +
           '<td><button class="btn btn-primary btn-sm" onclick="MDL.openWorker(\'' + w.id + '\')">Scheda</button> ' +
-          '<button class="btn btn-outline btn-sm" onclick="MDL.scheduleVisitFor(\'' + w.id + '\',\'' + esc(w.last_name + ' ' + w.first_name) + '\')">Visita</button></td>' +
+          '<button class="btn btn-outline btn-sm" onclick="MDL.scheduleVisitFor(\'' + w.id + '\',\'' + esc(w.last_name + ' ' + w.first_name) + '\')">Visita</button>' + deleteBtn + '</td>' +
         '</tr>';
       }).join('');
     }).catch(function (err) {
@@ -797,6 +809,346 @@
       cEl.innerHTML = '';
     }
   }
+
+  /* ═══════════════════════════════════════════════════════════════ */
+  /*  TAB: SEDI OPERATIVE                                           */
+  /* ═══════════════════════════════════════════════════════════════ */
+
+  function loadSedi(companyId) {
+    var container = $('sediContent');
+    if (!container) return;
+    container.innerHTML = '<p style="text-align:center;padding:1rem;color:#9ca3af">Caricamento sedi...</p>';
+
+    api('GET', '/companies/' + companyId + '/sites').then(function (r) {
+      var sites = r.data || [];
+      if (sites.length === 0) {
+        container.innerHTML = '<p style="text-align:center;padding:2rem;color:#9ca3af">Nessuna sede registrata. Aggiungi la prima sede operativa.</p>';
+        return;
+      }
+      var html = '<div class="sites-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1rem">';
+      sites.forEach(function (s) {
+        var badge = s.is_primary ? '<span class="badge badge-success">Sede Legale</span>' : '';
+        html += '<div class="card" style="padding:1rem;border:1px solid #e5e7eb;border-radius:8px">' +
+          '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem">' +
+            '<strong style="font-size:0.95rem">' + esc(s.site_name) + '</strong> ' + badge +
+          '</div>' +
+          '<div style="font-size:0.82rem;color:#6b7280;line-height:1.5">' +
+            (s.address_street ? '<div>' + esc(s.address_street) + '</div>' : '') +
+            (s.address_city ? '<div>' + esc(s.address_city) + (s.address_province ? ' (' + s.address_province + ')' : '') + (s.address_zip ? ' - ' + s.address_zip : '') + '</div>' : '') +
+            (s.employee_count ? '<div>Dipendenti: ' + s.employee_count + '</div>' : '') +
+            (s.notes ? '<div style="margin-top:0.3rem;font-style:italic">' + esc(s.notes) + '</div>' : '') +
+          '</div>' +
+          '<div style="margin-top:0.75rem;display:flex;gap:0.5rem">' +
+            '<button class="btn btn-outline btn-sm" onclick="MDL.editSite(\'' + s.id + '\')">Modifica</button>' +
+            '<button class="btn btn-danger btn-sm" onclick="MDL.deleteSite(\'' + s.id + '\')">Elimina</button>' +
+          '</div>' +
+        '</div>';
+      });
+      html += '</div>';
+      container.innerHTML = html;
+    }).catch(function (e) {
+      container.innerHTML = '<p style="color:#dc2626;padding:1rem">Errore: ' + esc(e.message) + '</p>';
+    });
+  }
+
+  function siteFormHtml(site) {
+    var s = site || {};
+    return '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">' +
+      '<div style="grid-column:1/-1"><label class="form-label">Nome Sede *</label><input id="siteName" class="form-input" value="' + esc(s.site_name || '') + '" placeholder="Es: Sede Operativa Milano"></div>' +
+      '<div style="grid-column:1/-1"><label class="form-label">Indirizzo</label><input id="siteStreet" class="form-input" value="' + esc(s.address_street || '') + '" placeholder="Via/Piazza..."></div>' +
+      '<div><label class="form-label">Citta</label><input id="siteCity" class="form-input" value="' + esc(s.address_city || '') + '"></div>' +
+      '<div><label class="form-label">Provincia</label><input id="siteProv" class="form-input" value="' + esc(s.address_province || '') + '" maxlength="2" placeholder="MI"></div>' +
+      '<div><label class="form-label">CAP</label><input id="siteZip" class="form-input" value="' + esc(s.address_zip || '') + '" maxlength="5"></div>' +
+      '<div><label class="form-label">N. Dipendenti</label><input id="siteEmployees" type="number" class="form-input" value="' + (s.employee_count || '') + '"></div>' +
+      '<div style="grid-column:1/-1"><label class="form-label"><input type="checkbox" id="sitePrimary"' + (s.is_primary ? ' checked' : '') + '> Sede Legale / Principale</label></div>' +
+      '<div style="grid-column:1/-1"><label class="form-label">Note</label><textarea id="siteNotes" class="form-input" rows="2">' + esc(s.notes || '') + '</textarea></div>' +
+    '</div>';
+  }
+
+  function readSiteForm() {
+    return {
+      site_name: ($('siteName') || {}).value || '',
+      address_street: ($('siteStreet') || {}).value || null,
+      address_city: ($('siteCity') || {}).value || null,
+      address_province: ($('siteProv') || {}).value || null,
+      address_zip: ($('siteZip') || {}).value || null,
+      employee_count: parseInt(($('siteEmployees') || {}).value) || null,
+      is_primary: ($('sitePrimary') || {}).checked || false,
+      notes: ($('siteNotes') || {}).value || null
+    };
+  }
+
+  MDL.newSite = function () {
+    if (!state.activeCompany) return;
+    openModal('Nuova Sede Operativa', siteFormHtml(),
+      '<button class="btn btn-outline" onclick="MDL.closeModal()">Annulla</button> ' +
+      '<button class="btn btn-primary" onclick="MDL.saveSite()">Salva</button>');
+  };
+
+  MDL.saveSite = function () {
+    if (!state.activeCompany) return;
+    var d = readSiteForm();
+    if (!d.site_name) { toast('Nome sede obbligatorio', 'warning'); return; }
+    api('POST', '/companies/' + state.activeCompany.id + '/sites', d).then(function () {
+      closeModal(); toast('Sede creata', 'success'); loadSedi(state.activeCompany.id);
+    }).catch(function (e) { toast(e.message, 'error'); });
+  };
+
+  MDL.editSite = function (siteId) {
+    if (!state.activeCompany) return;
+    var cid = state.activeCompany.id;
+    api('GET', '/companies/' + cid + '/sites').then(function (r) {
+      var site = (r.data || []).find(function (s) { return s.id === siteId; });
+      if (!site) { toast('Sede non trovata', 'error'); return; }
+      openModal('Modifica Sede', siteFormHtml(site),
+        '<button class="btn btn-outline" onclick="MDL.closeModal()">Annulla</button> ' +
+        '<button class="btn btn-primary" onclick="MDL.updateSite(\'' + siteId + '\')">Salva</button>');
+    });
+  };
+
+  MDL.updateSite = function (siteId) {
+    var d = readSiteForm();
+    if (!d.site_name) { toast('Nome sede obbligatorio', 'warning'); return; }
+    api('PATCH', '/sites/' + siteId, d).then(function () {
+      closeModal(); toast('Sede aggiornata', 'success');
+      if (state.activeCompany) loadSedi(state.activeCompany.id);
+    }).catch(function (e) { toast(e.message, 'error'); });
+  };
+
+  MDL.deleteSite = function (siteId) {
+    if (!confirm('Eliminare questa sede? L\'operazione non e reversibile.')) return;
+    api('DELETE', '/sites/' + siteId).then(function () {
+      toast('Sede eliminata', 'success');
+      if (state.activeCompany) loadSedi(state.activeCompany.id);
+    }).catch(function (e) { toast(e.message, 'error'); });
+  };
+
+  /* ═══════════════════════════════════════════════════════════════ */
+  /*  TAB: FIGURE DELLA SICUREZZA                                   */
+  /* ═══════════════════════════════════════════════════════════════ */
+
+  var SAFETY_ROLES = [
+    { value: 'datore_lavoro', label: 'Datore di Lavoro' },
+    { value: 'rspp', label: 'RSPP' },
+    { value: 'aspp', label: 'ASPP' },
+    { value: 'mc', label: 'Medico Competente' },
+    { value: 'rls', label: 'RLS' },
+    { value: 'primo_soccorso', label: 'Primo Soccorso' },
+    { value: 'antincendio', label: 'Antincendio' },
+    { value: 'preposto', label: 'Preposto' },
+    { value: 'dirigente', label: 'Dirigente' }
+  ];
+  var SAFETY_ROLE_MAP = {};
+  SAFETY_ROLES.forEach(function (r) { SAFETY_ROLE_MAP[r.value] = r.label; });
+
+  function loadSafetyContacts(companyId) {
+    var tbody = $('sicurezzaBody');
+    if (!tbody) return;
+    tbody.innerHTML = loadingRow(7);
+
+    api('GET', '/companies/' + companyId + '/safety-contacts').then(function (r) {
+      var contacts = r.data || [];
+      if (contacts.length === 0) {
+        tbody.innerHTML = emptyRow(7, 'Nessuna figura della sicurezza registrata');
+        return;
+      }
+      tbody.innerHTML = contacts.map(function (c) {
+        var roleLabel = SAFETY_ROLE_MAP[c.role] || c.role;
+        var expiry = c.appointment_expiry ? fmtDate(c.appointment_expiry) : '—';
+        var isExpired = c.appointment_expiry && daysUntil(c.appointment_expiry) < 0;
+        var expiryClass = isExpired ? 'style="color:#dc2626;font-weight:600"' : '';
+        return '<tr>' +
+          '<td><span class="badge badge-info">' + esc(roleLabel) + '</span>' + (c.is_external ? ' <small style="color:#9ca3af">(Est.)</small>' : '') + '</td>' +
+          '<td>' + esc(c.full_name) + '</td>' +
+          '<td>' + esc(c.email || '—') + '</td>' +
+          '<td>' + esc(c.phone || '—') + '</td>' +
+          '<td>' + esc(c.site_name || '—') + '</td>' +
+          '<td ' + expiryClass + '>' + expiry + '</td>' +
+          '<td>' +
+            '<button class="btn btn-outline btn-sm" onclick="MDL.editSafetyContact(\'' + c.id + '\')">Modifica</button> ' +
+            '<button class="btn btn-danger btn-sm" onclick="MDL.deleteSafetyContact(\'' + c.id + '\')">Rimuovi</button>' +
+          '</td>' +
+        '</tr>';
+      }).join('');
+    }).catch(function (e) {
+      tbody.innerHTML = emptyRow(7, 'Errore: ' + e.message);
+    });
+  }
+
+  function safetyContactFormHtml(contact, sites) {
+    var c = contact || {};
+    var roleOpts = SAFETY_ROLES.map(function (r) {
+      return '<option value="' + r.value + '"' + (c.role === r.value ? ' selected' : '') + '>' + r.label + '</option>';
+    }).join('');
+    var siteOpts = '<option value="">— Nessuna sede —</option>' + (sites || []).map(function (s) {
+      return '<option value="' + s.id + '"' + (c.site_id === s.id ? ' selected' : '') + '>' + esc(s.site_name) + '</option>';
+    }).join('');
+
+    return '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">' +
+      '<div><label class="form-label">Ruolo *</label><select id="scRole" class="form-input">' + roleOpts + '</select></div>' +
+      '<div><label class="form-label">Nome Completo *</label><input id="scName" class="form-input" value="' + esc(c.full_name || '') + '"></div>' +
+      '<div><label class="form-label">Codice Fiscale</label><input id="scCf" class="form-input" value="' + esc(c.fiscal_code || '') + '" maxlength="16" style="text-transform:uppercase"></div>' +
+      '<div><label class="form-label">Email</label><input id="scEmail" type="email" class="form-input" value="' + esc(c.email || '') + '"></div>' +
+      '<div><label class="form-label">Telefono</label><input id="scPhone" class="form-input" value="' + esc(c.phone || '') + '"></div>' +
+      '<div><label class="form-label">Sede</label><select id="scSite" class="form-input">' + siteOpts + '</select></div>' +
+      '<div><label class="form-label">Data Nomina</label><input id="scAppDate" type="date" class="form-input" value="' + (c.appointment_date || '') + '"></div>' +
+      '<div><label class="form-label">Scadenza Nomina</label><input id="scAppExpiry" type="date" class="form-input" value="' + (c.appointment_expiry || '') + '"></div>' +
+      '<div style="grid-column:1/-1"><label class="form-label"><input type="checkbox" id="scExternal"' + (c.is_external ? ' checked' : '') + '> Consulente Esterno</label></div>' +
+      '<div style="grid-column:1/-1"><label class="form-label">Note</label><textarea id="scNotes" class="form-input" rows="2">' + esc(c.notes || '') + '</textarea></div>' +
+    '</div>';
+  }
+
+  function readSafetyContactForm() {
+    return {
+      role: ($('scRole') || {}).value || '',
+      full_name: ($('scName') || {}).value || '',
+      fiscal_code: ($('scCf') || {}).value.toUpperCase() || null,
+      email: ($('scEmail') || {}).value || null,
+      phone: ($('scPhone') || {}).value || null,
+      site_id: ($('scSite') || {}).value || null,
+      appointment_date: ($('scAppDate') || {}).value || null,
+      appointment_expiry: ($('scAppExpiry') || {}).value || null,
+      is_external: ($('scExternal') || {}).checked || false,
+      notes: ($('scNotes') || {}).value || null
+    };
+  }
+
+  MDL.newSafetyContact = function () {
+    if (!state.activeCompany) return;
+    var cid = state.activeCompany.id;
+    // Load sites for dropdown
+    api('GET', '/companies/' + cid + '/sites').then(function (r) {
+      var sites = r.data || [];
+      openModal('Nuova Figura della Sicurezza', safetyContactFormHtml(null, sites),
+        '<button class="btn btn-outline" onclick="MDL.closeModal()">Annulla</button> ' +
+        '<button class="btn btn-primary" onclick="MDL.saveSafetyContact()">Salva</button>');
+    });
+  };
+
+  MDL.saveSafetyContact = function () {
+    if (!state.activeCompany) return;
+    var d = readSafetyContactForm();
+    if (!d.role || !d.full_name) { toast('Ruolo e nome completo obbligatori', 'warning'); return; }
+    api('POST', '/companies/' + state.activeCompany.id + '/safety-contacts', d).then(function () {
+      closeModal(); toast('Figura aggiunta', 'success'); loadSafetyContacts(state.activeCompany.id);
+    }).catch(function (e) { toast(e.message, 'error'); });
+  };
+
+  MDL.editSafetyContact = function (contactId) {
+    if (!state.activeCompany) return;
+    var cid = state.activeCompany.id;
+    Promise.all([
+      api('GET', '/companies/' + cid + '/safety-contacts'),
+      api('GET', '/companies/' + cid + '/sites')
+    ]).then(function (results) {
+      var contact = (results[0].data || []).find(function (c) { return c.id === contactId; });
+      var sites = results[1].data || [];
+      if (!contact) { toast('Contatto non trovato', 'error'); return; }
+      openModal('Modifica Figura Sicurezza', safetyContactFormHtml(contact, sites),
+        '<button class="btn btn-outline" onclick="MDL.closeModal()">Annulla</button> ' +
+        '<button class="btn btn-primary" onclick="MDL.updateSafetyContact(\'' + contactId + '\')">Salva</button>');
+    });
+  };
+
+  MDL.updateSafetyContact = function (contactId) {
+    var d = readSafetyContactForm();
+    if (!d.role || !d.full_name) { toast('Ruolo e nome completo obbligatori', 'warning'); return; }
+    api('PATCH', '/safety-contacts/' + contactId, d).then(function () {
+      closeModal(); toast('Figura aggiornata', 'success');
+      if (state.activeCompany) loadSafetyContacts(state.activeCompany.id);
+    }).catch(function (e) { toast(e.message, 'error'); });
+  };
+
+  MDL.deleteSafetyContact = function (contactId) {
+    if (!confirm('Rimuovere questa figura della sicurezza?')) return;
+    api('DELETE', '/safety-contacts/' + contactId).then(function () {
+      toast('Figura rimossa', 'success');
+      if (state.activeCompany) loadSafetyContacts(state.activeCompany.id);
+    }).catch(function (e) { toast(e.message, 'error'); });
+  };
+
+  /* ═══════════════════════════════════════════════════════════════ */
+  /*  CSV IMPORT / EXPORT                                           */
+  /* ═══════════════════════════════════════════════════════════════ */
+
+  function showImportCSVModal(companyId) {
+    var companySelect = '';
+    if (!companyId) {
+      var opts = (state.companies || []).map(function (c) {
+        return '<option value="' + c.id + '">' + esc(c.business_name) + '</option>';
+      }).join('');
+      companySelect = '<div><label class="form-label">Azienda *</label><select id="csvCompany" class="form-input"><option value="">— Seleziona azienda —</option>' + opts + '</select></div>';
+    }
+    var html = '<div style="display:flex;flex-direction:column;gap:1rem">' +
+      '<p style="font-size:0.85rem;color:#6b7280">Carica un file CSV con i dati dei lavoratori. Il sistema rileva automaticamente il separatore (punto e virgola o virgola) e mappa le intestazioni italiane/inglesi.</p>' +
+      '<div style="background:#f3f4f6;border-radius:8px;padding:1rem;font-size:0.8rem">' +
+        '<strong>Intestazioni supportate:</strong><br>' +
+        'Cognome, Nome, Codice Fiscale, Data di Nascita (GG/MM/AAAA), Sesso, Luogo Nascita, Data Assunzione, Reparto, Email, Telefono, Note' +
+      '</div>' +
+      companySelect +
+      '<div>' +
+        '<label class="form-label">File CSV *</label>' +
+        '<input type="file" id="csvFile" accept=".csv,.txt" class="form-input">' +
+      '</div>' +
+    '</div>';
+
+    var cid = companyId || '';
+    openModal('Importa Lavoratori da CSV', html,
+      '<button class="btn btn-outline" onclick="MDL.closeModal()">Annulla</button> ' +
+      '<button class="btn btn-primary" onclick="MDL.doImportCSV(\'' + cid + '\')">Importa</button>');
+  }
+
+  MDL.doImportCSV = function (companyId) {
+    var cid = companyId || (($('csvCompany') || {}).value || '');
+    if (!cid) { toast('Seleziona un\'azienda', 'warning'); return; }
+    var fileInput = $('csvFile');
+    if (!fileInput || !fileInput.files || !fileInput.files[0]) {
+      toast('Seleziona un file CSV', 'warning'); return;
+    }
+    var file = fileInput.files[0];
+    var formData = new FormData();
+    formData.append('file', file);
+    formData.append('company_id', cid);
+
+    toast('Importazione in corso...', 'info');
+    api('POST', '/workers/import', formData).then(function (r) {
+      closeModal();
+      var msg = 'Creati: ' + (r.created || 0) + ' | Saltati: ' + (r.skipped || 0) + ' | Errori: ' + (r.errors || []).length;
+      toast(msg, (r.errors && r.errors.length > 0) ? 'warning' : 'success');
+      if (state.activeCompany) loadDipendenti(state.activeCompany.id);
+    }).catch(function (e) { toast('Errore importazione: ' + e.message, 'error'); });
+  };
+
+  MDL.importCSV = function (companyId) {
+    showImportCSVModal(companyId || (state.activeCompany && state.activeCompany.id));
+  };
+
+  MDL.exportCSV = function (type, companyId) {
+    var params = '?type=' + encodeURIComponent(type);
+    if (companyId) params += '&company_id=' + companyId;
+
+    toast('Generazione export...', 'info');
+    api('GET', '/export' + params).then(function (r) {
+      // r should be raw text (CSV) — but our api() parses JSON, need raw fetch
+    }).catch(function () {});
+
+    // Direct download via fetch
+    var url = API + '/export' + params;
+    var headers = {};
+    if (state.session) headers['Authorization'] = 'Bearer ' + state.session.access_token;
+    fetch(url, { headers: headers }).then(function (resp) {
+      if (!resp.ok) throw new Error('Errore export');
+      return resp.blob();
+    }).then(function (blob) {
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = type + '_export_' + new Date().toISOString().slice(0, 10) + '.csv';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      toast('Export completato', 'success');
+    }).catch(function (e) { toast(e.message || 'Errore export', 'error'); });
+  };
 
   /* ═══════════════════════════════════════════════════════════════ */
   /*  TAB: DOCUMENTI AZIENDALI                                      */
@@ -1175,13 +1527,19 @@
         var currentJob = (w.mdl_worker_jobs || []).find(function (j) { return j.is_current; });
         var roleName = currentJob && currentJob.mdl_job_roles ? currentJob.mdl_job_roles.role_name : '—';
         var companyName = w.mdl_companies ? w.mdl_companies.business_name : '—';
+        var validBadge = w.is_validated
+          ? '<span class="badge badge-success" title="Validato">✓</span>'
+          : '<span class="badge badge-gray" title="Da validare">⏳</span>';
+        var isSegreteria = state.user && state.user.role === 'segreteria_mdl';
+        var canDeleteThis = isSegreteria && !w.is_validated;
+        var deleteBtn = canDeleteThis ? ' <button class="btn btn-danger btn-sm" onclick="MDL.deleteWorker(\'' + w.id + '\',\'' + esc(w.last_name + ' ' + w.first_name) + '\')">Elimina</button>' : '';
         return '<tr>' +
-          '<td><strong>' + esc(w.last_name) + ' ' + esc(w.first_name) + '</strong></td>' +
-          '<td><code>' + esc(w.fiscal_code) + '</code></td>' +
+          '<td><strong>' + esc(w.last_name) + ' ' + esc(w.first_name) + '</strong> ' + validBadge + '</td>' +
+          '<td><code>' + esc(w.fiscal_code || '—') + '</code></td>' +
           '<td><a style="color:var(--primary);cursor:pointer" onclick="MDL.goCompany(\'' + w.company_id + '\')">' + esc(companyName) + '</a></td>' +
           '<td>' + esc(roleName) + '</td>' +
           '<td>—</td><td>—</td>' +
-          '<td><button class="btn btn-primary btn-sm" onclick="MDL.openWorker(\'' + w.id + '\')">Scheda</button></td>' +
+          '<td><button class="btn btn-primary btn-sm" onclick="MDL.openWorker(\'' + w.id + '\')">Scheda</button>' + deleteBtn + '</td>' +
         '</tr>';
       }).join('');
     }).catch(function (err) {
@@ -1311,6 +1669,7 @@
         '<button class="tab-btn" data-wtab="wtab-esami">Esami Previsti</button>' +
         '<button class="tab-btn" data-wtab="wtab-referti">Referti</button>' +
         '<button class="tab-btn" data-wtab="wtab-idoneita">Idoneit&agrave;</button>' +
+        '<button class="tab-btn" data-wtab="wtab-formazione">Formazione</button>' +
         '<button class="tab-btn" data-wtab="wtab-visite">Visite</button>' +
         '<button class="tab-btn" data-wtab="wtab-anagrafica">Anagrafica</button>' +
       '</div>' +
@@ -1320,6 +1679,7 @@
       '<div id="wtab-esami" class="tab-panel"></div>' +
       '<div id="wtab-referti" class="tab-panel"></div>' +
       '<div id="wtab-idoneita" class="tab-panel"></div>' +
+      '<div id="wtab-formazione" class="tab-panel"></div>' +
       '<div id="wtab-visite" class="tab-panel"></div>' +
       '<div id="wtab-anagrafica" class="tab-panel"></div>';
 
@@ -1348,6 +1708,7 @@
       'wtab-esami': renderEsamiPrevisti,
       'wtab-referti': renderReferti,
       'wtab-idoneita': renderIdoneita,
+      'wtab-formazione': renderFormazione,
       'wtab-visite': renderVisiteWorker,
       'wtab-anagrafica': renderAnagrafica
     };
@@ -1367,7 +1728,42 @@
     var completedExams = data.protocolExams.filter(function (e) { return e.completed; }).length;
     var nextVisitDate = fitness ? fitness.next_visit_date : null;
 
-    var html =
+    // Profile completeness warning
+    var profileIncomplete = !w.fiscal_code || !w.date_of_birth;
+    var profileWarning = '';
+    if (profileIncomplete) {
+      var missingFields = [];
+      if (!w.fiscal_code) missingFields.push('Codice Fiscale');
+      if (!w.date_of_birth) missingFields.push('Data di Nascita');
+      profileWarning = '<div class="alert alert-warning" style="margin-bottom:1rem">' +
+        '<strong>⚠ Profilo incompleto</strong> — Compilare: <strong>' + missingFields.join(', ') + '</strong> prima della validazione del profilo e programmazione visite.' +
+        ' <a href="#" onclick="MDL.switchTab(\'wtab-anagrafica\');return false" style="color:var(--primary)">Completa ora →</a></div>';
+    }
+
+    // Validation status banner
+    var validationBanner = '';
+    var isSegreteria = state.user && state.user.role === 'segreteria_mdl';
+    var isMCAdmin = isClinicalRole() || (state.user && state.user.role === 'super_admin');
+    if (w.is_validated) {
+      validationBanner = '<div class="alert alert-success" style="margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between">' +
+        '<span><strong>✓ Profilo Validato</strong> — Il Medico Competente ha confermato i dati anagrafici di questo lavoratore.</span>' +
+        (isMCAdmin ? '<button class="btn btn-outline btn-sm" onclick="MDL.toggleValidation(\'' + w.id + '\', false)">Revoca validazione</button>' : '') +
+      '</div>';
+    } else {
+      var actionBtn = '';
+      if (isMCAdmin && !profileIncomplete) {
+        actionBtn = '<button class="btn btn-primary btn-sm" onclick="MDL.toggleValidation(\'' + w.id + '\', true)">✓ Valida Profilo</button>';
+      } else if (isMCAdmin && profileIncomplete) {
+        actionBtn = '<span style="font-size:0.8rem;color:#9ca3af">Completare il profilo prima della validazione</span>';
+      }
+      var segMsg = isSegreteria ? ' Puoi modificare i dati anagrafici ed eliminare il lavoratore finch&eacute; non &egrave; validato.' : '';
+      validationBanner = '<div class="alert alert-info" style="margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between">' +
+        '<span><strong>⏳ In attesa di validazione</strong> — I dati non sono ancora stati confermati dal MC.' + segMsg + '</span>' +
+        actionBtn +
+      '</div>';
+    }
+
+    var html = profileWarning + validationBanner +
       '<div class="panoramica-grid">' +
         /* Idoneità Card */
         '<div class="panoramica-card panoramica-card-fitness">' +
@@ -1385,6 +1781,8 @@
             '<div class="fitness-big-status"><span class="semaforo semaforo-grigio">&#9679;</span> <span class="semaforo-label">Nessuna idoneita registrata</span></div>'
           ) +
           '<button class="btn btn-primary btn-sm mt-1" onclick="MDL.uploadIdoneita()">Carica Idoneita</button>' +
+          (fitness ? ' <button class="btn btn-outline btn-sm mt-1" onclick="MDL.downloadFitnessPdf()">&#128196; PDF Idoneita</button>' : '') +
+          (isMCAdmin ? ' <button class="btn btn-outline btn-sm mt-1" onclick="MDL.downloadHealthRecordPdf()">&#128203; Cartella Sanitaria</button>' : '') +
         '</div>' +
 
         /* Esami Card */
@@ -1687,6 +2085,24 @@
       ) +
       (canSeeSensitiveData() && w.notes ? '<div class="detail-section"><h4>Note</h4><p style="font-size:0.85rem">' + esc(w.notes) + '</p></div>' : '');
 
+    // Action buttons: edit + delete respecting validation
+    var isSegreteria = state.user && state.user.role === 'segreteria_mdl';
+    var isMCAdmin = isClinicalRole() || (state.user && state.user.role === 'super_admin');
+    var canEdit = isMCAdmin || (isSegreteria && !w.is_validated);
+    var canDelete = isMCAdmin || (isSegreteria && !w.is_validated);
+    var actionsHtml = '<div style="margin-top:1.5rem;display:flex;gap:0.5rem;align-items:center">';
+    if (canEdit) {
+      actionsHtml += '<button class="btn btn-primary btn-sm" onclick="MDL.editWorkerAnagrafica()">Modifica Anagrafica</button>';
+    }
+    if (canDelete) {
+      actionsHtml += '<button class="btn btn-danger btn-sm" onclick="MDL.deleteWorker(\'' + w.id + '\',\'' + esc(w.last_name + ' ' + w.first_name) + '\')">Elimina Lavoratore</button>';
+    }
+    if (isSegreteria && w.is_validated) {
+      actionsHtml += '<span style="font-size:0.8rem;color:#9ca3af;margin-left:0.5rem">Lavoratore validato — modifiche e cancellazione non disponibili per la segreteria</span>';
+    }
+    actionsHtml += '</div>';
+    html += actionsHtml;
+
     $('wtab-anagrafica').innerHTML = html;
   }
 
@@ -1738,8 +2154,8 @@
     var html = '<div class="form-grid">' +
       '<div class="form-group"><label>Cognome *</label><input type="text" class="form-input" id="wrkLastName"></div>' +
       '<div class="form-group"><label>Nome *</label><input type="text" class="form-input" id="wrkFirstName"></div>' +
-      '<div class="form-group"><label>Codice Fiscale *</label><input type="text" class="form-input" id="wrkCf" maxlength="16" style="text-transform:uppercase"></div>' +
-      '<div class="form-group"><label>Data Nascita *</label><input type="date" class="form-input" id="wrkDob"></div>' +
+      '<div class="form-group"><label>Codice Fiscale <small class="text-muted">(obbligatorio per validazione)</small></label><input type="text" class="form-input" id="wrkCf" maxlength="16" style="text-transform:uppercase"></div>' +
+      '<div class="form-group"><label>Data Nascita <small class="text-muted">(obbligatorio per validazione)</small></label><input type="date" class="form-input" id="wrkDob"></div>' +
       '<div class="form-group"><label>Sesso *</label><select class="form-input" id="wrkGender"><option value="M">Maschio</option><option value="F">Femmina</option></select></div>' +
       '<div class="form-group"><label>Luogo Nascita</label><input type="text" class="form-input" id="wrkBirthPlace"></div>' +
       '<div class="form-group"><label>Mansione</label><select class="form-input" id="wrkRole"><option value="">— Seleziona —</option>' + roleOpts + '</select></div>' +
@@ -1874,6 +2290,93 @@
   MDL.closeModal = function () { hide('modalOverlay'); };
 
   MDL.openWorker = function (id) { openWorkerDetail(id); };
+  MDL.switchTab = function (tabId) { switchWorkerTab(tabId); };
+
+  MDL.deleteWorker = function (workerId, workerName) {
+    if (!confirm('Eliminare definitivamente il lavoratore "' + workerName + '"?\nQuesta operazione non è reversibile.')) return;
+    api('DELETE', '/workers/' + workerId).then(function () {
+      toast('Lavoratore "' + workerName + '" eliminato', 'success');
+      if (state.activeCompany) loadDipendenti(state.activeCompany.id);
+      else loadLavoratoriGlobal();
+    }).catch(function (e) { toast(e.message, 'error'); });
+  };
+
+  MDL.toggleValidation = function (workerId, validate) {
+    var msg = validate
+      ? 'Confermi la validazione di questo lavoratore? Una volta validato, la segreteria non potrà più modificare o eliminare il record.'
+      : 'Revocare la validazione? La segreteria potrà nuovamente modificare ed eliminare i dati del lavoratore.';
+    if (!confirm(msg)) return;
+    api('PATCH', '/workers/' + workerId, { is_validated: validate }).then(function () {
+      toast(validate ? 'Lavoratore validato' : 'Validazione revocata', 'success');
+      // Refresh the worker detail
+      openWorkerDetail(workerId);
+    }).catch(function (e) { toast(e.message, 'error'); });
+  };
+
+  MDL.editWorkerAnagrafica = function () {
+    if (!state.activeWorker) return;
+    var w = state.activeWorker.worker;
+    var html = '<div class="form-grid">' +
+      '<div class="form-group"><label>Cognome *</label><input type="text" class="form-input" id="ewLastName" value="' + esc(w.last_name || '') + '"></div>' +
+      '<div class="form-group"><label>Nome *</label><input type="text" class="form-input" id="ewFirstName" value="' + esc(w.first_name || '') + '"></div>' +
+      '<div class="form-group"><label>Codice Fiscale</label><input type="text" class="form-input" id="ewCf" value="' + esc(w.fiscal_code || '') + '" maxlength="16" style="text-transform:uppercase"></div>' +
+      '<div class="form-group"><label>Data Nascita</label><input type="date" class="form-input" id="ewDob" value="' + (w.date_of_birth || '') + '"></div>' +
+      '<div class="form-group"><label>Luogo Nascita</label><input type="text" class="form-input" id="ewPob" value="' + esc(w.place_of_birth || '') + '"></div>' +
+      '<div class="form-group"><label>Sesso</label><select class="form-input" id="ewGender">' +
+        '<option value="M"' + (w.gender === 'M' ? ' selected' : '') + '>Maschio</option>' +
+        '<option value="F"' + (w.gender === 'F' ? ' selected' : '') + '>Femmina</option></select></div>' +
+      '<div class="form-group form-full"><label>Indirizzo</label><input type="text" class="form-input" id="ewStreet" value="' + esc(w.address_street || '') + '"></div>' +
+      '<div class="form-group"><label>Citta</label><input type="text" class="form-input" id="ewCity" value="' + esc(w.address_city || '') + '"></div>' +
+      '<div class="form-group"><label>Prov.</label><input type="text" class="form-input" id="ewProv" value="' + esc(w.address_province || '') + '" maxlength="2"></div>' +
+      '<div class="form-group"><label>CAP</label><input type="text" class="form-input" id="ewZip" value="' + esc(w.address_zip || '') + '" maxlength="5"></div>' +
+      '<div class="form-group"><label>Telefono</label><input type="text" class="form-input" id="ewPhone" value="' + esc(w.phone || '') + '"></div>' +
+      '<div class="form-group"><label>Email</label><input type="email" class="form-input" id="ewEmail" value="' + esc(w.email || '') + '"></div>' +
+      '<div class="form-group"><label>Data Assunzione</label><input type="date" class="form-input" id="ewHire" value="' + (w.hire_date || '') + '"></div>' +
+      '<div class="form-group"><label>Tipo Contratto</label><select class="form-input" id="ewContract">' +
+        '<option value="indeterminato"' + (w.contract_type === 'indeterminato' ? ' selected' : '') + '>Indeterminato</option>' +
+        '<option value="determinato"' + (w.contract_type === 'determinato' ? ' selected' : '') + '>Determinato</option>' +
+        '<option value="apprendistato"' + (w.contract_type === 'apprendistato' ? ' selected' : '') + '>Apprendistato</option>' +
+        '<option value="somministrazione"' + (w.contract_type === 'somministrazione' ? ' selected' : '') + '>Somministrazione</option>' +
+        '<option value="stage"' + (w.contract_type === 'stage' ? ' selected' : '') + '>Stage</option></select></div>' +
+      '<div class="form-group"><label>Qualifica</label><input type="text" class="form-input" id="ewQual" value="' + esc(w.qualification || '') + '"></div>' +
+      '<div class="form-group"><label>Reparto</label><input type="text" class="form-input" id="ewDept" value="' + esc(w.department || '') + '"></div>' +
+    '</div>';
+
+    openModal('Modifica Anagrafica — ' + w.last_name + ' ' + w.first_name, html,
+      '<button class="btn btn-outline" onclick="MDL.closeModal()">Annulla</button> ' +
+      '<button class="btn btn-primary" onclick="MDL.saveWorkerAnagrafica()">Salva</button>');
+  };
+
+  MDL.saveWorkerAnagrafica = function () {
+    if (!state.activeWorker) return;
+    var w = state.activeWorker.worker;
+    var v = function (id) { var el = $(id); return el ? el.value.trim() : ''; };
+    var patch = {
+      last_name: v('ewLastName'),
+      first_name: v('ewFirstName'),
+      fiscal_code: v('ewCf').toUpperCase() || null,
+      date_of_birth: v('ewDob') || null,
+      place_of_birth: v('ewPob') || null,
+      gender: v('ewGender'),
+      address_street: v('ewStreet') || null,
+      address_city: v('ewCity') || null,
+      address_province: v('ewProv').toUpperCase() || null,
+      address_zip: v('ewZip') || null,
+      phone: v('ewPhone') || null,
+      email: v('ewEmail') || null,
+      hire_date: v('ewHire') || null,
+      contract_type: v('ewContract'),
+      qualification: v('ewQual') || null,
+      department: v('ewDept') || null,
+    };
+    if (!patch.last_name || !patch.first_name) {
+      toast('Cognome e nome obbligatori', 'warning'); return;
+    }
+    api('PATCH', '/workers/' + w.id, patch).then(function () {
+      closeModal(); toast('Anagrafica aggiornata', 'success');
+      openWorkerDetail(w.id);
+    }).catch(function (e) { toast(e.message, 'error'); });
+  };
 
   MDL.saveNewCompany = function () {
     var d = readCompanyForm();
@@ -1927,8 +2430,6 @@
       notes: v('wrkNotes') || null
     };
     if (!d.last_name || !d.first_name) { toast('Nome e cognome obbligatori', 'warning'); return; }
-    if (!d.fiscal_code) { toast('Codice fiscale obbligatorio', 'warning'); return; }
-    if (!d.date_of_birth) { toast('Data di nascita obbligatoria', 'warning'); return; }
 
     api('POST', '/workers', d).then(function () {
       closeModal(); toast('Dipendente aggiunto', 'success');
@@ -1957,6 +2458,7 @@
   MDL.viewVisit = function (id) { openVisitDetail(id); };
   MDL.viewRole = function () { toast('Dettaglio mansione — in sviluppo', 'info'); };
   MDL.goCompany = function (id) { openCompany(id); };
+  MDL.goWorker = function (id) { openWorkerDetail(id); };
 
   /* ═══════════════════════════════════════════════════════════════ */
   /*  PROTOCOLLI STANDARD (template)                                */
@@ -2512,6 +3014,323 @@
   };
 
   /* ═══════════════════════════════════════════════════════════════ */
+  /*  FORMAZIONE (Training Records)                                 */
+  /* ═══════════════════════════════════════════════════════════════ */
+
+  var TRAINING_TYPE_LABELS = {
+    generale_4h: 'Generale 4h', specifica_basso_4h: 'Specifica Basso 4h',
+    specifica_medio_8h: 'Specifica Medio 8h', specifica_alto_12h: 'Specifica Alto 12h',
+    aggiornamento_6h: 'Aggiornamento 6h', preposti_8h: 'Preposti 8h',
+    dirigenti_16h: 'Dirigenti 16h', rls_32h: 'RLS 32h',
+    rls_aggiornamento: 'RLS Aggiornamento', primo_soccorso_16h: 'Primo Soccorso 16h',
+    primo_soccorso_aggiornamento: 'Primo Soccorso Agg.',
+    antincendio_livello1: 'Antincendio L1', antincendio_livello2: 'Antincendio L2',
+    antincendio_livello3: 'Antincendio L3', carrellisti: 'Carrellisti',
+    gru: 'Gru', ple: 'PLE', dpi_terza_categoria: 'DPI III Cat.',
+    spazi_confinati: 'Spazi Confinati', lavori_quota: 'Lavori Quota',
+    rischio_elettrico: 'Rischio Elettrico', altro: 'Altro'
+  };
+
+  function trainingExpirySemaforo(expiryDate) {
+    if (!expiryDate) return '<span class="semaforo semaforo-grigio">&#9679;</span>';
+    var today = new Date(); today.setHours(0,0,0,0);
+    var exp = new Date(expiryDate); exp.setHours(0,0,0,0);
+    var diff = Math.round((exp - today) / 86400000);
+    if (diff < 0) return '<span class="semaforo semaforo-rosso">&#9679;</span> <small class="text-danger">Scaduto</small>';
+    if (diff <= 30) return '<span class="semaforo semaforo-arancione">&#9679;</span> <small class="text-warning">Scade tra ' + diff + 'gg</small>';
+    if (diff <= 90) return '<span class="semaforo semaforo-giallo">&#9679;</span> <small>Scade tra ' + diff + 'gg</small>';
+    return '<span class="semaforo semaforo-verde">&#9679;</span> <small class="text-success">Valido</small>';
+  }
+
+  /* ── Worker Detail Tab: Formazione ─────────────────────────────── */
+  function renderFormazione() {
+    var data = state.activeWorker;
+    if (!data) return;
+    var w = data.worker;
+    var panel = document.getElementById('wtab-formazione');
+    if (!panel) return;
+    panel.innerHTML = '<div style="text-align:center;padding:2rem;color:#9ca3af">Caricamento formazione...</div>';
+
+    api('GET', '/training?worker_id=' + w.id + '&limit=50').then(function (r) {
+      var records = r.data || [];
+      var canWrite = ['super_admin','medico_competente','medico_collaboratore','segreteria_mdl','datore_lavoro','rspp'].indexOf(state.userRole) >= 0;
+
+      var html = '<div class="training-worker-section">';
+      if (canWrite) {
+        html += '<div style="margin-bottom:1rem;text-align:right"><button class="btn btn-primary btn-sm" id="btnAddTrainingWorker">+ Aggiungi Corso</button></div>';
+      }
+
+      if (records.length === 0) {
+        html += '<div class="empty-state"><p>Nessun corso di formazione registrato per questo lavoratore.</p></div>';
+      } else {
+        html += '<table class="data-table"><thead><tr>' +
+          '<th>Stato</th><th>Corso</th><th>Tipo</th><th>Ente</th><th>Data</th><th>Scadenza</th><th>Attestato</th>' +
+          (canWrite ? '<th>Azioni</th>' : '') +
+          '</tr></thead><tbody>';
+        records.forEach(function (rec) {
+          html += '<tr>' +
+            '<td>' + trainingExpirySemaforo(rec.expiry_date) + '</td>' +
+            '<td><strong>' + esc(rec.course_name) + '</strong></td>' +
+            '<td>' + esc(TRAINING_TYPE_LABELS[rec.training_type] || rec.training_type) + '</td>' +
+            '<td>' + esc(rec.provider || '—') + '</td>' +
+            '<td>' + fmtDate(rec.completion_date) + '</td>' +
+            '<td>' + (rec.expiry_date ? fmtDate(rec.expiry_date) : '—') + '</td>' +
+            '<td>' + (rec.certificate_path ?
+              '<a href="#" onclick="MDL.downloadTrainingCert(\'' + esc(rec.certificate_path) + '\');return false" class="link-primary">&#128196; Scarica</a>' :
+              '<span class="text-muted">—</span>') + '</td>' +
+            (canWrite ? '<td><button class="btn btn-outline btn-xs" onclick="MDL.editTraining(\'' + rec.id + '\')">&#9998;</button> <button class="btn btn-danger btn-xs" onclick="MDL.deleteTraining(\'' + rec.id + '\',\'' + esc(rec.course_name).replace(/'/g, "\\'") + '\')">&#128465;</button></td>' : '') +
+          '</tr>';
+        });
+        html += '</tbody></table>';
+      }
+      html += '</div>';
+      panel.innerHTML = html;
+
+      if (canWrite) {
+        var addBtn = document.getElementById('btnAddTrainingWorker');
+        if (addBtn) addBtn.addEventListener('click', function () { openTrainingModal(w.id); });
+      }
+    }).catch(function (err) {
+      panel.innerHTML = '<div class="alert alert-danger">Errore: ' + esc(err.message) + '</div>';
+    });
+  }
+
+  /* ── Global Formazione Section ─────────────────────────────────── */
+  var formazioneCache = [];
+  function loadFormazioneGlobale() {
+    var container = $('formazioneContent');
+    if (!container) return;
+    container.innerHTML = '<div style="text-align:center;padding:2rem;color:#9ca3af">Caricamento...</div>';
+
+    var params = '?limit=100';
+    var typeFilter = $('filterFormazioneType');
+    var expiryFilter = $('filterFormazioneExpiry');
+    if (typeFilter && typeFilter.value) params += '&training_type=' + typeFilter.value;
+    if (expiryFilter && expiryFilter.value === 'expired') params += '&expired=true';
+    else if (expiryFilter && expiryFilter.value === 'expiring30') params += '&expiring=true';
+
+    api('GET', '/training' + params).then(function (r) {
+      formazioneCache = r.data || [];
+      renderFormazioneGlobale();
+    }).catch(function (err) {
+      container.innerHTML = '<div class="alert alert-danger">Errore: ' + esc(err.message) + '</div>';
+    });
+  }
+
+  function renderFormazioneGlobale() {
+    var container = $('formazioneContent');
+    if (!container) return;
+    var records = formazioneCache;
+    var search = ($('searchFormazione') || {}).value || '';
+    if (search) {
+      var q = search.toLowerCase();
+      records = records.filter(function (r) {
+        var workerName = r.mdl_workers ? (r.mdl_workers.last_name + ' ' + r.mdl_workers.first_name).toLowerCase() : '';
+        return r.course_name.toLowerCase().indexOf(q) >= 0 || workerName.indexOf(q) >= 0 ||
+          (r.provider || '').toLowerCase().indexOf(q) >= 0;
+      });
+    }
+    // Filter by expiry on client side for 'expiring30' and 'valid'
+    var expiryFilter = ($('filterFormazioneExpiry') || {}).value || '';
+    if (expiryFilter === 'expiring30') {
+      var today = new Date(); today.setHours(0,0,0,0);
+      records = records.filter(function (r) {
+        if (!r.expiry_date) return false;
+        var exp = new Date(r.expiry_date); exp.setHours(0,0,0,0);
+        var diff = Math.round((exp - today) / 86400000);
+        return diff >= 0 && diff <= 30;
+      });
+    } else if (expiryFilter === 'valid') {
+      var today2 = new Date(); today2.setHours(0,0,0,0);
+      records = records.filter(function (r) {
+        if (!r.expiry_date) return true;
+        return new Date(r.expiry_date) >= today2;
+      });
+    }
+
+    if (records.length === 0) {
+      container.innerHTML = '<div class="empty-state"><p>Nessun record di formazione trovato.</p></div>';
+      return;
+    }
+
+    var html = '<table class="data-table"><thead><tr>' +
+      '<th>Stato</th><th>Lavoratore</th><th>Azienda</th><th>Corso</th><th>Tipo</th><th>Data</th><th>Scadenza</th><th>Attestato</th><th>Azioni</th>' +
+      '</tr></thead><tbody>';
+    records.forEach(function (rec) {
+      var wName = rec.mdl_workers ? esc(rec.mdl_workers.last_name + ' ' + rec.mdl_workers.first_name) : '—';
+      var cName = rec.mdl_workers && rec.mdl_workers.mdl_companies ? esc(rec.mdl_workers.mdl_companies.business_name) : '—';
+      html += '<tr>' +
+        '<td>' + trainingExpirySemaforo(rec.expiry_date) + '</td>' +
+        '<td><a href="#" onclick="MDL.goWorker(\'' + rec.worker_id + '\');return false" class="link-primary">' + wName + '</a></td>' +
+        '<td>' + cName + '</td>' +
+        '<td><strong>' + esc(rec.course_name) + '</strong></td>' +
+        '<td><span class="badge badge-info">' + esc(TRAINING_TYPE_LABELS[rec.training_type] || rec.training_type) + '</span></td>' +
+        '<td>' + fmtDate(rec.completion_date) + '</td>' +
+        '<td>' + (rec.expiry_date ? fmtDate(rec.expiry_date) : '—') + '</td>' +
+        '<td>' + (rec.certificate_path ?
+          '<a href="#" onclick="MDL.downloadTrainingCert(\'' + esc(rec.certificate_path) + '\');return false">&#128196;</a>' :
+          '<span class="text-muted">—</span>') + '</td>' +
+        '<td><button class="btn btn-outline btn-xs" onclick="MDL.editTraining(\'' + rec.id + '\')">&#9998;</button> ' +
+          '<button class="btn btn-danger btn-xs" onclick="MDL.deleteTraining(\'' + rec.id + '\',\'' + esc(rec.course_name).replace(/'/g, "\\'") + '\')">&#128465;</button></td>' +
+      '</tr>';
+    });
+    html += '</tbody></table>';
+    html += '<div class="text-muted mt-1" style="font-size:0.85rem">Totale: ' + records.length + ' record</div>';
+    container.innerHTML = html;
+  }
+
+  /* ── Training Modal (Add/Edit) ────────────────────────────────── */
+  function openTrainingModal(workerId, existingRecord) {
+    var isEdit = !!existingRecord;
+    var rec = existingRecord || {};
+    var typeOptions = Object.keys(TRAINING_TYPE_LABELS).map(function (k) {
+      return '<option value="' + k + '"' + (rec.training_type === k ? ' selected' : '') + '>' + TRAINING_TYPE_LABELS[k] + '</option>';
+    }).join('');
+
+    var body = '<div class="form-grid">' +
+          '<div class="form-group"><label>Tipo Formazione *</label><select id="trfType" class="form-input">' + typeOptions + '</select></div>' +
+          '<div class="form-group"><label>Nome Corso *</label><input id="trfName" class="form-input" value="' + esc(rec.course_name || '') + '" placeholder="Es. Formazione generale lavoratori"></div>' +
+          '<div class="form-group"><label>Ente Formatore</label><input id="trfProvider" class="form-input" value="' + esc(rec.provider || '') + '" placeholder="Es. INAIL, ASL, Ente XYZ"></div>' +
+          '<div class="form-group"><label>Ore</label><input id="trfHours" type="number" step="0.5" class="form-input" value="' + (rec.duration_hours || '') + '"></div>' +
+          '<div class="form-group"><label>Data Completamento *</label><input id="trfDate" type="date" class="form-input" value="' + (rec.completion_date || '') + '"></div>' +
+          '<div class="form-group"><label>Data Scadenza</label><input id="trfExpiry" type="date" class="form-input" value="' + (rec.expiry_date || '') + '"></div>' +
+          '<div class="form-group"><label>N. Attestato</label><input id="trfCertNum" class="form-input" value="' + esc(rec.certificate_number || '') + '"></div>' +
+          '<div class="form-group"><label>Note</label><textarea id="trfNotes" class="form-input" rows="2">' + esc(rec.notes || '') + '</textarea></div>' +
+          ((!isEdit) ? '<div class="form-group form-group-full"><label>Attestato PDF</label><input id="trfFile" type="file" accept=".pdf,.jpg,.jpeg,.png" class="form-input"></div>' : '') +
+        '</div>';
+
+    var footer = '<button class="btn btn-outline" onclick="MDL.closeModal()">Annulla</button> ' +
+        '<button class="btn btn-primary" id="btnSaveTraining">' + (isEdit ? 'Salva Modifiche' : 'Registra Corso') + '</button>';
+
+    openModal(isEdit ? 'Modifica Corso' : 'Nuovo Corso di Formazione', body, footer);
+
+    document.getElementById('btnSaveTraining').addEventListener('click', function () {
+      var payload = {
+        training_type: document.getElementById('trfType').value,
+        course_name: document.getElementById('trfName').value.trim(),
+        provider: document.getElementById('trfProvider').value.trim() || null,
+        duration_hours: parseFloat(document.getElementById('trfHours').value) || null,
+        completion_date: document.getElementById('trfDate').value,
+        expiry_date: document.getElementById('trfExpiry').value || null,
+        certificate_number: document.getElementById('trfCertNum').value.trim() || null,
+        notes: document.getElementById('trfNotes').value.trim() || null
+      };
+
+      if (!payload.course_name || !payload.completion_date) {
+        toast('Compilare nome corso e data completamento', 'error'); return;
+      }
+
+      if (isEdit) {
+        api('PATCH', '/training/' + rec.id, payload).then(function () {
+          toast('Corso aggiornato', 'success');
+          closeModal();
+          refreshTrainingView();
+        }).catch(function (e) { toast(e.message, 'error'); });
+      } else {
+        payload.worker_id = workerId;
+        api('POST', '/training', payload).then(function (r) {
+          toast('Corso registrato', 'success');
+          // If file was selected, upload it
+          var fileInput = document.getElementById('trfFile');
+          if (fileInput && fileInput.files && fileInput.files[0] && r.data && r.data.id) {
+            uploadTrainingCert(r.data.id, workerId, fileInput.files[0]);
+          }
+          closeModal();
+          refreshTrainingView();
+        }).catch(function (e) { toast(e.message, 'error'); });
+      }
+    });
+  }
+
+  function uploadTrainingCert(trainingId, workerId, file) {
+    var formData = new FormData();
+    formData.append('file', file);
+    formData.append('category', 'training');
+    formData.append('worker_id', workerId);
+    formData.append('training_id', trainingId);
+    fetch('/api/files/upload', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + state.token },
+      body: formData
+    }).then(function (resp) { return resp.json(); }).then(function (r) {
+      if (r.success) toast('Attestato caricato', 'success');
+      else toast('Errore upload attestato: ' + (r.error || ''), 'error');
+    }).catch(function () { toast('Errore upload attestato', 'error'); });
+  }
+
+  function refreshTrainingView() {
+    if (state.section === 'formazione') loadFormazioneGlobale();
+    if (state.section === 'worker-detail' && state.activeWorkerTab === 'wtab-formazione') renderFormazione();
+  }
+
+  MDL.downloadTrainingCert = function (path) {
+    api('GET', '/files/download?path=' + encodeURIComponent(path)).then(function (r) {
+      if (r.data && r.data.signedUrl) window.open(r.data.signedUrl, '_blank');
+      else toast('Impossibile scaricare attestato', 'error');
+    }).catch(function (e) { toast(e.message, 'error'); });
+  };
+
+  MDL.editTraining = function (id) {
+    api('GET', '/training/' + id).then(function (r) {
+      if (r.data) openTrainingModal(r.data.worker_id, r.data);
+    }).catch(function (e) { toast(e.message, 'error'); });
+  };
+
+  MDL.deleteTraining = function (id, name) {
+    if (!confirm('Eliminare il record formazione "' + name + '"?')) return;
+    api('DELETE', '/training/' + id).then(function () {
+      toast('Record eliminato', 'success');
+      refreshTrainingView();
+    }).catch(function (e) { toast(e.message, 'error'); });
+  };
+
+  // Event listeners for global formazione filters
+  document.addEventListener('DOMContentLoaded', function () {
+    var el1 = $('searchFormazione');
+    if (el1) el1.addEventListener('input', function () { renderFormazioneGlobale(); });
+    var el2 = $('filterFormazioneType');
+    if (el2) el2.addEventListener('change', function () { loadFormazioneGlobale(); });
+    var el3 = $('filterFormazioneExpiry');
+    if (el3) el3.addEventListener('change', function () { loadFormazioneGlobale(); });
+    var el4 = $('btnAddFormazione');
+    if (el4) el4.addEventListener('click', function () { openTrainingModalGlobal(); });
+  });
+
+  function openTrainingModalGlobal() {
+    // Need to pick a worker first — show a simple worker search
+    var body = '<input id="trfWorkerSearch" class="form-input" placeholder="Cerca per cognome o codice fiscale...">' +
+        '<div id="trfWorkerResults" style="margin-top:1rem;max-height:300px;overflow-y:auto"></div>';
+    openModal('Nuovo Corso — Seleziona Lavoratore', body, '<button class="btn btn-outline" onclick="MDL.closeModal()">Annulla</button>');
+
+    var searchInput = document.getElementById('trfWorkerSearch');
+    var debounce = null;
+    searchInput.addEventListener('input', function () {
+      clearTimeout(debounce);
+      debounce = setTimeout(function () {
+        var q = searchInput.value.trim();
+        if (q.length < 2) { document.getElementById('trfWorkerResults').innerHTML = ''; return; }
+        api('GET', '/workers?search=' + encodeURIComponent(q) + '&limit=10').then(function (r) {
+          var res = r.data || [];
+          var rhtml = res.map(function (w) {
+            return '<div class="worker-search-row" style="padding:0.5rem;border-bottom:1px solid #eee;cursor:pointer" data-wid="' + w.id + '">' +
+              '<strong>' + esc(w.last_name) + ' ' + esc(w.first_name) + '</strong> — ' + esc(w.fiscal_code) +
+              (w.mdl_companies ? ' <small class="text-muted">(' + esc(w.mdl_companies.business_name) + ')</small>' : '') +
+            '</div>';
+          }).join('');
+          document.getElementById('trfWorkerResults').innerHTML = rhtml || '<div class="text-muted">Nessun risultato</div>';
+          document.querySelectorAll('.worker-search-row').forEach(function (row) {
+            row.addEventListener('click', function () {
+              closeModal();
+              openTrainingModal(row.getAttribute('data-wid'));
+            });
+          });
+        });
+      }, 300);
+    });
+    searchInput.focus();
+  }
+
+  /* ═══════════════════════════════════════════════════════════════ */
   /*  SCADENZARIO                                                   */
   /* ═══════════════════════════════════════════════════════════════ */
   var DEADLINE_CAT = { visita: 'Visita medica', documento: 'Documento', formazione: 'Formazione' };
@@ -2546,6 +3365,62 @@
 
   MDL.uploadReferto = function () { showUploadRefertoModal(); };
   MDL.uploadIdoneita = function () { showUploadIdoneitaModal(); };
+
+  MDL.downloadFitnessPdf = function () {
+    if (!state.activeWorker) return;
+    var wid = state.activeWorker.worker.id;
+    var url = API + '/workers/' + wid + '/fitness-pdf';
+    var headers = {};
+    if (state.session) headers['Authorization'] = 'Bearer ' + state.session.access_token;
+    toast('Generazione PDF idoneita...', 'info');
+    fetch(url, { headers: headers }).then(function (r) {
+      if (!r.ok) return r.json().then(function (d) { throw new Error(d.error || 'Errore'); });
+      return r.blob();
+    }).then(function (blob) {
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'idoneita_' + state.activeWorker.worker.last_name + '.pdf';
+      document.body.appendChild(a); a.click(); a.remove();
+      toast('PDF scaricato', 'success');
+    }).catch(function (e) { toast(e.message || 'Errore generazione PDF', 'error'); });
+  };
+
+  MDL.downloadHealthRecordPdf = function () {
+    if (!state.activeWorker) return;
+    var wid = state.activeWorker.worker.id;
+    var url = API + '/workers/' + wid + '/health-record-pdf';
+    var headers = {};
+    if (state.session) headers['Authorization'] = 'Bearer ' + state.session.access_token;
+    toast('Generazione Cartella Sanitaria PDF...', 'info');
+    fetch(url, { headers: headers }).then(function (r) {
+      if (!r.ok) return r.json().then(function (d) { throw new Error(d.error || 'Errore'); });
+      return r.blob();
+    }).then(function (blob) {
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'cartella_sanitaria_' + state.activeWorker.worker.last_name + '.pdf';
+      document.body.appendChild(a); a.click(); a.remove();
+      toast('PDF scaricato', 'success');
+    }).catch(function (e) { toast(e.message || 'Errore generazione PDF', 'error'); });
+  };
+
+  MDL.downloadAllegato3B = function (companyId, year) {
+    year = year || new Date().getFullYear();
+    var url = API + '/reports/allegato-3b?company_id=' + companyId + '&year=' + year;
+    var headers = {};
+    if (state.session) headers['Authorization'] = 'Bearer ' + state.session.access_token;
+    toast('Generazione Allegato 3B...', 'info');
+    fetch(url, { headers: headers }).then(function (r) {
+      if (!r.ok) return r.json().then(function (d) { throw new Error(d.error || 'Errore'); });
+      return r.blob();
+    }).then(function (blob) {
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'allegato_3B_' + year + '.pdf';
+      document.body.appendChild(a); a.click(); a.remove();
+      toast('PDF scaricato', 'success');
+    }).catch(function (e) { toast(e.message || 'Errore generazione PDF', 'error'); });
+  };
 
   MDL.doUploadReferto = function () {
     var fileInput = $('uploadFile');
@@ -3334,13 +4209,30 @@
     });
     on('btnNuovaVisita', 'click', function () { showNewVisitModal(); });
     on('btnEditAzienda', 'click', function () { MDL.editCompany(); });
+    on('btnAllegato3B', 'click', function () {
+      if (state.activeCompany) MDL.downloadAllegato3B(state.activeCompany.id);
+    });
     on('btnDisattivaAzienda', 'click', function () { MDL.disableCompany(); });
     on('btnNuovaMansione', 'click', function () { MDL.newJobRole(); });
     on('btnNuovoProtocollo', 'click', function () { toast('Creazione protocollo — in sviluppo', 'info'); });
 
+    // Sedi + Figure Sicurezza events
+    on('btnNuovaSede', 'click', function () { MDL.newSite(); });
+    on('btnNuovaFigura', 'click', function () { MDL.newSafetyContact(); });
+
+    // Import/Export events (company context)
+    on('btnImportCSV', 'click', function () {
+      if (state.activeCompany) MDL.importCSV(state.activeCompany.id);
+    });
+    on('btnExportDipendenti', 'click', function () {
+      if (state.activeCompany) MDL.exportCSV('workers', state.activeCompany.id);
+    });
+
     // Global Lavoratori events
     on('searchLavoratoriGlobal', 'input', debounce(loadLavoratoriGlobal, 400));
     on('filterLavAzienda', 'change', loadLavoratoriGlobal);
+    on('btnImportCSVGlobal', 'click', function () { MDL.importCSV(); });
+    on('btnExportLavGlobal', 'click', function () { MDL.exportCSV('workers'); });
     on('btnNuovoLavGlobal', 'click', showNewWorkerModal);
 
     // Global Visite events
@@ -3383,6 +4275,43 @@
       }).catch(function (e) { toast(e.message || 'Errore cambio password', 'error'); });
     });
     on('btnLoadAudit', 'click', loadAuditLog);
+
+    // ── Auto-refresh token (E23) ────────────────────────────────────
+    // Supabase JWT expires in 3600s (1h). Refresh every 50 min to avoid expiry.
+    var TOKEN_REFRESH_INTERVAL = 50 * 60 * 1000; // 50 minutes
+    var refreshTimer = null;
+
+    function startTokenAutoRefresh() {
+      stopTokenAutoRefresh();
+      refreshTimer = setInterval(function () {
+        if (!state.session || !state.session.refresh_token) return;
+        fetch(API + '/auth/refresh', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ refresh_token: state.session.refresh_token })
+        }).then(function (r) { return r.json(); })
+          .then(function (r) {
+            if (r.success && r.session) {
+              state.session.access_token = r.session.access_token;
+              state.session.refresh_token = r.session.refresh_token;
+              localStorage.setItem('mdl_session', JSON.stringify(state.session));
+            } else {
+              clearSession(); showLogin();
+              toast('Sessione scaduta. Effettua nuovamente il login.', 'warning');
+            }
+          }).catch(function () { /* network error, retry next interval */ });
+      }, TOKEN_REFRESH_INTERVAL);
+    }
+
+    function stopTokenAutoRefresh() {
+      if (refreshTimer) { clearInterval(refreshTimer); refreshTimer = null; }
+    }
+
+    // Override showApp/clearSession to manage refresh timer
+    var _origShowApp = showApp;
+    showApp = function () { _origShowApp(); startTokenAutoRefresh(); };
+    var _origClearSession = clearSession;
+    clearSession = function () { stopTokenAutoRefresh(); _origClearSession(); };
 
     // Check session
     if (loadSession()) { showApp(); } else { showLogin(); }

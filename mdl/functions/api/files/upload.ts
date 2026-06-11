@@ -19,11 +19,12 @@
 
 import {
   ADMIN_ROLES,
+  COMPANY_ROLES,
   canUploadClinicalFiles,
   SEGRETERIA_UPLOAD_CATEGORIES,
 } from '../lib/permissions';
 
-const ALLOWED_ROLES = [...ADMIN_ROLES];
+const ALLOWED_ROLES = [...ADMIN_ROLES, ...COMPANY_ROLES];
 const ALLOWED_TYPES = ['application/pdf', 'image/jpeg', 'image/png'];
 const MAX_SIZE = 20 * 1024 * 1024; // 20MB
 
@@ -43,6 +44,7 @@ export const onRequestPost: PagesFunction = async (context) => {
     const visitId = formData.get('visit_id') as string | null;
     const examCode = formData.get('exam_code') as string | null;
     const fitnessId = formData.get('fitness_id') as string | null;
+    const trainingId = formData.get('training_id') as string | null;
 
     // Structured exam result fields (optional) — only MC fills these
     const fld = (k: string) => {
@@ -72,12 +74,18 @@ export const onRequestPost: PagesFunction = async (context) => {
       return Response.json({ success: false, error: 'File, categoria e worker_id obbligatori' }, { status: 400 });
     }
 
-    if (!['referti', 'idoneita'].includes(category)) {
-      return Response.json({ success: false, error: 'Categoria non valida. Usa: referti, idoneita' }, { status: 400 });
+    if (!['referti', 'idoneita', 'training'].includes(category)) {
+      return Response.json({ success: false, error: 'Categoria non valida. Usa: referti, idoneita, training' }, { status: 400 });
     }
 
     // ── FIX: Segreteria cannot upload referti (clinical data) ────────────
-    if (!canUploadClinicalFiles(ctx.user.role) && !SEGRETERIA_UPLOAD_CATEGORIES.includes(category)) {
+    // Training category: allowed for ADMIN_ROLES + COMPANY_ROLES (DL/RSPP can upload training certs)
+    const TRAINING_UPLOAD_ROLES = [...ADMIN_ROLES, ...COMPANY_ROLES];
+    if (category === 'training') {
+      if (!TRAINING_UPLOAD_ROLES.includes(ctx.user.role)) {
+        return Response.json({ success: false, error: 'Non autorizzato a caricare attestati formazione' }, { status: 403 });
+      }
+    } else if (!canUploadClinicalFiles(ctx.user.role) && !SEGRETERIA_UPLOAD_CATEGORIES.includes(category)) {
       return Response.json({
         success: false,
         error: 'Non autorizzato a caricare file della categoria "' + category + '". Solo il Medico Competente puo caricare referti clinici.',
@@ -160,6 +168,15 @@ export const onRequestPost: PagesFunction = async (context) => {
         .select()
         .single();
       linkedRecord = fj;
+    } else if (category === 'training' && trainingId) {
+      // Link to training_record
+      const { data: tr } = await supabaseAdmin
+        .from('mdl_training_records')
+        .update({ certificate_path: storagePath })
+        .eq('id', trainingId)
+        .select()
+        .single();
+      linkedRecord = tr;
     }
 
     // Audit

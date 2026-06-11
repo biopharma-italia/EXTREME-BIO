@@ -2,6 +2,7 @@
  * GET /api/workers/:id — Full worker detail
  *   Returns: profile + company + current job role + protocol exams + visit exams (referti) + fitness judgments + visits
  * PATCH /api/workers/:id — Update worker
+ * DELETE /api/workers/:id — Delete worker (hard delete)
  *
  * PHASE 0 SECURITY FIX:
  *   - BUG #2: select('*') exposed is_pregnant, is_disabled, is_minor to DL/RSPP
@@ -10,6 +11,8 @@
  *   - Fitness judgment clinical_motivation hidden for non-clinical roles
  *   - Visit notes hidden for DL/RSPP (may contain clinical info)
  *   - PATCH: segreteria cannot write sensitive worker flags
+ *   - PATCH: segreteria blocked if worker is_validated = true
+ *   - DELETE: segreteria can only delete non-validated workers
  *   - Uses centralised permissions module
  */
 
@@ -194,11 +197,31 @@ export const onRequestPatch: PagesFunction = async (context) => {
 
   try {
     const body = await context.request.json() as any;
+    const isMC = canViewClinicalData(ctx.user.role);
+    const isSegreteria = ctx.user.role === 'segreteria_mdl';
+
+    // ── Segreteria: check is_validated before allowing edit ────────────
+    if (isSegreteria) {
+      const { data: existing } = await supabaseAdmin
+        .from('mdl_workers')
+        .select('is_validated')
+        .eq('id', workerId)
+        .single();
+
+      if (existing?.is_validated) {
+        return Response.json({
+          success: false,
+          error: 'Lavoratore validato — solo il Medico Competente può modificare i dati'
+        }, { status: 403 });
+      }
+    }
 
     // ── Role-based field restrictions ────────────────────────────────────
     // Segreteria CANNOT write sensitive flags (is_pregnant, is_disabled, is_minor)
-    const isMC = canViewClinicalData(ctx.user.role);
-    const allowedFields = isMC ? CLINICAL_WORKER_WRITE_FIELDS : SEGRETERIA_WORKER_WRITE_FIELDS;
+    // MC/admin can also set is_validated
+    const allowedFields = isMC
+      ? [...CLINICAL_WORKER_WRITE_FIELDS, 'is_validated']
+      : SEGRETERIA_WORKER_WRITE_FIELDS;
 
     const patch: Record<string, any> = {};
     for (const key of allowedFields) {
@@ -234,5 +257,78 @@ export const onRequestPatch: PagesFunction = async (context) => {
     return Response.json({ success: true, data });
   } catch {
     return Response.json({ success: false, error: 'Dati non validi' }, { status: 400 });
+  }
+};
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// DELETE /api/workers/:id — Hard delete worker
+//   - super_admin / medico_competente: can always delete
+//   - segreteria_mdl: can delete ONLY if is_validated = false
+// ═══════════════════════════════════════════════════════════════════════════════
+
+export const onRequestDelete: PagesFunction = async (context) => {
+  const ctx = (context as any).data;
+  if (!ctx.user || !ALLOWED_WRITE.includes(ctx.user.role)) {
+    return Response.json({ success: false, error: 'Non autorizzato' }, { status: 403 });
+  }
+
+  const workerId = (context.params as any).id;
+  const { supabaseAdmin } = ctx;
+  const isSegreteria = ctx.user.role === 'segreteria_mdl';
+
+  try {
+    // Fetch worker to check is_validated and company scope
+    const { data: worker, error: fetchErr } = await supabaseAdmin
+      .from('mdl_workers')
+      .select('id, company_id, is_validated, first_name, last_name, fiscal_code')
+      .eq('id', workerId)
+      .single();
+
+    if (fetchErr || !worker) {
+      return Response.json({ success: false, error: 'Lavoratore non trovato' }, { status: 404 });
+    }
+
+    // Segreteria: can only delete non-validated workers
+    if (isSegreteria && worker.is_validated) {
+      return Response.json({
+        success: false,
+        error: 'Impossibile eliminare: il lavoratore è stato validato dal Medico Competente'
+      }, { status: 403 });
+    }
+
+    // DL/RSPP scoped check (if they were in ALLOWED_WRITE in future)
+    if (isCompanyBoundRole(ctx.user.role) && worker.company_id !== ctx.user.company_id) {
+      return Response.json({ success: false, error: 'Non autorizzato' }, { status: 403 });
+    }
+
+    // Hard delete — cascades to worker_jobs, training_records, etc.
+    const { error: delErr } = await supabaseAdmin
+      .from('mdl_workers')
+      .delete()
+      .eq('id', workerId);
+
+    if (delErr) {
+      return Response.json({ success: false, error: delErr.message }, { status: 500 });
+    }
+
+    // Audit log
+    await supabaseAdmin.from('mdl_audit_log').insert({
+      user_id: ctx.user.id,
+      user_role: ctx.user.role,
+      action: 'worker_delete',
+      target_type: 'worker',
+      target_id: workerId,
+      company_id: worker.company_id,
+      ip_address: ctx.ip,
+      details: {
+        deleted_worker: `${worker.last_name} ${worker.first_name}`,
+        fiscal_code: worker.fiscal_code,
+        was_validated: worker.is_validated,
+      },
+    });
+
+    return Response.json({ success: true, message: 'Lavoratore eliminato' });
+  } catch {
+    return Response.json({ success: false, error: 'Errore durante l\'eliminazione' }, { status: 500 });
   }
 };

@@ -184,7 +184,7 @@ export const WORKER_SAFE_SELECT = [
   'address_street', 'address_city', 'address_province', 'address_zip',
   'phone', 'email', 'language',
   'hire_date', 'contract_type', 'qualification', 'department', 'work_schedule',
-  'is_night_worker', 'is_active', 'created_at', 'updated_at',
+  'is_night_worker', 'is_active', 'is_validated', 'created_at', 'updated_at',
 ].join(', ');
 
 /**
@@ -259,7 +259,7 @@ export function stripFitnessJudgmentClinicalFields(judgment: any): any {
  *   - idoneita (fitness certificates — the legal output)
  *   - company_docs (DVR, Nomina MC, Visura, etc.)
  */
-export const NON_CLINICAL_DOWNLOAD_CATEGORIES = ['idoneita', 'company_docs'];
+export const NON_CLINICAL_DOWNLOAD_CATEGORIES = ['idoneita', 'company_docs', 'training'];
 
 /**
  * File upload categories allowed for segreteria.
