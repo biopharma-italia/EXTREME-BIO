@@ -7,7 +7,7 @@
   <meta name="description" content="Gestionale Medicina del Lavoro - Sorveglianza Sanitaria D.Lgs. 81/2008">
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="/css/mdl.css?v=20260610b">
+  <link rel="stylesheet" href="/css/mdl.css?v=20260611a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -109,6 +109,19 @@
             <div class="stat-card stat-warning"><div class="stat-value" id="statScadenze30">0</div><div class="stat-label">Scadenze 30gg</div></div>
             <div class="stat-card stat-danger"><div class="stat-value" id="statVisiteOggi">0</div><div class="stat-label">Visite Oggi</div></div>
           </div>
+
+          <!-- Compliance + Scheduling Overview -->
+          <div class="dashboard-panels" id="dashComplianceRow" style="margin-top:0.75rem">
+            <div class="panel">
+              <h3 class="panel-title">Conformit&agrave; Sorveglianza</h3>
+              <div id="compliancePanel" class="panel-body"><p class="text-muted">Caricamento...</p></div>
+            </div>
+            <div class="panel">
+              <h3 class="panel-title">Andamento Visite (6 mesi)</h3>
+              <div id="monthlyChart" class="panel-body" style="min-height:140px"><p class="text-muted">Caricamento...</p></div>
+            </div>
+          </div>
+
           <div class="dashboard-panels">
             <div class="panel">
               <h3 class="panel-title">Prossime Visite</h3>
@@ -320,10 +333,20 @@
 
         <!-- ═══ PROTOCOLLI GLOBALE ═══ -->
         <section id="sec-protocolli-globale" class="section d-none">
-          <div class="placeholder-section">
-            <div class="placeholder-icon">&#9776;</div>
-            <div class="placeholder-title">Protocolli Sanitari</div>
-            <div class="placeholder-desc">Gestione protocolli sanitari per mansione. Modulo in sviluppo.</div>
+          <div class="section-toolbar" id="protGlobToolbar">
+            <input type="text" id="searchProtGlobal" class="form-input search-input" placeholder="Cerca protocollo per nome...">
+            <select id="filterProtPeriodicity" class="form-input filter-select">
+              <option value="">Tutte le periodicità</option>
+              <option value="semestrale">Semestrale</option>
+              <option value="annuale">Annuale</option>
+              <option value="biennale">Biennale</option>
+              <option value="triennale">Triennale</option>
+              <option value="quinquennale">Quinquennale</option>
+              <option value="una_tantum">Una tantum</option>
+            </select>
+          </div>
+          <div id="protGlobContent">
+            <div style="text-align:center;padding:2rem;color:#9ca3af">Caricamento protocolli...</div>
           </div>
         </section>
 
@@ -449,6 +472,6 @@
   <!-- Toast -->
   <div id="toastContainer" class="toast-container"></div>
 
-  <script src="/js/mdl.js?v=20260610b"></script>
+  <script src="/js/mdl.js?v=20260611a"></script>
 </body>
 </html>

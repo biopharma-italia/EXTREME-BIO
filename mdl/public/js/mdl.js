@@ -320,22 +320,81 @@
   /*  DASHBOARD                                                     */
   /* ═══════════════════════════════════════════════════════════════ */
   function loadDashboard() {
-    api('GET', '/companies?limit=1').then(function (r) {
-      $('statAziende').textContent = r.pagination ? r.pagination.total : 0;
-    }).catch(function () { $('statAziende').textContent = '—'; });
+    // ── Main stats from Reports API ──────────────────────────────────
+    api('GET', '/reports/stats').then(function (r) {
+      var d = r.data || {};
+      var s = d.summary || {};
+      var c = d.compliance || {};
+      var dl = d.deadlines || {};
+      $('statAziende').textContent = s.total_companies || 0;
+      $('statLavoratori').textContent = s.total_workers || 0;
+      $('statVisiteOggi').textContent = s.visits_today || 0;
+      $('statScadenze30').textContent = (dl.overdue || 0) + (dl.within_30 || 0);
 
-    api('GET', '/workers?limit=1').then(function (r) {
-      $('statLavoratori').textContent = r.pagination ? r.pagination.total : 0;
-    }).catch(function () { $('statLavoratori').textContent = '—'; });
+      // ── Compliance panel ──────────────────────────────────────────
+      var cp = $('compliancePanel');
+      if (cp) {
+        var pct = c.rate || 0;
+        var barColor = pct >= 80 ? '#22c55e' : pct >= 50 ? '#f59e0b' : '#ef4444';
+        cp.innerHTML =
+          '<div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem">' +
+            '<div style="font-size:2rem;font-weight:700;color:' + barColor + '">' + pct + '%</div>' +
+            '<div style="flex:1"><div style="font-size:0.78rem;color:#6b7280;margin-bottom:4px">Tasso idoneit&agrave; valida</div>' +
+              '<div style="background:#f3f4f6;border-radius:4px;height:8px;overflow:hidden">' +
+                '<div style="background:' + barColor + ';height:100%;width:' + pct + '%;transition:width 0.5s"></div>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.5rem;font-size:0.82rem">' +
+            '<div style="padding:0.5rem;background:#f0fdf4;border-radius:6px;text-align:center"><strong style="color:#22c55e">' + (c.valid || 0) + '</strong><br><small>Validi</small></div>' +
+            '<div style="padding:0.5rem;background:#fef3c7;border-radius:6px;text-align:center"><strong style="color:#f59e0b">' + (c.expiring_30 || 0) + '</strong><br><small>In scadenza 30gg</small></div>' +
+            '<div style="padding:0.5rem;background:#fef2f2;border-radius:6px;text-align:center"><strong style="color:#ef4444">' + (c.expired || 0) + '</strong><br><small>Scaduti</small></div>' +
+            '<div style="padding:0.5rem;background:#f3f4f6;border-radius:6px;text-align:center"><strong style="color:#6b7280">' + (c.without_fitness || 0) + '</strong><br><small>Senza idoneit&agrave;</small></div>' +
+          '</div>';
+      }
 
-    var today = new Date().toISOString().slice(0, 10);
-    api('GET', '/visits?scheduled_date=' + today + '&status=programmata&limit=1').then(function (r) {
-      $('statVisiteOggi').textContent = r.pagination ? r.pagination.total : 0;
-    }).catch(function () { $('statVisiteOggi').textContent = '—'; });
+      // ── Monthly chart (CSS bar chart) ─────────────────────────────
+      var mc = $('monthlyChart');
+      var monthly = d.monthly || [];
+      if (mc && monthly.length) {
+        var maxVal = Math.max.apply(null, monthly.map(function (m) { return m.total; }).concat([1]));
+        mc.innerHTML =
+          '<div style="display:flex;align-items:flex-end;gap:4px;height:120px;padding-top:8px">' +
+          monthly.map(function (m) {
+            var h = Math.max(4, Math.round((m.total / maxVal) * 100));
+            var hC = m.completed > 0 ? Math.max(2, Math.round((m.completed / maxVal) * 100)) : 0;
+            return '<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px">' +
+              '<span style="font-size:0.65rem;font-weight:600;color:#374151">' + m.total + '</span>' +
+              '<div style="width:100%;position:relative;height:' + h + 'px;background:#dbeafe;border-radius:3px 3px 0 0;overflow:hidden">' +
+                (hC > 0 ? '<div style="position:absolute;bottom:0;width:100%;height:' + hC + 'px;background:#3b82f6;border-radius:0 0 0 0"></div>' : '') +
+              '</div>' +
+              '<span style="font-size:0.6rem;color:#9ca3af;writing-mode:horizontal-tb;white-space:nowrap">' + esc(m.month.split(' ')[0]) + '</span>' +
+            '</div>';
+          }).join('') +
+          '</div>' +
+          '<div style="display:flex;gap:1rem;justify-content:center;margin-top:0.5rem;font-size:0.7rem;color:#6b7280">' +
+            '<span><span style="display:inline-block;width:10px;height:10px;background:#dbeafe;border-radius:2px;margin-right:3px"></span>Totale</span>' +
+            '<span><span style="display:inline-block;width:10px;height:10px;background:#3b82f6;border-radius:2px;margin-right:3px"></span>Completate</span>' +
+          '</div>';
+      } else if (mc) {
+        mc.innerHTML = '<p style="color:#9ca3af;padding:1rem 0;text-align:center;font-size:0.82rem">Nessun dato visite disponibile</p>';
+      }
+    }).catch(function () {
+      // Fallback to individual calls if reports API fails
+      api('GET', '/companies?limit=1').then(function (r) {
+        $('statAziende').textContent = r.pagination ? r.pagination.total : 0;
+      }).catch(function () { $('statAziende').textContent = '—'; });
+      api('GET', '/workers?limit=1').then(function (r) {
+        $('statLavoratori').textContent = r.pagination ? r.pagination.total : 0;
+      }).catch(function () { $('statLavoratori').textContent = '—'; });
+      $('statVisiteOggi').textContent = '—';
+      $('statScadenze30').textContent = '—';
+      if ($('compliancePanel')) $('compliancePanel').innerHTML = '<p style="color:#9ca3af">Non disponibile</p>';
+      if ($('monthlyChart')) $('monthlyChart').innerHTML = '<p style="color:#9ca3af">Non disponibile</p>';
+    });
 
+    // ── Scadenze imminenti ───────────────────────────────────────────
     api('GET', '/deadlines').then(function (r) {
-      var c = r.counts || {};
-      $('statScadenze30').textContent = (c.scadute || 0) + (c.entro_30 || 0);
       var items = (r.data || []).slice(0, 6);
       var el = $('expiringItems');
       if (!items.length) {
@@ -349,8 +408,9 @@
           '<br><small style="color:#9ca3af">' + (DEADLINE_CAT[i.category] || i.category) + (i.company_name ? ' — ' + esc(i.company_name) : '') + '</small></div>' +
           '<span style="font-size:0.78rem;color:#6b7280">' + fmtDate(i.due_date) + '</span></div>';
       }).join('');
-    }).catch(function () { $('statScadenze30').textContent = '—'; });
+    }).catch(function () {});
 
+    // ── Prossime visite ──────────────────────────────────────────────
     api('GET', '/visits?upcoming=true&limit=5').then(function (r) {
       var el = $('upcomingVisits');
       if (!r.data || r.data.length === 0) {
@@ -1935,33 +1995,61 @@
     return out;
   }
 
-  // Catalogo globale dei protocolli standard (sola lettura)
+  // Catalogo globale dei protocolli standard con filtri
+  var protGlobAllTemplates = [];
   function loadProtocolliGlobale() {
-    var section = $('sec-protocolli-globale');
-    if (!section) return;
-    section.innerHTML = '<div style="text-align:center;padding:2rem;color:#9ca3af">Caricamento catalogo protocolli...</div>';
-
-    var canEdit = state.user && ['super_admin', 'medico_competente', 'medico_collaboratore'].indexOf(state.user.role) >= 0;
+    var container = $('protGlobContent');
+    if (!container) return;
+    container.innerHTML = '<div style="text-align:center;padding:2rem;color:#9ca3af">Caricamento catalogo protocolli...</div>';
 
     loadTemplates().then(function (templates) {
-      var newBtn = canEdit ? '<button class="btn btn-primary" onclick="MDL.newTemplate()">+ Nuovo modello</button>' : '';
-      if (!templates.length) {
-        section.innerHTML = '<div class="section-toolbar"><h3 style="font-size:1rem;font-weight:600">Protocolli Standard</h3>' + newBtn + '</div>' +
-          '<div class="empty-state"><div class="empty-state-icon">&#9776;</div>' +
-          '<div class="empty-state-text">Nessun protocollo standard disponibile</div>' +
-          '<div class="empty-state-sub">Crea il primo modello da riutilizzare nelle aziende</div></div>';
-        return;
-      }
-      var html = '<div class="section-toolbar"><h3 style="font-size:1rem;font-weight:600">Protocolli Standard (' + templates.length + ')</h3>' + newBtn + '</div>' +
-        '<p class="text-muted" style="font-size:0.8rem;margin:-0.25rem 0 0.75rem">I modelli sono applicabili alle mansioni dalla scheda azienda → Protocolli.</p>';
-      html += templates.map(function (t) {
+      protGlobAllTemplates = templates;
+      renderProtocolliGlobale();
+    }).catch(function (err) {
+      container.innerHTML = '<div style="text-align:center;padding:2rem;color:#dc2626">Errore: ' + esc(err.message) + '</div>';
+    });
+  }
+
+  function renderProtocolliGlobale() {
+    var container = $('protGlobContent');
+    if (!container) return;
+    var canEdit = state.user && ['super_admin', 'medico_competente', 'medico_collaboratore'].indexOf(state.user.role) >= 0;
+    var searchTerm = (($('searchProtGlobal') || {}).value || '').toLowerCase().trim();
+    var filterPeriod = ($('filterProtPeriodicity') || {}).value || '';
+
+    var filtered = protGlobAllTemplates.filter(function (t) {
+      if (searchTerm && (t.name || '').toLowerCase().indexOf(searchTerm) < 0 &&
+          (t.description || '').toLowerCase().indexOf(searchTerm) < 0) return false;
+      if (filterPeriod && t.visit_periodicity !== filterPeriod) return false;
+      return true;
+    });
+
+    var newBtn = canEdit ? ' <button class="btn btn-primary" onclick="MDL.newTemplate()">+ Nuovo modello</button>' : '';
+    if (!protGlobAllTemplates.length) {
+      container.innerHTML = '<div class="section-toolbar"><h3 style="font-size:1rem;font-weight:600">Protocolli Standard</h3>' + newBtn + '</div>' +
+        '<div class="empty-state"><div class="empty-state-icon">&#9776;</div>' +
+        '<div class="empty-state-text">Nessun protocollo standard disponibile</div>' +
+        '<div class="empty-state-sub">Crea il primo modello da riutilizzare nelle aziende</div></div>';
+      return;
+    }
+    var total = protGlobAllTemplates.length;
+    var showing = filtered.length;
+    var countLabel = showing < total ? showing + '/' + total : String(total);
+
+    var html = '<div class="section-toolbar"><h3 style="font-size:1rem;font-weight:600">Protocolli Standard (' + countLabel + ')</h3>' + newBtn + '</div>' +
+      '<p class="text-muted" style="font-size:0.8rem;margin:-0.25rem 0 0.75rem">I modelli sono applicabili alle mansioni dalla scheda azienda &rarr; Protocolli.</p>';
+
+    if (!filtered.length) {
+      html += '<div style="text-align:center;padding:2rem;color:#9ca3af">Nessun protocollo corrisponde ai filtri.</div>';
+    } else {
+      html += filtered.map(function (t) {
         var exams = t.mdl_protocol_template_exams || [];
         return '<div class="protocol-card">' +
           '<div class="protocol-card-header"><div class="protocol-card-title">' +
             '<h4>' + esc(t.name) + '</h4>' +
             '<div class="protocol-card-meta">' +
               (t.legal_reference ? '<span>' + esc(t.legal_reference) + '</span> ' : '') +
-              '<span>Periodicità visita: <strong>' + (PERIODICITY_LABELS[t.visit_periodicity] || t.visit_periodicity) + '</strong></span>' +
+              '<span>Periodicit&agrave; visita: <strong>' + (PERIODICITY_LABELS[t.visit_periodicity] || t.visit_periodicity) + '</strong></span>' +
             '</div>' +
             (t.description ? '<div class="text-muted" style="font-size:0.8rem;margin-top:0.25rem">' + esc(t.description) + '</div>' : '') +
           '</div>' +
@@ -1975,10 +2063,8 @@
           '</div>' : '') +
         '</div>';
       }).join('');
-      section.innerHTML = html;
-    }).catch(function (err) {
-      section.innerHTML = '<div style="text-align:center;padding:2rem;color:#dc2626">Errore: ' + esc(err.message) + '</div>';
-    });
+    }
+    container.innerHTML = html;
   }
 
   // Modale: applica un protocollo standard a una mansione dell'azienda corrente
@@ -2946,7 +3032,7 @@
     var sys = $('settingsSystem');
     if (sys) {
       sys.innerHTML =
-        dl('Piattaforma', 'MDL Bio-Clinic v1.1') +
+        dl('Piattaforma', 'MDL Bio-Clinic v2.0') +
         dl('Backend', 'Cloudflare Pages Functions') +
         dl('Database', 'Supabase PostgreSQL') +
         dl('Sessione', state.session ? 'Attiva' : 'Non attiva');
@@ -3274,6 +3360,10 @@
       agendaWeekStart = d; loadAgenda();
     });
     on('agendaFilterStatus', 'change', loadAgenda);
+
+    // Protocolli Globale filter events
+    on('searchProtGlobal', 'input', debounce(renderProtocolliGlobale, 300));
+    on('filterProtPeriodicity', 'change', renderProtocolliGlobale);
 
     // Scadenzario filter events
     on('filterScadCat', 'change', renderFilteredScadenzario);

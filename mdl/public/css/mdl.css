@@ -1079,6 +1079,9 @@ textarea.form-input { min-height: 80px; resize: vertical; }
 #agendaGrid > div:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
 #agendaGrid { background: var(--gray-100); border-radius: 8px; padding: 4px; }
 
+/* ═══ DASHBOARD PANELS ═══ */
+#dashComplianceRow .panel { min-height: 180px; }
+
 /* ═══ FILTER-SELECT ═══ */
 .filter-select { max-width: 200px; }
 
