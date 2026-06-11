@@ -4,7 +4,7 @@
  * DELETE /api/companies/:id — Deactivate company (soft delete)
  */
 
-const ALLOWED_ROLES_READ = ['super_admin', 'medico_competente', 'medico_collaboratore', 'segreteria_mdl', 'datore_lavoro', 'rspp'];
+const ALLOWED_ROLES_READ = ['super_admin', 'medico_competente', 'medico_collaboratore', 'segreteria_mdl', 'datore_lavoro', 'rspp', 'lavoratore'];
 const ALLOWED_ROLES_WRITE = ['super_admin', 'medico_competente', 'segreteria_mdl'];
 
 export const onRequestGet: PagesFunction = async (context) => {
@@ -16,8 +16,8 @@ export const onRequestGet: PagesFunction = async (context) => {
   const id = (context.params as any).id;
   const { supabaseAdmin } = ctx;
 
-  // DL/RSPP can only see their own company
-  if (['datore_lavoro', 'rspp'].includes(ctx.user.role) && id !== ctx.user.company_id) {
+  // DL/RSPP/lavoratore can only see their own company
+  if (['datore_lavoro', 'rspp', 'lavoratore'].includes(ctx.user.role) && id !== ctx.user.company_id) {
     return Response.json({ success: false, error: 'Non autorizzato' }, { status: 403 });
   }
 

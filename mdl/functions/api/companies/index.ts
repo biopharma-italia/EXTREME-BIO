@@ -1,9 +1,13 @@
 /**
  * GET /api/companies — List companies (filtered by role)
  * POST /api/companies — Create new company
+ *
+ * COMPANY-SCOPED ISOLATION:
+ *   - DL/RSPP/lavoratore: see only their own company
+ *   - All other authorised roles: see all companies
  */
 
-const ALLOWED_ROLES_READ = ['super_admin', 'medico_competente', 'medico_collaboratore', 'segreteria_mdl', 'datore_lavoro', 'rspp'];
+const ALLOWED_ROLES_READ = ['super_admin', 'medico_competente', 'medico_collaboratore', 'segreteria_mdl', 'datore_lavoro', 'rspp', 'lavoratore'];
 const ALLOWED_ROLES_WRITE = ['super_admin', 'medico_competente', 'segreteria_mdl'];
 
 export const onRequestGet: PagesFunction = async (context) => {
@@ -26,8 +30,8 @@ export const onRequestGet: PagesFunction = async (context) => {
 
   if (active) query = query.eq('is_active', true);
 
-  // DL/RSPP only see their own company
-  if (['datore_lavoro', 'rspp'].includes(ctx.user.role)) {
+  // DL/RSPP/lavoratore only see their own company
+  if (['datore_lavoro', 'rspp', 'lavoratore'].includes(ctx.user.role)) {
     query = query.eq('id', ctx.user.company_id);
   }
 

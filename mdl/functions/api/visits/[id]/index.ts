@@ -22,7 +22,7 @@ import {
   SEGRETERIA_ALLOWED_STATUSES,
 } from '../../lib/permissions';
 
-const ALLOWED_READ = [...ALL_INTERNAL_ROLES];
+const ALLOWED_READ = [...ALL_INTERNAL_ROLES];  // Now includes 'lavoratore'
 const ALLOWED_WRITE = [...ADMIN_ROLES];
 
 export const onRequestGet: PagesFunction = async (context) => {
@@ -58,9 +58,22 @@ export const onRequestGet: PagesFunction = async (context) => {
     return Response.json({ success: false, error: 'Visita non trovata' }, { status: 404 });
   }
 
-  // DL/RSPP can only see their own company
-  if (['datore_lavoro', 'rspp'].includes(ctx.user.role) && visit.company_id !== ctx.user.company_id) {
+  // DL/RSPP/lavoratore can only see their own company
+  if (['datore_lavoro', 'rspp', 'lavoratore'].includes(ctx.user.role) && visit.company_id !== ctx.user.company_id) {
     return Response.json({ success: false, error: 'Non autorizzato' }, { status: 403 });
+  }
+
+  // Lavoratore: self-only — can only see visits for their own worker record
+  if (ctx.user.role === 'lavoratore') {
+    const { data: lavoratoreProfile } = await supabaseAdmin
+      .from('mdl_users')
+      .select('fiscal_code')
+      .eq('id', ctx.user.id)
+      .single();
+    const workerFC = visit.mdl_workers?.fiscal_code;
+    if (!lavoratoreProfile?.fiscal_code || workerFC !== lavoratoreProfile.fiscal_code) {
+      return Response.json({ success: false, error: 'Non autorizzato — accesso solo alle proprie visite' }, { status: 403 });
+    }
   }
 
   // Strip clinical data for non-clinical roles (DL, RSPP, segreteria)

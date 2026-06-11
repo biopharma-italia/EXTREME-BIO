@@ -17,7 +17,8 @@ import {
   ALL_INTERNAL_ROLES,
   canViewClinicalData,
   canViewSensitiveWorkerData,
-  isCompanyRole,
+  isCompanyBoundRole,
+  isLavoratore,
   stripSensitiveWorkerFields,
   stripFitnessJudgmentClinicalFields,
   CLINICAL_WORKER_WRITE_FIELDS,
@@ -63,9 +64,22 @@ export const onRequestGet: PagesFunction = async (context) => {
     return Response.json({ success: false, error: 'Lavoratore non trovato' }, { status: 404 });
   }
 
-  // DL/RSPP can only see their own company workers
-  if (isCompanyRole(role) && worker.company_id !== ctx.user.company_id) {
+  // DL/RSPP/lavoratore can only see their own company workers
+  if (isCompanyBoundRole(role) && worker.company_id !== ctx.user.company_id) {
     return Response.json({ success: false, error: 'Non autorizzato' }, { status: 403 });
+  }
+
+  // Lavoratore: can only see their own worker profile (match by fiscal_code or auth_id)
+  if (isLavoratore(role)) {
+    // Lavoratore's mdl_users record has fiscal_code; match against worker's fiscal_code
+    const { data: lavoratoreProfile } = await supabaseAdmin
+      .from('mdl_users')
+      .select('fiscal_code')
+      .eq('id', ctx.user.id)
+      .single();
+    if (!lavoratoreProfile?.fiscal_code || worker.fiscal_code !== lavoratoreProfile.fiscal_code) {
+      return Response.json({ success: false, error: 'Non autorizzato — accesso solo al proprio profilo' }, { status: 403 });
+    }
   }
 
   // Extra safety: strip sensitive fields if they somehow leaked through select

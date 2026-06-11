@@ -43,10 +43,17 @@ export const COMPANY_ROLES = [
   'rspp',
 ] as const;
 
-/** All roles that may read general platform data (excluding lavoratore). */
+/** All roles that may read general platform data (including lavoratore for scoped access). */
 export const ALL_INTERNAL_ROLES = [
   ...ADMIN_ROLES,
   ...COMPANY_ROLES,
+  'lavoratore',
+] as const;
+
+/** Company-bound roles (including lavoratore). Must filter by company_id. */
+export const ALL_COMPANY_BOUND_ROLES = [
+  ...COMPANY_ROLES,
+  'lavoratore',
 ] as const;
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -98,6 +105,16 @@ export function canViewAuditLog(role: Role): boolean {
 /** Is the role a company-side role (scoped to their own company)? */
 export function isCompanyRole(role: Role): boolean {
   return (COMPANY_ROLES as readonly string[]).includes(role);
+}
+
+/** Is the role a company-bound role (DL, RSPP, or lavoratore)? */
+export function isCompanyBoundRole(role: Role): boolean {
+  return (ALL_COMPANY_BOUND_ROLES as readonly string[]).includes(role);
+}
+
+/** Is the role 'lavoratore'? Lavoratore has the most restricted access (self-only). */
+export function isLavoratore(role: Role): boolean {
+  return role === 'lavoratore';
 }
 
 // ═══════════════════════════════════════════════════════════════════════════

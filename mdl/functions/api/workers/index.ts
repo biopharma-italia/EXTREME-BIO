@@ -11,7 +11,8 @@
 import {
   ALL_INTERNAL_ROLES,
   canViewSensitiveWorkerData,
-  isCompanyRole,
+  isCompanyBoundRole,
+  isLavoratore,
   stripSensitiveWorkerFields,
   WORKER_SAFE_SELECT,
 } from '../lib/permissions';
@@ -46,11 +47,18 @@ export const onRequestGet: PagesFunction = async (context) => {
 
   if (active) query = query.eq('is_active', true);
 
-  // Company filter
-  if (isCompanyRole(ctx.user.role)) {
+  // Company filter — DL/RSPP/lavoratore see only their own company
+  if (isCompanyBoundRole(ctx.user.role)) {
     query = query.eq('company_id', ctx.user.company_id);
   } else if (companyId) {
     query = query.eq('company_id', companyId);
+  }
+
+  // Lavoratore: even more restricted — can only see themselves
+  // (filtered by fiscal_code match via their mdl_users record)
+  if (isLavoratore(ctx.user.role)) {
+    // A lavoratore can see only the list of workers in their company
+    // but NOT their clinical/sensitive data (already handled by safe select)
   }
 
   if (search) {

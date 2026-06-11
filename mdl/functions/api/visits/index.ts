@@ -1,10 +1,14 @@
 /**
  * GET /api/visits — List visits (filtered by worker, company, status, date range)
  * POST /api/visits — Schedule or create a visit
+ *
+ * COMPANY-SCOPED ISOLATION:
+ *   - DL/RSPP: see only visits for their own company (no clinical data)
+ *   - lavoratore: see only their own visits (no clinical data)
  */
 
 const MC_ROLES = ['super_admin', 'medico_competente', 'medico_collaboratore'];
-const ALLOWED_READ = [...MC_ROLES, 'segreteria_mdl', 'datore_lavoro', 'rspp'];
+const ALLOWED_READ = [...MC_ROLES, 'segreteria_mdl', 'datore_lavoro', 'rspp', 'lavoratore'];
 const ALLOWED_WRITE = [...MC_ROLES, 'segreteria_mdl'];
 
 export const onRequestGet: PagesFunction = async (context) => {
@@ -25,8 +29,9 @@ export const onRequestGet: PagesFunction = async (context) => {
   const limit = Math.min(parseInt(url.searchParams.get('limit') || '25'), 100);
   const offset = (page - 1) * limit;
 
-  // Select fields based on role — DL/RSPP don't see clinical data
-  const selectFields = ['datore_lavoro', 'rspp'].includes(ctx.user.role)
+  // Select fields based on role — DL/RSPP/lavoratore don't see clinical data
+  const NON_CLINICAL_LIST_ROLES = ['datore_lavoro', 'rspp', 'lavoratore'];
+  const selectFields = NON_CLINICAL_LIST_ROLES.includes(ctx.user.role)
     ? 'id, worker_id, company_id, visit_type, scheduled_date, scheduled_time, actual_date, status, physician_id, location, created_at'
     : '*';
 
@@ -34,11 +39,35 @@ export const onRequestGet: PagesFunction = async (context) => {
     .from('mdl_visits')
     .select(`${selectFields}, mdl_workers!inner(id, first_name, last_name, fiscal_code)`, { count: 'exact' });
 
-  // Company scope for DL/RSPP
-  if (['datore_lavoro', 'rspp'].includes(ctx.user.role)) {
+  // Company scope for DL/RSPP/lavoratore
+  if (['datore_lavoro', 'rspp', 'lavoratore'].includes(ctx.user.role)) {
     query = query.eq('company_id', ctx.user.company_id);
   } else if (companyId) {
     query = query.eq('company_id', companyId);
+  }
+
+  // Lavoratore: self-only — filter by worker linked to their fiscal_code
+  if (ctx.user.role === 'lavoratore') {
+    const { data: lavoratoreProfile } = await supabaseAdmin
+      .from('mdl_users')
+      .select('fiscal_code')
+      .eq('id', ctx.user.id)
+      .single();
+    if (lavoratoreProfile?.fiscal_code) {
+      // Find the worker record for this lavoratore
+      const { data: selfWorker } = await supabaseAdmin
+        .from('mdl_workers')
+        .select('id')
+        .eq('fiscal_code', lavoratoreProfile.fiscal_code)
+        .eq('company_id', ctx.user.company_id)
+        .maybeSingle();
+      if (selfWorker) {
+        query = query.eq('worker_id', selfWorker.id);
+      } else {
+        // No matching worker found — return empty
+        return Response.json({ success: true, data: [], pagination: { page, limit, total: 0, total_pages: 0 } });
+      }
+    }
   }
 
   if (workerId) query = query.eq('worker_id', workerId);
