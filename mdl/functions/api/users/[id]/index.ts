@@ -54,12 +54,19 @@ interface UpdateUserBody {
 
 export const onRequestPatch: PagesFunction = async (context) => {
   const ctx = (context as any).data;
-  if (!ctx.user || !canManageUsers(ctx.user.role)) {
+  const userId = (context.params as any).id;
+  const isSelf = ctx.user && ctx.user.id === userId;
+
+  // Allow self-password-change for any authenticated user;
+  // otherwise require user-management permission.
+  if (!ctx.user) {
+    return Response.json({ success: false, error: 'Non autorizzato' }, { status: 403 });
+  }
+  if (!isSelf && !canManageUsers(ctx.user.role)) {
     return Response.json({ success: false, error: 'Non autorizzato' }, { status: 403 });
   }
 
   const { supabaseAdmin } = ctx;
-  const userId = (context.params as any).id;
 
   // Fetch target user
   const { data: target, error: fetchError } = await supabaseAdmin
@@ -72,24 +79,42 @@ export const onRequestPatch: PagesFunction = async (context) => {
     return Response.json({ success: false, error: 'Utente non trovato' }, { status: 404 });
   }
 
-  // Check permission: can actor modify this target?
-  if (!canModifyUserRole(ctx.user.role, target.role)) {
-    return Response.json({
-      success: false,
-      error: 'Non autorizzato a modificare questo utente',
-    }, { status: 403 });
-  }
-
-  // Cannot modify yourself (prevents self-demotion accidents)
-  if (target.id === ctx.user.id) {
-    return Response.json({
-      success: false,
-      error: 'Non puoi modificare il tuo stesso account da questa interfaccia',
-    }, { status: 400 });
+  // If not self-edit, check permission: can actor modify this target?
+  if (!isSelf) {
+    if (!canModifyUserRole(ctx.user.role, target.role)) {
+      return Response.json({
+        success: false,
+        error: 'Non autorizzato a modificare questo utente',
+      }, { status: 403 });
+    }
   }
 
   try {
     const body = await context.request.json() as UpdateUserBody;
+
+    // Self-edit: only allow password change
+    if (isSelf) {
+      if (!body.password || body.password.length < 8) {
+        return Response.json({ success: false, error: 'La password deve essere di almeno 8 caratteri' }, { status: 400 });
+      }
+      const { error: pwError } = await supabaseAdmin.auth.admin.updateUserById(target.auth_id, {
+        password: body.password,
+      });
+      if (pwError) {
+        return Response.json({ success: false, error: `Errore aggiornamento password: ${pwError.message}` }, { status: 500 });
+      }
+      await supabaseAdmin.from('mdl_audit_log').insert({
+        user_id: ctx.user.id,
+        user_role: ctx.user.role,
+        action: 'user_password_change',
+        target_type: 'user',
+        target_id: userId,
+        ip_address: ctx.ip,
+        details: { email: target.email, self: true },
+      });
+      return Response.json({ success: true, data: { id: userId, message: 'Password aggiornata' } });
+    }
+
     const updates: Record<string, any> = {};
     const changes: string[] = [];
 

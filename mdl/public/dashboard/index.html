@@ -291,10 +291,30 @@
 
         <!-- ═══ AGENDA ═══ -->
         <section id="sec-agenda" class="section d-none">
-          <div class="placeholder-section">
-            <div class="placeholder-icon">&#9998;</div>
-            <div class="placeholder-title">Agenda</div>
-            <div class="placeholder-desc">Calendario visite e appuntamenti. Modulo in sviluppo.</div>
+          <div class="section-toolbar">
+            <div style="display:flex;gap:0.5rem;align-items:center">
+              <button class="btn btn-outline btn-sm" id="agendaPrev">&larr;</button>
+              <span id="agendaWeekLabel" style="font-weight:600;min-width:220px;text-align:center"></span>
+              <button class="btn btn-outline btn-sm" id="agendaNext">&rarr;</button>
+              <button class="btn btn-outline btn-sm" id="agendaToday">Oggi</button>
+            </div>
+            <select id="agendaFilterStatus" class="form-input filter-select">
+              <option value="">Tutti gli stati</option>
+              <option value="programmata" selected>Programmate</option>
+              <option value="confermata">Confermate</option>
+              <option value="completata">Completate</option>
+            </select>
+          </div>
+          <div id="agendaGrid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-top:0.5rem">
+          </div>
+          <div id="agendaDayDetail" class="d-none" style="margin-top:1rem">
+            <h3 id="agendaDayTitle" style="margin-bottom:0.5rem"></h3>
+            <div class="table-container">
+              <table class="data-table">
+                <thead><tr><th>Ora</th><th>Lavoratore</th><th>Tipo</th><th>Stato</th><th>Azioni</th></tr></thead>
+                <tbody id="agendaDayBody"></tbody>
+              </table>
+            </div>
           </div>
         </section>
 
@@ -314,6 +334,24 @@
             <div class="stat-card stat-warning"><div class="stat-value" id="globStatScad30">0</div><div class="stat-label">Entro 30gg</div></div>
             <div class="stat-card"><div class="stat-value" id="globStatScad60">0</div><div class="stat-label">Entro 60gg</div></div>
             <div class="stat-card"><div class="stat-value" id="globStatScad90">0</div><div class="stat-label">Entro 90gg</div></div>
+          </div>
+          <div class="section-toolbar" style="margin-top:0.5rem">
+            <select id="filterScadCat" class="form-input filter-select">
+              <option value="">Tutte le categorie</option>
+              <option value="visita">Visite</option>
+              <option value="documento">Documenti</option>
+              <option value="formazione">Formazione</option>
+            </select>
+            <select id="filterScadAzienda" class="form-input filter-select">
+              <option value="">Tutte le aziende</option>
+            </select>
+            <select id="filterScadUrgenza" class="form-input filter-select">
+              <option value="">Tutte le urgenze</option>
+              <option value="scaduta">Scadute</option>
+              <option value="30">Entro 30gg</option>
+              <option value="60">Entro 60gg</option>
+              <option value="90">Entro 90gg</option>
+            </select>
           </div>
           <div id="scadenzarioGlobal" class="table-container" style="padding:1rem">
             <p class="text-muted">Caricamento scadenze globali...</p>
@@ -344,10 +382,44 @@
         </section>
 
         <section id="sec-impostazioni" class="section d-none">
-          <div class="placeholder-section">
-            <div class="placeholder-icon">&#9881;</div>
-            <div class="placeholder-title">Impostazioni</div>
-            <div class="placeholder-desc">Configurazione account, parametri sistema. Modulo in sviluppo.</div>
+          <div style="max-width:600px">
+            <h3 style="margin-bottom:1rem">Profilo Utente</h3>
+            <div class="detail-grid" id="settingsProfile" style="margin-bottom:1.5rem"></div>
+            <h3 style="margin-bottom:1rem">Cambia Password</h3>
+            <form onsubmit="return false" style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.5rem">
+              <input id="settNewPwd" type="password" class="form-input" placeholder="Nuova password (min 8 caratteri)" minlength="8" autocomplete="new-password">
+              <input id="settConfirmPwd" type="password" class="form-input" placeholder="Conferma nuova password" autocomplete="new-password">
+              <button class="btn btn-primary" id="btnChangePwd" type="button" style="width:fit-content">Aggiorna Password</button>
+            </form>
+            <h3 style="margin-bottom:1rem" id="settAuditTitle" class="d-none">Audit Log</h3>
+            <div id="settAuditSection" class="d-none">
+              <div class="section-toolbar" style="margin-bottom:0.5rem">
+                <select id="auditAction" class="form-input filter-select">
+                  <option value="">Tutte le azioni</option>
+                  <option value="user_create">Creazione utente</option>
+                  <option value="user_update">Modifica utente</option>
+                  <option value="user_disable">Disattivazione utente</option>
+                  <option value="company_create">Creazione azienda</option>
+                  <option value="company_update">Modifica azienda</option>
+                  <option value="worker_create">Creazione lavoratore</option>
+                  <option value="worker_update">Modifica lavoratore</option>
+                  <option value="visit_schedule">Programmazione visita</option>
+                  <option value="visit_update">Aggiornamento visita</option>
+                  <option value="fitness_create">Giudizio idoneita</option>
+                  <option value="file_upload">Upload file</option>
+                  <option value="login">Login</option>
+                </select>
+                <button class="btn btn-outline btn-sm" id="btnLoadAudit">Carica Log</button>
+              </div>
+              <div class="table-container">
+                <table class="data-table">
+                  <thead><tr><th>Data</th><th>Utente</th><th>Azione</th><th>Target</th><th>Dettagli</th></tr></thead>
+                  <tbody id="auditBody"></tbody>
+                </table>
+              </div>
+            </div>
+            <h3 style="margin:1.5rem 0 1rem">Info Sistema</h3>
+            <div class="detail-grid" id="settingsSystem"></div>
           </div>
         </section>
 

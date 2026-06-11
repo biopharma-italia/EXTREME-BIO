@@ -285,9 +285,11 @@
       aziende: loadAziende,
       lavoratori: loadLavoratoriGlobal,
       visite: loadVisiteGlobal,
+      agenda: loadAgenda,
       scadenzario: loadScadenzarioGlobale,
       'protocolli-globale': loadProtocolliGlobale,
-      utenti: loadUtenti
+      utenti: loadUtenti,
+      impostazioni: loadImpostazioni
     };
     if (loaders[section]) loaders[section]();
   }
@@ -949,20 +951,144 @@
   };
 
   /* ═══════════════════════════════════════════════════════════════ */
-  /*  SCADENZARIO GLOBALE                                           */
+  /*  AGENDA — Weekly calendar of visits                            */
   /* ═══════════════════════════════════════════════════════════════ */
+  var agendaWeekStart = (function () {
+    var d = new Date(); d.setHours(0,0,0,0);
+    d.setDate(d.getDate() - d.getDay() + 1); // Monday
+    return d;
+  })();
+  var agendaVisits = [];
+
+  function fmtISO(d) { return d.toISOString().slice(0, 10); }
+  function addDays(d, n) { var r = new Date(d); r.setDate(r.getDate() + n); return r; }
+
+  var GIORNI = ['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab', 'Dom'];
+
+  function loadAgenda() {
+    var grid = $('agendaGrid');
+    if (!grid) return;
+    grid.innerHTML = '<p style="text-align:center;padding:1rem;color:#9ca3af;grid-column:1/-1">Caricamento agenda...</p>';
+    var from = fmtISO(agendaWeekStart);
+    var to = fmtISO(addDays(agendaWeekStart, 6));
+    $('agendaWeekLabel').textContent = from.slice(5).replace('-', '/') + ' — ' + to.slice(5).replace('-', '/') + '  ' + agendaWeekStart.getFullYear();
+
+    var statusFilter = ($('agendaFilterStatus') || {}).value || '';
+    var params = '?date_from=' + from + '&date_to=' + to + '&limit=200';
+    if (statusFilter) params += '&status=' + statusFilter;
+
+    api('GET', '/visits' + params).then(function (r) {
+      agendaVisits = r.data || [];
+      renderAgendaGrid();
+    }).catch(function (e) {
+      grid.innerHTML = '<p style="text-align:center;padding:1rem;color:#dc2626;grid-column:1/-1">Errore: ' + esc(e.message) + '</p>';
+    });
+  }
+
+  function renderAgendaGrid() {
+    var grid = $('agendaGrid');
+    if (!grid) return;
+    hide('agendaDayDetail');
+    var html = '';
+    for (var d = 0; d < 7; d++) {
+      var day = addDays(agendaWeekStart, d);
+      var iso = fmtISO(day);
+      var dayVisits = agendaVisits.filter(function (v) { return v.scheduled_date === iso; });
+      var isToday = iso === fmtISO(new Date());
+      var count = dayVisits.length;
+      var badge = count > 0
+        ? '<span class="badge badge-primary" style="margin-left:0.25rem">' + count + '</span>'
+        : '';
+      html += '<div onclick="MDL.showAgendaDay(\'' + iso + '\')" style="' +
+        'border:1px solid ' + (isToday ? 'var(--primary)' : '#e5e7eb') + ';' +
+        'border-radius:8px;padding:0.75rem;min-height:100px;cursor:pointer;' +
+        'background:' + (isToday ? 'rgba(37,99,235,0.05)' : '#fff') + ';' +
+        'transition:box-shadow 0.15s' +
+        '" onmouseover="this.style.boxShadow=\'0 2px 8px rgba(0,0,0,0.1)\'" onmouseout="this.style.boxShadow=\'none\'">' +
+        '<div style="font-weight:600;font-size:0.85rem;color:' + (isToday ? 'var(--primary)' : '#6b7280') + '">' +
+        GIORNI[d] + ' ' + day.getDate() + badge + '</div>' +
+        '<div style="margin-top:0.5rem;font-size:0.75rem;color:#374151">' +
+        dayVisits.slice(0, 4).map(function (v) {
+          var name = v.mdl_workers ? v.mdl_workers.last_name + ' ' + (v.mdl_workers.first_name || '').charAt(0) + '.' : '?';
+          var st = STATUS_MAP[v.status] || v.status;
+          return '<div style="margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' +
+            (v.scheduled_time ? '<strong>' + v.scheduled_time.slice(0, 5) + '</strong> ' : '') + esc(name) +
+            ' <span style="color:#9ca3af">' + esc(st) + '</span></div>';
+        }).join('') +
+        (dayVisits.length > 4 ? '<div style="color:var(--primary);font-weight:600">+' + (dayVisits.length - 4) + ' altre</div>' : '') +
+        (count === 0 ? '<div style="color:#d1d5db;font-style:italic">—</div>' : '') +
+        '</div></div>';
+    }
+    grid.innerHTML = html;
+  }
+
+  var STATUS_MAP = {
+    programmata: 'Progr.', confermata: 'Conf.', in_corso: 'In corso',
+    completata: 'Compl.', non_presentato: 'N.P.', annullata: 'Ann.'
+  };
+
+  MDL.showAgendaDay = function (iso) {
+    var tbody = $('agendaDayBody');
+    var dayVisits = agendaVisits.filter(function (v) { return v.scheduled_date === iso; });
+    $('agendaDayTitle').textContent = 'Visite del ' + iso.split('-').reverse().join('/');
+    show('agendaDayDetail');
+    if (!dayVisits.length) {
+      tbody.innerHTML = emptyRow(5, 'Nessuna visita in questa giornata');
+      return;
+    }
+    tbody.innerHTML = dayVisits.map(function (v) {
+      var name = v.mdl_workers ? esc(v.mdl_workers.last_name + ' ' + v.mdl_workers.first_name) : '—';
+      return '<tr>' +
+        '<td>' + esc(v.scheduled_time ? v.scheduled_time.slice(0, 5) : '—') + '</td>' +
+        '<td><strong>' + name + '</strong></td>' +
+        '<td>' + esc(v.visit_type || '—') + '</td>' +
+        '<td>' + visitStatusBadge(v.status) + '</td>' +
+        '<td><button class="btn btn-primary btn-sm" onclick="MDL.openVisitDetail(\'' + v.id + '\')">Dettaglio</button></td>' +
+      '</tr>';
+    }).join('');
+  };
+
+  function visitStatusBadge(s) {
+    var colors = { programmata: '#2563eb', confermata: '#059669', in_corso: '#d97706', completata: '#16a34a', non_presentato: '#dc2626', annullata: '#6b7280' };
+    var labels = { programmata: 'Programmata', confermata: 'Confermata', in_corso: 'In corso', completata: 'Completata', non_presentato: 'Non presentato', annullata: 'Annullata' };
+    return '<span class="badge" style="background:' + (colors[s] || '#6b7280') + ';color:#fff">' + (labels[s] || s) + '</span>';
+  }
+
+  /* ═══════════════════════════════════════════════════════════════ */
+  /*  SCADENZARIO GLOBALE (enhanced with filters)                   */
+  /* ═══════════════════════════════════════════════════════════════ */
+  var scadenzarioAllItems = [];
+
   function loadScadenzarioGlobale() {
     $('scadenzarioGlobal').innerHTML = '<p style="text-align:center;padding:1.5rem;color:#9ca3af">Caricamento scadenze...</p>';
+    populateCompanyFilter('filterScadAzienda');
     api('GET', '/deadlines').then(function (r) {
       var c = r.counts || {};
       $('globStatScadute').textContent = c.scadute || 0;
       $('globStatScad30').textContent = c.entro_30 || 0;
       $('globStatScad60').textContent = c.entro_60 || 0;
       $('globStatScad90').textContent = c.entro_90 || 0;
-      $('scadenzarioGlobal').innerHTML = renderDeadlinesTable(r.data || []);
+      scadenzarioAllItems = r.data || [];
+      renderFilteredScadenzario();
     }).catch(function (e) {
       $('scadenzarioGlobal').innerHTML = '<p style="text-align:center;padding:1.5rem;color:#dc2626">Errore: ' + esc(e.message) + '</p>';
     });
+  }
+
+  function renderFilteredScadenzario() {
+    var cat = ($('filterScadCat') || {}).value || '';
+    var azienda = ($('filterScadAzienda') || {}).value || '';
+    var urgenza = ($('filterScadUrgenza') || {}).value || '';
+    var filtered = scadenzarioAllItems.filter(function (i) {
+      if (cat && i.category !== cat) return false;
+      if (azienda && i.company_id !== azienda) return false;
+      if (urgenza === 'scaduta' && i.days_until >= 0) return false;
+      if (urgenza === '30' && (i.days_until < 0 || i.days_until > 30)) return false;
+      if (urgenza === '60' && (i.days_until < 0 || i.days_until > 60)) return false;
+      if (urgenza === '90' && (i.days_until < 0 || i.days_until > 90)) return false;
+      return true;
+    });
+    $('scadenzarioGlobal').innerHTML = renderDeadlinesTable(filtered);
   }
 
   /* ═══════════════════════════════════════════════════════════════ */
@@ -2803,6 +2929,72 @@
     datore_lavoro: 'badge-success', rspp: 'badge-success', lavoratore: 'badge-secondary'
   };
 
+  /* ═══════════════════════════════════════════════════════════════ */
+  /*  IMPOSTAZIONI — Profile, password change, audit log, sys info  */
+  /* ═══════════════════════════════════════════════════════════════ */
+  function loadImpostazioni() {
+    var prof = $('settingsProfile');
+    if (!prof) return;
+    var u = state.user || {};
+    prof.innerHTML =
+      dl('Nome', (u.first_name || '') + ' ' + (u.last_name || '')) +
+      dl('Email', u.email) +
+      dl('Ruolo', ROLE_LABELS[u.role] || u.role) +
+      dl('ID Utente', u.id);
+
+    // System info
+    var sys = $('settingsSystem');
+    if (sys) {
+      sys.innerHTML =
+        dl('Piattaforma', 'MDL Bio-Clinic v1.1') +
+        dl('Backend', 'Cloudflare Pages Functions') +
+        dl('Database', 'Supabase PostgreSQL') +
+        dl('Sessione', state.session ? 'Attiva' : 'Non attiva');
+    }
+
+    // Show audit section only for SA/MC
+    var canAudit = ['super_admin', 'medico_competente'].indexOf(u.role) >= 0;
+    if (canAudit) {
+      show('settAuditTitle');
+      show('settAuditSection');
+    } else {
+      hide('settAuditTitle');
+      hide('settAuditSection');
+    }
+  }
+
+  function loadAuditLog() {
+    var tbody = $('auditBody');
+    if (!tbody) return;
+    tbody.innerHTML = loadingRow(5);
+    var action = ($('auditAction') || {}).value || '';
+    var params = '?limit=50';
+    if (action) params += '&action=' + action;
+
+    api('GET', '/audit-log' + params).then(function (r) {
+      if (!r.data || !r.data.length) {
+        tbody.innerHTML = emptyRow(5, 'Nessun log trovato');
+        return;
+      }
+      tbody.innerHTML = r.data.map(function (l) {
+        var who = l.mdl_users ? esc(l.mdl_users.first_name + ' ' + l.mdl_users.last_name) : esc(l.user_role || '—');
+        var det = '';
+        if (l.details) {
+          try { det = typeof l.details === 'string' ? l.details : JSON.stringify(l.details).slice(0, 80); } catch(e) { det = ''; }
+        }
+        return '<tr>' +
+          '<td style="white-space:nowrap">' + fmtDate(l.created_at) + '</td>' +
+          '<td>' + who + '</td>' +
+          '<td><code>' + esc(l.action) + '</code></td>' +
+          '<td>' + esc(l.target_type || '') + (l.target_id ? ' <small>' + l.target_id.slice(0,8) + '</small>' : '') + '</td>' +
+          '<td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="' + esc(det) + '">' + esc(det) + '</td>' +
+        '</tr>';
+      }).join('');
+    }).catch(function (e) {
+      tbody.innerHTML = errorRow(5, e.message);
+    });
+  }
+
   function loadUtenti() {
     var container = $('usersTableContainer');
     if (!container) return;
@@ -3073,6 +3265,34 @@
     // Utenti events
     on('userSearch', 'input', debounce(loadUtenti, 400));
     on('userRoleFilter', 'change', loadUtenti);
+
+    // Agenda events
+    on('agendaPrev', 'click', function () { agendaWeekStart = addDays(agendaWeekStart, -7); loadAgenda(); });
+    on('agendaNext', 'click', function () { agendaWeekStart = addDays(agendaWeekStart, 7); loadAgenda(); });
+    on('agendaToday', 'click', function () {
+      var d = new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate() - d.getDay() + 1);
+      agendaWeekStart = d; loadAgenda();
+    });
+    on('agendaFilterStatus', 'change', loadAgenda);
+
+    // Scadenzario filter events
+    on('filterScadCat', 'change', renderFilteredScadenzario);
+    on('filterScadAzienda', 'change', renderFilteredScadenzario);
+    on('filterScadUrgenza', 'change', renderFilteredScadenzario);
+
+    // Impostazioni events
+    on('btnChangePwd', 'click', function () {
+      var pwd = ($('settNewPwd') || {}).value || '';
+      var cpwd = ($('settConfirmPwd') || {}).value || '';
+      if (!pwd || pwd.length < 8) { toast('La password deve essere di almeno 8 caratteri', 'warning'); return; }
+      if (pwd !== cpwd) { toast('Le password non coincidono', 'warning'); return; }
+      api('PATCH', '/users/' + (state.user && state.user.id), { password: pwd }).then(function () {
+        toast('Password aggiornata con successo', 'success');
+        $('settNewPwd').value = '';
+        $('settConfirmPwd').value = '';
+      }).catch(function (e) { toast(e.message || 'Errore cambio password', 'error'); });
+    });
+    on('btnLoadAudit', 'click', loadAuditLog);
 
     // Check session
     if (loadSession()) { showApp(); } else { showLogin(); }
