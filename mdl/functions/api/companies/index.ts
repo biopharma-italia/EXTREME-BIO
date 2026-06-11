@@ -10,6 +10,9 @@
 const ALLOWED_ROLES_READ = ['super_admin', 'medico_competente', 'medico_collaboratore', 'segreteria_mdl', 'datore_lavoro', 'rspp', 'lavoratore'];
 const ALLOWED_ROLES_WRITE = ['super_admin', 'medico_competente', 'segreteria_mdl'];
 
+// Sentinel company used for protocol templates — never shown in company lists
+const SENTINEL_COMPANY_ID = '00000000-0000-4000-a000-000000000001';
+
 export const onRequestGet: PagesFunction = async (context) => {
   const ctx = (context as any).data;
   if (!ctx.user || !ALLOWED_ROLES_READ.includes(ctx.user.role)) {
@@ -27,6 +30,9 @@ export const onRequestGet: PagesFunction = async (context) => {
   let query = supabaseAdmin
     .from('mdl_companies')
     .select('*, mdl_company_sites(count)', { count: 'exact' });
+
+  // Exclude sentinel (template) company from all listings
+  query = query.neq('id', SENTINEL_COMPANY_ID);
 
   if (active) query = query.eq('is_active', true);
 

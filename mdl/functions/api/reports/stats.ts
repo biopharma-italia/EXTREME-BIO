@@ -18,6 +18,9 @@ const ADMIN_ROLES = ['super_admin', 'medico_competente', 'medico_collaboratore',
 const COMPANY_ROLES = ['datore_lavoro', 'rspp'];
 const ALLOWED_READ = [...ADMIN_ROLES, ...COMPANY_ROLES];
 
+// Sentinel company used for protocol templates — excluded from stats
+const SENTINEL_COMPANY_ID = '00000000-0000-4000-a000-000000000001';
+
 export const onRequestGet: PagesFunction = async (context) => {
   const ctx = (context as any).data;
   if (!ctx.user || !ALLOWED_READ.includes(ctx.user.role)) {
@@ -30,7 +33,7 @@ export const onRequestGet: PagesFunction = async (context) => {
 
   try {
     // ── 1. Summary counts ──────────────────────────────────────────────
-    let companiesQuery = supabaseAdmin.from('mdl_companies').select('id', { count: 'exact', head: true }).eq('is_active', true);
+    let companiesQuery = supabaseAdmin.from('mdl_companies').select('id', { count: 'exact', head: true }).eq('is_active', true).neq('id', SENTINEL_COMPANY_ID);
     if (scopeCompanyId) companiesQuery = companiesQuery.eq('id', scopeCompanyId);
     const { count: totalCompanies } = await companiesQuery;
 
@@ -133,6 +136,7 @@ export const onRequestGet: PagesFunction = async (context) => {
         .from('mdl_companies')
         .select('id, business_name, total_employees')
         .eq('is_active', true)
+        .neq('id', SENTINEL_COMPANY_ID)
         .order('total_employees', { ascending: false })
         .limit(10);
 
