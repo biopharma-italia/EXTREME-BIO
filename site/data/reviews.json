@@ -1,8 +1,8 @@
 {
-  "miodottore": 3456,
+  "miodottore": 3834,
   "google": 458,
-  "total": 3914,
-  "updated_at": "2026-05-14T10:59:01+02:00",
+  "total": 4292,
+  "updated_at": "2026-07-20T04:01:33+02:00",
   "_meta": {
     "description": "Source of truth for review counts displayed on bio-clinic.it. Updated automatically by OpenClaw weekly cron. DO NOT edit HTML files directly: edit this file and run scripts/apply-reviews.py.",
     "managed_by": "https://github.com/biopharma-italia/EXTREME-BIO/blob/main/scripts/apply-reviews.py",
