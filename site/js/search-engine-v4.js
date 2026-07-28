@@ -111,7 +111,10 @@ const BioSearchEngine = (function () {
     'hba1c': 'emoglobina-glicata', 'glicata': 'emoglobina-glicata',
     'hdl': 'colesterolo-hdl', 'ldl': 'colesterolo-ldl',
     'got': 'ast-got', 'gpt': 'alt-gpt', 'ast': 'ast-got', 'alt': 'alt-gpt',
-    'oct': 'oct', 'moc': 'densitometria-ossea', 'bia': 'bioimpedenziometria',
+    'oct': 'oct', 'moc': 'moc-dexa-sassari', 'moc dexa': 'moc-dexa-sassari', 'dexa': 'moc-dexa-sassari',
+    'densitometria': 'moc-dexa-sassari', 'densitometria ossea': 'moc-dexa-sassari',
+    'mineralometria': 'moc-dexa-sassari', 'mineralometria ossea': 'moc-dexa-sassari',
+    'bia': 'bioimpedenziometria',
     'pt': 'pt-inr', 'inr': 'pt-inr', 'ptt': 'ptt-aptt',
 
     // ── Body parts → Specialty ──

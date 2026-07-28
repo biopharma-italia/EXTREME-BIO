@@ -1,7 +1,7 @@
 {
   "version": "3.0",
   "last_updated": "2026-02-28T19:26:41Z",
-  "total_procedures": 38,
+  "total_procedures": 39,
   "procedures": [
     {
       "id": "visita-ginecologica",
@@ -1432,6 +1432,58 @@
         "infertilità diagnosi",
         "sterilità"
       ]
+    },
+    {
+      "id": "moc-dexa-sassari",
+      "name": "MOC-DEXA",
+      "name_extended": "Mineralometria Ossea Computerizzata (MOC-DEXA)",
+      "specialty_id": "endocrinologia",
+      "category": "diagnostica",
+      "description_short": "Esame per valutare la densità minerale ossea e il rischio di osteoporosi",
+      "description_full": "La MOC-DEXA (Dual-Energy X-ray Absorptiometry) è l'esame di riferimento raccomandato dall'OMS per la diagnosi di osteopenia e osteoporosi. Misura la densità minerale ossea di colonna lombare e femore in soli 10-15 minuti.",
+      "indications": [
+        "menopausa",
+        "osteoporosi",
+        "osteopenia",
+        "fratture da fragilità",
+        "terapia con cortisonici",
+        "carenza vitamina D",
+        "familiarità osteoporosi",
+        "monitoraggio terapia"
+      ],
+      "duration_minutes": 15,
+      "physicians": [],
+      "related_procedures": [
+        "visita-endocrinologica",
+        "visita-reumatologica",
+        "visita-ortopedica"
+      ],
+      "pathways": [
+        "checkup-donna-over40",
+        "checkup-osteoporosi"
+      ],
+      "search_terms": [
+        "moc",
+        "dexa",
+        "moc-dexa",
+        "densitometria",
+        "densitometria ossea",
+        "mineralometria",
+        "mineralometria ossea",
+        "osteoporosi",
+        "densità ossea",
+        "ossa fragili",
+        "frattura osteoporosi",
+        "t-score",
+        "body composition",
+        "composizione corporea"
+      ],
+      "booking_priority": "high",
+      "schema_org": {
+        "@type": "MedicalProcedure",
+        "procedureType": "http://schema.org/DiagnosticProcedure"
+      },
+      "page_url": "/moc-dexa-sassari/"
     }
   ],
   "categories": [

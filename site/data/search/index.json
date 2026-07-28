@@ -6,7 +6,7 @@
     "total_terms": 524,
     "specialties": 11,
     "physicians": 50,
-    "procedures": 38,
+    "procedures": 39,
     "tests": 23,
     "packs": 12,
     "pathways": 12
@@ -1861,7 +1861,8 @@
     },
     "osteoporosi": {
       "procedures": [
-        "visita-endocrinologica"
+        "visita-endocrinologica",
+        "moc-dexa-sassari"
       ],
       "packs": [
         "checkup-osteoporosi"
@@ -2883,6 +2884,81 @@
     "zuniga": {
       "physicians": [
         "carlos-manuel-cambara-zuniga"
+      ]
+    },
+    "moc": {
+      "procedures": [
+        "moc-dexa-sassari"
+      ]
+    },
+    "moc dexa": {
+      "procedures": [
+        "moc-dexa-sassari"
+      ]
+    },
+    "moc-dexa": {
+      "procedures": [
+        "moc-dexa-sassari"
+      ]
+    },
+    "dexa": {
+      "procedures": [
+        "moc-dexa-sassari"
+      ]
+    },
+    "densitometria": {
+      "procedures": [
+        "moc-dexa-sassari"
+      ]
+    },
+    "densitometria ossea": {
+      "procedures": [
+        "moc-dexa-sassari"
+      ]
+    },
+    "mineralometria": {
+      "procedures": [
+        "moc-dexa-sassari"
+      ]
+    },
+    "mineralometria ossea": {
+      "procedures": [
+        "moc-dexa-sassari"
+      ]
+    },
+    "densità ossea": {
+      "procedures": [
+        "moc-dexa-sassari"
+      ]
+    },
+    "ossa fragili": {
+      "procedures": [
+        "moc-dexa-sassari"
+      ]
+    },
+    "frattura osteoporosi": {
+      "procedures": [
+        "moc-dexa-sassari"
+      ]
+    },
+    "t-score": {
+      "procedures": [
+        "moc-dexa-sassari"
+      ]
+    },
+    "body composition": {
+      "procedures": [
+        "moc-dexa-sassari"
+      ]
+    },
+    "composizione corporea": {
+      "procedures": [
+        "moc-dexa-sassari"
+      ]
+    },
+    "osteopenia": {
+      "procedures": [
+        "moc-dexa-sassari"
       ]
     }
   },

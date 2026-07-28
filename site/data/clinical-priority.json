@@ -241,6 +241,62 @@
       "related_ids": ["glicemia", "creatinina"],
       "pack_suggestion": "checkup-base",
       "specialty_context": "laboratorio"
+    },
+    "moc": {
+      "primary_id": "moc-dexa-sassari",
+      "primary_type": "procedure",
+      "related_ids": ["visita-endocrinologica", "visita-reumatologica", "visita-ortopedica"],
+      "pack_suggestion": "checkup-donna-over40",
+      "specialty_context": "endocrinologia"
+    },
+    "moc dexa": {
+      "primary_id": "moc-dexa-sassari",
+      "primary_type": "procedure",
+      "related_ids": ["visita-endocrinologica", "visita-reumatologica", "visita-ortopedica"],
+      "pack_suggestion": "checkup-donna-over40",
+      "specialty_context": "endocrinologia"
+    },
+    "dexa": {
+      "primary_id": "moc-dexa-sassari",
+      "primary_type": "procedure",
+      "related_ids": ["visita-endocrinologica", "visita-reumatologica"],
+      "pack_suggestion": null,
+      "specialty_context": "endocrinologia"
+    },
+    "densitometria": {
+      "primary_id": "moc-dexa-sassari",
+      "primary_type": "procedure",
+      "related_ids": ["visita-endocrinologica", "visita-reumatologica"],
+      "pack_suggestion": null,
+      "specialty_context": "endocrinologia"
+    },
+    "densitometria ossea": {
+      "primary_id": "moc-dexa-sassari",
+      "primary_type": "procedure",
+      "related_ids": ["visita-endocrinologica", "visita-reumatologica"],
+      "pack_suggestion": null,
+      "specialty_context": "endocrinologia"
+    },
+    "osteoporosi": {
+      "primary_id": "moc-dexa-sassari",
+      "primary_type": "procedure",
+      "related_ids": ["visita-endocrinologica", "visita-reumatologica", "visita-ortopedica"],
+      "pack_suggestion": "checkup-donna-over40",
+      "specialty_context": "endocrinologia"
+    },
+    "mineralometria": {
+      "primary_id": "moc-dexa-sassari",
+      "primary_type": "procedure",
+      "related_ids": ["visita-endocrinologica", "visita-reumatologica"],
+      "pack_suggestion": null,
+      "specialty_context": "endocrinologia"
+    },
+    "mineralometria ossea": {
+      "primary_id": "moc-dexa-sassari",
+      "primary_type": "procedure",
+      "related_ids": ["visita-endocrinologica", "visita-reumatologica"],
+      "pack_suggestion": null,
+      "specialty_context": "endocrinologia"
     }
   },
   

@@ -199,7 +199,9 @@
     "ivf": "fecondazione in vitro",
     "icsi": "iniezione intracitoplasmatica",
     "fivet": "fecondazione in vitro",
-    "nt": "translucenza nucale"
+    "nt": "translucenza nucale",
+    "dexa": "densitometria ossea",
+    "moc-dexa": "mineralometria ossea computerizzata"
   },
   "body_parts": {
     "testa": [
@@ -253,7 +255,9 @@
       "colonna",
       "vertebre",
       "lombare",
-      "dorsale"
+      "dorsale",
+      "osteoporosi",
+      "ossa"
     ],
     "braccia": [
       "spalla",
