@@ -15,7 +15,7 @@
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
   <meta name="theme-color" content="#00704A">
 
-  <link rel="stylesheet" href="/css/dashboard.cc671280.css?v=2">
+  <link rel="stylesheet" href="/css/dashboard.cc671280.css?v=3">
 </head>
 <body>
   <!-- SIDEBAR -->
@@ -32,7 +32,7 @@
 
     <nav class="sidebar-nav" id="sidebarNav">
       <!-- Patient section -->
-      <div class="nav-section" data-roles="patient,lab_technician,physician,admin,super_admin,ostetrica">
+      <div class="nav-section" data-roles="patient,lab_technician,physician,admin,super_admin,ostetrica,biologa_laboratorio,tecnico_laboratorio">
         <span class="nav-section-title">Referti</span>
         <a href="#my-reports" class="nav-item active" data-page="my-reports" data-roles="patient">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
@@ -46,13 +46,13 @@
       </div>
 
       <!-- Lab section -->
-      <div class="nav-section" data-roles="lab_technician,admin,super_admin,ostetrica">
+      <div class="nav-section" data-roles="lab_technician,admin,super_admin,ostetrica,biologa_laboratorio,tecnico_laboratorio">
         <span class="nav-section-title">Laboratorio</span>
-        <a href="#upload" class="nav-item" data-page="upload" data-roles="lab_technician,admin,super_admin,ostetrica">
+        <a href="#upload" class="nav-item" data-page="upload" data-roles="lab_technician,admin,super_admin,ostetrica,biologa_laboratorio,tecnico_laboratorio">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
           <span>Carica Referti</span>
         </a>
-        <a href="#queue" class="nav-item" data-page="queue" data-roles="lab_technician,admin,super_admin,ostetrica">
+        <a href="#queue" class="nav-item" data-page="queue" data-roles="lab_technician,admin,super_admin,ostetrica,biologa_laboratorio,tecnico_laboratorio">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/></svg>
           <span>Coda Validazione</span>
           <span class="nav-badge badge-warning" id="badgePending" hidden>0</span>
@@ -60,9 +60,9 @@
       </div>
 
       <!-- Physician section -->
-      <div class="nav-section" data-roles="physician,admin,super_admin,ostetrica">
+      <div class="nav-section" data-roles="physician,admin,super_admin,ostetrica,biologa_laboratorio,tecnico_laboratorio">
         <span class="nav-section-title">Medico</span>
-        <a href="#sign-release" class="nav-item" data-page="sign-release" data-roles="physician,admin,super_admin,ostetrica">
+        <a href="#sign-release" class="nav-item" data-page="sign-release" data-roles="physician,admin,super_admin,ostetrica,biologa_laboratorio,tecnico_laboratorio">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
           <span>Firma & Rilascio</span>
           <span class="nav-badge badge-info" id="badgeSign" hidden>0</span>
@@ -70,22 +70,22 @@
       </div>
 
       <!-- AI Refertation section -->
-      <div class="nav-section" data-roles="physician,admin,super_admin,ostetrica">
+      <div class="nav-section" data-roles="physician,admin,super_admin,ostetrica,biologa_laboratorio,tecnico_laboratorio">
         <span class="nav-section-title">Intelligenza Artificiale</span>
-        <a href="#ai-report" class="nav-item" data-page="ai-report" data-roles="physician,admin,super_admin,ostetrica">
+        <a href="#ai-report" class="nav-item" data-page="ai-report" data-roles="physician,admin,super_admin,ostetrica,biologa_laboratorio,tecnico_laboratorio">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4v1h1a3 3 0 0 1 3 3v1a3 3 0 0 1-3 3h-1v4a4 4 0 0 1-8 0v-4H7a3 3 0 0 1-3-3v-1a3 3 0 0 1 3-3h1V6a4 4 0 0 1 4-4z"/><circle cx="9" cy="13" r="1"/><circle cx="15" cy="13" r="1"/></svg>
           <span>Refertazione AI</span>
         </a>
       </div>
 
       <!-- Admin section -->
-      <div class="nav-section" data-roles="admin,super_admin,ostetrica">
+      <div class="nav-section" data-roles="admin,super_admin,ostetrica,biologa_laboratorio,tecnico_laboratorio">
         <span class="nav-section-title">Amministrazione</span>
-        <a href="#all-reports" class="nav-item" data-page="all-reports" data-roles="admin,super_admin,ostetrica">
+        <a href="#all-reports" class="nav-item" data-page="all-reports" data-roles="admin,super_admin,ostetrica,biologa_laboratorio,tecnico_laboratorio">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
           <span>Tutti i Referti</span>
         </a>
-        <a href="#users" class="nav-item" data-page="users" data-roles="admin,super_admin,ostetrica">
+        <a href="#users" class="nav-item" data-page="users" data-roles="admin,super_admin,ostetrica,biologa_laboratorio,tecnico_laboratorio">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           <span>Gestione Utenti</span>
         </a>
@@ -606,6 +606,8 @@
             <option value="lab_technician">Tecnico Lab</option>
             <option value="physician">Medico</option>
             <option value="ostetrica">Ostetrica</option>
+            <option value="biologa_laboratorio">Biologa Laboratorio</option>
+            <option value="tecnico_laboratorio">Tecnico Laboratorio</option>
             <option value="admin">Admin</option>
             <option value="super_admin">Super Admin</option>
           </select>
@@ -1080,6 +1082,8 @@ Femore totale BMD: 0.750, T-score: -1.8'></textarea>
               <option value="lab_technician">Tecnico Laboratorio</option>
               <option value="physician">Medico</option>
               <option value="ostetrica">Ostetrica</option>
+              <option value="biologa_laboratorio">Biologa Laboratorio</option>
+              <option value="tecnico_laboratorio">Tecnico Laboratorio</option>
               <option value="admin">Amministratore</option>
             </select>
           </div>
@@ -1167,6 +1171,6 @@ Femore totale BMD: 0.750, T-score: -1.8'></textarea>
   <script>if(window.pdfjsLib)window.pdfjsLib.GlobalWorkerOptions.workerSrc='/js/pdf.worker.min.js';</script>
   <script src="/js/jspdf.umd.min.js"></script>
   <script src="/js/pdf-lib.min.js"></script>
-  <script src="/js/dashboard.981fca97.js?v=2"></script>
+  <script src="/js/dashboard.ad18a2ab.js?v=3"></script>
 </body>
 </html>
