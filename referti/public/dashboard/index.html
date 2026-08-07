@@ -15,7 +15,7 @@
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
   <meta name="theme-color" content="#00704A">
 
-  <link rel="stylesheet" href="/css/dashboard.972cf585.css">
+  <link rel="stylesheet" href="/css/dashboard.cc671280.css">
 </head>
 <body>
   <!-- SIDEBAR -->
@@ -390,30 +390,26 @@
               </div>
             </div>
 
-            <!-- Drag & Drop -->
+            <!-- Drag & Drop (Multi-file) -->
             <div class="form-group">
-              <label>File PDF *</label>
+              <label>File PDF * <span style="font-weight:400;color:var(--text-secondary);font-size:0.85rem">(puoi caricare pi&ugrave; file contemporaneamente)</span></label>
               <div class="drop-zone" id="dropZone">
-                <div class="drop-zone-content">
+                <div class="drop-zone-content" id="dropZoneContent">
                   <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                  <p>Trascina il PDF qui o <button type="button" class="drop-zone-browse" id="browseBtn">sfoglia</button></p>
-                  <span class="drop-zone-hint">Max 25 MB — Solo file PDF</span>
+                  <p>Trascina i PDF qui o <button type="button" class="drop-zone-browse" id="browseBtn">sfoglia</button></p>
+                  <span class="drop-zone-hint">Max 25 MB per file — Solo PDF — Selezione multipla</span>
                 </div>
-                <div class="drop-zone-file" id="dropZoneFile" hidden>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                  <div class="drop-zone-file-info">
-                    <span class="drop-zone-file-name" id="fileName">--</span>
-                    <span class="drop-zone-file-size" id="fileSize">--</span>
-                  </div>
-                  <button type="button" class="drop-zone-remove" id="removeFile" aria-label="Rimuovi file">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-                  </button>
-                </div>
-                <input type="file" id="fileInput" accept=".pdf,application/pdf" hidden>
+                <input type="file" id="fileInput" accept=".pdf,application/pdf" multiple hidden>
               </div>
+              <!-- File list -->
+              <div class="upload-file-list" id="uploadFileList" hidden></div>
+              <!-- Overall progress -->
               <div class="upload-progress" id="uploadProgress" hidden>
+                <div class="upload-progress-info">
+                  <span class="progress-label" id="progressLabel">Caricamento...</span>
+                  <span class="progress-text" id="progressText">0%</span>
+                </div>
                 <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-                <span class="progress-text" id="progressText">0%</span>
               </div>
             </div>
 
@@ -1171,6 +1167,6 @@ Femore totale BMD: 0.750, T-score: -1.8'></textarea>
   <script>if(window.pdfjsLib)window.pdfjsLib.GlobalWorkerOptions.workerSrc='/js/pdf.worker.min.js';</script>
   <script src="/js/jspdf.umd.min.js"></script>
   <script src="/js/pdf-lib.min.js"></script>
-  <script src="/js/dashboard.284d2328.js"></script>
+  <script src="/js/dashboard.981fca97.js"></script>
 </body>
 </html>
