@@ -96,6 +96,20 @@
       return r.json();
     });
   }
+  // COUNT helper: HEAD request with Prefer: count=exact
+  // Returns total row count from Content-Range header (e.g. "0-0/549" → 549)
+  function sbCount(table, filter) {
+    var q = 'select=id';
+    if (filter) q += '&' + filter;
+    return fetch(SB_URL + '/rest/v1/' + table + '?' + q, {
+      method: 'HEAD',
+      headers: Object.assign({}, sbHeaders(), { 'Prefer': 'count=exact', 'Range-Unit': 'items', 'Range': '0-0' })
+    }).then(function (r) {
+      var cr = r.headers.get('content-range') || '';
+      var m = cr.match(/\/(\d+)/);
+      return m ? parseInt(m[1], 10) : 0;
+    }).catch(function () { return 0; });
+  }
   function sbPost(table, data) {
     return fetch(SB_URL + '/rest/v1/' + table, {
       method: 'POST', headers: Object.assign({}, sbHeaders(), { 'Prefer': 'return=representation' }),
@@ -574,20 +588,20 @@
   }
 
   function loadDashboardBadges(role) {
-    // Load badge counts for sidebar
+    // Load badge counts for sidebar — use HEAD count for accurate numbers
     if (role === 'lab_technician' || role === 'admin' || role === 'super_admin' || role === 'ostetrica' || role === 'biologa_laboratorio' || role === 'tecnico_laboratorio') {
-      sbGet('reports', 'status=eq.pending&select=id&limit=200').then(function (data) {
-        updateBadge('badgePending', data ? data.length : 0);
+      sbCount('reports', 'status=eq.pending').then(function (n) {
+        updateBadge('badgePending', n);
       });
     }
     if (role === 'physician' || role === 'admin' || role === 'super_admin' || role === 'ostetrica' || role === 'biologa_laboratorio' || role === 'tecnico_laboratorio') {
-      sbGet('reports', 'or=(status.eq.validated,status.eq.signed)&select=id&limit=200').then(function (data) {
-        updateBadge('badgeSign', data ? data.length : 0);
+      sbCount('reports', 'or=(status.eq.validated,status.eq.signed)').then(function (n) {
+        updateBadge('badgeSign', n);
       });
     }
     if (role === 'patient') {
-      sbGet('reports', 'status=eq.released&patient_downloaded=eq.false&select=id&limit=50').then(function (data) {
-        updateBadge('badgeNewReports', data ? data.length : 0);
+      sbCount('reports', 'status=eq.released&patient_downloaded=eq.false').then(function (n) {
+        updateBadge('badgeNewReports', n);
       });
     }
   }
@@ -1181,7 +1195,10 @@
 
     sbGet('reports', q).then(function (data) {
       renderQueue(data);
-      updateBadge('badgePending', data ? data.length : 0);
+    });
+    // Accurate sidebar badge count (independent of table limit)
+    sbCount('reports', 'status=eq.pending').then(function (n) {
+      updateBadge('badgePending', n);
     });
 
     if (!$('filterQueueUrgent')._bound) {
@@ -1255,8 +1272,10 @@
 
     sbGet('reports', q).then(function (data) {
       renderSignTable(data);
-      var count = data ? data.filter(function (r) { return r.status === 'validated' || r.status === 'signed'; }).length : 0;
-      updateBadge('badgeSign', count);
+    });
+    // Accurate sidebar badge count (independent of table limit)
+    sbCount('reports', 'or=(status.eq.validated,status.eq.signed)').then(function (n) {
+      updateBadge('badgeSign', n);
     });
 
     if (!$('filterSignStatus')._bound) {
@@ -1361,19 +1380,29 @@
 
     sbGet('reports', q).then(function (data) {
       renderAllReports(data);
-      if (data && Array.isArray(data)) {
-        var counts = { pending: 0, validated: 0, signed: 0, released: 0, total: data.length };
-        data.forEach(function (r) {
-          if (r.status === 'pending') counts.pending++;
-          if (r.status === 'validated') counts.validated++;
-          if (r.status === 'signed') counts.signed++;
-          if (r.status === 'released') counts.released++;
-        });
-        $('statPending').textContent = counts.pending;
-        $('statValidated').textContent = counts.validated + (counts.signed ? '+' + counts.signed : '');
-        $('statReleased').textContent = counts.released;
-        $('statTotal').textContent = counts.total;
-      }
+    });
+
+    // ── Real counts via HEAD requests (independent of table limit) ───
+    var searchFilter = search ? 'or=(report_number.ilike.*' + encodeURIComponent(search) + '*,patient_fiscal_code.ilike.*' + encodeURIComponent(search) + '*)' : '';
+    var countFilter = function (statusFilter) {
+      var parts = [];
+      if (statusFilter) parts.push(statusFilter);
+      if (searchFilter) parts.push(searchFilter);
+      return parts.join('&') || '';
+    };
+
+    Promise.all([
+      sbCount('reports', countFilter('status=eq.pending')),
+      sbCount('reports', countFilter('status=eq.validated')),
+      sbCount('reports', countFilter('status=eq.signed')),
+      sbCount('reports', countFilter('status=eq.released')),
+      sbCount('reports', countFilter(filter ? 'status=eq.' + filter : ''))
+    ]).then(function (results) {
+      var pending = results[0], validated = results[1], signed = results[2], released = results[3], total = results[4];
+      $('statPending').textContent = pending;
+      $('statValidated').textContent = validated + (signed ? '+' + signed : '');
+      $('statReleased').textContent = released;
+      $('statTotal').textContent = total;
     });
 
     if (!$('filterAllStatus')._bound) {
