@@ -1374,36 +1374,60 @@
   function loadAllReports() {
     var filter = $('filterAllStatus').value;
     var search = $('searchAllReports').value.trim();
+    var enc = encodeURIComponent(search);
 
-    var q = 'select=*,patient:patient_id(first_name,last_name)&order=created_at.desc&limit=100';
-    if (filter) q += '&status=eq.' + filter;
-    if (search) q += '&or=(report_number.ilike.*' + encodeURIComponent(search) + '*,patient_fiscal_code.ilike.*' + encodeURIComponent(search) + '*)';
+    // If search contains text, first look up patients by name
+    var patientLookup;
+    if (search && !/^\d+$/.test(search)) {
+      // Search users by first_name, last_name, email or fiscal_code
+      patientLookup = sbGet('users', 'select=id&or=(first_name.ilike.*' + enc + '*,last_name.ilike.*' + enc + '*,email.ilike.*' + enc + '*,fiscal_code.ilike.*' + enc + '*)&limit=200')
+        .then(function(users) { return users.map(function(u){return u.id;}); })
+        .catch(function() { return []; });
+    } else {
+      patientLookup = Promise.resolve([]);
+    }
 
-    sbGet('reports', q).then(function (data) {
-      renderAllReports(data);
-    });
+    patientLookup.then(function(patientIds) {
+      // Build OR filter: report_number, fiscal_code, AND patient_id matches
+      var orParts = [];
+      if (search) {
+        orParts.push('report_number.ilike.*' + enc + '*');
+        orParts.push('patient_fiscal_code.ilike.*' + enc + '*');
+      }
+      if (patientIds.length > 0) {
+        orParts.push('patient_id.in.(' + patientIds.join(',') + ')');
+      }
 
-    // ── Real counts via HEAD requests (independent of table limit) ───
-    var searchFilter = search ? 'or=(report_number.ilike.*' + encodeURIComponent(search) + '*,patient_fiscal_code.ilike.*' + encodeURIComponent(search) + '*)' : '';
-    var countFilter = function (statusFilter) {
-      var parts = [];
-      if (statusFilter) parts.push(statusFilter);
-      if (searchFilter) parts.push(searchFilter);
-      return parts.join('&') || '';
-    };
+      var q = 'select=*,patient:patient_id(first_name,last_name)&order=created_at.desc&limit=100';
+      if (filter) q += '&status=eq.' + filter;
+      if (orParts.length > 0) q += '&or=(' + orParts.join(',') + ')';
 
-    Promise.all([
-      sbCount('reports', countFilter('status=eq.pending')),
-      sbCount('reports', countFilter('status=eq.validated')),
-      sbCount('reports', countFilter('status=eq.signed')),
-      sbCount('reports', countFilter('status=eq.released')),
-      sbCount('reports', countFilter(filter ? 'status=eq.' + filter : ''))
-    ]).then(function (results) {
-      var pending = results[0], validated = results[1], signed = results[2], released = results[3], total = results[4];
-      $('statPending').textContent = pending;
-      $('statValidated').textContent = validated + (signed ? '+' + signed : '');
-      $('statReleased').textContent = released;
-      $('statTotal').textContent = total;
+      sbGet('reports', q).then(function (data) {
+        renderAllReports(data);
+      });
+
+      // ── Real counts via HEAD requests (independent of table limit) ───
+      var searchFilter = orParts.length > 0 ? 'or=(' + orParts.join(',') + ')' : '';
+      var countFilter = function (statusFilter) {
+        var parts = [];
+        if (statusFilter) parts.push(statusFilter);
+        if (searchFilter) parts.push(searchFilter);
+        return parts.join('&') || '';
+      };
+
+      Promise.all([
+        sbCount('reports', countFilter('status=eq.pending')),
+        sbCount('reports', countFilter('status=eq.validated')),
+        sbCount('reports', countFilter('status=eq.signed')),
+        sbCount('reports', countFilter('status=eq.released')),
+        sbCount('reports', countFilter(filter ? 'status=eq.' + filter : ''))
+      ]).then(function (results) {
+        var pending = results[0], validated = results[1], signed = results[2], released = results[3], total = results[4];
+        $('statPending').textContent = pending;
+        $('statValidated').textContent = validated + (signed ? '+' + signed : '');
+        $('statReleased').textContent = released;
+        $('statTotal').textContent = total;
+      });
     });
 
     if (!$('filterAllStatus')._bound) {
