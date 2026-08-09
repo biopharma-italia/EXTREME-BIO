@@ -421,6 +421,7 @@
       case 'users': loadUsers(); break;
       case 'audit': loadAuditLog(); break;
       case 'ai-report': initAIReport(); break;
+      case 'analytics': if (window._initAnalytics) window._initAnalytics(); break;
     }
   }
 

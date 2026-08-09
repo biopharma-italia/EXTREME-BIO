@@ -1,0 +1,279 @@
+/* ============================================================
+   ANALYTICS.CSS — Bio-Clinic Enterprise BI Dashboard
+   ============================================================ */
+
+/* ---------- Filter Bar ---------- */
+.an-filter-bar {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 1rem;
+}
+.an-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.an-filter-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+.an-custom-range {
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+.an-date-input {
+  max-width: 150px;
+  padding: 0.45rem 0.65rem;
+  font-size: 0.82rem;
+}
+.an-filter-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+/* ---------- Tabs ---------- */
+.an-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1.25rem;
+  border-bottom: 2px solid var(--border-color);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.an-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  background: none;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.an-tab:hover {
+  color: var(--text-primary);
+  background: var(--bg-input);
+}
+.an-tab.active {
+  color: var(--green-dark);
+  border-bottom-color: var(--green-primary);
+}
+.an-tab.active svg {
+  stroke: var(--green-dark);
+}
+[data-theme="dark"] .an-tab.active {
+  color: var(--green-primary);
+}
+
+/* ---------- Panels ---------- */
+.an-panel {
+  display: none;
+}
+.an-panel.active {
+  display: block;
+  animation: anFadeIn 0.3s ease;
+}
+@keyframes anFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Loading ---------- */
+.an-loading {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-muted);
+}
+.an-loading .spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-color);
+  border-top-color: var(--green-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 1rem;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- KPI Cards ---------- */
+.an-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.an-kpi-grid--3 { grid-template-columns: repeat(3, 1fr); }
+.an-kpi-grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+.an-kpi-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.15rem;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.an-kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.an-kpi-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.35rem;
+}
+.an-kpi-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-secondary);
+}
+.an-kpi-delta {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.1rem 0.45rem;
+  border-radius: 10px;
+}
+.an-kpi-delta.positive {
+  background: #d1fae5;
+  color: #065f46;
+}
+.an-kpi-delta.negative {
+  background: #fee2e2;
+  color: #991b1b;
+}
+.an-kpi-delta.neutral {
+  background: #f1f5f9;
+  color: #64748b;
+}
+[data-theme="dark"] .an-kpi-delta.positive { background: rgba(16,185,129,0.2); color: #34d399; }
+[data-theme="dark"] .an-kpi-delta.negative { background: rgba(239,68,68,0.2); color: #f87171; }
+[data-theme="dark"] .an-kpi-delta.neutral { background: rgba(100,116,139,0.2); color: #94a3b8; }
+.an-kpi-value {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+.an-kpi-sub {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+.an-kpi-sparkline {
+  margin-top: 0.5rem;
+  height: 32px;
+}
+.an-kpi-sparkline canvas {
+  width: 100% !important;
+  height: 32px !important;
+}
+
+/* ---------- Charts Layout ---------- */
+.an-charts-row {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.an-charts-row:has(.an-chart-2-3) {
+  grid-template-columns: 2fr 1fr;
+}
+.an-charts-row:has(.an-chart-1-2) {
+  grid-template-columns: 1fr 1fr;
+}
+.an-charts-row:has(.an-chart-full) {
+  grid-template-columns: 1fr;
+}
+/* Fallback for browsers without :has */
+@supports not (selector(:has(*))) {
+  .an-charts-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.an-chart-card {
+  margin-bottom: 0;
+}
+.an-chart-card canvas {
+  width: 100% !important;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1200px) {
+  .an-kpi-grid { grid-template-columns: repeat(3, 1fr); }
+  .an-kpi-grid--4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 1024px) {
+  .an-charts-row,
+  .an-charts-row:has(.an-chart-2-3),
+  .an-charts-row:has(.an-chart-1-2) {
+    grid-template-columns: 1fr;
+  }
+  .an-kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .an-kpi-grid--3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .an-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .an-filter-actions {
+    margin-left: 0;
+    justify-content: flex-end;
+  }
+  .an-kpi-grid,
+  .an-kpi-grid--3,
+  .an-kpi-grid--4 {
+    grid-template-columns: 1fr 1fr;
+  }
+  .an-tabs {
+    gap: 0;
+  }
+  .an-tab {
+    padding: 0.65rem 0.85rem;
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 480px) {
+  .an-kpi-grid,
+  .an-kpi-grid--3,
+  .an-kpi-grid--4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Print mode for PDF export ---------- */
+@media print {
+  .an-filter-bar { display: none; }
+  .an-tabs { display: none; }
+  .sidebar { display: none; }
+  .topbar { display: none; }
+  .main { margin-left: 0; }
+  .an-panel { display: block !important; page-break-inside: avoid; }
+  .an-kpi-card { break-inside: avoid; }
+  .an-chart-card { break-inside: avoid; page-break-inside: avoid; }
+}

@@ -16,6 +16,7 @@
   <meta name="theme-color" content="#00704A">
 
   <link rel="stylesheet" href="/css/dashboard.cc671280.css?v=3">
+  <link rel="stylesheet" href="/css/analytics.css?v=1">
 </head>
 <body>
   <!-- SIDEBAR -->
@@ -92,6 +93,10 @@
         <a href="#audit" class="nav-item" data-page="audit" data-roles="admin,super_admin">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <span>Audit Log</span>
+        </a>
+        <a href="#analytics" class="nav-item" data-page="analytics" data-roles="super_admin">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg>
+          <span>Analytics BI</span>
         </a>
         <a href="#settings" class="nav-item" data-page="settings" data-roles="super_admin">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
@@ -1034,6 +1039,303 @@ Femore totale BMD: 0.750, T-score: -1.8'></textarea>
       </div>
     </section>
 
+    <!-- ==================== PAGE: ANALYTICS BI (Super Admin) ==================== -->
+    <section class="page" id="page-analytics" data-title="Analytics BI" hidden>
+      <!-- Filter bar -->
+      <div class="an-filter-bar" id="anFilterBar">
+        <div class="an-filter-group">
+          <label class="an-filter-label">Periodo</label>
+          <select class="filter-select" id="anPeriod">
+            <option value="month">Ultimo mese</option>
+            <option value="3months">Ultimi 3 mesi</option>
+            <option value="year" selected>Ultimo anno</option>
+            <option value="all">Tutto</option>
+            <option value="custom">Personalizzato</option>
+          </select>
+        </div>
+        <div class="an-filter-group an-custom-range" id="anCustomRange" hidden>
+          <label class="an-filter-label">Da</label>
+          <input type="date" class="form-input an-date-input" id="anDateFrom">
+          <label class="an-filter-label">A</label>
+          <input type="date" class="form-input an-date-input" id="anDateTo">
+        </div>
+        <div class="an-filter-group">
+          <label class="an-filter-label">Confronto</label>
+          <select class="filter-select" id="anCompare">
+            <option value="none">Nessuno</option>
+            <option value="prev" selected>Periodo precedente</option>
+            <option value="yoy">Anno su anno</option>
+          </select>
+        </div>
+        <div class="an-filter-group">
+          <label class="an-filter-label">Tipo esame</label>
+          <select class="filter-select" id="anTypeFilter">
+            <option value="">Tutti</option>
+          </select>
+        </div>
+        <div class="an-filter-group">
+          <label class="an-filter-label">Operatore</label>
+          <select class="filter-select" id="anOperatorFilter">
+            <option value="">Tutti</option>
+          </select>
+        </div>
+        <div class="an-filter-actions">
+          <button class="btn btn-primary btn-sm" id="anApplyFilters">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Aggiorna
+          </button>
+          <button class="btn btn-outline btn-sm" id="anExportPdf" title="Esporta PDF">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            PDF
+          </button>
+          <button class="btn btn-outline btn-sm" id="anExportExcel" title="Esporta Excel">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="M3 9h18"/></svg>
+            Excel
+          </button>
+        </div>
+      </div>
+
+      <!-- Tab navigation -->
+      <div class="an-tabs" id="anTabs">
+        <button class="an-tab active" data-tab="overview">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Overview
+        </button>
+        <button class="an-tab" data-tab="volumi">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Volumi
+        </button>
+        <button class="an-tab" data-tab="performance">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Performance
+        </button>
+        <button class="an-tab" data-tab="pazienti">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Pazienti
+        </button>
+        <button class="an-tab" data-tab="qualita">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Qualit&agrave;
+        </button>
+      </div>
+
+      <!-- Loading state -->
+      <div class="an-loading" id="anLoading" hidden>
+        <div class="spinner"></div>
+        <p>Caricamento analytics...</p>
+      </div>
+
+      <!-- TAB: Overview -->
+      <div class="an-panel active" id="anPanel-overview">
+        <!-- KPI Cards -->
+        <div class="an-kpi-grid" id="anKpiGrid">
+          <div class="an-kpi-card">
+            <div class="an-kpi-header"><span class="an-kpi-title">Referti Totali</span><span class="an-kpi-delta" id="anKpiTotalDelta"></span></div>
+            <div class="an-kpi-value" id="anKpiTotal">-</div>
+            <div class="an-kpi-sparkline"><canvas id="anSparkTotal" height="32"></canvas></div>
+          </div>
+          <div class="an-kpi-card">
+            <div class="an-kpi-header"><span class="an-kpi-title">Rilasciati</span><span class="an-kpi-delta" id="anKpiReleasedDelta"></span></div>
+            <div class="an-kpi-value" id="anKpiReleased">-</div>
+            <div class="an-kpi-sparkline"><canvas id="anSparkReleased" height="32"></canvas></div>
+          </div>
+          <div class="an-kpi-card">
+            <div class="an-kpi-header"><span class="an-kpi-title">Pazienti Unici</span><span class="an-kpi-delta" id="anKpiPatientsDelta"></span></div>
+            <div class="an-kpi-value" id="anKpiPatients">-</div>
+            <div class="an-kpi-sparkline"><canvas id="anSparkPatients" height="32"></canvas></div>
+          </div>
+          <div class="an-kpi-card">
+            <div class="an-kpi-header"><span class="an-kpi-title">Tempo Medio (gg)</span><span class="an-kpi-delta" id="anKpiAvgTimeDelta"></span></div>
+            <div class="an-kpi-value" id="anKpiAvgTime">-</div>
+            <div class="an-kpi-sparkline"><canvas id="anSparkAvgTime" height="32"></canvas></div>
+          </div>
+          <div class="an-kpi-card">
+            <div class="an-kpi-header"><span class="an-kpi-title">Valori Anomali</span><span class="an-kpi-delta" id="anKpiAbnormalDelta"></span></div>
+            <div class="an-kpi-value" id="anKpiAbnormal">-</div>
+            <div class="an-kpi-sparkline"><canvas id="anSparkAbnormal" height="32"></canvas></div>
+          </div>
+          <div class="an-kpi-card">
+            <div class="an-kpi-header"><span class="an-kpi-title">Urgenze</span><span class="an-kpi-delta" id="anKpiUrgentDelta"></span></div>
+            <div class="an-kpi-value" id="anKpiUrgent">-</div>
+            <div class="an-kpi-sparkline"><canvas id="anSparkUrgent" height="32"></canvas></div>
+          </div>
+        </div>
+
+        <!-- Charts row -->
+        <div class="an-charts-row">
+          <div class="card an-chart-card an-chart-2-3">
+            <h3 class="card-title">Volume Referti nel Tempo</h3>
+            <canvas id="anChartVolume" height="280"></canvas>
+          </div>
+          <div class="card an-chart-card an-chart-1-3">
+            <h3 class="card-title">Distribuzione per Tipo</h3>
+            <canvas id="anChartTypePie" height="280"></canvas>
+          </div>
+        </div>
+        <div class="an-charts-row">
+          <div class="card an-chart-card an-chart-1-2">
+            <h3 class="card-title">Funnel di Stato</h3>
+            <canvas id="anChartFunnel" height="260"></canvas>
+          </div>
+          <div class="card an-chart-card an-chart-1-2">
+            <h3 class="card-title">Heatmap Attivit&agrave; Settimanale</h3>
+            <canvas id="anChartHeatmap" height="260"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB: Volumi -->
+      <div class="an-panel" id="anPanel-volumi" hidden>
+        <div class="an-charts-row">
+          <div class="card an-chart-card an-chart-full">
+            <h3 class="card-title">Volume Mensile per Tipo Esame</h3>
+            <canvas id="anChartVolumeByType" height="320"></canvas>
+          </div>
+        </div>
+        <div class="an-charts-row">
+          <div class="card an-chart-card an-chart-1-2">
+            <h3 class="card-title">Volume per Categoria</h3>
+            <canvas id="anChartVolumeByCategory" height="280"></canvas>
+          </div>
+          <div class="card an-chart-card an-chart-1-2">
+            <h3 class="card-title">Trend Caricamenti vs Rilasci</h3>
+            <canvas id="anChartUploadVsRelease" height="280"></canvas>
+          </div>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Dettaglio Volume per Tipo Esame</h3>
+          <div class="table-responsive">
+            <table class="data-table" id="anTableVolumi">
+              <thead>
+                <tr>
+                  <th>Tipo Esame</th>
+                  <th>Totale</th>
+                  <th>Rilasciati</th>
+                  <th>In Lavorazione</th>
+                  <th>% Rilascio</th>
+                  <th>Var. Periodo</th>
+                </tr>
+              </thead>
+              <tbody id="anTableVolumiBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB: Performance -->
+      <div class="an-panel" id="anPanel-performance" hidden>
+        <div class="an-kpi-grid an-kpi-grid--3">
+          <div class="an-kpi-card">
+            <div class="an-kpi-header"><span class="an-kpi-title">Tempo Upload&rarr;Rilascio</span></div>
+            <div class="an-kpi-value" id="anPerfTotalTime">-</div>
+            <div class="an-kpi-sub">media giorni</div>
+          </div>
+          <div class="an-kpi-card">
+            <div class="an-kpi-header"><span class="an-kpi-title">Tempo Upload&rarr;Validazione</span></div>
+            <div class="an-kpi-value" id="anPerfValTime">-</div>
+            <div class="an-kpi-sub">media giorni</div>
+          </div>
+          <div class="an-kpi-card">
+            <div class="an-kpi-header"><span class="an-kpi-title">Tempo Validazione&rarr;Rilascio</span></div>
+            <div class="an-kpi-value" id="anPerfRelTime">-</div>
+            <div class="an-kpi-sub">media giorni</div>
+          </div>
+        </div>
+        <div class="an-charts-row">
+          <div class="card an-chart-card an-chart-full">
+            <h3 class="card-title">Tempo per Fase nel Tempo</h3>
+            <canvas id="anChartPhaseTime" height="300"></canvas>
+          </div>
+        </div>
+        <div class="an-charts-row">
+          <div class="card an-chart-card an-chart-1-2">
+            <h3 class="card-title">Distribuzione Tempi di Rilascio</h3>
+            <canvas id="anChartTimeDistribution" height="280"></canvas>
+          </div>
+          <div class="card an-chart-card an-chart-1-2">
+            <h3 class="card-title">Classifica Operatori</h3>
+            <canvas id="anChartOperatorRank" height="280"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB: Pazienti -->
+      <div class="an-panel" id="anPanel-pazienti" hidden>
+        <div class="an-kpi-grid an-kpi-grid--4">
+          <div class="an-kpi-card">
+            <div class="an-kpi-header"><span class="an-kpi-title">Pazienti Totali</span></div>
+            <div class="an-kpi-value" id="anPatTotal">-</div>
+          </div>
+          <div class="an-kpi-card">
+            <div class="an-kpi-header"><span class="an-kpi-title">Nuovi nel Periodo</span></div>
+            <div class="an-kpi-value" id="anPatNew">-</div>
+          </div>
+          <div class="an-kpi-card">
+            <div class="an-kpi-header"><span class="an-kpi-title">Ricorrenti</span></div>
+            <div class="an-kpi-value" id="anPatRecurring">-</div>
+          </div>
+          <div class="an-kpi-card">
+            <div class="an-kpi-header"><span class="an-kpi-title">Tasso Download</span></div>
+            <div class="an-kpi-value" id="anPatDownloadRate">-</div>
+          </div>
+        </div>
+        <div class="an-charts-row">
+          <div class="card an-chart-card an-chart-1-2">
+            <h3 class="card-title">Nuovi Pazienti nel Tempo</h3>
+            <canvas id="anChartNewPatients" height="280"></canvas>
+          </div>
+          <div class="card an-chart-card an-chart-1-2">
+            <h3 class="card-title">Top Pazienti per N. Referti</h3>
+            <canvas id="anChartTopPatients" height="280"></canvas>
+          </div>
+        </div>
+        <div class="an-charts-row">
+          <div class="card an-chart-card an-chart-full">
+            <h3 class="card-title">Visualizzazione vs Download Referti</h3>
+            <canvas id="anChartViewVsDownload" height="260"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB: Qualità -->
+      <div class="an-panel" id="anPanel-qualita" hidden>
+        <div class="an-kpi-grid an-kpi-grid--4">
+          <div class="an-kpi-card">
+            <div class="an-kpi-header"><span class="an-kpi-title">% Valori Anomali</span></div>
+            <div class="an-kpi-value" id="anQualAbnormalPct">-</div>
+          </div>
+          <div class="an-kpi-card">
+            <div class="an-kpi-header"><span class="an-kpi-title">% Urgenze</span></div>
+            <div class="an-kpi-value" id="anQualUrgentPct">-</div>
+          </div>
+          <div class="an-kpi-card">
+            <div class="an-kpi-header"><span class="an-kpi-title">SLA Rispettato</span></div>
+            <div class="an-kpi-value" id="anQualSLA">-</div>
+          </div>
+          <div class="an-kpi-card">
+            <div class="an-kpi-header"><span class="an-kpi-title">Referti Revocati</span></div>
+            <div class="an-kpi-value" id="anQualRevoked">-</div>
+          </div>
+        </div>
+        <div class="an-charts-row">
+          <div class="card an-chart-card an-chart-1-2">
+            <h3 class="card-title">Anomalie nel Tempo</h3>
+            <canvas id="anChartAnomalyTrend" height="280"></canvas>
+          </div>
+          <div class="card an-chart-card an-chart-1-2">
+            <h3 class="card-title">Urgenze per Tipo Esame</h3>
+            <canvas id="anChartUrgentByType" height="280"></canvas>
+          </div>
+        </div>
+        <div class="an-charts-row">
+          <div class="card an-chart-card an-chart-full">
+            <h3 class="card-title">SLA Monitor &mdash; Giorni Medi per Rilascio (target &le; 3gg)</h3>
+            <canvas id="anChartSLAMonitor" height="260"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- MODAL (shared) -->
@@ -1171,6 +1473,10 @@ Femore totale BMD: 0.750, T-score: -1.8'></textarea>
   <script>if(window.pdfjsLib)window.pdfjsLib.GlobalWorkerOptions.workerSrc='/js/pdf.worker.min.js';</script>
   <script src="/js/jspdf.umd.min.js"></script>
   <script src="/js/pdf-lib.min.js"></script>
-  <script src="/js/dashboard.52b03f32.js?v=5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="/js/dashboard.52b03f32.js?v=6"></script>
+  <script src="/js/analytics.js?v=1"></script>
 </body>
 </html>
