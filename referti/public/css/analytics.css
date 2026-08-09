@@ -462,17 +462,20 @@
   position: relative;
 }
 .an-top-bar-fill {
+  display: block;
   height: 100%;
   border-radius: 4px;
   transition: width 0.4s ease;
   min-width: 2px;
 }
 .an-top-bar-value {
-  width: 80px;
-  font-size: 0.78rem;
+  min-width: 90px;
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--text-secondary);
   flex-shrink: 0;
+  white-space: nowrap;
+  text-align: right;
 }
 
 /* ---------- Responsive ---------- */
@@ -500,6 +503,7 @@
   .an-tab { padding: 0.6rem 0.75rem; font-size: 0.78rem; }
   .an-toolbar { flex-direction: column; align-items: flex-start; }
   .an-top-bar-label { width: 90px; font-size: 0.72rem; }
+  .an-top-bar-value { min-width: 80px; font-size: 0.7rem; }
 }
 @media (max-width: 480px) {
   .an-kpi-grid, .an-kpi-grid--3, .an-kpi-grid--4, .an-kpi-grid--5 {
