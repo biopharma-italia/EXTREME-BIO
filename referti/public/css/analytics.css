@@ -507,6 +507,105 @@
   }
 }
 
+/* ---------- Error State ---------- */
+.an-error-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius-md);
+  margin-bottom: 1rem;
+}
+[data-theme="dark"] .an-error-box {
+  background: rgba(239,68,68,0.1);
+  border-color: rgba(239,68,68,0.3);
+}
+.an-error-icon { font-size: 2rem; flex-shrink: 0; }
+.an-error-text { flex: 1; }
+.an-error-text strong { display: block; font-size: 1rem; margin-bottom: 0.25rem; color: #991b1b; }
+[data-theme="dark"] .an-error-text strong { color: #f87171; }
+
+/* ---------- Webhook Alert Banner ---------- */
+.an-webhook-banner {
+  margin-bottom: 1rem;
+}
+.an-webhook-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(90deg, #fef3c7 0%, #fffbeb 100%);
+  border: 1px solid #f59e0b;
+  border-radius: var(--radius-md);
+  font-size: 0.84rem;
+  animation: anFadeIn 0.3s ease;
+}
+[data-theme="dark"] .an-webhook-content {
+  background: linear-gradient(90deg, rgba(245,158,11,0.15) 0%, rgba(245,158,11,0.05) 100%);
+  border-color: rgba(245,158,11,0.4);
+}
+.an-webhook-icon { font-size: 1.2rem; flex-shrink: 0; }
+.an-webhook-text { flex: 1; line-height: 1.4; }
+
+/* ---------- Benchmark Gauges ---------- */
+.an-bench-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+.an-bench-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.5rem 0;
+}
+.an-bench-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-secondary);
+}
+.an-bench-bar-wrap {
+  height: 8px;
+  background: var(--bg-input);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.an-bench-bar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+  min-width: 2px;
+}
+.an-bench-values {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+}
+.an-bench-actual {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.an-bench-target {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+}
+.an-bench-status {
+  margin-left: auto;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .an-bench-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .an-bench-grid { grid-template-columns: 1fr; }
+}
+
 /* ---------- Print mode for PDF export ---------- */
 @media print {
   .an-filter-bar, .an-tabs, .an-toolbar { display: none; }

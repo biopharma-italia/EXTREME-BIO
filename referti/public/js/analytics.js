@@ -1,7 +1,8 @@
 /**
- * ANALYTICS.JS — Bio-Clinic Enterprise BI Dashboard v2
- * Complete rewrite: TAT engine, drill-downs, AI insights, forecast
- * @version 2.1.0  @date 2026-08-09
+ * ANALYTICS.JS — Bio-Clinic Enterprise BI Dashboard v3
+ * Complete rewrite: TAT engine, drill-downs, AI insights, forecast,
+ * benchmarks, economics estimator, export alerts, webhook monitor
+ * @version 3.0.0  @date 2026-08-09
  */
 (function () {
   'use strict';
@@ -11,6 +12,31 @@
   var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1keHFnemt4cmNyb3R4eGJob2FpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODYxMzIsImV4cCI6MjA4NzU2MjEzMn0.HHExeiCGqnx4di_u9gghUnTfgQVAIjKuN6kt_vLFddA';
   var SLA_HOURS = 72; // 3 days in hours
   var AUTO_REFRESH_MS = 300000; // 5 min
+
+  // ── Benchmark Targets (configurable) ─────────
+  var TARGETS = {
+    tat_median_hours: 24,      // Target: TAT mediano ≤ 24h
+    tat_p90_hours: 48,         // Target: P90 ≤ 48h
+    sla_compliance_pct: 95,    // Target: ≥ 95% entro SLA
+    download_rate_pct: 80,     // Target: ≥ 80% scaricati
+    abnormal_rate_pct: 8,      // Target: ≤ 8% anomali
+    view_rate_pct: 90,         // Target: ≥ 90% visualizzati
+    new_patients_month: 15     // Target: ≥ 15 nuovi pazienti/mese
+  };
+
+  // ── Economics: estimated pricing per exam type (EUR) ──
+  var EXAM_PRICING = {
+    emocromo: 15, profilo_lipidico: 20, profilo_tiroideo: 25,
+    glicemia: 8, esame_urine: 10, profilo_epatico: 22,
+    profilo_renale: 18, markers_tumorali: 45, coagulazione: 18,
+    sierologia: 30, microbiologia: 35, genetica: 120,
+    pap_test: 40, hpv_dna_test: 55, isteroscopia: 80,
+    cariotipo_sangue: 150, cariotipo_coppia: 250, tunel_test: 90,
+    fish_advance_sperm: 180, pannello_trombofilia: 95,
+    endobiome: 200, oncoadvance_brca: 350,
+    hiv_dna_quantitativo: 70, hcv_quantitativo: 65,
+    hcv_tipizzazione: 60, hbv_quantitativo: 65, altro: 20
+  };
 
   var TYPE_LABELS = {
     emocromo: 'Emocromo', profilo_lipidico: 'Profilo Lipidico', profilo_tiroideo: 'Profilo Tiroideo',
@@ -42,7 +68,9 @@
     activeTab: 'overview',
     granularity: 'month',
     autoRefreshTimer: null,
-    initialized: false
+    initialized: false,
+    loadError: null,
+    lastInsights: []
   };
 
   // ── DOM helpers ────────────────────────────────
@@ -212,9 +240,13 @@
     return dt.getFullYear() + '-' + String(dt.getMonth() + 1).padStart(2, '0');
   }
   function weekKey(d) {
+    // ISO 8601 week number calculation
     var dt = new Date(d);
-    var oneJan = new Date(dt.getFullYear(), 0, 1);
-    return dt.getFullYear() + '-W' + String(Math.ceil(((dt - oneJan) / 86400000 + oneJan.getDay() + 1) / 7)).padStart(2, '0');
+    dt = new Date(Date.UTC(dt.getFullYear(), dt.getMonth(), dt.getDate()));
+    dt.setUTCDate(dt.getUTCDate() + 4 - (dt.getUTCDay() || 7));
+    var yearStart = new Date(Date.UTC(dt.getUTCFullYear(), 0, 1));
+    var weekNo = Math.ceil(((dt - yearStart) / 86400000 + 1) / 7);
+    return dt.getUTCFullYear() + '-W' + String(weekNo).padStart(2, '0');
   }
   function dayKey(d) { return new Date(d).toISOString().slice(0, 10); }
 
@@ -267,7 +299,10 @@
 
   function loadAnalyticsData() {
     var loadingEl = $('anLoading');
+    var errorEl = $('anErrorState');
     if (loadingEl) loadingEl.hidden = false;
+    if (errorEl) errorEl.hidden = true;
+    anState.loadError = null;
 
     var period = $('anPeriod') ? $('anPeriod').value : 'year';
     var range = getPeriodRange(period);
@@ -300,7 +335,7 @@
       anState.users = results[1] || [];
       anState.rawCompReports = results[2] || [];
       anState.compReports = anState.rawCompReports.slice();
-      console.log('[Analytics v2] Loaded:', anState.rawReports.length, 'reports,', anState.users.length, 'users,', anState.compReports.length, 'comp');
+      console.log('[Analytics v3] Loaded:', anState.rawReports.length, 'reports,', anState.users.length, 'users,', anState.compReports.length, 'comp');
 
       applyFilters();
       populateFilterDropdowns();
@@ -312,9 +347,28 @@
 
       if (loadingEl) loadingEl.hidden = true;
     }).catch(function (err) {
-      console.error('[Analytics v2] Load error:', err);
+      console.error('[Analytics v3] Load error:', err);
+      anState.loadError = err;
       if (loadingEl) loadingEl.hidden = true;
+      showErrorState(err);
     });
+  }
+
+  function showErrorState(err) {
+    var el = $('anErrorState');
+    if (!el) return;
+    el.hidden = false;
+    var msg = err && err.message ? err.message : 'Errore di connessione al server';
+    el.innerHTML = '<div class="an-error-box">' +
+      '<div class="an-error-icon">&#x26A0;&#xFE0F;</div>' +
+      '<div class="an-error-text">' +
+        '<strong>Errore caricamento dati</strong><br>' +
+        '<span style="font-size:0.82rem;color:var(--text-muted)">' + msg + '</span>' +
+      '</div>' +
+      '<button class="btn btn-primary btn-sm" id="anRetryBtn">Riprova</button>' +
+    '</div>';
+    var retryBtn = $('anRetryBtn');
+    if (retryBtn) retryBtn.addEventListener('click', function() { loadAnalyticsData(); });
   }
 
   function applyFilters() {
@@ -442,7 +496,7 @@
       case 'performance': renderPerformance(); break;
       case 'pazienti': renderPazienti(); break;
       case 'qualita': renderQualita(); break;
-      case 'economics': /* placeholder, nothing to render */ break;
+      case 'economics': renderEconomics(); break;
     }
   }
 
@@ -592,6 +646,9 @@
     var dlRate = downloadable.length > 0 ? ((downloaded.length / downloadable.length) * 100).toFixed(1) : '0.0';
     safeText($('anKpiDownload'), dlRate + '%');
 
+    // ── Benchmark Target Gauges ───────────────────
+    renderBenchmarks(rpts, tatMinutes, dlRate);
+
     // ── Volume + Forecast chart ──────────────────
     renderVolumeChart(rpts, comp);
 
@@ -606,6 +663,9 @@
 
     // ── AI Insights ──────────────────────────────
     generateInsights(rpts, comp, tatMinutes, compTat);
+
+    // ── Webhook stale check ─────────────────────
+    checkStaleAlerts();
   }
 
   // ── Volume chart with dual curves + forecast ──
@@ -1042,6 +1102,13 @@
         openDrillDown(this.dataset.drill);
       });
     });
+
+    anState.lastInsights = insights;
+
+    // Show/hide export alert button
+    var exportAlertBtn = $('anExportAlertCsv');
+    var hasCritical = insights.some(function(i){return i.tag === 'critical' || i.tag === 'warning';});
+    if (exportAlertBtn) exportAlertBtn.style.display = hasCritical ? 'inline-flex' : 'none';
   }
 
 
@@ -1668,6 +1735,383 @@
 
 
   // ══════════════════════════════════════════════
+  //  BENCHMARK GAUGES
+  // ══════════════════════════════════════════════
+  function renderBenchmarks(rpts, tatMinutes, dlRate) {
+    var el = $('anBenchmarks');
+    if (!el) return;
+
+    var released = rpts.filter(function(r){return r.status==='released';});
+    var viewed = released.filter(function(r){return r.patient_viewed;});
+    var viewPct = released.length > 0 ? (viewed.length / released.length * 100) : 0;
+    var withinSLA = rpts.filter(function(r){return r.released_at && r.created_at && hoursDiff(r.created_at, r.released_at) <= SLA_HOURS;});
+    var releasedWithTat = rpts.filter(function(r){return r.released_at && r.created_at;});
+    var slaPct = releasedWithTat.length > 0 ? (withinSLA.length / releasedWithTat.length * 100) : 0;
+    var abnPct = rpts.length > 0 ? (rpts.filter(function(r){return r.has_abnormal_values;}).length / rpts.length * 100) : 0;
+    var tatMedH = tatMinutes.length > 0 ? percentile(tatMinutes, 50) / 60 : 0;
+    var tatP90H = tatMinutes.length > 0 ? percentile(tatMinutes, 90) / 60 : 0;
+
+    var benchmarks = [
+      { label: 'TAT Mediano', value: tatMedH, target: TARGETS.tat_median_hours, unit: 'h', lower: true },
+      { label: 'TAT P90', value: tatP90H, target: TARGETS.tat_p90_hours, unit: 'h', lower: true },
+      { label: 'SLA Compliance', value: slaPct, target: TARGETS.sla_compliance_pct, unit: '%', lower: false },
+      { label: 'Tasso Download', value: parseFloat(dlRate) || 0, target: TARGETS.download_rate_pct, unit: '%', lower: false },
+      { label: 'Tasso Anomalie', value: abnPct, target: TARGETS.abnormal_rate_pct, unit: '%', lower: true },
+      { label: 'Visualizzazione', value: viewPct, target: TARGETS.view_rate_pct, unit: '%', lower: false }
+    ];
+
+    var html = '';
+    benchmarks.forEach(function(b) {
+      var ratio, statusClass, statusIcon;
+      if (b.lower) {
+        ratio = b.target > 0 ? Math.max(0, 1 - (b.value / b.target - 1)) : 1;
+        var ok = b.value <= b.target;
+        var warn = b.value <= b.target * 1.2;
+        statusClass = ok ? 'bench-ok' : (warn ? 'bench-warn' : 'bench-danger');
+        statusIcon = ok ? '&#x2705;' : (warn ? '&#x26A0;&#xFE0F;' : '&#x274C;');
+      } else {
+        ratio = b.target > 0 ? (b.value / b.target) : 0;
+        var ok2 = b.value >= b.target;
+        var warn2 = b.value >= b.target * 0.8;
+        statusClass = ok2 ? 'bench-ok' : (warn2 ? 'bench-warn' : 'bench-danger');
+        statusIcon = ok2 ? '&#x2705;' : (warn2 ? '&#x26A0;&#xFE0F;' : '&#x274C;');
+      }
+      var pct = Math.min(100, Math.max(0, ratio * 100));
+      var barColor = statusClass === 'bench-ok' ? '#22c55e' : (statusClass === 'bench-warn' ? '#f59e0b' : '#ef4444');
+
+      html += '<div class="an-bench-item">' +
+        '<div class="an-bench-label">' + b.label + '</div>' +
+        '<div class="an-bench-bar-wrap">' +
+          '<div class="an-bench-bar" style="width:' + pct.toFixed(0) + '%;background:' + barColor + '"></div>' +
+        '</div>' +
+        '<div class="an-bench-values">' +
+          '<span class="an-bench-actual">' + b.value.toFixed(1) + b.unit + '</span>' +
+          '<span class="an-bench-target">' + (b.lower ? '\u2264' : '\u2265') + b.target + b.unit + '</span>' +
+          '<span class="an-bench-status">' + statusIcon + '</span>' +
+        '</div>' +
+      '</div>';
+    });
+
+    el.innerHTML = html;
+  }
+
+
+  // ══════════════════════════════════════════════
+  //  TAB 6: ECONOMICS (Revenue Estimator)
+  // ══════════════════════════════════════════════
+  function renderEconomics() {
+    var rpts = anState.reports;
+    var comp = anState.compReports;
+
+    // Calculate revenue estimates
+    var totalRevenue = 0;
+    var revenueByType = {};
+    var revenueByMonth = {};
+    var revenueByCat = {};
+
+    rpts.forEach(function(r) {
+      var type = r.report_type || 'altro';
+      var price = EXAM_PRICING[type] || EXAM_PRICING.altro;
+      totalRevenue += price;
+
+      if (!revenueByType[type]) revenueByType[type] = { count: 0, revenue: 0 };
+      revenueByType[type].count++;
+      revenueByType[type].revenue += price;
+
+      var mk = monthKey(r.created_at || r.sample_date);
+      revenueByMonth[mk] = (revenueByMonth[mk] || 0) + price;
+
+      var cat = r.category || 'laboratorio';
+      if (!revenueByCat[cat]) revenueByCat[cat] = 0;
+      revenueByCat[cat] += price;
+    });
+
+    var compRevenue = 0;
+    comp.forEach(function(r) {
+      compRevenue += (EXAM_PRICING[r.report_type || 'altro'] || EXAM_PRICING.altro);
+    });
+
+    var patients = countUnique(rpts, 'patient_id');
+    var revenuePerPatient = patients > 0 ? (totalRevenue / patients) : 0;
+    var revenuePerReport = rpts.length > 0 ? (totalRevenue / rpts.length) : 0;
+
+    // KPIs
+    safeText($('anEcoRevenue'), '\u20AC ' + totalRevenue.toLocaleString('it-IT'));
+    safeText($('anEcoPerPatient'), '\u20AC ' + revenuePerPatient.toFixed(0));
+    safeText($('anEcoPerReport'), '\u20AC ' + revenuePerReport.toFixed(1));
+
+    // Get months count for monthly average
+    var months = Object.keys(revenueByMonth).length || 1;
+    var monthlyAvg = totalRevenue / months;
+    safeText($('anEcoMonthlyAvg'), '\u20AC ' + monthlyAvg.toFixed(0));
+
+    // Top revenue exam type
+    var topRev = Object.entries(revenueByType).sort(function(a,b){return b[1].revenue-a[1].revenue;});
+    if (topRev.length > 0) {
+      safeText($('anEcoTopExam'), (TYPE_LABELS[topRev[0][0]] || topRev[0][0]));
+      safeText($('anEcoTopExamSub'), '\u20AC ' + topRev[0][1].revenue.toLocaleString('it-IT') + ' (' + topRev[0][1].count + ' esami)');
+    }
+
+    // Deltas
+    if (comp.length > 0) {
+      setKpiDelta('anEcoRevenueDelta', totalRevenue, compRevenue);
+    }
+
+    // Revenue by month chart
+    renderRevenueChart(revenueByMonth);
+
+    // Revenue by type table
+    renderRevenueTable(revenueByType, rpts.length);
+
+    // Revenue by category pie
+    renderRevenueByCategoryChart(revenueByCat);
+  }
+
+  function renderRevenueChart(revenueByMonth) {
+    destroyChart('revenueMonth');
+    var keys = Object.keys(revenueByMonth).sort();
+    var labels = keys.map(function(k) {
+      var parts = k.split('-');
+      return MONTH_NAMES[parseInt(parts[1], 10) - 1] + ' ' + parts[0].slice(2);
+    });
+    var values = keys.map(function(k){ return revenueByMonth[k]; });
+
+    // Forecast (3 months)
+    var datasets = [{
+      label: 'Fatturato stimato',
+      data: values,
+      borderColor: '#22c55e',
+      backgroundColor: 'rgba(34,197,94,0.15)',
+      fill: true, tension: 0.35, borderWidth: 2.5,
+      pointRadius: 4, pointBackgroundColor: '#22c55e'
+    }];
+
+    if (values.length >= 3) {
+      var xs = values.map(function(_, i) { return i; });
+      var reg = linearRegression(xs, values);
+      var lastKey = keys[keys.length - 1];
+      var lp = lastKey.split('-');
+      var ly = parseInt(lp[0]), lm = parseInt(lp[1]);
+      var fData = values.map(function() { return null; });
+      fData[fData.length - 1] = values[values.length - 1];
+      for (var fi = 1; fi <= 3; fi++) {
+        var fm = lm + fi, fy = ly;
+        while (fm > 12) { fm -= 12; fy++; }
+        labels.push(MONTH_NAMES[fm - 1] + ' ' + String(fy).slice(2));
+        fData.push(Math.max(0, Math.round(reg.intercept + reg.slope * (values.length - 1 + fi))));
+      }
+      datasets[0].data = values.concat([null, null, null]);
+      datasets.push({
+        label: 'Forecast',
+        data: fData,
+        borderColor: '#8b5cf6', borderDash: [8, 4], borderWidth: 2,
+        pointRadius: 3, pointBackgroundColor: '#8b5cf6', fill: false, tension: 0
+      });
+    }
+
+    var canvas = $('anChartRevenue');
+    if (!canvas) return;
+    anState.charts['revenueMonth'] = new Chart(canvas, {
+      type: 'line',
+      data: { labels: labels, datasets: datasets },
+      options: Object.assign({}, chartOptions('\u20AC', true, 2.2), {
+        scales: {
+          x: { grid: { display: false }, ticks: { font: { size: 10 } } },
+          y: { beginAtZero: true, ticks: { callback: function(v){return '\u20AC'+v;}, font: { size: 10 } } }
+        }
+      })
+    });
+  }
+
+  function renderRevenueTable(revenueByType, totalReports) {
+    var body = $('anEcoTableBody');
+    if (!body) return;
+    var entries = Object.entries(revenueByType).sort(function(a,b){return b[1].revenue-a[1].revenue;});
+    var totalRev = entries.reduce(function(sum,e){return sum+e[1].revenue;}, 0);
+
+    var html = '';
+    entries.forEach(function(e) {
+      var type = e[0];
+      var data = e[1];
+      var price = EXAM_PRICING[type] || EXAM_PRICING.altro;
+      var pctRev = totalRev > 0 ? ((data.revenue / totalRev) * 100).toFixed(1) : '0.0';
+      html += '<tr>' +
+        '<td><strong>' + (TYPE_LABELS[type] || type) + '</strong></td>' +
+        '<td>\u20AC ' + price + '</td>' +
+        '<td>' + data.count + '</td>' +
+        '<td>\u20AC ' + data.revenue.toLocaleString('it-IT') + '</td>' +
+        '<td>' + pctRev + '%</td>' +
+      '</tr>';
+    });
+
+    if (!html) html = '<tr><td colspan="5" style="text-align:center;color:var(--text-muted)">Nessun dato</td></tr>';
+    body.innerHTML = html;
+
+    // Total row
+    safeText($('anEcoTableTotal'), '\u20AC ' + totalRev.toLocaleString('it-IT'));
+  }
+
+  function renderRevenueByCategoryChart(revenueByCat) {
+    destroyChart('revenueByCat');
+    var entries = Object.entries(revenueByCat).sort(function(a,b){return b[1]-a[1];});
+    var labels = entries.map(function(e){ return e[0].charAt(0).toUpperCase() + e[0].slice(1).replace(/_/g,' '); });
+    var values = entries.map(function(e){ return e[1]; });
+    var colors = entries.map(function(_, i){ return CHART_COLORS[i % CHART_COLORS.length]; });
+
+    var canvas = $('anChartRevenueByCat');
+    if (!canvas) return;
+    anState.charts['revenueByCat'] = new Chart(canvas, {
+      type: 'doughnut',
+      data: { labels: labels, datasets: [{ data: values, backgroundColor: colors, borderWidth: 1 }] },
+      options: {
+        responsive: true, maintainAspectRatio: true, aspectRatio: 1.5,
+        animation: { duration: 300 },
+        plugins: {
+          legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } },
+          tooltip: { callbacks: { label: function(c) { return c.label + ': \u20AC' + c.raw.toLocaleString('it-IT'); } } }
+        }
+      }
+    });
+  }
+
+
+  // ══════════════════════════════════════════════
+  //  EXPORT ALERT REPORT (CSV)
+  // ══════════════════════════════════════════════
+  function exportAlertCSV() {
+    var rpts = anState.reports;
+    var released = rpts.filter(function(r){return r.status==='released';});
+    var userMap = {};
+    anState.users.forEach(function(u){ userMap[u.id] = u; });
+
+    // Combine all critical/warning patients
+    var criticalRows = [];
+
+    // Abnormal not downloaded
+    released.filter(function(r){ return r.has_abnormal_values && !r.patient_downloaded; }).forEach(function(r) {
+      var u = r.patient_id ? userMap[r.patient_id] : null;
+      var daysSince = r.released_at ? Math.floor((Date.now() - new Date(r.released_at).getTime()) / 86400000) : 0;
+      criticalRows.push({
+        tipo_alert: 'Valori Anomali NON Scaricato',
+        paziente: u ? (u.last_name + ' ' + u.first_name).trim() : '-',
+        codice_fiscale: r.patient_fiscal_code || '-',
+        email: u ? (u.email || '-') : '-',
+        tipo_esame: TYPE_LABELS[r.report_type] || r.report_type || '-',
+        num_referto: r.report_number || '-',
+        rilasciato: r.released_at ? r.released_at.substring(0,10) : '-',
+        giorni: daysSince,
+        visualizzato: r.patient_viewed ? 'Si' : 'No',
+        scaricato: 'No'
+      });
+    });
+
+    // Urgent not downloaded
+    released.filter(function(r){ return r.is_urgent && !r.patient_downloaded; }).forEach(function(r) {
+      var u = r.patient_id ? userMap[r.patient_id] : null;
+      var daysSince = r.released_at ? Math.floor((Date.now() - new Date(r.released_at).getTime()) / 86400000) : 0;
+      criticalRows.push({
+        tipo_alert: 'Urgente NON Scaricato',
+        paziente: u ? (u.last_name + ' ' + u.first_name).trim() : '-',
+        codice_fiscale: r.patient_fiscal_code || '-',
+        email: u ? (u.email || '-') : '-',
+        tipo_esame: TYPE_LABELS[r.report_type] || r.report_type || '-',
+        num_referto: r.report_number || '-',
+        rilasciato: r.released_at ? r.released_at.substring(0,10) : '-',
+        giorni: daysSince,
+        visualizzato: r.patient_viewed ? 'Si' : 'No',
+        scaricato: 'No'
+      });
+    });
+
+    // Not viewed
+    released.filter(function(r){ return !r.patient_viewed; }).forEach(function(r) {
+      var u = r.patient_id ? userMap[r.patient_id] : null;
+      var daysSince = r.released_at ? Math.floor((Date.now() - new Date(r.released_at).getTime()) / 86400000) : 0;
+      criticalRows.push({
+        tipo_alert: 'NON Visualizzato',
+        paziente: u ? (u.last_name + ' ' + u.first_name).trim() : '-',
+        codice_fiscale: r.patient_fiscal_code || '-',
+        email: u ? (u.email || '-') : '-',
+        tipo_esame: TYPE_LABELS[r.report_type] || r.report_type || '-',
+        num_referto: r.report_number || '-',
+        rilasciato: r.released_at ? r.released_at.substring(0,10) : '-',
+        giorni: daysSince,
+        visualizzato: 'No',
+        scaricato: r.patient_downloaded ? 'Si' : 'No'
+      });
+    });
+
+    if (criticalRows.length === 0) {
+      alert('Nessun alert critico da esportare.');
+      return;
+    }
+
+    // If XLSX available, use it; else fallback to CSV
+    if (window.XLSX) {
+      var wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(criticalRows), 'Alert Pazienti');
+      XLSX.writeFile(wb, 'BioClinic_Alert_Pazienti_' + new Date().toISOString().slice(0,10) + '.xlsx');
+    } else {
+      var headers = Object.keys(criticalRows[0]);
+      var csv = headers.join(';') + '\\n';
+      criticalRows.forEach(function(row) {
+        csv += headers.map(function(h){ return String(row[h]).replace(/;/g, ','); }).join(';') + '\\n';
+      });
+      var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      var link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'BioClinic_Alert_Pazienti_' + new Date().toISOString().slice(0,10) + '.csv';
+      link.click();
+    }
+  }
+
+
+  // ══════════════════════════════════════════════
+  //  WEBHOOK MONITOR (stale alerts check)
+  // ══════════════════════════════════════════════
+  function checkStaleAlerts() {
+    var rpts = anState.reports;
+    var released = rpts.filter(function(r){return r.status==='released';});
+    var stale = released.filter(function(r) {
+      if (!r.released_at) return false;
+      var days = (Date.now() - new Date(r.released_at).getTime()) / 86400000;
+      return days > 2 && (
+        (r.has_abnormal_values && !r.patient_downloaded) ||
+        (r.is_urgent && !r.patient_downloaded) ||
+        (!r.patient_viewed && days > 5)
+      );
+    });
+
+    var el = $('anWebhookBanner');
+    if (!el) return;
+
+    if (stale.length > 0) {
+      var abnStale = stale.filter(function(r){return r.has_abnormal_values && !r.patient_downloaded;}).length;
+      var urgStale = stale.filter(function(r){return r.is_urgent && !r.patient_downloaded;}).length;
+      var viewStale = stale.filter(function(r){return !r.patient_viewed;}).length;
+      var parts = [];
+      if (abnStale > 0) parts.push(abnStale + ' anomali >48h');
+      if (urgStale > 0) parts.push(urgStale + ' urgenti >48h');
+      if (viewStale > 0) parts.push(viewStale + ' non visti >5gg');
+
+      el.hidden = false;
+      el.innerHTML = '<div class="an-webhook-content">' +
+        '<span class="an-webhook-icon">&#x1F514;</span>' +
+        '<span class="an-webhook-text"><strong>' + stale.length + ' referti richiedono attenzione immediata:</strong> ' + parts.join(' \u00B7 ') + '</span>' +
+        '<button class="btn btn-sm btn-outline" id="anWebhookExport" style="margin-left:auto;flex-shrink:0">Esporta Lista</button>' +
+        '<button class="btn btn-sm" id="anWebhookDismiss" style="flex-shrink:0;background:none;color:var(--text-muted);font-size:1.1rem;padding:0.2rem 0.5rem">&times;</button>' +
+      '</div>';
+      var expBtn = $('anWebhookExport');
+      if (expBtn) expBtn.addEventListener('click', exportAlertCSV);
+      var disBtn = $('anWebhookDismiss');
+      if (disBtn) disBtn.addEventListener('click', function(){ el.hidden = true; });
+    } else {
+      el.hidden = true;
+    }
+  }
+
+
+  // ══════════════════════════════════════════════
   //  DRILL-DOWN MODAL
   // ══════════════════════════════════════════════
   function openDrillDown(type) {
@@ -1967,6 +2411,8 @@
     if (pdfBtn) pdfBtn.addEventListener('click', exportPDF);
     var xlBtn = $('anExportExcel');
     if (xlBtn) xlBtn.addEventListener('click', exportExcel);
+    var alertCsvBtn = $('anExportAlertCsv');
+    if (alertCsvBtn) alertCsvBtn.addEventListener('click', exportAlertCSV);
 
     // Granularity toggle
     var granDiv = $('anGranularity');

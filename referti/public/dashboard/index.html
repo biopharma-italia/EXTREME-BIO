@@ -16,7 +16,7 @@
   <meta name="theme-color" content="#00704A">
 
   <link rel="stylesheet" href="/css/dashboard.cc671280.css?v=3">
-  <link rel="stylesheet" href="/css/analytics.css?v=1">
+  <link rel="stylesheet" href="/css/analytics.css?v=2">
 </head>
 <body>
   <!-- SIDEBAR -->
@@ -1052,6 +1052,10 @@ Femore totale BMD: 0.750, T-score: -1.8'></textarea>
           </button>
           <button class="btn btn-outline btn-sm" id="anExportPdf" title="Esporta PDF">PDF</button>
           <button class="btn btn-outline btn-sm" id="anExportExcel" title="Esporta Excel">Excel</button>
+          <button class="btn btn-outline btn-sm" id="anExportAlertCsv" title="Esporta alert pazienti critici" style="display:none;color:#ef4444;border-color:#ef4444">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            Alert CSV
+          </button>
         </div>
         <div class="an-toolbar-right">
           <span id="anLastUpdate">Ultimo aggiornamento: --:--</span>
@@ -1136,11 +1140,17 @@ Femore totale BMD: 0.750, T-score: -1.8'></textarea>
         </button>
       </div>
 
+      <!-- Webhook Alert Banner -->
+      <div class="an-webhook-banner" id="anWebhookBanner" hidden></div>
+
       <!-- Loading -->
       <div class="an-loading" id="anLoading" hidden>
         <div class="spinner"></div>
         <p>Caricamento analytics...</p>
       </div>
+
+      <!-- Error State -->
+      <div id="anErrorState" hidden></div>
 
       <!-- TAB: OVERVIEW -->
       <div class="an-panel active" id="anPanel-overview">
@@ -1209,6 +1219,15 @@ Femore totale BMD: 0.750, T-score: -1.8'></textarea>
             <div class="an-kpi-value" id="anKpiDownload">-</div>
             <div class="an-kpi-sub">referti scaricati dai pazienti</div>
           </div>
+        </div>
+
+        <!-- Benchmark Targets -->
+        <div class="card" style="margin-bottom:1rem">
+          <div class="an-chart-header">
+            <h3 class="card-title">Benchmark &amp; Obiettivi</h3>
+            <span class="an-chart-summary" style="font-size:0.72rem;color:var(--text-muted)">Soglie configurabili</span>
+          </div>
+          <div class="an-bench-grid" id="anBenchmarks"></div>
         </div>
 
         <!-- Volume + Forecast | Top Esami -->
@@ -1442,22 +1461,64 @@ Femore totale BMD: 0.750, T-score: -1.8'></textarea>
 
       <!-- TAB: ECONOMICS -->
       <div class="an-panel" id="anPanel-economics" hidden>
-        <div class="an-alerts-box">
-          <h3>&#x1F4B0; Economics &mdash; Configurazione Richiesta</h3>
-          <div class="an-alert-item">
+        <div class="an-alerts-box" style="margin-bottom:1rem;border-left:3px solid #f59e0b">
+          <div class="an-alert-item" style="border-bottom:none">
             <span class="an-alert-icon">&#x2139;&#xFE0F;</span>
             <span class="an-alert-text">
-              Per attivare la sezione Economics &egrave; necessario configurare il <strong>tariffario esami</strong> nel database.
-              Servono i campi: prezzo listino, costo reagenti, tipo pagamento (SSN/Convenzione/Privato) per ogni tipo di esame.
-              <br><span class="an-alert-tag info">Fase 2</span> Contatta l&rsquo;amministratore per la migrazione del database.
+              <strong>Stime basate su tariffario interno.</strong> I prezzi sono configurabili nel codice (EXAM_PRICING).
+              Per dati reali, integrare il listino dal database.
+              <span class="an-alert-tag warning">Stime</span>
             </span>
           </div>
-          <div class="an-alert-item">
-            <span class="an-alert-icon">&#x1F4CA;</span>
-            <span class="an-alert-text">
-              <strong>Metriche previste:</strong> Fatturato periodo &middot; Ricavo medio/paziente &middot; Ricavo medio/referto &middot;
-              Margine per tipologia &middot; SSN vs Convenzioni vs Privato &middot; Crediti da incassare &middot; Trend fatturato mensile
-            </span>
+        </div>
+
+        <div class="an-kpi-grid an-kpi-grid--5">
+          <div class="an-kpi-card">
+            <div class="an-kpi-header"><span class="an-kpi-title">Fatturato Stimato</span><span class="an-kpi-delta" id="anEcoRevenueDelta"></span></div>
+            <div class="an-kpi-value" id="anEcoRevenue">-</div>
+            <div class="an-kpi-sub">nel periodo selezionato</div>
+          </div>
+          <div class="an-kpi-card">
+            <div class="an-kpi-header"><span class="an-kpi-title">Media Mensile</span></div>
+            <div class="an-kpi-value" id="anEcoMonthlyAvg">-</div>
+            <div class="an-kpi-sub">fatturato/mese</div>
+          </div>
+          <div class="an-kpi-card">
+            <div class="an-kpi-header"><span class="an-kpi-title">Ricavo/Paziente</span></div>
+            <div class="an-kpi-value" id="anEcoPerPatient">-</div>
+            <div class="an-kpi-sub">media per paziente</div>
+          </div>
+          <div class="an-kpi-card">
+            <div class="an-kpi-header"><span class="an-kpi-title">Ricavo/Referto</span></div>
+            <div class="an-kpi-value" id="anEcoPerReport">-</div>
+            <div class="an-kpi-sub">media per referto</div>
+          </div>
+          <div class="an-kpi-card">
+            <div class="an-kpi-header"><span class="an-kpi-title">Top Esame</span></div>
+            <div class="an-kpi-value" id="anEcoTopExam" style="font-size:1rem">-</div>
+            <div class="an-kpi-sub" id="anEcoTopExamSub">per fatturato</div>
+          </div>
+        </div>
+
+        <div class="an-charts-row">
+          <div class="card an-chart-card an-chart-2-3">
+            <h3 class="card-title">Trend Fatturato Mensile &amp; Forecast</h3>
+            <div class="an-chart-wrap"><canvas id="anChartRevenue"></canvas></div>
+          </div>
+          <div class="card an-chart-card an-chart-1-3">
+            <h3 class="card-title">Fatturato per Categoria</h3>
+            <div class="an-chart-wrap"><canvas id="anChartRevenueByCat"></canvas></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Dettaglio Fatturato per Tipo Esame</h3>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead><tr><th>Tipo Esame</th><th>Prezzo Unit.</th><th>Quantit&agrave;</th><th>Fatturato</th><th>% Tot.</th></tr></thead>
+              <tbody id="anEcoTableBody"></tbody>
+              <tfoot><tr><td colspan="3" style="text-align:right;font-weight:700">TOTALE</td><td style="font-weight:700" id="anEcoTableTotal">-</td><td>100%</td></tr></tfoot>
+            </table>
           </div>
         </div>
       </div>
@@ -1607,6 +1668,6 @@ Femore totale BMD: 0.750, T-score: -1.8'></textarea>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script src="/js/dashboard.52b03f32.js?v=6"></script>
-  <script src="/js/analytics.js?v=5"></script>
+  <script src="/js/analytics.js?v=6"></script>
 </body>
 </html>
