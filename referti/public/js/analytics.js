@@ -1,7 +1,7 @@
 /**
  * ANALYTICS.JS — Bio-Clinic Enterprise BI Dashboard v2
  * Complete rewrite: TAT engine, drill-downs, AI insights, forecast
- * @version 2.0.0  @date 2026-08-09
+ * @version 2.1.0  @date 2026-08-09
  */
 (function () {
   'use strict';
@@ -34,6 +34,7 @@
   // ── State ──────────────────────────────────────
   var anState = {
     rawReports: [],
+    rawCompReports: [],
     reports: [],
     compReports: [],
     users: [],
@@ -297,7 +298,8 @@
     return Promise.all(promises).then(function (results) {
       anState.rawReports = results[0] || [];
       anState.users = results[1] || [];
-      anState.compReports = results[2] || [];
+      anState.rawCompReports = results[2] || [];
+      anState.compReports = anState.rawCompReports.slice();
       console.log('[Analytics v2] Loaded:', anState.rawReports.length, 'reports,', anState.users.length, 'users,', anState.compReports.length, 'comp');
 
       applyFilters();
@@ -317,7 +319,7 @@
 
   function applyFilters() {
     var rpts = anState.rawReports.slice();
-    var comp = anState.compReports.slice();
+    var comp = anState.rawCompReports.slice();
 
     var typeFilter = $('anTypeFilter') ? $('anTypeFilter').value : '';
     var catFilter = $('anCategoryFilter') ? $('anCategoryFilter').value : '';
@@ -948,17 +950,98 @@
       }
     }
 
+    // 7. CRITICAL: Abnormal values NOT downloaded — with patient list
+    var userMap = {};
+    anState.users.forEach(function(u){ userMap[u.id] = u; });
+    var abnNotDl = released.filter(function(r){ return r.has_abnormal_values && !r.patient_downloaded; });
+    if (abnNotDl.length > 0) {
+      // Build patient list (unique by patient_id)
+      var abnPatMap = {};
+      abnNotDl.forEach(function(r) {
+        var pid = r.patient_id || 'unknown';
+        if (!abnPatMap[pid]) {
+          var u = userMap[pid];
+          abnPatMap[pid] = {
+            name: u ? (u.last_name + ' ' + u.first_name).trim() : (r.patient_fiscal_code || pid.substring(0,8)),
+            reports: []
+          };
+        }
+        abnPatMap[pid].reports.push(r);
+      });
+      var abnPatList = Object.values(abnPatMap).sort(function(a,b){ return b.reports.length - a.reports.length; });
+      var patNames = abnPatList.map(function(p){
+        var daysSince = p.reports.reduce(function(max, r){
+          var days = r.released_at ? Math.floor((Date.now() - new Date(r.released_at).getTime()) / 86400000) : 0;
+          return Math.max(max, days);
+        }, 0);
+        return '<strong>' + p.name + '</strong>' + (p.reports.length > 1 ? ' (' + p.reports.length + ' referti)' : '') + ' <span style="color:var(--text-muted);font-size:0.75rem">' + daysSince + 'gg fa</span>';
+      });
+      insights.push({
+        icon: '\uD83D\uDEA8',
+        text: '<strong>' + abnNotDl.length + ' referti con valori anomali</strong> non ancora scaricati da <strong>' + abnPatList.length + ' pazienti</strong>:<br>' +
+          '<div style="margin-top:0.35rem;padding-left:0.5rem;border-left:2px solid #ef4444">' + patNames.join('<br>') + '</div>',
+        tag: 'critical',
+        drill: 'abnormal_not_downloaded'
+      });
+    }
+
+    // 8. Urgent NOT downloaded — with patient list
+    var urgNotDl = released.filter(function(r){ return r.is_urgent && !r.patient_downloaded; });
+    if (urgNotDl.length > 0) {
+      var urgPatMap = {};
+      urgNotDl.forEach(function(r) {
+        var pid = r.patient_id || 'unknown';
+        if (!urgPatMap[pid]) {
+          var u = userMap[pid];
+          urgPatMap[pid] = {
+            name: u ? (u.last_name + ' ' + u.first_name).trim() : (r.patient_fiscal_code || pid.substring(0,8)),
+            reports: []
+          };
+        }
+        urgPatMap[pid].reports.push(r);
+      });
+      var urgPatList = Object.values(urgPatMap).sort(function(a,b){ return b.reports.length - a.reports.length; });
+      var urgNames = urgPatList.map(function(p){
+        return '<strong>' + p.name + '</strong>' + (p.reports.length > 1 ? ' (' + p.reports.length + ' referti)' : '');
+      });
+      insights.push({
+        icon: '\u26A1',
+        text: '<strong>' + urgNotDl.length + ' referti urgenti</strong> non ancora scaricati da <strong>' + urgPatList.length + ' pazienti</strong>: ' + urgNames.join(', ') + '.',
+        tag: 'critical',
+        drill: 'urgent_not_downloaded'
+      });
+    }
+
+    // 9. Reports not viewed at all
+    var notViewed = released.filter(function(r){ return !r.patient_viewed; });
+    if (notViewed.length > 10 && released.length > 0) {
+      var nvPct = (notViewed.length / released.length * 100).toFixed(1);
+      insights.push({
+        icon: '\uD83D\uDC41\uFE0F',
+        text: '<strong>' + notViewed.length + ' referti</strong> (' + nvPct + '%) non ancora visualizzati dal paziente nel portale.',
+        tag: notViewed.length > released.length * 0.5 ? 'warning' : 'info',
+        drill: 'not_viewed'
+      });
+    }
+
     // Render insights
     if (insights.length === 0) {
       insights.push({ icon: '\u2705', text: 'Nessuna anomalia rilevata. Operativit\u00E0 nella norma.', tag: 'success' });
     }
 
     el.innerHTML = insights.map(function (i) {
-      return '<div class="an-alert-item">' +
+      return '<div class="an-alert-item' + (i.drill ? ' an-alert-clickable' : '') + '"' + (i.drill ? ' data-drill="' + i.drill + '"' : '') + '>' +
         '<span class="an-alert-icon">' + i.icon + '</span>' +
         '<span class="an-alert-text">' + i.text + ' <span class="an-alert-tag ' + i.tag + '">' + i.tag + '</span></span>' +
         '</div>';
     }).join('');
+
+    // Bind click on clickable alerts → drill-down
+    el.querySelectorAll('.an-alert-clickable[data-drill]').forEach(function(item) {
+      item.addEventListener('click', function() {
+        openDrillDown(this.dataset.drill);
+      });
+    });
   }
 
 
@@ -1640,27 +1723,69 @@
         rows = rpts.filter(function(r){return r.released_at && r.created_at && hoursDiff(r.created_at, r.released_at) > SLA_HOURS;});
         title = 'Referti Oltre SLA (' + rows.length + ')';
         break;
+      case 'abnormal_not_downloaded':
+        rows = rpts.filter(function(r){return r.status==='released' && r.has_abnormal_values && !r.patient_downloaded;});
+        title = 'Valori Anomali NON Scaricati (' + rows.length + ')';
+        break;
+      case 'urgent_not_downloaded':
+        rows = rpts.filter(function(r){return r.status==='released' && r.is_urgent && !r.patient_downloaded;});
+        title = 'Urgenti NON Scaricati (' + rows.length + ')';
+        break;
+      case 'not_viewed':
+        rows = rpts.filter(function(r){return r.status==='released' && !r.patient_viewed;});
+        title = 'Referti NON Visualizzati (' + rows.length + ')';
+        break;
       default:
         return;
     }
 
-    // Standard report table
-    var tableHtml = '<table class="an-drill-table"><thead><tr><th>N. Referto</th><th>Tipo</th><th>Categoria</th><th>Stato</th><th>Creato</th><th>TAT</th><th>Paziente</th></tr></thead><tbody>';
+    // Date formatter helper
+    function fmtDate(d) {
+      if (!d) return '-';
+      try { return new Date(d).toLocaleDateString('it-IT', {day:'2-digit',month:'2-digit',year:'numeric'}); }
+      catch(e) { return d.substring(0,10); }
+    }
+
+    // Standard report table — enhanced columns for specific drill types
+    var isActionable = (type === 'abnormal_not_downloaded' || type === 'urgent_not_downloaded' || type === 'not_viewed');
+    var tableHtml = '<table class="an-drill-table"><thead><tr>' +
+      '<th>N. Referto</th><th>Tipo</th>' +
+      (isActionable ? '<th>Paziente</th><th>CF</th><th>Rilasciato</th><th>Giorni</th><th>Visualizzato</th><th>Scaricato</th>' :
+       '<th>Categoria</th><th>Stato</th><th>Creato</th><th>TAT</th><th>Paziente</th>') +
+      '</tr></thead><tbody>';
     rows.slice(0, 200).forEach(function(r) {
-      var tat = r.released_at && r.created_at ? fmtDuration(minutesDiff(r.created_at, r.released_at)) : '-';
-      var patName = '-';
-      if (r.patient_id) { var u = userMap[r.patient_id]; patName = u ? (u.last_name + ' ' + (u.first_name||'')[0] + '.').trim() : (r.patient_fiscal_code || '-'); }
-      tableHtml += '<tr>' +
-        '<td>' + (r.report_number || '-') + '</td>' +
-        '<td>' + (TYPE_LABELS[r.report_type] || r.report_type || '-') + '</td>' +
-        '<td>' + (r.category || '-') + '</td>' +
-        '<td><span class="badge badge-' + r.status + '">' + r.status + '</span></td>' +
-        '<td>' + (r.created_at ? r.created_at.substring(0, 10) : '-') + '</td>' +
-        '<td>' + tat + '</td>' +
-        '<td>' + patName + '</td>' +
-        '</tr>';
+      if (isActionable) {
+        var u = r.patient_id ? userMap[r.patient_id] : null;
+        var patName = u ? (u.last_name + ' ' + u.first_name).trim() : (r.patient_fiscal_code || '-');
+        var relDate = fmtDate(r.released_at);
+        var daysSince = r.released_at ? Math.floor((Date.now() - new Date(r.released_at).getTime()) / 86400000) : '-';
+        var daysClass = daysSince !== '-' && daysSince > 7 ? ' style="color:#ef4444;font-weight:700"' : (daysSince > 3 ? ' style="color:#f59e0b;font-weight:600"' : '');
+        tableHtml += '<tr>' +
+          '<td>' + (r.report_number || '-') + '</td>' +
+          '<td>' + (TYPE_LABELS[r.report_type] || r.report_type || '-') + '</td>' +
+          '<td><strong>' + patName + '</strong></td>' +
+          '<td style="font-size:0.75rem;font-family:monospace">' + (r.patient_fiscal_code || '-') + '</td>' +
+          '<td>' + relDate + '</td>' +
+          '<td' + daysClass + '>' + daysSince + '</td>' +
+          '<td>' + (r.patient_viewed ? '&#10003;' : '<span style="color:#ef4444">&#10007;</span>') + '</td>' +
+          '<td>' + (r.patient_downloaded ? '&#10003;' : '<span style="color:#ef4444">&#10007;</span>') + '</td>' +
+          '</tr>';
+      } else {
+        var tat = r.released_at && r.created_at ? fmtDuration(minutesDiff(r.created_at, r.released_at)) : '-';
+        var patName2 = '-';
+        if (r.patient_id) { var u2 = userMap[r.patient_id]; patName2 = u2 ? (u2.last_name + ' ' + (u2.first_name||'')[0] + '.').trim() : (r.patient_fiscal_code || '-'); }
+        tableHtml += '<tr>' +
+          '<td>' + (r.report_number || '-') + '</td>' +
+          '<td>' + (TYPE_LABELS[r.report_type] || r.report_type || '-') + '</td>' +
+          '<td>' + (r.category || '-') + '</td>' +
+          '<td><span class="badge badge-' + r.status + '">' + r.status + '</span></td>' +
+          '<td>' + fmtDate(r.created_at) + '</td>' +
+          '<td>' + tat + '</td>' +
+          '<td>' + patName2 + '</td>' +
+          '</tr>';
+      }
     });
-    if (rows.length > 200) tableHtml += '<tr><td colspan="7" style="text-align:center;color:var(--text-muted);font-style:italic">Mostrati 200 di ' + rows.length + '</td></tr>';
+    if (rows.length > 200) tableHtml += '<tr><td colspan="' + (isActionable ? 8 : 7) + '" style="text-align:center;color:var(--text-muted);font-style:italic">Mostrati 200 di ' + rows.length + '</td></tr>';
     tableHtml += '</tbody></table>';
 
     container.innerHTML = buildDrillModal(title, tableHtml);
