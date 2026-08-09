@@ -335,8 +335,6 @@
       anState.users = results[1] || [];
       anState.rawCompReports = results[2] || [];
       anState.compReports = anState.rawCompReports.slice();
-      console.log('[Analytics v3] Loaded:', anState.rawReports.length, 'reports,', anState.users.length, 'users,', anState.compReports.length, 'comp');
-
       applyFilters();
       populateFilterDropdowns();
       renderActiveTab();

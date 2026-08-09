@@ -1837,7 +1837,6 @@
 
   // ── Safe Download (patient alert for abnormal/notes) ──
   window._safeDownload = function (reportId) {
-    console.log('[safeDownload] called for report', reportId, 'role:', state.profile ? state.profile.role : 'no-profile');
     // Only patients get the alert gate; staff downloads directly
     if (!state.profile || state.profile.role !== 'patient') {
       window._downloadReport(reportId);
@@ -1849,14 +1848,12 @@
 
     function showAlertOrDownload(report) {
       if (!report) {
-        console.log('[safeDownload] no report data found, downloading directly');
         window._downloadReport(reportId);
         return;
       }
 
       var hasAbnormal = !!report.has_abnormal_values;
       var hasNotes = !!(report.physician_notes && report.physician_notes.trim());
-      console.log('[safeDownload] report', reportId, 'hasAbnormal:', hasAbnormal, 'hasNotes:', hasNotes, 'raw:', report.has_abnormal_values, report.physician_notes);
       if (!hasAbnormal && !hasNotes) {
         // No alert needed — download directly
         window._downloadReport(reportId);
@@ -1964,7 +1961,6 @@
           // P0-1 FIX: Atomic download counter via RPC (no race condition)
           sbRpc('increment_download_count', { p_report_id: reportId })
             .then(function (result) {
-              console.log('[Download] RPC increment_download_count OK:', result);
               refreshAfterDownload();
             })
             .catch(function (rpcErr) {
@@ -1973,7 +1969,6 @@
               sbGet('reports', 'id=eq.' + reportId + '&select=download_count')
                 .then(function (rows) {
                   var current = (rows && rows[0] && rows[0].download_count) ? rows[0].download_count : 0;
-                  console.log('[Download] Current count:', current, '-> incrementing to', current + 1);
                   return sbPatch('reports', 'id=eq.' + reportId, {
                     patient_downloaded: true,
                     patient_downloaded_at: new Date().toISOString(),
@@ -1981,7 +1976,6 @@
                   });
                 })
                 .then(function (patchResult) {
-                  console.log('[Download] Fallback patch OK:', patchResult);
                   refreshAfterDownload();
                 })
                 .catch(function (fallbackErr) {
