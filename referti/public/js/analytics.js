@@ -46,7 +46,7 @@
 
   function getToken() {
     try {
-      var raw = localStorage.getItem('sb_session');
+      var raw = localStorage.getItem('sb-session');
       if (raw) { var s = JSON.parse(raw); return s.access_token || null; }
     } catch (e) {}
     return null;
@@ -69,7 +69,10 @@
       return fetch(SB_URL + '/rest/v1/' + table + '?' + q, {
         headers: Object.assign({}, sbHeaders(), { 'Prefer': 'count=exact' })
       }).then(function (r) {
-        if (!r.ok) throw new Error('API ' + r.status);
+        if (!r.ok) {
+          console.error('[Analytics] API error', r.status, table, q);
+          return r.text().then(function(t) { throw new Error('API ' + r.status + ': ' + t); });
+        }
         var total = 0;
         var cr = r.headers.get('content-range');
         if (cr) {
@@ -218,6 +221,7 @@
       anState.reports = results[0] || [];
       anState.users = results[1] || [];
       anState.compReports = results[2] || [];
+      console.log('[Analytics] Loaded:', anState.reports.length, 'reports,', anState.users.length, 'users,', anState.compReports.length, 'comparison');
 
       // Apply filters
       var typeFilter = $('anTypeFilter').value;
