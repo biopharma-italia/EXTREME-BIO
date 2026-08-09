@@ -287,6 +287,7 @@
 
   // ── Tab Rendering ──────────────────────────────
   function renderActiveTab() {
+    destroyAllCharts();
     switch (anState.activeTab) {
       case 'overview': renderOverview(); break;
       case 'volumi': renderVolumi(); break;
@@ -296,12 +297,19 @@
     }
   }
 
-  // ── Destroy chart helper ──────────────────────
+  // ── Destroy chart helpers ─────────────────────
   function destroyChart(key) {
     if (anState.charts[key]) {
       anState.charts[key].destroy();
       delete anState.charts[key];
     }
+  }
+
+  function destroyAllCharts() {
+    Object.keys(anState.charts).forEach(function (key) {
+      try { anState.charts[key].destroy(); } catch (e) {}
+    });
+    anState.charts = {};
   }
 
   // ── Sparkline helper ──────────────────────────
@@ -325,7 +333,9 @@
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
+        aspectRatio: 5,
+        animation: { duration: 300 },
         plugins: { legend: { display: false }, tooltip: { enabled: false } },
         scales: { x: { display: false }, y: { display: false } },
         elements: { line: { borderWidth: 1.5 } }
@@ -502,7 +512,9 @@
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
+        aspectRatio: 1.5,
+        animation: { duration: 300 },
         plugins: {
           legend: { position: 'right', labels: { boxWidth: 12, font: { size: 11 } } },
           tooltip: { callbacks: { label: function (c) { return c.label + ': ' + c.raw + ' (' + ((c.raw / rpts.length) * 100).toFixed(1) + '%)'; } } }
@@ -573,7 +585,9 @@
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
+        aspectRatio: 2,
+        animation: { duration: 300 },
         plugins: {
           legend: { display: false },
           tooltip: {
@@ -689,7 +703,9 @@
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
+        aspectRatio: 1.5,
+        animation: { duration: 300 },
         plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } } }
       }
     });
@@ -1094,7 +1110,9 @@
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
+        aspectRatio: 2,
+        animation: { duration: 300 },
         scales: {
           x: { grid: { display: false } },
           y: { beginAtZero: true, position: 'left', title: { display: true, text: 'N. Anomali' } },
@@ -1162,10 +1180,12 @@
   }
 
   // ── Chart.js common options ────────────────────
-  function chartOptions(yLabel, showLegend) {
+  function chartOptions(yLabel, showLegend, aspectRatio) {
     return {
       responsive: true,
-      maintainAspectRatio: false,
+      maintainAspectRatio: true,
+      aspectRatio: aspectRatio || 2,
+      animation: { duration: 300 },
       interaction: { mode: 'index', intersect: false },
       plugins: {
         legend: { display: showLegend !== false, labels: { boxWidth: 12, font: { size: 11 } } },

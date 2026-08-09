@@ -187,11 +187,11 @@
 }
 .an-kpi-sparkline {
   margin-top: 0.5rem;
-  height: 32px;
+  position: relative;
 }
 .an-kpi-sparkline canvas {
+  display: block;
   width: 100% !important;
-  height: 32px !important;
 }
 
 /* ---------- Charts Layout ---------- */
@@ -218,7 +218,11 @@
 .an-chart-card {
   margin-bottom: 0;
 }
+.an-chart-wrap {
+  position: relative;
+}
 .an-chart-card canvas {
+  display: block;
   width: 100% !important;
 }
 
