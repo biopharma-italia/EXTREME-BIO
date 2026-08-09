@@ -1,7 +1,7 @@
 /**
- * ANALYTICS.JS — Bio-Clinic Enterprise BI Dashboard
- * Chart.js powered analytics for super_admin role
- * @version 1.0.0  @date 2026-08-09
+ * ANALYTICS.JS — Bio-Clinic Enterprise BI Dashboard v2
+ * Complete rewrite: TAT engine, drill-downs, AI insights, forecast
+ * @version 2.0.0  @date 2026-08-09
  */
 (function () {
   'use strict';
@@ -9,7 +9,8 @@
   // ── Config ──────────────────────────────────────
   var SB_URL = 'https://mdxqgzkxrcrotxxbhoai.supabase.co';
   var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1keHFnemt4cmNyb3R4eGJob2FpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODYxMzIsImV4cCI6MjA4NzU2MjEzMn0.HHExeiCGqnx4di_u9gghUnTfgQVAIjKuN6kt_vLFddA';
-  var SLA_DAYS = 3; // target days for release
+  var SLA_HOURS = 72; // 3 days in hours
+  var AUTO_REFRESH_MS = 300000; // 5 min
 
   var TYPE_LABELS = {
     emocromo: 'Emocromo', profilo_lipidico: 'Profilo Lipidico', profilo_tiroideo: 'Profilo Tiroideo',
@@ -32,18 +33,22 @@
 
   // ── State ──────────────────────────────────────
   var anState = {
+    rawReports: [],
     reports: [],
     compReports: [],
     users: [],
     charts: {},
     activeTab: 'overview',
+    granularity: 'month',
+    autoRefreshTimer: null,
     initialized: false
   };
 
-  // ── Helpers ──────────────────────────────────────
+  // ── DOM helpers ────────────────────────────────
   function $(id) { return document.getElementById(id); }
   function $$(sel) { return document.querySelectorAll(sel); }
 
+  // ── Auth ────────────────────────────────────────
   function getToken() {
     try {
       var raw = localStorage.getItem('sb-session');
@@ -59,8 +64,8 @@
     return h;
   }
 
+  // ── Supabase paginated fetch ───────────────────
   function sbGetAll(table, query) {
-    // Fetch ALL rows with pagination (PostgREST default limit is 1000)
     var allRows = [];
     var pageSize = 1000;
     function fetchPage(offset) {
@@ -75,18 +80,11 @@
         }
         var total = 0;
         var cr = r.headers.get('content-range');
-        if (cr) {
-          var m = cr.match(/\/(\d+)/);
-          if (m) total = parseInt(m[1], 10);
-        }
-        return r.json().then(function (rows) {
-          return { rows: rows, total: total };
-        });
+        if (cr) { var m = cr.match(/\/(\d+)/); if (m) total = parseInt(m[1], 10); }
+        return r.json().then(function (rows) { return { rows: rows, total: total }; });
       }).then(function (res) {
         allRows = allRows.concat(res.rows);
-        if (allRows.length < res.total) {
-          return fetchPage(allRows.length);
-        }
+        if (allRows.length < res.total) return fetchPage(allRows.length);
         return allRows;
       });
     }
@@ -94,83 +92,64 @@
   }
 
   function sbGetUsers() {
-    return sbGetAll('users', 'select=id,first_name,last_name,email,role,created_at,fiscal_code');
+    return sbGetAll('users', 'select=id,first_name,last_name,email,role,created_at,fiscal_code,gender,date_of_birth');
   }
 
-  // ── Date utilities ──────────────────────────────
-  function getPeriodRange(period) {
-    var now = new Date();
-    var from, to = new Date(now);
-    to.setHours(23, 59, 59, 999);
+  // ══════════════════════════════════════════════
+  //  UTILITY FUNCTIONS
+  // ══════════════════════════════════════════════
 
-    switch (period) {
-      case 'month':
-        from = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
-        break;
-      case '3months':
-        from = new Date(now.getFullYear(), now.getMonth() - 3, now.getDate());
-        break;
-      case 'year':
-        from = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate());
-        break;
-      case 'all':
-        from = new Date(2020, 0, 1);
-        break;
-      case 'custom':
-        var df = $('anDateFrom').value;
-        var dt = $('anDateTo').value;
-        from = df ? new Date(df) : new Date(2020, 0, 1);
-        to = dt ? new Date(dt + 'T23:59:59') : new Date();
-        break;
-      default:
-        from = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate());
-    }
-    from.setHours(0, 0, 0, 0);
-    return { from: from, to: to };
-  }
-
-  function getComparisonRange(mainFrom, mainTo, mode) {
-    var diff = mainTo.getTime() - mainFrom.getTime();
-    if (mode === 'yoy') {
-      return {
-        from: new Date(mainFrom.getFullYear() - 1, mainFrom.getMonth(), mainFrom.getDate()),
-        to: new Date(mainTo.getFullYear() - 1, mainTo.getMonth(), mainTo.getDate())
-      };
-    }
-    // prev period
-    return {
-      from: new Date(mainFrom.getTime() - diff),
-      to: new Date(mainFrom.getTime() - 1)
-    };
-  }
-
-  function monthKey(d) {
-    var dt = new Date(d);
-    return dt.getFullYear() + '-' + String(dt.getMonth() + 1).padStart(2, '0');
-  }
-
-  function weekKey(d) {
-    var dt = new Date(d);
-    return dt.getDay(); // 0=Sun, 1=Mon, ...
-  }
-
-  function hourKey(d) {
-    return new Date(d).getHours();
-  }
-
-  function daysDiff(d1, d2) {
+  function minutesDiff(d1, d2) {
     if (!d1 || !d2) return null;
-    return (new Date(d2).getTime() - new Date(d1).getTime()) / (1000 * 60 * 60 * 24);
+    return (new Date(d2).getTime() - new Date(d1).getTime()) / 60000;
+  }
+
+  function hoursDiff(d1, d2) {
+    if (!d1 || !d2) return null;
+    return (new Date(d2).getTime() - new Date(d1).getTime()) / 3600000;
+  }
+
+  function fmtDuration(minutes) {
+    if (minutes == null || isNaN(minutes)) return '-';
+    var abs = Math.abs(minutes);
+    if (abs < 60) return Math.round(abs) + 'm';
+    if (abs < 1440) {
+      var h = Math.floor(abs / 60);
+      var m = Math.round(abs % 60);
+      return h + 'h' + (m > 0 ? ' ' + m + 'm' : '');
+    }
+    var d = (abs / 1440).toFixed(1);
+    return d + 'gg';
+  }
+
+  function percentile(arr, p) {
+    if (!arr.length) return 0;
+    var sorted = arr.slice().sort(function (a, b) { return a - b; });
+    var idx = (p / 100) * (sorted.length - 1);
+    var lo = Math.floor(idx);
+    var hi = Math.ceil(idx);
+    if (lo === hi) return sorted[lo];
+    return sorted[lo] + (sorted[hi] - sorted[lo]) * (idx - lo);
+  }
+
+  function mean(arr) {
+    if (!arr.length) return 0;
+    return arr.reduce(function (a, b) { return a + b; }, 0) / arr.length;
   }
 
   function fmtDelta(current, previous) {
     if (!previous || previous === 0) return { text: 'N/A', cls: 'neutral' };
     var pct = ((current - previous) / previous * 100).toFixed(1);
     var sign = pct > 0 ? '+' : '';
-    return {
-      text: sign + pct + '%',
-      cls: pct > 0 ? 'positive' : (pct < 0 ? 'negative' : 'neutral')
-    };
+    return { text: sign + pct + '%', cls: pct > 0 ? 'positive' : (pct < 0 ? 'negative' : 'neutral') };
+  }
+
+  function fmtDeltaInv(current, previous) {
+    // Inverted: lower is better (e.g. TAT)
+    if (!previous || previous === 0) return { text: 'N/A', cls: 'neutral' };
+    var pct = ((current - previous) / previous * 100).toFixed(1);
+    var sign = pct > 0 ? '+' : '';
+    return { text: sign + pct + '%', cls: pct < 0 ? 'positive' : (pct > 0 ? 'negative' : 'neutral') };
   }
 
   function groupBy(arr, keyFn) {
@@ -189,14 +168,113 @@
     return Object.keys(set).length;
   }
 
-  // ── Data Fetching ──────────────────────────────
-  function loadAnalyticsData() {
-    $('anLoading').hidden = false;
+  function safeText(el, val) { if (el) el.textContent = val; }
 
-    var period = $('anPeriod').value;
+  // ── Date utilities ─────────────────────────────
+  function getPeriodRange(period) {
+    var now = new Date();
+    var from, to = new Date(now);
+    to.setHours(23, 59, 59, 999);
+    switch (period) {
+      case 'month': from = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate()); break;
+      case '3months': from = new Date(now.getFullYear(), now.getMonth() - 3, now.getDate()); break;
+      case 'year': from = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate()); break;
+      case 'all': from = new Date(2020, 0, 1); break;
+      case 'custom':
+        var df = $('anDateFrom') && $('anDateFrom').value;
+        var dt = $('anDateTo') && $('anDateTo').value;
+        from = df ? new Date(df) : new Date(2020, 0, 1);
+        to = dt ? new Date(dt + 'T23:59:59') : new Date();
+        break;
+      default: from = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate());
+    }
+    from.setHours(0, 0, 0, 0);
+    return { from: from, to: to };
+  }
+
+  function getComparisonRange(mainFrom, mainTo, mode) {
+    var diff = mainTo.getTime() - mainFrom.getTime();
+    if (mode === 'yoy') {
+      return {
+        from: new Date(mainFrom.getFullYear() - 1, mainFrom.getMonth(), mainFrom.getDate()),
+        to: new Date(mainTo.getFullYear() - 1, mainTo.getMonth(), mainTo.getDate())
+      };
+    }
+    return { from: new Date(mainFrom.getTime() - diff), to: new Date(mainFrom.getTime() - 1) };
+  }
+
+  var MONTH_NAMES = ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'];
+  var DAY_NAMES_SHORT = ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'];
+
+  function monthKey(d) {
+    var dt = new Date(d);
+    return dt.getFullYear() + '-' + String(dt.getMonth() + 1).padStart(2, '0');
+  }
+  function weekKey(d) {
+    var dt = new Date(d);
+    var oneJan = new Date(dt.getFullYear(), 0, 1);
+    return dt.getFullYear() + '-W' + String(Math.ceil(((dt - oneJan) / 86400000 + oneJan.getDay() + 1) / 7)).padStart(2, '0');
+  }
+  function dayKey(d) { return new Date(d).toISOString().slice(0, 10); }
+
+  function buildTimeSeries(reports, granularity, field) {
+    field = field || 'created_at';
+    var keyFn = granularity === 'day' ? dayKey : (granularity === 'week' ? weekKey : monthKey);
+    var labelFn;
+    if (granularity === 'day') {
+      labelFn = function (k) {
+        var parts = k.split('-');
+        return parseInt(parts[2]) + ' ' + MONTH_NAMES[parseInt(parts[1]) - 1];
+      };
+    } else if (granularity === 'week') {
+      labelFn = function (k) { return k; };
+    } else {
+      labelFn = function (k) {
+        var parts = k.split('-');
+        return MONTH_NAMES[parseInt(parts[1], 10) - 1] + ' ' + parts[0].slice(2);
+      };
+    }
+    var byKey = groupBy(reports, function (r) { return keyFn(r[field] || r.created_at); });
+    var keys = Object.keys(byKey).sort();
+    return {
+      labels: keys.map(labelFn),
+      values: keys.map(function (k) { return byKey[k].length; }),
+      keys: keys,
+      groups: byKey
+    };
+  }
+
+  // ── Linear regression ──────────────────────────
+  function linearRegression(xs, ys) {
+    var n = xs.length;
+    if (n < 2) return { slope: 0, intercept: ys[0] || 0 };
+    var sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0;
+    for (var i = 0; i < n; i++) {
+      sumX += xs[i]; sumY += ys[i];
+      sumXY += xs[i] * ys[i]; sumX2 += xs[i] * xs[i];
+    }
+    var denom = n * sumX2 - sumX * sumX;
+    if (denom === 0) return { slope: 0, intercept: sumY / n };
+    var slope = (n * sumXY - sumX * sumY) / denom;
+    var intercept = (sumY - slope * sumX) / n;
+    return { slope: slope, intercept: intercept };
+  }
+
+  // ══════════════════════════════════════════════
+  //  DATA LOADING & FILTERING
+  // ══════════════════════════════════════════════
+
+  function loadAnalyticsData() {
+    var loadingEl = $('anLoading');
+    if (loadingEl) loadingEl.hidden = false;
+
+    var period = $('anPeriod') ? $('anPeriod').value : 'year';
     var range = getPeriodRange(period);
-    var compMode = $('anCompare').value;
+    var compMode = $('anCompare') ? $('anCompare').value : 'prev';
     var compRange = compMode !== 'none' ? getComparisonRange(range.from, range.to, compMode) : null;
+
+    // Update date range display
+    updateDateRangeDisplay(range);
 
     var fields = 'id,status,report_type,category,report_number,sample_date,created_at,updated_at,' +
       'validated_at,validated_by,signed_at,signed_by,released_at,released_by,uploaded_by,' +
@@ -210,7 +288,6 @@
     }
 
     var promises = [sbGetAll('reports', mainQ), sbGetUsers()];
-
     if (compRange) {
       var compQ = 'select=' + fields + '&order=created_at.asc' +
         '&created_at=gte.' + compRange.from.toISOString() + '&created_at=lte.' + compRange.to.toISOString();
@@ -218,74 +295,143 @@
     }
 
     return Promise.all(promises).then(function (results) {
-      anState.reports = results[0] || [];
+      anState.rawReports = results[0] || [];
       anState.users = results[1] || [];
       anState.compReports = results[2] || [];
-      console.log('[Analytics] Loaded:', anState.reports.length, 'reports,', anState.users.length, 'users,', anState.compReports.length, 'comparison');
+      console.log('[Analytics v2] Loaded:', anState.rawReports.length, 'reports,', anState.users.length, 'users,', anState.compReports.length, 'comp');
 
-      // Apply filters
-      var typeFilter = $('anTypeFilter').value;
-      var opFilter = $('anOperatorFilter').value;
-
-      if (typeFilter) {
-        anState.reports = anState.reports.filter(function (r) { return r.report_type === typeFilter; });
-        anState.compReports = anState.compReports.filter(function (r) { return r.report_type === typeFilter; });
-      }
-      if (opFilter) {
-        anState.reports = anState.reports.filter(function (r) {
-          return r.uploaded_by === opFilter || r.validated_by === opFilter || r.released_by === opFilter;
-        });
-        anState.compReports = anState.compReports.filter(function (r) {
-          return r.uploaded_by === opFilter || r.validated_by === opFilter || r.released_by === opFilter;
-        });
-      }
-
+      applyFilters();
       populateFilterDropdowns();
       renderActiveTab();
-      $('anLoading').hidden = true;
+
+      // Update toolbar
+      var now = new Date();
+      safeText($('anLastUpdate'), 'Ultimo aggiornamento: ' + now.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' }));
+
+      if (loadingEl) loadingEl.hidden = true;
     }).catch(function (err) {
-      console.error('[Analytics] Load error:', err);
-      $('anLoading').hidden = true;
+      console.error('[Analytics v2] Load error:', err);
+      if (loadingEl) loadingEl.hidden = true;
     });
+  }
+
+  function applyFilters() {
+    var rpts = anState.rawReports.slice();
+    var comp = anState.compReports.slice();
+
+    var typeFilter = $('anTypeFilter') ? $('anTypeFilter').value : '';
+    var catFilter = $('anCategoryFilter') ? $('anCategoryFilter').value : '';
+    var opFilter = $('anOperatorFilter') ? $('anOperatorFilter').value : '';
+    var urgFilter = $('anUrgencyFilter') ? $('anUrgencyFilter').value : '';
+
+    function filterSet(arr) {
+      if (typeFilter) arr = arr.filter(function (r) { return r.report_type === typeFilter; });
+      if (catFilter) arr = arr.filter(function (r) { return r.category === catFilter; });
+      if (opFilter) arr = arr.filter(function (r) {
+        return r.uploaded_by === opFilter || r.validated_by === opFilter || r.released_by === opFilter;
+      });
+      if (urgFilter === 'urgent') arr = arr.filter(function (r) { return r.is_urgent; });
+      if (urgFilter === 'normal') arr = arr.filter(function (r) { return !r.is_urgent; });
+      return arr;
+    }
+
+    anState.reports = filterSet(rpts);
+    anState.compReports = filterSet(comp);
   }
 
   function populateFilterDropdowns() {
-    // Populate type dropdown
+    var rpts = anState.rawReports;
+
+    // Type dropdown
     var typeSelect = $('anTypeFilter');
-    var currentType = typeSelect.value;
-    var types = {};
-    anState.reports.forEach(function (r) {
-      if (r.report_type) types[r.report_type] = true;
-    });
-    var opts = '<option value="">Tutti</option>';
-    Object.keys(types).sort().forEach(function (t) {
-      opts += '<option value="' + t + '"' + (t === currentType ? ' selected' : '') + '>' +
-        (TYPE_LABELS[t] || t) + '</option>';
-    });
-    typeSelect.innerHTML = opts;
-
-    // Populate operator dropdown
-    var opSelect = $('anOperatorFilter');
-    var currentOp = opSelect.value;
-    var ops = {};
-    anState.reports.forEach(function (r) {
-      [r.uploaded_by, r.validated_by, r.released_by].forEach(function (uid) {
-        if (uid) ops[uid] = true;
+    if (typeSelect) {
+      var currentType = typeSelect.value;
+      var types = {};
+      rpts.forEach(function (r) { if (r.report_type) types[r.report_type] = true; });
+      var opts = '<option value="">Tutti</option>';
+      Object.keys(types).sort().forEach(function (t) {
+        opts += '<option value="' + t + '"' + (t === currentType ? ' selected' : '') + '>' + (TYPE_LABELS[t] || t) + '</option>';
       });
-    });
-    var userMap = {};
-    anState.users.forEach(function (u) { userMap[u.id] = u; });
+      typeSelect.innerHTML = opts;
+    }
 
-    var opOpts = '<option value="">Tutti</option>';
-    Object.keys(ops).sort().forEach(function (uid) {
-      var u = userMap[uid];
-      var label = u ? (u.first_name + ' ' + u.last_name).trim() : uid.substring(0, 8);
-      opOpts += '<option value="' + uid + '"' + (uid === currentOp ? ' selected' : '') + '>' + label + '</option>';
-    });
-    opSelect.innerHTML = opOpts;
+    // Category dropdown
+    var catSelect = $('anCategoryFilter');
+    if (catSelect) {
+      var currentCat = catSelect.value;
+      var cats = {};
+      rpts.forEach(function (r) { if (r.category) cats[r.category] = true; });
+      var catOpts = '<option value="">Tutte</option>';
+      Object.keys(cats).sort().forEach(function (c) {
+        var label = c.charAt(0).toUpperCase() + c.slice(1).replace(/_/g, ' ');
+        catOpts += '<option value="' + c + '"' + (c === currentCat ? ' selected' : '') + '>' + label + '</option>';
+      });
+      catSelect.innerHTML = catOpts;
+    }
+
+    // Operator dropdown
+    var opSelect = $('anOperatorFilter');
+    if (opSelect) {
+      var currentOp = opSelect.value;
+      var ops = {};
+      rpts.forEach(function (r) {
+        [r.uploaded_by, r.validated_by, r.released_by].forEach(function (uid) { if (uid) ops[uid] = true; });
+      });
+      var userMap = {};
+      anState.users.forEach(function (u) { userMap[u.id] = u; });
+      var opOpts = '<option value="">Tutti</option>';
+      Object.keys(ops).sort().forEach(function (uid) {
+        var u = userMap[uid];
+        var label = u ? (u.first_name + ' ' + u.last_name).trim() : uid.substring(0, 8);
+        opOpts += '<option value="' + uid + '"' + (uid === currentOp ? ' selected' : '') + '>' + label + '</option>';
+      });
+      opSelect.innerHTML = opOpts;
+    }
   }
 
-  // ── Tab Rendering ──────────────────────────────
+  function updateDateRangeDisplay(range) {
+    var el = $('anDateRangeDisplay');
+    if (!el) return;
+    var opts = { day: '2-digit', month: 'short', year: 'numeric' };
+    el.textContent = range.from.toLocaleDateString('it-IT', opts) + ' — ' + range.to.toLocaleDateString('it-IT', opts);
+  }
+
+  // ══════════════════════════════════════════════
+  //  CHART.JS HELPERS
+  // ══════════════════════════════════════════════
+
+  function destroyChart(key) {
+    if (anState.charts[key]) {
+      try { anState.charts[key].destroy(); } catch (e) {}
+      delete anState.charts[key];
+    }
+  }
+  function destroyAllCharts() {
+    Object.keys(anState.charts).forEach(function (key) {
+      try { anState.charts[key].destroy(); } catch (e) {}
+    });
+    anState.charts = {};
+  }
+
+  function chartOptions(yLabel, showLegend, aspectRatio) {
+    return {
+      responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: aspectRatio || 2,
+      animation: { duration: 300 },
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: showLegend !== false, labels: { boxWidth: 12, font: { size: 11 } } },
+        tooltip: { backgroundColor: 'rgba(0,0,0,0.8)', titleFont: { size: 12 }, bodyFont: { size: 11 }, padding: 10 }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 10 } } },
+        y: { beginAtZero: true, ticks: { font: { size: 10 } }, title: { display: !!yLabel, text: yLabel || '', font: { size: 11 } } }
+      }
+    };
+  }
+
+  // ── Tab rendering dispatcher ───────────────────
   function renderActiveTab() {
     destroyAllCharts();
     switch (anState.activeTab) {
@@ -294,56 +440,11 @@
       case 'performance': renderPerformance(); break;
       case 'pazienti': renderPazienti(); break;
       case 'qualita': renderQualita(); break;
+      case 'economics': /* placeholder, nothing to render */ break;
     }
   }
 
-  // ── Destroy chart helpers ─────────────────────
-  function destroyChart(key) {
-    if (anState.charts[key]) {
-      anState.charts[key].destroy();
-      delete anState.charts[key];
-    }
-  }
-
-  function destroyAllCharts() {
-    Object.keys(anState.charts).forEach(function (key) {
-      try { anState.charts[key].destroy(); } catch (e) {}
-    });
-    anState.charts = {};
-  }
-
-  // ── Sparkline helper ──────────────────────────
-  function renderSparkline(canvasId, data, color) {
-    destroyChart(canvasId);
-    var ctx = $(canvasId);
-    if (!ctx) return;
-    anState.charts[canvasId] = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: data.map(function (_, i) { return i; }),
-        datasets: [{
-          data: data,
-          borderColor: color || '#7CBA3D',
-          backgroundColor: (color || '#7CBA3D') + '20',
-          fill: true,
-          borderWidth: 1.5,
-          pointRadius: 0,
-          tension: 0.4
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        aspectRatio: 5,
-        animation: { duration: 300 },
-        plugins: { legend: { display: false }, tooltip: { enabled: false } },
-        scales: { x: { display: false }, y: { display: false } },
-        elements: { line: { borderWidth: 1.5 } }
-      }
-    });
-  }
-
-  // ── KPI Delta render ──────────────────────────
+  // ── KPI delta helpers ──────────────────────────
   function setKpiDelta(id, current, previous) {
     var el = $(id);
     if (!el) return;
@@ -351,22 +452,14 @@
     el.textContent = d.text;
     el.className = 'an-kpi-delta ' + d.cls;
   }
-
-  // ── Monthly series builder ───────────────────
-  function buildMonthlySeries(reports, field) {
-    field = field || 'created_at';
-    var byMonth = groupBy(reports, function (r) { return monthKey(r[field] || r.created_at); });
-    var keys = Object.keys(byMonth).sort();
-    return {
-      labels: keys.map(function (k) {
-        var parts = k.split('-');
-        var months = ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'];
-        return months[parseInt(parts[1], 10) - 1] + ' ' + parts[0].slice(2);
-      }),
-      values: keys.map(function (k) { return byMonth[k].length; }),
-      keys: keys
-    };
+  function setKpiDeltaInv(id, current, previous) {
+    var el = $(id);
+    if (!el) return;
+    var d = fmtDeltaInv(current, previous);
+    el.textContent = d.text;
+    el.className = 'an-kpi-delta ' + d.cls;
   }
+
 
   // ══════════════════════════════════════════════
   //  TAB 1: OVERVIEW
@@ -375,105 +468,168 @@
     var rpts = anState.reports;
     var comp = anState.compReports;
 
-    // KPI values
+    // ── Compute TAT arrays (in minutes) ────────
+    var releasedRpts = rpts.filter(function (r) { return r.released_at && r.created_at; });
+    var tatMinutes = releasedRpts.map(function (r) { return minutesDiff(r.created_at, r.released_at); }).filter(function (v) { return v != null && v >= 0; });
+
+    var compReleased = comp.filter(function (r) { return r.released_at && r.created_at; });
+    var compTat = compReleased.map(function (r) { return minutesDiff(r.created_at, r.released_at); }).filter(function (v) { return v != null && v >= 0; });
+
+    // ── Row 1: 6 Strategic KPIs ────────────────
     var total = rpts.length;
-    var released = rpts.filter(function (r) { return r.status === 'released'; }).length;
+    var queue = rpts.filter(function (r) { return r.status !== 'released' && r.status !== 'revoked'; }).length;
     var patients = countUnique(rpts, 'patient_id');
+    var tatMean = mean(tatMinutes);
+    var tatMedian = percentile(tatMinutes, 50);
+    var tatP90 = percentile(tatMinutes, 90);
     var abnormal = rpts.filter(function (r) { return r.has_abnormal_values; }).length;
     var urgent = rpts.filter(function (r) { return r.is_urgent; }).length;
 
-    // Avg time to release
-    var releasedRpts = rpts.filter(function (r) { return r.released_at && r.created_at; });
-    var avgTime = 0;
-    if (releasedRpts.length > 0) {
-      var sum = releasedRpts.reduce(function (s, r) { return s + daysDiff(r.created_at, r.released_at); }, 0);
-      avgTime = (sum / releasedRpts.length).toFixed(1);
+    safeText($('anKpiTotal'), total.toLocaleString('it-IT'));
+    safeText($('anKpiTotalSub'), rpts.filter(function (r) { return r.status === 'released'; }).length + ' rilasciati');
+    safeText($('anKpiQueue'), queue.toLocaleString('it-IT'));
+    var queueSub = $('anKpiQueueSub');
+    if (queueSub) {
+      var pending = rpts.filter(function(r){return r.status==='pending';}).length;
+      var validated = rpts.filter(function(r){return r.status==='validated';}).length;
+      var signed = rpts.filter(function(r){return r.status==='signed';}).length;
+      queueSub.textContent = pending + ' pending · ' + validated + ' validati · ' + signed + ' firmati';
     }
+    safeText($('anKpiPatients'), patients.toLocaleString('it-IT'));
+    var rptsPerPat = patients > 0 ? (total / patients).toFixed(1) : '0';
+    safeText($('anKpiPatientsSub'), rptsPerPat + ' ref/paziente');
 
-    $('anKpiTotal').textContent = total.toLocaleString('it-IT');
-    $('anKpiReleased').textContent = released.toLocaleString('it-IT');
-    $('anKpiPatients').textContent = patients.toLocaleString('it-IT');
-    $('anKpiAvgTime').textContent = avgTime;
-    $('anKpiAbnormal').textContent = abnormal.toLocaleString('it-IT');
-    $('anKpiUrgent').textContent = urgent.toLocaleString('it-IT');
+    safeText($('anKpiTat'), fmtDuration(tatMean));
+    safeText($('anKpiTatSub'), 'mediano ' + fmtDuration(tatMedian) + ' · P90 ' + fmtDuration(tatP90));
 
-    // Comparison deltas
+    var abnPct = total > 0 ? ((abnormal / total) * 100).toFixed(1) : '0.0';
+    safeText($('anKpiAbnormal'), abnormal + ' · ' + abnPct + '%');
+    safeText($('anKpiAbnormalSub'), 'su ' + total + ' referti');
+
+    var urgPct = total > 0 ? ((urgent / total) * 100).toFixed(1) : '0.0';
+    safeText($('anKpiUrgent'), urgent + ' · ' + urgPct + '%');
+    safeText($('anKpiUrgentSub'), 'su ' + total + ' referti');
+
+    // Deltas vs comparison
     if (comp.length > 0) {
       setKpiDelta('anKpiTotalDelta', total, comp.length);
-      setKpiDelta('anKpiReleasedDelta', released, comp.filter(function (r) { return r.status === 'released'; }).length);
+      var compQueue = comp.filter(function (r) { return r.status !== 'released' && r.status !== 'revoked'; }).length;
+      setKpiDelta('anKpiQueueDelta', queue, compQueue);
       setKpiDelta('anKpiPatientsDelta', patients, countUnique(comp, 'patient_id'));
-      var compRel = comp.filter(function (r) { return r.released_at && r.created_at; });
-      var compAvg = compRel.length > 0
-        ? compRel.reduce(function (s, r) { return s + daysDiff(r.created_at, r.released_at); }, 0) / compRel.length
-        : 0;
-      setKpiDelta('anKpiAvgTimeDelta', parseFloat(avgTime), compAvg);
+      setKpiDeltaInv('anKpiTatDelta', tatMean, mean(compTat));
       setKpiDelta('anKpiAbnormalDelta', abnormal, comp.filter(function (r) { return r.has_abnormal_values; }).length);
       setKpiDelta('anKpiUrgentDelta', urgent, comp.filter(function (r) { return r.is_urgent; }).length);
     }
 
-    // Sparklines
-    var series = buildMonthlySeries(rpts);
-    renderSparkline('anSparkTotal', series.values, '#7CBA3D');
-    var relSeries = buildMonthlySeries(rpts.filter(function (r) { return r.status === 'released'; }));
-    renderSparkline('anSparkReleased', relSeries.values, '#3b82f6');
+    // Warn/danger thresholds on cards
+    var abnCard = $('anKpiAbnormal') && $('anKpiAbnormal').closest('.an-kpi-card');
+    if (abnCard) abnCard.className = 'an-kpi-card' + (parseFloat(abnPct) > 10 ? ' an-kpi-danger' : parseFloat(abnPct) > 5 ? ' an-kpi-warn' : '');
+    var urgCard = $('anKpiUrgent') && $('anKpiUrgent').closest('.an-kpi-card');
+    if (urgCard) urgCard.className = 'an-kpi-card' + (parseFloat(urgPct) > 5 ? ' an-kpi-warn' : '');
 
-    // Patients sparkline — unique patients per month
-    var patByMonth = {};
-    rpts.forEach(function (r) {
-      var mk = monthKey(r.created_at);
-      if (!patByMonth[mk]) patByMonth[mk] = {};
-      if (r.patient_id) patByMonth[mk][r.patient_id] = true;
+    // ── Row 2: 6 Operational KPIs ──────────────
+    var period = getPeriodRange($('anPeriod') ? $('anPeriod').value : 'year');
+    var allPatients = anState.users.filter(function (u) { return u.role === 'patient'; });
+    var newPats = allPatients.filter(function (u) {
+      var d = new Date(u.created_at);
+      return d >= period.from && d <= period.to;
     });
-    var patSpark = series.keys.map(function (k) { return patByMonth[k] ? Object.keys(patByMonth[k]).length : 0; });
-    renderSparkline('anSparkPatients', patSpark, '#8b5cf6');
+    safeText($('anKpiNewPat'), newPats.length.toLocaleString('it-IT'));
 
-    // Avg time sparkline
-    var timeByMonth = {};
-    releasedRpts.forEach(function (r) {
-      var mk = monthKey(r.created_at);
-      if (!timeByMonth[mk]) timeByMonth[mk] = [];
-      timeByMonth[mk].push(daysDiff(r.created_at, r.released_at));
-    });
-    var timeSpark = series.keys.map(function (k) {
-      var arr = timeByMonth[k];
-      if (!arr || arr.length === 0) return 0;
-      return +(arr.reduce(function (a, b) { return a + b; }, 0) / arr.length).toFixed(1);
-    });
-    renderSparkline('anSparkAvgTime', timeSpark, '#f59e0b');
+    // Recurring
+    var patReportCount = {};
+    rpts.forEach(function (r) { if (r.patient_id) patReportCount[r.patient_id] = (patReportCount[r.patient_id] || 0) + 1; });
+    var recurring = Object.values(patReportCount).filter(function (c) { return c > 1; }).length;
+    safeText($('anKpiRecur'), recurring.toLocaleString('it-IT'));
 
-    var abnSeries = buildMonthlySeries(rpts.filter(function (r) { return r.has_abnormal_values; }));
-    renderSparkline('anSparkAbnormal', abnSeries.values, '#ef4444');
-    var urgSeries = buildMonthlySeries(rpts.filter(function (r) { return r.is_urgent; }));
-    renderSparkline('anSparkUrgent', urgSeries.values, '#f97316');
+    if (comp.length > 0) {
+      var compNewPats = allPatients.filter(function (u) {
+        var compRange = getComparisonRange(period.from, period.to, $('anCompare') ? $('anCompare').value : 'prev');
+        var d = new Date(u.created_at);
+        return d >= compRange.from && d <= compRange.to;
+      });
+      setKpiDelta('anKpiNewPatDelta', newPats.length, compNewPats.length);
+      var compPatCount = {};
+      comp.forEach(function (r) { if (r.patient_id) compPatCount[r.patient_id] = (compPatCount[r.patient_id] || 0) + 1; });
+      var compRecurring = Object.values(compPatCount).filter(function (c) { return c > 1; }).length;
+      setKpiDelta('anKpiRecurDelta', recurring, compRecurring);
+    }
 
-    // Volume chart (area)
-    renderVolumeChart(series, comp);
+    // TAT sample→release (from sample_date)
+    var sampleRpts = releasedRpts.filter(function (r) { return r.sample_date; });
+    var sampleTats = sampleRpts.map(function (r) { return minutesDiff(r.sample_date, r.released_at); }).filter(function (v) { return v != null && v >= 0; });
+    safeText($('anKpiSampleTat'), fmtDuration(percentile(sampleTats, 50)));
 
-    // Type distribution pie
-    renderTypePie(rpts);
+    // TAT upload→validation
+    var valRpts = rpts.filter(function (r) { return r.validated_at && r.created_at; });
+    var valTats = valRpts.map(function (r) { return minutesDiff(r.created_at, r.validated_at); }).filter(function (v) { return v != null && v >= 0; });
+    safeText($('anKpiValTat'), fmtDuration(percentile(valTats, 50)));
 
-    // Status funnel
-    renderFunnelChart(rpts);
+    // SLA breach
+    var slaHours = SLA_HOURS;
+    var withinSLA = releasedRpts.filter(function (r) { return hoursDiff(r.created_at, r.released_at) <= slaHours; });
+    var slaBreach = releasedRpts.length - withinSLA.length;
+    var slaBreachPct = releasedRpts.length > 0 ? ((slaBreach / releasedRpts.length) * 100).toFixed(1) : '0.0';
+    safeText($('anKpiSla'), slaBreach + ' · ' + slaBreachPct + '%');
+    safeText($('anKpiSlaSub'), 'target \u2264 ' + (slaHours / 24) + 'gg · ' + withinSLA.length + ' OK');
 
-    // Heatmap
+    if (comp.length > 0) {
+      var compSLABreach = compReleased.length - compReleased.filter(function(r){return hoursDiff(r.created_at, r.released_at) <= slaHours;}).length;
+      setKpiDeltaInv('anKpiSlaDelta', slaBreach, compSLABreach);
+    }
+
+    var slaCard = $('anKpiSla') && $('anKpiSla').closest('.an-kpi-card');
+    if (slaCard) {
+      slaCard.setAttribute('data-drill', 'sla_breach');
+      slaCard.className = 'an-kpi-card' + (slaBreach > 0 ? ' an-kpi-warn' : '');
+    }
+
+    // Download rate
+    var downloadable = rpts.filter(function (r) { return r.status === 'released'; });
+    var downloaded = downloadable.filter(function (r) { return r.patient_downloaded; });
+    var dlRate = downloadable.length > 0 ? ((downloaded.length / downloadable.length) * 100).toFixed(1) : '0.0';
+    safeText($('anKpiDownload'), dlRate + '%');
+
+    // ── Volume + Forecast chart ──────────────────
+    renderVolumeChart(rpts, comp);
+
+    // ── Top Esami horizontal bars ────────────────
+    renderTopEsami(rpts);
+
+    // ── TAT Distribution chart ───────────────────
+    renderTatDistChart(tatMinutes);
+
+    // ── Heatmap ──────────────────────────────────
     renderHeatmap(rpts);
+
+    // ── AI Insights ──────────────────────────────
+    generateInsights(rpts, comp, tatMinutes, compTat);
   }
 
-  function renderVolumeChart(series, comp) {
+  // ── Volume chart with dual curves + forecast ──
+  function renderVolumeChart(rpts, comp) {
     destroyChart('volume');
+    var g = anState.granularity;
+    var series = buildTimeSeries(rpts, g);
+
+    // Summary line
+    var total = series.values.reduce(function (a, b) { return a + b; }, 0);
+    var avg = series.values.length > 0 ? (total / series.values.length).toFixed(0) : '0';
+    safeText($('anVolumeSummary'), 'Tot: ' + total + ' · Media/' + (g === 'day' ? 'giorno' : g === 'week' ? 'sett.' : 'mese') + ': ' + avg);
+
     var datasets = [{
       label: 'Periodo corrente',
       data: series.values,
       borderColor: '#7CBA3D',
-      backgroundColor: 'rgba(124,186,61,0.15)',
-      fill: true,
-      tension: 0.3,
-      borderWidth: 2
+      backgroundColor: 'rgba(124,186,61,0.12)',
+      fill: true, tension: 0.35, borderWidth: 2.5,
+      pointRadius: g === 'month' ? 4 : (g === 'week' ? 2 : 0),
+      pointBackgroundColor: '#7CBA3D'
     }];
 
+    // Comparison
     if (comp && comp.length > 0) {
-      var compSeries = buildMonthlySeries(comp);
-      // Align comparison data to same number of points
+      var compSeries = buildTimeSeries(comp, g);
       var compData = compSeries.values;
       while (compData.length < series.values.length) compData.push(0);
       compData = compData.slice(0, series.values.length);
@@ -481,99 +637,171 @@
         label: 'Periodo precedente',
         data: compData,
         borderColor: '#94a3b8',
-        backgroundColor: 'rgba(148,163,184,0.1)',
-        fill: true,
-        tension: 0.3,
-        borderWidth: 1.5,
-        borderDash: [5, 3]
+        backgroundColor: 'rgba(148,163,184,0.07)',
+        fill: true, tension: 0.35, borderWidth: 1.5,
+        borderDash: [5, 3], pointRadius: 0
       });
     }
 
-    anState.charts['volume'] = new Chart($('anChartVolume'), {
+    // Forecast (only for month granularity with 3+ points)
+    if (g === 'month' && series.values.length >= 3) {
+      var xs = series.values.map(function (_, i) { return i; });
+      var reg = linearRegression(xs, series.values);
+      var forecastCount = 3; // 3 months
+      var forecastLabels = [];
+      var lastKey = series.keys[series.keys.length - 1];
+      var lastParts = lastKey.split('-');
+      var lastYear = parseInt(lastParts[0]);
+      var lastMonth = parseInt(lastParts[1]);
+
+      var forecastData = series.values.map(function () { return null; });
+      // Connect forecast to last real point
+      forecastData[forecastData.length - 1] = series.values[series.values.length - 1];
+
+      for (var fi = 1; fi <= forecastCount; fi++) {
+        var fMonth = lastMonth + fi;
+        var fYear = lastYear;
+        while (fMonth > 12) { fMonth -= 12; fYear++; }
+        forecastLabels.push(MONTH_NAMES[fMonth - 1] + ' ' + String(fYear).slice(2));
+        var predicted = Math.max(0, Math.round(reg.intercept + reg.slope * (series.values.length - 1 + fi)));
+        forecastData.push(predicted);
+      }
+
+      series.labels = series.labels.concat(forecastLabels);
+      datasets[0].data = series.values.concat([null, null, null]);
+      if (datasets[1]) {
+        datasets[1].data = datasets[1].data.concat([null, null, null]);
+      }
+
+      datasets.push({
+        label: 'Forecast',
+        data: forecastData,
+        borderColor: '#8b5cf6',
+        borderDash: [8, 4],
+        borderWidth: 2,
+        pointRadius: 3,
+        pointBackgroundColor: '#8b5cf6',
+        fill: false,
+        tension: 0
+      });
+    }
+
+    var canvas = $('anChartVolume');
+    if (!canvas) return;
+    anState.charts['volume'] = new Chart(canvas, {
       type: 'line',
       data: { labels: series.labels, datasets: datasets },
-      options: chartOptions('Referti', true)
+      options: chartOptions('Referti', true, 2.2)
     });
   }
 
-  function renderTypePie(rpts) {
-    destroyChart('typePie');
+  // ── Top Esami horizontal bars (pure HTML) ─────
+  function renderTopEsami(rpts) {
+    var list = $('anTopEsamiList');
+    if (!list) return;
     var byType = groupBy(rpts, function (r) { return r.report_type || 'altro'; });
-    var entries = Object.entries(byType).sort(function (a, b) { return b[1].length - a[1].length; });
-    var labels = entries.map(function (e) { return TYPE_LABELS[e[0]] || e[0]; });
-    var values = entries.map(function (e) { return e[1].length; });
-    var colors = entries.map(function (_, i) { return CHART_COLORS[i % CHART_COLORS.length]; });
+    var entries = Object.entries(byType).sort(function (a, b) { return b[1].length - a[1].length; }).slice(0, 10);
+    if (!entries.length) { list.innerHTML = '<li style="padding:1rem;color:var(--text-muted);font-size:0.82rem">Nessun dato</li>'; return; }
 
-    anState.charts['typePie'] = new Chart($('anChartTypePie'), {
-      type: 'doughnut',
-      data: {
-        labels: labels,
-        datasets: [{ data: values, backgroundColor: colors, borderWidth: 1, borderColor: 'var(--bg-card)' }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        aspectRatio: 1.5,
-        animation: { duration: 300 },
-        plugins: {
-          legend: { position: 'right', labels: { boxWidth: 12, font: { size: 11 } } },
-          tooltip: { callbacks: { label: function (c) { return c.label + ': ' + c.raw + ' (' + ((c.raw / rpts.length) * 100).toFixed(1) + '%)'; } } }
+    var maxVal = entries[0][1].length;
+    var html = '';
+    entries.forEach(function (e, i) {
+      var pct = maxVal > 0 ? ((e[1].length / maxVal) * 100).toFixed(1) : 0;
+      var color = CHART_COLORS[i % CHART_COLORS.length];
+      html += '<li class="an-top-bar-item" data-type="' + e[0] + '">' +
+        '<span class="an-top-bar-label">' + (TYPE_LABELS[e[0]] || e[0]) + '</span>' +
+        '<span class="an-top-bar-track"><span class="an-top-bar-fill" style="width:' + pct + '%;background:' + color + '"></span></span>' +
+        '<span class="an-top-bar-value">' + e[1].length + ' (' + ((e[1].length / rpts.length) * 100).toFixed(1) + '%)</span>' +
+        '</li>';
+    });
+    list.innerHTML = html;
+
+    // Click-to-filter
+    list.querySelectorAll('.an-top-bar-item').forEach(function (item) {
+      item.addEventListener('click', function () {
+        var type = this.dataset.type;
+        var sel = $('anTypeFilter');
+        if (sel) {
+          sel.value = type;
+          loadAnalyticsData();
         }
-      }
+      });
     });
   }
 
-  function renderFunnelChart(rpts) {
-    destroyChart('funnel');
-    var statuses = ['pending', 'validated', 'signed', 'released', 'archived', 'revoked'];
-    var statusLabels = ['In Attesa', 'Validati', 'Firmati', 'Rilasciati', 'Archiviati', 'Revocati'];
-    var statusColors = ['#f59e0b', '#3b82f6', '#8b5cf6', '#22c55e', '#64748b', '#ef4444'];
-    var counts = statuses.map(function (s) { return rpts.filter(function (r) { return r.status === s; }).length; });
+  // ── TAT Distribution chart ────────────────────
+  function renderTatDistChart(tatMinutes) {
+    destroyChart('tatDist');
+    var canvas = $('anChartTatDist');
+    if (!canvas) return;
 
-    anState.charts['funnel'] = new Chart($('anChartFunnel'), {
+    // Buckets in hours: 0-6h, 6-12h, 12-24h, 24-48h, 48-72h, 72h+
+    var buckets = [
+      { label: '0-6h', min: 0, max: 360, color: '#22c55e' },
+      { label: '6-12h', min: 360, max: 720, color: '#84cc16' },
+      { label: '12-24h', min: 720, max: 1440, color: '#f59e0b' },
+      { label: '1-2gg', min: 1440, max: 2880, color: '#f97316' },
+      { label: '2-3gg', min: 2880, max: 4320, color: '#ef4444' },
+      { label: '3gg+', min: 4320, max: Infinity, color: '#991b1b' }
+    ];
+
+    var counts = buckets.map(function (b) {
+      return tatMinutes.filter(function (t) { return t >= b.min && t < b.max; }).length;
+    });
+
+    anState.charts['tatDist'] = new Chart(canvas, {
       type: 'bar',
       data: {
-        labels: statusLabels,
+        labels: buckets.map(function (b) { return b.label; }),
         datasets: [{
           data: counts,
-          backgroundColor: statusColors,
+          backgroundColor: buckets.map(function (b) { return b.color; }),
           borderRadius: 6,
           maxBarThickness: 50
         }]
       },
-      options: Object.assign({}, chartOptions('Referti'), { indexAxis: 'y', plugins: { legend: { display: false } } })
+      options: Object.assign({}, chartOptions('Referti'), {
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function (c) {
+                var pct = tatMinutes.length > 0 ? ((c.raw / tatMinutes.length) * 100).toFixed(1) : 0;
+                return c.raw + ' referti (' + pct + '%)';
+              }
+            }
+          }
+        }
+      })
     });
   }
 
+  // ── Heatmap (bubble chart) ────────────────────
   function renderHeatmap(rpts) {
     destroyChart('heatmap');
-    // Build a 7x24 matrix (day of week x hour)
-    var dayNames = ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'];
-    var matrix = [];
+    var canvas = $('anChartHeatmap');
+    if (!canvas) return;
+
+    var grid = {};
     rpts.forEach(function (r) {
       var d = new Date(r.created_at);
-      matrix.push({ x: d.getHours(), y: d.getDay(), v: 1 });
+      var key = d.getDay() + '-' + d.getHours();
+      grid[key] = (grid[key] || 0) + 1;
     });
 
-    // Aggregate
-    var grid = {};
-    matrix.forEach(function (p) {
-      var key = p.y + '-' + p.x;
-      grid[key] = (grid[key] || 0) + p.v;
-    });
-
-    // Build as bubble chart
     var data = [];
+    var maxCount = 1;
     for (var day = 0; day < 7; day++) {
       for (var hour = 0; hour < 24; hour++) {
         var count = grid[day + '-' + hour] || 0;
+        if (count > maxCount) maxCount = count;
         if (count > 0) {
-          data.push({ x: hour, y: day, r: Math.min(Math.sqrt(count) * 3, 20) });
+          data.push({ x: hour, y: day, r: Math.min(Math.sqrt(count) * 3, 20), _count: count });
         }
       }
     }
 
-    anState.charts['heatmap'] = new Chart($('anChartHeatmap'), {
+    anState.charts['heatmap'] = new Chart(canvas, {
       type: 'bubble',
       data: {
         datasets: [{
@@ -594,8 +822,7 @@
             callbacks: {
               label: function (c) {
                 var d = c.raw;
-                var count = Math.round((d.r / 3) * (d.r / 3));
-                return dayNames[d.y] + ' ore ' + d.x + ':00 — ' + count + ' referti';
+                return DAY_NAMES_SHORT[d.y] + ' ore ' + d.x + ':00 \u2014 ' + d._count + ' referti';
               }
             }
           }
@@ -609,7 +836,7 @@
           },
           y: {
             min: -0.5, max: 6.5,
-            ticks: { callback: function (v) { return dayNames[v] || ''; }, stepSize: 1, font: { size: 10 } },
+            ticks: { callback: function (v) { return DAY_NAMES_SHORT[v] || ''; }, stepSize: 1, font: { size: 10 } },
             title: { display: true, text: 'Giorno', font: { size: 11 } },
             grid: { color: 'rgba(0,0,0,0.04)' }
           }
@@ -618,14 +845,129 @@
     });
   }
 
+  // ── AI Insights Generator ─────────────────────
+  function generateInsights(rpts, comp, tatMinutes, compTat) {
+    var el = $('anAlertsList');
+    if (!el) return;
+    var insights = [];
+    var total = rpts.length;
+
+    // 1. Volume trend
+    if (comp.length > 0) {
+      var delta = total - comp.length;
+      var pct = comp.length > 0 ? ((delta / comp.length) * 100).toFixed(1) : 0;
+      if (Math.abs(pct) > 15) {
+        insights.push({
+          icon: delta > 0 ? '\uD83D\uDCC8' : '\uD83D\uDCC9',
+          text: 'Volume ' + (delta > 0 ? 'in crescita' : 'in calo') + ' del <strong>' + Math.abs(pct) + '%</strong> rispetto al periodo precedente (' + Math.abs(delta) + ' referti ' + (delta > 0 ? 'in pi\u00F9' : 'in meno') + ').',
+          tag: Math.abs(pct) > 30 ? 'warning' : 'info'
+        });
+      }
+    }
+
+    // 2. TAT analysis
+    if (tatMinutes.length > 0) {
+      var tatMed = percentile(tatMinutes, 50);
+      var tatP90Val = percentile(tatMinutes, 90);
+      if (tatP90Val > SLA_HOURS * 60) {
+        insights.push({
+          icon: '\u23F1\uFE0F',
+          text: 'Il TAT al P90 (' + fmtDuration(tatP90Val) + ') <strong>supera lo SLA di ' + (SLA_HOURS/24) + ' giorni</strong>. Il 10% dei referti richiede intervento.',
+          tag: 'critical'
+        });
+      } else if (tatP90Val > SLA_HOURS * 60 * 0.8) {
+        insights.push({
+          icon: '\u23F1\uFE0F',
+          text: 'TAT P90 a ' + fmtDuration(tatP90Val) + ': vicino al limite SLA. Monitorare attentamente.',
+          tag: 'warning'
+        });
+      }
+
+      if (compTat.length > 0) {
+        var compMed = percentile(compTat, 50);
+        if (tatMed < compMed * 0.85) {
+          insights.push({
+            icon: '\u2705',
+            text: 'TAT mediano migliorato: ' + fmtDuration(tatMed) + ' vs ' + fmtDuration(compMed) + ' del periodo precedente.',
+            tag: 'success'
+          });
+        }
+      }
+    }
+
+    // 3. Abnormal ratio
+    var abnormal = rpts.filter(function (r) { return r.has_abnormal_values; }).length;
+    var abnPct = total > 0 ? (abnormal / total * 100) : 0;
+    if (abnPct > 10) {
+      insights.push({
+        icon: '\u26A0\uFE0F',
+        text: 'Tasso anomalie al <strong>' + abnPct.toFixed(1) + '%</strong> \u2014 sopra la soglia di attenzione (10%). Verificare lotti reagenti.',
+        tag: 'critical'
+      });
+    } else if (abnPct > 7) {
+      insights.push({
+        icon: '\uD83D\uDD0D',
+        text: 'Tasso anomalie al ' + abnPct.toFixed(1) + '% \u2014 in area di osservazione.',
+        tag: 'warning'
+      });
+    }
+
+    // 4. Download engagement
+    var released = rpts.filter(function(r){return r.status==='released';});
+    var downloadedR = released.filter(function(r){return r.patient_downloaded;});
+    var dlPct = released.length > 0 ? (downloadedR.length / released.length * 100) : 0;
+    if (dlPct < 30 && released.length > 10) {
+      insights.push({
+        icon: '\uD83D\uDCE5',
+        text: 'Solo il <strong>' + dlPct.toFixed(1) + '%</strong> dei referti viene scaricato dai pazienti. Valutare notifiche push/email.',
+        tag: 'info'
+      });
+    }
+
+    // 5. Type concentration
+    var byType = groupBy(rpts, function(r){return r.report_type||'altro';});
+    var topType = Object.entries(byType).sort(function(a,b){return b[1].length-a[1].length;})[0];
+    if (topType && total > 0 && (topType[1].length / total) > 0.5) {
+      insights.push({
+        icon: '\uD83C\uDFAF',
+        text: '<strong>' + (TYPE_LABELS[topType[0]]||topType[0]) + '</strong> rappresenta il ' + ((topType[1].length/total)*100).toFixed(1) + '% del volume totale. Alta concentrazione su singolo esame.',
+        tag: 'info'
+      });
+    }
+
+    // 6. Weekend activity
+    var weekendRpts = rpts.filter(function(r){var d=new Date(r.created_at).getDay();return d===0||d===6;});
+    if (weekendRpts.length > 0 && total > 0) {
+      var wkPct = (weekendRpts.length / total * 100);
+      if (wkPct > 5) {
+        insights.push({
+          icon: '\uD83D\uDCC5',
+          text: weekendRpts.length + ' referti nel weekend (' + wkPct.toFixed(1) + '% del totale). Attivit\u00E0 fuori orario presente.',
+          tag: 'info'
+        });
+      }
+    }
+
+    // Render insights
+    if (insights.length === 0) {
+      insights.push({ icon: '\u2705', text: 'Nessuna anomalia rilevata. Operativit\u00E0 nella norma.', tag: 'success' });
+    }
+
+    el.innerHTML = insights.map(function (i) {
+      return '<div class="an-alert-item">' +
+        '<span class="an-alert-icon">' + i.icon + '</span>' +
+        '<span class="an-alert-text">' + i.text + ' <span class="an-alert-tag ' + i.tag + '">' + i.tag + '</span></span>' +
+        '</div>';
+    }).join('');
+  }
+
+
   // ══════════════════════════════════════════════
   //  TAB 2: VOLUMI
   // ══════════════════════════════════════════════
   function renderVolumi() {
     var rpts = anState.reports;
     var comp = anState.compReports;
-
-    // Stacked bar by type per month
     renderVolumeByType(rpts);
     renderVolumeByCategory(rpts);
     renderUploadVsRelease(rpts, comp);
@@ -634,24 +976,22 @@
 
   function renderVolumeByType(rpts) {
     destroyChart('volumeByType');
-    var series = buildMonthlySeries(rpts);
+    var series = buildTimeSeries(rpts, 'month');
     var byType = groupBy(rpts, function (r) { return r.report_type || 'altro'; });
     var types = Object.keys(byType).sort(function (a, b) { return byType[b].length - byType[a].length; });
     var top8 = types.slice(0, 8);
     var hasOther = types.length > 8;
 
     var datasets = top8.map(function (t, i) {
-      var tSeries = buildMonthlySeries(byType[t]);
+      var tSeries = buildTimeSeries(byType[t], 'month');
       var data = series.keys.map(function (k) {
         var idx = tSeries.keys.indexOf(k);
         return idx >= 0 ? tSeries.values[idx] : 0;
       });
       return {
-        label: TYPE_LABELS[t] || t,
-        data: data,
+        label: TYPE_LABELS[t] || t, data: data,
         backgroundColor: CHART_COLORS[i % CHART_COLORS.length],
-        borderRadius: 3,
-        maxBarThickness: 40
+        borderRadius: 3, maxBarThickness: 40
       };
     });
 
@@ -660,29 +1000,22 @@
       var otherData = series.keys.map(function (k) {
         var count = 0;
         otherTypes.forEach(function (t) {
-          var tSeries = buildMonthlySeries(byType[t]);
-          var idx = tSeries.keys.indexOf(k);
-          if (idx >= 0) count += tSeries.values[idx];
+          var ts = buildTimeSeries(byType[t], 'month');
+          var idx = ts.keys.indexOf(k);
+          if (idx >= 0) count += ts.values[idx];
         });
         return count;
       });
-      datasets.push({
-        label: 'Altri',
-        data: otherData,
-        backgroundColor: '#94a3b8',
-        borderRadius: 3,
-        maxBarThickness: 40
-      });
+      datasets.push({ label: 'Altri', data: otherData, backgroundColor: '#94a3b8', borderRadius: 3, maxBarThickness: 40 });
     }
 
-    anState.charts['volumeByType'] = new Chart($('anChartVolumeByType'), {
+    var canvas = $('anChartVolumeByType');
+    if (!canvas) return;
+    anState.charts['volumeByType'] = new Chart(canvas, {
       type: 'bar',
       data: { labels: series.labels, datasets: datasets },
       options: Object.assign({}, chartOptions('Referti', true), {
-        scales: Object.assign({}, chartOptions('Referti', true).scales, {
-          x: { stacked: true, grid: { display: false } },
-          y: { stacked: true, beginAtZero: true }
-        })
+        scales: { x: { stacked: true, grid: { display: false } }, y: { stacked: true, beginAtZero: true } }
       })
     });
   }
@@ -695,16 +1028,13 @@
     var values = entries.map(function (e) { return e[1].length; });
     var colors = entries.map(function (_, i) { return CHART_COLORS[i % CHART_COLORS.length]; });
 
-    anState.charts['volumeByCategory'] = new Chart($('anChartVolumeByCategory'), {
+    var canvas = $('anChartVolumeByCategory');
+    if (!canvas) return;
+    anState.charts['volumeByCategory'] = new Chart(canvas, {
       type: 'pie',
-      data: {
-        labels: labels,
-        datasets: [{ data: values, backgroundColor: colors, borderWidth: 1 }]
-      },
+      data: { labels: labels, datasets: [{ data: values, backgroundColor: colors, borderWidth: 1 }] },
       options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        aspectRatio: 1.5,
+        responsive: true, maintainAspectRatio: true, aspectRatio: 1.5,
         animation: { duration: 300 },
         plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } } }
       }
@@ -713,44 +1043,33 @@
 
   function renderUploadVsRelease(rpts, comp) {
     destroyChart('uploadVsRelease');
-    var series = buildMonthlySeries(rpts);
+    var series = buildTimeSeries(rpts, 'month');
     var relRpts = rpts.filter(function (r) { return r.released_at; });
-    var relSeries = buildMonthlySeries(relRpts, 'released_at');
+    var relSeries = buildTimeSeries(relRpts, 'month', 'released_at');
 
     var relData = series.keys.map(function (k) {
       var idx = relSeries.keys.indexOf(k);
       return idx >= 0 ? relSeries.values[idx] : 0;
     });
 
-    var datasets = [
-      {
-        label: 'Caricamenti',
-        data: series.values,
-        borderColor: '#3b82f6',
-        backgroundColor: 'rgba(59,130,246,0.1)',
-        fill: true,
-        tension: 0.3,
-        borderWidth: 2
-      },
-      {
-        label: 'Rilasci',
-        data: relData,
-        borderColor: '#22c55e',
-        backgroundColor: 'rgba(34,197,94,0.1)',
-        fill: true,
-        tension: 0.3,
-        borderWidth: 2
-      }
-    ];
-
-    anState.charts['uploadVsRelease'] = new Chart($('anChartUploadVsRelease'), {
+    var canvas = $('anChartUploadVsRelease');
+    if (!canvas) return;
+    anState.charts['uploadVsRelease'] = new Chart(canvas, {
       type: 'line',
-      data: { labels: series.labels, datasets: datasets },
+      data: {
+        labels: series.labels,
+        datasets: [
+          { label: 'Caricamenti', data: series.values, borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.1)', fill: true, tension: 0.3, borderWidth: 2 },
+          { label: 'Rilasci', data: relData, borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.1)', fill: true, tension: 0.3, borderWidth: 2 }
+        ]
+      },
       options: chartOptions('Referti', true)
     });
   }
 
   function renderVolumiTable(rpts, comp) {
+    var body = $('anTableVolumiBody');
+    if (!body) return;
     var byType = groupBy(rpts, function (r) { return r.report_type || 'altro'; });
     var compByType = groupBy(comp, function (r) { return r.report_type || 'altro'; });
     var types = Object.keys(byType).sort(function (a, b) { return byType[b].length - byType[a].length; });
@@ -762,6 +1081,12 @@
       var released = items.filter(function (r) { return r.status === 'released'; }).length;
       var inProgress = total - released;
       var pct = total > 0 ? ((released / total) * 100).toFixed(1) : '0.0';
+
+      // TAT for this type
+      var relItems = items.filter(function(r){return r.released_at && r.created_at;});
+      var tats = relItems.map(function(r){return minutesDiff(r.created_at, r.released_at);}).filter(function(v){return v!=null&&v>=0;});
+      var avgTat = tats.length > 0 ? fmtDuration(mean(tats)) : '-';
+
       var compTotal = (compByType[t] || []).length;
       var delta = fmtDelta(total, compTotal);
 
@@ -770,13 +1095,14 @@
         '<td>' + total + '</td>' +
         '<td>' + released + '</td>' +
         '<td>' + inProgress + '</td>' +
+        '<td>' + avgTat + '</td>' +
         '<td><span class="badge ' + (parseFloat(pct) >= 90 ? 'badge-released' : 'badge-pending') + '">' + pct + '%</span></td>' +
         '<td><span class="an-kpi-delta ' + delta.cls + '" style="font-size:0.78rem">' + delta.text + '</span></td>' +
         '</tr>';
     });
 
-    if (!html) html = '<tr><td colspan="6" style="text-align:center;color:var(--text-muted)">Nessun dato</td></tr>';
-    $('anTableVolumiBody').innerHTML = html;
+    if (!html) html = '<tr><td colspan="7" style="text-align:center;color:var(--text-muted)">Nessun dato</td></tr>';
+    body.innerHTML = html;
   }
 
   // ══════════════════════════════════════════════
@@ -785,24 +1111,25 @@
   function renderPerformance() {
     var rpts = anState.reports;
     var released = rpts.filter(function (r) { return r.released_at && r.created_at; });
-    var validated = rpts.filter(function (r) { return r.validated_at && r.created_at; });
+    var tatMins = released.map(function(r){return minutesDiff(r.created_at, r.released_at);}).filter(function(v){return v!=null&&v>=0;});
 
-    // KPI: Total time upload→release
-    var avgTotal = 0, avgVal = 0, avgRel = 0;
-    if (released.length > 0) {
-      avgTotal = released.reduce(function (s, r) { return s + daysDiff(r.created_at, r.released_at); }, 0) / released.length;
-    }
-    if (validated.length > 0) {
-      avgVal = validated.reduce(function (s, r) { return s + daysDiff(r.created_at, r.validated_at); }, 0) / validated.length;
-    }
-    var valAndRel = released.filter(function (r) { return r.validated_at; });
-    if (valAndRel.length > 0) {
-      avgRel = valAndRel.reduce(function (s, r) { return s + daysDiff(r.validated_at, r.released_at); }, 0) / valAndRel.length;
-    }
+    // KPIs
+    safeText($('anPerfTatMean'), fmtDuration(mean(tatMins)));
+    safeText($('anPerfTatMedian'), fmtDuration(percentile(tatMins, 50)));
+    safeText($('anPerfTatP90'), fmtDuration(percentile(tatMins, 90)));
+    safeText($('anPerfTatMax'), fmtDuration(tatMins.length > 0 ? Math.max.apply(null, tatMins) : 0));
 
-    $('anPerfTotalTime').textContent = avgTotal.toFixed(1);
-    $('anPerfValTime').textContent = avgVal.toFixed(1);
-    $('anPerfRelTime').textContent = avgRel.toFixed(1);
+    var withinSLA = released.filter(function(r){return hoursDiff(r.created_at, r.released_at) <= SLA_HOURS;});
+    var slaOkPct = released.length > 0 ? ((withinSLA.length / released.length) * 100).toFixed(1) : '0.0';
+    safeText($('anPerfSlaOk'), slaOkPct + '%');
+    safeText($('anPerfSlaBreach'), (released.length - withinSLA.length).toString());
+
+    // P90 card coloring
+    var p90Card = $('anPerfTatP90') && $('anPerfTatP90').closest('.an-kpi-card');
+    if (p90Card) {
+      var p90hours = percentile(tatMins, 90) / 60;
+      p90Card.className = 'an-kpi-card' + (p90hours > SLA_HOURS ? ' an-kpi-danger' : p90hours > SLA_HOURS * 0.8 ? ' an-kpi-warn' : '');
+    }
 
     renderPhaseTimeChart(rpts);
     renderTimeDistribution(released);
@@ -811,77 +1138,76 @@
 
   function renderPhaseTimeChart(rpts) {
     destroyChart('phaseTime');
-    var series = buildMonthlySeries(rpts);
-    var released = rpts.filter(function (r) { return r.released_at && r.created_at; });
+    var series = buildTimeSeries(rpts, 'month');
     var validated = rpts.filter(function (r) { return r.validated_at && r.created_at; });
+    var released = rpts.filter(function (r) { return r.released_at && r.validated_at; });
 
-    // Avg upload→validation per month
     var valByMonth = {};
     validated.forEach(function (r) {
       var mk = monthKey(r.created_at);
       if (!valByMonth[mk]) valByMonth[mk] = [];
-      valByMonth[mk].push(daysDiff(r.created_at, r.validated_at));
+      valByMonth[mk].push(minutesDiff(r.created_at, r.validated_at) / 60); // hours
     });
 
-    // Avg validation→release per month
     var relByMonth = {};
-    released.filter(function (r) { return r.validated_at; }).forEach(function (r) {
+    released.forEach(function (r) {
       var mk = monthKey(r.created_at);
       if (!relByMonth[mk]) relByMonth[mk] = [];
-      relByMonth[mk].push(daysDiff(r.validated_at, r.released_at));
+      relByMonth[mk].push(minutesDiff(r.validated_at, r.released_at) / 60); // hours
     });
 
     var valData = series.keys.map(function (k) {
       var arr = valByMonth[k];
-      return arr ? +(arr.reduce(function (a, b) { return a + b; }, 0) / arr.length).toFixed(1) : 0;
+      return arr ? +(mean(arr)).toFixed(1) : 0;
     });
     var relData = series.keys.map(function (k) {
       var arr = relByMonth[k];
-      return arr ? +(arr.reduce(function (a, b) { return a + b; }, 0) / arr.length).toFixed(1) : 0;
+      return arr ? +(mean(arr)).toFixed(1) : 0;
     });
 
-    anState.charts['phaseTime'] = new Chart($('anChartPhaseTime'), {
+    var canvas = $('anChartPhaseTime');
+    if (!canvas) return;
+    anState.charts['phaseTime'] = new Chart(canvas, {
       type: 'bar',
       data: {
         labels: series.labels,
         datasets: [
-          { label: 'Upload → Validazione (gg)', data: valData, backgroundColor: '#3b82f6', borderRadius: 4, maxBarThickness: 30 },
-          { label: 'Validazione → Rilascio (gg)', data: relData, backgroundColor: '#22c55e', borderRadius: 4, maxBarThickness: 30 }
+          { label: 'Upload \u2192 Validazione (ore)', data: valData, backgroundColor: '#3b82f6', borderRadius: 4, maxBarThickness: 30 },
+          { label: 'Validazione \u2192 Rilascio (ore)', data: relData, backgroundColor: '#22c55e', borderRadius: 4, maxBarThickness: 30 }
         ]
       },
-      options: Object.assign({}, chartOptions('Giorni', true), {
-        scales: { x: { stacked: true, grid: { display: false } }, y: { stacked: true, beginAtZero: true, title: { display: true, text: 'Giorni' } } }
+      options: Object.assign({}, chartOptions('Ore', true), {
+        scales: { x: { stacked: true, grid: { display: false } }, y: { stacked: true, beginAtZero: true, title: { display: true, text: 'Ore' } } }
       })
     });
   }
 
   function renderTimeDistribution(released) {
     destroyChart('timeDistribution');
-    var buckets = { '0-1gg': 0, '1-2gg': 0, '2-3gg': 0, '3-5gg': 0, '5-7gg': 0, '7-14gg': 0, '14+gg': 0 };
-    released.forEach(function (r) {
-      var d = daysDiff(r.created_at, r.released_at);
-      if (d <= 1) buckets['0-1gg']++;
-      else if (d <= 2) buckets['1-2gg']++;
-      else if (d <= 3) buckets['2-3gg']++;
-      else if (d <= 5) buckets['3-5gg']++;
-      else if (d <= 7) buckets['5-7gg']++;
-      else if (d <= 14) buckets['7-14gg']++;
-      else buckets['14+gg']++;
+    var tatMins = released.map(function(r){return minutesDiff(r.created_at, r.released_at);}).filter(function(v){return v!=null&&v>=0;});
+
+    var buckets = [
+      { label: '<6h', max: 360, color: '#22c55e' },
+      { label: '6-12h', max: 720, color: '#84cc16' },
+      { label: '12-24h', max: 1440, color: '#f59e0b' },
+      { label: '1-2gg', max: 2880, color: '#f97316' },
+      { label: '2-3gg', max: 4320, color: '#ef4444' },
+      { label: '>3gg', max: Infinity, color: '#991b1b' }
+    ];
+    var prev = 0;
+    var counts = buckets.map(function (b) {
+      var c = tatMins.filter(function (t) { return t >= prev && t < b.max; }).length;
+      prev = b.max;
+      return c;
     });
 
-    var labels = Object.keys(buckets);
-    var values = Object.values(buckets);
-    var colors = labels.map(function (l) {
-      if (l === '0-1gg' || l === '1-2gg' || l === '2-3gg') return '#22c55e';
-      if (l === '3-5gg') return '#f59e0b';
-      return '#ef4444';
-    });
-
-    anState.charts['timeDistribution'] = new Chart($('anChartTimeDistribution'), {
+    var canvas = $('anChartTimeDistribution');
+    if (!canvas) return;
+    anState.charts['timeDistribution'] = new Chart(canvas, {
       type: 'bar',
       data: {
-        labels: labels,
-        datasets: [{ data: values, backgroundColor: colors, borderRadius: 6, maxBarThickness: 50 }]
+        labels: buckets.map(function (b) { return b.label; }),
+        datasets: [{ data: counts, backgroundColor: buckets.map(function(b){return b.color;}), borderRadius: 6, maxBarThickness: 50 }]
       },
       options: Object.assign({}, chartOptions('Referti'), { plugins: { legend: { display: false } } })
     });
@@ -892,7 +1218,6 @@
     var userMap = {};
     anState.users.forEach(function (u) { userMap[u.id] = u; });
 
-    // Count uploads + validations + releases per operator
     var ops = {};
     rpts.forEach(function (r) {
       [r.uploaded_by, r.validated_by, r.released_by].forEach(function (uid) {
@@ -908,17 +1233,13 @@
       .sort(function (a, b) { return b.count - a.count; })
       .slice(0, 10);
 
-    anState.charts['operatorRank'] = new Chart($('anChartOperatorRank'), {
+    var canvas = $('anChartOperatorRank');
+    if (!canvas) return;
+    anState.charts['operatorRank'] = new Chart(canvas, {
       type: 'bar',
       data: {
         labels: entries.map(function (e) { return e.name; }),
-        datasets: [{
-          label: 'Operazioni',
-          data: entries.map(function (e) { return e.count; }),
-          backgroundColor: '#7CBA3D',
-          borderRadius: 6,
-          maxBarThickness: 40
-        }]
+        datasets: [{ label: 'Operazioni', data: entries.map(function (e) { return e.count; }), backgroundColor: '#7CBA3D', borderRadius: 6, maxBarThickness: 40 }]
       },
       options: Object.assign({}, chartOptions('Operazioni'), { indexAxis: 'y', plugins: { legend: { display: false } } })
     });
@@ -929,55 +1250,135 @@
   // ══════════════════════════════════════════════
   function renderPazienti() {
     var rpts = anState.reports;
-    var patients = anState.users.filter(function (u) { return u.role === 'patient'; });
+    var allPatients = anState.users.filter(function (u) { return u.role === 'patient'; });
+    var period = getPeriodRange($('anPeriod') ? $('anPeriod').value : 'year');
 
-    // KPIs
-    $('anPatTotal').textContent = patients.length.toLocaleString('it-IT');
+    // Total patients
+    safeText($('anPatTotal'), allPatients.length.toLocaleString('it-IT'));
 
     // New patients in period
-    var period = getPeriodRange($('anPeriod').value);
-    var newPats = patients.filter(function (u) {
+    var newPats = allPatients.filter(function (u) {
       var d = new Date(u.created_at);
       return d >= period.from && d <= period.to;
     });
-    $('anPatNew').textContent = newPats.length.toLocaleString('it-IT');
+    safeText($('anPatNew'), newPats.length.toLocaleString('it-IT'));
 
-    // Recurring (patients with >1 report)
+    // Comparison delta
+    if (anState.compReports.length > 0) {
+      var compRange = getComparisonRange(period.from, period.to, $('anCompare') ? $('anCompare').value : 'prev');
+      var compNewPats = allPatients.filter(function(u){var d=new Date(u.created_at);return d>=compRange.from&&d<=compRange.to;});
+      setKpiDelta('anPatNewDelta', newPats.length, compNewPats.length);
+    }
+
+    // Recurring
     var patReportCount = {};
-    rpts.forEach(function (r) {
-      if (r.patient_id) patReportCount[r.patient_id] = (patReportCount[r.patient_id] || 0) + 1;
-    });
+    rpts.forEach(function (r) { if (r.patient_id) patReportCount[r.patient_id] = (patReportCount[r.patient_id] || 0) + 1; });
     var recurring = Object.values(patReportCount).filter(function (c) { return c > 1; }).length;
-    $('anPatRecurring').textContent = recurring.toLocaleString('it-IT');
+    var uniquePats = Object.keys(patReportCount).length;
+    safeText($('anPatRecurring'), recurring.toLocaleString('it-IT'));
+    safeText($('anPatRecurringSub'), uniquePats > 0 ? ((recurring/uniquePats)*100).toFixed(1) + '% dei pazienti attivi' : '');
+
+    // Frequency
+    var avgFreq = uniquePats > 0 ? (rpts.length / uniquePats).toFixed(1) : '0';
+    safeText($('anPatFreq'), avgFreq);
 
     // Download rate
-    var downloadable = rpts.filter(function (r) { return r.status === 'released'; });
-    var downloaded = downloadable.filter(function (r) { return r.patient_downloaded; });
-    var dlRate = downloadable.length > 0 ? ((downloaded.length / downloadable.length) * 100).toFixed(1) : '0.0';
-    $('anPatDownloadRate').textContent = dlRate + '%';
+    var released = rpts.filter(function (r) { return r.status === 'released'; });
+    var downloaded = released.filter(function (r) { return r.patient_downloaded; });
+    var dlRate = released.length > 0 ? ((downloaded.length / released.length) * 100).toFixed(1) : '0.0';
+    safeText($('anPatDownloadRate'), dlRate + '%');
 
-    renderNewPatientsChart(patients, period);
+    // Retention 90d: patients who had a report in first half of period AND also in second half
+    var midPoint = new Date((period.from.getTime() + period.to.getTime()) / 2);
+    var firstHalf = {};
+    var secondHalf = {};
+    rpts.forEach(function (r) {
+      if (!r.patient_id) return;
+      var d = new Date(r.created_at);
+      if (d <= midPoint) firstHalf[r.patient_id] = true;
+      else secondHalf[r.patient_id] = true;
+    });
+    var retained = Object.keys(firstHalf).filter(function(pid){return secondHalf[pid];}).length;
+    var firstHalfCount = Object.keys(firstHalf).length;
+    var retentionPct = firstHalfCount > 0 ? ((retained / firstHalfCount) * 100).toFixed(1) : '0.0';
+    safeText($('anPatRetention'), retentionPct + '%');
+
+    renderNewPatientsChart(rpts, period);
+    renderAgeSexChart(allPatients);
     renderTopPatientsChart(rpts);
     renderViewVsDownload(rpts);
   }
 
-  function renderNewPatientsChart(patients, period) {
+  function renderNewPatientsChart(rpts, period) {
     destroyChart('newPatients');
-    var inRange = patients.filter(function (u) { return new Date(u.created_at) >= period.from && new Date(u.created_at) <= period.to; });
-    var series = buildMonthlySeries(inRange.map(function (u) { return { created_at: u.created_at }; }));
+    // Two datasets: new patients and recurring
+    var allPatients = anState.users.filter(function(u){return u.role==='patient';});
+    var newInRange = allPatients.filter(function(u){var d=new Date(u.created_at);return d>=period.from&&d<=period.to;});
+    var newSet = {};
+    newInRange.forEach(function(u){newSet[u.id]=true;});
 
-    anState.charts['newPatients'] = new Chart($('anChartNewPatients'), {
+    var series = buildTimeSeries(rpts, 'month');
+    var newByMonth = {};
+    var recurByMonth = {};
+    rpts.forEach(function(r) {
+      if (!r.patient_id) return;
+      var mk = monthKey(r.created_at);
+      if (newSet[r.patient_id]) {
+        newByMonth[mk] = (newByMonth[mk]||0) + 1;
+      } else {
+        recurByMonth[mk] = (recurByMonth[mk]||0) + 1;
+      }
+    });
+
+    var canvas = $('anChartNewPatients');
+    if (!canvas) return;
+    anState.charts['newPatients'] = new Chart(canvas, {
       type: 'bar',
       data: {
         labels: series.labels,
-        datasets: [{
-          label: 'Nuovi pazienti',
-          data: series.values,
-          backgroundColor: '#8b5cf6',
-          borderRadius: 6,
-          maxBarThickness: 40
-        }]
+        datasets: [
+          { label: 'Nuovi pazienti', data: series.keys.map(function(k){return newByMonth[k]||0;}), backgroundColor: '#8b5cf6', borderRadius: 4, maxBarThickness: 30 },
+          { label: 'Ricorrenti', data: series.keys.map(function(k){return recurByMonth[k]||0;}), backgroundColor: '#06b6d4', borderRadius: 4, maxBarThickness: 30 }
+        ]
       },
+      options: Object.assign({}, chartOptions('Referti', true), {
+        scales: { x: { stacked: true, grid: { display: false } }, y: { stacked: true, beginAtZero: true } }
+      })
+    });
+  }
+
+  function renderAgeSexChart(patients) {
+    destroyChart('ageSex');
+    // Age groups: <20, 20-29, 30-39, 40-49, 50-59, 60-69, 70+
+    var buckets = ['<20', '20-29', '30-39', '40-49', '50-59', '60-69', '70+'];
+    var now = new Date();
+    var male = new Array(buckets.length).fill(0);
+    var female = new Array(buckets.length).fill(0);
+    var other = new Array(buckets.length).fill(0);
+
+    patients.forEach(function (p) {
+      if (!p.date_of_birth) return;
+      var age = (now.getTime() - new Date(p.date_of_birth).getTime()) / (365.25 * 24 * 3600000);
+      var idx = age < 20 ? 0 : age < 30 ? 1 : age < 40 ? 2 : age < 50 ? 3 : age < 60 ? 4 : age < 70 ? 5 : 6;
+      if (p.gender === 'M' || p.gender === 'male') male[idx]++;
+      else if (p.gender === 'F' || p.gender === 'female') female[idx]++;
+      else other[idx]++;
+    });
+
+    var canvas = $('anChartAgeSex');
+    if (!canvas) return;
+
+    var datasets = [
+      { label: 'Donne', data: female, backgroundColor: '#ec4899', borderRadius: 4, maxBarThickness: 30 },
+      { label: 'Uomini', data: male, backgroundColor: '#3b82f6', borderRadius: 4, maxBarThickness: 30 }
+    ];
+    if (other.some(function(v){return v>0;})) {
+      datasets.push({ label: 'Altro', data: other, backgroundColor: '#94a3b8', borderRadius: 4, maxBarThickness: 30 });
+    }
+
+    anState.charts['ageSex'] = new Chart(canvas, {
+      type: 'bar',
+      data: { labels: buckets, datasets: datasets },
       options: chartOptions('Pazienti', true)
     });
   }
@@ -985,38 +1386,26 @@
   function renderTopPatientsChart(rpts) {
     destroyChart('topPatients');
     var patCount = {};
-    var patNames = {};
-    rpts.forEach(function (r) {
-      if (r.patient_id) {
-        patCount[r.patient_id] = (patCount[r.patient_id] || 0) + 1;
-        if (r.patient_fiscal_code) patNames[r.patient_id] = r.patient_fiscal_code;
-      }
-    });
-
-    // Resolve names from users
+    rpts.forEach(function (r) { if (r.patient_id) patCount[r.patient_id] = (patCount[r.patient_id] || 0) + 1; });
     var userMap = {};
     anState.users.forEach(function (u) { userMap[u.id] = u; });
 
     var entries = Object.entries(patCount)
       .map(function (e) {
         var u = userMap[e[0]];
-        var label = u ? (u.last_name + ' ' + (u.first_name || '')[0] + '.').trim() : (patNames[e[0]] || e[0].substring(0, 8));
+        var label = u ? (u.last_name + ' ' + (u.first_name || '')[0] + '.').trim() : e[0].substring(0, 8);
         return { name: label, count: e[1] };
       })
       .sort(function (a, b) { return b.count - a.count; })
       .slice(0, 10);
 
-    anState.charts['topPatients'] = new Chart($('anChartTopPatients'), {
+    var canvas = $('anChartTopPatients');
+    if (!canvas) return;
+    anState.charts['topPatients'] = new Chart(canvas, {
       type: 'bar',
       data: {
         labels: entries.map(function (e) { return e.name; }),
-        datasets: [{
-          label: 'N. Referti',
-          data: entries.map(function (e) { return e.count; }),
-          backgroundColor: '#06b6d4',
-          borderRadius: 6,
-          maxBarThickness: 40
-        }]
+        datasets: [{ label: 'N. Referti', data: entries.map(function (e) { return e.count; }), backgroundColor: '#06b6d4', borderRadius: 6, maxBarThickness: 40 }]
       },
       options: Object.assign({}, chartOptions('N. Referti'), { indexAxis: 'y', plugins: { legend: { display: false } } })
     });
@@ -1025,7 +1414,7 @@
   function renderViewVsDownload(rpts) {
     destroyChart('viewVsDownload');
     var released = rpts.filter(function (r) { return r.status === 'released'; });
-    var series = buildMonthlySeries(released, 'released_at');
+    var series = buildTimeSeries(released, 'month', 'released_at');
 
     var viewedByMonth = {};
     var downloadedByMonth = {};
@@ -1035,16 +1424,15 @@
       if (r.patient_downloaded) downloadedByMonth[mk] = (downloadedByMonth[mk] || 0) + 1;
     });
 
-    var viewData = series.keys.map(function (k) { return viewedByMonth[k] || 0; });
-    var dlData = series.keys.map(function (k) { return downloadedByMonth[k] || 0; });
-
-    anState.charts['viewVsDownload'] = new Chart($('anChartViewVsDownload'), {
+    var canvas = $('anChartViewVsDownload');
+    if (!canvas) return;
+    anState.charts['viewVsDownload'] = new Chart(canvas, {
       type: 'line',
       data: {
         labels: series.labels,
         datasets: [
-          { label: 'Visualizzati', data: viewData, borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.1)', fill: true, tension: 0.3, borderWidth: 2 },
-          { label: 'Scaricati', data: dlData, borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.1)', fill: true, tension: 0.3, borderWidth: 2 }
+          { label: 'Visualizzati', data: series.keys.map(function(k){return viewedByMonth[k]||0;}), borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.1)', fill: true, tension: 0.3, borderWidth: 2 },
+          { label: 'Scaricati', data: series.keys.map(function(k){return downloadedByMonth[k]||0;}), borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.1)', fill: true, tension: 0.3, borderWidth: 2 }
         ]
       },
       options: chartOptions('Referti', true)
@@ -1052,26 +1440,46 @@
   }
 
   // ══════════════════════════════════════════════
-  //  TAB 5: QUALITÀ
+  //  TAB 5: QUALIT\u00C0
   // ══════════════════════════════════════════════
   function renderQualita() {
     var rpts = anState.reports;
-
-    // KPIs
+    var comp = anState.compReports;
     var total = rpts.length;
     var abnormal = rpts.filter(function (r) { return r.has_abnormal_values; }).length;
     var urgent = rpts.filter(function (r) { return r.is_urgent; }).length;
     var revoked = rpts.filter(function (r) { return r.status === 'revoked'; }).length;
 
-    $('anQualAbnormalPct').textContent = total > 0 ? ((abnormal / total) * 100).toFixed(1) + '%' : '0%';
-    $('anQualUrgentPct').textContent = total > 0 ? ((urgent / total) * 100).toFixed(1) + '%' : '0%';
-    $('anQualRevoked').textContent = revoked.toLocaleString('it-IT');
+    var abnPct = total > 0 ? ((abnormal / total) * 100).toFixed(1) : '0.0';
+    safeText($('anQualAbnormal'), abnormal + ' · ' + abnPct + '%');
+    safeText($('anQualAbnSub'), 'su ' + total + ' referti');
 
-    // SLA: % released within SLA_DAYS
-    var released = rpts.filter(function (r) { return r.released_at && r.created_at; });
-    var withinSLA = released.filter(function (r) { return daysDiff(r.created_at, r.released_at) <= SLA_DAYS; });
+    var urgPct = total > 0 ? ((urgent / total) * 100).toFixed(1) : '0.0';
+    safeText($('anQualUrgent'), urgent + ' · ' + urgPct + '%');
+    safeText($('anQualUrgSub'), 'su ' + total + ' referti');
+
+    // SLA
+    var released = rpts.filter(function(r){return r.released_at && r.created_at;});
+    var withinSLA = released.filter(function(r){return hoursDiff(r.created_at, r.released_at) <= SLA_HOURS;});
     var slaPct = released.length > 0 ? ((withinSLA.length / released.length) * 100).toFixed(1) : '0.0';
-    $('anQualSLA').textContent = slaPct + '%';
+    safeText($('anQualSLA'), slaPct + '%');
+
+    safeText($('anQualRevoked'), revoked.toLocaleString('it-IT'));
+
+    // TAT P90 for abnormal and urgent subsets
+    var abnRpts = rpts.filter(function(r){return r.has_abnormal_values && r.released_at && r.created_at;});
+    var abnTats = abnRpts.map(function(r){return minutesDiff(r.created_at, r.released_at);}).filter(function(v){return v!=null&&v>=0;});
+    safeText($('anQualTatAbn'), fmtDuration(percentile(abnTats, 90)));
+
+    var urgRpts = rpts.filter(function(r){return r.is_urgent && r.released_at && r.created_at;});
+    var urgTats = urgRpts.map(function(r){return minutesDiff(r.created_at, r.released_at);}).filter(function(v){return v!=null&&v>=0;});
+    safeText($('anQualTatUrg'), fmtDuration(percentile(urgTats, 90)));
+
+    // Deltas
+    if (comp.length > 0) {
+      setKpiDelta('anQualAbnDelta', abnormal, comp.filter(function(r){return r.has_abnormal_values;}).length);
+      setKpiDelta('anQualUrgDelta', urgent, comp.filter(function(r){return r.is_urgent;}).length);
+    }
 
     renderAnomalyTrend(rpts);
     renderUrgentByType(rpts);
@@ -1080,9 +1488,9 @@
 
   function renderAnomalyTrend(rpts) {
     destroyChart('anomalyTrend');
-    var series = buildMonthlySeries(rpts);
+    var series = buildTimeSeries(rpts, 'month');
     var abnRpts = rpts.filter(function (r) { return r.has_abnormal_values; });
-    var abnSeries = buildMonthlySeries(abnRpts);
+    var abnSeries = buildTimeSeries(abnRpts, 'month');
 
     var totalByMonth = {};
     series.keys.forEach(function (k, i) { totalByMonth[k] = series.values[i]; });
@@ -1099,7 +1507,9 @@
       return idx >= 0 ? abnSeries.values[idx] : 0;
     });
 
-    anState.charts['anomalyTrend'] = new Chart($('anChartAnomalyTrend'), {
+    var canvas = $('anChartAnomalyTrend');
+    if (!canvas) return;
+    anState.charts['anomalyTrend'] = new Chart(canvas, {
       type: 'bar',
       data: {
         labels: series.labels,
@@ -1109,10 +1519,7 @@
         ]
       },
       options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        aspectRatio: 2,
-        animation: { duration: 300 },
+        responsive: true, maintainAspectRatio: true, aspectRatio: 2, animation: { duration: 300 },
         scales: {
           x: { grid: { display: false } },
           y: { beginAtZero: true, position: 'left', title: { display: true, text: 'N. Anomali' } },
@@ -1129,17 +1536,13 @@
     var byType = groupBy(urgRpts, function (r) { return r.report_type || 'altro'; });
     var entries = Object.entries(byType).sort(function (a, b) { return b[1].length - a[1].length; }).slice(0, 10);
 
-    anState.charts['urgentByType'] = new Chart($('anChartUrgentByType'), {
+    var canvas = $('anChartUrgentByType');
+    if (!canvas) return;
+    anState.charts['urgentByType'] = new Chart(canvas, {
       type: 'bar',
       data: {
         labels: entries.map(function (e) { return TYPE_LABELS[e[0]] || e[0]; }),
-        datasets: [{
-          label: 'Urgenze',
-          data: entries.map(function (e) { return e[1].length; }),
-          backgroundColor: '#f59e0b',
-          borderRadius: 6,
-          maxBarThickness: 40
-        }]
+        datasets: [{ label: 'Urgenze', data: entries.map(function (e) { return e[1].length; }), backgroundColor: '#f59e0b', borderRadius: 6, maxBarThickness: 40 }]
       },
       options: Object.assign({}, chartOptions('Urgenze'), { indexAxis: 'y', plugins: { legend: { display: false } } })
     });
@@ -1148,78 +1551,155 @@
   function renderSLAMonitor(rpts) {
     destroyChart('slaMonitor');
     var released = rpts.filter(function (r) { return r.released_at && r.created_at; });
-    var series = buildMonthlySeries(released);
+    var series = buildTimeSeries(released, 'month');
 
     var avgByMonth = {};
     released.forEach(function (r) {
       var mk = monthKey(r.created_at);
       if (!avgByMonth[mk]) avgByMonth[mk] = [];
-      avgByMonth[mk].push(daysDiff(r.created_at, r.released_at));
+      avgByMonth[mk].push(hoursDiff(r.created_at, r.released_at));
     });
 
     var avgData = series.keys.map(function (k) {
       var arr = avgByMonth[k];
-      return arr ? +(arr.reduce(function (a, b) { return a + b; }, 0) / arr.length).toFixed(1) : 0;
+      return arr ? +(mean(arr)).toFixed(1) : 0;
     });
 
-    var slaLine = series.keys.map(function () { return SLA_DAYS; });
+    var slaLine = series.keys.map(function () { return SLA_HOURS; });
+    var barColors = avgData.map(function (v) { return v <= SLA_HOURS ? '#22c55e' : '#ef4444'; });
 
-    var barColors = avgData.map(function (v) { return v <= SLA_DAYS ? '#22c55e' : '#ef4444'; });
-
-    anState.charts['slaMonitor'] = new Chart($('anChartSLAMonitor'), {
+    var canvas = $('anChartSLAMonitor');
+    if (!canvas) return;
+    anState.charts['slaMonitor'] = new Chart(canvas, {
       type: 'bar',
       data: {
         labels: series.labels,
         datasets: [
-          { label: 'Media giorni rilascio', data: avgData, backgroundColor: barColors, borderRadius: 6, maxBarThickness: 40 },
-          { label: 'SLA Target (' + SLA_DAYS + 'gg)', data: slaLine, type: 'line', borderColor: '#ef4444', borderWidth: 2, borderDash: [6, 3], pointRadius: 0, fill: false }
+          { label: 'Media ore rilascio', data: avgData, backgroundColor: barColors, borderRadius: 6, maxBarThickness: 40 },
+          { label: 'SLA Target (' + SLA_HOURS + 'h)', data: slaLine, type: 'line', borderColor: '#ef4444', borderWidth: 2, borderDash: [6, 3], pointRadius: 0, fill: false }
         ]
       },
-      options: chartOptions('Giorni', true)
+      options: chartOptions('Ore', true)
     });
   }
 
-  // ── Chart.js common options ────────────────────
-  function chartOptions(yLabel, showLegend, aspectRatio) {
-    return {
-      responsive: true,
-      maintainAspectRatio: true,
-      aspectRatio: aspectRatio || 2,
-      animation: { duration: 300 },
-      interaction: { mode: 'index', intersect: false },
-      plugins: {
-        legend: { display: showLegend !== false, labels: { boxWidth: 12, font: { size: 11 } } },
-        tooltip: { backgroundColor: 'rgba(0,0,0,0.8)', titleFont: { size: 12 }, bodyFont: { size: 11 }, padding: 10 }
-      },
-      scales: {
-        x: { grid: { display: false }, ticks: { font: { size: 10 } } },
-        y: { beginAtZero: true, ticks: { font: { size: 10 } }, title: { display: !!yLabel, text: yLabel || '', font: { size: 11 } } }
-      }
-    };
+
+  // ══════════════════════════════════════════════
+  //  DRILL-DOWN MODAL
+  // ══════════════════════════════════════════════
+  function openDrillDown(type) {
+    var container = $('anDrillContainer');
+    if (!container) return;
+    var rpts = anState.reports;
+    var title = '';
+    var rows = [];
+    var userMap = {};
+    anState.users.forEach(function(u){ userMap[u.id] = u; });
+
+    function userName(uid) {
+      var u = userMap[uid];
+      return u ? (u.first_name + ' ' + u.last_name).trim() : (uid ? uid.substring(0,8) : '-');
+    }
+
+    switch (type) {
+      case 'total':
+        title = 'Tutti i Referti (' + rpts.length + ')';
+        rows = rpts;
+        break;
+      case 'queue':
+        rows = rpts.filter(function(r){return r.status!=='released'&&r.status!=='revoked';});
+        title = 'Referti In Coda (' + rows.length + ')';
+        break;
+      case 'patients':
+        title = 'Pazienti Unici';
+        var patMap = {};
+        rpts.forEach(function(r){
+          if (r.patient_id && !patMap[r.patient_id]) {
+            var u = userMap[r.patient_id];
+            patMap[r.patient_id] = {
+              name: u ? (u.last_name + ' ' + u.first_name).trim() : r.patient_fiscal_code || r.patient_id.substring(0,8),
+              count: 0
+            };
+          }
+          if (r.patient_id) patMap[r.patient_id].count++;
+        });
+        var patEntries = Object.values(patMap).sort(function(a,b){return b.count-a.count;});
+        container.innerHTML = buildDrillModal(title, '<table class="an-drill-table"><thead><tr><th>Paziente</th><th>N. Referti</th></tr></thead><tbody>' +
+          patEntries.map(function(p){return '<tr><td>'+p.name+'</td><td>'+p.count+'</td></tr>';}).join('') + '</tbody></table>');
+        bindDrillClose(container);
+        return;
+      case 'abnormal':
+        rows = rpts.filter(function(r){return r.has_abnormal_values;});
+        title = 'Referti con Valori Anomali (' + rows.length + ')';
+        break;
+      case 'urgent':
+        rows = rpts.filter(function(r){return r.is_urgent;});
+        title = 'Referti Urgenti (' + rows.length + ')';
+        break;
+      case 'sla_breach':
+        rows = rpts.filter(function(r){return r.released_at && r.created_at && hoursDiff(r.created_at, r.released_at) > SLA_HOURS;});
+        title = 'Referti Oltre SLA (' + rows.length + ')';
+        break;
+      default:
+        return;
+    }
+
+    // Standard report table
+    var tableHtml = '<table class="an-drill-table"><thead><tr><th>N. Referto</th><th>Tipo</th><th>Categoria</th><th>Stato</th><th>Creato</th><th>TAT</th><th>Paziente</th></tr></thead><tbody>';
+    rows.slice(0, 200).forEach(function(r) {
+      var tat = r.released_at && r.created_at ? fmtDuration(minutesDiff(r.created_at, r.released_at)) : '-';
+      var patName = '-';
+      if (r.patient_id) { var u = userMap[r.patient_id]; patName = u ? (u.last_name + ' ' + (u.first_name||'')[0] + '.').trim() : (r.patient_fiscal_code || '-'); }
+      tableHtml += '<tr>' +
+        '<td>' + (r.report_number || '-') + '</td>' +
+        '<td>' + (TYPE_LABELS[r.report_type] || r.report_type || '-') + '</td>' +
+        '<td>' + (r.category || '-') + '</td>' +
+        '<td><span class="badge badge-' + r.status + '">' + r.status + '</span></td>' +
+        '<td>' + (r.created_at ? r.created_at.substring(0, 10) : '-') + '</td>' +
+        '<td>' + tat + '</td>' +
+        '<td>' + patName + '</td>' +
+        '</tr>';
+    });
+    if (rows.length > 200) tableHtml += '<tr><td colspan="7" style="text-align:center;color:var(--text-muted);font-style:italic">Mostrati 200 di ' + rows.length + '</td></tr>';
+    tableHtml += '</tbody></table>';
+
+    container.innerHTML = buildDrillModal(title, tableHtml);
+    bindDrillClose(container);
+  }
+
+  function buildDrillModal(title, bodyHtml) {
+    return '<div class="an-drill-overlay">' +
+      '<div class="an-drill-modal">' +
+      '<div class="an-drill-header"><h3>' + title + '</h3><button class="an-drill-close">&times;</button></div>' +
+      '<div class="an-drill-body">' + bodyHtml + '</div>' +
+      '</div></div>';
+  }
+
+  function bindDrillClose(container) {
+    var overlay = container.querySelector('.an-drill-overlay');
+    var closeBtn = container.querySelector('.an-drill-close');
+    if (closeBtn) closeBtn.addEventListener('click', function(){ container.innerHTML = ''; });
+    if (overlay) overlay.addEventListener('click', function(e){
+      if (e.target === overlay) container.innerHTML = '';
+    });
   }
 
   // ══════════════════════════════════════════════
   //  EXPORTS
   // ══════════════════════════════════════════════
-
   function exportPDF() {
-    if (!window.html2canvas || !window.jspdf) {
-      alert('Librerie di esportazione non caricate.');
-      return;
-    }
+    if (!window.html2canvas || !window.jspdf) { alert('Librerie di esportazione non caricate.'); return; }
     var target = document.querySelector('.an-panel.active');
     if (!target) return;
 
     var btn = $('anExportPdf');
-    btn.disabled = true;
-    btn.textContent = 'Generazione PDF...';
+    if (btn) { btn.disabled = true; btn.textContent = 'Generazione PDF...'; }
 
     html2canvas(target, { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(function (canvas) {
       var imgData = canvas.toDataURL('image/png');
       var pdf = new jspdf.jsPDF({
         orientation: canvas.width > canvas.height ? 'landscape' : 'portrait',
-        unit: 'mm',
-        format: 'a4'
+        unit: 'mm', format: 'a4'
       });
       var pageW = pdf.internal.pageSize.getWidth();
       var pageH = pdf.internal.pageSize.getHeight();
@@ -1227,17 +1707,15 @@
       var imgW = pageW - margin * 2;
       var imgH = (canvas.height * imgW) / canvas.width;
 
-      // Header
       pdf.setFontSize(16);
       pdf.setTextColor(0, 112, 74);
-      pdf.text('Bio-Clinic Analytics — ' + anState.activeTab.toUpperCase(), margin, margin + 5);
+      pdf.text('Bio-Clinic Analytics BI \u2014 ' + anState.activeTab.toUpperCase(), margin, margin + 5);
       pdf.setFontSize(9);
       pdf.setTextColor(100);
       pdf.text('Generato il ' + new Date().toLocaleDateString('it-IT') + ' alle ' + new Date().toLocaleTimeString('it-IT'), margin, margin + 11);
 
       var yOff = margin + 16;
       if (imgH + yOff > pageH) {
-        // Multi-page
         var remaining = imgH;
         var sourceY = 0;
         while (remaining > 0) {
@@ -1250,10 +1728,7 @@
           pdf.addImage(sliceCanvas.toDataURL('image/png'), 'PNG', margin, yOff, imgW, sliceH);
           remaining -= sliceH;
           sourceY += sliceCanvas.height;
-          if (remaining > 0) {
-            pdf.addPage();
-            yOff = margin;
-          }
+          if (remaining > 0) { pdf.addPage(); yOff = margin; }
         }
       } else {
         pdf.addImage(imgData, 'PNG', margin, yOff, imgW, imgH);
@@ -1261,31 +1736,25 @@
 
       pdf.save('BioClinic_Analytics_' + anState.activeTab + '_' + new Date().toISOString().slice(0, 10) + '.pdf');
     }).finally(function () {
-      btn.disabled = false;
-      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> PDF';
+      if (btn) { btn.disabled = false; btn.textContent = 'PDF'; }
     });
   }
 
   function exportExcel() {
-    if (!window.XLSX) {
-      alert('Libreria SheetJS non caricata.');
-      return;
-    }
-
+    if (!window.XLSX) { alert('Libreria SheetJS non caricata.'); return; }
     var wb = XLSX.utils.book_new();
     var rpts = anState.reports;
 
-    // Sheet 1: Tutti i referti
+    // Sheet 1: All reports
     var rows = rpts.map(function (r) {
+      var tat = r.released_at && r.created_at ? +(minutesDiff(r.created_at, r.released_at) / 60).toFixed(1) : '';
       return {
-        'N. Referto': r.report_number,
-        'Tipo': TYPE_LABELS[r.report_type] || r.report_type,
-        'Categoria': r.category,
-        'Stato': r.status,
-        'Data Prelievo': r.sample_date,
-        'Creato': r.created_at ? r.created_at.substring(0, 10) : '',
+        'N. Referto': r.report_number, 'Tipo': TYPE_LABELS[r.report_type] || r.report_type,
+        'Categoria': r.category, 'Stato': r.status,
+        'Data Prelievo': r.sample_date, 'Creato': r.created_at ? r.created_at.substring(0, 10) : '',
         'Validato': r.validated_at ? r.validated_at.substring(0, 10) : '',
         'Rilasciato': r.released_at ? r.released_at.substring(0, 10) : '',
+        'TAT (ore)': tat,
         'Urgente': r.is_urgent ? 'Si' : 'No',
         'Valori Anomali': r.has_abnormal_values ? 'Si' : 'No',
         'Visualizzato': r.patient_viewed ? 'Si' : 'No',
@@ -1294,52 +1763,49 @@
         'CF Paziente': r.patient_fiscal_code || ''
       };
     });
-    var ws1 = XLSX.utils.json_to_sheet(rows);
-    XLSX.utils.book_append_sheet(wb, ws1, 'Referti');
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(rows), 'Referti');
 
-    // Sheet 2: Volume per tipo
+    // Sheet 2: Volume per tipo with TAT
     var byType = groupBy(rpts, function (r) { return r.report_type || 'altro'; });
     var typeRows = Object.entries(byType)
       .sort(function (a, b) { return b[1].length - a[1].length; })
       .map(function (e) {
         var items = e[1];
-        var released = items.filter(function (r) { return r.status === 'released'; }).length;
+        var relItems = items.filter(function(r){return r.released_at&&r.created_at;});
+        var tats = relItems.map(function(r){return minutesDiff(r.created_at, r.released_at)/60;}).filter(function(v){return v!=null&&v>=0;});
         return {
-          'Tipo': TYPE_LABELS[e[0]] || e[0],
-          'Totale': items.length,
-          'Rilasciati': released,
-          '% Rilascio': items.length > 0 ? ((released / items.length) * 100).toFixed(1) + '%' : '0%',
-          'Urgenti': items.filter(function (r) { return r.is_urgent; }).length,
-          'Anomali': items.filter(function (r) { return r.has_abnormal_values; }).length
+          'Tipo': TYPE_LABELS[e[0]] || e[0], 'Totale': items.length,
+          'Rilasciati': items.filter(function(r){return r.status==='released';}).length,
+          'TAT Medio (ore)': tats.length > 0 ? +(mean(tats)).toFixed(1) : '',
+          'TAT P90 (ore)': tats.length > 0 ? +(percentile(tats,90)).toFixed(1) : '',
+          'Urgenti': items.filter(function(r){return r.is_urgent;}).length,
+          'Anomali': items.filter(function(r){return r.has_abnormal_values;}).length
         };
       });
-    var ws2 = XLSX.utils.json_to_sheet(typeRows);
-    XLSX.utils.book_append_sheet(wb, ws2, 'Volume per Tipo');
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(typeRows), 'Volume per Tipo');
 
-    // Sheet 3: Riepilogo KPI
-    var released = rpts.filter(function (r) { return r.released_at && r.created_at; });
-    var avgTime = released.length > 0
-      ? (released.reduce(function (s, r) { return s + daysDiff(r.created_at, r.released_at); }, 0) / released.length).toFixed(1)
-      : 0;
+    // Sheet 3: KPI summary
+    var released = rpts.filter(function(r){return r.released_at&&r.created_at;});
+    var allTat = released.map(function(r){return minutesDiff(r.created_at, r.released_at);}).filter(function(v){return v!=null&&v>=0;});
+    var withinSLA = released.filter(function(r){return hoursDiff(r.created_at, r.released_at) <= SLA_HOURS;});
     var kpiRows = [
       { 'KPI': 'Referti Totali', 'Valore': rpts.length },
-      { 'KPI': 'Rilasciati', 'Valore': rpts.filter(function (r) { return r.status === 'released'; }).length },
       { 'KPI': 'Pazienti Unici', 'Valore': countUnique(rpts, 'patient_id') },
-      { 'KPI': 'Tempo Medio Rilascio (gg)', 'Valore': avgTime },
-      { 'KPI': '% Valori Anomali', 'Valore': rpts.length > 0 ? ((rpts.filter(function (r) { return r.has_abnormal_values; }).length / rpts.length) * 100).toFixed(1) + '%' : '0%' },
-      { 'KPI': '% Urgenze', 'Valore': rpts.length > 0 ? ((rpts.filter(function (r) { return r.is_urgent; }).length / rpts.length) * 100).toFixed(1) + '%' : '0%' },
-      { 'KPI': 'SLA Rispettato (≤' + SLA_DAYS + 'gg)', 'Valore': released.length > 0 ? ((released.filter(function (r) { return daysDiff(r.created_at, r.released_at) <= SLA_DAYS; }).length / released.length) * 100).toFixed(1) + '%' : '0%' }
+      { 'KPI': 'TAT Medio (ore)', 'Valore': allTat.length > 0 ? +(mean(allTat)/60).toFixed(1) : 0 },
+      { 'KPI': 'TAT Mediano (ore)', 'Valore': allTat.length > 0 ? +(percentile(allTat,50)/60).toFixed(1) : 0 },
+      { 'KPI': 'TAT P90 (ore)', 'Valore': allTat.length > 0 ? +(percentile(allTat,90)/60).toFixed(1) : 0 },
+      { 'KPI': '% Valori Anomali', 'Valore': rpts.length > 0 ? ((rpts.filter(function(r){return r.has_abnormal_values;}).length/rpts.length)*100).toFixed(1) + '%' : '0%' },
+      { 'KPI': '% Urgenze', 'Valore': rpts.length > 0 ? ((rpts.filter(function(r){return r.is_urgent;}).length/rpts.length)*100).toFixed(1) + '%' : '0%' },
+      { 'KPI': 'SLA Rispettato (\u2264' + SLA_HOURS + 'h)', 'Valore': released.length > 0 ? ((withinSLA.length/released.length)*100).toFixed(1) + '%' : '0%' }
     ];
-    var ws3 = XLSX.utils.json_to_sheet(kpiRows);
-    XLSX.utils.book_append_sheet(wb, ws3, 'KPI');
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(kpiRows), 'KPI');
 
-    XLSX.writeFile(wb, 'BioClinic_Analytics_' + new Date().toISOString().slice(0, 10) + '.xlsx');
+    XLSX.writeFile(wb, 'BioClinic_Analytics_BI_' + new Date().toISOString().slice(0, 10) + '.xlsx');
   }
 
   // ══════════════════════════════════════════════
   //  INIT & EVENT BINDING
   // ══════════════════════════════════════════════
-
   function initAnalytics() {
     if (anState.initialized) return;
     anState.initialized = true;
@@ -1351,50 +1817,81 @@
         this.classList.add('active');
         var tabName = this.dataset.tab;
         anState.activeTab = tabName;
-
         $$('.an-panel').forEach(function (p) { p.classList.remove('active'); p.hidden = true; });
         var panel = $('anPanel-' + tabName);
         if (panel) { panel.classList.add('active'); panel.hidden = false; }
-
         renderActiveTab();
       });
     });
 
-    // Period change → show/hide custom range
-    $('anPeriod').addEventListener('change', function () {
-      $('anCustomRange').hidden = this.value !== 'custom';
-    });
+    // Period change
+    var periodEl = $('anPeriod');
+    if (periodEl) {
+      periodEl.addEventListener('change', function () {
+        var customEl = $('anCustomRange');
+        if (customEl) customEl.hidden = this.value !== 'custom';
+      });
+    }
 
-    // Apply filters
-    $('anApplyFilters').addEventListener('click', function () {
-      loadAnalyticsData();
-    });
+    // Apply filters button
+    var applyBtn = $('anApplyFilters');
+    if (applyBtn) applyBtn.addEventListener('click', function () { loadAnalyticsData(); });
 
     // Exports
-    $('anExportPdf').addEventListener('click', exportPDF);
-    $('anExportExcel').addEventListener('click', exportExcel);
+    var pdfBtn = $('anExportPdf');
+    if (pdfBtn) pdfBtn.addEventListener('click', exportPDF);
+    var xlBtn = $('anExportExcel');
+    if (xlBtn) xlBtn.addEventListener('click', exportExcel);
+
+    // Granularity toggle
+    var granDiv = $('anGranularity');
+    if (granDiv) {
+      granDiv.querySelectorAll('button').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          granDiv.querySelectorAll('button').forEach(function(b){b.classList.remove('active');});
+          this.classList.add('active');
+          anState.granularity = this.dataset.g;
+          // Re-render only volume chart area
+          if (anState.activeTab === 'overview') {
+            renderVolumeChart(anState.reports, anState.compReports);
+          }
+        });
+      });
+    }
+
+    // Auto-refresh toggle
+    var autoRefreshCb = $('anAutoRefresh');
+    if (autoRefreshCb) {
+      autoRefreshCb.addEventListener('change', function () {
+        if (this.checked) {
+          anState.autoRefreshTimer = setInterval(function () { loadAnalyticsData(); }, AUTO_REFRESH_MS);
+        } else {
+          if (anState.autoRefreshTimer) { clearInterval(anState.autoRefreshTimer); anState.autoRefreshTimer = null; }
+        }
+      });
+    }
+
+    // Drill-down click on KPI cards
+    document.addEventListener('click', function (e) {
+      var card = e.target.closest('.an-kpi-card[data-drill]');
+      if (card) {
+        openDrillDown(card.dataset.drill);
+      }
+    });
 
     // Initial load
     loadAnalyticsData();
   }
 
-  // ── Integration with dashboard.js navigation ──
-  // The main dashboard.js calls loadPageData(page) on navigation.
-  // We hook into it by listening for the analytics page becoming visible.
-  // Also expose initAnalytics globally so dashboard.js can call it.
+  // ── Global integration ─────────────────────────
   window._initAnalytics = initAnalytics;
 
-  // Auto-detect if analytics page becomes visible (hashchange)
   window.addEventListener('hashchange', function () {
-    if (window.location.hash === '#analytics') {
-      initAnalytics();
-    }
+    if (window.location.hash === '#analytics') initAnalytics();
   });
 
-  // Also check on DOMContentLoaded in case page loads with #analytics
   document.addEventListener('DOMContentLoaded', function () {
     if (window.location.hash === '#analytics') {
-      // Wait for dashboard.js to finish init
       setTimeout(initAnalytics, 500);
     }
   });
