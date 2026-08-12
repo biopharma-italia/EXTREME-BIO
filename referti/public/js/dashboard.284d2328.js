@@ -1394,17 +1394,23 @@
     var search = $('searchAllReports').value.trim();
     var enc = encodeURIComponent(search);
 
-    // Show ostetrica toggle for ostetrica / biologa / tecnico roles
+    // Show ostetrica toggle for ostetrica / biologa / tecnico / admin roles
     var isOsteRole = state.profile && (
       state.profile.role === 'ostetrica' ||
       state.profile.role === 'biologa_laboratorio' ||
       state.profile.role === 'tecnico_laboratorio'
     );
+    var isAdmin = state.profile && (
+      state.profile.role === 'admin' ||
+      state.profile.role === 'super_admin'
+    );
+    var showToggle = isOsteRole || isAdmin;
     var osteToggle = $('osteFilter');
     if (osteToggle) {
-      osteToggle.style.display = isOsteRole ? 'flex' : 'none';
+      osteToggle.style.display = showToggle ? 'flex' : 'none';
     }
-    var osteFilterOn = isOsteRole && $('filterOstetriche') && $('filterOstetriche').checked;
+    // Default: ON for ostetriche (filter active), OFF for admin (see all)
+    var osteFilterOn = showToggle && $('filterOstetriche') && $('filterOstetriche').checked;
 
     // Step 1: Resolve ostetrica IDs if filter is active
     var osteIdLookup = osteFilterOn ? fetchOstetricaIds() : Promise.resolve(null);
@@ -1474,8 +1480,12 @@
     if (!$('filterAllStatus')._bound) {
       $('filterAllStatus').addEventListener('change', loadAllReports);
       $('searchAllReports').addEventListener('input', debounce(loadAllReports, 400));
-      // Bind ostetrica toggle
+      // Bind ostetrica toggle + set default based on role
       if ($('filterOstetriche')) {
+        // Ostetriche: default ON (filter active). Admin: default OFF (see all)
+        if (isAdmin && !isOsteRole) {
+          $('filterOstetriche').checked = false;
+        }
         $('filterOstetriche').addEventListener('change', loadAllReports);
       }
       $('filterAllStatus')._bound = true;
