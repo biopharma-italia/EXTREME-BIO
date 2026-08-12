@@ -453,6 +453,14 @@
             <option value="urgent">Solo urgenti</option>
             <option value="abnormal">Valori anomali</option>
           </select>
+          <!-- Ostetrica filter toggle for queue -->
+          <div id="osteFilterQueue" style="display:flex;align-items:center;gap:8px;margin-left:4px;font-size:0.85rem;white-space:nowrap">
+            <label class="toggle">
+              <input type="checkbox" id="filterOstetricheQueue" checked>
+              <span class="toggle-slider"></span>
+            </label>
+            <span style="cursor:default;user-select:none">Solo Ostetriche</span>
+          </div>
           <button class="btn btn-primary btn-sm" id="validateAllBtn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             Valida Selezionati
@@ -1675,7 +1683,7 @@ Femore totale BMD: 0.750, T-score: -1.8'></textarea>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-  <script src="/js/dashboard.52b03f32.js?v=10"></script>
+  <script src="/js/dashboard.52b03f32.js?v=11"></script>
   <script src="/js/analytics.js?v=6"></script>
 </body>
 </html>

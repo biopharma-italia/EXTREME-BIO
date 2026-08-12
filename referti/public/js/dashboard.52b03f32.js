@@ -16,9 +16,7 @@
   var ROLE_LABELS = {
     patient: 'Paziente', lab_technician: 'Tecnico Lab',
     physician: 'Medico', admin: 'Amministratore', super_admin: 'Super Admin',
-    ostetrica: 'Ostetrica',
-    biologa_laboratorio: 'Biologa',
-    tecnico_laboratorio: 'Tecnico'
+    ostetrica: 'Ostetrica'
   };
 
   // Override label per utenti con ruolo ostetrica ma job title diverso
@@ -366,7 +364,7 @@
       navigateTo('upload');
     } else if (role === 'physician') {
       navigateTo('sign-release');
-    } else if (role === 'ostetrica' || role === 'biologa_laboratorio' || role === 'tecnico_laboratorio') {
+    } else if (role === 'ostetrica') {
       navigateTo('upload');
     } else {
       navigateTo('all-reports');
@@ -590,12 +588,12 @@
 
   function loadDashboardBadges(role) {
     // Load badge counts for sidebar — use HEAD count for accurate numbers
-    if (role === 'lab_technician' || role === 'admin' || role === 'super_admin' || role === 'ostetrica' || role === 'biologa_laboratorio' || role === 'tecnico_laboratorio') {
+    if (role === 'lab_technician' || role === 'admin' || role === 'super_admin' || role === 'ostetrica') {
       sbCount('reports', 'status=eq.pending').then(function (n) {
         updateBadge('badgePending', n);
       });
     }
-    if (role === 'physician' || role === 'admin' || role === 'super_admin' || role === 'ostetrica' || role === 'biologa_laboratorio' || role === 'tecnico_laboratorio') {
+    if (role === 'physician' || role === 'admin' || role === 'super_admin' || role === 'ostetrica') {
       sbCount('reports', 'or=(status.eq.validated,status.eq.signed)').then(function (n) {
         updateBadge('badgeSign', n);
       });
@@ -1167,7 +1165,7 @@
 
   function loadRecentUploads() {
     var q = 'select=id,report_number,report_type,status,patient_fiscal_code,created_at&order=created_at.desc&limit=8';
-    if (state.profile && (state.profile.role === 'lab_technician' || state.profile.role === 'ostetrica' || state.profile.role === 'biologa_laboratorio' || state.profile.role === 'tecnico_laboratorio')) {
+    if (state.profile && (state.profile.role === 'lab_technician' || state.profile.role === 'ostetrica')) {
       q += '&uploaded_by=eq.' + state.profile.id;
     }
     sbGet('reports', q).then(function (data) {
@@ -1190,20 +1188,50 @@
   // ── VALIDATION QUEUE (Lab) ───────────────────────
   function loadQueue() {
     var filter = $('filterQueueUrgent').value;
-    var q = 'status=eq.pending&select=*,patient:patient_id(first_name,last_name)&order=is_urgent.desc,created_at.asc&limit=50';
-    if (filter === 'urgent') q += '&is_urgent=eq.true';
-    if (filter === 'abnormal') q += '&has_abnormal_values=eq.true';
 
-    sbGet('reports', q).then(function (data) {
-      renderQueue(data);
-    });
-    // Accurate sidebar badge count (independent of table limit)
-    sbCount('reports', 'status=eq.pending').then(function (n) {
-      updateBadge('badgePending', n);
+    // Show/hide ostetrica toggle based on role
+    var role = state.profile ? state.profile.role : null;
+    var isOsteRole = role === 'ostetrica';
+    var isAdmin = role === 'admin' || role === 'super_admin';
+    var showToggle = isOsteRole || isAdmin;
+    var osteToggleQ = $('osteFilterQueue');
+    if (osteToggleQ && role && !showToggle) {
+      osteToggleQ.style.display = 'none';
+    }
+    var osteFilterOn = showToggle && $('filterOstetricheQueue') && $('filterOstetricheQueue').checked;
+
+    var osteIdLookup = osteFilterOn ? fetchOstetricaIds() : Promise.resolve(null);
+
+    osteIdLookup.then(function (osteIds) {
+      var osteUploadedByFilter = (osteIds && osteIds.length > 0)
+        ? '&uploaded_by=in.(' + osteIds.join(',') + ')'
+        : '';
+
+      var q = 'status=eq.pending&select=*,patient:patient_id(first_name,last_name)&order=is_urgent.desc,created_at.asc&limit=50';
+      if (filter === 'urgent') q += '&is_urgent=eq.true';
+      if (filter === 'abnormal') q += '&has_abnormal_values=eq.true';
+      q += osteUploadedByFilter;
+
+      sbGet('reports', q).then(function (data) {
+        renderQueue(data);
+      });
+
+      // Accurate sidebar badge count (independent of table limit)
+      var countFilter = 'status=eq.pending' + osteUploadedByFilter;
+      sbCount('reports', countFilter).then(function (n) {
+        updateBadge('badgePending', n);
+      });
     });
 
     if (!$('filterQueueUrgent')._bound) {
       $('filterQueueUrgent').addEventListener('change', loadQueue);
+      // Bind ostetrica queue toggle + set default based on role
+      if ($('filterOstetricheQueue')) {
+        if (isAdmin && !isOsteRole) {
+          $('filterOstetricheQueue').checked = false;
+        }
+        $('filterOstetricheQueue').addEventListener('change', loadQueue);
+      }
       // Bulk validate visible for ostetrica, lab_technician, admin, super_admin
       $('selectAllQueue').addEventListener('change', function () {
         var checked = this.checked;
@@ -1238,7 +1266,7 @@
           ? '<button class="btn btn-sm" style="background:#6366f1;color:#fff;border:0" onclick="window._fastTrackReport(\'' + r.id + '\')">Fast-Track</button> '
           : '') +
         '<button class="btn btn-outline btn-sm" onclick="window._previewReport(\'' + r.id + '\')">Vedi</button>' +
-        (state.profile && (state.profile.role === 'ostetrica' || state.profile.role === 'biologa_laboratorio' || state.profile.role === 'tecnico_laboratorio') && r.uploaded_by === state.profile.id
+        (state.profile && state.profile.role === 'ostetrica' && r.uploaded_by === state.profile.id
           ? ' <button class="btn btn-sm" style="background:#ef4444;color:#fff;border:0" onclick="window._deleteReport(\'' + r.id + '\')">Elimina</button>'
           : '') +
         '</td></tr>';
@@ -1397,7 +1425,7 @@
     // Show/hide ostetrica toggle based on role
     // Toggle starts visible in HTML (display:flex); hide for patient/physician/lab_technician
     var role = state.profile ? state.profile.role : null;
-    var isOsteRole = role === 'ostetrica' || role === 'biologa_laboratorio' || role === 'tecnico_laboratorio';
+    var isOsteRole = role === 'ostetrica';
     var isAdmin = role === 'admin' || role === 'super_admin';
     var showToggle = isOsteRole || isAdmin;
     var osteToggle = $('osteFilter');
@@ -1494,7 +1522,7 @@
       return;
     }
     var isAdmin = state.profile && (state.profile.role === 'admin' || state.profile.role === 'super_admin');
-    var isOstetrica = state.profile && (state.profile.role === 'ostetrica' || state.profile.role === 'biologa_laboratorio' || state.profile.role === 'tecnico_laboratorio');
+    var isOstetrica = state.profile && state.profile.role === 'ostetrica';
     var isPhysician = state.profile && state.profile.role === 'physician';
     body.innerHTML = data.map(function (r) {
       var pName = r.patient ? (r.patient.first_name + ' ' + r.patient.last_name) : (r.patient_fiscal_code || '--');
@@ -1587,8 +1615,6 @@
           : u.role === 'physician' ? 'validated'
           : u.role === 'lab_technician' ? 'pending'
           : u.role === 'ostetrica' ? 'validated'
-          : u.role === 'biologa_laboratorio' ? 'validated'
-          : u.role === 'tecnico_laboratorio' ? 'pending'
           : 'released';
         return '<tr>' +
           '<td><strong>' + esc(u.first_name + ' ' + u.last_name) + '</strong></td>' +
@@ -1611,7 +1637,7 @@
         $('inviteMessage').textContent = '';
         $('invPassword').value = genPassword(16);
         // Ostetrica can only create patients — lock role dropdown
-        if (state.profile && (state.profile.role === 'ostetrica' || state.profile.role === 'biologa_laboratorio' || state.profile.role === 'tecnico_laboratorio')) {
+        if (state.profile && state.profile.role === 'ostetrica') {
           $('invRole').value = 'patient';
           $('invRole').disabled = true;
         } else {
