@@ -1189,35 +1189,57 @@
   function loadQueue() {
     var filter = $('filterQueueUrgent').value;
 
-    // Show/hide ostetrica toggle based on role
+    // Show/hide toggles based on role
     var role = state.profile ? state.profile.role : null;
     var isOsteRole = role === 'ostetrica';
+    var isLabRole = role === 'lab_technician';
     var isAdmin = role === 'admin' || role === 'super_admin';
-    var showToggle = isOsteRole || isAdmin;
+
+    // Ostetrica toggle: visible for ostetrica + admin
+    var showOsteToggle = isOsteRole || isAdmin;
     var osteToggleQ = $('osteFilterQueue');
-    if (osteToggleQ && role && !showToggle) {
+    if (osteToggleQ && role && !showOsteToggle) {
       osteToggleQ.style.display = 'none';
     }
-    var osteFilterOn = showToggle && $('filterOstetricheQueue') && $('filterOstetricheQueue').checked;
 
+    // Lab toggle: visible for lab_technician + admin
+    var showLabToggle = isLabRole || isAdmin;
+    var labToggleQ = $('labFilterQueue');
+    if (labToggleQ && role && !showLabToggle) {
+      labToggleQ.style.display = 'none';
+    }
+
+    var osteFilterOn = showOsteToggle && $('filterOstetricheQueue') && $('filterOstetricheQueue').checked;
+    var labFilterOn = showLabToggle && $('filterLabTechQueue') && $('filterLabTechQueue').checked;
+
+    // Resolve IDs for active filters
     var osteIdLookup = osteFilterOn ? fetchOstetricaIds() : Promise.resolve(null);
+    var labIdLookup = labFilterOn ? fetchLabTechIds() : Promise.resolve(null);
 
-    osteIdLookup.then(function (osteIds) {
-      var osteUploadedByFilter = (osteIds && osteIds.length > 0)
-        ? '&uploaded_by=in.(' + osteIds.join(',') + ')'
+    Promise.all([osteIdLookup, labIdLookup]).then(function (results) {
+      var osteIds = results[0];
+      var labIds = results[1];
+
+      // Merge IDs from both active filters
+      var allFilterIds = [];
+      if (osteIds && osteIds.length > 0) allFilterIds = allFilterIds.concat(osteIds);
+      if (labIds && labIds.length > 0) allFilterIds = allFilterIds.concat(labIds);
+
+      var uploadedByFilter = allFilterIds.length > 0
+        ? '&uploaded_by=in.(' + allFilterIds.join(',') + ')'
         : '';
 
       var q = 'status=eq.pending&select=*,patient:patient_id(first_name,last_name)&order=is_urgent.desc,created_at.asc&limit=50';
       if (filter === 'urgent') q += '&is_urgent=eq.true';
       if (filter === 'abnormal') q += '&has_abnormal_values=eq.true';
-      q += osteUploadedByFilter;
+      q += uploadedByFilter;
 
       sbGet('reports', q).then(function (data) {
         renderQueue(data);
       });
 
       // Accurate sidebar badge count (independent of table limit)
-      var countFilter = 'status=eq.pending' + osteUploadedByFilter;
+      var countFilter = 'status=eq.pending' + uploadedByFilter;
       sbCount('reports', countFilter).then(function (n) {
         updateBadge('badgePending', n);
       });
@@ -1231,6 +1253,13 @@
           $('filterOstetricheQueue').checked = false;
         }
         $('filterOstetricheQueue').addEventListener('change', loadQueue);
+      }
+      // Bind lab tech queue toggle + set default based on role
+      if ($('filterLabTechQueue')) {
+        if (isAdmin && !isLabRole) {
+          $('filterLabTechQueue').checked = false;
+        }
+        $('filterLabTechQueue').addEventListener('change', loadQueue);
       }
       // Bulk validate visible for ostetrica, lab_technician, admin, super_admin
       $('selectAllQueue').addEventListener('change', function () {
@@ -1417,31 +1446,67 @@
     return _osteIdsFetching;
   }
 
+  // Cache lab_technician user IDs (same pattern)
+  var _labIdsCache = null;
+  var _labIdsFetching = null;
+
+  function fetchLabTechIds() {
+    if (_labIdsCache) return Promise.resolve(_labIdsCache);
+    if (_labIdsFetching) return _labIdsFetching;
+    _labIdsFetching = sbGet('users', 'select=id&role=eq.lab_technician&is_active=eq.true&limit=200')
+      .then(function (users) {
+        _labIdsCache = users.map(function (u) { return u.id; });
+        _labIdsFetching = null;
+        return _labIdsCache;
+      })
+      .catch(function () { _labIdsFetching = null; return []; });
+    return _labIdsFetching;
+  }
+
   function loadAllReports() {
     var filter = $('filterAllStatus').value;
     var search = $('searchAllReports').value.trim();
     var enc = encodeURIComponent(search);
 
-    // Show/hide ostetrica toggle based on role
-    // Toggle starts visible in HTML (display:flex); hide for patient/physician/lab_technician
+    // Show/hide toggles based on role
     var role = state.profile ? state.profile.role : null;
     var isOsteRole = role === 'ostetrica';
+    var isLabRole = role === 'lab_technician';
     var isAdmin = role === 'admin' || role === 'super_admin';
-    var showToggle = isOsteRole || isAdmin;
+
+    // Ostetrica toggle: visible for ostetrica + admin
+    var showOsteToggle = isOsteRole || isAdmin;
     var osteToggle = $('osteFilter');
-    if (osteToggle && role && !showToggle) {
+    if (osteToggle && role && !showOsteToggle) {
       osteToggle.style.display = 'none';
     }
-    // Default: ON for ostetriche (filter active), OFF for admin (see all)
-    var osteFilterOn = showToggle && $('filterOstetriche') && $('filterOstetriche').checked;
 
-    // Step 1: Resolve ostetrica IDs if filter is active
+    // Lab toggle: visible for lab_technician + admin
+    var showLabToggle = isLabRole || isAdmin;
+    var labToggle = $('labFilter');
+    if (labToggle && role && !showLabToggle) {
+      labToggle.style.display = 'none';
+    }
+
+    // Default: ON for own role (filter active), OFF for admin (see all)
+    var osteFilterOn = showOsteToggle && $('filterOstetriche') && $('filterOstetriche').checked;
+    var labFilterOn = showLabToggle && $('filterLabTech') && $('filterLabTech').checked;
+
+    // Step 1: Resolve user IDs for active filters
     var osteIdLookup = osteFilterOn ? fetchOstetricaIds() : Promise.resolve(null);
+    var labIdLookup = labFilterOn ? fetchLabTechIds() : Promise.resolve(null);
 
-    osteIdLookup.then(function (osteIds) {
-      // Build the uploaded_by filter string for ostetrica toggle
-      var osteUploadedByFilter = (osteIds && osteIds.length > 0)
-        ? 'uploaded_by=in.(' + osteIds.join(',') + ')'
+    Promise.all([osteIdLookup, labIdLookup]).then(function (idResults) {
+      var osteIds = idResults[0];
+      var labIds = idResults[1];
+
+      // Merge IDs from both active filters
+      var allFilterIds = [];
+      if (osteIds && osteIds.length > 0) allFilterIds = allFilterIds.concat(osteIds);
+      if (labIds && labIds.length > 0) allFilterIds = allFilterIds.concat(labIds);
+
+      var uploadedByFilter = allFilterIds.length > 0
+        ? 'uploaded_by=in.(' + allFilterIds.join(',') + ')'
         : null;
 
       // Step 2: Patient name search
@@ -1468,7 +1533,7 @@
         var q = 'select=*,patient:patient_id(first_name,last_name)&order=created_at.desc&limit=100';
         if (filter) q += '&status=eq.' + filter;
         if (orParts.length > 0) q += '&or=(' + orParts.join(',') + ')';
-        if (osteUploadedByFilter) q += '&' + osteUploadedByFilter;
+        if (uploadedByFilter) q += '&' + uploadedByFilter;
 
         sbGet('reports', q).then(function (data) {
           renderAllReports(data);
@@ -1480,7 +1545,7 @@
           var parts = [];
           if (statusFilter) parts.push(statusFilter);
           if (searchFilter) parts.push(searchFilter);
-          if (osteUploadedByFilter) parts.push(osteUploadedByFilter);
+          if (uploadedByFilter) parts.push(uploadedByFilter);
           return parts.join('&') || '';
         };
 
@@ -1505,11 +1570,17 @@
       $('searchAllReports').addEventListener('input', debounce(loadAllReports, 400));
       // Bind ostetrica toggle + set default based on role
       if ($('filterOstetriche')) {
-        // Ostetriche: default ON (filter active). Admin: default OFF (see all)
         if (isAdmin && !isOsteRole) {
           $('filterOstetriche').checked = false;
         }
         $('filterOstetriche').addEventListener('change', loadAllReports);
+      }
+      // Bind lab tech toggle + set default based on role
+      if ($('filterLabTech')) {
+        if (isAdmin && !isLabRole) {
+          $('filterLabTech').checked = false;
+        }
+        $('filterLabTech').addEventListener('change', loadAllReports);
       }
       $('filterAllStatus')._bound = true;
     }
