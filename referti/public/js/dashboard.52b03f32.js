@@ -1394,20 +1394,15 @@
     var search = $('searchAllReports').value.trim();
     var enc = encodeURIComponent(search);
 
-    // Show ostetrica toggle for ostetrica / biologa / tecnico / admin roles
-    var isOsteRole = state.profile && (
-      state.profile.role === 'ostetrica' ||
-      state.profile.role === 'biologa_laboratorio' ||
-      state.profile.role === 'tecnico_laboratorio'
-    );
-    var isAdmin = state.profile && (
-      state.profile.role === 'admin' ||
-      state.profile.role === 'super_admin'
-    );
+    // Show/hide ostetrica toggle based on role
+    // Toggle starts visible in HTML (display:flex); hide for patient/physician/lab_technician
+    var role = state.profile ? state.profile.role : null;
+    var isOsteRole = role === 'ostetrica' || role === 'biologa_laboratorio' || role === 'tecnico_laboratorio';
+    var isAdmin = role === 'admin' || role === 'super_admin';
     var showToggle = isOsteRole || isAdmin;
     var osteToggle = $('osteFilter');
-    if (osteToggle) {
-      osteToggle.style.display = showToggle ? 'flex' : 'none';
+    if (osteToggle && role && !showToggle) {
+      osteToggle.style.display = 'none';
     }
     // Default: ON for ostetriche (filter active), OFF for admin (see all)
     var osteFilterOn = showToggle && $('filterOstetriche') && $('filterOstetriche').checked;
