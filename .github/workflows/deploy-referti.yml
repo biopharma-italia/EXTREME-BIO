@@ -1,0 +1,46 @@
+name: Deploy Referti to Cloudflare Pages
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deploy environment (production/staging)'
+        required: false
+        default: 'production'
+
+jobs:
+  deploy-referti:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Wrangler
+        run: npm install -g wrangler@latest
+
+      - name: Deploy Referti to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          echo "=== Deploying Referti Bio-Clinic ==="
+          echo "Project: referti-bioclinic"
+          echo "Source: referti/public"
+          echo "Environment: ${{ github.event.inputs.environment }}"
+          echo ""
+
+          BRANCH="main"
+          if [ "${{ github.event.inputs.environment }}" = "staging" ]; then
+            BRANCH="develop"
+          fi
+
+          cd referti
+          wrangler pages deploy ./public \
+            --project-name=referti-bioclinic \
+            --branch=$BRANCH \
+            --commit-dirty=true
+
+          echo ""
+          echo "=== Deploy Complete ==="
+          echo "Live URL: https://referti.bio-clinic.it"
+          echo "Deployed: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
