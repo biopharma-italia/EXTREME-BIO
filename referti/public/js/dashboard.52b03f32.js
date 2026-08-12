@@ -1671,11 +1671,15 @@
     var filter = $('filterUserRole').value;
     var search = $('searchUsers').value.trim();
 
-    var q = 'select=*&order=created_at.desc&limit=100';
-    if (filter) q += '&role=eq.' + filter;
-    if (search) q += '&or=(first_name.ilike.*' + encodeURIComponent(search) + '*,last_name.ilike.*' + encodeURIComponent(search) + '*,email.ilike.*' + encodeURIComponent(search) + '*,fiscal_code.ilike.*' + encodeURIComponent(search) + '*)';
+    // Use /api/users endpoint (service_role key, bypasses RLS)
+    var params = '?per_page=100';
+    if (filter) params += '&role=' + filter;
+    if (search) params += '&search=' + encodeURIComponent(search);
 
-    sbGet('users', q).then(function (data) {
+    fetch('/api/users' + params, {
+      headers: { 'Authorization': 'Bearer ' + state.token }
+    }).then(function (r) { return r.json(); }).then(function (resp) {
+      var data = resp.success ? resp.data : [];
       var body = $('usersBody');
       if (!data || !Array.isArray(data) || data.length === 0) {
         body.innerHTML = '<tr class="table-empty"><td colspan="8"><div class="empty-state"><p>Nessun utente trovato</p></div></td></tr>';
@@ -1707,8 +1711,8 @@
         $('inviteForm').reset();
         $('inviteMessage').textContent = '';
         $('invPassword').value = genPassword(16);
-        // Ostetrica can only create patients — lock role dropdown
-        if (state.profile && state.profile.role === 'ostetrica') {
+        // Ostetrica / lab_technician can only create patients — lock role dropdown
+        if (state.profile && (state.profile.role === 'ostetrica' || state.profile.role === 'lab_technician')) {
           $('invRole').value = 'patient';
           $('invRole').disabled = true;
         } else {

@@ -26,7 +26,7 @@ export async function onRequestGet(context: {
   const { request, data } = context;
   const { ctx, env } = data;
 
-  const authError = requireRole(ctx, 'admin', 'super_admin', 'ostetrica');
+  const authError = requireRole(ctx, 'admin', 'super_admin', 'ostetrica', 'lab_technician');
   if (authError) return authError;
 
   const url = new URL(request.url);
@@ -43,8 +43,8 @@ export async function onRequestGet(context: {
     .select('id, email, first_name, last_name, fiscal_code, phone, role, is_active, totp_enabled, created_at, last_login_at', { count: 'exact' })
     .is('deleted_at', null);
 
-  // Ostetrica can only see patients
-  if (ctx.user!.role === 'ostetrica') {
+  // Ostetrica and lab_technician can only see patients
+  if (ctx.user!.role === 'ostetrica' || ctx.user!.role === 'lab_technician') {
     query = query.eq('role', 'patient');
   }
 
@@ -87,8 +87,8 @@ export async function onRequestPost(context: {
   const { request, data } = context;
   const { ctx, env } = data;
 
-  // Ostetrica can create patients; admin/super_admin can create any role
-  const authError = requireRole(ctx, 'admin', 'super_admin', 'ostetrica');
+  // Ostetrica/lab_technician can create patients; admin/super_admin can create any role
+  const authError = requireRole(ctx, 'admin', 'super_admin', 'ostetrica', 'lab_technician');
   if (authError) return authError;
 
   let body: {
@@ -120,9 +120,9 @@ export async function onRequestPost(context: {
     return jsonResponse({ success: false, error: 'Solo il super admin può creare utenti admin.' }, 403);
   }
 
-  // Ostetrica can only create patients
-  if (ctx.user!.role === 'ostetrica' && body.role !== 'patient') {
-    return jsonResponse({ success: false, error: 'L\'ostetrica può creare solo pazienti.' }, 403);
+  // Ostetrica and lab_technician can only create patients
+  if ((ctx.user!.role === 'ostetrica' || ctx.user!.role === 'lab_technician') && body.role !== 'patient') {
+    return jsonResponse({ success: false, error: 'Permessi insufficienti: puoi creare solo pazienti.' }, 403);
   }
 
   const isPatient = body.role === 'patient';
