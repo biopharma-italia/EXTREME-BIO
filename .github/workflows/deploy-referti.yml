@@ -1,6 +1,13 @@
 name: Deploy Referti to Cloudflare Pages
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'referti/public/**'
+      - 'referti/functions/**'
+      - 'referti/wrangler.toml'
+      - '.github/workflows/deploy-referti.yml'
   workflow_dispatch:
     inputs:
       environment:
