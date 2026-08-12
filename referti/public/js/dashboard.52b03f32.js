@@ -593,7 +593,7 @@
         updateBadge('badgePending', n);
       });
     }
-    if (role === 'physician' || role === 'admin' || role === 'super_admin' || role === 'ostetrica') {
+    if (role === 'physician' || role === 'admin' || role === 'super_admin' || role === 'ostetrica' || role === 'lab_technician') {
       sbCount('reports', 'or=(status.eq.validated,status.eq.signed)').then(function (n) {
         updateBadge('badgeSign', n);
       });
