@@ -1589,7 +1589,7 @@
   function renderAllReports(data) {
     var body = $('allReportsBody');
     if (!data || !Array.isArray(data) || data.length === 0) {
-      body.innerHTML = '<tr class="table-empty"><td colspan="10"><div class="empty-state"><p>Nessun referto</p></div></td></tr>';
+      body.innerHTML = '<tr class="table-empty"><td colspan="8"><div class="empty-state"><p>Nessun referto</p></div></td></tr>';
       return;
     }
     var isAdmin = state.profile && (state.profile.role === 'admin' || state.profile.role === 'super_admin');
@@ -1606,28 +1606,9 @@
       // Patient tracking badges (all staff) — P0-2: XSS fix with esc() on all title attributes
       if (r.status === 'released' && isStaff) {
         if (r.patient_notified) flags += '<span class="badge" style="background:#3b82f6;color:#fff;font-size:0.7rem" title="Notificato al paziente ' + esc(r.patient_notified_at ? fmtDateTime(r.patient_notified_at) : '') + '">&#9993;</span> ';
-      }
-
-      // Build dedicated "Ricevuto" (viewed) column
-      var viewedCol = '--';
-      if (r.status === 'released') {
-        if (r.patient_viewed) {
-          viewedCol = '<span class="badge" style="background:#22c55e;color:#fff;font-size:0.75rem" title="Letto: ' + esc(r.patient_viewed_at ? fmtDateTime(r.patient_viewed_at) : '') + '">&#10003; Letto</span>';
-        } else if (r.patient_notified) {
-          viewedCol = '<span class="badge" style="background:#f59e0b;color:#fff;font-size:0.75rem" title="Notificato ma non ancora letto">&#9888; Non letto</span>';
-        } else {
-          viewedCol = '<span class="badge" style="background:#94a3b8;color:#fff;font-size:0.75rem">&#8212; In attesa</span>';
-        }
-      }
-
-      // Build dedicated "Scaricato" (downloaded) column
-      var downloadCol = '--';
-      if (r.status === 'released') {
-        if (r.patient_downloaded || (r.download_count && r.download_count > 0)) {
-          downloadCol = '<span class="badge" style="background:#8b5cf6;color:#fff;font-size:0.75rem" title="Scaricato ' + esc(String(r.download_count || 0)) + ' volte">&#8615; ' + esc(String(r.download_count || 0)) + 'x</span>';
-        } else {
-          downloadCol = '<span class="badge" style="background:#94a3b8;color:#fff;font-size:0.75rem">&#8212; No</span>';
-        }
+        if (r.patient_viewed) flags += '<span class="badge" style="background:#22c55e;color:#fff;font-size:0.7rem" title="Letto dal paziente ' + esc(r.patient_viewed_at ? fmtDateTime(r.patient_viewed_at) : '') + '">&#10003; Letto</span> ';
+        else if (r.patient_notified) flags += '<span class="badge" style="background:#f59e0b;color:#fff;font-size:0.7rem" title="Non ancora letto dal paziente">&#9888; Non letto</span> ';
+        if (r.patient_downloaded) flags += '<span class="badge" style="background:#8b5cf6;color:#fff;font-size:0.7rem" title="Scaricato ' + esc(String(r.download_count || 0)) + ' volte">&#8615; ' + esc(String(r.download_count || 0)) + '</span> ';
       }
 
       var canFastTrack = (isAdmin || isOstetrica || isPhysician) && !r.has_abnormal_values;
@@ -1682,8 +1663,6 @@
         '<td>' + fmtDate(r.sample_date) + '</td>' +
         '<td><span class="badge badge-' + r.status + '">' + (STATUS_LABELS[r.status] || r.status) + '</span></td>' +
         '<td>' + (flags || '--') + '</td>' +
-        '<td>' + viewedCol + '</td>' +
-        '<td>' + downloadCol + '</td>' +
         '<td>' + timeAgo(r.updated_at || r.created_at) + '</td>' +
         '<td>' + actions + '</td></tr>';
     }).join('');
