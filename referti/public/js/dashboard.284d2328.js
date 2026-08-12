@@ -1371,68 +1371,113 @@
   }
 
   // ── ALL REPORTS (Admin) ──────────────────────────
+
+  // Cache ostetrica user IDs so we don't re-fetch every reload
+  var _osteIdsCache = null;
+  var _osteIdsFetching = null;
+
+  function fetchOstetricaIds() {
+    if (_osteIdsCache) return Promise.resolve(_osteIdsCache);
+    if (_osteIdsFetching) return _osteIdsFetching;
+    _osteIdsFetching = sbGet('users', 'select=id&role=eq.ostetrica&is_active=eq.true&limit=200')
+      .then(function (users) {
+        _osteIdsCache = users.map(function (u) { return u.id; });
+        _osteIdsFetching = null;
+        return _osteIdsCache;
+      })
+      .catch(function () { _osteIdsFetching = null; return []; });
+    return _osteIdsFetching;
+  }
+
   function loadAllReports() {
     var filter = $('filterAllStatus').value;
     var search = $('searchAllReports').value.trim();
     var enc = encodeURIComponent(search);
 
-    // If search contains text, first look up patients by name
-    var patientLookup;
-    if (search && !/^\d+$/.test(search)) {
-      // Search users by first_name, last_name, email or fiscal_code
-      patientLookup = sbGet('users', 'select=id&or=(first_name.ilike.*' + enc + '*,last_name.ilike.*' + enc + '*,email.ilike.*' + enc + '*,fiscal_code.ilike.*' + enc + '*)&limit=200')
-        .then(function(users) { return users.map(function(u){return u.id;}); })
-        .catch(function() { return []; });
-    } else {
-      patientLookup = Promise.resolve([]);
+    // Show ostetrica toggle for ostetrica / biologa / tecnico roles
+    var isOsteRole = state.profile && (
+      state.profile.role === 'ostetrica' ||
+      state.profile.role === 'biologa_laboratorio' ||
+      state.profile.role === 'tecnico_laboratorio'
+    );
+    var osteToggle = $('osteFilter');
+    if (osteToggle) {
+      osteToggle.style.display = isOsteRole ? 'flex' : 'none';
     }
+    var osteFilterOn = isOsteRole && $('filterOstetriche') && $('filterOstetriche').checked;
 
-    patientLookup.then(function(patientIds) {
-      // Build OR filter: report_number, fiscal_code, AND patient_id matches
-      var orParts = [];
-      if (search) {
-        orParts.push('report_number.ilike.*' + enc + '*');
-        orParts.push('patient_fiscal_code.ilike.*' + enc + '*');
+    // Step 1: Resolve ostetrica IDs if filter is active
+    var osteIdLookup = osteFilterOn ? fetchOstetricaIds() : Promise.resolve(null);
+
+    osteIdLookup.then(function (osteIds) {
+      // Build the uploaded_by filter string for ostetrica toggle
+      var osteUploadedByFilter = (osteIds && osteIds.length > 0)
+        ? 'uploaded_by=in.(' + osteIds.join(',') + ')'
+        : null;
+
+      // Step 2: Patient name search
+      var patientLookup;
+      if (search && !/^\d+$/.test(search)) {
+        patientLookup = sbGet('users', 'select=id&or=(first_name.ilike.*' + enc + '*,last_name.ilike.*' + enc + '*,email.ilike.*' + enc + '*,fiscal_code.ilike.*' + enc + '*)&limit=200')
+          .then(function(users) { return users.map(function(u){return u.id;}); })
+          .catch(function() { return []; });
+      } else {
+        patientLookup = Promise.resolve([]);
       }
-      if (patientIds.length > 0) {
-        orParts.push('patient_id.in.(' + patientIds.join(',') + ')');
-      }
 
-      var q = 'select=*,patient:patient_id(first_name,last_name)&order=created_at.desc&limit=100';
-      if (filter) q += '&status=eq.' + filter;
-      if (orParts.length > 0) q += '&or=(' + orParts.join(',') + ')';
+      patientLookup.then(function(patientIds) {
+        // Build OR filter: report_number, fiscal_code, AND patient_id matches
+        var orParts = [];
+        if (search) {
+          orParts.push('report_number.ilike.*' + enc + '*');
+          orParts.push('patient_fiscal_code.ilike.*' + enc + '*');
+        }
+        if (patientIds.length > 0) {
+          orParts.push('patient_id.in.(' + patientIds.join(',') + ')');
+        }
 
-      sbGet('reports', q).then(function (data) {
-        renderAllReports(data);
-      });
+        var q = 'select=*,patient:patient_id(first_name,last_name)&order=created_at.desc&limit=100';
+        if (filter) q += '&status=eq.' + filter;
+        if (orParts.length > 0) q += '&or=(' + orParts.join(',') + ')';
+        if (osteUploadedByFilter) q += '&' + osteUploadedByFilter;
 
-      // ── Real counts via HEAD requests (independent of table limit) ───
-      var searchFilter = orParts.length > 0 ? 'or=(' + orParts.join(',') + ')' : '';
-      var countFilter = function (statusFilter) {
-        var parts = [];
-        if (statusFilter) parts.push(statusFilter);
-        if (searchFilter) parts.push(searchFilter);
-        return parts.join('&') || '';
-      };
+        sbGet('reports', q).then(function (data) {
+          renderAllReports(data);
+        });
 
-      Promise.all([
-        sbCount('reports', countFilter('status=eq.pending')),
-        sbCount('reports', countFilter('status=eq.validated')),
-        sbCount('reports', countFilter('status=eq.signed')),
-        sbCount('reports', countFilter('status=eq.released')),
-        sbCount('reports', countFilter(filter ? 'status=eq.' + filter : ''))
-      ]).then(function (results) {
-        var pending = results[0], validated = results[1], signed = results[2], released = results[3], total = results[4];
-        $('statPending').textContent = pending;
-        $('statValidated').textContent = validated + (signed ? '+' + signed : '');
-        $('statReleased').textContent = released;
-        $('statTotal').textContent = total;
+        // ── Real counts via HEAD requests (independent of table limit) ───
+        var searchFilter = orParts.length > 0 ? 'or=(' + orParts.join(',') + ')' : '';
+        var countFilter = function (statusFilter) {
+          var parts = [];
+          if (statusFilter) parts.push(statusFilter);
+          if (searchFilter) parts.push(searchFilter);
+          if (osteUploadedByFilter) parts.push(osteUploadedByFilter);
+          return parts.join('&') || '';
+        };
+
+        Promise.all([
+          sbCount('reports', countFilter('status=eq.pending')),
+          sbCount('reports', countFilter('status=eq.validated')),
+          sbCount('reports', countFilter('status=eq.signed')),
+          sbCount('reports', countFilter('status=eq.released')),
+          sbCount('reports', countFilter(filter ? 'status=eq.' + filter : ''))
+        ]).then(function (results) {
+          var pending = results[0], validated = results[1], signed = results[2], released = results[3], total = results[4];
+          $('statPending').textContent = pending;
+          $('statValidated').textContent = validated + (signed ? '+' + signed : '');
+          $('statReleased').textContent = released;
+          $('statTotal').textContent = total;
+        });
       });
     });
 
     if (!$('filterAllStatus')._bound) {
       $('filterAllStatus').addEventListener('change', loadAllReports);
       $('searchAllReports').addEventListener('input', debounce(loadAllReports, 400));
+      // Bind ostetrica toggle
+      if ($('filterOstetriche')) {
+        $('filterOstetriche').addEventListener('change', loadAllReports);
+      }
       $('filterAllStatus')._bound = true;
     }
   }
