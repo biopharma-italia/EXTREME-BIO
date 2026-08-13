@@ -333,32 +333,56 @@
                 <label for="uploadType">Tipo Esame *</label>
                 <select id="uploadType" class="form-input" required>
                   <option value="">Seleziona...</option>
-                  <option value="emocromo">Emocromo completo</option>
-                  <option value="profilo_lipidico">Profilo Lipidico</option>
-                  <option value="profilo_tiroideo">Profilo Tiroideo</option>
-                  <option value="glicemia">Glicemia / HbA1c</option>
-                  <option value="esame_urine">Esame Urine</option>
-                  <option value="profilo_epatico">Profilo Epatico</option>
-                  <option value="profilo_renale">Profilo Renale</option>
-                  <option value="markers_tumorali">Markers Tumorali</option>
-                  <option value="coagulazione">Coagulazione</option>
-                  <option value="sierologia">Sierologia</option>
-                  <option value="microbiologia">Microbiologia</option>
-                  <option value="genetica">Genetica</option>
-                  <option value="pap_test">PAP Test</option>
-                  <option value="hpv_dna_test">HPV DNA Test</option>
-                  <option value="isteroscopia">Isteroscopia</option>
-                  <option value="cariotipo_sangue">Cariotipo classico su sangue periferico</option>
-                  <option value="cariotipo_coppia">Cariotipo di Coppia</option>
-                  <option value="tunel_test">Tunel Test</option>
-                  <option value="fish_advance_sperm">FISHADVANCE Sperm Aneuploidy Test</option>
-                  <option value="pannello_trombofilia">Pannello Trombofilia</option>
-                  <option value="endobiome">ENDOBIOME Endometrial Microbiome Analysis</option>
-                  <option value="oncoadvance_brca">ONCOADVANCE BRCA</option>
-                  <option value="hiv_dna_quantitativo">HIV DNA Quantitativo</option>
-                  <option value="hcv_quantitativo">HCV Quantitativo</option>
-                  <option value="hcv_tipizzazione">HCV Tipizzazione</option>
-                  <option value="hbv_quantitativo">HBV Quantitativo</option>
+                  <!-- Laboratorio: Prestazioni specifiche -->
+                  <option value="biochimica_clinica" data-cat="laboratorio">Biochimica clinica</option>
+                  <option value="bhcg" data-cat="laboratorio">BHCG</option>
+                  <option value="tossicologia" data-cat="laboratorio">Tossicologia</option>
+                  <option value="siero" data-cat="laboratorio">Siero</option>
+                  <option value="sieroimmunologia" data-cat="laboratorio">Sieroimmunologia</option>
+                  <option value="allergologia" data-cat="laboratorio">Allergologia</option>
+                  <option value="ematologia" data-cat="laboratorio">Ematologia</option>
+                  <option value="disbiosi_intestinale" data-cat="laboratorio">Disbiosi intestinale</option>
+                  <option value="gastropanel" data-cat="laboratorio">Gastropanel</option>
+                  <option value="medicina_lavoro" data-cat="laboratorio">Medicina del lavoro</option>
+                  <option value="esami_salute_uomo" data-cat="laboratorio">Esami salute uomo</option>
+                  <option value="esami_salute_donna" data-cat="laboratorio">Esami salute donna</option>
+                  <option value="alex_test" data-cat="laboratorio">Alex Test</option>
+                  <option value="breath_test_lattosio" data-cat="laboratorio">Breath Test lattosio</option>
+                  <option value="urea_breath_test" data-cat="laboratorio">Urea Breath Test</option>
+                  <option value="curva_da_carico" data-cat="laboratorio">Curva da carico</option>
+                  <option value="ogtt" data-cat="laboratorio">OGTT</option>
+                  <option value="emocromo" data-cat="laboratorio">Emocromo completo</option>
+                  <option value="profilo_lipidico" data-cat="laboratorio">Profilo Lipidico</option>
+                  <option value="profilo_tiroideo" data-cat="laboratorio">Profilo Tiroideo</option>
+                  <option value="glicemia" data-cat="laboratorio">Glicemia / HbA1c</option>
+                  <option value="esame_urine" data-cat="laboratorio">Esame Urine</option>
+                  <option value="profilo_epatico" data-cat="laboratorio">Profilo Epatico</option>
+                  <option value="profilo_renale" data-cat="laboratorio">Profilo Renale</option>
+                  <option value="markers_tumorali" data-cat="laboratorio">Markers Tumorali</option>
+                  <option value="coagulazione" data-cat="laboratorio">Coagulazione</option>
+                  <option value="sierologia" data-cat="laboratorio">Sierologia</option>
+                  <!-- Microbiologia -->
+                  <option value="microbiologia" data-cat="microbiologia">Microbiologia</option>
+                  <!-- Genetica -->
+                  <option value="genetica" data-cat="genetica">Genetica</option>
+                  <option value="cariotipo_sangue" data-cat="genetica">Cariotipo classico su sangue periferico</option>
+                  <option value="cariotipo_coppia" data-cat="genetica">Cariotipo di Coppia</option>
+                  <option value="tunel_test" data-cat="genetica">Tunel Test</option>
+                  <option value="fish_advance_sperm" data-cat="genetica">FISHADVANCE Sperm Aneuploidy Test</option>
+                  <option value="pannello_trombofilia" data-cat="genetica">Pannello Trombofilia</option>
+                  <option value="endobiome" data-cat="genetica">ENDOBIOME Endometrial Microbiome Analysis</option>
+                  <option value="oncoadvance_brca" data-cat="genetica">ONCOADVANCE BRCA</option>
+                  <!-- Citologia -->
+                  <option value="pap_test" data-cat="citologia">PAP Test</option>
+                  <option value="hpv_dna_test" data-cat="citologia">HPV DNA Test</option>
+                  <!-- Ostetricia -->
+                  <option value="isteroscopia" data-cat="ostetricia">Isteroscopia</option>
+                  <!-- Diagnostica -->
+                  <option value="hiv_dna_quantitativo" data-cat="diagnostica">HIV DNA Quantitativo</option>
+                  <option value="hcv_quantitativo" data-cat="diagnostica">HCV Quantitativo</option>
+                  <option value="hcv_tipizzazione" data-cat="diagnostica">HCV Tipizzazione</option>
+                  <option value="hbv_quantitativo" data-cat="diagnostica">HBV Quantitativo</option>
+                  <!-- Generico -->
                   <option value="altro">Altro</option>
                 </select>
               </div>
@@ -1695,7 +1719,7 @@ Femore totale BMD: 0.750, T-score: -1.8'></textarea>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-  <script src="/js/dashboard.9c2ffe61.js?v=17"></script>
+  <script src="/js/dashboard.668d2593.js?v=18"></script>
   <script src="/js/analytics.js?v=6"></script>
 </body>
 </html>
