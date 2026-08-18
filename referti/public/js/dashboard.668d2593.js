@@ -1857,11 +1857,16 @@
       }
       el.innerHTML = data.map(function (r) {
         var iconClass = r.status === 'pending' ? 'pending' : 'success';
+        var deleteBtn = r.status === 'pending'
+          ? '<button class="btn btn-xs btn-delete-report" style="background:#ef4444;color:#fff;border:0;margin-left:6px;padding:2px 7px;font-size:0.7rem;border-radius:4px" onclick="event.stopPropagation();window._deleteReport(\'' + r.id + '\')" title="Elimina referto">' +
+            '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14H7L5 6"/><path d="M9 6V4h6v2"/></svg></button>'
+          : '';
         return '<div class="upload-item">' +
           '<div class="upload-item-icon ' + iconClass + '"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>' +
           '<div class="upload-item-info"><span class="upload-item-name">' + esc(r.report_number || r.report_type) + '</span>' +
           '<span class="upload-item-meta">' + esc(r.report_type) + ' &middot; ' + timeAgo(r.created_at) + '</span></div>' +
-          '<span class="badge badge-' + r.status + '">' + (STATUS_LABELS[r.status] || r.status) + '</span></div>';
+          '<span class="badge badge-' + r.status + '">' + (STATUS_LABELS[r.status] || r.status) + '</span>' +
+          deleteBtn + '</div>';
       }).join('');
     });
   }
@@ -1976,9 +1981,8 @@
           ? '<button class="btn btn-sm" style="background:#6366f1;color:#fff;border:0" onclick="window._fastTrackReport(\'' + r.id + '\')">Fast-Track</button> '
           : '') +
         '<button class="btn btn-outline btn-sm" onclick="window._previewReport(\'' + r.id + '\')">Vedi</button>' +
-        (state.profile && state.profile.role === 'ostetrica' && r.uploaded_by === state.profile.id
-          ? ' <button class="btn btn-sm" style="background:#ef4444;color:#fff;border:0" onclick="window._deleteReport(\'' + r.id + '\')">Elimina</button>'
-          : '') +
+        ' <button class="btn btn-sm btn-delete-report" style="background:#ef4444;color:#fff;border:0" onclick="window._deleteReport(\'' + r.id + '\')">' +
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:2px"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14H7L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>Elimina</button>' +
         '</td></tr>';
     }).join('');
   }
@@ -2289,9 +2293,6 @@
         if (r.status === 'released') {
           actions += ' <button class="btn btn-sm" style="background:#22c55e;color:#fff;border:0" onclick="window._downloadReport(\'' + r.id + '\')">Scarica</button>';
         }
-        if (r.uploaded_by === (state.profile ? state.profile.id : null)) {
-          actions += ' <button class="btn btn-sm" style="background:#ef4444;color:#fff;border:0" onclick="window._deleteReport(\'' + r.id + '\')">Elimina</button>';
-        }
       }
       if (isPhysician) {
         if (r.status === 'pending' && canFastTrack) {
@@ -2306,6 +2307,12 @@
         if (r.status === 'released') {
           actions += ' <button class="btn btn-sm" style="background:#22c55e;color:#fff;border:0" onclick="window._downloadReport(\'' + r.id + '\')">Scarica</button>';
         }
+      }
+
+      // Delete button for pending reports — all staff roles
+      if (r.status === 'pending' && isStaff) {
+        actions += ' <button class="btn btn-sm btn-delete-report" style="background:#ef4444;color:#fff;border:0" onclick="window._deleteReport(\'' + r.id + '\')">' +
+          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:2px"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14H7L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>Elimina</button>';
       }
 
       return '<tr>' +
@@ -3095,43 +3102,24 @@
   // ── Delete Report (ostetrica or admin) ──────────
   window._deleteReport = function (id) {
     openModal('Conferma Eliminazione',
-      '<p style="color:#ef4444;font-weight:600">Sei sicura di voler eliminare questo referto?</p>' +
-      '<p style="font-size:0.85rem;color:var(--text-secondary)">Questa azione è irreversibile. Il referto verrà rimosso dal sistema.</p>',
+      '<p style="color:#ef4444;font-weight:600">Sei sicuro di voler eliminare questo referto?</p>' +
+      '<p style="font-size:0.85rem;color:var(--text-secondary)">Il referto e i file associati verranno eliminati. Questa azione non è reversibile.</p>',
       '<button class="btn btn-outline" onclick="window._closeModal()">Annulla</button>' +
       '<button class="btn" style="background:#ef4444;color:#fff;border:0" id="confirmDelete_' + id + '" onclick="window._doDelete(\'' + id + '\')">Elimina Referto</button>');
   };
   window._doDelete = function (id) {
     var btn = $('confirmDelete_' + id);
     if (btn) { btn.disabled = true; btn.textContent = 'Eliminazione...'; }
-    // First delete associated files from storage
-    sbGet('report_files', 'report_id=eq.' + id + '&select=storage_path').then(function (files) {
-      if (files && files.length > 0) {
-        var paths = files.map(function (f) { return f.storage_path; });
-        return fetch(SB_URL + '/storage/v1/object/referti', {
-          method: 'DELETE',
-          headers: Object.assign({}, sbHeaders()),
-          body: JSON.stringify({ prefixes: paths })
-        }).catch(function () { /* ignore storage errors */ });
-      }
-    }).then(function () {
-      // Delete report_files records
-      return fetch(SB_URL + '/rest/v1/report_files?report_id=eq.' + id, {
-        method: 'DELETE',
-        headers: sbHeaders()
-      });
-    }).then(function () {
-      // Delete the report record
-      return fetch(SB_URL + '/rest/v1/reports?id=eq.' + id, {
-        method: 'DELETE',
-        headers: sbHeaders()
-      });
-    }).then(function (r) {
+    fetch('/api/reports/' + id, {
+      method: 'DELETE',
+      headers: { 'Authorization': 'Bearer ' + state.token }
+    }).then(function (r) { return r.json(); }).then(function (resp) {
       closeModal();
-      if (r.ok) {
+      if (resp.success) {
         toast('Referto eliminato con successo', 'success');
         loadPageData(state.currentPage);
       } else {
-        toast('Errore nella cancellazione (permesso negato)', 'error');
+        toast(resp.error || 'Errore nella cancellazione', 'error');
       }
     }).catch(function () {
       closeModal();

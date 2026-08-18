@@ -260,8 +260,8 @@ export async function onRequestDelete(context: {
   const { data, params } = context;
   const { ctx, env } = data;
 
-  // Admin, super_admin can delete any report; ostetrica can delete own uploads
-  const authError = requireRole(ctx, 'admin', 'super_admin', 'ostetrica');
+  // All staff roles can delete pending reports; admin/super_admin can delete any status
+  const authError = requireRole(ctx, 'lab_technician', 'admin', 'super_admin', 'ostetrica');
   if (authError) return authError;
 
   const reportId = params.id;
@@ -273,10 +273,10 @@ export async function onRequestDelete(context: {
     auth: { autoRefreshToken: false, persistSession: false },
   });
 
-  // Get report
+  // Get report with file info for storage cleanup
   const { data: report } = await adminClient
     .from('reports')
-    .select('id, uploaded_by, report_number, status')
+    .select('id, uploaded_by, report_number, status, report_files(id, storage_path)')
     .eq('id', reportId)
     .is('deleted_at', null)
     .single();
@@ -285,15 +285,45 @@ export async function onRequestDelete(context: {
     return jsonResponse({ success: false, error: 'Referto non trovato.' }, 404);
   }
 
-  // Ostetrica can only delete reports she uploaded
-  if (ctx.user!.role === 'ostetrica' && report.uploaded_by !== ctx.user!.id) {
+  // Non-admin roles can only delete reports with status = 'pending'
+  const isAdmin = ctx.user!.role === 'admin' || ctx.user!.role === 'super_admin';
+  if (!isAdmin && report.status !== 'pending') {
+    return jsonResponse({
+      success: false,
+      error: 'Solo i referti in stato "In attesa" possono essere eliminati.',
+    }, 400);
+  }
+
+  // Ostetrica / lab_technician can only delete reports they uploaded
+  if ((ctx.user!.role === 'ostetrica' || ctx.user!.role === 'lab_technician') && report.uploaded_by !== ctx.user!.id) {
     return jsonResponse({
       success: false,
       error: 'Puoi eliminare solo i referti che hai caricato.',
     }, 403);
   }
 
-  // Soft delete
+  // Delete associated files from Supabase Storage
+  const files = (report as any).report_files || [];
+  if (files.length > 0) {
+    const storagePaths = files.map((f: { storage_path: string }) => f.storage_path);
+    try {
+      const storageRes = await fetch(`${env.SUPABASE_URL}/storage/v1/object/referti`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${env.SUPABASE_SERVICE_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prefixes: storagePaths }),
+      });
+      if (!storageRes.ok) {
+        console.warn('[Reports] Storage cleanup partial:', await storageRes.text());
+      }
+    } catch (e) {
+      console.warn('[Reports] Storage cleanup error:', e);
+    }
+  }
+
+  // Soft delete the report
   const { error: deleteError } = await adminClient
     .from('reports')
     .update({ deleted_at: new Date().toISOString() })
@@ -318,6 +348,7 @@ export async function onRequestDelete(context: {
       report_number: report.report_number,
       previous_status: report.status,
       method: 'soft_delete',
+      files_cleaned: files.length,
     },
     risk_level: 'high',
   }).then(() => {}).catch(() => {});
