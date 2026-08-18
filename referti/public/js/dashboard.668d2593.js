@@ -156,10 +156,14 @@
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + state.token },
       body: JSON.stringify({ report_id: reportId })
     }).then(function (r) { return r.json(); }).then(function (data) {
-      if (data.email_sent) {
+      if (data.email_sent && data.whatsapp_sent) {
+        toast('Notifica inviata (Email + WhatsApp)', 'success');
+      } else if (data.email_sent) {
         toast('Email inviata a ' + data.patient_email, 'success');
+      } else if (data.whatsapp_sent) {
+        toast('WhatsApp inviato al paziente', 'success');
       } else if (data.success) {
-        toast('Notifica in-app inviata (email non configurata)', 'info');
+        toast('Notifica in-app inviata', 'info');
       }
       return data;
     }).catch(function (err) {

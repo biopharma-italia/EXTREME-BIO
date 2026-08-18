@@ -26,6 +26,10 @@ interface Env {
   LLM_API_KEY: string;
   LLM_BASE_URL: string;
   LLM_MODEL: string;
+  WASENDER_API_KEY: string;
+  WASENDER_SESSION_ID: string;
+  WASENDER_BASE_URL: string;
+  CRON_SECRET: string;
   RATE_LIMIT_KV?: KVNamespace;
 }
 
@@ -39,6 +43,7 @@ const PUBLIC_ROUTES = [
   '/api/auth/refresh',
   '/api/auth/verify-2fa',
   '/api/admin/gipo/sync',      // Auth gestita internamente (X-Gipo-Sync-Key o token admin)
+  '/api/cron/send-reminders',  // Auth gestita internamente (X-Cron-Secret)
 ];
 
 // ── Rate Limit Config ───────────────────────────────────────────────────────

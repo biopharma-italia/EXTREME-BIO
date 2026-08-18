@@ -3,12 +3,17 @@
  * POST /api/reports/[id]/release
  * ============================================================================
  * Releases a signed report to the patient and triggers notifications.
+ * Sends: in_app + email (Resend) + WhatsApp (WASenderAPI)
+ *
+ * @version 2.0.0 — 2026-08-18 — Added WhatsApp via WASenderAPI
  */
 
 import { createClient } from '@supabase/supabase-js';
 import { requireRole, jsonResponse } from '../../_middleware';
 import { validateUuid } from '../../../../src/lib/validators';
 import { reportReleasedEmail } from '../../../../src/lib/email-templates';
+import { sendWhatsApp, messageReportReleased } from '../../../../src/lib/whatsapp';
+import type { WhatsAppEnv } from '../../../../src/lib/whatsapp';
 import type { RequestContext } from '../../../../src/lib/types';
 
 interface Env {
@@ -17,6 +22,9 @@ interface Env {
   RESEND_API_KEY: string;
   APP_URL: string;
   EMAIL_FROM: string;
+  WASENDER_API_KEY: string;
+  WASENDER_SESSION_ID: string;
+  WASENDER_BASE_URL: string;
 }
 
 export async function onRequestPost(context: {
@@ -45,12 +53,12 @@ export async function onRequestPost(context: {
     auth: { autoRefreshToken: false, persistSession: false },
   });
 
-  // Get report + patient info
+  // Get report + patient info (including phone for WhatsApp)
   const { data: report } = await adminClient
     .from('reports')
     .select(`
       id, status, report_number, report_type, sample_date, patient_id,
-      patient:users!reports_patient_id_fkey(id, email, first_name, last_name, preferred_notification_channel)
+      patient:users!reports_patient_id_fkey(id, email, first_name, last_name, phone, preferred_notification_channel)
     `)
     .eq('id', reportId)
     .single();
@@ -76,11 +84,12 @@ export async function onRequestPost(context: {
   }).eq('id', reportId);
 
   // Queue notifications
-  const channels = body.notify_channels || ['email', 'in_app'];
-  const patient = report.patient as { id: string; email: string; first_name: string; last_name: string };
+  const channels = body.notify_channels || ['email', 'in_app', 'whatsapp'];
+  const patient = report.patient as unknown as { id: string; email: string; first_name: string; last_name: string; phone: string | null };
   let notificationsQueued = 0;
 
   for (const channel of channels) {
+    if (channel === 'whatsapp') continue; // WhatsApp handled separately below
     const notifBody = body.custom_message ||
       `Gentile ${patient.first_name}, il suo referto ${report.report_type} del ${report.sample_date} è disponibile.`;
 
@@ -93,7 +102,7 @@ export async function onRequestPost(context: {
       report_id: reportId,
       action_url: `/dashboard/referto/${reportId}`,
       status: 'queued',
-      provider: channel === 'email' ? 'resend' : channel === 'sms' ? 'twilio' : null,
+      provider: channel === 'email' ? 'resend' : channel === 'sms' ? 'telnyx' : null,
     });
     notificationsQueued++;
   }
@@ -145,6 +154,51 @@ export async function onRequestPost(context: {
     console.warn('[Release] RESEND_API_KEY not configured — skipping email for report', report.report_number);
   }
 
+  // ── Send WhatsApp via WASenderAPI ──────────────────────────────────────────
+  let whatsappSent = false;
+
+  if ((channels.includes('whatsapp') || !body.notify_channels) && patient.phone) {
+    console.log('[Release] WhatsApp check — WASENDER_API_KEY:',
+      env.WASENDER_API_KEY ? `set (${env.WASENDER_API_KEY.substring(0, 8)}...)` : 'NOT SET',
+      '| patient phone:', patient.phone);
+
+    const waMessage = messageReportReleased({
+      phone: patient.phone,
+      firstName: patient.first_name,
+      lastName: patient.last_name,
+      reportNumber: report.report_number,
+    });
+
+    const waResult = await sendWhatsApp(env as unknown as WhatsAppEnv, patient.phone, waMessage);
+
+    if (waResult.success) {
+      whatsappSent = true;
+      console.log('[Release] WhatsApp sent successfully to:', patient.phone);
+    } else if (waResult.skipped) {
+      console.log('[Release] WhatsApp skipped:', waResult.skip_reason);
+    } else {
+      console.error('[Release] WhatsApp failed:', waResult.error);
+    }
+
+    // Log WhatsApp notification in DB
+    await adminClient.from('notifications').insert({
+      user_id: patient.id,
+      channel: 'whatsapp',
+      subject: 'Nuovo referto disponibile',
+      body: waMessage,
+      report_id: reportId,
+      action_url: `/dashboard/referto/${reportId}`,
+      status: waResult.success ? 'sent' : 'failed',
+      provider: 'wasenderapi',
+      provider_id: waResult.provider_id || null,
+      sent_at: waResult.success ? new Date().toISOString() : null,
+      failure_reason: waResult.error || waResult.skip_reason || null,
+    });
+    notificationsQueued++;
+  } else if (!patient.phone) {
+    console.log('[Release] WhatsApp skipped — patient has no phone number');
+  }
+
   // Audit log
   await adminClient.from('audit_log').insert({
     user_id: ctx.user!.id,
@@ -160,6 +214,7 @@ export async function onRequestPost(context: {
       patient_id: patient.id,
       channels,
       notifications_queued: notificationsQueued,
+      whatsapp_sent: whatsappSent,
     },
     risk_level: 'medium',
   });
@@ -170,6 +225,7 @@ export async function onRequestPost(context: {
       status: 'released',
       released_at: new Date().toISOString(),
       notifications_queued: notificationsQueued,
+      whatsapp_sent: whatsappSent,
     },
   });
 }

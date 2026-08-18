@@ -2,12 +2,19 @@
  * ============================================================================
  * POST /api/admin/reports/bulk-release — Release multiple reports
  * ============================================================================
+ * Sends: email (Resend) + WhatsApp (WASenderAPI) for each released report.
+ * WhatsApp messages are throttled to 1 per 5.5 seconds to respect
+ * WASenderAPI Account Protection rate limits.
+ *
+ * @version 2.0.0 — 2026-08-18 — Added WhatsApp via WASenderAPI
  */
 
 import { createClient } from '@supabase/supabase-js';
 import { requireRole, jsonResponse } from '../../_middleware';
 import { validateUuid } from '../../../../src/lib/validators';
 import { reportReleasedEmail } from '../../../../src/lib/email-templates';
+import { sendWhatsApp, messageReportReleased } from '../../../../src/lib/whatsapp';
+import type { WhatsAppEnv } from '../../../../src/lib/whatsapp';
 import type { RequestContext } from '../../../../src/lib/types';
 
 interface Env {
@@ -16,6 +23,14 @@ interface Env {
   RESEND_API_KEY: string;
   APP_URL: string;
   EMAIL_FROM: string;
+  WASENDER_API_KEY: string;
+  WASENDER_SESSION_ID: string;
+  WASENDER_BASE_URL: string;
+}
+
+// Delay utility for throttling
+function delay(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 export async function onRequestPost(context: {
@@ -54,15 +69,17 @@ export async function onRequestPost(context: {
     auth: { autoRefreshToken: false, persistSession: false },
   });
 
-  const channels = body.notify_channels || ['email'];
+  const channels = body.notify_channels || ['email', 'whatsapp'];
   let released = 0;
   let notificationsQueued = 0;
+  let whatsappSentCount = 0;
+  let whatsappIndex = 0;
 
   for (const reportId of body.report_ids) {
     const { data: report } = await adminClient
       .from('reports')
       .select(`id, status, report_number, report_type, sample_date, patient_id,
-               patient:users!reports_patient_id_fkey(id, email, first_name)`)
+               patient:users!reports_patient_id_fkey(id, email, first_name, last_name, phone)`)
       .eq('id', reportId)
       .eq('status', 'signed')
       .single();
@@ -79,9 +96,11 @@ export async function onRequestPost(context: {
 
     released++;
 
-    const patient = report.patient as { id: string; email: string; first_name: string };
+    const patient = report.patient as unknown as { id: string; email: string; first_name: string; last_name: string; phone: string | null };
 
+    // Queue in-app and email notification records
     for (const channel of channels) {
+      if (channel === 'whatsapp') continue; // handled separately
       await adminClient.from('notifications').insert({
         user_id: patient.id,
         channel,
@@ -95,7 +114,7 @@ export async function onRequestPost(context: {
       notificationsQueued++;
     }
 
-    // P2-3: Actually send email notification (was previously only queued)
+    // Send email immediately
     if (channels.includes('email') && patient.email && env.RESEND_API_KEY) {
       try {
         const emailFrom = env.EMAIL_FROM || 'Bio-Clinic Referti <referti@bio-clinic.it>';
@@ -135,6 +154,46 @@ export async function onRequestPost(context: {
         console.error('[BulkRelease] Email error for report', report.report_number, ':', err);
       }
     }
+
+    // ── Send WhatsApp (throttled: 5.5s between messages) ─────────────────────
+    if (channels.includes('whatsapp') && patient.phone && env.WASENDER_API_KEY) {
+      // Throttle: wait 5.5s between WA messages (Account Protection: max 1/5sec)
+      if (whatsappIndex > 0) {
+        await delay(5500);
+      }
+      whatsappIndex++;
+
+      const waMessage = messageReportReleased({
+        phone: patient.phone,
+        firstName: patient.first_name,
+        lastName: patient.last_name,
+        reportNumber: report.report_number,
+      });
+
+      const waResult = await sendWhatsApp(env as unknown as WhatsAppEnv, patient.phone, waMessage);
+
+      // Log in DB
+      await adminClient.from('notifications').insert({
+        user_id: patient.id,
+        channel: 'whatsapp',
+        subject: 'Nuovo referto disponibile',
+        body: waMessage,
+        report_id: reportId,
+        action_url: `/dashboard/referto/${reportId}`,
+        status: waResult.success ? 'sent' : 'failed',
+        provider: 'wasenderapi',
+        provider_id: waResult.provider_id || null,
+        sent_at: waResult.success ? new Date().toISOString() : null,
+        failure_reason: waResult.error || waResult.skip_reason || null,
+      });
+      notificationsQueued++;
+
+      if (waResult.success) {
+        whatsappSentCount++;
+      } else {
+        console.error('[BulkRelease] WhatsApp failed for report', report.report_number, ':', waResult.error);
+      }
+    }
   }
 
   // Audit log
@@ -146,7 +205,13 @@ export async function onRequestPost(context: {
     ip_address: ctx.ip,
     user_agent: ctx.userAgent,
     request_id: ctx.requestId,
-    details: { bulk: true, total_requested: body.report_ids.length, released, channels },
+    details: {
+      bulk: true,
+      total_requested: body.report_ids.length,
+      released,
+      channels,
+      whatsapp_sent: whatsappSentCount,
+    },
     risk_level: 'medium',
   });
 
@@ -154,5 +219,6 @@ export async function onRequestPost(context: {
     success: true,
     released,
     notifications_queued: notificationsQueued,
+    whatsapp_sent: whatsappSentCount,
   });
 }

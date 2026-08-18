@@ -19,6 +19,11 @@ EMAIL_FROM = "Bio-Clinic Referti <referti@bio-clinic.it>"
 SUPABASE_URL = "https://mdxqgzkxrcrotxxbhoai.supabase.co"
 SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1keHFnemt4cmNyb3R4eGJob2FpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5ODYxMzIsImV4cCI6MjA4NzU2MjEzMn0.HHExeiCGqnx4di_u9gghUnTfgQVAIjKuN6kt_vLFddA"
 
-# NOTE: Sensitive vars (SUPABASE_SERVICE_KEY, MASTER_ENCRYPTION_KEY, etc.)
+# WhatsApp Notifications (WASenderAPI) — non-sensitive config
+WASENDER_BASE_URL = "https://wasenderapi.com/api"
+WASENDER_SESSION_ID = "7907"
+
+# NOTE: Sensitive vars (SUPABASE_SERVICE_KEY, MASTER_ENCRYPTION_KEY,
+# WASENDER_API_KEY, CRON_SECRET, etc.)
 # are set in Cloudflare Pages Dashboard → Settings → Environment Variables
 # NEVER put secrets in this file.

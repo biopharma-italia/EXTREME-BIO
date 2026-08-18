@@ -1,13 +1,17 @@
 /**
  * POST /api/notify-release
- * Sends email notification to patient when a report is released.
+ * Sends email + WhatsApp notification to patient when a report is released.
  * Called by dashboard.js after successful release.
  *
  * Body: { report_id: string }
- * Env:  SUPABASE_URL, SUPABASE_SERVICE_KEY, RESEND_API_KEY, APP_URL
+ * Env:  SUPABASE_URL, SUPABASE_SERVICE_KEY, RESEND_API_KEY, APP_URL,
+ *       WASENDER_API_KEY, WASENDER_SESSION_ID, WASENDER_BASE_URL
  *
- * @version 2.1.0 — P0-4 UUID validation, P1-6 idempotency check
+ * @version 3.0.0 — 2026-08-18 — Added WhatsApp via WASenderAPI
  */
+
+import { sendWhatsApp, messageReportReleased } from '../../src/lib/whatsapp';
+import type { WhatsAppEnv } from '../../src/lib/whatsapp';
 
 // P0-4: UUID v4 validation regex
 const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -18,6 +22,9 @@ interface Env {
   RESEND_API_KEY: string;
   APP_URL: string;
   EMAIL_FROM: string;
+  WASENDER_API_KEY: string;
+  WASENDER_SESSION_ID: string;
+  WASENDER_BASE_URL: string;
 }
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
@@ -79,7 +86,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       return new Response(JSON.stringify({ error: 'Ruolo non autorizzato' }), { status: 403, headers: corsHeaders });
     }
 
-    // Get report + patient
+    // Get report + patient (including phone for WhatsApp)
     const reportResp = await fetch(
       `${sbUrl}/rest/v1/reports?id=eq.${body.report_id}&select=id,report_number,report_type,sample_date,status,patient_id,patient_notified`,
       { headers: { 'apikey': sbKey, 'Authorization': `Bearer ${sbKey}` } }
@@ -100,18 +107,19 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         success: true,
         already_notified: true,
         email_sent: false,
+        whatsapp_sent: false,
         report_number: report.report_number,
       }), { status: 200, headers: corsHeaders });
     }
 
-    // Get patient
+    // Get patient (with phone number for WhatsApp)
     const patientResp = await fetch(
-      `${sbUrl}/rest/v1/users?id=eq.${report.patient_id}&select=id,email,first_name,last_name`,
+      `${sbUrl}/rest/v1/users?id=eq.${report.patient_id}&select=id,email,first_name,last_name,phone,preferred_notification_channel`,
       { headers: { 'apikey': sbKey, 'Authorization': `Bearer ${sbKey}` } }
     );
     const patients = await patientResp.json() as any[];
-    if (!patients.length || !patients[0].email) {
-      return new Response(JSON.stringify({ error: 'Paziente senza email', sent: false }), { status: 200, headers: corsHeaders });
+    if (!patients.length) {
+      return new Response(JSON.stringify({ error: 'Paziente non trovato', sent: false }), { status: 200, headers: corsHeaders });
     }
     const patient = patients[0];
 
@@ -147,14 +155,14 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       }),
     });
 
-    // Send email via Resend
+    // ── Send Email via Resend ────────────────────────────────────────────────
     const appUrl = env.APP_URL || 'https://referti.bio-clinic.it';
     const emailFrom = env.EMAIL_FROM || 'Bio-Clinic Referti <referti@bio-clinic.it>';
     let emailSent = false;
 
     console.log('[notify-release] Email check — RESEND_API_KEY:', env.RESEND_API_KEY ? `set (${env.RESEND_API_KEY.substring(0, 6)}...)` : 'NOT SET', '| patient:', patient.email);
 
-    if (env.RESEND_API_KEY) {
+    if (env.RESEND_API_KEY && patient.email) {
       try {
         const emailResp = await fetch('https://api.resend.com/emails', {
           method: 'POST',
@@ -188,10 +196,6 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       <tr style="background:#f0faf5">
         <td style="padding:10px 14px;font-weight:600;color:#555;border:1px solid #e0e0e0">N. Referto</td>
         <td style="padding:10px 14px;border:1px solid #e0e0e0"><strong>${report.report_number}</strong></td>
-      </tr>
-      <tr>
-        <td style="padding:10px 14px;font-weight:600;color:#555;border:1px solid #e0e0e0">Tipo Esame</td>
-        <td style="padding:10px 14px;border:1px solid #e0e0e0">${report.report_type || '--'}</td>
       </tr>
       <tr style="background:#f0faf5">
         <td style="padding:10px 14px;font-weight:600;color:#555;border:1px solid #e0e0e0">Data Prelievo</td>
@@ -239,14 +243,67 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       } catch (err) {
         console.error('[notify-release] Resend error:', err);
       }
-    } else {
+    } else if (!env.RESEND_API_KEY) {
       console.warn('[notify-release] RESEND_API_KEY not configured');
+    }
+
+    // ── Send WhatsApp via WASenderAPI ────────────────────────────────────────
+    let whatsappSent = false;
+
+    if (patient.phone) {
+      console.log('[notify-release] WhatsApp check — WASENDER_API_KEY:',
+        env.WASENDER_API_KEY ? `set (${env.WASENDER_API_KEY.substring(0, 8)}...)` : 'NOT SET',
+        '| patient phone:', patient.phone);
+
+      const waMessage = messageReportReleased({
+        phone: patient.phone,
+        firstName: patient.first_name,
+        lastName: patient.last_name,
+        reportNumber: report.report_number,
+      });
+
+      const waResult = await sendWhatsApp(env as WhatsAppEnv, patient.phone, waMessage);
+
+      if (waResult.success) {
+        whatsappSent = true;
+        console.log('[notify-release] WhatsApp sent successfully to:', patient.phone);
+      } else if (waResult.skipped) {
+        console.log('[notify-release] WhatsApp skipped:', waResult.skip_reason);
+      } else {
+        console.error('[notify-release] WhatsApp failed:', waResult.error);
+      }
+
+      // Log WhatsApp notification in DB
+      await fetch(`${sbUrl}/rest/v1/notifications`, {
+        method: 'POST',
+        headers: {
+          'apikey': sbKey, 'Authorization': `Bearer ${sbKey}`,
+          'Content-Type': 'application/json', 'Prefer': 'return=minimal',
+        },
+        body: JSON.stringify({
+          user_id: patient.id,
+          channel: 'whatsapp',
+          subject: 'Nuovo referto disponibile',
+          body: waMessage,
+          report_id: body.report_id,
+          action_url: `${appUrl}/dashboard/`,
+          status: waResult.success ? 'sent' : waResult.skipped ? 'failed' : 'failed',
+          provider: 'wasenderapi',
+          provider_id: waResult.provider_id || null,
+          sent_at: waResult.success ? new Date().toISOString() : null,
+          failure_reason: waResult.error || waResult.skip_reason || null,
+        }),
+      });
+    } else {
+      console.log('[notify-release] WhatsApp skipped — patient has no phone number');
     }
 
     return new Response(JSON.stringify({
       success: true,
       email_sent: emailSent,
+      whatsapp_sent: whatsappSent,
       patient_email: patient.email,
+      patient_phone: patient.phone ? '***' + patient.phone.slice(-4) : null,
       report_number: report.report_number,
     }), { status: 200, headers: corsHeaders });
 
