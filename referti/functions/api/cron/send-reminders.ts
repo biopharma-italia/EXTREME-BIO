@@ -7,7 +7,9 @@
  *
  * Security: Protected by X-Cron-Secret header (set in Cloudflare Cron Trigger config)
  * Schedule: Every hour (configured in wrangler.toml or Cloudflare dashboard)
- * Window: Only sends between 09:00–19:00 Europe/Rome
+ * Window: Only sends between 09:00–19:00 Europe/Rome — REMINDERS ONLY.
+ *         Release notifications (email + WhatsApp) are sent immediately
+ *         at any hour, including late evening/night uploads.
  *
  * Rules:
  * - Only 1 reminder per report (tracked via notifications table)
@@ -17,11 +19,11 @@
  * - Max 20 reminders per cron run (safety cap)
  * - 5.5s delay between messages (WASenderAPI Account Protection)
  *
- * @version 1.0.0 — 2026-08-18
+ * @version 1.1.0 — 2026-08-18 — Time window scoped to reminders only
  */
 
 import { createClient } from '@supabase/supabase-js';
-import { sendWhatsApp, messageReportReminder, isWithinAllowedHours } from '../../../src/lib/whatsapp';
+import { sendWhatsApp, messageReportReminder, isWithinReminderHours } from '../../../src/lib/whatsapp';
 import type { WhatsAppEnv } from '../../../src/lib/whatsapp';
 
 interface Env {
@@ -63,11 +65,14 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     });
   }
 
-  // ── Time window check ─────────────────────────────────────────────────────
-  if (!isWithinAllowedHours()) {
+  // ── Time window check (REMINDERS ONLY) ────────────────────────────────────
+  // NOTE: this 09:00–19:00 window applies ONLY to scheduled reminders.
+  // Release notifications (email + WhatsApp on report release) are sent
+  // immediately at any hour — see notify-release.ts / release.ts / bulk-release.ts.
+  if (!isWithinReminderHours()) {
     return new Response(JSON.stringify({
       success: true,
-      message: 'Outside allowed hours (09:00-19:00 Europe/Rome). No reminders sent.',
+      message: 'Outside reminder hours (09:00-19:00 Europe/Rome). No reminders sent. (Release notifications are NOT affected by this window.)',
       reminders_sent: 0,
     }), {
       status: 200,

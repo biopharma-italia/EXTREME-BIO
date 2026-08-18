@@ -6,7 +6,11 @@
  * WhatsApp messages are throttled to 1 per 5.5 seconds to respect
  * WASenderAPI Account Protection rate limits.
  *
- * @version 2.0.0 — 2026-08-18 — Added WhatsApp via WASenderAPI
+ * TIME POLICY: notifications are sent IMMEDIATELY at any hour (24/7),
+ * even for reports released late in the evening/night. The 09:00–19:00
+ * window applies ONLY to cron reminders (see cron/send-reminders.ts).
+ *
+ * @version 2.1.0 — 2026-08-18 — Explicit 24/7 send policy (no hour gate)
  */
 
 import { createClient } from '@supabase/supabase-js';
@@ -156,6 +160,7 @@ export async function onRequestPost(context: {
     }
 
     // ── Send WhatsApp (throttled: 5.5s between messages) ─────────────────────
+    // NO time-window check: bulk release notifications go out 24/7.
     if (channels.includes('whatsapp') && patient.phone && env.WASENDER_API_KEY) {
       // Throttle: wait 5.5s between WA messages (Account Protection: max 1/5sec)
       if (whatsappIndex > 0) {

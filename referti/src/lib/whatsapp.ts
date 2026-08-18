@@ -5,7 +5,13 @@
  * Shared module for sending WhatsApp messages via WASenderAPI.
  * Used by notify-release, release, bulk-release, and cron/send-reminders.
  *
- * @version 1.0.0 — 2026-08-18
+ * NOTE ON TIME WINDOWS:
+ * - Release notifications (report released → email + WhatsApp) are sent
+ *   IMMEDIATELY, 24/7, with NO time restriction.
+ * - The 09:00–19:00 Europe/Rome window (isWithinReminderHours) applies
+ *   ONLY to the 24h cron reminders.
+ *
+ * @version 1.1.0 — 2026-08-18 — Hour window scoped to reminders only
  */
 
 // ── Types ───────────────────────────────────────────────────────────────────
@@ -193,10 +199,15 @@ export async function sendWhatsApp(
 // ── Time Check ──────────────────────────────────────────────────────────────
 
 /**
- * Check if current time in Italy (Europe/Rome) is within allowed hours (09:00–19:00).
- * Used for reminder scheduling.
+ * Check if current time in Italy (Europe/Rome) is within reminder hours (09:00–19:00).
+ *
+ * ⚠️ IMPORTANT — SCOPE OF THIS CHECK:
+ * This time window applies ONLY to scheduled REMINDERS (cron/send-reminders).
+ * Release notifications (email + WhatsApp sent when a report is released)
+ * are ALWAYS sent immediately, at any hour of the day — even late at night.
+ * Do NOT use this function to gate release notifications.
  */
-export function isWithinAllowedHours(): boolean {
+export function isWithinReminderHours(): boolean {
   const now = new Date();
   // Get current hour in Europe/Rome timezone
   const formatter = new Intl.DateTimeFormat('en-US', {

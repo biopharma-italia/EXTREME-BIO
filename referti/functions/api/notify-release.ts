@@ -7,7 +7,11 @@
  * Env:  SUPABASE_URL, SUPABASE_SERVICE_KEY, RESEND_API_KEY, APP_URL,
  *       WASENDER_API_KEY, WASENDER_SESSION_ID, WASENDER_BASE_URL
  *
- * @version 3.0.0 — 2026-08-18 — Added WhatsApp via WASenderAPI
+ * TIME POLICY: notifications are sent IMMEDIATELY at any hour (24/7),
+ * even for reports released late in the evening/night. The 09:00–19:00
+ * window applies ONLY to cron reminders (see cron/send-reminders.ts).
+ *
+ * @version 3.1.0 — 2026-08-18 — Explicit 24/7 send policy (no hour gate)
  */
 
 import { sendWhatsApp, messageReportReleased } from '../../src/lib/whatsapp';
@@ -248,6 +252,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     }
 
     // ── Send WhatsApp via WASenderAPI ────────────────────────────────────────
+    // NO time-window check here: release notifications go out 24/7,
+    // even at night. Only cron reminders respect the 09–19 window.
     let whatsappSent = false;
 
     if (patient.phone) {
