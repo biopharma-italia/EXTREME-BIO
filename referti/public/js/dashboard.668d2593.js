@@ -413,6 +413,7 @@
       case 'my-reports': loadMyReports(); break;
       case 'my-profile': loadProfile(); break;
       case 'upload': initUploadPage(); break;
+      case 'bulk-upload': initBulkUpload(); break;
       case 'queue': loadQueue(); break;
       case 'sign-release': loadSignRelease(); break;
       case 'all-reports': loadAllReports(); break;
@@ -1189,6 +1190,627 @@
     requestAnimationFrame(step);
   }
 
+  // ══════════════════════════════════════════════════════════════════════════
+  // ██  BULK UPLOAD — Upload Massivo con estrazione automatica CF da PDF  ██
+  // ══════════════════════════════════════════════════════════════════════════
+
+  var bulkFiles = [];   // Array of { file: File, cf: string|null, pdfName: string|null, pdfDate: string|null, pdfType: string|null, lookupResult: object|null }
+  var _bulkBound = false;
+
+  function initBulkUpload() {
+    var dropZone = $('bulkDropZone');
+    var fileInput = $('bulkFileInput');
+    if (!dropZone || !fileInput) return;
+
+    if (!_bulkBound) {
+      $('bulkBrowseBtn').addEventListener('click', function () { fileInput.click(); });
+
+      fileInput.addEventListener('change', function () {
+        if (this.files && this.files.length > 0) {
+          bulkAddFiles(Array.from(this.files));
+          this.value = '';
+        }
+      });
+
+      ['dragenter', 'dragover'].forEach(function (ev) {
+        dropZone.addEventListener(ev, function (e) { e.preventDefault(); dropZone.classList.add('drag-over'); });
+      });
+      ['dragleave', 'drop'].forEach(function (ev) {
+        dropZone.addEventListener(ev, function (e) { e.preventDefault(); dropZone.classList.remove('drag-over'); });
+      });
+      dropZone.addEventListener('drop', function (e) {
+        var files = e.dataTransfer.files;
+        if (files && files.length > 0) {
+          bulkAddFiles(Array.from(files));
+        }
+      });
+
+      $('bulkSelectAll').addEventListener('change', function () {
+        var checked = this.checked;
+        document.querySelectorAll('.bulk-row-check').forEach(function (cb) {
+          if (!cb.disabled) cb.checked = checked;
+        });
+        bulkUpdateUploadBtn();
+      });
+
+      $('bulkUploadBtn').addEventListener('click', bulkStartUpload);
+      $('bulkClearBtn').addEventListener('click', function () {
+        bulkFiles = [];
+        $('bulkPreviewCard').hidden = true;
+        $('bulkResultCard').hidden = true;
+        $('bulkMessage').textContent = '';
+        $('bulkDropContent').style.display = '';
+      });
+
+      _bulkBound = true;
+    }
+
+    // Reset state
+    $('bulkPreviewCard').hidden = true;
+    $('bulkResultCard').hidden = true;
+    $('bulkMessage').textContent = '';
+  }
+
+  function bulkAddFiles(newFiles) {
+    var pdfs = newFiles.filter(function (f) { return f.type === 'application/pdf' || f.name.toLowerCase().endsWith('.pdf'); });
+    if (pdfs.length === 0) { toast('Seleziona solo file PDF', 'error'); return; }
+
+    // Dedup
+    pdfs.forEach(function (f) {
+      var exists = bulkFiles.some(function (bf) { return bf.file.name === f.name && bf.file.size === f.size; });
+      if (!exists && bulkFiles.length < 50) {
+        bulkFiles.push({ file: f, cf: null, pdfName: null, pdfDate: null, pdfType: null, lookupResult: null });
+      }
+    });
+
+    if (bulkFiles.length >= 50) toast('Limite: max 50 file per batch', 'error');
+    bulkParsePDFs();
+  }
+
+  // ── PDF Parsing with pdf.js (browser-side) ──────────────────────────────
+  function bulkParsePDFs() {
+    var total = bulkFiles.length;
+    var parsed = 0;
+    $('bulkParsingProgress').hidden = false;
+    $('bulkParsingLabel').textContent = 'Analisi PDF in corso...';
+    $('bulkParsingPct').textContent = '0%';
+    $('bulkParsingFill').style.width = '0%';
+
+    var cfRegex = /[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]/;
+    var dateRegex1 = /Data\s*(?:prelievo|Prelievo)[:\s]*(\d{2}\/\d{2}\/\d{2,4})/i;
+    var dateRegex2 = /(\d{2}\/\d{2}\/\d{4})/;
+
+    // Known exam type keywords to detect from PDF text
+    var examKeywords = [
+      { key: 'emocromo', re: /EMOCROMO/i },
+      { key: 'biochimica_clinica', re: /BIOCHIMICA\s*CLINICA/i },
+      { key: 'profilo_lipidico', re: /PROFILO\s*LIPIDICO|COLESTEROLO\s*TOTALE|TRIGLICERIDI/i },
+      { key: 'profilo_tiroideo', re: /TIROIDE|TSH|FT3|FT4|PROFILO\s*TIROIDEO/i },
+      { key: 'glicemia', re: /GLICEMIA|EMOGLOBINA\s*GLICATA|HBA1C/i },
+      { key: 'esame_urine', re: /ESAME\s*URINE|URINE\s*COMPLETO/i },
+      { key: 'profilo_epatico', re: /PROFILO\s*EPATICO|TRANSAMINASI|GOT|GPT|AST|ALT/i },
+      { key: 'profilo_renale', re: /PROFILO\s*RENALE|CREATININA|AZOTEMIA/i },
+      { key: 'coagulazione', re: /COAGULAZIONE|PT|INR|PTT|FIBRINOGENO/i },
+      { key: 'sierologia', re: /SIEROLOGIA|SIEROLOGICO/i },
+      { key: 'siero', re: /SIERO\b/i },
+      { key: 'sieroimmunologia', re: /SIEROIMMUNOLOGIA|IMMUNOGLOBULINE/i },
+      { key: 'allergologia', re: /ALLERGOLOG|IGE\s*SPECIFICHE|RAST|PRICK/i },
+      { key: 'ematologia', re: /EMATOLOGIA/i },
+      { key: 'bhcg', re: /BHCG|BETA\s*HCG|B-HCG/i },
+      { key: 'tossicologia', re: /TOSSICOLOG|DROGHE|STUPEFACENTI/i },
+      { key: 'markers_tumorali', re: /MARKER|CEA|CA\s*125|CA\s*19|PSA|AFP/i },
+      { key: 'gastropanel', re: /GASTROPANEL|PEPSINOGENO|GASTRINA/i },
+      { key: 'disbiosi_intestinale', re: /DISBIOSI|MICROBIOTA/i },
+      { key: 'medicina_lavoro', re: /MEDICINA\s*(?:DEL\s*)?LAVORO/i },
+      { key: 'alex_test', re: /ALEX\s*TEST/i },
+      { key: 'breath_test_lattosio', re: /BREATH\s*TEST\s*LATTOSIO/i },
+      { key: 'urea_breath_test', re: /UREA\s*BREATH/i },
+      { key: 'curva_da_carico', re: /CURVA\s*(?:DA\s*)?CARICO|OGTT/i },
+      { key: 'microbiologia', re: /MICROBIOLOGIA|URINOCOLTURA|TAMPONE|ANTIBIOGRAMMA/i }
+    ];
+
+    var promises = bulkFiles.map(function (entry, idx) {
+      if (entry.cf) { parsed++; return Promise.resolve(); } // already parsed
+      return parseSinglePDF(entry.file).then(function (result) {
+        entry.cf = result.cf;
+        entry.pdfName = result.name;
+        entry.pdfDate = result.date;
+        entry.pdfType = result.type;
+        parsed++;
+        var pct = Math.round((parsed / total) * 100);
+        $('bulkParsingPct').textContent = pct + '%';
+        $('bulkParsingFill').style.width = pct + '%';
+        $('bulkParsingLabel').textContent = 'Analisi ' + parsed + ' di ' + total + '...';
+      }).catch(function (err) {
+        console.warn('[BulkParse] Error parsing ' + entry.file.name, err);
+        parsed++;
+      });
+    });
+
+    function parseSinglePDF(file) {
+      return file.arrayBuffer().then(function (buffer) {
+        return pdfjsLib.getDocument({ data: buffer }).promise;
+      }).then(function (pdf) {
+        return pdf.getPage(1).then(function (page) {
+          return page.getTextContent();
+        }).then(function (content) {
+          var text = content.items.map(function (i) { return i.str; }).join(' ');
+          var textUpper = text.toUpperCase();
+
+          // Extract CF
+          var cfMatch = textUpper.match(cfRegex);
+          var cf = cfMatch ? cfMatch[0] : null;
+
+          // Extract patient name (typically after clinic header, before metadata)
+          var name = null;
+          var lines = text.split(/\n|\r/).filter(function(l) { return l.trim(); });
+          // Try to find name near "Sig." or "Paziente:" or after clinic header
+          for (var li = 0; li < Math.min(lines.length, 15); li++) {
+            var line = lines[li].trim();
+            if (/^(Sig\.|Sig\.ra|Paziente|Spett\.le)\s*/i.test(line)) {
+              name = line.replace(/^(Sig\.|Sig\.ra|Paziente|Spett\.le)\s*/i, '').trim();
+              break;
+            }
+          }
+          // Fallback: use text items to find name pattern (ALL CAPS, near top)
+          if (!name) {
+            var items = content.items;
+            for (var ii = 0; ii < Math.min(items.length, 30); ii++) {
+              var s = items[ii].str.trim();
+              // Look for all-caps name that isn't the clinic or address
+              if (s.length > 5 && /^[A-Z\s]+$/.test(s) && !/CENTRO|MEDICO|POLISPECIALISTICO|SASSARI|VIA|TEL|FAX|EMAIL|LABORATORIO|ANALISI/i.test(s)) {
+                name = s;
+                break;
+              }
+            }
+          }
+
+          // Extract sample date
+          var dateStr = null;
+          var dm1 = text.match(dateRegex1);
+          if (dm1) { dateStr = dm1[1]; }
+          else {
+            var dm2 = text.match(dateRegex2);
+            if (dm2) dateStr = dm2[1];
+          }
+          // Convert to ISO: dd/mm/yy or dd/mm/yyyy → yyyy-mm-dd
+          var isoDate = null;
+          if (dateStr) {
+            var parts = dateStr.split('/');
+            if (parts.length === 3) {
+              var dd = parts[0], mm = parts[1], yy = parts[2];
+              if (yy.length === 2) yy = (parseInt(yy) > 50 ? '19' : '20') + yy;
+              isoDate = yy + '-' + mm + '-' + dd;
+            }
+          }
+
+          // Detect exam type
+          var detectedType = null;
+          for (var ek = 0; ek < examKeywords.length; ek++) {
+            if (examKeywords[ek].re.test(textUpper)) {
+              detectedType = examKeywords[ek].key;
+              break;
+            }
+          }
+
+          return { cf: cf, name: name, date: isoDate, type: detectedType };
+        });
+      });
+    }
+
+    Promise.all(promises).then(function () {
+      $('bulkParsingProgress').hidden = true;
+      bulkLookupPatients();
+    });
+  }
+
+  // ── Batch Patient Lookup ──────────────────────────────────────────────────
+  function bulkLookupPatients() {
+    var codes = [];
+    bulkFiles.forEach(function (entry) {
+      if (entry.cf && codes.indexOf(entry.cf) === -1) codes.push(entry.cf);
+    });
+
+    if (codes.length === 0) {
+      bulkRenderPreview();
+      return;
+    }
+
+    fetch('/api/admin/users/batch-lookup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + state.token },
+      body: JSON.stringify({ fiscal_codes: codes })
+    }).then(function (r) { return r.json(); }).then(function (res) {
+      if (res.success && res.results) {
+        bulkFiles.forEach(function (entry) {
+          if (entry.cf && res.results[entry.cf]) {
+            entry.lookupResult = res.results[entry.cf];
+          }
+        });
+      }
+      bulkRenderPreview();
+    }).catch(function (err) {
+      console.error('[BulkLookup] Error:', err);
+      toast('Errore nella ricerca pazienti', 'error');
+      bulkRenderPreview();
+    });
+  }
+
+  // ── Render Preview Table ──────────────────────────────────────────────────
+  function bulkRenderPreview() {
+    var tbody = $('bulkPreviewBody');
+    tbody.innerHTML = '';
+
+    var statsOk = 0, statsGipo = 0, statsNotFound = 0, statsNoCF = 0;
+
+    bulkFiles.forEach(function (entry, idx) {
+      var tr = document.createElement('tr');
+      tr.id = 'bulkRow' + idx;
+
+      var source = entry.lookupResult ? entry.lookupResult.source : null;
+      var pData = (entry.lookupResult && entry.lookupResult.data) ? entry.lookupResult.data : null;
+
+      var statusBadge = '';
+      var statusClass = '';
+      var canUpload = false;
+      var patientName = entry.pdfName || '—';
+
+      if (!entry.cf) {
+        statusBadge = '<span class="badge" style="background:#ef4444;color:#fff">CF non estratto</span>';
+        statusClass = 'bulk-no-cf';
+        statsNoCF++;
+      } else if (source === 'users') {
+        statusBadge = '<span class="badge" style="background:#22c55e;color:#fff">Profilo esistente</span>';
+        statusClass = 'bulk-ok';
+        patientName = pData ? esc(pData.first_name + ' ' + pData.last_name) : patientName;
+        canUpload = true;
+        statsOk++;
+      } else if (source === 'gipo') {
+        statusBadge = '<span class="badge" style="background:#3b82f6;color:#fff">Da GIPO</span>';
+        statusClass = 'bulk-gipo';
+        patientName = pData ? esc(pData.first_name + ' ' + pData.last_name) : patientName;
+        canUpload = true;
+        statsGipo++;
+      } else {
+        statusBadge = '<span class="badge" style="background:#f59e0b;color:#000">Non trovato</span>';
+        statusClass = 'bulk-notfound';
+        statsNotFound++;
+      }
+
+      var examType = entry.pdfType || ($('bulkDefaultType').value || 'altro');
+      var examLabel = examType.replace(/_/g, ' ');
+      // Capitalize first letter
+      examLabel = examLabel.charAt(0).toUpperCase() + examLabel.slice(1);
+
+      tr.className = statusClass;
+      tr.innerHTML = ''
+        + '<td><input type="checkbox" class="bulk-row-check" data-idx="' + idx + '" ' + (canUpload ? 'checked' : 'disabled') + '></td>'
+        + '<td title="' + esc(entry.file.name) + '">' + esc(entry.file.name.length > 20 ? entry.file.name.substring(0, 17) + '...' : entry.file.name) + '</td>'
+        + '<td><code style="font-size:0.8rem">' + (entry.cf ? esc(entry.cf) : '<em>—</em>') + '</code></td>'
+        + '<td>' + patientName + (pData && pData.email ? '<br><small style="color:var(--text-secondary)">' + esc(pData.email) + '</small>' : '') + '</td>'
+        + '<td>' + esc(examLabel) + '</td>'
+        + '<td>' + (entry.pdfDate || '—') + '</td>'
+        + '<td>' + statusBadge + '</td>'
+        + '<td>'
+        + (entry.cf ? '' : '<button class="btn btn-outline btn-xs bulk-manual-cf" data-idx="' + idx + '" title="Inserisci CF manualmente">CF</button> ')
+        + (source === 'not_found' && entry.cf ? '<button class="btn btn-outline btn-xs bulk-create-patient" data-idx="' + idx + '" title="Registra paziente">Registra</button>' : '')
+        + '</td>';
+
+      tbody.appendChild(tr);
+    });
+
+    // Stats bar
+    $('bulkStats').innerHTML = ''
+      + '<span style="padding:4px 10px;border-radius:8px;background:#dcfce7;color:#166534;font-size:0.85rem;font-weight:500">' + statsOk + ' pronti</span>'
+      + (statsGipo > 0 ? '<span style="padding:4px 10px;border-radius:8px;background:#dbeafe;color:#1e40af;font-size:0.85rem;font-weight:500">' + statsGipo + ' da GIPO (auto-crea)</span>' : '')
+      + (statsNotFound > 0 ? '<span style="padding:4px 10px;border-radius:8px;background:#fef3c7;color:#92400e;font-size:0.85rem;font-weight:500">' + statsNotFound + ' non trovati</span>' : '')
+      + (statsNoCF > 0 ? '<span style="padding:4px 10px;border-radius:8px;background:#fee2e2;color:#991b1b;font-size:0.85rem;font-weight:500">' + statsNoCF + ' CF non estratto</span>' : '');
+
+    // Bind events
+    tbody.querySelectorAll('.bulk-row-check').forEach(function (cb) {
+      cb.addEventListener('change', bulkUpdateUploadBtn);
+    });
+    tbody.querySelectorAll('.bulk-manual-cf').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var i = parseInt(this.dataset.idx);
+        var cf = prompt('Inserisci il Codice Fiscale per: ' + bulkFiles[i].file.name);
+        if (cf && cf.trim().length === 16) {
+          bulkFiles[i].cf = cf.trim().toUpperCase();
+          // Re-run lookup for this single CF
+          fetch('/api/admin/users/batch-lookup', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + state.token },
+            body: JSON.stringify({ fiscal_codes: [bulkFiles[i].cf] })
+          }).then(function (r) { return r.json(); }).then(function (res) {
+            if (res.success && res.results && res.results[bulkFiles[i].cf]) {
+              bulkFiles[i].lookupResult = res.results[bulkFiles[i].cf];
+            }
+            bulkRenderPreview();
+          });
+        }
+      });
+    });
+    tbody.querySelectorAll('.bulk-create-patient').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var i = parseInt(this.dataset.idx);
+        var entry = bulkFiles[i];
+        // Open the invite modal pre-filled
+        $('inviteOverlay').hidden = false;
+        $('inviteForm').reset();
+        $('inviteMessage').textContent = '';
+        $('invPassword').value = genPassword(16);
+        $('invRole').value = 'patient';
+        $('invRole').disabled = true;
+        $('invFiscal').value = entry.cf || '';
+        togglePatientFields();
+        if (entry.pdfName) {
+          var nameParts = entry.pdfName.split(/\s+/);
+          if (nameParts.length >= 2) {
+            $('invLastName').value = nameParts[0];
+            $('invFirstName').value = nameParts.slice(1).join(' ');
+          }
+        }
+        // Set flag to re-lookup after creation
+        state._inviteFromBulk = true;
+        state._inviteFromBulkIdx = i;
+      });
+    });
+
+    $('bulkPreviewCard').hidden = false;
+    bulkUpdateUploadBtn();
+  }
+
+  function bulkUpdateUploadBtn() {
+    var checked = document.querySelectorAll('.bulk-row-check:checked').length;
+    $('bulkUploadBtn').disabled = checked === 0;
+    $('bulkUploadSummary').textContent = checked + ' di ' + bulkFiles.length + ' file selezionati per il caricamento';
+  }
+
+  // ── Bulk Upload Execution ──────────────────────────────────────────────────
+  function bulkStartUpload() {
+    var toUpload = [];
+    document.querySelectorAll('.bulk-row-check:checked').forEach(function (cb) {
+      toUpload.push(parseInt(cb.dataset.idx));
+    });
+
+    if (toUpload.length === 0) return;
+
+    $('bulkUploadBtn').disabled = true;
+    $('bulkClearBtn').disabled = true;
+    $('bulkUploadProgress').hidden = false;
+    $('bulkUploadLabel').textContent = 'Preparazione...';
+    $('bulkUploadPct').textContent = '0%';
+    $('bulkUploadFill').style.width = '0%';
+
+    var category = $('bulkCategory').value || 'laboratorio';
+    var defaultType = $('bulkDefaultType').value;
+    var total = toUpload.length;
+    var completed = 0;
+    var failed = 0;
+    var results = [];
+
+    // First: auto-create profiles for GIPO entries
+    var gipoToCreate = toUpload.filter(function (idx) {
+      return bulkFiles[idx].lookupResult && bulkFiles[idx].lookupResult.source === 'gipo';
+    });
+
+    var createChain = Promise.resolve();
+
+    gipoToCreate.forEach(function (idx) {
+      createChain = createChain.then(function () {
+        return bulkAutoCreatePatient(idx);
+      });
+    });
+
+    createChain.then(function () {
+      $('bulkUploadLabel').textContent = 'Caricamento referti...';
+      // Sequential upload
+      bulkUploadNext(toUpload, 0, category, defaultType, total, completed, failed, results);
+    }).catch(function (err) {
+      console.error('[BulkUpload] GIPO create chain error:', err);
+      $('bulkUploadLabel').textContent = 'Caricamento referti...';
+      bulkUploadNext(toUpload, 0, category, defaultType, total, completed, failed, results);
+    });
+  }
+
+  function bulkAutoCreatePatient(idx) {
+    var entry = bulkFiles[idx];
+    if (!entry.lookupResult || entry.lookupResult.source !== 'gipo') return Promise.resolve();
+    var g = entry.lookupResult.data;
+
+    // Check we have enough data
+    if (!g.email) {
+      // No email → can't create account, mark as pending
+      entry._createError = 'Email mancante nei dati GIPO';
+      return Promise.resolve();
+    }
+
+    var password = genPassword(16);
+    var reqBody = {
+      email: g.email,
+      first_name: g.first_name,
+      last_name: g.last_name,
+      role: 'patient',
+      password: password,
+      send_invite: true,
+      fiscal_code: g.fiscal_code
+    };
+    if (g.phone) reqBody.phone = g.phone;
+    if (g.date_of_birth) reqBody.date_of_birth = g.date_of_birth;
+    if (g.gender) reqBody.gender = g.gender;
+
+    return fetch('/api/users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + state.token },
+      body: JSON.stringify(reqBody)
+    }).then(function (r) { return r.json(); }).then(function (data) {
+      if (data.success && data.data && data.data.id) {
+        // Update lookup result to "users" so upload works
+        entry.lookupResult = {
+          source: 'users',
+          data: { id: data.data.id, first_name: g.first_name, last_name: g.last_name, email: g.email, fiscal_code: g.fiscal_code }
+        };
+        entry._autoCreated = true;
+        // Update row in table
+        var row = $('bulkRow' + idx);
+        if (row) {
+          var badge = row.querySelector('.badge');
+          if (badge) { badge.style.background = '#22c55e'; badge.textContent = 'Profilo creato'; }
+        }
+      } else {
+        entry._createError = data.error || 'Errore creazione profilo';
+        console.warn('[BulkUpload] Failed to create patient for ' + g.fiscal_code, data);
+      }
+    }).catch(function (err) {
+      entry._createError = err.message || 'Errore rete';
+      console.error('[BulkUpload] Create patient error for ' + g.fiscal_code, err);
+    });
+  }
+
+  function bulkUploadNext(indices, pos, category, defaultType, total, completed, failed, results) {
+    if (pos >= indices.length) {
+      bulkFinish(completed, failed, results);
+      return;
+    }
+
+    var idx = indices[pos];
+    var entry = bulkFiles[idx];
+    var pct = Math.round(((completed + failed) / total) * 100);
+    $('bulkUploadPct').textContent = pct + '%';
+    $('bulkUploadFill').style.width = pct + '%';
+    $('bulkUploadLabel').textContent = 'Caricamento ' + (completed + failed + 1) + ' di ' + total + '...';
+
+    // Update row status
+    var row = $('bulkRow' + idx);
+    if (row) row.classList.add('uploading');
+
+    // Check patient ID
+    var patientId = null;
+    if (entry.lookupResult && entry.lookupResult.source === 'users' && entry.lookupResult.data) {
+      patientId = entry.lookupResult.data.id;
+    }
+
+    if (!patientId) {
+      // Can't upload without patient
+      failed++;
+      results.push({ file: entry.file.name, success: false, reason: entry._createError || 'Paziente non trovato' });
+      if (row) { row.classList.remove('uploading'); row.classList.add('error'); }
+      bulkUploadNext(indices, pos + 1, category, defaultType, total, completed, failed, results);
+      return;
+    }
+
+    var examType = entry.pdfType || defaultType || 'altro';
+    var sampleDate = entry.pdfDate || new Date().toISOString().slice(0, 10);
+
+    computeSHA256(entry.file).then(function (checksum) {
+      var reportData = {
+        patient_id: patientId,
+        patient_fiscal_code: entry.cf,
+        report_type: examType,
+        category: category,
+        department: 'laboratorio',
+        sample_date: sampleDate,
+        status: 'pending',
+        uploaded_by: state.profile ? state.profile.id : null
+      };
+
+      return sbPost('reports', reportData).then(function (reports) {
+        if (!reports || reports.length === 0) throw new Error('Failed to create report');
+        var report = Array.isArray(reports) ? reports[0] : reports;
+
+        var path = patientId + '/' + report.id + '/' + entry.file.name;
+        return fetch(SB_URL + '/storage/v1/object/referti/' + path, {
+          method: 'POST',
+          headers: {
+            'apikey': SB_KEY,
+            'Authorization': 'Bearer ' + state.token,
+            'Content-Type': entry.file.type || 'application/pdf',
+            'x-upsert': 'true'
+          },
+          body: entry.file
+        }).then(function (r) {
+          if (!r.ok) throw new Error('Upload storage failed: ' + r.status);
+          return r.json().then(function () {
+            return sbPost('report_files', {
+              report_id: report.id,
+              storage_path: path,
+              storage_bucket: 'referti',
+              original_name: entry.file.name,
+              mime_type: 'application/pdf',
+              file_size_bytes: entry.file.size,
+              checksum_sha256: checksum,
+              is_encrypted: false,
+              is_primary: true,
+              file_type: 'report_pdf',
+              uploaded_by: state.profile ? state.profile.id : null
+            });
+          });
+        }).then(function () {
+          completed++;
+          results.push({ file: entry.file.name, success: true, reportId: report.id, patientName: entry.lookupResult.data.first_name + ' ' + entry.lookupResult.data.last_name, autoCreated: entry._autoCreated || false });
+          if (row) { row.classList.remove('uploading'); row.classList.add('done'); var b = row.querySelector('.badge'); if (b) { b.style.background = '#22c55e'; b.textContent = 'Caricato'; } }
+          bulkUploadNext(indices, pos + 1, category, defaultType, total, completed, failed, results);
+        });
+      });
+    }).catch(function (err) {
+      failed++;
+      results.push({ file: entry.file.name, success: false, reason: err.message || 'Errore' });
+      console.error('[BulkUpload] Error uploading ' + entry.file.name, err);
+      if (row) { row.classList.remove('uploading'); row.classList.add('error'); var b = row.querySelector('.badge'); if (b) { b.style.background = '#ef4444'; b.textContent = 'Errore'; } }
+      bulkUploadNext(indices, pos + 1, category, defaultType, total, completed, failed, results);
+    });
+  }
+
+  function bulkFinish(completed, failed, results) {
+    $('bulkUploadProgress').hidden = true;
+    $('bulkUploadBtn').disabled = false;
+    $('bulkClearBtn').disabled = false;
+
+    var autoCreated = results.filter(function (r) { return r.autoCreated; }).length;
+
+    // Build result summary
+    var html = '<div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px">'
+      + '<span style="padding:6px 14px;border-radius:8px;background:#dcfce7;color:#166534;font-weight:600">' + completed + ' caricati</span>'
+      + (failed > 0 ? '<span style="padding:6px 14px;border-radius:8px;background:#fee2e2;color:#991b1b;font-weight:600">' + failed + ' errori</span>' : '')
+      + (autoCreated > 0 ? '<span style="padding:6px 14px;border-radius:8px;background:#dbeafe;color:#1e40af;font-weight:600">' + autoCreated + ' profili auto-creati da GIPO</span>' : '')
+      + '</div>';
+
+    if (results.length > 0) {
+      html += '<table class="data-table" style="font-size:0.85rem"><thead><tr><th>File</th><th>Paziente</th><th>Esito</th></tr></thead><tbody>';
+      results.forEach(function (r) {
+        html += '<tr>'
+          + '<td>' + esc(r.file) + '</td>'
+          + '<td>' + (r.patientName ? esc(r.patientName) : '—') + '</td>'
+          + '<td>' + (r.success
+              ? '<span style="color:#22c55e;font-weight:500">Caricato' + (r.autoCreated ? ' (profilo creato)' : '') + '</span>'
+              : '<span style="color:#ef4444;font-weight:500">' + esc(r.reason) + '</span>')
+          + '</td></tr>';
+      });
+      html += '</tbody></table>';
+    }
+
+    $('bulkResultBody').innerHTML = html;
+    $('bulkResultCard').hidden = false;
+
+    if (completed > 0) {
+      toast(completed + ' refert' + (completed === 1 ? 'o caricato' : 'i caricati') + (autoCreated > 0 ? ' (' + autoCreated + ' profili creati)' : ''), 'success');
+    }
+    if (failed > 0 && completed === 0) {
+      toast('Tutti i caricamenti falliti', 'error');
+    }
+
+    // Reset for next batch
+    if (failed === 0) {
+      bulkFiles = [];
+      setTimeout(function () {
+        $('bulkPreviewCard').hidden = true;
+        $('bulkDropContent').style.display = '';
+      }, 500);
+    }
+  }
+
+  // ── End of Bulk Upload ─────────────────────────────────────────────────────
+
   function loadRecentUploads() {
     var q = 'select=id,report_number,report_type,status,patient_fiscal_code,created_at&order=created_at.desc&limit=8';
     if (state.profile && (state.profile.role === 'lab_technician' || state.profile.role === 'ostetrica')) {
@@ -1737,8 +2359,8 @@
   }
 
   function initInviteUser() {
-    $('inviteClose').addEventListener('click', function () { $('inviteOverlay').hidden = true; state._inviteFromUpload = false; $('invRole').disabled = false; });
-    $('inviteCancelBtn').addEventListener('click', function () { $('inviteOverlay').hidden = true; state._inviteFromUpload = false; $('invRole').disabled = false; });
+    $('inviteClose').addEventListener('click', function () { $('inviteOverlay').hidden = true; state._inviteFromUpload = false; state._inviteFromBulk = false; $('invRole').disabled = false; });
+    $('inviteCancelBtn').addEventListener('click', function () { $('inviteOverlay').hidden = true; state._inviteFromUpload = false; state._inviteFromBulk = false; $('invRole').disabled = false; });
     $('inviteOverlay').addEventListener('click', function (e) {
       if (e.target === $('inviteOverlay')) $('inviteOverlay').hidden = true;
     });
@@ -1844,6 +2466,30 @@
               setTimeout(function () { aiLookupPatient(); }, 600);
             }
             toast('Paziente registrato — dati importati nel modulo AI', 'success');
+          } else if (state._inviteFromBulk && role === 'patient') {
+            state._inviteFromBulk = false;
+            $('inviteOverlay').hidden = true;
+            $('invRole').disabled = false;
+            var bIdx = state._inviteFromBulkIdx;
+            if (bIdx !== undefined && bulkFiles[bIdx]) {
+              // Re-lookup to update the entry
+              setTimeout(function () {
+                var fc = bulkFiles[bIdx].cf;
+                if (fc) {
+                  fetch('/api/admin/users/batch-lookup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + state.token },
+                    body: JSON.stringify({ fiscal_codes: [fc] })
+                  }).then(function (r) { return r.json(); }).then(function (res) {
+                    if (res.success && res.results && res.results[fc]) {
+                      bulkFiles[bIdx].lookupResult = res.results[fc];
+                    }
+                    bulkRenderPreview();
+                  });
+                }
+              }, 600);
+            }
+            toast('Paziente registrato — tabella aggiornata', 'success');
           } else {
             showMsg('inviteMessage', msg, 'success');
             loadUsers();

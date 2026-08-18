@@ -53,6 +53,10 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
           <span>Carica Referti</span>
         </a>
+        <a href="#bulk-upload" class="nav-item" data-page="bulk-upload" data-roles="lab_technician,admin,super_admin,ostetrica">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/><line x1="7" y1="3" x2="7" y2="12"/><line x1="17" y1="6" x2="17" y2="12"/></svg>
+          <span>Upload Massivo</span>
+        </a>
         <a href="#queue" class="nav-item" data-page="queue" data-roles="lab_technician,admin,super_admin,ostetrica">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/></svg>
           <span>Coda Validazione</span>
@@ -462,6 +466,110 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ==================== PAGE: BULK UPLOAD (Lab) ==================== -->
+    <section class="page" id="page-bulk-upload" data-title="Upload Massivo" hidden>
+      <div class="page-header">
+        <p class="page-subtitle">Carica pi&ugrave; referti PDF contemporaneamente. Il sistema estrae automaticamente il codice fiscale e abbina ogni referto al paziente corretto.</p>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">1. Seleziona i PDF</h3>
+        <div class="drop-zone" id="bulkDropZone">
+          <div class="drop-zone-content" id="bulkDropContent">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <p>Trascina i PDF qui o <button type="button" class="drop-zone-browse" id="bulkBrowseBtn">sfoglia</button></p>
+            <span class="drop-zone-hint">Max 50 file per batch &mdash; Solo PDF &mdash; Il codice fiscale viene estratto automaticamente</span>
+          </div>
+          <input type="file" id="bulkFileInput" accept=".pdf,application/pdf" multiple hidden>
+        </div>
+        <!-- Parsing progress -->
+        <div id="bulkParsingProgress" hidden style="margin-top:12px">
+          <div class="upload-progress-info">
+            <span class="progress-label" id="bulkParsingLabel">Analisi PDF in corso...</span>
+            <span class="progress-text" id="bulkParsingPct">0%</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" id="bulkParsingFill"></div></div>
+        </div>
+      </div>
+
+      <!-- Preview table -->
+      <div class="card" id="bulkPreviewCard" hidden>
+        <h3 class="card-title">2. Anteprima &amp; Verifica</h3>
+        <div class="bulk-stats" id="bulkStats" style="display:flex;gap:16px;margin-bottom:12px;flex-wrap:wrap">
+        </div>
+        <div class="form-row" style="margin-bottom:12px">
+          <div class="form-group" style="flex:1;min-width:180px">
+            <label for="bulkCategory">Categoria (per tutti)</label>
+            <select id="bulkCategory" class="form-input">
+              <option value="laboratorio">Laboratorio</option>
+              <option value="microbiologia">Microbiologia</option>
+              <option value="genetica">Genetica</option>
+              <option value="anatomia_patologica">Anatomia Patologica</option>
+              <option value="citologia">Citologia</option>
+              <option value="ostetricia">Ostetricia</option>
+              <option value="diagnostica">Diagnostica</option>
+            </select>
+          </div>
+          <div class="form-group" style="flex:1;min-width:180px">
+            <label for="bulkDefaultType">Tipo Esame (default)</label>
+            <select id="bulkDefaultType" class="form-input">
+              <option value="">Auto-rileva dal PDF</option>
+              <option value="biochimica_clinica">Biochimica clinica</option>
+              <option value="emocromo">Emocromo completo</option>
+              <option value="siero">Siero</option>
+              <option value="ematologia">Ematologia</option>
+              <option value="allergologia">Allergologia</option>
+              <option value="altro">Altro</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table" id="bulkPreviewTable">
+            <thead>
+              <tr>
+                <th style="width:36px"><input type="checkbox" id="bulkSelectAll" checked></th>
+                <th>File</th>
+                <th>Cod. Fiscale</th>
+                <th>Paziente</th>
+                <th>Tipo Esame</th>
+                <th>Data Prelievo</th>
+                <th>Stato</th>
+                <th>Azioni</th>
+              </tr>
+            </thead>
+            <tbody id="bulkPreviewBody">
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Bulk actions -->
+        <div class="form-actions" style="margin-top:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <button type="button" class="btn btn-primary" id="bulkUploadBtn" disabled>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Carica Tutti
+          </button>
+          <button type="button" class="btn btn-outline" id="bulkClearBtn">Annulla Tutto</button>
+          <span id="bulkUploadSummary" style="font-size:0.85rem;color:var(--text-secondary)"></span>
+        </div>
+
+        <!-- Upload progress -->
+        <div id="bulkUploadProgress" hidden style="margin-top:12px">
+          <div class="upload-progress-info">
+            <span class="progress-label" id="bulkUploadLabel">Caricamento...</span>
+            <span class="progress-text" id="bulkUploadPct">0%</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" id="bulkUploadFill"></div></div>
+        </div>
+        <div class="form-message" id="bulkMessage"></div>
+      </div>
+
+      <!-- Results summary -->
+      <div class="card" id="bulkResultCard" hidden>
+        <h3 class="card-title">3. Riepilogo Caricamento</h3>
+        <div id="bulkResultBody"></div>
       </div>
     </section>
 
@@ -1719,7 +1827,7 @@ Femore totale BMD: 0.750, T-score: -1.8'></textarea>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-  <script src="/js/dashboard.668d2593.js?v=18"></script>
+  <script src="/js/dashboard.668d2593.js?v=19"></script>
   <script src="/js/analytics.js?v=6"></script>
 </body>
 </html>
