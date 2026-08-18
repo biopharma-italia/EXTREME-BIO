@@ -21,7 +21,7 @@ SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 
 # WhatsApp Notifications (WASenderAPI) — non-sensitive config
 WASENDER_BASE_URL = "https://wasenderapi.com/api"
-WASENDER_SESSION_ID = "7907"
+WASENDER_SESSION_ID = "111713"
 
 # NOTE: Sensitive vars (SUPABASE_SERVICE_KEY, MASTER_ENCRYPTION_KEY,
 # WASENDER_API_KEY, CRON_SECRET, etc.)
