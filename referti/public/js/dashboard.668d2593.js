@@ -1472,9 +1472,16 @@
         canUpload = true;
         statsGipo++;
       } else {
-        statusBadge = '<span class="badge" style="background:#f59e0b;color:#000">Non trovato</span>';
+        // CF present but patient not found — show as actionable
+        statusBadge = '<span class="badge" style="background:#f59e0b;color:#000">Non trovato — Registra</span>';
         statusClass = 'bulk-notfound';
         statsNotFound++;
+      }
+      // Mark already uploaded files
+      if (entry._uploaded) {
+        statusBadge = '<span class="badge" style="background:#22c55e;color:#fff">Caricato</span>';
+        statusClass = 'bulk-done';
+        canUpload = false;
       }
 
       var examType = entry.pdfType || ($('bulkDefaultType').value || 'altro');
@@ -1483,19 +1490,30 @@
       examLabel = examLabel.charAt(0).toUpperCase() + examLabel.slice(1);
 
       tr.className = statusClass;
+
+      // Build action cell content
+      var actionHtml = '';
+      if (entry._uploaded) {
+        actionHtml = '<small style="color:#22c55e">Completato</small>';
+      } else if (!entry.cf) {
+        actionHtml = '<button class="btn btn-primary btn-xs bulk-manual-cf" data-idx="' + idx + '" style="font-weight:600;padding:4px 12px">Inserisci CF</button>';
+      } else if (source === 'not_found') {
+        actionHtml = '<button class="btn btn-primary btn-xs bulk-create-patient" data-idx="' + idx + '" style="font-weight:600;padding:4px 12px">Registra Paziente</button>';
+      } else if (source === 'gipo') {
+        actionHtml = '<small style="color:#3b82f6">Auto-crea al caricamento</small>';
+      } else if (source === 'users') {
+        actionHtml = '<small style="color:#22c55e">Pronto</small>';
+      }
+
       tr.innerHTML = ''
-        + '<td><input type="checkbox" class="bulk-row-check" data-idx="' + idx + '" ' + (canUpload ? 'checked' : 'disabled') + '></td>'
+        + '<td><input type="checkbox" class="bulk-row-check" data-idx="' + idx + '" ' + (canUpload ? 'checked' : (entry._uploaded ? '' : 'disabled')) + '></td>'
         + '<td title="' + esc(entry.file.name) + '">' + esc(entry.file.name.length > 20 ? entry.file.name.substring(0, 17) + '...' : entry.file.name) + '</td>'
         + '<td><code style="font-size:0.8rem">' + (entry.cf ? esc(entry.cf) : '<em>—</em>') + '</code></td>'
         + '<td>' + patientName + (pData && pData.email ? '<br><small style="color:var(--text-secondary)">' + esc(pData.email) + '</small>' : '') + '</td>'
         + '<td>' + esc(examLabel) + '</td>'
         + '<td>' + (entry.pdfDate || '—') + '</td>'
         + '<td>' + statusBadge + '</td>'
-        + '<td style="white-space:nowrap">'
-        + (entry.cf ? '' : '<button class="btn btn-primary btn-xs bulk-manual-cf" data-idx="' + idx + '" style="font-weight:600">Inserisci CF</button> ')
-        + (source === 'not_found' && entry.cf ? '<button class="btn btn-primary btn-xs bulk-create-patient" data-idx="' + idx + '" style="font-weight:600">Registra Paziente</button>' : '')
-        + ((source === 'gipo') ? '<small style="color:#3b82f6">Auto</small>' : '')
-        + '</td>';
+        + '<td style="white-space:nowrap">' + actionHtml + '</td>';
 
       tbody.appendChild(tr);
     });
@@ -1800,29 +1818,22 @@
       toast('Tutti i caricamenti falliti', 'error');
     }
 
-    // Keep unprocessed files (no CF, not found) — remove only successfully uploaded ones
-    var uploadedIndices = new Set();
-    results.forEach(function (r, ri) { if (r.success) uploadedIndices.add(r._origIdx); });
-
-    var remaining = [];
-    bulkFiles.forEach(function (entry, idx) {
-      if (!uploadedIndices.has(idx)) {
-        // Was this entry NOT part of the upload batch (checkbox was disabled/unchecked)?
-        var wasUploaded = results.some(function (r) { return r._origIdx === idx; });
-        if (!wasUploaded) {
-          remaining.push(entry); // keep unprocessed files
-        } else if (!results.find(function(r) { return r._origIdx === idx; }).success) {
-          remaining.push(entry); // keep failed files
-        }
+    // Mark uploaded files so they show as "Completato" in the preview
+    results.forEach(function (r) {
+      if (r.success && r._origIdx !== undefined && bulkFiles[r._origIdx]) {
+        bulkFiles[r._origIdx]._uploaded = true;
       }
     });
 
-    if (remaining.length > 0) {
-      bulkFiles = remaining;
-      // Re-render preview with remaining files
+    // Check how many files still need attention
+    var pending = bulkFiles.filter(function (e) { return !e._uploaded; });
+
+    if (pending.length > 0) {
+      // Re-render preview — uploaded files show as "Completato", pending ones keep their buttons
       setTimeout(function () { bulkRenderPreview(); }, 600);
-      showMsg('bulkMessage', remaining.length + ' file ancora da completare (inserisci CF o registra paziente)', '');
+      showMsg('bulkMessage', pending.length + ' file ancora da completare — usa i pulsanti per inserire il CF o registrare il paziente', '');
     } else {
+      // All done — offer to clear
       bulkFiles = [];
       setTimeout(function () {
         $('bulkPreviewCard').hidden = true;
