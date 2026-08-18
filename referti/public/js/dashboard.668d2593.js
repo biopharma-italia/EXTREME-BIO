@@ -2456,6 +2456,29 @@
         return;
       }
 
+      // Cellulare obbligatorio per paziente (notifiche WhatsApp)
+      function isValidMobile(p) {
+        var c = p.replace(/[\s\-\.\(\)]/g, '');
+        if (c.indexOf('00') === 0) c = '+' + c.slice(2);
+        if (c.charAt(0) === '+') {
+          if (/^\+39\d{9,10}$/.test(c)) return c.indexOf('+393') === 0;
+          return /^\+\d{10,15}$/.test(c);
+        }
+        if (/^39\d{9,10}$/.test(c)) return c.indexOf('393') === 0;
+        return /^3\d{9}$/.test(c);
+      }
+      if (role === 'patient') {
+        var invPhoneVal = $('invPhone') ? $('invPhone').value.trim() : '';
+        if (!invPhoneVal) {
+          showMsg('inviteMessage', 'Cellulare obbligatorio per i pazienti (notifiche WhatsApp)', 'error');
+          return;
+        }
+        if (!isValidMobile(invPhoneVal)) {
+          showMsg('inviteMessage', 'Numero mobile non valido (es. 347 1234567). I numeri fissi non ricevono WhatsApp.', 'error');
+          return;
+        }
+      }
+
       // Validate CF format (16 chars alphanumeric)
       if (fiscalCode && !/^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$/.test(fiscalCode)) {
         showMsg('inviteMessage', 'Formato Codice Fiscale non valido', 'error');

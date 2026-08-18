@@ -24,6 +24,37 @@ export function validatePhone(phone: string): boolean {
 }
 
 /**
+ * Validate + normalize a MOBILE phone number for WhatsApp delivery.
+ * Uses the SAME normalization logic as the WhatsApp send path
+ * (formatPhoneE164 in whatsapp.ts) so a number saved as valid here
+ * is guaranteed to be sendable later.
+ *
+ * Returns the normalized E.164 string, or null if not a valid mobile.
+ * Accepts Italian mobiles (+393...) and international mobiles (+XX...).
+ * Rejects Italian landlines (+390...) — they can't receive WhatsApp.
+ */
+export function normalizeMobilePhone(phone: string | null | undefined): string | null {
+  if (!phone) return null;
+
+  let cleaned = phone.replace(/[\s\-\.\(\)]/g, '');
+  if (cleaned.startsWith('00')) cleaned = '+' + cleaned.slice(2);
+
+  if (cleaned.startsWith('+')) {
+    if (/^\+39\d{9,10}$/.test(cleaned)) {
+      return cleaned.startsWith('+393') ? cleaned : null; // reject landline
+    }
+    if (/^\+\d{10,15}$/.test(cleaned)) return cleaned; // other international
+    return null;
+  }
+  if (cleaned.startsWith('39') && /^39\d{9,10}$/.test(cleaned)) {
+    const e164 = '+' + cleaned;
+    return e164.startsWith('+393') ? e164 : null;
+  }
+  if (/^3\d{9}$/.test(cleaned)) return '+39' + cleaned; // Italian mobile
+  return null; // landlines (0...) and everything else rejected
+}
+
+/**
  * Validate email address.
  */
 export function validateEmail(email: string): boolean {

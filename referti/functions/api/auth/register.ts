@@ -12,7 +12,7 @@ import {
   validateEmail,
   validatePassword,
   validateFiscalCode,
-  validatePhone,
+  normalizeMobilePhone,
   sanitizeInput,
 } from '../../../src/lib/validators';
 import { welcomeEmail } from '../../../src/lib/email-templates';
@@ -86,8 +86,15 @@ export async function onRequestPost(context: {
     errors.push('Codice fiscale non valido.');
   }
 
-  if (body.phone && !validatePhone(body.phone)) {
-    errors.push('Numero di telefono non valido.');
+  // Phone is MANDATORY for patient self-registration (WhatsApp notifications)
+  let normalizedPhone: string | null = null;
+  if (!body.phone || !body.phone.trim()) {
+    errors.push('Numero di cellulare obbligatorio (per le notifiche di disponibilità referto).');
+  } else {
+    normalizedPhone = normalizeMobilePhone(body.phone);
+    if (!normalizedPhone) {
+      errors.push('Numero di cellulare non valido. Inserire un numero mobile (es. 347 1234567).');
+    }
   }
 
   if (body.gender && !['M', 'F', 'X'].includes(body.gender)) {
@@ -174,7 +181,7 @@ export async function onRequestPost(context: {
   const profileData = {
     auth_id: authUser.user.id,
     email: emailNorm,
-    phone: body.phone ? sanitizeInput(body.phone, 20) : null,
+    phone: normalizedPhone, // already E.164-normalized (same logic as WhatsApp send)
     fiscal_code: body.fiscal_code ? body.fiscal_code.toUpperCase().trim() : null,
     first_name: sanitizeInput(body.first_name, 100),
     last_name: sanitizeInput(body.last_name, 100),

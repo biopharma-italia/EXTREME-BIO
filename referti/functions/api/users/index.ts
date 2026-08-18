@@ -6,7 +6,7 @@
 
 import { createClient } from '@supabase/supabase-js';
 import { requireRole, jsonResponse } from '../_middleware';
-import { sanitizeInput, validateEmail, validateFiscalCode, validatePhone } from '../../../src/lib/validators';
+import { sanitizeInput, validateEmail, validateFiscalCode, validatePhone, normalizeMobilePhone } from '../../../src/lib/validators';
 import type { RequestContext, UserRole } from '../../../src/lib/types';
 
 interface Env {
@@ -128,6 +128,7 @@ export async function onRequestPost(context: {
   const isPatient = body.role === 'patient';
 
   // Patient-specific validation
+  let normalizedPhone: string | null = null;
   if (isPatient) {
     if (!body.fiscal_code) {
       return jsonResponse({ success: false, error: 'Codice fiscale obbligatorio per i pazienti.' }, 400);
@@ -138,13 +139,21 @@ export async function onRequestPost(context: {
     if (!body.password || body.password.length < 12) {
       return jsonResponse({ success: false, error: 'Password obbligatoria (minimo 12 caratteri).' }, 400);
     }
+    // Phone is MANDATORY for patients (WhatsApp notifications)
+    if (!body.phone || !body.phone.trim()) {
+      return jsonResponse({ success: false, error: 'Numero di cellulare obbligatorio per i pazienti (notifiche WhatsApp). Formato: 3XX XXXXXXX.' }, 400);
+    }
+    normalizedPhone = normalizeMobilePhone(body.phone);
+    if (!normalizedPhone) {
+      return jsonResponse({ success: false, error: `Numero di cellulare non valido: "${body.phone}". Inserire un numero mobile (es. 347 1234567). I numeri fissi non ricevono WhatsApp.` }, 400);
+    }
   }
 
   // Optional field validation
   if (body.fiscal_code && !validateFiscalCode(body.fiscal_code)) {
     return jsonResponse({ success: false, error: 'Formato codice fiscale non valido.' }, 400);
   }
-  if (body.phone && !validatePhone(body.phone)) {
+  if (!isPatient && body.phone && !validatePhone(body.phone)) {
     return jsonResponse({ success: false, error: 'Numero di telefono non valido.' }, 400);
   }
   if (body.gender && !['M', 'F', 'X'].includes(body.gender)) {
@@ -237,7 +246,9 @@ export async function onRequestPost(context: {
     timezone: 'Europe/Rome',
   };
   if (fiscalNorm) profileFields.fiscal_code = fiscalNorm;
-  if (body.phone) profileFields.phone = sanitizeInput(body.phone, 20);
+  // Patients: store the normalized E.164 (same logic as WhatsApp send path)
+  if (isPatient && normalizedPhone) profileFields.phone = normalizedPhone;
+  else if (body.phone) profileFields.phone = sanitizeInput(body.phone, 20);
   if (body.date_of_birth) profileFields.date_of_birth = body.date_of_birth;
   if (body.gender) profileFields.gender = body.gender;
 

@@ -6,7 +6,7 @@
 
 import { createClient } from '@supabase/supabase-js';
 import { jsonResponse } from '../_middleware';
-import { sanitizeInput, validatePhone } from '../../../src/lib/validators';
+import { sanitizeInput, normalizeMobilePhone } from '../../../src/lib/validators';
 import type { RequestContext } from '../../../src/lib/types';
 
 interface Env {
@@ -85,11 +85,20 @@ export async function onRequestPatch(context: {
 
   for (const field of allowedFields) {
     if (body[field] !== undefined) {
-      if (field === 'phone' && body.phone) {
-        if (!validatePhone(body.phone as string)) {
-          return jsonResponse({ success: false, error: 'Numero di telefono non valido.' }, 400);
+      if (field === 'phone') {
+        // Patients cannot remove their phone number (mandatory for WhatsApp)
+        if (!body.phone || !(body.phone as string).trim()) {
+          if (ctx.user.role === 'patient') {
+            return jsonResponse({ success: false, error: 'Il numero di cellulare è obbligatorio e non può essere rimosso.' }, 400);
+          }
+          updateData.phone = null;
+        } else {
+          const normalized = normalizeMobilePhone(body.phone as string);
+          if (!normalized) {
+            return jsonResponse({ success: false, error: 'Numero di cellulare non valido. Inserire un numero mobile (es. 347 1234567).' }, 400);
+          }
+          updateData.phone = normalized;
         }
-        updateData.phone = sanitizeInput(body.phone as string, 20);
       } else if (field === 'preferred_notification_channel') {
         const valid = ['email', 'sms', 'whatsapp', 'push', 'in_app'];
         if (valid.includes(body[field] as string)) {
