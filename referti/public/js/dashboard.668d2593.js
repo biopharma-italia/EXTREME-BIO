@@ -1277,8 +1277,10 @@
     $('bulkParsingFill').style.width = '0%';
 
     var cfRegex = /[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]/;
+    // Date regexes: try "Data prelievo: dd/mm/yy" on same line first
     var dateRegex1 = /Data\s*(?:prelievo|Prelievo)[:\s]*(\d{2}\/\d{2}\/\d{2,4})/i;
-    var dateRegex2 = /(\d{2}\/\d{2}\/\d{4})/;
+    // Generic: any date dd/mm/yy or dd/mm/yyyy
+    var dateRegexAll = /\d{2}\/\d{2}\/\d{2,4}/g;
 
     // Known exam type keywords to detect from PDF text
     var examKeywords = [
@@ -1365,13 +1367,34 @@
             }
           }
 
-          // Extract sample date
+          // Extract sample date (Data prelievo)
+          // Strategy: In Bio-Clinic PDFs, header labels (Data prelievo, Data di nascita,
+          // Sesso, CF) appear grouped, then values follow in the same order.
+          // The first date after the labels block = Data prelievo,
+          // the second date = Data di nascita.
           var dateStr = null;
           var dm1 = text.match(dateRegex1);
-          if (dm1) { dateStr = dm1[1]; }
-          else {
-            var dm2 = text.match(dateRegex2);
-            if (dm2) dateStr = dm2[1];
+          if (dm1) {
+            // "Data prelievo" immediately followed by a date on the same line
+            dateStr = dm1[1];
+          } else {
+            // Positional approach: find all dates, pick the one that is NOT Data nascita.
+            // Look for the labels block boundary — dates appear after "Medico" or after CF.
+            var allDates = [];
+            var dmAll;
+            while ((dmAll = dateRegexAll.exec(text)) !== null) {
+              allDates.push({ val: dmAll[0], pos: dmAll.index });
+            }
+            if (allDates.length >= 2) {
+              // First date = Data prelievo, second date = Data di nascita
+              dateStr = allDates[0].val;
+            } else if (allDates.length === 1) {
+              // Only one date found — check context to decide
+              var dateCtx = text.substring(Math.max(0, allDates[0].pos - 30), allDates[0].pos);
+              if (!/nascita/i.test(dateCtx)) {
+                dateStr = allDates[0].val;
+              }
+            }
           }
           // Convert to ISO: dd/mm/yy or dd/mm/yyyy → yyyy-mm-dd
           var isoDate = null;
