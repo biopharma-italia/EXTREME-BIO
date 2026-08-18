@@ -25,6 +25,13 @@ jobs:
       - name: Install Wrangler
         run: npm install -g wrangler@latest
 
+      - name: Install Referti dependencies
+        # Needed so wrangler can bundle Pages Functions imports
+        # (@supabase/supabase-js, otplib). Production deps are enough.
+        run: |
+          cd referti
+          if [ -f package-lock.json ]; then npm ci --omit=dev; else npm install --omit=dev; fi
+
       - name: Deploy Referti to Cloudflare Pages
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
