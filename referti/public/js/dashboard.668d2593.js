@@ -160,10 +160,17 @@
         toast('Notifica inviata (Email + WhatsApp)', 'success');
       } else if (data.email_sent) {
         toast('Email inviata a ' + data.patient_email, 'success');
+        // Phase A: explicit operator feedback when WhatsApp was NOT sent
+        if (data.whatsapp_skip_reason) {
+          toast('\u26a0\ufe0f WhatsApp NON inviato: ' + data.whatsapp_skip_reason, 'warning');
+        }
       } else if (data.whatsapp_sent) {
         toast('WhatsApp inviato al paziente', 'success');
       } else if (data.success) {
         toast('Notifica in-app inviata', 'info');
+        if (data.whatsapp_skip_reason) {
+          toast('\u26a0\ufe0f WhatsApp NON inviato: ' + data.whatsapp_skip_reason, 'warning');
+        }
       }
       return data;
     }).catch(function (err) {
@@ -2921,9 +2928,30 @@
   };
 
   window._releaseReport = function (id) {
+    // Phase D: channel preview — show which notification channels will be used
     openModal('Rilascio al Paziente',
-      '<p>Il referto verrà reso disponibile al paziente per il download.</p><p style="font-size:0.85rem;color:var(--text-secondary)">Il paziente riceverà una notifica via email.</p>',
+      '<p>Il referto verrà reso disponibile al paziente per il download.</p>' +
+      '<div id="releaseChannels_' + id + '" style="margin-top:0.75rem;font-size:0.85rem;color:var(--text-secondary)">Verifica contatti paziente\u2026</div>',
       '<button class="btn btn-outline" onclick="window._closeModal()">Annulla</button><button class="btn btn-primary" id="releaseBtn_' + id + '" onclick="window._doRelease(\'' + id + '\')">Rilascia al Paziente</button>');
+    // Fetch patient contacts to render the channel preview
+    sbGet('reports', 'id=eq.' + id + '&select=patient:patient_id(email,phone)').then(function (rows) {
+      var box = $('releaseChannels_' + id);
+      if (!box) return;
+      var p = (rows && rows[0] && rows[0].patient) || {};
+      var emailLine = p.email
+        ? '\ud83d\udce7 Email: <strong style="color:var(--text-primary)">\u2705 ' + esc(p.email) + '</strong>'
+        : '\ud83d\udce7 Email: <strong style="color:#f59e0b">\u26a0\ufe0f nessuna email registrata</strong>';
+      var phoneMasked = p.phone ? ('***' + String(p.phone).slice(-4)) : null;
+      var waLine = p.phone
+        ? '\ud83d\udcf1 WhatsApp: <strong style="color:var(--text-primary)">\u2705 ' + esc(phoneMasked) + '</strong>'
+        : '\ud83d\udcf1 WhatsApp: <strong style="color:#f59e0b">\u26a0\ufe0f nessun numero registrato</strong>';
+      box.innerHTML = 'Il paziente riceverà una notifica su questi canali:<br>' +
+        '<div style="margin-top:0.4rem;line-height:1.8">' + emailLine + '<br>' + waLine + '</div>' +
+        (!p.phone ? '<div style="margin-top:0.4rem;color:#f59e0b">Il messaggio WhatsApp non potrà essere inviato. Aggiungi un numero di cellulare al paziente per abilitarlo.</div>' : '');
+    }).catch(function () {
+      var box = $('releaseChannels_' + id);
+      if (box) box.innerHTML = 'Il paziente riceverà una notifica via email e WhatsApp (se il numero è registrato).';
+    });
   };
   window._doRelease = function (id) {
     // P1-6: Disable button immediately to prevent double-click

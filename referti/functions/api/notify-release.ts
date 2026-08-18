@@ -255,6 +255,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     // NO time-window check here: release notifications go out 24/7,
     // even at night. Only cron reminders respect the 09–19 window.
     let whatsappSent = false;
+    // Phase A: explicit skip/failure reason returned to the dashboard so the
+    // operator gets immediate feedback when WhatsApp could not be sent.
+    let whatsappSkipReason: string | null = null;
 
     if (patient.phone) {
       console.log('[notify-release] WhatsApp check — WASENDER_API_KEY:',
@@ -274,8 +277,12 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         whatsappSent = true;
         console.log('[notify-release] WhatsApp sent successfully to:', patient.phone);
       } else if (waResult.skipped) {
+        whatsappSkipReason = waResult.skip_reason === 'Invalid or missing phone number'
+          ? 'numero di telefono non valido'
+          : (waResult.skip_reason || 'invio saltato');
         console.log('[notify-release] WhatsApp skipped:', waResult.skip_reason);
       } else {
+        whatsappSkipReason = 'errore invio WhatsApp' + (waResult.error ? ` (${waResult.error})` : '');
         console.error('[notify-release] WhatsApp failed:', waResult.error);
       }
 
@@ -301,7 +308,35 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         }),
       });
     } else {
+      whatsappSkipReason = 'paziente senza numero di telefono';
       console.log('[notify-release] WhatsApp skipped — patient has no phone number');
+
+      // Phase A: log the skipped WhatsApp notification in DB so there is a
+      // complete audit trail even when the patient has no phone number.
+      try {
+        await fetch(`${sbUrl}/rest/v1/notifications`, {
+          method: 'POST',
+          headers: {
+            'apikey': sbKey, 'Authorization': `Bearer ${sbKey}`,
+            'Content-Type': 'application/json', 'Prefer': 'return=minimal',
+          },
+          body: JSON.stringify({
+            user_id: patient.id,
+            channel: 'whatsapp',
+            subject: 'Nuovo referto disponibile',
+            body: 'WhatsApp non inviato: paziente senza numero di telefono registrato.',
+            report_id: body.report_id,
+            action_url: `${appUrl}/dashboard/`,
+            status: 'failed',
+            provider: 'wasenderapi',
+            provider_id: null,
+            sent_at: null,
+            failure_reason: 'Paziente senza numero di telefono',
+          }),
+        });
+      } catch (logErr) {
+        console.error('[notify-release] Failed to log skipped WhatsApp notification:', logErr);
+      }
     }
 
     return new Response(JSON.stringify({
@@ -310,6 +345,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       whatsapp_sent: whatsappSent,
       patient_email: patient.email,
       patient_phone: patient.phone ? '***' + patient.phone.slice(-4) : null,
+      patient_has_phone: !!patient.phone,
+      whatsapp_skip_reason: whatsappSkipReason,
       report_number: report.report_number,
     }), { status: 200, headers: corsHeaders });
 
