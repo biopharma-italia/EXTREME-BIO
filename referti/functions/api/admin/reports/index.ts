@@ -161,6 +161,34 @@ export async function onRequestGet(context: {
     }
   }
 
+  // ── Reminder status enrichment ─────────────────────────────────────────
+  // Mark reports whose patient already received a WhatsApp reminder
+  // (sent by /api/cron/send-reminders, subject 'Promemoria referto disponibile')
+  const releasedIds = finalReports
+    .filter((r: any) => r.status === 'released')
+    .map((r: any) => r.id);
+
+  if (releasedIds.length > 0) {
+    const { data: reminderRows } = await adminClient
+      .from('notifications')
+      .select('report_id, sent_at')
+      .in('report_id', releasedIds)
+      .eq('channel', 'whatsapp')
+      .eq('status', 'sent')
+      .eq('subject', 'Promemoria referto disponibile');
+
+    const reminderMap = new Map<string, string | null>();
+    (reminderRows || []).forEach((n: { report_id: string; sent_at: string | null }) => {
+      if (!reminderMap.has(n.report_id)) reminderMap.set(n.report_id, n.sent_at);
+    });
+
+    finalReports = finalReports.map((r: any) =>
+      r.status === 'released'
+        ? { ...r, reminder_sent: reminderMap.has(r.id), reminder_sent_at: reminderMap.get(r.id) || null }
+        : r
+    );
+  }
+
   // ── Count queries for dashboard stats ─────────────────────────────────
   // Return counts alongside data for the stat cards
   const buildCountFilter = (statusFilter?: string) => {

@@ -2299,6 +2299,12 @@
         if (r.patient_viewed) flags += '<span class="badge" style="background:#22c55e;color:#fff;font-size:0.7rem" title="Letto dal paziente ' + esc(r.patient_viewed_at ? fmtDateTime(r.patient_viewed_at) : '') + '">&#10003; Letto</span> ';
         else if (r.patient_notified) flags += '<span class="badge" style="background:#f59e0b;color:#fff;font-size:0.7rem" title="Non ancora letto dal paziente">&#9888; Non letto</span> ';
         if (r.patient_downloaded) flags += '<span class="badge" style="background:#8b5cf6;color:#fff;font-size:0.7rem" title="Scaricato ' + esc(String(r.download_count || 0)) + ' volte">&#8615; ' + esc(String(r.download_count || 0)) + '</span> ';
+        // Reminder badge: WhatsApp reminder status for released reports
+        if (r.reminder_sent) {
+          flags += '<span class="badge" style="background:#0ea5e9;color:#fff;font-size:0.7rem" title="Promemoria WhatsApp inviato ' + esc(r.reminder_sent_at ? fmtDateTime(r.reminder_sent_at) : '') + '">&#128276; Promemoria</span> ';
+        } else if (r.patient_notified && !r.patient_viewed) {
+          flags += '<span class="badge" style="background:#94a3b8;color:#fff;font-size:0.7rem" title="Promemoria WhatsApp non ancora inviato (parte automaticamente dopo 24h se il referto non viene letto, ore 09-19)">&#128276; No promemoria</span> ';
+        }
       }
 
       var canFastTrack = (isAdmin || isOstetrica || isPhysician) && !r.has_abnormal_values;
@@ -2343,8 +2349,9 @@
         }
       }
 
-      // Delete button for pending reports — all staff roles
-      if (r.status === 'pending' && isStaff) {
+      // Delete button — admin/super_admin can delete ANY status (backend
+      // enforces the same rule); other staff roles only pending reports
+      if (isAdmin || (r.status === 'pending' && isStaff)) {
         actions += ' <button class="btn btn-sm btn-delete-report" style="background:#ef4444;color:#fff;border:0" onclick="window._deleteReport(\'' + r.id + '\')">' +
           '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:2px"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14H7L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>Elimina</button>';
       }
