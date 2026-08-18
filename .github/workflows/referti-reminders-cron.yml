@@ -1,0 +1,51 @@
+name: Referti - Promemoria WhatsApp (cron)
+
+# Chiama l'endpoint /api/cron/send-reminders ogni ora.
+# L'endpoint applica lato server la finestra oraria 09-19 Europe/Rome,
+# quindi le chiamate fuori orario sono no-op sicure.
+# Max 20 promemoria per esecuzione, 1 promemoria per referto (soglia 24h).
+
+on:
+  schedule:
+    - cron: '0 * * * *'   # ogni ora al minuto 0 (UTC)
+  workflow_dispatch: {}    # trigger manuale per test
+
+permissions:
+  contents: read
+
+concurrency:
+  group: referti-reminders
+  cancel-in-progress: false
+
+jobs:
+  send-reminders:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Verifica secret configurato
+        env:
+          CRON_SECRET: ${{ secrets.REFERTI_CRON_SECRET }}
+        run: |
+          if [ -z "$CRON_SECRET" ]; then
+            echo "::error::Secret REFERTI_CRON_SECRET non configurato nel repository (Settings > Secrets and variables > Actions)."
+            exit 1
+          fi
+
+      - name: Invia promemoria
+        env:
+          CRON_SECRET: ${{ secrets.REFERTI_CRON_SECRET }}
+        run: |
+          set -euo pipefail
+          RESPONSE=$(curl -sS -w '\n%{http_code}' -X POST \
+            'https://referti.bio-clinic.it/api/cron/send-reminders' \
+            -H "X-Cron-Secret: ${CRON_SECRET}" \
+            -H 'Content-Type: application/json' \
+            --max-time 240)
+          HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+          BODY=$(echo "$RESPONSE" | sed '$d')
+          echo "HTTP $HTTP_CODE"
+          echo "$BODY"
+          if [ "$HTTP_CODE" -ne 200 ]; then
+            echo "::error::Cron promemoria fallito con HTTP $HTTP_CODE"
+            exit 1
+          fi
