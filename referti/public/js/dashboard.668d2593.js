@@ -1466,7 +1466,7 @@
         canUpload = true;
         statsOk++;
       } else if (source === 'gipo') {
-        statusBadge = '<span class="badge" style="background:#3b82f6;color:#fff">Da GIPO</span>';
+        statusBadge = '<span class="badge" style="background:#3b82f6;color:#fff">Da GIPO (auto-crea profilo)</span>';
         statusClass = 'bulk-gipo';
         patientName = pData ? esc(pData.first_name + ' ' + pData.last_name) : patientName;
         canUpload = true;
@@ -1491,9 +1491,10 @@
         + '<td>' + esc(examLabel) + '</td>'
         + '<td>' + (entry.pdfDate || '—') + '</td>'
         + '<td>' + statusBadge + '</td>'
-        + '<td>'
-        + (entry.cf ? '' : '<button class="btn btn-outline btn-xs bulk-manual-cf" data-idx="' + idx + '" title="Inserisci CF manualmente">CF</button> ')
-        + (source === 'not_found' && entry.cf ? '<button class="btn btn-outline btn-xs bulk-create-patient" data-idx="' + idx + '" title="Registra paziente">Registra</button>' : '')
+        + '<td style="white-space:nowrap">'
+        + (entry.cf ? '' : '<button class="btn btn-primary btn-xs bulk-manual-cf" data-idx="' + idx + '" style="font-weight:600">Inserisci CF</button> ')
+        + (source === 'not_found' && entry.cf ? '<button class="btn btn-primary btn-xs bulk-create-patient" data-idx="' + idx + '" style="font-weight:600">Registra Paziente</button>' : '')
+        + ((source === 'gipo') ? '<small style="color:#3b82f6">Auto</small>' : '')
         + '</td>';
 
       tbody.appendChild(tr);
@@ -1693,7 +1694,7 @@
     if (!patientId) {
       // Can't upload without patient
       failed++;
-      results.push({ file: entry.file.name, success: false, reason: entry._createError || 'Paziente non trovato' });
+      results.push({ file: entry.file.name, success: false, reason: entry._createError || 'Paziente non trovato', _origIdx: idx });
       if (row) { row.classList.remove('uploading'); row.classList.add('error'); }
       bulkUploadNext(indices, pos + 1, category, defaultType, total, completed, failed, results);
       return;
@@ -1747,14 +1748,14 @@
           });
         }).then(function () {
           completed++;
-          results.push({ file: entry.file.name, success: true, reportId: report.id, patientName: entry.lookupResult.data.first_name + ' ' + entry.lookupResult.data.last_name, autoCreated: entry._autoCreated || false });
+          results.push({ file: entry.file.name, success: true, reportId: report.id, patientName: entry.lookupResult.data.first_name + ' ' + entry.lookupResult.data.last_name, autoCreated: entry._autoCreated || false, _origIdx: idx });
           if (row) { row.classList.remove('uploading'); row.classList.add('done'); var b = row.querySelector('.badge'); if (b) { b.style.background = '#22c55e'; b.textContent = 'Caricato'; } }
           bulkUploadNext(indices, pos + 1, category, defaultType, total, completed, failed, results);
         });
       });
     }).catch(function (err) {
       failed++;
-      results.push({ file: entry.file.name, success: false, reason: err.message || 'Errore' });
+      results.push({ file: entry.file.name, success: false, reason: err.message || 'Errore', _origIdx: idx });
       console.error('[BulkUpload] Error uploading ' + entry.file.name, err);
       if (row) { row.classList.remove('uploading'); row.classList.add('error'); var b = row.querySelector('.badge'); if (b) { b.style.background = '#ef4444'; b.textContent = 'Errore'; } }
       bulkUploadNext(indices, pos + 1, category, defaultType, total, completed, failed, results);
@@ -1799,8 +1800,29 @@
       toast('Tutti i caricamenti falliti', 'error');
     }
 
-    // Reset for next batch
-    if (failed === 0) {
+    // Keep unprocessed files (no CF, not found) — remove only successfully uploaded ones
+    var uploadedIndices = new Set();
+    results.forEach(function (r, ri) { if (r.success) uploadedIndices.add(r._origIdx); });
+
+    var remaining = [];
+    bulkFiles.forEach(function (entry, idx) {
+      if (!uploadedIndices.has(idx)) {
+        // Was this entry NOT part of the upload batch (checkbox was disabled/unchecked)?
+        var wasUploaded = results.some(function (r) { return r._origIdx === idx; });
+        if (!wasUploaded) {
+          remaining.push(entry); // keep unprocessed files
+        } else if (!results.find(function(r) { return r._origIdx === idx; }).success) {
+          remaining.push(entry); // keep failed files
+        }
+      }
+    });
+
+    if (remaining.length > 0) {
+      bulkFiles = remaining;
+      // Re-render preview with remaining files
+      setTimeout(function () { bulkRenderPreview(); }, 600);
+      showMsg('bulkMessage', remaining.length + ' file ancora da completare (inserisci CF o registra paziente)', '');
+    } else {
       bulkFiles = [];
       setTimeout(function () {
         $('bulkPreviewCard').hidden = true;
