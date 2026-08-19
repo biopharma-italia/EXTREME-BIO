@@ -13,11 +13,19 @@
 
 set -e
 
-# ── Load credentials from config file if env vars are empty ──
+# ── Load credentials from config file ONLY if env vars are empty ──
+# (mai sovrascrivere i secrets di GitHub Actions con il file locale:
+#  il file puo' contenere un token scaduto — bug che rompeva i deploy CI)
 SCRIPT_DIR_INIT="$(cd "$(dirname "$0")" && pwd)"
 CONFIG_FILE="$SCRIPT_DIR_INIT/.cloudflare-config"
-if [ -f "$CONFIG_FILE" ]; then
+if [ -f "$CONFIG_FILE" ] && { [ -z "${CLOUDFLARE_API_TOKEN:-}" ] || [ -z "${CLOUDFLARE_ACCOUNT_ID:-}" ]; }; then
+    _SAVED_TOKEN="${CLOUDFLARE_API_TOKEN:-}"
+    _SAVED_ACCOUNT="${CLOUDFLARE_ACCOUNT_ID:-}"
     source "$CONFIG_FILE"
+    # Ripristina i valori gia' presenti nell'ambiente (hanno la precedenza)
+    [ -n "$_SAVED_TOKEN" ] && CLOUDFLARE_API_TOKEN="$_SAVED_TOKEN"
+    [ -n "$_SAVED_ACCOUNT" ] && CLOUDFLARE_ACCOUNT_ID="$_SAVED_ACCOUNT"
+    unset _SAVED_TOKEN _SAVED_ACCOUNT
 fi
 
 # Verify credentials
