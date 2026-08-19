@@ -5,8 +5,10 @@
  * Scheduled endpoint that sends WhatsApp reminders for reports released
  * more than 24 hours ago that haven't been downloaded by the patient.
  *
- * Security: Protected by X-Cron-Secret header (set in Cloudflare Cron Trigger config)
- * Schedule: Every hour (configured in wrangler.toml or Cloudflare dashboard)
+ * Security: Protected by X-Cron-Secret header OR a GitHub Actions OIDC token
+ *           (Bearer JWT issued by token.actions.githubusercontent.com, verified
+ *           against GitHub's JWKS — restricted to this repository on main).
+ * Schedule: Hourly via .github/workflows/referti-reminders-cron.yml (OIDC, no secrets)
  * Window: Only sends between 09:00–19:00 Europe/Rome — REMINDERS ONLY.
  *         Release notifications (email + WhatsApp) are sent immediately
  *         at any hour, including late evening/night uploads.
@@ -19,12 +21,83 @@
  * - Max 20 reminders per cron run (safety cap)
  * - 5.5s delay between messages (WASenderAPI Account Protection)
  *
- * @version 1.1.0 — 2026-08-18 — Time window scoped to reminders only
+ * @version 1.2.0 — 2026-08-19 — GitHub Actions OIDC auth (secretless scheduler)
  */
 
 import { createClient } from '@supabase/supabase-js';
 import { sendWhatsApp, messageReportReminder, isWithinReminderHours } from '../../../src/lib/whatsapp';
 import type { WhatsAppEnv } from '../../../src/lib/whatsapp';
+
+// ── GitHub Actions OIDC verification ─────────────────────────────────────────
+// The scheduled workflow (.github/workflows/referti-reminders-cron.yml) requests
+// an OIDC token (permissions: id-token: write) and sends it as Bearer JWT.
+// We verify: RS256 signature against GitHub's JWKS, issuer, audience,
+// expiry, and that the token was minted by THIS repo on the main branch.
+const GH_OIDC_ISSUER = 'https://token.actions.githubusercontent.com';
+const GH_OIDC_AUDIENCE = 'referti.bio-clinic.it/cron';
+const GH_ALLOWED_REPO = 'biopharma-italia/EXTREME-BIO';
+
+function b64urlToBytes(s: string): Uint8Array {
+  const pad = s.length % 4 === 2 ? '==' : s.length % 4 === 3 ? '=' : '';
+  const b64 = s.replace(/-/g, '+').replace(/_/g, '/') + pad;
+  const bin = atob(b64);
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return bytes;
+}
+
+function b64urlToJson(s: string): Record<string, unknown> {
+  return JSON.parse(new TextDecoder().decode(b64urlToBytes(s)));
+}
+
+async function verifyGitHubOidcToken(token: string): Promise<{ valid: boolean; reason?: string }> {
+  try {
+    const parts = token.split('.');
+    if (parts.length !== 3) return { valid: false, reason: 'malformed' };
+
+    const header = b64urlToJson(parts[0]) as { alg?: string; kid?: string };
+    const payload = b64urlToJson(parts[1]) as {
+      iss?: string; aud?: string | string[]; exp?: number; nbf?: number;
+      repository?: string; ref?: string; event_name?: string;
+    };
+
+    if (header.alg !== 'RS256' || !header.kid) return { valid: false, reason: 'bad alg/kid' };
+
+    // Claim checks (cheap) before fetching JWKS
+    const now = Math.floor(Date.now() / 1000);
+    if (payload.iss !== GH_OIDC_ISSUER) return { valid: false, reason: 'bad issuer' };
+    const audList = Array.isArray(payload.aud) ? payload.aud : [payload.aud];
+    if (!audList.includes(GH_OIDC_AUDIENCE)) return { valid: false, reason: 'bad audience' };
+    if (!payload.exp || payload.exp < now) return { valid: false, reason: 'expired' };
+    if (payload.nbf && payload.nbf > now + 60) return { valid: false, reason: 'not yet valid' };
+    if (payload.repository !== GH_ALLOWED_REPO) return { valid: false, reason: 'wrong repository' };
+    if (payload.ref && payload.ref !== 'refs/heads/main') return { valid: false, reason: 'wrong ref' };
+
+    // Fetch GitHub JWKS and verify RS256 signature
+    const jwksResp = await fetch(`${GH_OIDC_ISSUER}/.well-known/jwks`, {
+      // Cloudflare edge cache to avoid hammering GitHub (keys rotate rarely)
+      cf: { cacheTtl: 3600, cacheEverything: true },
+    } as RequestInit);
+    if (!jwksResp.ok) return { valid: false, reason: 'jwks fetch failed' };
+    const jwks = await jwksResp.json() as { keys: Array<{ kid: string; kty: string; n: string; e: string }> };
+    const jwk = jwks.keys.find((k) => k.kid === header.kid);
+    if (!jwk) return { valid: false, reason: 'unknown kid' };
+
+    const key = await crypto.subtle.importKey(
+      'jwk',
+      { kty: jwk.kty, n: jwk.n, e: jwk.e, alg: 'RS256', ext: true },
+      { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' },
+      false,
+      ['verify'],
+    );
+    const data = new TextEncoder().encode(`${parts[0]}.${parts[1]}`);
+    const sig = b64urlToBytes(parts[2]);
+    const ok = await crypto.subtle.verify('RSASSA-PKCS1-v1_5', key, sig as unknown as BufferSource, data);
+    return ok ? { valid: true } : { valid: false, reason: 'bad signature' };
+  } catch (e) {
+    return { valid: false, reason: `exception: ${(e as Error).message}` };
+  }
+}
 
 interface Env {
   SUPABASE_URL: string;
@@ -52,11 +125,25 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const authHeader = request.headers.get('Authorization') || '';
 
   // Allow either X-Cron-Secret header or Bearer token matching CRON_SECRET
-  const isAuthorized =
+  let isAuthorized =
     (env.CRON_SECRET && cronSecret === env.CRON_SECRET) ||
     (env.CRON_SECRET && authHeader === `Bearer ${env.CRON_SECRET}`) ||
     // Fallback: Allow if called with a valid staff JWT (for manual triggering from dashboard)
     (!env.CRON_SECRET && authHeader.startsWith('Bearer '));
+
+  // Or: GitHub Actions OIDC token from the scheduled workflow (secretless)
+  if (!isAuthorized && authHeader.startsWith('Bearer ')) {
+    const bearer = authHeader.slice(7);
+    // GitHub OIDC tokens are JWTs with 3 segments — quick pre-filter
+    if (bearer.split('.').length === 3) {
+      const oidc = await verifyGitHubOidcToken(bearer);
+      if (oidc.valid) {
+        isAuthorized = true;
+      } else {
+        console.warn('[send-reminders] OIDC rejected:', oidc.reason);
+      }
+    }
+  }
 
   if (!isAuthorized) {
     return new Response(JSON.stringify({ error: 'Unauthorized' }), {

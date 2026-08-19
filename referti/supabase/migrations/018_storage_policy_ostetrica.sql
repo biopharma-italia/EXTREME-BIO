@@ -1,13 +1,14 @@
 -- ============================================================================
 -- 018 — Storage bucket "referti": aggiunge il ruolo 'ostetrica' alle policy
 -- ============================================================================
--- ⚠️ ESEGUIRE MANUALMENTE in Supabase Dashboard → SQL Editor
 -- Data: 2026-08-18
 --
--- Problema: la policy di upload del bucket 'referti' non include il ruolo
--- 'ostetrica' — l'upload dalla dashboard funziona solo perché passa dalla
--- service key lato API, ma la policy in repo/prod era disallineata.
--- Questo script riallinea le policy (upload + download) con i ruoli reali.
+-- ✅ VERIFICATO LIVE 2026-08-19: la policy in PRODUZIONE include GIÀ il ruolo
+-- 'ostetrica' (test empirico: upload storage come utente ostetrica → HTTP 200;
+-- come patient → 403 RLS violation). Il disallineamento era solo nel file in
+-- repo (referti/supabase/storage/referti.sql), ora corretto.
+-- Questo script NON è quindi urgente da eseguire: serve solo come riferimento
+-- idempotente se le policy dovessero essere ricreate da zero.
 --
 -- Idempotente: DROP POLICY IF EXISTS + CREATE POLICY.
 -- ============================================================================
