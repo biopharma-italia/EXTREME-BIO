@@ -1,5 +1,0 @@
-#!/bin/bash
-# Cloudflare deployment credentials
-# Used by deploy-cloudflare.sh when GitHub Actions secrets are not available
-export CLOUDFLARE_API_TOKEN="V18w_sod8DQntxICDGyC8HtflR2iU_zJy9lCmQPg"
-export CLOUDFLARE_ACCOUNT_ID="e40ec532ef28e0718e095d21bf508847"
