@@ -8,6 +8,8 @@
  * @version 1.1.0
  * @date 2026-02-17
  */
+import { sendWhatsApp, messageBookingConfirmed } from '../../lib/whatsapp.js';
+
 const FALLBACK_SERVICES = [
   {
     id: "prelievo-standard",
@@ -514,6 +516,12 @@ export async function onRequestPost(context) {
       context.waitUntil(sendConfirmationEmail(env, booking, service));
     }
 
+    // Send WhatsApp confirmation (async, don't block response)
+    // Il telefono è obbligatorio nel form: canale primario di conferma.
+    if (env.WASENDER_API_KEY) {
+      context.waitUntil(sendConfirmationWhatsApp(env, booking, service));
+    }
+
     // Build response for frontend + GTM/GA4
     const response = {
       success: true,
@@ -624,6 +632,54 @@ async function sendConfirmationEmail(env, booking, service) {
     });
   } catch (emailErr) {
     console.error('[BookingAPI] Email error:', emailErr);
+  }
+}
+
+// ── Confirmation WhatsApp ────────────────────────────────────────────────────
+
+async function sendConfirmationWhatsApp(env, booking, service) {
+  try {
+    const dateFormatted = new Date(booking.booking_date + 'T00:00:00').toLocaleDateString('it-IT', {
+      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    });
+
+    const message = messageBookingConfirmed({
+      patientName: booking.patient_name,
+      serviceName: service.name,
+      dateFormatted,
+      time: booking.booking_time,
+      bookingId: booking.id,
+      prepInstructions: service.prep_instructions || ''
+    });
+
+    const result = await sendWhatsApp(env, booking.patient_phone, message);
+
+    if (result.success) {
+      console.log(`[BookingAPI] WhatsApp confirmation sent to ${booking.patient_phone} (${result.provider_id || 'n/a'})`);
+    } else if (result.skipped) {
+      console.warn(`[BookingAPI] WhatsApp skipped: ${result.skip_reason}`);
+    } else {
+      console.error(`[BookingAPI] WhatsApp error: ${result.error}`);
+    }
+
+    // Log esito su KV per l'admin panel (non bloccante)
+    if (env.BOOKING_KV) {
+      await env.BOOKING_KV.put(
+        `wa_notify:${booking.id}`,
+        JSON.stringify({
+          booking_id: booking.id,
+          phone: booking.patient_phone,
+          success: result.success,
+          skipped: result.skipped || false,
+          error: result.error || result.skip_reason || null,
+          provider_id: result.provider_id || null,
+          sent_at: new Date().toISOString()
+        }),
+        { expirationTtl: 60 * 60 * 24 * 90 }
+      );
+    }
+  } catch (waErr) {
+    console.error('[BookingAPI] WhatsApp exception:', waErr);
   }
 }
 

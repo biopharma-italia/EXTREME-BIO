@@ -45,8 +45,14 @@ fi
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 SITE_DIR="$SCRIPT_DIR/site"
+FUNCTIONS_DIR="$SCRIPT_DIR/functions"
 DEPLOY_DIR="$SCRIPT_DIR/.deploy-staging"
 PROJECT_NAME="bio-clinic"
+# Staging layout (v2 — includes Pages Functions):
+#   .deploy-staging/
+#     wrangler.toml   (bindings D1/KV + vars, output dir ./public)
+#     functions/      (Pages Functions — booking/contact/admin API)
+#     public/         (static site, tar-filtered copy of site/)
 
 # Auto-update dateModified before deploy (if script exists and python3 available)
 if [ -f "$SCRIPT_DIR/scripts/update-date-modified.py" ] && command -v python3 &>/dev/null; then
@@ -73,7 +79,7 @@ fi
 # -------------------------------------------------------
 echo "Step 1: Creating clean deploy directory..."
 rm -rf "$DEPLOY_DIR"
-mkdir -p "$DEPLOY_DIR"
+mkdir -p "$DEPLOY_DIR/public"
 
 # Copy with tar (excluding unwanted dirs/files) — works without rsync
 cd "$SITE_DIR" && tar cf - \
@@ -106,12 +112,29 @@ cd "$SITE_DIR" && tar cf - \
     --exclude='./link-check-report.txt' \
     --exclude='./bio-clinic-site.zip' \
     --exclude='./.deploy-version.bak' \
-    . | (cd "$DEPLOY_DIR" && tar xf -)
+    . | (cd "$DEPLOY_DIR/public" && tar xf -)
 # Note: Root ginecologia directories (assistenza-ostetrica, colposcopia, etc.)
 # are now meta-refresh redirects (~450B each) and MUST be deployed.
 # Previously excluded when they contained full duplicate content.
-# Remove any backup files that slipped through
-find "$DEPLOY_DIR" -name '*.backup*' -o -name '*.bak' -o -name '*.orig' -o -name '*.py' -o -name '*.sh' 2>/dev/null | xargs rm -f 2>/dev/null || true
+# Remove any backup files that slipped through (static assets only —
+# never touch functions/, which legitimately contains .js source)
+find "$DEPLOY_DIR/public" -name '*.backup*' -o -name '*.bak' -o -name '*.orig' -o -name '*.py' -o -name '*.sh' 2>/dev/null | xargs rm -f 2>/dev/null || true
+
+# ── Include Pages Functions (booking API, contact, admin) ──
+# CRITICAL: without this, /api/* returns 404 in production.
+if [ -d "$FUNCTIONS_DIR" ]; then
+    cp -r "$FUNCTIONS_DIR" "$DEPLOY_DIR/functions"
+    FN_COUNT=$(find "$DEPLOY_DIR/functions" -name '*.js' | wc -l)
+    echo "  Pages Functions included: $FN_COUNT files"
+else
+    echo "  WARNING: functions/ directory not found — API will not be deployed!"
+fi
+
+# ── Generate staging wrangler.toml (bindings from repo root config) ──
+# pages_build_output_dir must point at ./public inside the staging dir.
+sed 's|pages_build_output_dir = "./site"|pages_build_output_dir = "./public"|' \
+    "$SCRIPT_DIR/wrangler.toml" > "$DEPLOY_DIR/wrangler.toml"
+echo "  Staging wrangler.toml generated (output dir ./public, D1+KV bindings)."
 
 # Count files
 TOTAL_FILES=$(find "$DEPLOY_DIR" -type f | wc -l)
@@ -121,15 +144,15 @@ echo "  Clean deploy: $TOTAL_FILES files, $TOTAL_SIZE"
 # Verify critical files
 echo "  Verifying critical files..."
 for f in index.html _redirects _headers sitemap.xml robots.txt; do
-    if [ ! -f "$DEPLOY_DIR/$f" ]; then
+    if [ ! -f "$DEPLOY_DIR/public/$f" ]; then
         echo "  ERROR: Missing critical file: $f"
         rm -rf "$DEPLOY_DIR"
         exit 1
     fi
 done
 
-REDIRECT_COUNT=$(grep -c "301" "$DEPLOY_DIR/_redirects" 2>/dev/null || echo 0)
-SITEMAP_URLS=$(grep -c '<loc>' "$DEPLOY_DIR/sitemap.xml" 2>/dev/null || echo 0)
+REDIRECT_COUNT=$(grep -c "301" "$DEPLOY_DIR/public/_redirects" 2>/dev/null || echo 0)
+SITEMAP_URLS=$(grep -c '<loc>' "$DEPLOY_DIR/public/sitemap.xml" 2>/dev/null || echo 0)
 echo "  Redirect rules: $REDIRECT_COUNT (301)"
 echo "  Sitemap URLs: $SITEMAP_URLS"
 
@@ -145,10 +168,18 @@ echo "  No leaked output/backup files."
 # -------------------------------------------------------
 # Step 2: Deploy to Cloudflare Pages
 # -------------------------------------------------------
+# --stage-only: build staging dir and stop (for testing the layout)
+if [ "${1:-}" = "--stage-only" ]; then
+    echo ""
+    echo "=== --stage-only: staging built at $DEPLOY_DIR, skipping deploy ==="
+    exit 0
+fi
 echo ""
 echo "Step 2: Deploying to Cloudflare Pages (production)..."
 cd "$DEPLOY_DIR"
-wrangler pages deploy . --project-name="$PROJECT_NAME" --branch=main --commit-dirty=true
+# No positional dir: wrangler reads pages_build_output_dir from the staging
+# wrangler.toml and auto-detects ./functions next to it (Pages Functions).
+wrangler pages deploy --project-name="$PROJECT_NAME" --branch=main --commit-dirty=true
 
 # -------------------------------------------------------
 # Step 3: Cleanup
