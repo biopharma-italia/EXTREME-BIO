@@ -12,11 +12,11 @@ on:
       - 'site/**/*.html'
       - 'site/data/reviews.json'
       - 'scripts/apply-reviews.py'
+  # NOTA: su pull_request NESSUN filtro paths — questo job ("check") è uno
+  # status check OBBLIGATORIO sul branch main: deve girare su OGNI PR,
+  # altrimenti le PR che non toccano site/ resterebbero bloccate per sempre
+  # con il check "expected". Il job dura pochi secondi.
   pull_request:
-    paths:
-      - 'site/**/*.html'
-      - 'site/data/reviews.json'
-      - 'scripts/apply-reviews.py'
 
 jobs:
   check:
