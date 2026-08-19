@@ -3,10 +3,6 @@ name: Auto-update dateModified & Deploy
 on:
   schedule:
     - cron: '0 6 */2 * *'
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/auto-datemodified.yml'  # smoke test automatico quando il workflow cambia (v2)
   workflow_dispatch:
     inputs:
       date:
