@@ -16,12 +16,13 @@
  * Rules:
  * - Only 1 reminder per report (tracked via notifications table)
  * - Only for reports with status = 'released'
- * - Only if patient_downloaded = false
+ * - Only if patient_downloaded = false AND patient_viewed = false
+ *   (a viewed report counts as delivered — no reminder)
  * - Only if released_at > 24 hours ago
  * - Max 20 reminders per cron run (safety cap)
  * - 5.5s delay between messages (WASenderAPI Account Protection)
  *
- * @version 1.2.0 — 2026-08-19 — GitHub Actions OIDC auth (secretless scheduler)
+ * @version 1.3.0 — 2026-08-19 — Skip reports already viewed (viewed = delivered)
  */
 
 import { createClient } from '@supabase/supabase-js';
@@ -183,7 +184,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   });
 
   // ── Find eligible reports ─────────────────────────────────────────────────
-  // Reports released > 24h ago, not downloaded, not deleted
+  // Reports released > 24h ago, not downloaded AND not viewed, not deleted.
+  // NOTE: a report already VIEWED by the patient counts as delivered —
+  // no reminder needed (business decision 2026-08-19).
   const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
 
   const { data: eligibleReports, error: queryError } = await adminClient
@@ -194,6 +197,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     `)
     .eq('status', 'released')
     .eq('patient_downloaded', false)
+    .eq('patient_viewed', false)
     .is('deleted_at', null)
     .lt('released_at', twentyFourHoursAgo)
     .order('released_at', { ascending: true })
