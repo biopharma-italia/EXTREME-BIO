@@ -500,3 +500,13 @@
 
 # MERGE cluster Pap/HPV (matrice 2026-08-20): consolidamento su hpv-dna-test
 /ginecologia/pap-test-hpv/ /ginecologia/hpv-dna-test/ 301
+
+# Pulizia fantasmi /pages/ (azione 8, 2026-08-20): 4 slug orfani senza redirect
+/pages/pediatria /visita-pediatrica/ 301
+/pages/pediatria.html /visita-pediatrica/ 301
+/pages/dietologia /visita-nutrizionale/ 301
+/pages/dietologia.html /visita-nutrizionale/ 301
+/pages/medicina-interna /visita-internistica/ 301
+/pages/medicina-interna.html /visita-internistica/ 301
+/pages/psicologia /colloquio-psicologico/ 301
+/pages/psicologia.html /colloquio-psicologico/ 301
