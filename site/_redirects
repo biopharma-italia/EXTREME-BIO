@@ -50,7 +50,7 @@
 /mappatura-nevi /dermatologia/mappatura-nevi/ 301
 /monitoraggio-follicolare/ /pma-fertilita/ 301
 /pap-test /ginecologia/pap-test/ 301
-/pap-test-hpv/ /ginecologia/pap-test-hpv/ 301
+/pap-test-hpv/ /ginecologia/hpv-dna-test/ 301
 /perifit-kegel-sassari/ /ginecologia/perifit-kegel-sassari/ 301
 /radiofrequenza-vaginale /ginecologia/radiofrequenza-vaginale/ 301
 /riabilitazione-pavimento-pelvico/ /ginecologia/riabilitazione-pavimento-pelvico/ 301
@@ -497,3 +497,6 @@
 /medici/stefano-dore-oculista/ /oculistica/ 301
 /medici/tonino-bullitta-cardologo /equipe/tonino-bullitta/ 301
 /medici/tonino-bullitta-cardologo/ /equipe/tonino-bullitta/ 301
+
+# MERGE cluster Pap/HPV (matrice 2026-08-20): consolidamento su hpv-dna-test
+/ginecologia/pap-test-hpv/ /ginecologia/hpv-dna-test/ 301
