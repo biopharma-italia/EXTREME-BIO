@@ -33,3 +33,4 @@ Disallow: /salute/_drafts/
 
 # Sitemap
 Sitemap: https://bio-clinic.it/sitemap.xml
+Sitemap: https://bio-clinic.it/sitemap-esami.xml
