@@ -1,0 +1,140 @@
+[
+ {
+  "id": "alt-a1-alternaria-alternata",
+  "nome": "ALT A1 ALTERNARIA ALTERNATA",
+  "vecchio": 82.5,
+  "nuovo": 80.0
+ },
+ {
+  "id": "ambrosia-occidentale-ambrosia-psilostachya-ige-spe",
+  "nome": "AMBROSIA OCCIDENTALE (AMBROSIA PSILOSTACHYA) (IgE SPECIFICHE)",
+  "vecchio": 25.0,
+  "nuovo": 19.0
+ },
+ {
+  "id": "annexina-v-igg",
+  "nome": "Annexina V IgG",
+  "vecchio": 65.0,
+  "nuovo": 61.0
+ },
+ {
+  "id": "anticorpi-anti-cromatina-nucleosoma",
+  "nome": "Anticorpi anti-cromatina (nucleosoma)",
+  "vecchio": 25.0,
+  "nuovo": 22.0
+ },
+ {
+  "id": "calamaro-ige-specifiche",
+  "nome": "CALAMARO (IgE SPECIFICHE)",
+  "vecchio": 12.5,
+  "nuovo": 14.0
+ },
+ {
+  "id": "dermatophagoides-farinae-ige-specifiche",
+  "nome": "DERMATOPHAGOIDES FARINAE (IgE SPECIFICHE)",
+  "vecchio": 12.5,
+  "nuovo": 15.0
+ },
+ {
+  "id": "dermatophagoides-pteronyssinus-ige-specifiche",
+  "nome": "DERMATOPHAGOIDES PTERONYSSINUS (IgE SPECIFICHE)",
+  "vecchio": 12.5,
+  "nuovo": 15.0
+ },
+ {
+  "id": "ena-profile",
+  "nome": "ENA PROFILE",
+  "vecchio": 150.0,
+  "nuovo": 130.0
+ },
+ {
+  "id": "esame-colturale-tampone-faringeo-per-ricerca-stafi",
+  "nome": "ESAME COLTURALE TAMPONE FARINGEO PER RICERCA STAFILOCOCCO",
+  "vecchio": 12.0,
+  "nuovo": 25.0
+ },
+ {
+  "id": "gene-pai-1-ricerca-della-variazione-4g-5g",
+  "nome": "Gene PAI-1 Ricerca della variazione 4G/5G",
+  "vecchio": 98.3,
+  "nuovo": 100.0
+ },
+ {
+  "id": "grano-ige-specifiche",
+  "nome": "GRANO (IgE SPECIFICHE)",
+  "vecchio": 14.5,
+  "nuovo": 12.5
+ },
+ {
+  "id": "hcv-rna-genotipo",
+  "nome": "HCV RNA GENOTIPO",
+  "vecchio": 157.3,
+  "nuovo": 143.5
+ },
+ {
+  "id": "hla-per-identificazione-dq2-e-dq8",
+  "nome": "HLA PER IDENTIFICAZIONE DQ2 E DQ8",
+  "vecchio": 138.0,
+  "nuovo": 90.0
+ },
+ {
+  "id": "istologia-apparato-urogenitale-polipectomia-endoce",
+  "nome": "ISTOLOGIA APPARATO UROGENITALE - POLIPECTOMIA ENDOCERVICALE",
+  "vecchio": 150.0,
+  "nuovo": 50.0
+ },
+ {
+  "id": "mercurio-urine-f-t",
+  "nome": "MERCURIO URINE F.T.",
+  "vecchio": 27.0,
+  "nuovo": 26.01
+ },
+ {
+  "id": "mounjaro-7-5-mg-start-pack-progetto-slim-care-part",
+  "nome": "Mounjaro 7,5 mg -Start Pack - progetto Slim Care - parte di prestazione sanitaria complessa",
+  "vecchio": 395.45,
+  "nuovo": 435.0
+ },
+ {
+  "id": "mycobacterium-tuberculosis-dna",
+  "nome": "MYCOBACTERIUM TUBERCULOSIS DNA",
+  "vecchio": 176.9,
+  "nuovo": 180.0
+ },
+ {
+  "id": "prolattina-curva",
+  "nome": "PROLATTINA CURVA",
+  "vecchio": 7.5,
+  "nuovo": 70.0
+ },
+ {
+  "id": "ricerca-parassiti-e-uova-campione-1",
+  "nome": "RICERCA PARASSITI E UOVA CAMPIONE 1",
+  "vecchio": 15.0,
+  "nuovo": 12.0
+ },
+ {
+  "id": "ricerca-parassiti-e-uova-campione-2",
+  "nome": "RICERCA PARASSITI E UOVA CAMPIONE 2",
+  "vecchio": 15.0,
+  "nuovo": 12.0
+ },
+ {
+  "id": "ricerca-parassiti-e-uova-campione-3",
+  "nome": "RICERCA PARASSITI E UOVA CAMPIONE 3",
+  "vecchio": 15.0,
+  "nuovo": 12.0
+ },
+ {
+  "id": "test-capacitazione",
+  "nome": "Test Capacitazione",
+  "vecchio": 250.0,
+  "nuovo": 40.0
+ },
+ {
+  "id": "test-di-paternit",
+  "nome": "Test di paternità",
+  "vecchio": 220.0,
+  "nuovo": 200.0
+ }
+]

@@ -760,7 +760,7 @@
   {
     "id": "alt-a1-alternaria-alternata",
     "nome": "ALT A1 ALTERNARIA ALTERNATA",
-    "prezzo": 82.5,
+    "prezzo": 80.0,
     "cat": "Epatico",
     "sintomi": [],
     "referto": "48-72h"
@@ -809,7 +809,7 @@
   {
     "id": "ambrosia-occidentale-ambrosia-psilostachya-ige-spe",
     "nome": "AMBROSIA OCCIDENTALE (AMBROSIA PSILOSTACHYA) (IgE SPECIFICHE)",
-    "prezzo": 25.0,
+    "prezzo": 19.0,
     "cat": "Autoimmunità",
     "sintomi": [
       "allergie"
@@ -984,7 +984,7 @@
   {
     "id": "annexina-v-igg",
     "nome": "Annexina V IgG",
-    "prezzo": 65.0,
+    "prezzo": 61.0,
     "cat": "Autoimmunità",
     "sintomi": [
       "infezioni_frequenti"
@@ -1426,7 +1426,7 @@
   {
     "id": "anticorpi-anti-cromatina-nucleosoma",
     "nome": "Anticorpi anti-cromatina (nucleosoma)",
-    "prezzo": 25.0,
+    "prezzo": 22.0,
     "cat": "Autoimmunità",
     "sintomi": [],
     "referto": "48-72h"
@@ -2975,7 +2975,7 @@
   {
     "id": "calamaro-ige-specifiche",
     "nome": "CALAMARO (IgE SPECIFICHE)",
-    "prezzo": 12.5,
+    "prezzo": 14.0,
     "cat": "Autoimmunità",
     "sintomi": [
       "allergie"
@@ -4280,7 +4280,7 @@
   {
     "id": "dermatophagoides-farinae-ige-specifiche",
     "nome": "DERMATOPHAGOIDES FARINAE (IgE SPECIFICHE)",
-    "prezzo": 12.5,
+    "prezzo": 15.0,
     "cat": "Autoimmunità",
     "sintomi": [
       "allergie"
@@ -4300,7 +4300,7 @@
   {
     "id": "dermatophagoides-pteronyssinus-ige-specifiche",
     "nome": "DERMATOPHAGOIDES PTERONYSSINUS (IgE SPECIFICHE)",
-    "prezzo": 12.5,
+    "prezzo": 15.0,
     "cat": "Coagulazione",
     "sintomi": [
       "allergie"
@@ -4646,7 +4646,7 @@
   {
     "id": "ena-profile",
     "nome": "ENA PROFILE",
-    "prezzo": 150.0,
+    "prezzo": 130.0,
     "cat": "Autoimmunità",
     "sintomi": [],
     "referto": "48-72h"
@@ -5117,7 +5117,7 @@
   {
     "id": "esame-colturale-tampone-faringeo-per-ricerca-stafi",
     "nome": "ESAME COLTURALE TAMPONE FARINGEO PER RICERCA STAFILOCOCCO",
-    "prezzo": 12.0,
+    "prezzo": 25.0,
     "cat": "Infettivologia",
     "sintomi": [],
     "referto": "48-72h"
@@ -5993,7 +5993,7 @@
   {
     "id": "gene-pai-1-ricerca-della-variazione-4g-5g",
     "nome": "Gene PAI-1 Ricerca della variazione 4G/5G",
-    "prezzo": 98.3,
+    "prezzo": 100.0,
     "cat": "Altro",
     "sintomi": [],
     "referto": "48-72h"
@@ -6160,7 +6160,7 @@
   {
     "id": "grano-ige-specifiche",
     "nome": "GRANO (IgE SPECIFICHE)",
-    "prezzo": 14.5,
+    "prezzo": 12.5,
     "cat": "Autoimmunità",
     "sintomi": [
       "allergie"
@@ -6272,7 +6272,7 @@
   {
     "id": "hcv-rna-genotipo",
     "nome": "HCV RNA GENOTIPO",
-    "prezzo": 157.3,
+    "prezzo": 143.5,
     "cat": "Infettivologia",
     "sintomi": [
       "controllo_fegato"
@@ -6373,7 +6373,7 @@
   {
     "id": "hla-per-identificazione-dq2-e-dq8",
     "nome": "HLA PER IDENTIFICAZIONE DQ2 E DQ8",
-    "prezzo": 138.0,
+    "prezzo": 90.0,
     "cat": "Genetica/Molecolare",
     "sintomi": [],
     "referto": "7-15gg"
@@ -6750,7 +6750,7 @@
   {
     "id": "istologia-apparato-urogenitale-polipectomia-endoce",
     "nome": "ISTOLOGIA APPARATO UROGENITALE - POLIPECTOMIA ENDOCERVICALE",
-    "prezzo": 150.0,
+    "prezzo": 50.0,
     "cat": "Altro",
     "sintomi": [],
     "referto": "48-72h"
@@ -7229,7 +7229,7 @@
   {
     "id": "mercurio-urine-f-t",
     "nome": "MERCURIO URINE F.T.",
-    "prezzo": 27.0,
+    "prezzo": 26.01,
     "cat": "Renale",
     "sintomi": [
       "gravidanza",
@@ -7488,7 +7488,7 @@
   {
     "id": "mounjaro-7-5-mg-start-pack-progetto-slim-care-part",
     "nome": "Mounjaro 7,5 mg -Start Pack - progetto Slim Care - parte di prestazione sanitaria complessa",
-    "prezzo": 395.45,
+    "prezzo": 435.0,
     "cat": "Altro",
     "sintomi": [],
     "referto": "48-72h"
@@ -7562,7 +7562,7 @@
   {
     "id": "mycobacterium-tuberculosis-dna",
     "nome": "MYCOBACTERIUM TUBERCULOSIS DNA",
-    "prezzo": 176.9,
+    "prezzo": 180.0,
     "cat": "Genetica/Molecolare",
     "sintomi": [],
     "referto": "48-72h"
@@ -8773,7 +8773,7 @@
   {
     "id": "prolattina-curva",
     "nome": "PROLATTINA CURVA",
-    "prezzo": 7.5,
+    "prezzo": 70.0,
     "cat": "Ormoni",
     "sintomi": [
       "infertilita"
@@ -9273,7 +9273,7 @@
   {
     "id": "ricerca-parassiti-e-uova-campione-1",
     "nome": "RICERCA PARASSITI E UOVA CAMPIONE 1",
-    "prezzo": 15.0,
+    "prezzo": 12.0,
     "cat": "Fecale",
     "sintomi": [],
     "referto": "48-72h"
@@ -9281,7 +9281,7 @@
   {
     "id": "ricerca-parassiti-e-uova-campione-2",
     "nome": "RICERCA PARASSITI E UOVA CAMPIONE 2",
-    "prezzo": 15.0,
+    "prezzo": 12.0,
     "cat": "Fecale",
     "sintomi": [],
     "referto": "48-72h"
@@ -9289,7 +9289,7 @@
   {
     "id": "ricerca-parassiti-e-uova-campione-3",
     "nome": "RICERCA PARASSITI E UOVA CAMPIONE 3",
-    "prezzo": 15.0,
+    "prezzo": 12.0,
     "cat": "Fecale",
     "sintomi": [],
     "referto": "48-72h"
@@ -9976,7 +9976,7 @@
   {
     "id": "test-capacitazione",
     "nome": "Test Capacitazione",
-    "prezzo": 250.0,
+    "prezzo": 40.0,
     "cat": "Altro",
     "sintomi": [],
     "referto": "48-72h"
@@ -10045,7 +10045,7 @@
   {
     "id": "test-di-paternit",
     "nome": "Test di paternità",
-    "prezzo": 220.0,
+    "prezzo": 200.0,
     "cat": "Altro",
     "sintomi": [],
     "referto": "48-72h"
