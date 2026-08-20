@@ -333,6 +333,14 @@ def build_page(e, related, vol):
         title = f"{nome} Sassari: €{prezzo}, Referto {referto} | Bio-Clinic"
     if len(title) > 70:
         title = f"{nome} Sassari: €{prezzo} | Bio-Clinic"
+    if len(title) > 75:
+        title = f"{nome} Sassari | Bio-Clinic"
+    if len(title) > 75:
+        # nome troppo lungo: tronca al confine di parola più vicino
+        base = nome
+        while len(f"{base} Sassari | Bio-Clinic") > 75 and ' ' in base:
+            base = base.rsplit(' ', 1)[0].rstrip(' -–,(')
+        title = f"{base} Sassari | Bio-Clinic"
     descr = (f"{nome} a Sassari: costo €{prezzo}, referto in {referto}. Accesso libero Lun-Ven 7-21, Sab 8-14. "
              f"Prenota online con conferma WhatsApp. Bio-Clinic, Via Renzo Mossa 23.")
 
