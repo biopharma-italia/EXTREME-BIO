@@ -19,7 +19,7 @@ from google_client import GoogleClient, GoogleAPIError, GA4_API, GA4_PROPERTY
 REPO_ROOT = Path(__file__).resolve().parents[2]
 OUT_DIR = REPO_ROOT / "bio-clinic-analisi" / "ga4-data"
 
-KEY_EVENTS = ["clicks_on_prenota", "click", "generate_lead", "phone_call", "form_submit"]
+KEY_EVENTS = ["generate_lead", "bc_prenota_click", "form_submit", "purchase", "bc_phone_click", "bc_whatsapp_click"]
 
 
 def run_report(client: GoogleClient, body: dict) -> dict:
