@@ -16,3 +16,4 @@ tmp/
 tmp/
 .secrets/
 *service-account*.json
+__pycache__/
