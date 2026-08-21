@@ -1,0 +1,1922 @@
+{
+ "generated": "2026-08-21",
+ "site": "sc-domain:bio-clinic.it",
+ "period": {
+  "start": "2026-07-22",
+  "end": "2026-08-18"
+ },
+ "previous": {
+  "start": "2026-06-24",
+  "end": "2026-07-21"
+ },
+ "totals": {
+  "current": {
+   "clicks": 2516,
+   "impressions": 73192,
+   "ctr": 3.44,
+   "position": 6.7
+  },
+  "previous": {
+   "clicks": 2584,
+   "impressions": 68469,
+   "ctr": 3.77,
+   "position": 6.2
+  }
+ },
+ "top_queries": [
+  {
+   "keys": [
+    "bioclinic sassari"
+   ],
+   "clicks": 772,
+   "impressions": 2324,
+   "ctr": 0.33218588640275387,
+   "position": 1.0017211703958693
+  },
+  {
+   "keys": [
+    "bioclinic"
+   ],
+   "clicks": 257,
+   "impressions": 507,
+   "ctr": 0.5069033530571992,
+   "position": 3.4122287968441816
+  },
+  {
+   "keys": [
+    "bio clinic"
+   ],
+   "clicks": 110,
+   "impressions": 570,
+   "ctr": 0.19298245614035087,
+   "position": 8.329824561403509
+  },
+  {
+   "keys": [
+    "bio clinic sassari"
+   ],
+   "clicks": 85,
+   "impressions": 256,
+   "ctr": 0.33203125,
+   "position": 1
+  },
+  {
+   "keys": [
+    "anemia mediterranea"
+   ],
+   "clicks": 63,
+   "impressions": 11672,
+   "ctr": 0.005397532556545579,
+   "position": 4.9749828649760115
+  },
+  {
+   "keys": [
+    "laboratorio analisi sassari"
+   ],
+   "clicks": 59,
+   "impressions": 836,
+   "ctr": 0.07057416267942583,
+   "position": 1.5610047846889952
+  },
+  {
+   "keys": [
+    "petrillo ginecologo sassari"
+   ],
+   "clicks": 49,
+   "impressions": 197,
+   "ctr": 0.24873096446700507,
+   "position": 4.898477157360406
+  },
+  {
+   "keys": [
+    "tirzepatide"
+   ],
+   "clicks": 22,
+   "impressions": 10327,
+   "ctr": 0.002130337949065556,
+   "position": 9.08995836157645
+  },
+  {
+   "keys": [
+    "noduli alla tiroide"
+   ],
+   "clicks": 21,
+   "impressions": 3289,
+   "ctr": 0.006384919428397689,
+   "position": 8.728184858619642
+  },
+  {
+   "keys": [
+    "dott petrillo ginecologo sassari"
+   ],
+   "clicks": 18,
+   "impressions": 51,
+   "ctr": 0.35294117647058826,
+   "position": 1.5294117647058822
+  },
+  {
+   "keys": [
+    "dermatologo sassari"
+   ],
+   "clicks": 17,
+   "impressions": 770,
+   "ctr": 0.02207792207792208,
+   "position": 4.384415584415585
+  },
+  {
+   "keys": [
+    "elettromiografia sassari"
+   ],
+   "clicks": 16,
+   "impressions": 82,
+   "ctr": 0.1951219512195122,
+   "position": 2.1341463414634143
+  },
+  {
+   "keys": [
+    "noduli alla tiroide quando preoccuparsi"
+   ],
+   "clicks": 16,
+   "impressions": 670,
+   "ctr": 0.023880597014925373,
+   "position": 3.6029850746268655
+  },
+  {
+   "keys": [
+    "otorino sassari"
+   ],
+   "clicks": 15,
+   "impressions": 494,
+   "ctr": 0.030364372469635626,
+   "position": 5.255060728744939
+  },
+  {
+   "keys": [
+    "bioclinic via renzo mossa sassari"
+   ],
+   "clicks": 13,
+   "impressions": 40,
+   "ctr": 0.325,
+   "position": 1.425
+  },
+  {
+   "keys": [
+    "endocrinologo sassari"
+   ],
+   "clicks": 13,
+   "impressions": 315,
+   "ctr": 0.04126984126984127,
+   "position": 5.234920634920635
+  },
+  {
+   "keys": [
+    "laboratorio analisi bioclinic"
+   ],
+   "clicks": 13,
+   "impressions": 48,
+   "ctr": 0.2708333333333333,
+   "position": 1.25
+  },
+  {
+   "keys": [
+    "bioclinic sassari prezzi"
+   ],
+   "clicks": 12,
+   "impressions": 45,
+   "ctr": 0.26666666666666666,
+   "position": 1.1333333333333333
+  },
+  {
+   "keys": [
+    "roberto mancino chirurgo vascolare"
+   ],
+   "clicks": 12,
+   "impressions": 28,
+   "ctr": 0.42857142857142855,
+   "position": 1.1071428571428572
+  },
+  {
+   "keys": [
+    "analisi del sangue sassari"
+   ],
+   "clicks": 11,
+   "impressions": 92,
+   "ctr": 0.11956521739130435,
+   "position": 1.608695652173913
+  },
+  {
+   "keys": [
+    "bioclinic sassari orari"
+   ],
+   "clicks": 11,
+   "impressions": 33,
+   "ctr": 0.3333333333333333,
+   "position": 1.2727272727272727
+  },
+  {
+   "keys": [
+    "francesco bussu otorino sassari"
+   ],
+   "clicks": 11,
+   "impressions": 47,
+   "ctr": 0.23404255319148937,
+   "position": 1.2553191489361701
+  },
+  {
+   "keys": [
+    "laboratori analisi sassari"
+   ],
+   "clicks": 11,
+   "impressions": 70,
+   "ctr": 0.15714285714285714,
+   "position": 1.9285714285714286
+  },
+  {
+   "keys": [
+    "marco petrillo ginecologo"
+   ],
+   "clicks": 11,
+   "impressions": 147,
+   "ctr": 0.07482993197278912,
+   "position": 3.3197278911564627
+  },
+  {
+   "keys": [
+    "medico sportivo sassari"
+   ],
+   "clicks": 11,
+   "impressions": 128,
+   "ctr": 0.0859375,
+   "position": 5.1640625
+  },
+  {
+   "keys": [
+    "wegovy prezzo"
+   ],
+   "clicks": 11,
+   "impressions": 4363,
+   "ctr": 0.0025212010084804033,
+   "position": 7.932844373137749
+  },
+  {
+   "keys": [
+    "ginecologo petrillo sassari"
+   ],
+   "clicks": 10,
+   "impressions": 26,
+   "ctr": 0.38461538461538464,
+   "position": 1.5769230769230769
+  },
+  {
+   "keys": [
+    "noduli tiroide quando preoccuparsi"
+   ],
+   "clicks": 10,
+   "impressions": 282,
+   "ctr": 0.03546099290780142,
+   "position": 3.6702127659574466
+  },
+  {
+   "keys": [
+    "nodulo tiroide"
+   ],
+   "clicks": 10,
+   "impressions": 1970,
+   "ctr": 0.005076142131979695,
+   "position": 8.595431472081218
+  },
+  {
+   "keys": [
+    "ginecologo sassari"
+   ],
+   "clicks": 9,
+   "impressions": 333,
+   "ctr": 0.02702702702702703,
+   "position": 4.843843843843844
+  },
+  {
+   "keys": [
+    "oculista sassari"
+   ],
+   "clicks": 9,
+   "impressions": 429,
+   "ctr": 0.02097902097902098,
+   "position": 4.652680652680653
+  },
+  {
+   "keys": [
+    "petrillo ginecologo"
+   ],
+   "clicks": 9,
+   "impressions": 45,
+   "ctr": 0.2,
+   "position": 1.7555555555555555
+  },
+  {
+   "keys": [
+    "dott tolu endocrinologo"
+   ],
+   "clicks": 8,
+   "impressions": 36,
+   "ctr": 0.2222222222222222,
+   "position": 2.083333333333333
+  },
+  {
+   "keys": [
+    "epatologo sassari"
+   ],
+   "clicks": 8,
+   "impressions": 80,
+   "ctr": 0.1,
+   "position": 2.375
+  },
+  {
+   "keys": [
+    "francesco dessole"
+   ],
+   "clicks": 8,
+   "impressions": 32,
+   "ctr": 0.25,
+   "position": 2.1875
+  },
+  {
+   "keys": [
+    "francesco tolu"
+   ],
+   "clicks": 8,
+   "impressions": 44,
+   "ctr": 0.18181818181818182,
+   "position": 2.75
+  },
+  {
+   "keys": [
+    "anemia mediterranea portatore sano"
+   ],
+   "clicks": 7,
+   "impressions": 727,
+   "ctr": 0.009628610729023384,
+   "position": 4.993122420907841
+  },
+  {
+   "keys": [
+    "ematologo sassari"
+   ],
+   "clicks": 7,
+   "impressions": 121,
+   "ctr": 0.05785123966942149,
+   "position": 5
+  },
+  {
+   "keys": [
+    "ginecologa sassari"
+   ],
+   "clicks": 7,
+   "impressions": 208,
+   "ctr": 0.03365384615384615,
+   "position": 4.461538461538462
+  },
+  {
+   "keys": [
+    "mappatura nei sassari"
+   ],
+   "clicks": 7,
+   "impressions": 51,
+   "ctr": 0.13725490196078433,
+   "position": 2.9411764705882355
+  },
+  {
+   "keys": [
+    "margherita dessole ginecologa"
+   ],
+   "clicks": 7,
+   "impressions": 26,
+   "ctr": 0.2692307692307692,
+   "position": 2.1538461538461537
+  },
+  {
+   "keys": [
+    "reumatologo sassari"
+   ],
+   "clicks": 7,
+   "impressions": 217,
+   "ctr": 0.03225806451612903,
+   "position": 2.9308755760368665
+  },
+  {
+   "keys": [
+    "urologo sassari"
+   ],
+   "clicks": 7,
+   "impressions": 332,
+   "ctr": 0.02108433734939759,
+   "position": 6.807228915662651
+  },
+  {
+   "keys": [
+    "bio clinic foto"
+   ],
+   "clicks": 6,
+   "impressions": 61,
+   "ctr": 0.09836065573770492,
+   "position": 6.327868852459017
+  },
+  {
+   "keys": [
+    "bioclinc"
+   ],
+   "clicks": 6,
+   "impressions": 9,
+   "ctr": 0.6666666666666666,
+   "position": 1.3333333333333333
+  },
+  {
+   "keys": [
+    "curva da carico sassari"
+   ],
+   "clicks": 6,
+   "impressions": 40,
+   "ctr": 0.15,
+   "position": 2.775
+  },
+  {
+   "keys": [
+    "dermatologi sassari"
+   ],
+   "clicks": 6,
+   "impressions": 145,
+   "ctr": 0.041379310344827586,
+   "position": 6.062068965517241
+  },
+  {
+   "keys": [
+    "dermatologo sassari prezzi"
+   ],
+   "clicks": 6,
+   "impressions": 101,
+   "ctr": 0.0594059405940594,
+   "position": 3.3366336633663365
+  },
+  {
+   "keys": [
+    "ecocolordoppler arti inferiori sassari"
+   ],
+   "clicks": 6,
+   "impressions": 71,
+   "ctr": 0.08450704225352113,
+   "position": 4.690140845070422
+  },
+  {
+   "keys": [
+    "maddalena pola ginecologa"
+   ],
+   "clicks": 6,
+   "impressions": 44,
+   "ctr": 0.13636363636363635,
+   "position": 1.0681818181818181
+  },
+  {
+   "keys": [
+    "medico dello sport sassari"
+   ],
+   "clicks": 6,
+   "impressions": 42,
+   "ctr": 0.14285714285714285,
+   "position": 4.0476190476190474
+  },
+  {
+   "keys": [
+    "nefrologo sassari"
+   ],
+   "clicks": 6,
+   "impressions": 101,
+   "ctr": 0.0594059405940594,
+   "position": 1.306930693069307
+  },
+  {
+   "keys": [
+    "pneumologo sassari"
+   ],
+   "clicks": 6,
+   "impressions": 166,
+   "ctr": 0.03614457831325301,
+   "position": 5.542168674698795
+  },
+  {
+   "keys": [
+    "visita medico sportiva sassari"
+   ],
+   "clicks": 6,
+   "impressions": 41,
+   "ctr": 0.14634146341463414,
+   "position": 3.3902439024390243
+  },
+  {
+   "keys": [
+    "certificato medico non agonistico sassari"
+   ],
+   "clicks": 5,
+   "impressions": 19,
+   "ctr": 0.2631578947368421,
+   "position": 3.473684210526316
+  },
+  {
+   "keys": [
+    "certificato medico sportivo non agonistico sassari"
+   ],
+   "clicks": 5,
+   "impressions": 19,
+   "ctr": 0.2631578947368421,
+   "position": 4.210526315789474
+  },
+  {
+   "keys": [
+    "clinica dermatologica sassari"
+   ],
+   "clicks": 5,
+   "impressions": 34,
+   "ctr": 0.14705882352941177,
+   "position": 5.147058823529412
+  },
+  {
+   "keys": [
+    "giovanna costa dermatologa"
+   ],
+   "clicks": 5,
+   "impressions": 48,
+   "ctr": 0.10416666666666667,
+   "position": 1.375
+  },
+  {
+   "keys": [
+    "nodulo tiroide 3 cm"
+   ],
+   "clicks": 5,
+   "impressions": 522,
+   "ctr": 0.009578544061302681,
+   "position": 7.595785440613027
+  },
+  {
+   "keys": [
+    "nodulo tiroide 8 mm"
+   ],
+   "clicks": 5,
+   "impressions": 251,
+   "ctr": 0.0199203187250996,
+   "position": 6.99203187250996
+  },
+  {
+   "keys": [
+    "nutrizionista sassari"
+   ],
+   "clicks": 5,
+   "impressions": 269,
+   "ctr": 0.01858736059479554,
+   "position": 8.45724907063197
+  },
+  {
+   "keys": [
+    "pietro pirina pneumologo sassari"
+   ],
+   "clicks": 5,
+   "impressions": 13,
+   "ctr": 0.38461538461538464,
+   "position": 1.6923076923076923
+  },
+  {
+   "keys": [
+    "prove allergiche sassari prezzi"
+   ],
+   "clicks": 5,
+   "impressions": 23,
+   "ctr": 0.21739130434782608,
+   "position": 2.8260869565217392
+  },
+  {
+   "keys": [
+    "tolu endocrinologo"
+   ],
+   "clicks": 5,
+   "impressions": 10,
+   "ctr": 0.5,
+   "position": 1.9
+  },
+  {
+   "keys": [
+    "anemia mediterranea sintomi"
+   ],
+   "clicks": 4,
+   "impressions": 1372,
+   "ctr": 0.0029154518950437317,
+   "position": 6.746355685131196
+  },
+  {
+   "keys": [
+    "centro analisi sassari"
+   ],
+   "clicks": 4,
+   "impressions": 75,
+   "ctr": 0.05333333333333334,
+   "position": 1.3733333333333333
+  },
+  {
+   "keys": [
+    "dermatologi a sassari"
+   ],
+   "clicks": 4,
+   "impressions": 51,
+   "ctr": 0.0784313725490196,
+   "position": 6.078431372549019
+  },
+  {
+   "keys": [
+    "dessole ginecologo sassari"
+   ],
+   "clicks": 4,
+   "impressions": 13,
+   "ctr": 0.3076923076923077,
+   "position": 1.0769230769230769
+  },
+  {
+   "keys": [
+    "dott tolu endocrinologo sassari"
+   ],
+   "clicks": 4,
+   "impressions": 14,
+   "ctr": 0.2857142857142857,
+   "position": 1.2142857142857142
+  },
+  {
+   "keys": [
+    "laboratorio analisi"
+   ],
+   "clicks": 4,
+   "impressions": 76,
+   "ctr": 0.05263157894736842,
+   "position": 8.460526315789473
+  },
+  {
+   "keys": [
+    "marco petrillo"
+   ],
+   "clicks": 4,
+   "impressions": 98,
+   "ctr": 0.04081632653061224,
+   "position": 3.183673469387755
+  },
+  {
+   "keys": [
+    "mounjaro acquisto online senza ricetta"
+   ],
+   "clicks": 4,
+   "impressions": 82,
+   "ctr": 0.04878048780487805,
+   "position": 2.8536585365853657
+  },
+  {
+   "keys": [
+    "nodulo alla tiroide"
+   ],
+   "clicks": 4,
+   "impressions": 1210,
+   "ctr": 0.003305785123966942,
+   "position": 8.788429752066115
+  },
+  {
+   "keys": [
+    "nodulo colloido cistico"
+   ],
+   "clicks": 4,
+   "impressions": 65,
+   "ctr": 0.06153846153846154,
+   "position": 1.3846153846153846
+  },
+  {
+   "keys": [
+    "ortopedico sassari"
+   ],
+   "clicks": 4,
+   "impressions": 435,
+   "ctr": 0.009195402298850575,
+   "position": 6.889655172413793
+  },
+  {
+   "keys": [
+    "portatore sano anemia mediterranea"
+   ],
+   "clicks": 4,
+   "impressions": 381,
+   "ctr": 0.010498687664041995,
+   "position": 4.99737532808399
+  },
+  {
+   "keys": [
+    "recensioni di bio clinic"
+   ],
+   "clicks": 4,
+   "impressions": 43,
+   "ctr": 0.09302325581395349,
+   "position": 4
+  },
+  {
+   "keys": [
+    "via renzo mossa 23 sassari"
+   ],
+   "clicks": 4,
+   "impressions": 134,
+   "ctr": 0.029850746268656716,
+   "position": 7.3059701492537314
+  },
+  {
+   "keys": [
+    "anemia mediterranea sardegna"
+   ],
+   "clicks": 3,
+   "impressions": 55,
+   "ctr": 0.05454545454545454,
+   "position": 1.509090909090909
+  },
+  {
+   "keys": [
+    "bioclimic"
+   ],
+   "clicks": 3,
+   "impressions": 5,
+   "ctr": 0.6,
+   "position": 1
+  },
+  {
+   "keys": [
+    "bravo reumatologo sassari"
+   ],
+   "clicks": 3,
+   "impressions": 64,
+   "ctr": 0.046875,
+   "position": 2.984375
+  },
+  {
+   "keys": [
+    "centri medici sassari"
+   ],
+   "clicks": 3,
+   "impressions": 28,
+   "ctr": 0.10714285714285714,
+   "position": 4.928571428571429
+  },
+  {
+   "keys": [
+    "centro medico sassari"
+   ],
+   "clicks": 3,
+   "impressions": 60,
+   "ctr": 0.05,
+   "position": 5.35
+  },
+  {
+   "keys": [
+    "chirurgia vascolare sassari intramoenia"
+   ],
+   "clicks": 3,
+   "impressions": 66,
+   "ctr": 0.045454545454545456,
+   "position": 9.803030303030303
+  },
+  {
+   "keys": [
+    "clinica oculistica sassari"
+   ],
+   "clicks": 3,
+   "impressions": 108,
+   "ctr": 0.027777777777777776,
+   "position": 8.953703703703702
+  },
+  {
+   "keys": [
+    "corso preparto sassari"
+   ],
+   "clicks": 3,
+   "impressions": 68,
+   "ctr": 0.04411764705882353,
+   "position": 2.4264705882352944
+  },
+  {
+   "keys": [
+    "daniele sabiu ematologo"
+   ],
+   "clicks": 3,
+   "impressions": 10,
+   "ctr": 0.3,
+   "position": 4.8
+  },
+  {
+   "keys": [
+    "dott ssa costa dermatologa"
+   ],
+   "clicks": 3,
+   "impressions": 38,
+   "ctr": 0.07894736842105263,
+   "position": 5.105263157894737
+  },
+  {
+   "keys": [
+    "dottor petrillo sassari"
+   ],
+   "clicks": 3,
+   "impressions": 9,
+   "ctr": 0.3333333333333333,
+   "position": 2.111111111111111
+  },
+  {
+   "keys": [
+    "elettromiografia convenzionata sassari"
+   ],
+   "clicks": 3,
+   "impressions": 40,
+   "ctr": 0.075,
+   "position": 3.375
+  },
+  {
+   "keys": [
+    "endocrinologo intramoenia sassari"
+   ],
+   "clicks": 3,
+   "impressions": 130,
+   "ctr": 0.023076923076923078,
+   "position": 9.323076923076924
+  },
+  {
+   "keys": [
+    "esami del sangue sassari"
+   ],
+   "clicks": 3,
+   "impressions": 20,
+   "ctr": 0.15,
+   "position": 1.8
+  },
+  {
+   "keys": [
+    "i noduli alla tiroide sono pericolosi"
+   ],
+   "clicks": 3,
+   "impressions": 525,
+   "ctr": 0.005714285714285714,
+   "position": 10.83047619047619
+  },
+  {
+   "keys": [
+    "lab analisi sassari"
+   ],
+   "clicks": 3,
+   "impressions": 19,
+   "ctr": 0.15789473684210525,
+   "position": 1.4210526315789473
+  },
+  {
+   "keys": [
+    "laboratorio analisi sassari convenzionato asl"
+   ],
+   "clicks": 3,
+   "impressions": 104,
+   "ctr": 0.028846153846153848,
+   "position": 4.490384615384615
+  },
+  {
+   "keys": [
+    "laboratorio analisi vicino a me"
+   ],
+   "clicks": 3,
+   "impressions": 26,
+   "ctr": 0.11538461538461539,
+   "position": 3.5
+  },
+  {
+   "keys": [
+    "linfonodi tiroide quando preoccuparsi"
+   ],
+   "clicks": 3,
+   "impressions": 106,
+   "ctr": 0.02830188679245283,
+   "position": 2.2452830188679247
+  },
+  {
+   "keys": [
+    "luigi podda ematologo"
+   ],
+   "clicks": 3,
+   "impressions": 13,
+   "ctr": 0.23076923076923078,
+   "position": 1.9230769230769231
+  },
+  {
+   "keys": [
+    "medico del lavoro sassari"
+   ],
+   "clicks": 3,
+   "impressions": 122,
+   "ctr": 0.02459016393442623,
+   "position": 6.909836065573771
+  },
+  {
+   "keys": [
+    "miglior chirurgo vascolare sassari"
+   ],
+   "clicks": 3,
+   "impressions": 114,
+   "ctr": 0.02631578947368421,
+   "position": 5.7105263157894735
+  }
+ ],
+ "top_pages": [
+  {
+   "keys": [
+    "https://bio-clinic.it/"
+   ],
+   "clicks": 993,
+   "impressions": 10920,
+   "ctr": 0.09093406593406593,
+   "position": 6.120238095238095
+  },
+  {
+   "keys": [
+    "http://www.bio-clinic.it/"
+   ],
+   "clicks": 440,
+   "impressions": 15422,
+   "ctr": 0.028530670470756064,
+   "position": 3.847425755414343
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/listino/"
+   ],
+   "clicks": 319,
+   "impressions": 9317,
+   "ctr": 0.03423848878394333,
+   "position": 6.381023934742943
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/laboratorio/"
+   ],
+   "clicks": 281,
+   "impressions": 9185,
+   "ctr": 0.03059335873707131,
+   "position": 5.25748502994012
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/salute/noduli-tiroidei/"
+   ],
+   "clicks": 229,
+   "impressions": 28396,
+   "ctr": 0.008064516129032258,
+   "position": 7.994541484716157
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/salute/anemia-mediterranea-talassemia/"
+   ],
+   "clicks": 217,
+   "impressions": 42526,
+   "ctr": 0.005102760664064337,
+   "position": 5.887997930677703
+  },
+  {
+   "keys": [
+    "https://www.bio-clinic.it/"
+   ],
+   "clicks": 176,
+   "impressions": 5962,
+   "ctr": 0.02952029520295203,
+   "position": 2.8872861455887286
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/"
+   ],
+   "clicks": 174,
+   "impressions": 4911,
+   "ctr": 0.0354306658521686,
+   "position": 4.339645693341478
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/marco-petrillo/"
+   ],
+   "clicks": 171,
+   "impressions": 1065,
+   "ctr": 0.16056338028169015,
+   "position": 3.073239436619718
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/visita-medicina-sport/"
+   ],
+   "clicks": 97,
+   "impressions": 1474,
+   "ctr": 0.06580732700135686,
+   "position": 6.4945725915875165
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/dermatologia/"
+   ],
+   "clicks": 89,
+   "impressions": 3377,
+   "ctr": 0.02635475273911756,
+   "position": 6.839502517026947
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/oculistica/"
+   ],
+   "clicks": 85,
+   "impressions": 3543,
+   "ctr": 0.023990968106124753,
+   "position": 7.572114027660175
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/ginecologia/"
+   ],
+   "clicks": 76,
+   "impressions": 4738,
+   "ctr": 0.016040523427606587,
+   "position": 4.7043056141832
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/genetica/"
+   ],
+   "clicks": 75,
+   "impressions": 2082,
+   "ctr": 0.03602305475504323,
+   "position": 7.73342939481268
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/slim-care/tirzepatide/"
+   ],
+   "clicks": 74,
+   "impressions": 27871,
+   "ctr": 0.002655089519572315,
+   "position": 8.604571059524236
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/laboratorio/prenota/"
+   ],
+   "clicks": 72,
+   "impressions": 875,
+   "ctr": 0.08228571428571428,
+   "position": 6.148571428571429
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/prestazioni/"
+   ],
+   "clicks": 69,
+   "impressions": 4197,
+   "ctr": 0.016440314510364547,
+   "position": 3.2304026685727902
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/mounjaro-tirzepatide-sassari/"
+   ],
+   "clicks": 67,
+   "impressions": 5684,
+   "ctr": 0.011787473610133709,
+   "position": 7.750351864883885
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/specialita/"
+   ],
+   "clicks": 60,
+   "impressions": 4350,
+   "ctr": 0.013793103448275862,
+   "position": 3.135632183908046
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/francesco-tolu/"
+   ],
+   "clicks": 59,
+   "impressions": 696,
+   "ctr": 0.08477011494252873,
+   "position": 7.522988505747127
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/otorinolaringoiatria/"
+   ],
+   "clicks": 56,
+   "impressions": 2299,
+   "ctr": 0.02435841670291431,
+   "position": 6.356676816006959
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/cardiologia/"
+   ],
+   "clicks": 54,
+   "impressions": 2887,
+   "ctr": 0.018704537582265326,
+   "position": 7.83754762729477
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/gastroenterologia/visita-gastroenterologica/"
+   ],
+   "clicks": 53,
+   "impressions": 682,
+   "ctr": 0.07771260997067449,
+   "position": 7.951612903225806
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/slim-care/mounjaro-prezzo-sassari/"
+   ],
+   "clicks": 51,
+   "impressions": 6366,
+   "ctr": 0.008011310084825637,
+   "position": 8.788092994030787
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/antonio-solinas/"
+   ],
+   "clicks": 49,
+   "impressions": 680,
+   "ctr": 0.07205882352941176,
+   "position": 6.086764705882353
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/ortopedia/"
+   ],
+   "clicks": 47,
+   "impressions": 2589,
+   "ctr": 0.018153727307840865,
+   "position": 7.676709154113557
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/pietro-pirina/"
+   ],
+   "clicks": 45,
+   "impressions": 568,
+   "ctr": 0.07922535211267606,
+   "position": 5.116197183098592
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/francesco-bussu/"
+   ],
+   "clicks": 44,
+   "impressions": 698,
+   "ctr": 0.06303724928366762,
+   "position": 5.826647564469914
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/ginecologia/ginecologi-sassari/"
+   ],
+   "clicks": 43,
+   "impressions": 1481,
+   "ctr": 0.02903443619176232,
+   "position": 8.748143146522619
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/endocrinologia/"
+   ],
+   "clicks": 42,
+   "impressions": 1770,
+   "ctr": 0.023728813559322035,
+   "position": 7.327118644067797
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/gastroenterologia/"
+   ],
+   "clicks": 41,
+   "impressions": 1832,
+   "ctr": 0.02237991266375546,
+   "position": 6.513646288209607
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/neurologia/elettromiografia/"
+   ],
+   "clicks": 38,
+   "impressions": 319,
+   "ctr": 0.11912225705329153,
+   "position": 4.341692789968652
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/contatti/"
+   ],
+   "clicks": 37,
+   "impressions": 1538,
+   "ctr": 0.024057217165149546,
+   "position": 4.326397919375813
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/giovanna-costa/"
+   ],
+   "clicks": 37,
+   "impressions": 919,
+   "ctr": 0.04026115342763874,
+   "position": 7.687704026115343
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/maddalena-pola/"
+   ],
+   "clicks": 37,
+   "impressions": 673,
+   "ctr": 0.0549777117384844,
+   "position": 5.6909361069836555
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/slim-care/"
+   ],
+   "clicks": 37,
+   "impressions": 1563,
+   "ctr": 0.023672424824056303,
+   "position": 7.990403071017274
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/preparazione-esami/"
+   ],
+   "clicks": 36,
+   "impressions": 9433,
+   "ctr": 0.003816389271705714,
+   "position": 7.151489451924096
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/moc-dexa-sassari/"
+   ],
+   "clicks": 35,
+   "impressions": 1796,
+   "ctr": 0.019487750556792874,
+   "position": 6.555122494432071
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/francesco-dessole/"
+   ],
+   "clicks": 34,
+   "impressions": 1401,
+   "ctr": 0.02426837972876517,
+   "position": 7.926481084939329
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/roberto-mancino/"
+   ],
+   "clicks": 34,
+   "impressions": 1009,
+   "ctr": 0.03369672943508424,
+   "position": 7.983151635282458
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/chirurgia-vascolare/"
+   ],
+   "clicks": 33,
+   "impressions": 1556,
+   "ctr": 0.021208226221079693,
+   "position": 8.280848329048844
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/neurologia/"
+   ],
+   "clicks": 31,
+   "impressions": 1725,
+   "ctr": 0.017971014492753623,
+   "position": 7.3420289855072465
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/reumatologia/"
+   ],
+   "clicks": 28,
+   "impressions": 780,
+   "ctr": 0.035897435897435895,
+   "position": 7.61025641025641
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/urologia/"
+   ],
+   "clicks": 28,
+   "impressions": 1933,
+   "ctr": 0.014485256078634247,
+   "position": 7.519917227108122
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/luigi-podda/"
+   ],
+   "clicks": 27,
+   "impressions": 659,
+   "ctr": 0.0409711684370258,
+   "position": 6.1213960546282244
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/otorinolaringoiatria/visita-orl/"
+   ],
+   "clicks": 26,
+   "impressions": 458,
+   "ctr": 0.056768558951965066,
+   "position": 9.558951965065502
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/margherita-dessole/"
+   ],
+   "clicks": 25,
+   "impressions": 448,
+   "ctr": 0.05580357142857143,
+   "position": 7.448660714285714
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/chirurgia-vascolare/eco-doppler-arti/"
+   ],
+   "clicks": 24,
+   "impressions": 449,
+   "ctr": 0.053452115812917596,
+   "position": 7.347438752783964
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/carlos-manuel-cambara-zuniga/"
+   ],
+   "clicks": 24,
+   "impressions": 596,
+   "ctr": 0.040268456375838924,
+   "position": 5.283557046979865
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/salute/sclerosi-multipla-sardegna/"
+   ],
+   "clicks": 24,
+   "impressions": 864,
+   "ctr": 0.027777777777777776,
+   "position": 4.207175925925926
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/maria-laura-de-luca/"
+   ],
+   "clicks": 23,
+   "impressions": 1237,
+   "ctr": 0.018593371059013743,
+   "position": 10.330638641875506
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/pma-fertilita/"
+   ],
+   "clicks": 23,
+   "impressions": 833,
+   "ctr": 0.027611044417767107,
+   "position": 7.907563025210084
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/ematologia/"
+   ],
+   "clicks": 22,
+   "impressions": 1006,
+   "ctr": 0.02186878727634195,
+   "position": 6.747514910536779
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/salvatore-dessole/"
+   ],
+   "clicks": 22,
+   "impressions": 451,
+   "ctr": 0.04878048780487805,
+   "position": 5.368070953436807
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/salute/endometriosi-sintomi/"
+   ],
+   "clicks": 22,
+   "impressions": 521,
+   "ctr": 0.04222648752399232,
+   "position": 7.689059500959693
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/dermatologia/mappatura-nevi/"
+   ],
+   "clicks": 21,
+   "impressions": 534,
+   "ctr": 0.03932584269662921,
+   "position": 10.08052434456929
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/angelo-deplano/"
+   ],
+   "clicks": 21,
+   "impressions": 401,
+   "ctr": 0.05236907730673317,
+   "position": 5.890274314214464
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/giorgio-chiarelli/"
+   ],
+   "clicks": 21,
+   "impressions": 675,
+   "ctr": 0.03111111111111111,
+   "position": 9.374814814814815
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/gastroenterologia/ecografia-addominale/"
+   ],
+   "clicks": 21,
+   "impressions": 740,
+   "ctr": 0.02837837837837838,
+   "position": 8.933783783783785
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/ginecologia/perifit-kegel-sassari/"
+   ],
+   "clicks": 21,
+   "impressions": 2310,
+   "ctr": 0.00909090909090909,
+   "position": 6.256277056277057
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/pneumologia/"
+   ],
+   "clicks": 21,
+   "impressions": 1246,
+   "ctr": 0.016853932584269662,
+   "position": 7.223916532905297
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/cardiologia/visita-cardiologica-ecg/"
+   ],
+   "clicks": 19,
+   "impressions": 424,
+   "ctr": 0.04481132075471698,
+   "position": 8.596698113207548
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/convenzioni/"
+   ],
+   "clicks": 19,
+   "impressions": 315,
+   "ctr": 0.06031746031746032,
+   "position": 6.13968253968254
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/reumatologia/visita-reumatologica/"
+   ],
+   "clicks": 19,
+   "impressions": 659,
+   "ctr": 0.028831562974203338,
+   "position": 7.701062215477997
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/slim-care/wegovy-prezzo-sassari/"
+   ],
+   "clicks": 19,
+   "impressions": 6752,
+   "ctr": 0.0028139810426540284,
+   "position": 7.991409952606635
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/visita-nefrologica/"
+   ],
+   "clicks": 18,
+   "impressions": 1243,
+   "ctr": 0.014481094127111826,
+   "position": 6.809332260659694
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/ginecologia/isterosalpingografia/"
+   ],
+   "clicks": 17,
+   "impressions": 311,
+   "ctr": 0.05466237942122187,
+   "position": 6.102893890675241
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/medicina-del-lavoro/"
+   ],
+   "clicks": 17,
+   "impressions": 666,
+   "ctr": 0.025525525525525526,
+   "position": 10.48948948948949
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/fabrizia-caucci/"
+   ],
+   "clicks": 16,
+   "impressions": 323,
+   "ctr": 0.04953560371517028,
+   "position": 3.7987616099071206
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/sebastiano-traccis/"
+   ],
+   "clicks": 16,
+   "impressions": 192,
+   "ctr": 0.08333333333333333,
+   "position": 5.114583333333333
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/prenota/"
+   ],
+   "clicks": 16,
+   "impressions": 805,
+   "ctr": 0.01987577639751553,
+   "position": 5.756521739130434
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/visita-nutrizionale/"
+   ],
+   "clicks": 16,
+   "impressions": 1244,
+   "ctr": 0.012861736334405145,
+   "position": 8.281350482315112
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/chi-siamo/"
+   ],
+   "clicks": 14,
+   "impressions": 534,
+   "ctr": 0.026217228464419477,
+   "position": 6.108614232209738
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/daniele-sabiu/"
+   ],
+   "clicks": 14,
+   "impressions": 314,
+   "ctr": 0.044585987261146494,
+   "position": 8.264331210191083
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/ginecologia/ecografia-morfologica/"
+   ],
+   "clicks": 14,
+   "impressions": 537,
+   "ctr": 0.0260707635009311,
+   "position": 7.385474860335195
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/ginecologia/corso-preparto/"
+   ],
+   "clicks": 13,
+   "impressions": 463,
+   "ctr": 0.028077753779697623,
+   "position": 5.259179265658747
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/ginecologia/ecografia-mammaria/"
+   ],
+   "clicks": 13,
+   "impressions": 228,
+   "ctr": 0.05701754385964912,
+   "position": 9.00438596491228
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/ginecologia/isteroscopia/"
+   ],
+   "clicks": 13,
+   "impressions": 168,
+   "ctr": 0.07738095238095238,
+   "position": 9.232142857142858
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/slim-care-donna/"
+   ],
+   "clicks": 13,
+   "impressions": 256,
+   "ctr": 0.05078125,
+   "position": 13.46484375
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/endocrinologia/checkup-tiroide/"
+   ],
+   "clicks": 12,
+   "impressions": 7540,
+   "ctr": 0.0015915119363395225,
+   "position": 8.425331564986738
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/sergio-paolo-sotgia/"
+   ],
+   "clicks": 12,
+   "impressions": 243,
+   "ctr": 0.04938271604938271,
+   "position": 7.580246913580247
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/ginecologia/riabilitazione-pavimento-pelvico/"
+   ],
+   "clicks": 12,
+   "impressions": 233,
+   "ctr": 0.05150214592274678,
+   "position": 6.836909871244635
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/paolo-pischedda/"
+   ],
+   "clicks": 11,
+   "impressions": 287,
+   "ctr": 0.03832752613240418,
+   "position": 5.7421602787456445
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/colloquio-psicologico/"
+   ],
+   "clicks": 10,
+   "impressions": 583,
+   "ctr": 0.017152658662092625,
+   "position": 9.403087478559177
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/endocrinologia/visita-endocrinologica/"
+   ],
+   "clicks": 10,
+   "impressions": 316,
+   "ctr": 0.03164556962025317,
+   "position": 12.221518987341772
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/alessandra-musinu/"
+   ],
+   "clicks": 10,
+   "impressions": 331,
+   "ctr": 0.030211480362537766,
+   "position": 7.519637462235649
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/antonella-pruneddu/"
+   ],
+   "clicks": 10,
+   "impressions": 116,
+   "ctr": 0.08620689655172414,
+   "position": 5.836206896551724
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/maria-pina-pintus/"
+   ],
+   "clicks": 10,
+   "impressions": 304,
+   "ctr": 0.03289473684210526,
+   "position": 5.6644736842105265
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/paolo-dessole/"
+   ],
+   "clicks": 10,
+   "impressions": 432,
+   "ctr": 0.023148148148148147,
+   "position": 5.685185185185185
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/oculistica/visita-oculistica/"
+   ],
+   "clicks": 10,
+   "impressions": 211,
+   "ctr": 0.04739336492890995,
+   "position": 11.677725118483412
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/ortopedia/visita-fisiatrica/"
+   ],
+   "clicks": 10,
+   "impressions": 636,
+   "ctr": 0.015723270440251572,
+   "position": 7.336477987421383
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/ortopedia/visita-ortopedica/"
+   ],
+   "clicks": 10,
+   "impressions": 234,
+   "ctr": 0.042735042735042736,
+   "position": 10.068376068376068
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/dermatologia/visita-dermatologica/"
+   ],
+   "clicks": 9,
+   "impressions": 310,
+   "ctr": 0.02903225806451613,
+   "position": 10.46774193548387
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/speranza-anedda/"
+   ],
+   "clicks": 9,
+   "impressions": 426,
+   "ctr": 0.02112676056338028,
+   "position": 5.737089201877934
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/tonino-bullitta/"
+   ],
+   "clicks": 9,
+   "impressions": 261,
+   "ctr": 0.034482758620689655,
+   "position": 6.218390804597701
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/prevenzione/"
+   ],
+   "clicks": 9,
+   "impressions": 173,
+   "ctr": 0.05202312138728324,
+   "position": 12.526011560693641
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/visita-pediatrica/"
+   ],
+   "clicks": 9,
+   "impressions": 724,
+   "ctr": 0.012430939226519336,
+   "position": 8.513812154696133
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/carlo-burrai/"
+   ],
+   "clicks": 8,
+   "impressions": 154,
+   "ctr": 0.05194805194805195,
+   "position": 4.818181818181818
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/equipe/paolo-franca/"
+   ],
+   "clicks": 8,
+   "impressions": 405,
+   "ctr": 0.019753086419753086,
+   "position": 9.965432098765431
+  },
+  {
+   "keys": [
+    "https://bio-clinic.it/chirurgia-vascolare/visita-chirurgia-vascolare/"
+   ],
+   "clicks": 7,
+   "impressions": 133,
+   "ctr": 0.05263157894736842,
+   "position": 11.360902255639099
+  }
+ ],
+ "focus_pages": [
+  {
+   "filter": "/urologia/",
+   "current": {
+    "clicks": 37,
+    "impressions": 2549,
+    "ctr": 1.45,
+    "position": 7.8
+   },
+   "previous": {
+    "clicks": 42,
+    "impressions": 2934,
+    "ctr": 1.43,
+    "position": 7.6
+   }
+  },
+  {
+   "filter": "/cardiologia/",
+   "current": {
+    "clicks": 78,
+    "impressions": 3551,
+    "ctr": 2.2,
+    "position": 8.0
+   },
+   "previous": {
+    "clicks": 86,
+    "impressions": 4043,
+    "ctr": 2.13,
+    "position": 7.8
+   }
+  },
+  {
+   "filter": "/ematologia/",
+   "current": {
+    "clicks": 22,
+    "impressions": 1141,
+    "ctr": 1.93,
+    "position": 7.1
+   },
+   "previous": {
+    "clicks": 43,
+    "impressions": 1682,
+    "ctr": 2.56,
+    "position": 6.9
+   }
+  },
+  {
+   "filter": "/ortopedia/",
+   "current": {
+    "clicks": 74,
+    "impressions": 3588,
+    "ctr": 2.06,
+    "position": 7.9
+   },
+   "previous": {
+    "clicks": 86,
+    "impressions": 3792,
+    "ctr": 2.27,
+    "position": 7.6
+   }
+  },
+  {
+   "filter": "/otorinolaringoiatria/",
+   "current": {
+    "clicks": 90,
+    "impressions": 3085,
+    "ctr": 2.92,
+    "position": 7.2
+   },
+   "previous": {
+    "clicks": 89,
+    "impressions": 3107,
+    "ctr": 2.86,
+    "position": 7.3
+   }
+  },
+  {
+   "filter": "/gastroenterologia/ecografia-addominale/",
+   "current": {
+    "clicks": 21,
+    "impressions": 740,
+    "ctr": 2.84,
+    "position": 8.9
+   },
+   "previous": {
+    "clicks": 18,
+    "impressions": 576,
+    "ctr": 3.12,
+    "position": 8.7
+   }
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "generated": "2026-08-21",
+ "site": "sc-domain:bio-clinic.it",
+ "results": [
+  {
+   "url": "https://bio-clinic.it/urologia/",
+   "verdict": "PASS",
+   "coverage": "Inviata e indicizzata",
+   "last_crawl": "2026-08-20T15:37:38Z",
+   "google_canonical": "https://bio-clinic.it/urologia/",
+   "user_canonical": "https://bio-clinic.it/urologia/",
+   "mobile_ok": "VERDICT_UNSPECIFIED",
+   "rich_results": "PASS"
+  },
+  {
+   "url": "https://bio-clinic.it/gastroenterologia/ecografia-addominale/",
+   "verdict": "PASS",
+   "coverage": "Inviata e indicizzata",
+   "last_crawl": "2026-08-20T15:29:12Z",
+   "google_canonical": "https://bio-clinic.it/gastroenterologia/ecografia-addominale/",
+   "user_canonical": "https://bio-clinic.it/gastroenterologia/ecografia-addominale/",
+   "mobile_ok": "VERDICT_UNSPECIFIED",
+   "rich_results": "PASS"
+  }
+ ]
+}
