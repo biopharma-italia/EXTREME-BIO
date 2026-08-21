@@ -1,0 +1,149 @@
+name: SEO Report Weekly (GSC + GA4 + CWV)
+
+# Ogni lunedì mattina: report unificato Search Console + GA4 + Core Web Vitals.
+# Committa i report in bio-clinic-analisi/ e apre issue se rileva problemi
+# (pagine non indicizzate o CWV SLOW).
+#
+# Secrets richiesti:
+#   GBP_CLIENT_ID / GBP_CLIENT_SECRET / GBP_REFRESH_TOKEN  (OAuth multi-scope: GBP+GSC+GA4)
+#   PSI_API_KEY  (opzionale: API key per PageSpeed Insights)
+
+on:
+  schedule:
+    - cron: '30 5 * * 1'   # lunedì 05:30 UTC = 07:30 italiane
+  workflow_dispatch:
+    inputs:
+      days:
+        description: 'Giorni del periodo di confronto'
+        required: false
+        default: '28'
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: seo-report-weekly
+  cancel-in-progress: false
+
+jobs:
+  seo-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check secrets
+        id: check
+        env:
+          CID: ${{ secrets.GBP_CLIENT_ID }}
+          CSEC: ${{ secrets.GBP_CLIENT_SECRET }}
+          RTOK: ${{ secrets.GBP_REFRESH_TOKEN }}
+        run: |
+          if [ -z "$CID" ] || [ -z "$CSEC" ] || [ -z "$RTOK" ]; then
+            echo "have_oauth=false" >> $GITHUB_OUTPUT
+            echo "::notice::Secrets OAuth mancanti: skip GSC/GA4"
+          else
+            echo "have_oauth=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Report GSC (query, pagine, confronto periodo)
+        if: steps.check.outputs.have_oauth == 'true'
+        continue-on-error: true
+        env:
+          GBP_CLIENT_ID: ${{ secrets.GBP_CLIENT_ID }}
+          GBP_CLIENT_SECRET: ${{ secrets.GBP_CLIENT_SECRET }}
+          GBP_REFRESH_TOKEN: ${{ secrets.GBP_REFRESH_TOKEN }}
+        run: |
+          PYTHONPATH=scripts/seo python3 scripts/seo/gsc_report.py \
+            --days "${{ github.event.inputs.days || '28' }}" \
+            --pages-filter /urologia/ /cardiologia/ /ematologia/ /ortopedia/ \
+              /otorinolaringoiatria/ /gastroenterologia/ecografia-addominale/ \
+            || { RC=$?; [ "$RC" = "3" ] && echo "::warning::GSC: scope/quota non concessi — rigenerare il refresh token multi-scope" || exit $RC; }
+
+      - name: URL Inspection pagine chiave
+        if: steps.check.outputs.have_oauth == 'true'
+        continue-on-error: true
+        id: inspect
+        env:
+          GBP_CLIENT_ID: ${{ secrets.GBP_CLIENT_ID }}
+          GBP_CLIENT_SECRET: ${{ secrets.GBP_CLIENT_SECRET }}
+          GBP_REFRESH_TOKEN: ${{ secrets.GBP_REFRESH_TOKEN }}
+        run: |
+          set +e
+          PYTHONPATH=scripts/seo python3 scripts/seo/gsc_inspect.py --key-pages
+          RC=$?
+          set -e
+          if [ "$RC" = "4" ]; then echo "problems=true" >> $GITHUB_OUTPUT; fi
+          if [ "$RC" = "3" ]; then echo "::warning::Inspection: scope/quota non concessi"; fi
+          [ "$RC" = "1" ] && exit 1 || true
+
+      - name: Submit/refresh sitemap su GSC
+        if: steps.check.outputs.have_oauth == 'true'
+        continue-on-error: true
+        env:
+          GBP_CLIENT_ID: ${{ secrets.GBP_CLIENT_ID }}
+          GBP_CLIENT_SECRET: ${{ secrets.GBP_CLIENT_SECRET }}
+          GBP_REFRESH_TOKEN: ${{ secrets.GBP_REFRESH_TOKEN }}
+        run: |
+          PYTHONPATH=scripts/seo python3 scripts/seo/gsc_sitemap_submit.py \
+            || echo "::warning::Sitemap submit fallito (non blocca)"
+
+      - name: Report GA4 (conversioni, canali)
+        if: steps.check.outputs.have_oauth == 'true'
+        continue-on-error: true
+        env:
+          GBP_CLIENT_ID: ${{ secrets.GBP_CLIENT_ID }}
+          GBP_CLIENT_SECRET: ${{ secrets.GBP_CLIENT_SECRET }}
+          GBP_REFRESH_TOKEN: ${{ secrets.GBP_REFRESH_TOKEN }}
+        run: |
+          PYTHONPATH=scripts/seo python3 scripts/seo/ga4_report.py \
+            --days "${{ github.event.inputs.days || '28' }}" \
+            || { RC=$?; [ "$RC" = "3" ] && echo "::warning::GA4: scope non concesso — rigenerare il refresh token multi-scope" || exit $RC; }
+
+      - name: Core Web Vitals (PageSpeed Insights)
+        continue-on-error: true
+        id: psi
+        env:
+          PSI_API_KEY: ${{ secrets.PSI_API_KEY }}
+        run: |
+          set +e
+          python3 scripts/seo/psi_check.py --strategy mobile
+          RC=$?
+          set -e
+          if [ "$RC" = "4" ]; then echo "cwv_slow=true" >> $GITHUB_OUTPUT; fi
+          [ "$RC" = "1" ] && exit 1 || true
+
+      - name: Apri issue se problemi rilevati
+        if: steps.inspect.outputs.problems == 'true' || steps.psi.outputs.cwv_slow == 'true'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TITLE="SEO alert $(date +%F):"
+          BODY=""
+          [ "${{ steps.inspect.outputs.problems }}" = "true" ] && { TITLE="$TITLE pagine non indicizzate"; BODY="- URL Inspection ha rilevato pagine chiave con problemi di indicizzazione (vedi bio-clinic-analisi/gsc-data/inspection_$(date +%F).json)\n"; }
+          [ "${{ steps.psi.outputs.cwv_slow }}" = "true" ] && { TITLE="$TITLE CWV SLOW"; BODY="$BODY- PageSpeed ha rilevato Core Web Vitals SLOW (vedi bio-clinic-analisi/cwv-data/psi_$(date +%F)_mobile.md)\n"; }
+          printf "$BODY" | gh issue create --title "$TITLE" --label seo-alert --body-file - || true
+
+      - name: Commit report
+        run: |
+          git config user.name "seo-bot"
+          git config user.email "seo-bot@bio-clinic.it"
+          git add bio-clinic-analisi/gsc-data bio-clinic-analisi/ga4-data bio-clinic-analisi/cwv-data 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "Nessun report nuovo da committare"
+          else
+            git commit -m "chore(seo): report settimanale GSC/GA4/CWV $(date +%F) [skip ci]"
+            git pull --rebase origin main || true
+            git push
+          fi
+
+      - name: Summary
+        run: |
+          echo "## SEO Report Weekly" >> $GITHUB_STEP_SUMMARY
+          for f in bio-clinic-analisi/gsc-data/gsc_report_$(date +%F).md \
+                   bio-clinic-analisi/ga4-data/ga4_report_$(date +%F).md \
+                   bio-clinic-analisi/cwv-data/psi_$(date +%F)_mobile.md; do
+            [ -f "$f" ] && { cat "$f" >> $GITHUB_STEP_SUMMARY; echo "" >> $GITHUB_STEP_SUMMARY; }
+          done

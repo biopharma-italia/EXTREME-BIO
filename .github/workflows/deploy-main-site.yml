@@ -116,6 +116,13 @@ jobs:
           echo ""
           echo "Smoke test PASSED"
 
+      - name: Ping IndexNow (Bing/Yandex) per le pagine modificate
+        if: github.event_name == 'push' && github.event.before != '0000000000000000000000000000000000000000'
+        continue-on-error: true
+        run: |
+          python3 scripts/seo/indexnow_submit.py --changed-since "${{ github.event.before }}" || \
+            echo "WARNING: IndexNow ping fallito (non blocca il deploy)"
+
       - name: Summary
         run: |
           echo "## Main Site Deploy" >> $GITHUB_STEP_SUMMARY
