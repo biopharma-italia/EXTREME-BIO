@@ -1,0 +1,257 @@
+{
+ "generated": "2026-08-21",
+ "period": {
+  "start": "2026-07-24",
+  "end": "2026-08-20"
+ },
+ "totals": {
+  "current": {
+   "dateRange": "date_range_0",
+   "activeUsers": 2412.0,
+   "sessions": 3661.0,
+   "screenPageViews": 7881.0,
+   "keyEvents": 39.0
+  },
+  "previous": {
+   "dateRange": "date_range_1",
+   "activeUsers": 2426.0,
+   "sessions": 3636.0,
+   "screenPageViews": 7962.0,
+   "keyEvents": 146.0
+  }
+ },
+ "events": {
+  "current": {
+   "user_engagement": 11878.0,
+   "page_view": 7881.0,
+   "bc_consent_update": 7760.0,
+   "bc_page_context": 7684.0,
+   "bc_deep_engagement": 4332.0,
+   "session_start": 3552.0,
+   "first_visit": 2062.0,
+   "scroll": 1187.0,
+   "bc_prenota_click": 1024.0,
+   "bc_price_interest": 878.0,
+   "bc_lead_generated": 400.0,
+   "generate_lead": 400.0,
+   "bc_phone_click": 219.0,
+   "click": 210.0,
+   "bc_whatsapp_click": 185.0,
+   "form_start": 54.0,
+   "bc_booking_confirmed": 39.0,
+   "purchase": 39.0,
+   "bc_form_submit": 4.0,
+   "file_download": 2.0,
+   "clicks_on_prenota": 0.0,
+   "clicks_on_prenota_ora": 0.0
+  },
+  "previous": {
+   "user_engagement": 12518.0,
+   "page_view": 7962.0,
+   "bc_page_context": 3706.0,
+   "bc_consent_update": 3675.0,
+   "session_start": 3565.0,
+   "first_visit": 2155.0,
+   "bc_deep_engagement": 2112.0,
+   "scroll": 1377.0,
+   "bc_price_interest": 433.0,
+   "bc_prenota_click": 402.0,
+   "click": 223.0,
+   "bc_lead_generated": 208.0,
+   "generate_lead": 208.0,
+   "bc_phone_click": 118.0,
+   "clicks_on_prenota": 94.0,
+   "bc_whatsapp_click": 90.0,
+   "form_start": 45.0,
+   "clicks_on_prenota_ora": 35.0,
+   "bc_booking_confirmed": 17.0,
+   "purchase": 17.0,
+   "bc_form_submit": 2.0,
+   "file_download": 2.0
+  }
+ },
+ "channels": [
+  {
+   "sessionDefaultChannelGroup": "Organic Search",
+   "sessions": 3236.0,
+   "keyEvents": 36.0
+  },
+  {
+   "sessionDefaultChannelGroup": "Direct",
+   "sessions": 296.0,
+   "keyEvents": 2.0
+  },
+  {
+   "sessionDefaultChannelGroup": "Unassigned",
+   "sessions": 70.0,
+   "keyEvents": 0.0
+  },
+  {
+   "sessionDefaultChannelGroup": "AI Assistant",
+   "sessions": 34.0,
+   "keyEvents": 1.0
+  },
+  {
+   "sessionDefaultChannelGroup": "Referral",
+   "sessions": 13.0,
+   "keyEvents": 0.0
+  },
+  {
+   "sessionDefaultChannelGroup": "Organic Social",
+   "sessions": 5.0,
+   "keyEvents": 0.0
+  }
+ ],
+ "pages": [
+  {
+   "pagePath": "/laboratorio/prenota/",
+   "screenPageViews": 463.0,
+   "keyEvents": 39.0
+  },
+  {
+   "pagePath": "/",
+   "screenPageViews": 1672.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/laboratorio/",
+   "screenPageViews": 658.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/specialita/",
+   "screenPageViews": 309.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/ginecologia/",
+   "screenPageViews": 260.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/listino/",
+   "screenPageViews": 217.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/equipe/",
+   "screenPageViews": 163.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/equipe/marco-petrillo/",
+   "screenPageViews": 153.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/genetica/",
+   "screenPageViews": 144.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/cardiologia/",
+   "screenPageViews": 135.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/visita-medicina-sport/",
+   "screenPageViews": 123.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/slim-care/",
+   "screenPageViews": 122.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/equipe/francesco-dessole/",
+   "screenPageViews": 121.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/dermatologia/",
+   "screenPageViews": 116.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/salute/anemia-mediterranea-talassemia/",
+   "screenPageViews": 101.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/contatti/",
+   "screenPageViews": 100.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/salute/noduli-tiroidei/",
+   "screenPageViews": 98.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/endocrinologia/",
+   "screenPageViews": 97.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/equipe/margherita-dessole/",
+   "screenPageViews": 73.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/oculistica/",
+   "screenPageViews": 70.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/equipe/maddalena-pola/",
+   "screenPageViews": 65.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/otorinolaringoiatria/",
+   "screenPageViews": 62.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/equipe/francesco-tolu/",
+   "screenPageViews": 60.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/ortopedia/",
+   "screenPageViews": 60.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/pma-fertilita/",
+   "screenPageViews": 58.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/equipe/giovanna-costa/",
+   "screenPageViews": 57.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/mounjaro-tirzepatide-sassari/",
+   "screenPageViews": 54.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/gastroenterologia/visita-gastroenterologica/",
+   "screenPageViews": 52.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/gastroenterologia/",
+   "screenPageViews": 51.0,
+   "keyEvents": 0.0
+  },
+  {
+   "pagePath": "/convenzioni/",
+   "screenPageViews": 48.0,
+   "keyEvents": 0.0
+  }
+ ]
+}
