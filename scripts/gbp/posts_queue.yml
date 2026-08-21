@@ -1,0 +1,30 @@
+# Coda editoriale post GBP — Bio-Clinic Sassari
+# Formato: blocchi separati da '---'. Lo scheduler pubblica il primo con status: pending.
+# CTA types: LEARN_MORE | BOOK | CALL | ORDER | SHOP | SIGN_UP
+---
+summary: |
+    💧 Urologia e Andrologia a Sassari — prezzi chiari, zero attese.
+    Visita urologica €75 · Visita con ecografia dell'apparato urinario €150 · Visita andrologica €75.
+    E con il laboratorio interno: PSA totale €10 con referto in 4 ore.
+    Prenota in 3-7 giorni: 079 956 1332 — Via Renzo Mossa 23, Sassari.
+cta_type: LEARN_MORE
+cta_url: https://bio-clinic.it/urologia/
+status: pending
+---
+summary: |
+    ❤️ Il tuo cuore merita risposte rapide.
+    Visita cardiologica con ECG da €80 · Con ecocardiogramma ed ECG da €160 · Holter ECG €100.
+    5 cardiologi specialisti, referti in giornata, prenotazione in 3-7 giorni.
+    Chiama il 079 956 1332 — Bio-Clinic Sassari.
+cta_type: LEARN_MORE
+cta_url: https://bio-clinic.it/cardiologia/
+status: pending
+---
+summary: |
+    🔬 Ecografia addome completo a €80 — referto immediato.
+    Studio completo di fegato, colecisti, pancreas, milza e reni.
+    Addome inferiore €65 · Addome superiore da €60.
+    Prenota in 3-7 giorni: 079 956 1332 — Bio-Clinic, Via Renzo Mossa 23, Sassari.
+cta_type: LEARN_MORE
+cta_url: https://bio-clinic.it/gastroenterologia/ecografia-addominale/
+status: pending

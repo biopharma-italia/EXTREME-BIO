@@ -1,0 +1,40 @@
+name: GBP - Discover (setup iniziale)
+
+# Da lanciare MANUALMENTE una volta, appena Google approva l'accesso API.
+# Scopre account/location e committa scripts/gbp/config.json.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check secrets
+        run: |
+          if [ -z "${{ secrets.GBP_REFRESH_TOKEN }}" ]; then
+            echo "::error::Secrets GBP non configurati."
+            exit 1
+          fi
+
+      - name: Discover account e location
+        env:
+          GBP_CLIENT_ID: ${{ secrets.GBP_CLIENT_ID }}
+          GBP_CLIENT_SECRET: ${{ secrets.GBP_CLIENT_SECRET }}
+          GBP_REFRESH_TOKEN: ${{ secrets.GBP_REFRESH_TOKEN }}
+        run: |
+          cd scripts/gbp
+          python3 discover.py
+
+      - name: Commit config
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add scripts/gbp/config.json
+          git diff --cached --quiet || git commit -m "chore(gbp): discover account/location [skip ci]"
+          git push

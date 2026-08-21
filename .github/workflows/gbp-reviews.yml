@@ -1,0 +1,56 @@
+name: GBP - Monitor Recensioni
+
+on:
+  schedule:
+    - cron: '15 6,12,18 * * *'   # 3 volte al giorno (UTC)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check secrets & config
+        id: pre
+        run: |
+          if [ -z "${{ secrets.GBP_REFRESH_TOKEN }}" ]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+            echo "::notice::Secrets GBP non configurati — skip."
+          elif [ ! -f scripts/gbp/config.json ]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+            echo "::notice::config.json assente — eseguire prima il workflow GBP - Discover."
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Monitor recensioni
+        if: steps.pre.outputs.skip == 'false'
+        env:
+          GBP_CLIENT_ID: ${{ secrets.GBP_CLIENT_ID }}
+          GBP_CLIENT_SECRET: ${{ secrets.GBP_CLIENT_SECRET }}
+          GBP_REFRESH_TOKEN: ${{ secrets.GBP_REFRESH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd scripts/gbp
+          python3 review_monitor.py || {
+            code=$?
+            if [ $code -eq 3 ]; then
+              echo "::notice::Quota API non ancora concessa (form in approvazione)."
+              exit 0
+            fi
+            exit $code
+          }
+
+      - name: Commit stato recensioni
+        if: steps.pre.outputs.skip == 'false'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add scripts/gbp/reviews_state.json 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "chore(gbp): update reviews state [skip ci]"
+          git push || true

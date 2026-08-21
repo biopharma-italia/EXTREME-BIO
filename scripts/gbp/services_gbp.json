@@ -1,0 +1,21 @@
+{
+  "_comment": "Servizi e prezzi REALI da export GIPO (moda prezzi fatturati >= 2025-07-01). Stessa fonte delle pagine sito. Aggiornare qui e rilanciare sync_services.py --apply.",
+  "_updated": "2026-08-21",
+  "services": [
+    {"name": "Visita Urologica", "price_eur": 75, "description": "Valutazione specialistica di prostata, vie urinarie e calcolosi. Referto immediato."},
+    {"name": "Visita Urologica con Ecografia Apparato Urinario", "price_eur": 150, "description": "Visita urologica completa di ecografia di reni, vescica e prostata nella stessa seduta."},
+    {"name": "Visita Andrologica", "price_eur": 75, "description": "Valutazione andrologica per infertilità maschile, disfunzioni e prevenzione."},
+    {"name": "Visita Cardiologica con ECG", "price_eur": 80, "description": "Visita cardiologica con elettrocardiogramma. Prima visita da €120."},
+    {"name": "Visita Cardiologica con Ecocardiogramma ed ECG", "price_eur": 160, "description": "Valutazione cardiologica completa con ecocardiogramma color doppler ed ECG."},
+    {"name": "Holter ECG 24h", "price_eur": 100, "description": "Monitoraggio continuo del ritmo cardiaco per 24 ore."},
+    {"name": "Visita Ortopedica", "price_eur": 130, "description": "Valutazione ortopedica specialistica. Controllo da €100, infiltrazioni da €50."},
+    {"name": "Visita Otorinolaringoiatrica", "price_eur": 130, "description": "Visita ORL con 2 specialisti. Con fibrolaringoscopia da €150."},
+    {"name": "Esame Audiometrico", "price_eur": 32, "description": "Audiometria tonale presso Bio-Clinic Sassari."},
+    {"name": "Visita Ematologica", "price_eur": 170, "description": "Visita ematologica specialistica. Emocromo €6,50 nel laboratorio interno."},
+    {"name": "Ecografia Addome Completo", "price_eur": 80, "description": "Studio ecografico di fegato, colecisti, pancreas, milza e reni. Referto immediato."},
+    {"name": "Ecografia Addome Inferiore", "price_eur": 65, "description": "Studio ecografico di vescica e pelvi. Referto immediato."},
+    {"name": "Ecografia Tiroidea", "price_eur": 60, "description": "Ecografia della tiroide con referto immediato."},
+    {"name": "PSA Totale (laboratorio interno)", "price_eur": 10, "description": "Antigene prostatico specifico. Referto in 4 ore, laboratorio interno."},
+    {"name": "Emocromo (laboratorio interno)", "price_eur": 6.5, "description": "Esame emocromocitometrico completo. Referto in 4 ore."}
+  ]
+}
