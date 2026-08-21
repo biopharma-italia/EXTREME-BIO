@@ -26,7 +26,7 @@ KEY_PAGES = [
     "https://bio-clinic.it/",
     "https://bio-clinic.it/urologia/",
     "https://bio-clinic.it/cardiologia/",
-    "https://bio-clinic.it/analisi-del-sangue-sassari/",
+    "https://bio-clinic.it/laboratorio/",
     "https://bio-clinic.it/prenota/",
 ]
 

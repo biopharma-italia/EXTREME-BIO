@@ -28,7 +28,8 @@ KEY_PAGES = [
     "https://bio-clinic.it/ortopedia/",
     "https://bio-clinic.it/otorinolaringoiatria/",
     "https://bio-clinic.it/gastroenterologia/ecografia-addominale/",
-    "https://bio-clinic.it/analisi-del-sangue-sassari/",
+    "https://bio-clinic.it/laboratorio/",
+    "https://bio-clinic.it/listino/",
     "https://bio-clinic.it/prenota/",
 ]
 
