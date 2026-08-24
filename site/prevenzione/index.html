@@ -150,6 +150,15 @@ h1{font-family:var(--font-heading);font-size:clamp(1.8rem,4vw,2.8rem);font-weigh
             border-color: #00a651;
             background: #f0fff4;
         }
+        .age-reco { max-width: 760px; margin: 1.5rem auto 0; background: #fff; border: 2px solid #00704A; border-radius: 14px; padding: 1.2rem 1.4rem; text-align: left; }
+        .age-reco h3 { margin: 0 0 0.6rem; font-size: 1.05rem; color: #00704A; }
+        .age-reco ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+        .age-reco li a { display: flex; justify-content: space-between; align-items: center; gap: 1rem; text-decoration: none; color: #1a1a1a; background: #F0FDF4; border-radius: 8px; padding: 0.55rem 0.9rem; font-size: 0.95rem; transition: background 0.2s; }
+        .age-reco li a:hover { background: #dcf5e4; }
+        .age-reco .reco-price { font-weight: 700; color: #00704A; white-space: nowrap; }
+        .age-reco .reco-note { font-size: 0.82rem; color: #666; margin-top: 0.7rem; }
+        .checkup-card.card-flash { animation: cardflash 2.2s ease; }
+        @keyframes cardflash { 0% { box-shadow: 0 0 0 4px #00704A; } 100% { box-shadow: 0 0 0 0 rgba(0,112,74,0); } }
         .age-btn .icon {
             font-size: 2rem;
             display: block;
@@ -696,6 +705,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <span class="label">Over 50</span>
                     </button>
                 </div>
+                <div id="age-reco" class="age-reco" aria-live="polite"></div>
             </div>
         </section>
 
@@ -711,7 +721,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <!-- Check-Up Base -->
                     <div class="checkup-card">
                         <div class="checkup-icon">🧪</div>
-                        <div class="checkup-title">Check-Up Base</div>
+                        <div class="checkup-title" id="cu-base">Check-Up Base</div>
                         <div class="checkup-price">€39</div>
                         <ul class="checkup-includes">
                             <li>Emocromo completo</li>
@@ -728,7 +738,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <!-- Check-Up Donna -->
                     <div class="checkup-card featured">
                         <div class="checkup-icon">👩</div>
-                        <div class="checkup-title">Check-Up Donna</div>
+                        <div class="checkup-title" id="cu-donna">Check-Up Donna</div>
                         <div class="checkup-price">€89 - €129</div>
                         <ul class="checkup-includes">
                             <li>Emocromo + Sideremia + Ferritina</li>
@@ -745,7 +755,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <!-- Check-Up Uomo -->
                     <div class="checkup-card">
                         <div class="checkup-icon">👨</div>
-                        <div class="checkup-title">Check-Up Uomo</div>
+                        <div class="checkup-title" id="cu-uomo">Check-Up Uomo</div>
                         <div class="checkup-price">€79 - €119</div>
                         <ul class="checkup-includes">
                             <li>Emocromo completo</li>
@@ -762,7 +772,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <!-- Check-Up Tiroide -->
                     <div class="checkup-card">
                         <div class="checkup-icon">🦋</div>
-                        <div class="checkup-title">Check-Up Tiroide</div>
+                        <div class="checkup-title" id="cu-tiroide">Check-Up Tiroide</div>
                         <div class="checkup-price">€29 - €59</div>
                         <ul class="checkup-includes">
                             <li>TSH</li>
@@ -777,7 +787,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <!-- Check-Up Cardiologico -->
                     <div class="checkup-card">
                         <div class="checkup-icon">❤️</div>
-                        <div class="checkup-title">Check-Up Cardiovascolare</div>
+                        <div class="checkup-title" id="cu-cardio">Check-Up Cardiovascolare</div>
                         <div class="checkup-price">da €150</div>
                         <ul class="checkup-includes">
                             <li>Visita cardiologica</li>
@@ -792,7 +802,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <!-- Check-Up Pre-Gravidanza -->
                     <div class="checkup-card">
                         <div class="checkup-icon">🤰</div>
-                        <div class="checkup-title">Check-Up Pre-Gravidanza</div>
+                        <div class="checkup-title" id="cu-pregravidanza">Check-Up Pre-Gravidanza</div>
                         <div class="checkup-price">€99</div>
                         <ul class="checkup-includes">
                             <li>Emocromo + Gruppo sanguigno</li>
@@ -820,7 +830,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="checkup-cards">
                     <div class="checkup-card">
                         <div class="checkup-icon">🩸</div>
-                        <div class="checkup-title">MST Sangue</div>
+                        <div class="checkup-title" id="pack-mst-sangue">MST Sangue</div>
                         <div class="checkup-price">€59 <span class="pack-save">(valore €63)</span></div>
                         <ul class="checkup-includes">
                             <li>HIV, Epatite B (HBsAg + Anti-HBs)</li>
@@ -845,7 +855,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                     <div class="checkup-card featured">
                         <div class="pack-badge">SOLO DA NOI: TAMPONI INCLUSI</div><div class="checkup-icon">🔬</div>
-                        <div class="checkup-title">MST Completo LEI / LUI</div>
+                        <div class="checkup-title" id="pack-mst-completo">MST Completo LEI / LUI</div>
                         <div class="checkup-price">€125 <span class="pack-save">(valore fino a €136)</span></div>
                         <ul class="checkup-includes">
                             <li>Tutto il pack MST Sangue</li>
@@ -871,7 +881,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                     <div class="checkup-card">
                         <div class="checkup-icon">🩺</div>
-                        <div class="checkup-title">Percorso MST con Specialista</div>
+                        <div class="checkup-title" id="pack-mst-specialista">Percorso MST con Specialista</div>
                         <div class="checkup-price">€195 - €235 <span class="pack-save">(valore fino a €257)</span></div>
                         <ul class="checkup-includes">
                             <li>MST Completo (LEI o LUI)</li>
@@ -899,7 +909,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="checkup-cards">
                     <div class="checkup-card">
                         <div class="checkup-icon">🧪</div>
-                        <div class="checkup-title">Cuore Esami</div>
+                        <div class="checkup-title" id="pack-cuore-esami">Cuore Esami</div>
                         <div class="checkup-price">€69 <span class="pack-save">(valore €76)</span></div>
                         <ul class="checkup-includes">
                             <li>Emocromo, Glicemia + HbA1c</li>
@@ -928,7 +938,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                     <div class="checkup-card featured">
                         <div class="pack-badge">COL CARDIOLOGO, NON SOLO LE PROVETTE</div><div class="checkup-icon">❤️</div>
-                        <div class="checkup-title">Percorso Cuore</div>
+                        <div class="checkup-title" id="pack-cuore">Percorso Cuore</div>
                         <div class="checkup-price">€159 <span class="pack-save">(valore €176)</span></div>
                         <ul class="checkup-includes">
                             <li>Tutti i 12 esami del pack Cuore</li>
@@ -951,7 +961,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                     <div class="checkup-card">
                         <div class="checkup-icon">🫀</div>
-                        <div class="checkup-title">Percorso Cuore Plus</div>
+                        <div class="checkup-title" id="pack-cuore-plus">Percorso Cuore Plus</div>
                         <div class="checkup-price">€269 <span class="pack-save">(valore €296)</span></div>
                         <ul class="checkup-includes">
                             <li>Tutto il Percorso Cuore</li>
@@ -978,7 +988,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="checkup-cards">
                     <div class="checkup-card">
                         <div class="checkup-icon">🧪</div>
-                        <div class="checkup-title">Equilibrio Esami</div>
+                        <div class="checkup-title" id="pack-equilibrio-esami">Equilibrio Esami</div>
                         <div class="checkup-price">€109 <span class="pack-save">(valore €118)</span></div>
                         <ul class="checkup-includes">
                             <li>FSH, LH, Estradiolo (profilo ormonale)</li>
@@ -1005,7 +1015,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                     <div class="checkup-card featured">
                         <div class="pack-badge">45-55: PENSATO PER TE</div><div class="checkup-icon">🌸</div>
-                        <div class="checkup-title">Percorso Equilibrio</div>
+                        <div class="checkup-title" id="pack-equilibrio">Percorso Equilibrio</div>
                         <div class="checkup-price">€245 <span class="pack-save">(valore €268)</span></div>
                         <ul class="checkup-includes">
                             <li>Tutti gli 11 esami del pack Equilibrio</li>
@@ -1028,7 +1038,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                     <div class="checkup-card">
                         <div class="checkup-icon">💗</div>
-                        <div class="checkup-title">Percorso Equilibrio Completo</div>
+                        <div class="checkup-title" id="pack-equilibrio-completo">Percorso Equilibrio Completo</div>
                         <div class="checkup-price">€299 <span class="pack-save">(valore €328)</span></div>
                         <ul class="checkup-includes">
                             <li>Tutto il Percorso Equilibrio</li>
@@ -1286,6 +1296,74 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </footer>
 
+<script>
+(function(){
+  var RECO = {
+    "under30": {label:"Under 30", items:[
+      ["cu-base","Check-Up Base \u2014 screening annuale essenziale","\u20AC39"],
+      ["pack-mst-sangue","MST Sangue \u2014 controllo IST su sangue e urine","\u20AC59"],
+      ["pack-mst-completo","MST Completo LEI/LUI \u2014 con tamponi inclusi","\u20AC125"],
+      ["cu-tiroide","Check-Up Tiroide \u2014 se stanchezza o familiarit\u00E0","da \u20AC29"]
+    ]},
+    "30-40": {label:"30-40 anni", items:[
+      ["cu-base","Check-Up Base \u2014 il punto di partenza annuale","\u20AC39"],
+      ["cu-donna","Check-Up Donna / Uomo \u2014 screening mirato","da \u20AC79"],
+      ["cu-pregravidanza","Check-Up Pre-Gravidanza \u2014 se pianifichi una gravidanza","\u20AC99"],
+      ["pack-mst-specialista","Percorso MST con Specialista \u2014 esami + tamponi + visita","da \u20AC195"]
+    ]},
+    "40-50": {label:"40-50 anni", items:[
+      ["pack-cuore-esami","Cuore Esami \u2014 profilo cardiovascolare completo","\u20AC69"],
+      ["pack-cuore","Percorso Cuore \u2014 esami + visita cardiologica con ECG","\u20AC159"],
+      ["pack-equilibrio-esami","Equilibrio Esami \u2014 ormoni e metabolismo 45+","\u20AC109"],
+      ["pack-equilibrio","Percorso Equilibrio \u2014 esami + visita ginecologica con eco","\u20AC245"]
+    ]},
+    "over50": {label:"Over 50", items:[
+      ["pack-cuore","Percorso Cuore \u2014 esami + visita cardiologica con ECG","\u20AC159"],
+      ["pack-cuore-plus","Percorso Cuore Plus \u2014 con ecocardiogramma","\u20AC269"],
+      ["pack-equilibrio-completo","Percorso Equilibrio Completo \u2014 con eco mammaria","\u20AC299"],
+      ["cu-cardio","Check-Up Cardiovascolare \u2014 valutazione approfondita","da \u20AC150"]
+    ]}
+  };
+  function render(key){
+    var box = document.getElementById('age-reco');
+    var r = RECO[key];
+    if(!box || !r) return;
+    var h = '<h3>\uD83C\uDFAF Consigliati per la fascia ' + r.label + '</h3><ul>';
+    r.items.forEach(function(it){
+      h += '<li><a href="#' + it[0] + '" data-reco-target="' + it[0] + '"><span>' + it[1] + '</span><span class="reco-price">' + it[2] + '</span></a></li>';
+    });
+    h += '</ul><div class="reco-note">Clicca su un check-up per vedere la card con tutti i dettagli. Prenotazioni: <a href="tel:+390799561332" style="color:#00704A;font-weight:600;">079 956 1332</a></div>';
+    box.innerHTML = h;
+    box.querySelectorAll('a[data-reco-target]').forEach(function(a){
+      a.addEventListener('click', function(ev){
+        ev.preventDefault();
+        var el = document.getElementById(a.getAttribute('data-reco-target'));
+        if(!el) return;
+        var card = el.closest('.checkup-card') || el;
+        card.scrollIntoView({behavior:'smooth', block:'center'});
+        card.classList.remove('card-flash');
+        void card.offsetWidth;
+        card.classList.add('card-flash');
+        var det = card.querySelector('details');
+        if(det) det.open = true;
+      });
+    });
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    var btns = document.querySelectorAll('.age-btn');
+    btns.forEach(function(b){
+      b.addEventListener('click', function(){
+        btns.forEach(function(x){ x.classList.remove('active'); });
+        b.classList.add('active');
+        render(b.getAttribute('data-target'));
+        if(window.dataLayer) window.dataLayer.push({event:'age_selector_click', age_band:b.getAttribute('data-target')});
+      });
+    });
+    var act = document.querySelector('.age-btn.active');
+    render(act ? act.getAttribute('data-target') : '30-40');
+  });
+})();
+</script>
 <script src="/js/main.js?v=20260222-contact" defer></script>
 <!-- SEARCH v4.1 UNIFIED -->
   <script src="/js/search-engine-v4.js?v=20260216-v5" defer></script>
