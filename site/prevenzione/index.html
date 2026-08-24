@@ -150,6 +150,32 @@ h1{font-family:var(--font-heading);font-size:clamp(1.8rem,4vw,2.8rem);font-weigh
             border-color: #00a651;
             background: #f0fff4;
         }
+        /* ===== Booking Modal ===== */
+        .bkm-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 3000; display: none; align-items: flex-start; justify-content: center; padding: 2rem 1rem; overflow-y: auto; }
+        .bkm-overlay.open { display: flex; }
+        .bkm { background: #fff; border-radius: 16px; max-width: 520px; width: 100%; padding: 1.5rem 1.5rem 1.3rem; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.3); animation: bkmIn 0.25s ease; }
+        @keyframes bkmIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+        .bkm-close { position: absolute; top: 0.7rem; right: 0.9rem; background: none; border: none; font-size: 1.6rem; line-height: 1; cursor: pointer; color: #999; }
+        .bkm-close:hover { color: #333; }
+        .bkm h3 { margin: 0 0 0.2rem; font-size: 1.25rem; color: #00704A; padding-right: 1.5rem; }
+        .bkm-price { font-size: 1.6rem; font-weight: 800; color: #1a1a1a; margin-bottom: 0.8rem; }
+        .bkm-variant { display: flex; gap: 0.6rem; margin-bottom: 0.9rem; }
+        .bkm-variant button { flex: 1; padding: 0.55rem; border: 2px solid #ddd; border-radius: 10px; background: #fff; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+        .bkm-variant button.sel { border-color: #00704A; background: #F0FDF4; color: #00704A; }
+        .bkm-exams { background: #F8FAF9; border: 1px solid #e3ede8; border-radius: 10px; padding: 0.8rem 1rem; margin-bottom: 0.9rem; max-height: 220px; overflow-y: auto; }
+        .bkm-exams h4 { margin: 0 0 0.5rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; color: #00704A; }
+        .bkm-exams ul { margin: 0; padding: 0 0 0 1.1rem; font-size: 0.9rem; color: #333; display: flex; flex-direction: column; gap: 0.25rem; }
+        .bkm-field { margin-bottom: 0.7rem; }
+        .bkm-field label { display: block; font-size: 0.82rem; font-weight: 600; color: #555; margin-bottom: 0.25rem; }
+        .bkm-field input { width: 100%; padding: 0.6rem 0.8rem; border: 1.5px solid #ddd; border-radius: 10px; font-size: 0.95rem; box-sizing: border-box; }
+        .bkm-field input:focus { outline: none; border-color: #00704A; }
+        .bkm-actions { display: flex; flex-direction: column; gap: 0.55rem; margin-top: 1rem; }
+        .bkm-wa { display: flex; align-items: center; justify-content: center; gap: 0.5rem; background: #25D366; color: #fff; font-weight: 700; font-size: 1.02rem; padding: 0.85rem; border-radius: 12px; text-decoration: none; transition: background 0.15s; }
+        .bkm-wa:hover { background: #1eb356; }
+        .bkm-tel { display: flex; align-items: center; justify-content: center; gap: 0.5rem; background: #fff; color: #00704A; border: 2px solid #00704A; font-weight: 700; font-size: 0.98rem; padding: 0.7rem; border-radius: 12px; text-decoration: none; }
+        .bkm-tel:hover { background: #F0FDF4; }
+        .bkm-note { font-size: 0.78rem; color: #888; text-align: center; margin: 0.7rem 0 0; }
+        @media (max-width: 480px) { .bkm-overlay { padding: 0.8rem 0.6rem; } .bkm { padding: 1.2rem 1rem 1rem; } }
         .age-reco { max-width: 760px; margin: 1.5rem auto 0; background: #fff; border: 2px solid #00704A; border-radius: 14px; padding: 1.2rem 1.4rem; text-align: left; }
         .age-reco h3 { margin: 0 0 0.6rem; font-size: 1.05rem; color: #00704A; }
         .age-reco ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
@@ -850,7 +876,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <p class="pack-target">🎯 <strong>Per chi è:</strong> adulti sessualmente attivi di ogni età; ideale come screening periodico annuale, all'inizio di una nuova relazione o dopo un rapporto non protetto (rispettando la finestra diagnostica).</p>
                         </details>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Screening periodico, nuova relazione</p>
-                        <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20MST%20Sangue" class="checkup-cta" rel="noopener">Prenota su WhatsApp</a>
+                        <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20MST%20Sangue" class="checkup-cta js-book" data-pack="mst-sangue" rel="noopener">Prenota ora</a>
                     </div>
                     <div class="checkup-card featured">
                         <div class="pack-badge">SOLO DA NOI: TAMPONI INCLUSI</div><div class="checkup-icon">🔬</div>
@@ -876,7 +902,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <p class="pack-target">🎯 <strong>Per chi è:</strong> chi vuole lo screening completo delle infezioni sessualmente trasmissibili — sangue + vie genitali — in un unico accesso riservato. Consigliato con sintomi (perdite, bruciore, fastidio) o come controllo di coppia.</p>
                         </details>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Screening IST totale in un solo accesso</p>
-                        <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20MST%20Completo" class="checkup-cta" rel="noopener">Prenota su WhatsApp</a>
+                        <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20MST%20Completo" class="checkup-cta js-book" data-pack="mst-completo" rel="noopener">Prenota ora</a>
                     </div>
                     <div class="checkup-card">
                         <div class="checkup-icon">🩺</div>
@@ -900,7 +926,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <p class="pack-target">🎯 <strong>Per chi è:</strong> chi preferisce un percorso chiuso: esami, diagnosi e terapia nello stesso luogo, con la riservatezza di uno studio medico privato.</p>
                         </details>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Chi vuole anche il consulto specialistico</p>
-                        <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20Percorso%20MST" class="checkup-cta" rel="noopener">Prenota su WhatsApp</a>
+                        <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20Percorso%20MST" class="checkup-cta js-book" data-pack="mst-specialista" rel="noopener">Prenota ora</a>
                     </div>
                 </div>
 
@@ -933,7 +959,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <p class="pack-target">🎯 <strong>Per chi è:</strong> over 40, chi ha familiarità per infarto o ictus, fumatori, ipertesi, sedentari o chi non fa un controllo da più di un anno.</p>
                         </details>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Controllo annuale fattori di rischio</p>
-                        <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20Cuore%20Esami" class="checkup-cta" rel="noopener">Prenota su WhatsApp</a>
+                        <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20Cuore%20Esami" class="checkup-cta js-book" data-pack="cuore-esami" rel="noopener">Prenota ora</a>
                     </div>
                     <div class="checkup-card featured">
                         <div class="pack-badge">COL CARDIOLOGO, NON SOLO LE PROVETTE</div><div class="checkup-icon">❤️</div>
@@ -956,7 +982,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <p class="pack-target">🎯 <strong>Per chi è:</strong> chi ha fattori di rischio (pressione, colesterolo, fumo, familiarità) o non ha mai fatto una visita cardiologica completa. Il controllo che i laboratori non possono offrire.</p>
                         </details>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Over 40, familiarità, ipertensione</p>
-                        <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20Percorso%20Cuore" class="checkup-cta" rel="noopener">Prenota su WhatsApp</a>
+                        <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20Percorso%20Cuore" class="checkup-cta js-book" data-pack="cuore" rel="noopener">Prenota ora</a>
                     </div>
                     <div class="checkup-card">
                         <div class="checkup-icon">🫀</div>
@@ -979,7 +1005,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <p class="pack-target">🎯 <strong>Per chi è:</strong> over 50, ipertesi di lunga data, chi ha un soffio noto, sportivi master o chi vuole il controllo cardiaco più completo disponibile senza ricovero.</p>
                         </details>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Over 50, controllo approfondito</p>
-                        <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20Percorso%20Cuore%20Plus" class="checkup-cta" rel="noopener">Prenota su WhatsApp</a>
+                        <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20Percorso%20Cuore%20Plus" class="checkup-cta js-book" data-pack="cuore-plus" rel="noopener">Prenota ora</a>
                     </div>
                 </div>
 
@@ -1010,7 +1036,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <p class="pack-target">🎯 <strong>Per chi è:</strong> donne tra 45 e 55 anni con ciclo irregolare, vampate, insonnia, aumento di peso inspiegato o calo del tono dell'umore. I sintomi non sono 'normali per l'età': sono misurabili.</p>
                         </details>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Donne 45-55 con vampate, insonnia, ciclo irregolare</p>
-                        <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20Equilibrio%20Esami" class="checkup-cta" rel="noopener">Prenota su WhatsApp</a>
+                        <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20Equilibrio%20Esami" class="checkup-cta js-book" data-pack="equilibrio-esami" rel="noopener">Prenota ora</a>
                     </div>
                     <div class="checkup-card featured">
                         <div class="pack-badge">45-55: PENSATO PER TE</div><div class="checkup-icon">🌸</div>
@@ -1033,7 +1059,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <p class="pack-target">🎯 <strong>Per chi è:</strong> donne 45-55 che vogliono il quadro clinico completo della transizione e un parere specialistico sulle terapie disponibili, in un solo accesso.</p>
                         </details>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Il quadro completo della transizione</p>
-                        <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20Percorso%20Equilibrio" class="checkup-cta" rel="noopener">Prenota su WhatsApp</a>
+                        <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20Percorso%20Equilibrio" class="checkup-cta js-book" data-pack="equilibrio" rel="noopener">Prenota ora</a>
                     </div>
                     <div class="checkup-card">
                         <div class="checkup-icon">💗</div>
@@ -1056,7 +1082,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <p class="pack-target">🎯 <strong>Per chi è:</strong> donne 45-55 che vogliono la prevenzione femminile completa — ormonale, ginecologica e senologica — senza moltiplicare appuntamenti e strutture.</p>
                         </details>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Prevenzione femminile completa</p>
-                        <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20Percorso%20Equilibrio%20Completo" class="checkup-cta" rel="noopener">Prenota su WhatsApp</a>
+                        <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20Percorso%20Equilibrio%20Completo" class="checkup-cta js-book" data-pack="equilibrio-completo" rel="noopener">Prenota ora</a>
                     </div>
                 </div>
 
@@ -1295,6 +1321,118 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </footer>
 
+<!-- Booking Modal Percorsi Salute -->
+<div class="bkm-overlay" id="bkm-overlay" role="dialog" aria-modal="true" aria-labelledby="bkm-title">
+  <div class="bkm">
+    <button class="bkm-close" id="bkm-close" aria-label="Chiudi">&times;</button>
+    <h3 id="bkm-title"></h3>
+    <div class="bkm-price" id="bkm-price"></div>
+    <div class="bkm-variant" id="bkm-variant" style="display:none;">
+      <button type="button" data-v="LEI">👩 LEI</button>
+      <button type="button" data-v="LUI">👨 LUI</button>
+    </div>
+    <div class="bkm-exams">
+      <h4>📋 Cosa comprende</h4>
+      <ul id="bkm-exams-list"></ul>
+    </div>
+    <div class="bkm-field">
+      <label for="bkm-name">Il tuo nome (facoltativo)</label>
+      <input type="text" id="bkm-name" placeholder="Es: Maria Rossi" autocomplete="name">
+    </div>
+    <div class="bkm-field">
+      <label for="bkm-when">Preferenza giorno/orario (facoltativo)</label>
+      <input type="text" id="bkm-when" placeholder="Es: sabato mattina, dopo le 17...">
+    </div>
+    <div class="bkm-actions">
+      <a href="#" class="bkm-wa" id="bkm-wa" rel="noopener" target="_blank">💬 Invia richiesta su WhatsApp</a>
+      <a href="tel:+390799561332" class="bkm-tel">📞 Preferisco chiamare: 079 956 1332</a>
+    </div>
+    <p class="bkm-note">La segreteria riceve il riepilogo completo del pack e ti ricontatta per confermare l'appuntamento.</p>
+  </div>
+</div>
+<script>
+(function(){
+  var MST_SANGUE = ["HIV (Ab/Ag combinato)","Epatite B: HBsAg","Epatite B: Anti-HBs","Epatite C (HCV)","Sifilide: VDRL","Sifilide: TPHA","Prelievo incluso"];
+  var MST_TAMPONI = {
+    LEI: ["Tampone vaginale colturale","Mycoplasmi + Ureaplasmi (vaginale)","Trichomonas","Chlamydia","Gonococco"],
+    LUI: ["Tampone uretrale (esecuzione)","Tampone uretrale colturale","Mycoplasmi + Ureaplasmi (uretrale)","Trichomonas","Chlamydia"]
+  };
+  var CUORE_ESAMI = ["Emocromo completo","Glicemia","Emoglobina glicata (HbA1c)","Colesterolo totale","Colesterolo HDL","Colesterolo LDL","Trigliceridi","Omocisteina","PCR alta sensibilit\u00E0","Creatinina","Sodio + Potassio","Esame urine","Prelievo incluso"];
+  var EQ_ESAMI = ["FSH","LH","Estradiolo","TSH","Vitamina D","Calcio + Fosforo","Colesterolo totale + HDL + LDL","Trigliceridi","Glicemia + HbA1c","Emocromo completo","Prelievo incluso"];
+  var PACKS = {
+    "mst-sangue":        { name:"MST Sangue", price:"\u20AC59", exams: MST_SANGUE },
+    "mst-completo":      { name:"MST Completo", price:"\u20AC125", variant:true,
+                           exams:function(v){ return MST_SANGUE.concat(MST_TAMPONI[v]); } },
+    "mst-specialista":   { name:"Percorso MST con Specialista", variant:true,
+                           price:function(v){ return v==="LEI" ? "\u20AC235" : "\u20AC195"; },
+                           exams:function(v){ return MST_SANGUE.concat(MST_TAMPONI[v], [v==="LEI" ? "Visita ginecologica" : "Visita urologica", "Consegna e spiegazione referti dal medico"]); } },
+    "cuore-esami":       { name:"Cuore Esami", price:"\u20AC69", exams: CUORE_ESAMI },
+    "cuore":             { name:"Percorso Cuore", price:"\u20AC159", exams: CUORE_ESAMI.concat(["Visita cardiologica specialistica","Elettrocardiogramma (ECG)","Esito discusso col cardiologo"]) },
+    "cuore-plus":        { name:"Percorso Cuore Plus", price:"\u20AC269", exams: CUORE_ESAMI.concat(["Visita cardiologica specialistica","Elettrocardiogramma (ECG)","Ecocardiogramma color-doppler","Esito discusso col cardiologo"]) },
+    "equilibrio-esami":  { name:"Equilibrio Esami (Pre-Menopausa 45-55)", price:"\u20AC109", exams: EQ_ESAMI },
+    "equilibrio":        { name:"Percorso Equilibrio (Pre-Menopausa 45-55)", price:"\u20AC245", exams: EQ_ESAMI.concat(["Visita ginecologica specialistica","Ecografia transvaginale","Lettura integrata esiti con la ginecologa"]) },
+    "equilibrio-completo": { name:"Percorso Equilibrio Completo (Pre-Menopausa 45-55)", price:"\u20AC299", exams: EQ_ESAMI.concat(["Visita ginecologica specialistica","Ecografia transvaginale","Ecografia mammaria bilaterale (ginecologa-senologa)","Lettura integrata esiti"]) }
+  };
+  var cur = null, curVariant = "LEI";
+  var ov = document.getElementById('bkm-overlay');
+  function getPrice(p){ return typeof p.price === "function" ? p.price(curVariant) : p.price; }
+  function getExams(p){ return typeof p.exams === "function" ? p.exams(curVariant) : p.exams; }
+  function refresh(){
+    var p = PACKS[cur]; if(!p) return;
+    document.getElementById('bkm-title').textContent = "\uD83D\uDCE6 " + p.name + (p.variant ? " \u2014 " + curVariant : "");
+    document.getElementById('bkm-price').textContent = getPrice(p);
+    var ul = document.getElementById('bkm-exams-list');
+    ul.innerHTML = "";
+    getExams(p).forEach(function(e){ var li = document.createElement('li'); li.textContent = e; ul.appendChild(li); });
+    var vbox = document.getElementById('bkm-variant');
+    vbox.style.display = p.variant ? "flex" : "none";
+    vbox.querySelectorAll('button').forEach(function(b){ b.classList.toggle('sel', b.getAttribute('data-v')===curVariant); });
+    updateWa();
+  }
+  function updateWa(){
+    var p = PACKS[cur]; if(!p) return;
+    var name = document.getElementById('bkm-name').value.trim();
+    var when = document.getElementById('bkm-when').value.trim();
+    var lines = [];
+    lines.push("\uD83E\uDE7A PRENOTAZIONE PACK \u2014 Bio-Clinic");
+    lines.push("");
+    lines.push("\uD83D\uDCE6 Pack: " + p.name + (p.variant ? " (" + curVariant + ")" : ""));
+    lines.push("\uD83D\uDCB6 Prezzo: " + getPrice(p) + " (come da sito)");
+    lines.push("");
+    lines.push("\uD83D\uDCCB Prestazioni incluse:");
+    getExams(p).forEach(function(e){ lines.push("\u2022 " + e); });
+    lines.push("");
+    if(name) lines.push("\uD83D\uDC64 Nome: " + name);
+    if(when) lines.push("\uD83D\uDD52 Preferenza: " + when);
+    lines.push("\uD83C\uDF10 Richiesta dal sito bio-clinic.it/prevenzione/");
+    document.getElementById('bkm-wa').href = "https://wa.me/390799561332?text=" + encodeURIComponent(lines.join("\n"));
+  }
+  function open(packId){
+    cur = packId; curVariant = "LEI";
+    refresh();
+    ov.classList.add('open');
+    document.body.style.overflow = "hidden";
+    if(window.dataLayer) window.dataLayer.push({event:'pack_booking_open', pack_id: packId});
+  }
+  function close(){ ov.classList.remove('open'); document.body.style.overflow = ""; }
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.js-book').forEach(function(a){
+      a.addEventListener('click', function(ev){ ev.preventDefault(); open(a.getAttribute('data-pack')); });
+    });
+    document.getElementById('bkm-close').addEventListener('click', close);
+    ov.addEventListener('click', function(ev){ if(ev.target === ov) close(); });
+    document.addEventListener('keydown', function(ev){ if(ev.key === "Escape") close(); });
+    document.getElementById('bkm-variant').querySelectorAll('button').forEach(function(b){
+      b.addEventListener('click', function(){ curVariant = b.getAttribute('data-v'); refresh(); });
+    });
+    document.getElementById('bkm-name').addEventListener('input', updateWa);
+    document.getElementById('bkm-when').addEventListener('input', updateWa);
+    document.getElementById('bkm-wa').addEventListener('click', function(){
+      if(window.dataLayer) window.dataLayer.push({event:'pack_booking_send', pack_id: cur, pack_variant: curVariant});
+    });
+  });
+})();
+</script>
 <script>
 (function(){
   var RECO = {
