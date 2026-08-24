@@ -258,6 +258,22 @@ h1{font-family:var(--font-heading);font-size:clamp(1.8rem,4vw,2.8rem);font-weigh
             display: inline-block; background: #AD1457; color: white; font-size: 11px;
             font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-bottom: 10px;
         }
+        .pack-details { margin: 0 0 18px; font-size: 0.88rem; }
+        .pack-details summary {
+            cursor: pointer; color: #00a651; font-weight: 600; padding: 8px 0;
+            list-style: none; display: flex; align-items: center; gap: 6px;
+        }
+        .pack-details summary::-webkit-details-marker { display: none; }
+        .pack-details summary::before { content: "▸"; transition: transform 0.2s; }
+        .pack-details[open] summary::before { transform: rotate(90deg); }
+        .pack-details summary:hover { text-decoration: underline; }
+        .pack-exams { list-style: none; padding: 10px 0 0; margin: 0; }
+        .pack-exams li { padding: 7px 0; border-bottom: 1px dashed #e8e8e8; line-height: 1.45; color: #444; }
+        .pack-exams li strong { color: #1a1a2e; }
+        .pack-target {
+            margin: 12px 0 0; padding: 10px 12px; background: #eef8f1;
+            border-radius: 8px; line-height: 1.45; color: #333; font-size: 0.86rem;
+        }
         .percorsi-note { max-width: 1200px; margin: 25px auto 0; font-size: 0.85rem; color: #666; text-align: center; }
         .specialist-checkups {
             padding: 60px 0;
@@ -809,6 +825,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li>Prelievo incluso</li>
                             <li>Referto riservato online</li>
                         </ul>
+                        <details class="pack-details">
+                            <summary>Vedi tutti gli esami inclusi e perché</summary>
+                            <ul class="pack-exams">
+                                <li><strong>HIV (Ab/Ag combinato)</strong> &mdash; rileva l'infezione già dopo 2-4 settimane dal contatto a rischio; diagnosi precoce = terapia efficace e carica non trasmissibile</li>
+                                <li><strong>HBsAg (Epatite B)</strong> &mdash; individua un'infezione attiva, spesso del tutto asintomatica per anni</li>
+                                <li><strong>Anti-HBs</strong> &mdash; verifica se sei protetto dal vaccino contro l'epatite B: se basso, basta un richiamo</li>
+                                <li><strong>HCV (Epatite C)</strong> &mdash; oggi si guarisce in 8-12 settimane, ma solo se la scopri: decorre silente anche per decenni</li>
+                                <li><strong>VDRL + TPHA (Sifilide)</strong> &mdash; screening + test di conferma: la sifilide è in forte aumento in Italia e risponde benissimo alla terapia precoce</li>
+                            </ul>
+                            <p class="pack-target">🎯 <strong>Per chi è:</strong> adulti sessualmente attivi di ogni età; ideale come screening periodico annuale, all'inizio di una nuova relazione o dopo un rapporto non protetto (rispettando la finestra diagnostica).</p>
+                        </details>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Screening periodico, nuova relazione</p>
                         <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20MST%20Sangue" class="checkup-cta" rel="noopener">Prenota su WhatsApp</a>
                     </div>
@@ -823,6 +850,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li>Trichomonas + Chlamydia</li>
                             <li>Gonococco (LEI) / colturale completo (LUI)</li>
                         </ul>
+                        <details class="pack-details">
+                            <summary>Vedi tutti gli esami inclusi e perché</summary>
+                            <ul class="pack-exams">
+                                <li><strong>I 6 esami del pack MST Sangue</strong> &mdash; le infezioni sistemiche (HIV, epatiti, sifilide) si cercano nel sangue</li>
+                                <li><strong>Tampone colturale (vaginale LEI / uretrale LUI)</strong> &mdash; individua germi comuni e miceti come candida e gardnerella, cause frequenti di bruciore e perdite</li>
+                                <li><strong>Mycoplasmi + Ureaplasmi</strong> &mdash; batteri 'silenziosi' spesso senza sintomi: trascurati possono compromettere la fertilità</li>
+                                <li><strong>Trichomonas</strong> &mdash; parassita a trasmissione sessuale asintomatico in oltre metà dei casi</li>
+                                <li><strong>Chlamydia</strong> &mdash; la prima causa batterica di IST al mondo: nel 70% delle donne non dà sintomi ma può causare infertilità</li>
+                                <li><strong>Gonococco (gonorrea)</strong> &mdash; in crescita e sempre più resistente agli antibiotici: la diagnosi colturale guida la terapia giusta</li>
+                            </ul>
+                            <p class="pack-target">🎯 <strong>Per chi è:</strong> chi vuole lo screening completo delle infezioni sessualmente trasmissibili — sangue + vie genitali — in un unico accesso riservato. Consigliato con sintomi (perdite, bruciore, fastidio) o come controllo di coppia.</p>
+                        </details>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Screening IST totale in un solo accesso</p>
                         <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20MST%20Completo" class="checkup-cta" rel="noopener">Prenota su WhatsApp</a>
                     </div>
@@ -837,6 +876,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li>Referto spiegato dal medico</li>
                             <li>Massima riservatezza</li>
                         </ul>
+                        <details class="pack-details">
+                            <summary>Vedi tutti gli esami inclusi e perché</summary>
+                            <ul class="pack-exams">
+                                <li><strong>Gli 11 esami del pack MST Completo</strong> &mdash; screening totale sangue + tamponi</li>
+                                <li><strong>Visita specialistica dedicata (urologo o ginecologa)</strong> &mdash; esame obiettivo, valutazione dei fattori di rischio individuali e anamnesi riservata</li>
+                                <li><strong>Consegna e spiegazione dei referti</strong> &mdash; niente ricerche ansiogene su internet: ogni valore viene interpretato dal medico</li>
+                                <li><strong>Prescrizione immediata dell'eventuale terapia</strong> &mdash; se serve un trattamento, esci dalla struttura con la cura già impostata</li>
+                            </ul>
+                            <p class="pack-target">🎯 <strong>Per chi è:</strong> chi preferisce un percorso chiuso: esami, diagnosi e terapia nello stesso luogo, con la riservatezza di uno studio medico privato.</p>
+                        </details>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Chi vuole anche il consulto specialistico</p>
                         <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20Percorso%20MST" class="checkup-cta" rel="noopener">Prenota su WhatsApp</a>
                     </div>
@@ -855,6 +904,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li>Creatinina, Sodio, Potassio, Urine</li>
                             <li>Prelievo incluso</li>
                         </ul>
+                        <details class="pack-details">
+                            <summary>Vedi tutti gli esami inclusi e perché</summary>
+                            <ul class="pack-exams">
+                                <li><strong>Emocromo completo</strong> &mdash; l'anemia affatica il cuore e può mascherare o aggravare i sintomi cardiaci</li>
+                                <li><strong>Glicemia + Emoglobina glicata (HbA1c)</strong> &mdash; il diabete raddoppia il rischio cardiovascolare; l'HbA1c fotografa la media degli ultimi 3 mesi, non il singolo giorno</li>
+                                <li><strong>Colesterolo totale, HDL, LDL</strong> &mdash; il profilo lipidico è il termometro dell'aterosclerosi: l'LDL alto deposita placca nelle arterie</li>
+                                <li><strong>Trigliceridi</strong> &mdash; marcatore di rischio metabolico, sensibile a dieta e alcol</li>
+                                <li><strong>Omocisteina</strong> &mdash; fattore di rischio indipendente per infarto e ictus, spesso ignorato nei check-up economici</li>
+                                <li><strong>PCR ad alta sensibilità</strong> &mdash; rileva l'infiammazione silente delle pareti vascolari, predittiva di eventi cardiaci</li>
+                                <li><strong>Creatinina</strong> &mdash; cuore e reni lavorano in coppia: la funzione renale ridotta aumenta il rischio cardiaco</li>
+                                <li><strong>Sodio + Potassio</strong> &mdash; elettroliti fondamentali per il ritmo cardiaco, indispensabili se assumi farmaci per la pressione</li>
+                                <li><strong>Esame urine</strong> &mdash; la microalbuminuria è una spia precoce di danno vascolare</li>
+                            </ul>
+                            <p class="pack-target">🎯 <strong>Per chi è:</strong> over 40, chi ha familiarità per infarto o ictus, fumatori, ipertesi, sedentari o chi non fa un controllo da più di un anno.</p>
+                        </details>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Controllo annuale fattori di rischio</p>
                         <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20Cuore%20Esami" class="checkup-cta" rel="noopener">Prenota su WhatsApp</a>
                     </div>
@@ -868,6 +932,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li>Elettrocardiogramma (ECG)</li>
                             <li>Esito discusso col cardiologo</li>
                         </ul>
+                        <details class="pack-details">
+                            <summary>Vedi tutti gli esami inclusi e perché</summary>
+                            <ul class="pack-exams">
+                                <li><strong>I 12 esami del pack Cuore Esami</strong> &mdash; il quadro completo di laboratorio del rischio cardiovascolare</li>
+                                <li><strong>Visita cardiologica specialistica</strong> &mdash; auscultazione, misurazione della pressione, valutazione di soffi e sintomi come affanno o palpitazioni</li>
+                                <li><strong>Elettrocardiogramma (ECG)</strong> &mdash; registra il ritmo del cuore: intercetta aritmie, fibrillazione e segni di sofferenza ischemica</li>
+                                <li><strong>Discussione dell'esito col cardiologo</strong> &mdash; gli esami del sangue letti insieme all'ECG valgono più della loro somma: la diagnosi la fa il medico, non il referto</li>
+                            </ul>
+                            <p class="pack-target">🎯 <strong>Per chi è:</strong> chi ha fattori di rischio (pressione, colesterolo, fumo, familiarità) o non ha mai fatto una visita cardiologica completa. Il controllo che i laboratori non possono offrire.</p>
+                        </details>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Over 40, familiarità, ipertensione</p>
                         <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20Percorso%20Cuore" class="checkup-cta" rel="noopener">Prenota su WhatsApp</a>
                     </div>
@@ -881,6 +955,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li>Il tagliando completo del cuore</li>
                             <li>Un solo accesso in struttura</li>
                         </ul>
+                        <details class="pack-details">
+                            <summary>Vedi tutti gli esami inclusi e perché</summary>
+                            <ul class="pack-exams">
+                                <li><strong>Tutto il Percorso Cuore</strong> &mdash; 12 esami + visita cardiologica + ECG</li>
+                                <li><strong>Ecocardiogramma color-doppler</strong> &mdash; l'ecografia del cuore in movimento: valuta valvole, dimensioni delle camere e forza di pompa (frazione di eiezione)</li>
+                                <li><strong>Perché aggiungerlo</strong> &mdash; l'ECG vede il ritmo, l'ecocardiogramma vede la struttura: insieme escludono la maggior parte delle patologie cardiache silenti</li>
+                                <li><strong>Un solo accesso</strong> &mdash; prelievo, visita, ECG ed eco nella stessa struttura, referti consegnati e spiegati</li>
+                            </ul>
+                            <p class="pack-target">🎯 <strong>Per chi è:</strong> over 50, ipertesi di lunga data, chi ha un soffio noto, sportivi master o chi vuole il controllo cardiaco più completo disponibile senza ricovero.</p>
+                        </details>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Over 50, controllo approfondito</p>
                         <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20Percorso%20Cuore%20Plus" class="checkup-cta" rel="noopener">Prenota su WhatsApp</a>
                     </div>
@@ -899,6 +983,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li>Profilo lipidico + Glicemia + HbA1c</li>
                             <li>Emocromo + Prelievo incluso</li>
                         </ul>
+                        <details class="pack-details">
+                            <summary>Vedi tutti gli esami inclusi e perché</summary>
+                            <ul class="pack-exams">
+                                <li><strong>FSH + LH</strong> &mdash; salgono quando la riserva ovarica diminuisce: sono la fotografia oggettiva della transizione verso la menopausa</li>
+                                <li><strong>Estradiolo</strong> &mdash; il suo calo è la causa diretta di vampate, insonnia, secchezza e sbalzi d'umore</li>
+                                <li><strong>TSH (tiroide)</strong> &mdash; stanchezza, aumento di peso e alterazioni del ciclo possono essere tiroide, non menopausa: questo esame evita diagnosi sbagliate</li>
+                                <li><strong>Vitamina D + Calcio + Fosforo</strong> &mdash; dopo il calo degli estrogeni l'osso perde densità più in fretta: questi valori guidano la prevenzione dell'osteoporosi</li>
+                                <li><strong>Profilo lipidico completo</strong> &mdash; gli estrogeni proteggevano le arterie: dopo i 45 anni il colesterolo va monitorato con più attenzione</li>
+                                <li><strong>Glicemia + HbA1c</strong> &mdash; il metabolismo cambia: intercettare l'insulino-resistenza presto evita il diabete dopo</li>
+                                <li><strong>Emocromo</strong> &mdash; cicli abbondanti o ravvicinati in perimenopausa causano spesso anemia da carenza di ferro</li>
+                            </ul>
+                            <p class="pack-target">🎯 <strong>Per chi è:</strong> donne tra 45 e 55 anni con ciclo irregolare, vampate, insonnia, aumento di peso inspiegato o calo del tono dell'umore. I sintomi non sono 'normali per l'età': sono misurabili.</p>
+                        </details>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Donne 45-55 con vampate, insonnia, ciclo irregolare</p>
                         <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20Equilibrio%20Esami" class="checkup-cta" rel="noopener">Prenota su WhatsApp</a>
                     </div>
@@ -912,6 +1009,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li>Ecografia transvaginale</li>
                             <li>Lettura ormoni + valutazione clinica insieme</li>
                         </ul>
+                        <details class="pack-details">
+                            <summary>Vedi tutti gli esami inclusi e perché</summary>
+                            <ul class="pack-exams">
+                                <li><strong>Gli 11 esami del pack Equilibrio</strong> &mdash; il quadro ormonale, tiroideo, osseo e metabolico completo</li>
+                                <li><strong>Visita ginecologica specialistica</strong> &mdash; valutazione dei sintomi, della storia clinica e delle opzioni terapeutiche, inclusa l'eventuale terapia ormonale sostitutiva</li>
+                                <li><strong>Ecografia transvaginale</strong> &mdash; controlla endometrio e ovaie: fondamentale in perimenopausa quando i cicli diventano irregolari</li>
+                                <li><strong>Lettura integrata</strong> &mdash; ormoni + ecografia + sintomi valutati insieme dalla ginecologa: è questo che trasforma i numeri in un piano d'azione</li>
+                            </ul>
+                            <p class="pack-target">🎯 <strong>Per chi è:</strong> donne 45-55 che vogliono il quadro clinico completo della transizione e un parere specialistico sulle terapie disponibili, in un solo accesso.</p>
+                        </details>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Il quadro completo della transizione</p>
                         <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20Percorso%20Equilibrio" class="checkup-cta" rel="noopener">Prenota su WhatsApp</a>
                     </div>
@@ -925,6 +1032,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li>Con ginecologa-senologa dedicata</li>
                             <li>La prevenzione 45-55 in un accesso</li>
                         </ul>
+                        <details class="pack-details">
+                            <summary>Vedi tutti gli esami inclusi e perché</summary>
+                            <ul class="pack-exams">
+                                <li><strong>Tutto il Percorso Equilibrio</strong> &mdash; 11 esami + visita ginecologica + eco transvaginale</li>
+                                <li><strong>Ecografia mammaria bilaterale</strong> &mdash; complementare alla mammografia, particolarmente utile nel seno denso, frequente in questa fascia d'età</li>
+                                <li><strong>Ginecologa-senologa dedicata</strong> &mdash; la stessa specialista valuta l'aspetto ormonale e quello senologico: nessuna informazione va persa tra un medico e l'altro</li>
+                                <li><strong>Un solo accesso</strong> &mdash; prelievo, visita, due ecografie e referti spiegati nella stessa mattinata</li>
+                            </ul>
+                            <p class="pack-target">🎯 <strong>Per chi è:</strong> donne 45-55 che vogliono la prevenzione femminile completa — ormonale, ginecologica e senologica — senza moltiplicare appuntamenti e strutture.</p>
+                        </details>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Prevenzione femminile completa</p>
                         <a href="https://wa.me/390799561332?text=Vorrei%20prenotare%20il%20pack%20Percorso%20Equilibrio%20Completo" class="checkup-cta" rel="noopener">Prenota su WhatsApp</a>
                     </div>
