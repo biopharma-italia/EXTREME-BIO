@@ -510,6 +510,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span>🧬</span> <strong>Genetica & DNA</strong> <span style="background: #6366f1; color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 10px; margin-left: 4px;">NEW</span>
             </a>
             <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #eee;">
+            <a href="https://referti.bio-clinic.it" title="Referti Online - Portale Pazienti" role="menuitem" target="_blank" rel="noopener" style="background: #EFF6FF;">
+              <span>📄</span> <strong>Referti Online</strong>
+            </a>
             <a href="/prevenzione/" title="Check-Up e Percorsi Salute - Pacchetti Esami + Visita" role="menuitem" style="background: #F0FDF4;">
               <span>🎯</span> <strong>Check-Up & Percorsi Salute</strong> <span style="background: #00704A; color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 10px; margin-left: 4px;">NEW</span>
             </a>
@@ -633,6 +636,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <ul>
         <li><a href="/genetica/">🧬 Genetica & DNA</a></li>
         <li><a href="/prevenzione/">🎯 Check-Up & Percorsi Salute</a></li>
+        <li><a href="https://referti.bio-clinic.it" target="_blank" rel="noopener">📄 Referti Online</a></li>
         <li><a href="/preparazione-esami/">📋 Preparazione Esami</a></li>
       </ul>
     </li>
@@ -764,7 +768,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="checkup-card featured">
                         <div class="checkup-icon">👩</div>
                         <div class="checkup-title" id="cu-donna">Check-Up Donna</div>
-                        <div class="checkup-price">€89 - €129</div>
+                        <div class="checkup-price">a partire da €89</div>
                         <ul class="checkup-includes">
                             <li>Emocromo + Sideremia + Ferritina</li>
                             <li>TSH (tiroide)</li>
@@ -781,7 +785,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="checkup-card">
                         <div class="checkup-icon">👨</div>
                         <div class="checkup-title" id="cu-uomo">Check-Up Uomo</div>
-                        <div class="checkup-price">€79 - €119</div>
+                        <div class="checkup-price">a partire da €75</div>
                         <ul class="checkup-includes">
                             <li>Emocromo completo</li>
                             <li>Profilo lipidico</li>
@@ -813,7 +817,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="checkup-card">
                         <div class="checkup-icon">❤️</div>
                         <div class="checkup-title" id="cu-cardio">Check-Up Cardiovascolare</div>
-                        <div class="checkup-price">da €150</div>
+                        <div class="checkup-price">a partire da €150</div>
                         <ul class="checkup-includes">
                             <li>Visita cardiologica</li>
                             <li>Elettrocardiogramma (ECG)</li>
@@ -1264,6 +1268,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li><a href="/cardiologia/" title="Vai alla sezione Cardiologia">Cardiovascolare</a></li>
             <li><a href="/convenzioni/" title="Convenzioni Fondi Sanitari">Convenzioni</a></li>
             <li><a href="/prevenzione/" title="Check-Up e Prevenzione">Prevenzione</a></li>
+            <li><a href="https://referti.bio-clinic.it" title="Referti Online - Portale Pazienti" target="_blank" rel="noopener">Referti Online</a></li>
             <li><a href="/chi-siamo/" title="Chi Siamo - Bio-Clinic Sassari">Chi Siamo</a></li>
           </ul>
         </div>
@@ -1371,15 +1376,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     "equilibrio-completo": { name:"Percorso Equilibrio Completo (Pre-Menopausa 45-55)", price:"\u20AC299", exams: EQ_ESAMI.concat(["Visita ginecologica specialistica","Ecografia transvaginale","Ecografia mammaria bilaterale (ginecologa-senologa)","Lettura integrata esiti"]) },
     "cu-base-pk":        { name:"Check-Up Base", price:"\u20AC39", exams:["Emocromo completo","Glicemia","Colesterolo totale","Trigliceridi","Creatinina","Transaminasi (GOT + GPT)","Esame urine completo"] },
     "cu-donna-pk":       { name:"Check-Up Donna", variants:[["U40","Under 40"],["O40","Over 40"]],
-                           price:function(v){ return v==="U40" ? "\u20AC89" : "\u20AC129"; },
+                           price:function(v){ return v==="U40" ? "a partire da \u20AC89" : "a partire da \u20AC129"; },
                            exams:function(v){ var b=["Emocromo completo","Sideremia","Ferritina","TSH (tiroide)","Colesterolo totale + HDL + LDL","Trigliceridi","Vitamina D","Glicemia","Esame urine"]; return v==="O40" ? b.concat(["HbA1c (emoglobina glicata)","Calcio + Fosforo (salute ossea)"]) : b; } },
     "cu-uomo-pk":        { name:"Check-Up Uomo", variants:[["U40","Under 40"],["O40","Over 40"]],
-                           price:function(v){ return v==="U40" ? "\u20AC79" : "\u20AC119"; },
+                           price:function(v){ return v==="U40" ? "a partire da \u20AC75" : "a partire da \u20AC119"; },
                            exams:function(v){ var b=["Emocromo completo","Colesterolo totale + HDL + LDL","Trigliceridi","Glicemia","TSH (tiroide)","Vitamina D","Creatinina","Esame urine"]; return v==="O40" ? b.concat(["HbA1c (emoglobina glicata)","PSA (prostata)"]) : b; } },
     "cu-tiroide-pk":     { name:"Check-Up Tiroide", variants:[["BASE","Base \u20AC29"],["PLUS","Plus \u20AC59"]],
                            price:function(v){ return v==="BASE" ? "\u20AC29" : "\u20AC59"; },
                            exams:function(v){ return v==="BASE" ? ["TSH (ormone tireostimolante)","FT4 (tiroxina libera)","Referto medico incluso"] : ["TSH (ormone tireostimolante)","FT3 (triiodotironina libera)","FT4 (tiroxina libera)","Anti-TPO (anticorpi anti-perossidasi)","Anti-TG (anticorpi anti-tireoglobulina)","Referto medico incluso"]; } },
-    "cu-cardio-pk":      { name:"Check-Up Cardiovascolare", price:"da \u20AC150",
+    "cu-cardio-pk":      { name:"Check-Up Cardiovascolare", price:"a partire da \u20AC150",
                            exams:["Visita cardiologica specialistica","Elettrocardiogramma (ECG)","Profilo lipidico (colesterolo totale, HDL, LDL, trigliceridi)","Ecocardiogramma color-doppler (versione Plus)","Prezzo esatto confermato dalla segreteria in base alla versione scelta"] },
     "cu-pregravidanza-pk": { name:"Check-Up Pre-Gravidanza", price:"\u20AC99",
                            exams:["Emocromo completo","Gruppo sanguigno + fattore Rh","Toxoplasma IgG + IgM","Rosolia IgG + IgM","Citomegalovirus (CMV) IgG + IgM","TSH (tiroide)","Acido folico","Vitamina D"] }
@@ -1471,7 +1476,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     ]},
     "30-40": {label:"30-40 anni", items:[
       ["cu-base","Check-Up Base \u2014 il punto di partenza annuale","\u20AC39"],
-      ["cu-donna","Check-Up Donna / Uomo \u2014 screening mirato","da \u20AC79"],
+      ["cu-donna","Check-Up Donna / Uomo \u2014 screening mirato","da \u20AC75"],
       ["cu-pregravidanza","Check-Up Pre-Gravidanza \u2014 se pianifichi una gravidanza","\u20AC99"],
       ["pack-mst-specialista","Percorso MST con Specialista \u2014 esami + tamponi + visita","da \u20AC195"]
     ]},
