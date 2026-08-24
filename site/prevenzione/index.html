@@ -757,7 +757,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li>Esame urine</li>
                         </ul>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Primo controllo, screening annuale</p>
-                        <a href="/laboratorio/#pack-check-up-base" class="checkup-cta">Prenota Ora</a>
+                        <a href="/laboratorio/#pack-check-up-base" class="checkup-cta js-book" data-pack="cu-base-pk">Prenota Ora</a>
                     </div>
                     
                     <!-- Check-Up Donna -->
@@ -774,7 +774,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li>Under 40 / Over 40 disponibili</li>
                         </ul>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Prevenzione femminile completa</p>
-                        <a href="/laboratorio/#pack-check-up-donna-under-40" class="checkup-cta">Scegli il Tuo</a>
+                        <a href="/laboratorio/#pack-check-up-donna-under-40" class="checkup-cta js-book" data-pack="cu-donna-pk">Prenota Ora</a>
                     </div>
                     
                     <!-- Check-Up Uomo -->
@@ -791,7 +791,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li>Vitamina D</li>
                         </ul>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Prevenzione maschile completa</p>
-                        <a href="/laboratorio/#pack-check-up-uomo-under-40" class="checkup-cta">Scegli il Tuo</a>
+                        <a href="/laboratorio/#pack-check-up-uomo-under-40" class="checkup-cta js-book" data-pack="cu-uomo-pk">Prenota Ora</a>
                     </div>
                     
                     <!-- Check-Up Tiroide -->
@@ -806,7 +806,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li>Anti-TG (Plus)</li>
                         </ul>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Stanchezza, peso, capelli</p>
-                        <a href="/endocrinologia/checkup-tiroide/" class="checkup-cta">Scopri di Più</a>
+                        <a href="/endocrinologia/checkup-tiroide/" class="checkup-cta js-book" data-pack="cu-tiroide-pk">Prenota Ora</a>
                     </div>
                     
                     <!-- Check-Up Cardiologico -->
@@ -821,7 +821,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li>Esami del sangue</li>
                         </ul>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Over 40, fattori di rischio</p>
-                        <a href="/cardiologia/checkup-cardiovascolare/" class="checkup-cta">Scopri di Più</a>
+                        <a href="/cardiologia/checkup-cardiovascolare/" class="checkup-cta js-book" data-pack="cu-cardio-pk">Prenota Ora</a>
                     </div>
                     
                     <!-- Check-Up Pre-Gravidanza -->
@@ -837,7 +837,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li>Vitamina D</li>
                         </ul>
                         <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;"><strong>Ideale per:</strong> Chi programma una gravidanza</p>
-                        <a href="/laboratorio/#pack-check-up-pre-gravidanza" class="checkup-cta">Prenota Ora</a>
+                        <a href="/laboratorio/#pack-check-up-pre-gravidanza" class="checkup-cta js-book" data-pack="cu-pregravidanza-pk">Prenota Ora</a>
                     </div>
                 </div>
             </div>
@@ -1327,10 +1327,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button class="bkm-close" id="bkm-close" aria-label="Chiudi">&times;</button>
     <h3 id="bkm-title"></h3>
     <div class="bkm-price" id="bkm-price"></div>
-    <div class="bkm-variant" id="bkm-variant" style="display:none;">
-      <button type="button" data-v="LEI">👩 LEI</button>
-      <button type="button" data-v="LUI">👨 LUI</button>
-    </div>
+    <div class="bkm-variant" id="bkm-variant" style="display:none;"></div>
     <div class="bkm-exams">
       <h4>📋 Cosa comprende</h4>
       <ul id="bkm-exams-list"></ul>
@@ -1361,9 +1358,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var EQ_ESAMI = ["FSH","LH","Estradiolo","TSH","Vitamina D","Calcio + Fosforo","Colesterolo totale + HDL + LDL","Trigliceridi","Glicemia + HbA1c","Emocromo completo","Prelievo incluso"];
   var PACKS = {
     "mst-sangue":        { name:"MST Sangue", price:"\u20AC59", exams: MST_SANGUE },
-    "mst-completo":      { name:"MST Completo", price:"\u20AC125", variant:true,
+    "mst-completo":      { name:"MST Completo", price:"\u20AC125", variants:[["LEI","\uD83D\uDC69 LEI"],["LUI","\uD83D\uDC68 LUI"]],
                            exams:function(v){ return MST_SANGUE.concat(MST_TAMPONI[v]); } },
-    "mst-specialista":   { name:"Percorso MST con Specialista", variant:true,
+    "mst-specialista":   { name:"Percorso MST con Specialista", variants:[["LEI","\uD83D\uDC69 LEI"],["LUI","\uD83D\uDC68 LUI"]],
                            price:function(v){ return v==="LEI" ? "\u20AC235" : "\u20AC195"; },
                            exams:function(v){ return MST_SANGUE.concat(MST_TAMPONI[v], [v==="LEI" ? "Visita ginecologica" : "Visita urologica", "Consegna e spiegazione referti dal medico"]); } },
     "cuore-esami":       { name:"Cuore Esami", price:"\u20AC69", exams: CUORE_ESAMI },
@@ -1371,22 +1368,53 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     "cuore-plus":        { name:"Percorso Cuore Plus", price:"\u20AC269", exams: CUORE_ESAMI.concat(["Visita cardiologica specialistica","Elettrocardiogramma (ECG)","Ecocardiogramma color-doppler","Esito discusso col cardiologo"]) },
     "equilibrio-esami":  { name:"Equilibrio Esami (Pre-Menopausa 45-55)", price:"\u20AC109", exams: EQ_ESAMI },
     "equilibrio":        { name:"Percorso Equilibrio (Pre-Menopausa 45-55)", price:"\u20AC245", exams: EQ_ESAMI.concat(["Visita ginecologica specialistica","Ecografia transvaginale","Lettura integrata esiti con la ginecologa"]) },
-    "equilibrio-completo": { name:"Percorso Equilibrio Completo (Pre-Menopausa 45-55)", price:"\u20AC299", exams: EQ_ESAMI.concat(["Visita ginecologica specialistica","Ecografia transvaginale","Ecografia mammaria bilaterale (ginecologa-senologa)","Lettura integrata esiti"]) }
+    "equilibrio-completo": { name:"Percorso Equilibrio Completo (Pre-Menopausa 45-55)", price:"\u20AC299", exams: EQ_ESAMI.concat(["Visita ginecologica specialistica","Ecografia transvaginale","Ecografia mammaria bilaterale (ginecologa-senologa)","Lettura integrata esiti"]) },
+    "cu-base-pk":        { name:"Check-Up Base", price:"\u20AC39", exams:["Emocromo completo","Glicemia","Colesterolo totale","Trigliceridi","Creatinina","Transaminasi (GOT + GPT)","Esame urine completo"] },
+    "cu-donna-pk":       { name:"Check-Up Donna", variants:[["U40","Under 40"],["O40","Over 40"]],
+                           price:function(v){ return v==="U40" ? "\u20AC89" : "\u20AC129"; },
+                           exams:function(v){ var b=["Emocromo completo","Sideremia","Ferritina","TSH (tiroide)","Colesterolo totale + HDL + LDL","Trigliceridi","Vitamina D","Glicemia","Esame urine"]; return v==="O40" ? b.concat(["HbA1c (emoglobina glicata)","Calcio + Fosforo (salute ossea)"]) : b; } },
+    "cu-uomo-pk":        { name:"Check-Up Uomo", variants:[["U40","Under 40"],["O40","Over 40"]],
+                           price:function(v){ return v==="U40" ? "\u20AC79" : "\u20AC119"; },
+                           exams:function(v){ var b=["Emocromo completo","Colesterolo totale + HDL + LDL","Trigliceridi","Glicemia","TSH (tiroide)","Vitamina D","Creatinina","Esame urine"]; return v==="O40" ? b.concat(["HbA1c (emoglobina glicata)","PSA (prostata)"]) : b; } },
+    "cu-tiroide-pk":     { name:"Check-Up Tiroide", variants:[["BASE","Base \u20AC29"],["PLUS","Plus \u20AC59"]],
+                           price:function(v){ return v==="BASE" ? "\u20AC29" : "\u20AC59"; },
+                           exams:function(v){ return v==="BASE" ? ["TSH (ormone tireostimolante)","FT4 (tiroxina libera)","Referto medico incluso"] : ["TSH (ormone tireostimolante)","FT3 (triiodotironina libera)","FT4 (tiroxina libera)","Anti-TPO (anticorpi anti-perossidasi)","Anti-TG (anticorpi anti-tireoglobulina)","Referto medico incluso"]; } },
+    "cu-cardio-pk":      { name:"Check-Up Cardiovascolare", price:"da \u20AC150",
+                           exams:["Visita cardiologica specialistica","Elettrocardiogramma (ECG)","Profilo lipidico (colesterolo totale, HDL, LDL, trigliceridi)","Ecocardiogramma color-doppler (versione Plus)","Prezzo esatto confermato dalla segreteria in base alla versione scelta"] },
+    "cu-pregravidanza-pk": { name:"Check-Up Pre-Gravidanza", price:"\u20AC99",
+                           exams:["Emocromo completo","Gruppo sanguigno + fattore Rh","Toxoplasma IgG + IgM","Rosolia IgG + IgM","Citomegalovirus (CMV) IgG + IgM","TSH (tiroide)","Acido folico","Vitamina D"] }
   };
-  var cur = null, curVariant = "LEI";
+  var cur = null, curVariant = null;
   var ov = document.getElementById('bkm-overlay');
   function getPrice(p){ return typeof p.price === "function" ? p.price(curVariant) : p.price; }
   function getExams(p){ return typeof p.exams === "function" ? p.exams(curVariant) : p.exams; }
+  function variantLabel(p){
+    if(!p.variants || !curVariant) return "";
+    for(var i=0;i<p.variants.length;i++){ if(p.variants[i][0]===curVariant) return p.variants[i][1].replace(/^[^A-Za-z0-9]+\s*/, ""); }
+    return curVariant;
+  }
   function refresh(){
     var p = PACKS[cur]; if(!p) return;
-    document.getElementById('bkm-title').textContent = "\uD83D\uDCE6 " + p.name + (p.variant ? " \u2014 " + curVariant : "");
+    document.getElementById('bkm-title').textContent = "\uD83D\uDCE6 " + p.name + (p.variants ? " \u2014 " + variantLabel(p) : "");
     document.getElementById('bkm-price').textContent = getPrice(p);
     var ul = document.getElementById('bkm-exams-list');
     ul.innerHTML = "";
     getExams(p).forEach(function(e){ var li = document.createElement('li'); li.textContent = e; ul.appendChild(li); });
     var vbox = document.getElementById('bkm-variant');
-    vbox.style.display = p.variant ? "flex" : "none";
-    vbox.querySelectorAll('button').forEach(function(b){ b.classList.toggle('sel', b.getAttribute('data-v')===curVariant); });
+    if(p.variants){
+      vbox.style.display = "flex";
+      vbox.innerHTML = "";
+      p.variants.forEach(function(vv){
+        var b = document.createElement('button');
+        b.type = "button"; b.textContent = vv[1];
+        if(vv[0]===curVariant) b.className = "sel";
+        b.addEventListener('click', function(){ curVariant = vv[0]; refresh(); });
+        vbox.appendChild(b);
+      });
+    } else {
+      vbox.style.display = "none";
+      vbox.innerHTML = "";
+    }
     updateWa();
   }
   function updateWa(){
@@ -1396,7 +1424,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var lines = [];
     lines.push("\uD83E\uDE7A PRENOTAZIONE PACK \u2014 Bio-Clinic");
     lines.push("");
-    lines.push("\uD83D\uDCE6 Pack: " + p.name + (p.variant ? " (" + curVariant + ")" : ""));
+    lines.push("\uD83D\uDCE6 Pack: " + p.name + (p.variants ? " (" + variantLabel(p) + ")" : ""));
     lines.push("\uD83D\uDCB6 Prezzo: " + getPrice(p) + " (come da sito)");
     lines.push("");
     lines.push("\uD83D\uDCCB Prestazioni incluse:");
@@ -1408,7 +1436,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('bkm-wa').href = "https://wa.me/390799561332?text=" + encodeURIComponent(lines.join("\n"));
   }
   function open(packId){
-    cur = packId; curVariant = "LEI";
+    cur = packId;
+    var p = PACKS[packId];
+    curVariant = (p && p.variants) ? p.variants[0][0] : null;
     refresh();
     ov.classList.add('open');
     document.body.style.overflow = "hidden";
@@ -1422,9 +1452,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('bkm-close').addEventListener('click', close);
     ov.addEventListener('click', function(ev){ if(ev.target === ov) close(); });
     document.addEventListener('keydown', function(ev){ if(ev.key === "Escape") close(); });
-    document.getElementById('bkm-variant').querySelectorAll('button').forEach(function(b){
-      b.addEventListener('click', function(){ curVariant = b.getAttribute('data-v'); refresh(); });
-    });
     document.getElementById('bkm-name').addEventListener('input', updateWa);
     document.getElementById('bkm-when').addEventListener('input', updateWa);
     document.getElementById('bkm-wa').addEventListener('click', function(){
