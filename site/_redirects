@@ -548,3 +548,7 @@
 /departments/psicologia-psicoterapia/* /colloquio-psicologico/ 301
 /departments /specialita/ 301
 /departments/* /specialita/ 301
+/fisiatria /ortopedia/visita-fisiatrica/ 301
+/fisiatria/ /ortopedia/visita-fisiatrica/ 301
+/nutrizione /visita-nutrizionale/ 301
+/nutrizione/ /visita-nutrizionale/ 301
