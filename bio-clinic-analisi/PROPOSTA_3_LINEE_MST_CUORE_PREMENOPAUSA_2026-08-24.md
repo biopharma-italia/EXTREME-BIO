@@ -1,5 +1,6 @@
 # Proposta 3 Linee Pack — MST con tamponi · Cuore · Pre-Menopausa 45-55
-**Data**: 2026-08-24 · **Prezzi**: listino lab sito + moda fatture GIPO 2026 (tutte le voci verificate su fatturato reale)
+**REV 2 del 2026-08-24** — vincolo cliente: **sconto massimo 10% rispetto alla somma listino**
+**Prezzi**: listino lab sito + moda fatture GIPO 2026 (tutte le voci verificate su fatturato reale)
 **Stato**: DA VALIDARE — nessuna modifica al sito
 
 ---
@@ -7,132 +8,100 @@
 ## 🔒 LINEA MST "Zero Pensieri" — l'esclusiva tamponi
 
 **Perché siamo gli unici**: LAS (€45) e Synlab vendono solo sierologie da prelievo. I tamponi
-richiedono personale sanitario dedicato e riservatezza ambulatoriale — **nessun laboratorio
-di Sassari li confeziona in un pack**. Bio-Clinic li fa già: 161 tamponi vaginali,
-116 mycoplasmi/ureaplasmi, 12 uretrali fatturati nel 2026.
+richiedono ambulatorio e riservatezza — nessun laboratorio di Sassari li confeziona in un pack.
+Bio-Clinic li fa già: 161 tamponi vaginali, 116 mycoplasmi/ureaplasmi, 12 uretrali fatturati nel 2026.
 
-### Livello 1 — MST Sangue · **€49**
-| Esame | Listino/GIPO |
-|---|---|
-| HIV | €13 |
-| HCV | €10 |
-| HBsAg + Anti-HBs | €10 + €13 |
-| Sifilide (VDRL + TPHA) | €8 + €5 |
-| **Somma €59 → pack €49** (-17%) | vs LAS €45 (senza Anti-HBs) |
+### Livello 1 — MST Sangue · **€55** (somma €59, -7%)
+HIV €13 · HCV €10 · HBsAg €10 + Anti-HBs €13 · Sifilide VDRL €8 + TPHA €5
 
-### Livello 2 — MST Completo LEI · **€99** ⭐ (l'esclusiva)
-Tutto il Livello 1 +
-| Tampone/test | GIPO |
-|---|---|
-| Tampone vaginale colturale | €9.80 |
-| Mycoplasmi + Ureaplasmi | €18.50 |
-| Trichomonas | €12 |
-| Chlamydia (Ag) | €8.50 |
-| Gonococco colturale | €15.50 |
-| **Somma €123 → pack €99** (-20%) | **nessun competitor può offrirlo** |
+### Livello 2 — MST Completo LEI · **€119** ⭐ (somma €123.30, -3.5%)
+MST Sangue + tampone vaginale colturale €9.80 + mycoplasmi/ureaplasmi €18.50 +
+trichomonas €12 + chlamydia €8.50 + gonococco €15.50
 
-### Livello 2 — MST Completo LUI · **€99** ⭐
-Livello 1 + tampone uretrale completo (esecuzione €20 + colturale €12.50 + mycoplasmi €20 + trichomonas €12 + chlamydia €8.50) — somma €132 → **€99** (-25%)
+### Livello 2 — MST Completo LUI · **€119** ⭐ (somma €132, -10% — al cap)
+MST Sangue + esecuzione tampone uretrale €20 + colturale €12.50 + mycoplasmi €20 +
+trichomonas €12 + chlamydia €8.50
+> Prezzo unificato LEI/LUI €119: comunicazione semplice, LUI sfrutta l'intero cap del 10%.
 
-### Livello 3 — Percorso MST con Specialista · **€149**
-MST Completo (LEI o LUI) + **visita ginecologica o urologica dedicata** con consegna
-e spiegazione referti. Somma €174-229 → **€149**.
+### Livello 3 — Percorso MST con Specialista
+| Variante | Contenuto | Somma | **Pack** | Sconto |
+|---|---|---|---|---|
+| LUI | MST Completo + visita urologica (€75) | €207 | **€189** | -8.7% |
+| LEI | MST Completo + visita ginecologica (€130) | €253.30 | **€229** | -9.6% |
 
 **Posizionamento**: "Un solo accesso, massima riservatezza, referto spiegato dal medico."
-Target: 18-40, canale Instagram/Google "test mst sassari" — query a zero concorrenza locale.
-Opzione aggiuntiva: **HPV DNA test +€49** (listino €60) come add-on al checkout.
+Add-on checkout: HPV DNA test **+€55** (listino €60, -8%).
 
 ---
 
 ## ❤️ LINEA CUORE "Battito Sicuro"
 
-**Contesto**: Synlab Cardiovascolare €120 (solo provette). Noi mettiamo il cardiologo.
-GIPO: visita cardiologica moda €80-100, ecocardio nel range visita €160.
+### Livello 1 — Cuore Esami · **€65** (somma €72, -9.7%)
+Emocromo €5 · Glicemia €2 + HbA1c €12 · Colesterolo tot/HDL/LDL €8 + Trigliceridi €3 ·
+Omocisteina €22 · PCR-hs €8 · Creatinina+Na+K €6 · Urine €6
+> vs Synlab Cardiovascolare Smart €89: vinciamo comunque di €24 con omocisteina e PCR-hs incluse.
 
-### Livello 1 — Cuore Esami · **€59**
-| Esame | Listino |
-|---|---|
-| Emocromo completo | €5 |
-| Glicemia + HbA1c | €2 + €12 |
-| Colesterolo tot/HDL/LDL + Trigliceridi | €8 + €3 |
-| Omocisteina | €22 |
-| PCR alta sensibilità | €8 |
-| Creatinina + Sodio + Potassio | €6 |
-| Esame urine | €6 |
-| **Somma €72 → pack €59** (-18%) | vs Synlab Smart €89: vinciamo di €30 |
+### Livello 2 — Percorso Cuore · **€155** ⭐ (somma €172, -9.9%)
+Cuore Esami + **Visita cardiologica con ECG** (GIPO €100)
+> Coerente con la pagina attuale "da €150" (resta vero: il livello 1+visita base parte lì).
 
-### Livello 2 — Percorso Cuore · **€149** ⭐ (il best-seller atteso)
-Cuore Esami + **Visita cardiologica con ECG** (GIPO €100).
-Somma €172 → **€149** (-13%). Coerente con la pagina attuale "da €150" ✓
-
-### Livello 3 — Percorso Cuore Plus · **€249**
-Percorso Cuore + **Ecocardiogramma color-doppler**.
-Il "tagliando completo del cuore" in un solo accesso — riferimento over 50 / familiarità.
+### Livello 3 — Percorso Cuore Plus · **€265** (somma €292, -9.2%)
+Percorso Cuore + **Ecocardiogramma color-doppler** (listino pubblico €120; GIPO mostra
+anche €72 convenzionato — confermare quale fa fede).
+Il "tagliando completo del cuore" in un solo accesso.
 
 **Posizionamento**: "Da Synlab escono numeri. Da Bio-Clinic esci con la diagnosi."
-Stagionalità: gennaio (buoni propositi) + settembre (certificati sport → upsell dal Percorso Sport).
 
 ---
 
 ## 🌸 LINEA PRE-MENOPAUSA 45-55 "Equilibrio"
 
-**Perché è un buco di mercato**: Synlab ha Pre-Menopausa a €90 **solo online e solo provette**.
-LAS non ce l'ha. Noi abbiamo 7 ginecologi, l'eco transvaginale (GIPO €60) e
-l'eco mammaria (GIPO €60) in casa. Target preciso: donne 45-55, la fascia che decide
-la spesa sanitaria di tutta la famiglia.
+### Livello 1 — Equilibrio Esami · **€105** (somma €114, -7.9%)
+FSH €12 + LH €12 · Estradiolo €22 · TSH €12 · Vitamina D €22 · Calcio+Fosforo €4 ·
+Profilo lipidico €11 · Glicemia €2 + HbA1c €12 · Emocromo €5
+> vs Synlab Pre-Menopausa €90: costiamo €15 in più ma con HbA1c, lipidico e VitD che loro non includono — da comunicare esplicitamente nella card.
 
-### Livello 1 — Equilibrio Esami · **€79**
-| Esame | Listino |
-|---|---|
-| FSH + LH | €24 |
-| Estradiolo | €22 |
-| TSH (tiroide, spesso confusa con sintomi menopausa) | €12 |
-| Vitamina D | €22 |
-| Calcio + Fosforo | €4 |
-| Profilo lipidico completo (rischio CV post-estrogeni) | €11 |
-| Glicemia + HbA1c | €14 |
-| Emocromo | €5 |
-| **Somma €114 → pack €79** (-31%) | vs Synlab €90: più esami, meno prezzo |
+### Livello 2 — Percorso Equilibrio · **€239** ⭐ (somma €264, -9.5%)
+Equilibrio Esami + **Visita ginecologica con ecografia transvaginale** (GIPO combo €150)
 
-### Livello 2 — Percorso Equilibrio · **€199** ⭐
-Equilibrio Esami + **Visita ginecologica con eco transvaginale** (GIPO €130+€60).
-Somma €269 → **€199** (-26%). La visita legge gli ormoni E valuta l'utero/ovaie.
-
-### Livello 3 — Percorso Equilibrio Completo · **€259**
+### Livello 3 — Percorso Equilibrio Completo · **€295** (somma €324, -9%)
 Percorso Equilibrio + **Ecografia mammaria bilaterale** (GIPO €60) con la senologa
-(Dott.ssa Bove, ginecologa-senologa già in équipe).
-Somma €329 → **€259** (-21%). **La prevenzione femminile 45-55 completa in un accesso.**
+(Dott.ssa Bove, ginecologa-senologa in équipe).
+**La prevenzione femminile 45-55 completa in un solo accesso.**
 
 **Posizionamento**: "I sintomi non sono 'normali per l'età'. Sono misurabili."
-Nota clinica per il copy: vampate/insonnia/ciclo irregolare/aumento peso — sintomi che il
-pack trasforma in numeri. Upsell naturale: MOC/densitometria se disponibile in struttura
-(da confermare — non trovata in GIPO 2026), altrimenti pack osteoporosi lab (calcio+VitD+PTH €39).
 
 ---
 
-## 📊 Riepilogo prezzi da validare
+## 📊 Riepilogo prezzi REV 2 (cap sconto 10%)
 
-| Pack | Prezzo | Somma componenti | Sconto |
+| Pack | Somma listino | **Prezzo pack** | Sconto |
 |---|---|---|---|
-| MST Sangue | €49 | €59 | -17% |
-| **MST Completo LEI/LUI** | **€99** | €123-132 | -20/-25% |
-| Percorso MST + Specialista | €149 | €174-229 | -14/-35% |
-| Cuore Esami | €59 | €72 | -18% |
-| **Percorso Cuore** | **€149** | €172 | -13% |
-| Percorso Cuore Plus | €249 | ~€290 | -14% |
-| Equilibrio Esami (45-55) | €79 | €114 | -31% |
-| **Percorso Equilibrio** | **€199** | €269 | -26% |
-| Percorso Equilibrio Completo | €259 | €329 | -21% |
+| MST Sangue | €59 | **€55** | -7% |
+| MST Completo LEI | €123.30 | **€119** | -3.5% |
+| MST Completo LUI | €132 | **€119** | -10% |
+| Percorso MST LUI | €207 | **€189** | -8.7% |
+| Percorso MST LEI | €253.30 | **€229** | -9.6% |
+| Cuore Esami | €72 | **€65** | -9.7% |
+| Percorso Cuore | €172 | **€155** | -9.9% |
+| Percorso Cuore Plus | €292 | **€265** | -9.2% |
+| Equilibrio Esami | €114 | **€105** | -7.9% |
+| Percorso Equilibrio | €264 | **€239** | -9.5% |
+| Percorso Equilibrio Completo | €324 | **€295** | -9% |
 
-## Presentazione sito proposta (bozza concept)
-- 3 card-linea su /prevenzione/ con badge: 🔒 "SOLO DA NOI: tamponi inclusi" · ❤️ "Col cardiologo, non solo le provette" · 🌸 "45-55: il check-up pensato per te"
-- Ogni card: 3 livelli a scaletta (ancoraggio prezzo: il livello 2 è quello che converte)
-- FAQ + JSON-LD OfferCatalog per linea (pattern ondate SEO già rodato)
-- CTA: telefono + WhatsApp (tracking bc_* già attivo)
+Regola rispettata: nessun pack supera il -10% sulla somma dei prezzi di listino/GIPO.
+Il valore percepito si sposta dallo sconto alla **convenienza organizzativa** (un accesso,
+referto spiegato, prenotazione unica) — coerente con margini sani.
+
+## Presentazione sito (concept invariato)
+- 3 card-linea su /prevenzione/: 🔒 "SOLO DA NOI: tamponi inclusi" · ❤️ "Col cardiologo, non solo le provette" · 🌸 "45-55: il check-up pensato per te"
+- Scaletta 3 livelli per card (ancoraggio: il livello 2 converte)
+- Copy sconto: "Risparmi €X" in euro assoluti (es. "Risparmi €25") — più efficace del % basso
+- FAQ + JSON-LD OfferCatalog per linea (pattern ondate SEO rodato)
 
 ## ❓ Da validare
-1. Prezzi ok? (in particolare MST Completo €99 e Percorso Equilibrio €199)
-2. Tamponi LEI/LUI allo stesso prezzo €99 — ok o differenziare?
-3. MOC/densitometria: esiste in struttura? (non trovata in GIPO 2026)
-4. Naming linee: "Zero Pensieri / Battito Sicuro / Equilibrio" — ok o alternative?
-5. Il Percorso MST €149: visita con ginecologo/urologo dedicato è organizzabile in agenda?
+1. Prezzi REV 2 ok?
+2. Ecocardiogramma nel Plus: fa fede €120 (pubblico) o €72 (GIPO convenzionato)? Il Plus a €265 assume €120.
+3. MST unificato €119 LEI/LUI: confermi?
+4. MOC/densitometria esiste in struttura? (non in GIPO 2026 — eventualmente upsell Equilibrio)
+5. Naming linee ok? ("Zero Pensieri / Battito Sicuro / Equilibrio")
