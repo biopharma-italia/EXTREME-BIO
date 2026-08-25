@@ -17,6 +17,7 @@
 
   <link rel="stylesheet" href="/css/dashboard.cc671280.css?v=3">
   <link rel="stylesheet" href="/css/analytics.css?v=3">
+  <link rel="stylesheet" href="/css/delivery-stats.css?v=1">
 </head>
 <body>
   <!-- SIDEBAR -->
@@ -101,6 +102,10 @@
         <a href="#analytics" class="nav-item" data-page="analytics" data-roles="super_admin">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg>
           <span>Analytics BI</span>
+        </a>
+        <a href="#delivery-stats" class="nav-item" data-page="delivery-stats" data-roles="lab_technician,admin,super_admin,ostetrica">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          <span>Consegna &amp; WhatsApp</span>
         </a>
         <a href="#settings" class="nav-item" data-page="settings" data-roles="super_admin">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
@@ -1689,6 +1694,18 @@ Femore totale BMD: 0.750, T-score: -1.8'></textarea>
       <div id="anDrillContainer"></div>
     </section>
 
+    <!-- ==================== PAGE: CONSEGNA & WHATSAPP (Staff) ==================== -->
+    <section class="page" id="page-delivery-stats" data-title="Consegna &amp; WhatsApp" hidden>
+      <div class="ds-toolbar">
+        <button class="btn btn-primary btn-sm" id="dsRefreshBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          Aggiorna
+        </button>
+        <span class="ds-toolbar-note">Statistiche di consegna referti e notifiche WhatsApp — finestra 90 giorni</span>
+      </div>
+      <div id="dsContent"></div>
+    </section>
+
   </main>
 
   <!-- MODAL (shared) -->
@@ -1830,5 +1847,6 @@ Femore totale BMD: 0.750, T-score: -1.8'></textarea>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script src="/js/dashboard.668d2593.js?v=27"></script>
   <script src="/js/analytics.js?v=6"></script>
+  <script src="/js/delivery-stats.js?v=1"></script>
 </body>
 </html>
