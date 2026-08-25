@@ -96,4 +96,38 @@ jobs:
             echo "::warning::review-request ha risposto HTTP $REVIEW_CODE"
           fi
 
-# retrigger: 2026-08-25 primo run review-request post-deploy
+          # 5) Secondo promemoria a 72h per referti mai aperti (canale
+          #    alternato: email se il paziente ha un indirizzo, altrimenti
+          #    WhatsApp). Max 15/run, dedup 1 per referto, finestra 09-19.
+          SECOND_RESPONSE=$(curl -sS -w '\n%{http_code}' -X POST \
+            'https://referti.bio-clinic.it/api/cron/second-reminder' \
+            -H "Authorization: Bearer ${OIDC_TOKEN}" \
+            -H 'Content-Type: application/json' \
+            -d '{}' \
+            --max-time 240)
+          SECOND_CODE=$(echo "$SECOND_RESPONSE" | tail -n1)
+          SECOND_BODY=$(echo "$SECOND_RESPONSE" | sed '$d')
+          echo "second-reminder HTTP $SECOND_CODE"
+          echo "$SECOND_BODY"
+          if [ "$SECOND_CODE" -ne 200 ]; then
+            echo "::warning::second-reminder ha risposto HTTP $SECOND_CODE"
+          fi
+
+          # 6) Alert staff: referti con valori anomali/urgenti non visualizzati
+          #    dopo 48h → digest email a laboratorio/ostetriche/admin con
+          #    contatti pazienti da chiamare. Dedup 1 alert per referto.
+          ABN_RESPONSE=$(curl -sS -w '\n%{http_code}' -X POST \
+            'https://referti.bio-clinic.it/api/cron/abnormal-alert' \
+            -H "Authorization: Bearer ${OIDC_TOKEN}" \
+            -H 'Content-Type: application/json' \
+            -d '{}' \
+            --max-time 240)
+          ABN_CODE=$(echo "$ABN_RESPONSE" | tail -n1)
+          ABN_BODY=$(echo "$ABN_RESPONSE" | sed '$d')
+          echo "abnormal-alert HTTP $ABN_CODE"
+          echo "$ABN_BODY"
+          if [ "$ABN_CODE" -ne 200 ]; then
+            echo "::warning::abnormal-alert ha risposto HTTP $ABN_CODE"
+          fi
+
+# retrigger: 2026-08-25 primo run second-reminder + abnormal-alert post-deploy
