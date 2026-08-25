@@ -41,7 +41,7 @@ export async function onRequestGet(context: {
   // Get report and file metadata
   const { data: report } = await adminClient
     .from('reports')
-    .select('id, patient_id, report_number, status')
+    .select('id, patient_id, report_number, status, download_count')
     .eq('id', reportId)
     .is('deleted_at', null)
     .single();
