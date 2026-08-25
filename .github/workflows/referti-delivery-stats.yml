@@ -34,6 +34,8 @@ jobs:
           for i in $(seq 1 10); do
             RESPONSE=$(curl -sS -w '\n%{http_code}' -X POST \
               -H "Authorization: Bearer ${OIDC_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d '{}' \
               'https://referti.bio-clinic.it/api/cron/delivery-stats' || echo -e '\n000')
             HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
             BODY=$(echo "$RESPONSE" | sed '$d')
