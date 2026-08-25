@@ -39,8 +39,11 @@ interface Env {
 }
 
 const MAX_SENDS_PER_RUN = 5;
-const WINDOW_MIN_MINUTES = 30;   // downloaded at least 30 min ago
-const WINDOW_MAX_MINUTES = 90;   // ...but no more than 90 min ago
+const WINDOW_MIN_MINUTES = 30;        // downloaded at least 30 min ago
+const WINDOW_MAX_MINUTES = 24 * 60;   // ...but no more than 24h ago (catch-up:
+                                      // downloads outside the 09-19 send window
+                                      // or missed by a failed run are recovered
+                                      // by later runs; dedupe prevents doubles)
 const REVIEW_COOLDOWN_DAYS = 180; // max 1 request per patient per 6 months
 const REVIEW_SUBJECT = 'Richiesta recensione Google';
 const REVIEW_LINK = 'https://g.page/bioclinic-sassari/review';
