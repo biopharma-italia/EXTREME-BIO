@@ -431,6 +431,7 @@
       case 'users': loadUsers(); break;
       case 'audit': loadAuditLog(); break;
       case 'ai-report': initAIReport(); break;
+      case 'suspended': loadSuspended(); break;
       case 'analytics': if (window._initAnalytics) window._initAnalytics(); break;
     }
   }
@@ -604,6 +605,7 @@
       sbCount('reports', 'status=eq.pending').then(function (n) {
         updateBadge('badgePending', n);
       });
+      refreshSuspendedBadge();
     }
     if (role === 'physician' || role === 'admin' || role === 'super_admin' || role === 'ostetrica' || role === 'lab_technician') {
       sbCount('reports', 'or=(status.eq.validated,status.eq.signed)').then(function (n) {
@@ -1866,6 +1868,8 @@
       // Re-render preview — uploaded files show as "Completato", pending ones keep their buttons
       setTimeout(function () { bulkRenderPreview(); }, 600);
       showMsg('bulkMessage', pending.length + ' file ancora da completare — usa i pulsanti per inserire il CF o registrare il paziente', '');
+      // Auto-park incomplete files in "Referti Sospesi" so they are not lost
+      bulkParkPending(pending);
     } else {
       // All done — offer to clear
       bulkFiles = [];
@@ -2440,8 +2444,8 @@
   }
 
   function initInviteUser() {
-    $('inviteClose').addEventListener('click', function () { $('inviteOverlay').hidden = true; state._inviteFromUpload = false; state._inviteFromBulk = false; $('invRole').disabled = false; });
-    $('inviteCancelBtn').addEventListener('click', function () { $('inviteOverlay').hidden = true; state._inviteFromUpload = false; state._inviteFromBulk = false; $('invRole').disabled = false; });
+    $('inviteClose').addEventListener('click', function () { $('inviteOverlay').hidden = true; state._inviteFromUpload = false; state._inviteFromBulk = false; state._inviteFromSuspended = false; $('invRole').disabled = false; });
+    $('inviteCancelBtn').addEventListener('click', function () { $('inviteOverlay').hidden = true; state._inviteFromUpload = false; state._inviteFromBulk = false; state._inviteFromSuspended = false; $('invRole').disabled = false; });
     $('inviteOverlay').addEventListener('click', function (e) {
       if (e.target === $('inviteOverlay')) $('inviteOverlay').hidden = true;
     });
@@ -2570,6 +2574,8 @@
               setTimeout(function () { aiLookupPatient(); }, 600);
             }
             toast('Paziente registrato — dati importati nel modulo AI', 'success');
+          } else if (state._inviteFromSuspended && role === 'patient' && window._suspAfterInvite && window._suspAfterInvite()) {
+            // handled by suspended-flow hook (creates report from parked PDF)
           } else if (state._inviteFromBulk && role === 'patient') {
             state._inviteFromBulk = false;
             $('inviteOverlay').hidden = true;
@@ -4825,5 +4831,280 @@
 
   // Wire finalize button after AI report section is ready
   initFinalizeButton();
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // REFERTI SOSPESI — PDF senza anagrafica, parcheggiati lato server
+  // ══════════════════════════════════════════════════════════════════════════
+
+  var REASON_LABELS = {
+    cf_not_extracted: 'CF non estratto dal PDF',
+    patient_not_found: 'Paziente non registrato',
+    create_error: 'Errore creazione profilo',
+    manual: 'Sospeso manualmente'
+  };
+
+  function refreshSuspendedBadge() {
+    fetch('/api/reports/suspended', {
+      headers: { 'Authorization': 'Bearer ' + state.token }
+    }).then(function (r) { return r.json(); }).then(function (resp) {
+      if (resp.success) updateBadge('badgeSuspended', resp.count || 0);
+    }).catch(function () { /* silent */ });
+  }
+
+  // ── Auto-park: salva i file bulk non completati come sospesi ──────────────
+  var _parkedNames = {}; // dedup per sessione: evita doppi park dello stesso file
+
+  function bulkParkPending(pending) {
+    var toPark = pending.filter(function (e) {
+      if (_parkedNames[e.file.name + '|' + e.file.size]) return false;
+      // Park only files that can't be uploaded: no CF, not found, or create error
+      var src = e.lookupResult ? e.lookupResult.source : null;
+      return !e.cf || src === 'not_found' || !!e._createError || (!src && e.cf);
+    });
+    if (toPark.length === 0) return;
+
+    var done = 0, ok = 0;
+    toPark.forEach(function (entry) {
+      var reason = !entry.cf ? 'cf_not_extracted'
+        : entry._createError ? 'create_error'
+        : 'patient_not_found';
+      var fd = new FormData();
+      fd.append('file', entry.file, entry.file.name);
+      if (entry.cf) fd.append('cf', entry.cf);
+      if (entry.pdfName) fd.append('pdf_name', entry.pdfName);
+      if (entry.pdfDate) fd.append('pdf_date', entry.pdfDate);
+      if (entry.pdfType) fd.append('pdf_type', entry.pdfType);
+      fd.append('category', $('bulkCategory').value || 'laboratorio');
+      fd.append('reason', reason);
+
+      fetch('/api/reports/suspended', {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + state.token },
+        body: fd
+      }).then(function (r) { return r.json(); }).then(function (resp) {
+        done++;
+        if (resp.success) {
+          ok++;
+          _parkedNames[entry.file.name + '|' + entry.file.size] = true;
+        }
+        if (done === toPark.length && ok > 0) {
+          toast(ok + ' file salvat' + (ok === 1 ? 'o' : 'i') + ' in "Referti Sospesi" — potrai completarli anche dopo', 'success');
+          refreshSuspendedBadge();
+        }
+      }).catch(function () { done++; });
+    });
+  }
+
+  // ── Pagina Sospesi ─────────────────────────────────────────────────────────
+  var _suspBound = false;
+  var suspItems = [];
+
+  function loadSuspended() {
+    if (!_suspBound) {
+      $('suspRefreshBtn').addEventListener('click', loadSuspended);
+      _suspBound = true;
+    }
+    $('suspBody').innerHTML = '<tr class="table-empty"><td colspan="8"><div class="empty-state"><p>Caricamento sospesi...</p></div></td></tr>';
+
+    fetch('/api/reports/suspended', {
+      headers: { 'Authorization': 'Bearer ' + state.token }
+    }).then(function (r) { return r.json(); }).then(function (resp) {
+      if (!resp.success) throw new Error(resp.error || 'Errore');
+      suspItems = resp.data || [];
+      updateBadge('badgeSuspended', suspItems.length);
+      renderSuspended();
+    }).catch(function (e) {
+      $('suspBody').innerHTML = '<tr class="table-empty"><td colspan="8"><div class="empty-state"><p>Errore: ' + esc(e.message) + '</p></div></td></tr>';
+    });
+  }
+
+  function renderSuspended() {
+    var body = $('suspBody');
+    if (suspItems.length === 0) {
+      $('suspStats').innerHTML = '';
+      body.innerHTML = '<tr class="table-empty"><td colspan="8"><div class="empty-state"><p>🎉 Nessun referto sospeso — tutte le anagrafiche sono complete</p></div></td></tr>';
+      return;
+    }
+
+    var noCf = suspItems.filter(function (s) { return !s.cf; }).length;
+    var withCf = suspItems.length - noCf;
+    $('suspStats').innerHTML = ''
+      + '<span style="padding:4px 10px;border-radius:8px;background:#fef3c7;color:#92400e;font-size:0.85rem;font-weight:500">' + suspItems.length + ' in attesa</span>'
+      + (withCf > 0 ? '<span style="padding:4px 10px;border-radius:8px;background:#dbeafe;color:#1e40af;font-size:0.85rem;font-weight:500">' + withCf + ' con CF — da registrare</span>' : '')
+      + (noCf > 0 ? '<span style="padding:4px 10px;border-radius:8px;background:#fee2e2;color:#991b1b;font-size:0.85rem;font-weight:500">' + noCf + ' senza CF</span>' : '');
+
+    var isAdminRole = state.profile && (state.profile.role === 'admin' || state.profile.role === 'super_admin');
+
+    body.innerHTML = suspItems.map(function (s, i) {
+      var reasonLabel = REASON_LABELS[s.reason] || s.reason;
+      var typeLabel = (s.pdf_type || 'altro').replace(/_/g, ' ');
+      typeLabel = typeLabel.charAt(0).toUpperCase() + typeLabel.slice(1);
+      var actions = '';
+      if (s.cf) {
+        actions += '<button class="btn btn-primary btn-xs susp-resolve" data-i="' + i + '" style="font-weight:600;padding:4px 12px">Completa &amp; Carica</button> ';
+      } else {
+        actions += '<button class="btn btn-primary btn-xs susp-set-cf" data-i="' + i + '" style="font-weight:600;padding:4px 12px">Inserisci CF</button> ';
+      }
+      if (isAdminRole) {
+        actions += '<button class="btn btn-outline btn-xs susp-delete" data-i="' + i + '" title="Elimina sospeso" style="padding:4px 10px">🗑</button>';
+      }
+      return '<tr>'
+        + '<td title="' + esc(s.file_name) + '">' + esc(s.file_name.length > 24 ? s.file_name.substring(0, 21) + '...' : s.file_name) + '</td>'
+        + '<td><code style="font-size:0.8rem">' + (s.cf ? esc(s.cf) : '<em>—</em>') + '</code></td>'
+        + '<td>' + esc(s.pdf_name || '—') + '</td>'
+        + '<td>' + esc(typeLabel) + '</td>'
+        + '<td>' + (s.pdf_date || '—') + '</td>'
+        + '<td><span class="badge badge-pending">' + esc(reasonLabel) + '</span></td>'
+        + '<td>' + fmtDateTime(s.created_at) + '</td>'
+        + '<td style="white-space:nowrap">' + actions + '</td>'
+        + '</tr>';
+    }).join('');
+
+    body.querySelectorAll('.susp-set-cf').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var i = parseInt(this.dataset.i);
+        var cf = prompt('Inserisci il Codice Fiscale per: ' + suspItems[i].file_name);
+        if (cf && cf.trim().length === 16) {
+          suspItems[i].cf = cf.trim().toUpperCase();
+          suspResolve(i);
+        } else if (cf) {
+          toast('Il codice fiscale deve avere 16 caratteri', 'warning');
+        }
+      });
+    });
+    body.querySelectorAll('.susp-resolve').forEach(function (btn) {
+      btn.addEventListener('click', function () { suspResolve(parseInt(this.dataset.i)); });
+    });
+    body.querySelectorAll('.susp-delete').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var i = parseInt(this.dataset.i);
+        if (!confirm('Eliminare definitivamente il sospeso "' + suspItems[i].file_name + '"? Il PDF verrà cancellato.')) return;
+        fetch('/api/reports/suspended/' + suspItems[i].id, {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + state.token }
+        }).then(function (r) { return r.json(); }).then(function (resp) {
+          if (resp.success) { toast('Sospeso eliminato', 'warning'); loadSuspended(); }
+          else toast(resp.error || 'Errore', 'error');
+        }).catch(function () { toast('Errore di rete', 'error'); });
+      });
+    });
+  }
+
+  // ── Resolve: lookup CF → se esiste crea referto, se no apri registrazione ──
+  function suspResolve(i) {
+    var s = suspItems[i];
+    if (!s.cf) return;
+
+    fetch('/api/admin/users/batch-lookup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + state.token },
+      body: JSON.stringify({ fiscal_codes: [s.cf] })
+    }).then(function (r) { return r.json(); }).then(function (res) {
+      var result = res.success && res.results ? res.results[s.cf] : null;
+
+      if (result && result.source === 'users' && result.data && result.data.id) {
+        // Paziente già registrato → crea subito il referto
+        suspCreateReport(i, result.data.id, result.data.first_name + ' ' + result.data.last_name);
+      } else if (result && result.source === 'gipo' && result.data && result.data.email) {
+        // Anagrafica GIPO completa → auto-crea profilo, poi referto
+        toast('Creazione profilo da anagrafica GIPO...', '');
+        var g = result.data;
+        var reqBody = {
+          email: g.email, first_name: g.first_name, last_name: g.last_name,
+          role: 'patient', password: genPassword(16), send_invite: true,
+          fiscal_code: g.fiscal_code
+        };
+        if (g.phone) reqBody.phone = g.phone;
+        if (g.date_of_birth) reqBody.date_of_birth = g.date_of_birth;
+        if (g.gender) reqBody.gender = g.gender;
+        fetch('/api/users', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + state.token },
+          body: JSON.stringify(reqBody)
+        }).then(function (r) { return r.json(); }).then(function (resp) {
+          if (resp.success && resp.data && resp.data.id) {
+            suspCreateReport(i, resp.data.id, g.first_name + ' ' + g.last_name);
+          } else {
+            toast(resp.error || 'Errore creazione profilo — registra manualmente', 'error');
+            suspOpenInvite(i);
+          }
+        }).catch(function () { toast('Errore di rete', 'error'); });
+      } else {
+        // Non trovato da nessuna parte → apri il modale di registrazione
+        suspOpenInvite(i);
+      }
+    }).catch(function () { toast('Errore nella ricerca paziente', 'error'); });
+  }
+
+  function suspOpenInvite(i) {
+    var s = suspItems[i];
+    $('inviteOverlay').hidden = false;
+    $('inviteForm').reset();
+    $('inviteMessage').textContent = '';
+    $('invPassword').value = genPassword(16);
+    $('invRole').value = 'patient';
+    $('invRole').disabled = true;
+    $('invFiscal').value = s.cf || '';
+    togglePatientFields();
+    if (s.pdf_name) {
+      var parts = s.pdf_name.split(/\s+/);
+      if (parts.length >= 2) {
+        $('invLastName').value = parts[0];
+        $('invFirstName').value = parts.slice(1).join(' ');
+      }
+    }
+    state._inviteFromSuspended = true;
+    state._inviteFromSuspendedIdx = i;
+  }
+
+  function suspCreateReport(i, patientId, patientName) {
+    var s = suspItems[i];
+    fetch('/api/reports/suspended/' + s.id, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + state.token },
+      body: JSON.stringify({
+        patient_id: patientId,
+        report_type: s.pdf_type || null,
+        category: s.category || 'laboratorio',
+        sample_date: s.pdf_date || null
+      })
+    }).then(function (r) { return r.json(); }).then(function (resp) {
+      if (resp.success) {
+        toast('Referto ' + resp.data.report_number + ' creato per ' + esc(patientName) + ' — ora in coda validazione', 'success');
+        loadSuspended();
+      } else {
+        toast(resp.error || 'Errore nella creazione del referto', 'error');
+      }
+    }).catch(function () { toast('Errore di rete', 'error'); });
+  }
+
+  // Hook post-registrazione dal modale invite (chiamato dal submit handler)
+  window._suspAfterInvite = function () {
+    if (!state._inviteFromSuspended) return false;
+    state._inviteFromSuspended = false;
+    $('inviteOverlay').hidden = true;
+    $('invRole').disabled = false;
+    var i = state._inviteFromSuspendedIdx;
+    if (i !== undefined && suspItems[i]) {
+      var cf = suspItems[i].cf;
+      toast('Paziente registrato — creazione referto...', 'success');
+      setTimeout(function () {
+        fetch('/api/admin/users/batch-lookup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + state.token },
+          body: JSON.stringify({ fiscal_codes: [cf] })
+        }).then(function (r) { return r.json(); }).then(function (res) {
+          var result = res.success && res.results ? res.results[cf] : null;
+          if (result && result.source === 'users' && result.data && result.data.id) {
+            suspCreateReport(i, result.data.id, result.data.first_name + ' ' + result.data.last_name);
+          } else {
+            toast('Profilo creato ma non ancora trovato — riprova tra qualche secondo con "Completa & Carica"', 'warning');
+            loadSuspended();
+          }
+        });
+      }, 800);
+    }
+    return true;
+  };
 
 })();

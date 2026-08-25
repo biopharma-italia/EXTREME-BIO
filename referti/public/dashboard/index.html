@@ -63,6 +63,11 @@
           <span>Coda Validazione</span>
           <span class="nav-badge badge-warning" id="badgePending" hidden>0</span>
         </a>
+        <a href="#suspended" class="nav-item" data-page="suspended" data-roles="lab_technician,admin,super_admin,ostetrica">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span>Referti Sospesi</span>
+          <span class="nav-badge badge-warning" id="badgeSuspended" hidden>0</span>
+        </a>
       </div>
 
       <!-- Physician section -->
@@ -575,6 +580,44 @@
       <div class="card" id="bulkResultCard" hidden>
         <h3 class="card-title">3. Riepilogo Caricamento</h3>
         <div id="bulkResultBody"></div>
+      </div>
+    </section>
+
+    <!-- ==================== PAGE: REFERTI SOSPESI (Lab) ==================== -->
+    <section class="page" id="page-suspended" data-title="Referti Sospesi" hidden>
+      <div class="page-header">
+        <div class="page-header-info">
+          <p class="page-subtitle">PDF in attesa di anagrafica: completa i dati del paziente per procedere a validazione e invio</p>
+        </div>
+        <button class="btn btn-outline btn-sm" id="suspRefreshBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          Aggiorna
+        </button>
+      </div>
+
+      <div class="card">
+        <div class="bulk-stats" id="suspStats" style="display:flex;gap:16px;margin-bottom:12px;flex-wrap:wrap"></div>
+        <div class="table-responsive">
+          <table class="data-table" id="suspTable">
+            <thead>
+              <tr>
+                <th>File</th>
+                <th>Cod. Fiscale</th>
+                <th>Paziente (dal PDF)</th>
+                <th>Tipo Esame</th>
+                <th>Data Prelievo</th>
+                <th>Motivo</th>
+                <th>Sospeso il</th>
+                <th>Azioni</th>
+              </tr>
+            </thead>
+            <tbody id="suspBody">
+              <tr class="table-empty"><td colspan="8">
+                <div class="empty-state"><p>Caricamento sospesi...</p></div>
+              </td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
@@ -1845,7 +1888,7 @@ Femore totale BMD: 0.750, T-score: -1.8'></textarea>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-  <script src="/js/dashboard.668d2593.js?v=28"></script>
+  <script src="/js/dashboard.668d2593.js?v=29"></script>
   <script src="/js/analytics.js?v=6"></script>
   <script src="/js/delivery-stats.js?v=1"></script>
 </body>
