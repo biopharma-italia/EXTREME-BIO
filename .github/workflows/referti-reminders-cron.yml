@@ -130,4 +130,4 @@ jobs:
             echo "::warning::abnormal-alert ha risposto HTTP $ABN_CODE"
           fi
 
-# retrigger: 2026-08-25 primo run second-reminder + abnormal-alert post-deploy
+# retrigger: 2026-08-25 21:05 run OIDC reale second-reminder + abnormal-alert (post-deploy 45801966)
