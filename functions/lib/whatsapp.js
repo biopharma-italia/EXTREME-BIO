@@ -105,7 +105,11 @@ export async function sendWhatsApp(env, phone, message) {
 
     if (response.ok) {
       const data = await response.json();
-      return { success: true, provider_id: data.messageId || data.id || undefined };
+      const payload = data.data || data;
+      return {
+        success: true,
+        provider_id: payload.msgId || payload.messageId || payload.id || undefined
+      };
     }
 
     if (response.status === 429) {

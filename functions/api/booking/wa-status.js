@@ -47,6 +47,29 @@ async function getSessionStatus(env) {
   }
 }
 
+async function getSessionUser(env) {
+  if (!env.WASENDER_API_KEY) return null;
+  const baseUrl = env.WASENDER_BASE_URL || DEFAULT_BASE_URL;
+  try {
+    const res = await fetch(`${baseUrl}/user`, {
+      headers: { 'Authorization': `Bearer ${env.WASENDER_API_KEY}` },
+    });
+    if (!res.ok) return { checked: false, http_status: res.status };
+    const data = await res.json();
+    const payload = data.data || data;
+    const jid = payload.id || payload.jid || '';
+    const digits = String(jid).replace(/@.*/, '').replace(/\D/g, '');
+    return {
+      checked: true,
+      sender_masked: maskPhone(digits),
+      name: payload.name || payload.pushName || null,
+      _digits: digits, // uso interno, rimosso prima dell'output
+    };
+  } catch (err) {
+    return { checked: false, error: (err && err.message) || 'fetch failed' };
+  }
+}
+
 async function checkOnWhatsApp(env, phoneE164) {
   if (!env.WASENDER_API_KEY || !phoneE164) return null;
   const baseUrl = env.WASENDER_BASE_URL || DEFAULT_BASE_URL;
@@ -130,6 +153,18 @@ export async function onRequestGet(context) {
       // Verifica se il numero è registrato su WhatsApp
       const e164 = digits.startsWith('39') ? '+' + digits : '+39' + digits;
       out.on_whatsapp_check = await checkOnWhatsApp(env, e164);
+      // Identità del mittente (per capire se destinatario == mittente:
+      // WhatsApp non recapita notifiche di messaggi inviati a se stessi
+      // su un altro dispositivo come ci si aspetterebbe)
+      const senderInfo = await getSessionUser(env);
+      if (senderInfo) {
+        const sDigits = senderInfo._digits || '';
+        delete senderInfo._digits;
+        out.sender_session_user = senderInfo;
+        if (sDigits) {
+          out.recipient_is_sender = sDigits.endsWith(digits) || digits.endsWith(sDigits);
+        }
+      }
     } else {
       // Statistiche aggregate (nessun dato personale esposto)
       const list = await env.BOOKING_KV.list({ prefix: 'wa_notify:', limit: 100 });
