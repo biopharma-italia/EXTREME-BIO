@@ -46,6 +46,7 @@ const PUBLIC_ROUTES = [
   '/api/cron/send-reminders',  // Auth gestita internamente (X-Cron-Secret)
   '/api/cron/export-secrets',  // Auth gestita internamente (X-Cron-Secret / GitHub OIDC)
   '/api/cron/delivery-stats',  // Auth gestita internamente (X-Cron-Secret / GitHub OIDC)
+  '/api/cron/retry-failed-notifications', // Auth gestita internamente (X-Cron-Secret / GitHub OIDC)
   '/api/admin/users/phone-audit', // Auth gestita internamente (X-Cron-Secret o token admin)
 ];
 

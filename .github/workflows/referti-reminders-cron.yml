@@ -59,3 +59,21 @@ jobs:
             echo "::error::Cron promemoria fallito con HTTP $HTTP_CODE"
             exit 1
           fi
+
+          # 3) Retry delle notifiche WhatsApp di rilascio fallite (rate limit ecc.)
+          #    Stesso token OIDC; endpoint applica finestra 09-19, backoff 60min,
+          #    max 10/run, stop immediato su nuovo rate limit.
+          RETRY_RESPONSE=$(curl -sS -w '\n%{http_code}' -X POST \
+            'https://referti.bio-clinic.it/api/cron/retry-failed-notifications' \
+            -H "Authorization: Bearer ${OIDC_TOKEN}" \
+            -H 'Content-Type: application/json' \
+            -d '{}' \
+            --max-time 240)
+          RETRY_CODE=$(echo "$RETRY_RESPONSE" | tail -n1)
+          RETRY_BODY=$(echo "$RETRY_RESPONSE" | sed '$d')
+          echo "retry-failed HTTP $RETRY_CODE"
+          echo "$RETRY_BODY"
+          if [ "$RETRY_CODE" -ne 200 ]; then
+            # Non fallire il job: i promemoria sono già stati inviati con successo
+            echo "::warning::retry-failed-notifications ha risposto HTTP $RETRY_CODE"
+          fi
