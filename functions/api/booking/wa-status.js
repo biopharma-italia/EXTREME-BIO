@@ -47,11 +47,31 @@ async function getSessionStatus(env) {
   }
 }
 
+async function checkOnWhatsApp(env, phoneE164) {
+  if (!env.WASENDER_API_KEY || !phoneE164) return null;
+  const baseUrl = env.WASENDER_BASE_URL || DEFAULT_BASE_URL;
+  try {
+    const res = await fetch(`${baseUrl}/on-whatsapp/${encodeURIComponent(phoneE164)}`, {
+      headers: { 'Authorization': `Bearer ${env.WASENDER_API_KEY}` },
+    });
+    if (!res.ok) return { checked: false, http_status: res.status };
+    const data = await res.json();
+    const payload = data.data || data;
+    return {
+      checked: true,
+      exists: payload.exists ?? payload.onWhatsApp ?? payload.on_whatsapp ?? null,
+    };
+  } catch (err) {
+    return { checked: false, error: (err && err.message) || 'fetch failed' };
+  }
+}
+
 export async function onRequestGet(context) {
   const { request, env } = context;
   const headers = { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' };
   const url = new URL(request.url);
   const bookingId = url.searchParams.get('id');
+  const phoneQuery = url.searchParams.get('phone');
 
   const out = {
     ok: true,
@@ -79,6 +99,37 @@ export async function onRequestGet(context) {
         out.notify_log = null;
         out.notify_log_note = 'Nessun log wa_notify per questo ID: o la prenotazione non esiste, o WASENDER_API_KEY non era configurata al momento della prenotazione (invio mai tentato), o il log è scaduto (TTL 90gg).';
       }
+    } else if (phoneQuery && /^\+?\d{8,15}$/.test(phoneQuery.replace(/\D/g, ''))) {
+      // Ricerca invii per numero di telefono (match su cifre finali)
+      const digits = phoneQuery.replace(/\D/g, '');
+      const list = await env.BOOKING_KV.list({ prefix: 'wa_notify:', limit: 100 });
+      const matches = [];
+      for (const key of list.keys) {
+        const raw = await env.BOOKING_KV.get(key.name);
+        if (!raw) continue;
+        try {
+          const log = JSON.parse(raw);
+          const logDigits = String(log.phone || '').replace(/\D/g, '');
+          if (logDigits.endsWith(digits) || digits.endsWith(logDigits)) {
+            matches.push({
+              booking_id: log.booking_id,
+              phone_masked: maskPhone(log.phone),
+              success: log.success,
+              skipped: log.skipped || false,
+              error: log.error,
+              provider_id: log.provider_id,
+              sent_at: log.sent_at,
+            });
+          }
+        } catch { /* ignore */ }
+      }
+      matches.sort((a, b) => String(b.sent_at).localeCompare(String(a.sent_at)));
+      out.phone_query_masked = maskPhone(digits);
+      out.matches = matches;
+      out.match_count = matches.length;
+      // Verifica se il numero è registrato su WhatsApp
+      const e164 = digits.startsWith('39') ? '+' + digits : '+39' + digits;
+      out.on_whatsapp_check = await checkOnWhatsApp(env, e164);
     } else {
       // Statistiche aggregate (nessun dato personale esposto)
       const list = await env.BOOKING_KV.list({ prefix: 'wa_notify:', limit: 100 });
