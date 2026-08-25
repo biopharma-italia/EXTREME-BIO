@@ -96,4 +96,4 @@ jobs:
             echo "::warning::review-request ha risposto HTTP $REVIEW_CODE"
           fi
 
-# retrigger: 2026-08-25 primo run retry-failed post-deploy
+# retrigger: 2026-08-25 primo run review-request post-deploy
