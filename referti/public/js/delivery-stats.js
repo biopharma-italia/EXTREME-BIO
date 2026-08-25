@@ -14,8 +14,13 @@
 
   function getToken() {
     try {
-      var raw = localStorage.getItem('bc_session');
-      if (raw) { var s = JSON.parse(raw); return s.access_token || null; }
+      // Stessa chiave usata dalla dashboard (getSession in dashboard.js)
+      var raw = localStorage.getItem('sb-session');
+      if (raw) {
+        var s = JSON.parse(raw);
+        if (s.expires_at && s.expires_at < Math.floor(Date.now() / 1000)) return null;
+        return s.access_token || null;
+      }
     } catch (e) { /* ignore */ }
     return null;
   }
