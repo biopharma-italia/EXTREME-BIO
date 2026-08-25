@@ -59,3 +59,5 @@ jobs:
             echo "$BODY"
             echo '```'
           } >> $GITHUB_STEP_SUMMARY
+
+# retrigger: 2026-08-25 delivery-stats run 2
