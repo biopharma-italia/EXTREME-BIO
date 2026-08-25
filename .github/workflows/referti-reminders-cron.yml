@@ -77,3 +77,5 @@ jobs:
             # Non fallire il job: i promemoria sono già stati inviati con successo
             echo "::warning::retry-failed-notifications ha risposto HTTP $RETRY_CODE"
           fi
+
+# retrigger: 2026-08-25 primo run retry-failed post-deploy
