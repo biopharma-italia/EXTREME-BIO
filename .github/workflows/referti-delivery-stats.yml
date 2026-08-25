@@ -1,0 +1,59 @@
+name: Referti - Statistiche Consegna (diagnostica)
+
+# Chiama /api/cron/delivery-stats con token OIDC e stampa le statistiche
+# aggregate di consegna referti + reminder WhatsApp (nessun dato paziente).
+# Si esegue al push quando cambia questo file (smoke test) o manualmente.
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/referti-delivery-stats.yml'
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: referti-delivery-stats
+  cancel-in-progress: false
+
+jobs:
+  delivery-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ottieni token OIDC e interroga le statistiche
+        run: |
+          set -euo pipefail
+          OIDC_JSON=$(curl -sS -H "Authorization: Bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=referti.bio-clinic.it/cron")
+          OIDC_TOKEN=$(echo "$OIDC_JSON" | python3 -c 'import sys,json;print(json.load(sys.stdin)["value"])')
+
+          # Retry: al primo push l'endpoint potrebbe non essere ancora deployato
+          for i in $(seq 1 10); do
+            RESPONSE=$(curl -sS -w '\n%{http_code}' -X POST \
+              -H "Authorization: Bearer ${OIDC_TOKEN}" \
+              'https://referti.bio-clinic.it/api/cron/delivery-stats' || echo -e '\n000')
+            HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+            BODY=$(echo "$RESPONSE" | sed '$d')
+            if [ "$HTTP_CODE" = "200" ]; then
+              break
+            fi
+            echo "attempt $i: HTTP $HTTP_CODE — retry in 30s (deploy in corso?)"
+            sleep 30
+          done
+
+          echo "HTTP $HTTP_CODE"
+          echo "$BODY"
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "::error::delivery-stats fallito con HTTP $HTTP_CODE"
+            exit 1
+          fi
+
+          {
+            echo "## Referti — Statistiche Consegna"
+            echo '```json'
+            echo "$BODY"
+            echo '```'
+          } >> $GITHUB_STEP_SUMMARY
