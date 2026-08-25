@@ -180,12 +180,25 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   }]));
 
   // ── Notifiche di rilascio per canale ───────────────────────────────────────
-  const [waRelSent, waRelFailed, emailSent, emailFailed] = await Promise.all([
+  const [waRelSent, waRelFailedRows, emailSent, emailFailed] = await Promise.all([
     db.from('notifications').select('id', { count: 'exact', head: true }).eq('channel', 'whatsapp').eq('status', 'sent').not('body', 'like', '%le ricordiamo%').gte('created_at', d90),
-    db.from('notifications').select('id', { count: 'exact', head: true }).eq('channel', 'whatsapp').eq('status', 'failed').not('body', 'like', '%le ricordiamo%').gte('created_at', d90),
+    db.from('notifications').select('failure_reason, created_at').eq('channel', 'whatsapp').eq('status', 'failed').not('body', 'like', '%le ricordiamo%').gte('created_at', d90).order('created_at', { ascending: false }).limit(500),
     db.from('notifications').select('id', { count: 'exact', head: true }).eq('channel', 'email').eq('status', 'sent').gte('created_at', d90),
     db.from('notifications').select('id', { count: 'exact', head: true }).eq('channel', 'email').eq('status', 'failed').gte('created_at', d90),
   ]);
+
+  // Analisi fallimenti notifiche rilascio WhatsApp: motivi + distribuzione temporale
+  const relFailReasons: Record<string, number> = {};
+  const relFailByWeek: Record<string, number> = {};
+  let relFailLast7d = 0;
+  for (const n of waRelFailedRows.data || []) {
+    const key = (n.failure_reason || 'unknown').slice(0, 80);
+    relFailReasons[key] = (relFailReasons[key] || 0) + 1;
+    const week = String(n.created_at).slice(0, 10);
+    const weekKey = week.slice(0, 8) + (parseInt(week.slice(8, 10), 10) <= 15 ? '01-15' : '16-31');
+    relFailByWeek[weekKey] = (relFailByWeek[weekKey] || 0) + 1;
+    if (n.created_at >= d7) relFailLast7d++;
+  }
 
   // ── Reminder WhatsApp + conversione post-reminder ──────────────────────────
   const { data: reminders } = await db
@@ -233,7 +246,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     window: 'last 90 days (delivery buckets also 7d/30d)',
     delivery: deliveryStats,
     release_notifications_90d: {
-      whatsapp: { sent: waRelSent.count || 0, failed: waRelFailed.count || 0 },
+      whatsapp: {
+        sent: waRelSent.count || 0,
+        failed: (waRelFailedRows.data || []).length,
+        failed_last_7d: relFailLast7d,
+        failure_reasons: relFailReasons,
+        failed_by_period: relFailByWeek,
+      },
       email: { sent: emailSent.count || 0, failed: emailFailed.count || 0 },
     },
     reminders_90d: {

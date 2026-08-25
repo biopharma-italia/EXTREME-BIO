@@ -61,3 +61,5 @@ jobs:
           } >> $GITHUB_STEP_SUMMARY
 
 # retrigger: 2026-08-25 delivery-stats run 2
+
+# retrigger: run 3 failure analysis
