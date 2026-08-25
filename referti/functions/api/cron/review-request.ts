@@ -45,8 +45,18 @@ const REVIEW_COOLDOWN_DAYS = 180; // max 1 request per patient per 6 months
 const REVIEW_SUBJECT = 'Richiesta recensione Google';
 const REVIEW_LINK = 'https://g.page/bioclinic-sassari/review';
 
+/**
+ * Names in the DB are stored ALL-CAPS and can be long compounds
+ * ("AURORA GIOVANNA MARIA GRAZIA"). Use only the first word, title-cased.
+ */
+function displayName(firstName: string | null): string {
+  const first = (firstName || '').trim().split(/\s+/)[0] || '';
+  if (!first) return '';
+  return first.charAt(0).toUpperCase() + first.slice(1).toLowerCase();
+}
+
 function buildMessage(firstName: string | null): string {
-  const name = (firstName || '').trim();
+  const name = displayName(firstName);
   const greeting = name ? `Ciao ${name}! 👋` : 'Ciao! 👋';
   return (
     `${greeting} Il tuo referto è arrivato correttamente.\n\n` +
