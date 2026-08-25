@@ -78,4 +78,22 @@ jobs:
             echo "::warning::retry-failed-notifications ha risposto HTTP $RETRY_CODE"
           fi
 
+          # 4) Richieste recensione Google post-download (30-90 min dopo il
+          #    download del referto). Finestra 09-19, max 5/run, cooldown
+          #    180gg per paziente, skip referti anomali/urgenti, stop su
+          #    rate limit. Best-effort: non fallire il job.
+          REVIEW_RESPONSE=$(curl -sS -w '\n%{http_code}' -X POST \
+            'https://referti.bio-clinic.it/api/cron/review-request' \
+            -H "Authorization: Bearer ${OIDC_TOKEN}" \
+            -H 'Content-Type: application/json' \
+            -d '{}' \
+            --max-time 240)
+          REVIEW_CODE=$(echo "$REVIEW_RESPONSE" | tail -n1)
+          REVIEW_BODY=$(echo "$REVIEW_RESPONSE" | sed '$d')
+          echo "review-request HTTP $REVIEW_CODE"
+          echo "$REVIEW_BODY"
+          if [ "$REVIEW_CODE" -ne 200 ]; then
+            echo "::warning::review-request ha risposto HTTP $REVIEW_CODE"
+          fi
+
 # retrigger: 2026-08-25 primo run retry-failed post-deploy
