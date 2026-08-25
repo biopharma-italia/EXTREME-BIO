@@ -82,17 +82,24 @@ export async function onRequestGet(context: {
     return jsonResponse({ success: false, error: 'Errore nel download del file.' }, 500);
   }
 
-  const encryptedBuffer = await storageData.arrayBuffer();
+  const rawBuffer = await storageData.arrayBuffer();
 
-  // Decrypt
+  // Decrypt only if the file was stored encrypted.
+  // Files uploaded via the dashboard (single & bulk) and via the suspended-resolve
+  // flow are stored in plaintext (is_encrypted=false, no encryption_iv):
+  // decrypting them unconditionally caused a systematic HTTP 500 on this route.
   let plaintext: ArrayBuffer;
-  try {
-    const key = await deriveKey(env.MASTER_ENCRYPTION_KEY, reportId);
-    const aad = `${reportId}:${report.patient_id}`;
-    plaintext = await decryptData(encryptedBuffer, key, fileRecord.encryption_iv, aad);
-  } catch (err) {
-    console.error('[Download] Decryption error:', err);
-    return jsonResponse({ success: false, error: 'Errore nella decifratura del file.' }, 500);
+  if (fileRecord.is_encrypted && fileRecord.encryption_iv) {
+    try {
+      const key = await deriveKey(env.MASTER_ENCRYPTION_KEY, reportId);
+      const aad = `${reportId}:${report.patient_id}`;
+      plaintext = await decryptData(rawBuffer, key, fileRecord.encryption_iv, aad);
+    } catch (err) {
+      console.error('[Download] Decryption error:', err);
+      return jsonResponse({ success: false, error: 'Errore nella decifratura del file.' }, 500);
+    }
+  } else {
+    plaintext = rawBuffer;
   }
 
   // Verify checksum
