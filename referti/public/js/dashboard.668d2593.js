@@ -3036,7 +3036,7 @@
         '<div class="form-group"><label>Data di nascita</label><input class="form-input" id="editUserDob" type="date" value="' + esc(u.date_of_birth || '') + '"></div>' +
         '<div class="form-group"><label>Telefono</label><input class="form-input" id="editUserPhone" value="' + esc(u.phone || '') + '"></div>' +
         '<div class="form-group"><label>Genere</label><select class="form-input" id="editUserGender">' +
-        '<option value="">—</option><option value="F"' + (u.gender === 'F' ? ' selected' : '') + '>Femmina</option><option value="M"' + (u.gender === 'M' ? ' selected' : '') + '>Maschio</option><option value="ALTRO"' + (u.gender === 'ALTRO' ? ' selected' : '') + '>Altro</option></select></div>' +
+        '<option value="">—</option><option value="F"' + (u.gender === 'F' ? ' selected' : '') + '>Femmina</option><option value="M"' + (u.gender === 'M' ? ' selected' : '') + '>Maschio</option><option value="X"' + (u.gender === 'X' ? ' selected' : '') + '>Altro</option></select></div>' +
         '<div class="form-group"><label>Ruolo</label><select class="form-input" id="editUserRole">' +
         Object.keys(ROLE_LABELS).map(function (k) { return '<option value="' + k + '"' + (k === u.role ? ' selected' : '') + '>' + ROLE_LABELS[k] + '</option>'; }).join('') +
         '</select></div>' +
@@ -3067,18 +3067,33 @@
       toast('Nome e cognome sono obbligatori', 'warning');
       return;
     }
-    sbPatch('users', 'id=eq.' + id, patch).then(function () {
+    // Use /api/users/{id} endpoint (service key + role checks).
+    // Direct Supabase PATCH is blocked by RLS for ostetrica/lab_technician
+    // (silent no-op: 200 with 0 rows updated).
+    apiPatchUser(id, patch).then(function () {
       closeModal();
       toast('Utente aggiornato', 'success');
       loadUsers();
-    }).catch(function () { toast('Errore nel salvataggio', 'error'); });
+    }).catch(function (e) { toast(e.message || 'Errore nel salvataggio', 'error'); });
   };
+  function apiPatchUser(id, patch) {
+    return fetch('/api/users/' + id, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + state.token },
+      body: JSON.stringify(patch)
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (resp) {
+        if (!r.ok || !resp.success) throw new Error(resp.error || ('Errore HTTP ' + r.status));
+        return resp;
+      });
+    });
+  }
   window._deactivateUser = function (id) {
-    sbPatch('users', 'id=eq.' + id, { is_active: false }).then(function () {
+    apiPatchUser(id, { is_active: false }).then(function () {
       closeModal();
       toast('Utente disattivato', 'warning');
       loadUsers();
-    }).catch(function () { toast('Errore', 'error'); });
+    }).catch(function (e) { toast(e.message || 'Errore', 'error'); });
   };
 
   window._viewAuditDetail = function (id) {
