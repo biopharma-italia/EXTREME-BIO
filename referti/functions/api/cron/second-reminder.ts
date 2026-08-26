@@ -232,24 +232,31 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     }
 
     const nowIso = new Date().toISOString();
-    await db.from('notifications').insert({
-      user_id: p.id,
-      channel,
-      subject: SUBJECT,
-      body: useEmail
-        ? `Secondo promemoria email per referto ${r.report_number}`
-        : buildWhatsAppMessage(p.first_name, r.report_number),
-      report_id: r.id,
-      action_url: '/dashboard/#my-reports',
-      status: ok ? 'sent' : 'failed',
-      provider: useEmail ? 'resend' : 'wasenderapi',
-      provider_id: providerId,
-      sent_at: ok ? nowIso : null,
-      failed_at: ok ? null : nowIso,
-      failure_reason: ok ? null : (errMsg || 'unknown'),
-      retry_count: 0,
-      max_retries: 0,
-    });
+    // Dedup marker: skip it on transient rate-limit failures (or sends skipped
+    // because the batch hit a rate limit) so the report stays eligible and is
+    // automatically retried at the next hourly run. Permanent failures still
+    // write the marker to avoid hammering broken contacts every hour.
+    const isTransient = !ok && (errMsg || '').toLowerCase().includes('rate limit');
+    if (!isTransient) {
+      await db.from('notifications').insert({
+        user_id: p.id,
+        channel,
+        subject: SUBJECT,
+        body: useEmail
+          ? `Secondo promemoria email per referto ${r.report_number}`
+          : buildWhatsAppMessage(p.first_name, r.report_number),
+        report_id: r.id,
+        action_url: '/dashboard/#my-reports',
+        status: ok ? 'sent' : 'failed',
+        provider: useEmail ? 'resend' : 'wasenderapi',
+        provider_id: providerId,
+        sent_at: ok ? nowIso : null,
+        failed_at: ok ? null : nowIso,
+        failure_reason: ok ? null : (errMsg || 'unknown'),
+        retry_count: 0,
+        max_retries: 0,
+      });
+    }
 
     if (ok) {
       if (useEmail) sentEmail++; else sentWa++;

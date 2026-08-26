@@ -190,23 +190,28 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     const nowIso = new Date().toISOString();
 
     // Record notification (also serves as the cooldown marker; recorded even
-    // on failure so a broken number is not hammered every hour — no retry
-    // logic for review requests: they are best-effort, max_retries=0)
-    await db.from('notifications').insert({
-      user_id: patient.id,
-      channel: 'whatsapp',
-      subject: REVIEW_SUBJECT,
-      body,
-      report_id: r.id,
-      status: waResult.success ? 'sent' : 'failed',
-      provider: 'wasender',
-      provider_id: waResult.provider_id || null,
-      sent_at: waResult.success ? nowIso : null,
-      failed_at: waResult.success ? null : nowIso,
-      failure_reason: waResult.success ? null : (waResult.error || 'unknown'),
-      retry_count: 0,
-      max_retries: 0,
-    });
+    // on PERMANENT failure so a broken number is not hammered every hour.
+    // Transient rate-limit failures write NO marker: the patient stays
+    // eligible and is automatically retried at the next hourly run.
+    const isRateLimited = !waResult.success
+      && (waResult.error || '').toLowerCase().includes('rate limit');
+    if (!isRateLimited) {
+      await db.from('notifications').insert({
+        user_id: patient.id,
+        channel: 'whatsapp',
+        subject: REVIEW_SUBJECT,
+        body,
+        report_id: r.id,
+        status: waResult.success ? 'sent' : 'failed',
+        provider: 'wasender',
+        provider_id: waResult.provider_id || null,
+        sent_at: waResult.success ? nowIso : null,
+        failed_at: waResult.success ? null : nowIso,
+        failure_reason: waResult.success ? null : (waResult.error || 'unknown'),
+        retry_count: 0,
+        max_retries: 0,
+      });
+    }
 
     if (waResult.success) {
       sent++;
