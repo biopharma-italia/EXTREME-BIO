@@ -240,8 +240,9 @@ export async function onRequestDelete(context: {
 }) {
   const { params, data } = context;
   const { ctx, env } = data;
-  // Delete richiede ruolo admin (evita cancellazioni accidentali da tecnici)
-  const authError = requireRole(ctx, 'admin', 'super_admin');
+  // Delete aperto a tutto lo staff (richiesta 2026-08-26); resta il confirm
+  // lato UI e l'audit trail con risk_level medium per tracciabilità
+  const authError = requireRole(ctx, ...STAFF_ROLES);
   if (authError) return authError;
 
   const suspendedId = params.id;

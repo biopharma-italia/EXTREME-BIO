@@ -1991,6 +1991,7 @@
         $$('#queueBody input[type="checkbox"]').forEach(function (cb) { cb.checked = checked; });
       });
       $('validateAllBtn').addEventListener('click', bulkValidate);
+      if ($('fastTrackAllBtn')) $('fastTrackAllBtn').addEventListener('click', bulkFastTrack);
       $('filterQueueUrgent')._bound = true;
     }
   }
@@ -2023,6 +2024,73 @@
         '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:2px"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14H7L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>Elimina</button>' +
         '</td></tr>';
     }).join('');
+  }
+
+  // ── Bulk Fast-Track: valida+firma+rilascia tutti i selezionati ────────────
+  // Stesse regole del fast-track singolo: i referti con valori anomali sono
+  // esclusi automaticamente (richiedono revisione medica individuale).
+  function bulkFastTrack() {
+    var ids = [];
+    $$('#queueBody .queue-cb:checked').forEach(function (cb) { ids.push(cb.value); });
+    if (ids.length === 0) { toast('Seleziona almeno un referto (o usa la casella in alto per selezionarli tutti)', 'warning'); return; }
+
+    // Fetch flags to exclude abnormal reports (same guard as single fast-track)
+    sbGet('reports', 'select=id,report_number,has_abnormal_values&id=in.(' + ids.join(',') + ')').then(function (rows) {
+      rows = rows || [];
+      var eligible = rows.filter(function (r) { return !r.has_abnormal_values; });
+      var skipped = rows.length - eligible.length;
+      if (eligible.length === 0) {
+        toast('Nessun referto eleggibile: i referti con valori anomali richiedono revisione individuale', 'warning');
+        return;
+      }
+
+      openModal('Fast-Track Multiplo',
+        '<p>Stai per processare <strong>' + eligible.length + '</strong> referti attraverso tutto il flusso.</p>' +
+        '<p style="font-size:0.85rem;color:var(--text-secondary)">Ogni referto verrà <strong>validato</strong>, <strong>firmato</strong> e <strong>rilasciato al paziente</strong> con notifica.</p>' +
+        (skipped > 0 ? '<p style="font-size:0.85rem;color:#b45309;background:#fef3c7;padding:8px 10px;border-radius:8px">⚠️ ' + skipped + ' referti con <strong>valori anomali</strong> sono stati esclusi: richiedono fast-track individuale dopo revisione.</p>' : ''),
+        '<button class="btn btn-outline" onclick="window._closeModal()">Annulla</button>' +
+        '<button class="btn btn-primary" id="confirmBulkFastTrack">Conferma (' + eligible.length + ')</button>');
+
+      setTimeout(function () {
+        var btn = $('confirmBulkFastTrack');
+        if (btn) btn.addEventListener('click', function () {
+          btn.disabled = true;
+          var now = new Date().toISOString();
+          var userId = state.profile ? state.profile.id : null;
+          var done = 0, ok = 0, fail = 0;
+          var okReports = [];
+
+          // Process in throttled batches of 5 (same as bulk release, P1-7)
+          processBatch(eligible, 5, function (r) {
+            return sbPatch('reports', 'id=eq.' + r.id, {
+              status: 'validated', validated_at: now, validated_by: userId
+            }, {requireMatch: true}).then(function () {
+              return sbPatch('reports', 'id=eq.' + r.id, {
+                status: 'signed', signed_at: now, signed_by: userId
+              }, {requireMatch: true});
+            }).then(function () {
+              return sbPatch('reports', 'id=eq.' + r.id, {
+                status: 'released', released_at: now, released_by: userId
+              }, {requireMatch: true});
+            }).then(function () {
+              ok++; done++; okReports.push(r);
+              btn.textContent = 'Elaborazione... ' + done + '/' + eligible.length;
+            }).catch(function () {
+              fail++; done++;
+              btn.textContent = 'Elaborazione... ' + done + '/' + eligible.length;
+            });
+          }, 800).then(function () {
+            closeModal();
+            if (ok > 0) toast(ok + ' referti validati, firmati e rilasciati!', 'success');
+            if (fail > 0) toast(fail + ' referti non processati (riprova)', 'error');
+            // Throttled release notifications (email), batch of 5 / 1s
+            processBatch(okReports, 5, function (r) { return notifyRelease(r.id); }, 1000);
+            loadQueue();
+            loadDashboardBadges(state.profile.role);
+          });
+        });
+      }, 50);
+    }).catch(function () { toast('Errore nel recupero dei referti selezionati', 'error'); });
   }
 
   function bulkValidate() {
@@ -4933,7 +5001,6 @@
       + (withCf > 0 ? '<span style="padding:4px 10px;border-radius:8px;background:#dbeafe;color:#1e40af;font-size:0.85rem;font-weight:500">' + withCf + ' con CF — da registrare</span>' : '')
       + (noCf > 0 ? '<span style="padding:4px 10px;border-radius:8px;background:#fee2e2;color:#991b1b;font-size:0.85rem;font-weight:500">' + noCf + ' senza CF</span>' : '');
 
-    var isAdminRole = state.profile && (state.profile.role === 'admin' || state.profile.role === 'super_admin');
 
     body.innerHTML = suspItems.map(function (s, i) {
       var reasonLabel = REASON_LABELS[s.reason] || s.reason;
@@ -4945,9 +5012,8 @@
       } else {
         actions += '<button class="btn btn-primary btn-xs susp-set-cf" data-i="' + i + '" style="font-weight:600;padding:4px 12px">Inserisci CF</button> ';
       }
-      if (isAdminRole) {
-        actions += '<button class="btn btn-outline btn-xs susp-delete" data-i="' + i + '" title="Elimina sospeso" style="padding:4px 10px">🗑</button>';
-      }
+      // Delete visibile a tutto lo staff (endpoint allineato lato server)
+      actions += '<button class="btn btn-outline btn-xs susp-delete" data-i="' + i + '" title="Elimina sospeso" style="padding:4px 10px">🗑</button>';
       return '<tr>'
         + '<td title="' + esc(s.file_name) + '">' + esc(s.file_name.length > 24 ? s.file_name.substring(0, 21) + '...' : s.file_name) + '</td>'
         + '<td><code style="font-size:0.8rem">' + (s.cf ? esc(s.cf) : '<em>—</em>') + '</code></td>'
