@@ -128,3 +128,4 @@ jobs:
           echo "## Main Site Deploy" >> $GITHUB_STEP_SUMMARY
           echo "- Static site + Pages Functions deployed to project bio-clinic" >> $GITHUB_STEP_SUMMARY
           echo "- Live: https://bio-clinic.it" >> $GITHUB_STEP_SUMMARY
+# retrigger: 2026-08-26 hero video deploy
