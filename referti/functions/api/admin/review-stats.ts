@@ -90,8 +90,19 @@ export async function onRequestGet(context: {
 
   if (clkErr) return jsonResponse({ success: false, error: clkErr.message }, 500);
 
-  const clks = clicks || [];
+  // Separate real clicks from bot/link-preview fetches (WaSender fetches the
+  // URL with UA "node" to build the WhatsApp preview; curl = internal tests).
+  const isBot = (ua: string | null): boolean => {
+    const u = (ua || '').toLowerCase().trim();
+    if (!u) return true;
+    return /^(node|curl|wget|python)|bot|crawler|preview|facebookexternalhit|whatsapp|telegrambot|headless/.test(u);
+  };
+
+  const allClks = clicks || [];
+  const clks = allClks.filter((c) => !isBot(c.user_agent));
+  const bots = allClks.filter((c) => isBot(c.user_agent));
   const clickCountIn = (since: string) => clks.filter((c) => c.created_at >= since).length;
+  const botCountIn = (since: string) => bots.filter((c) => c.created_at >= since).length;
 
   // Recent clicks detail (anonymous: time + device summary)
   const deviceOf = (ua: string | null): string => {
@@ -181,6 +192,7 @@ export async function onRequestGet(context: {
       today: clickCountIn(todayStart),
       last_7d: clickCountIn(d7),
       last_30d: clicks30,
+      bot_previews_30d: botCountIn(d30),
       recent: recentClicks,
     },
     ctr_30d_pct: sent30 > 0 ? ((clicks30 / sent30) * 100).toFixed(1) + '%' : 'n/a',

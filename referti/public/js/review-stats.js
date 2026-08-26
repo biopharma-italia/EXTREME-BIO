@@ -91,7 +91,8 @@
       (recent.length
         ? '<table class="ds-table"><thead><tr><th>Quando</th><th>Dispositivo</th></tr></thead><tbody>' + rows + '</tbody></table>'
         : '<div class="ds-muted" style="padding:8px 0">Nessun click registrato negli ultimi 30 giorni.</div>') +
-      '<div class="ds-stat-line" style="margin-top:6px;color:var(--text-muted);font-size:0.8rem">I click sono anonimi (nessun dato paziente). I click da 💻 desktop possono essere test interni.</div>' +
+      '<div class="ds-stat-line" style="margin-top:6px;color:var(--text-muted);font-size:0.8rem">I click sono anonimi (nessun dato paziente). I click da 💻 desktop possono essere test interni.' +
+      ((clk.bot_previews_30d || 0) > 0 ? ' Esclusi ' + esc(clk.bot_previews_30d) + ' accessi automatici (anteprime WhatsApp/bot) negli ultimi 30gg.' : '') + '</div>' +
       '</div>';
 
     // ── Baseline GBP ──
