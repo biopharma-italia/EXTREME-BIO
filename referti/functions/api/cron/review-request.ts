@@ -46,7 +46,11 @@ const WINDOW_MAX_MINUTES = 24 * 60;   // ...but no more than 24h ago (catch-up:
                                       // by later runs; dedupe prevents doubles)
 const REVIEW_COOLDOWN_DAYS = 180; // max 1 request per patient per 6 months
 const REVIEW_SUBJECT = 'Richiesta recensione Google';
-const REVIEW_LINK = 'https://g.page/bioclinic-sassari/review';
+// Tracked redirect on our own domain (functions/r/recensione.ts):
+// counts clicks in audit_log, then 302s to the canonical Google
+// write-review URL with the verified Place ID. The old g.page short
+// name was never registered and fell back to a generic search.
+const REVIEW_LINK = 'https://referti.bio-clinic.it/r/recensione';
 
 /**
  * Names in the DB are stored ALL-CAPS and can be long compounds
