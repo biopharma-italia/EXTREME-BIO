@@ -2083,8 +2083,14 @@
             closeModal();
             if (ok > 0) toast(ok + ' referti validati, firmati e rilasciati!', 'success');
             if (fail > 0) toast(fail + ' referti non processati (riprova)', 'error');
-            // Throttled release notifications (email), batch of 5 / 1s
-            processBatch(okReports, 5, function (r) { return notifyRelease(r.id); }, 1000);
+            // Notifiche DIFFERITE sequenziali: 1 referto ogni 6s (email+WhatsApp
+            // per referto) per non far scattare il rate limit WaSender.
+            // Gira in background: non blocca l'interfaccia.
+            if (okReports.length > 0) {
+              toast('Invio notifiche ai pazienti in corso (' + okReports.length + ', ~' + Math.ceil(okReports.length * 6 / 60) + ' min)...', 'info');
+              processBatch(okReports, 1, function (r) { return notifyRelease(r.id); }, 6000)
+                .then(function () { toast('Notifiche inviate a tutti i ' + okReports.length + ' pazienti', 'success'); });
+            }
             loadQueue();
             loadDashboardBadges(state.profile.role);
           });
@@ -2209,8 +2215,11 @@
           Promise.all(promises).then(function () {
             closeModal();
             toast(data.length + ' referti rilasciati ai pazienti', 'success');
-            // P1-7 FIX: Throttled email notifications — batch of 5 with 1s delay
-            processBatch(data, 5, function (r) { return notifyRelease(r.id); }, 1000);
+            // Notifiche DIFFERITE sequenziali: 1 ogni 6s (email+WhatsApp per
+            // referto) per evitare il rate limit WaSender. Non blocca la UI.
+            toast('Invio notifiche in corso (' + data.length + ', ~' + Math.ceil(data.length * 6 / 60) + ' min)...', 'info');
+            processBatch(data, 1, function (r) { return notifyRelease(r.id); }, 6000)
+              .then(function () { toast('Notifiche inviate a tutti i ' + data.length + ' pazienti', 'success'); });
             loadSignRelease();
           }).catch(function () { toast('Errore nel rilascio', 'error'); });
         });
