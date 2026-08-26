@@ -44,7 +44,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <!-- Open Graph -->
   <meta property="og:title" content="Bio-Clinic Sassari | Poliambulatorio Medico | 31 Specialità">
   <meta property="og:description" content="Poliambulatorio con 67 medici, 31 specialità e 4.450 recensioni a 5 stelle. Centro Slim Care con Wegovy/Mounjaro.">
-  <meta property="og:image" content="https://bio-clinic.it/images/bio-clinic-hero.jpg">
+  <meta property="og:image" content="https://bio-clinic.it/images/reception-bioclinic.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="512">
   <meta property="og:url" content="https://bio-clinic.it">
   <meta property="og:type" content="website">
     <meta property="article:modified_time" content="2026-08-25T10:00:00+01:00">
@@ -65,7 +67,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   
   <!-- Preload LCP assets -->
-  <link rel="preload" as="image" href="/images/hero-doctor.svg" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/hero-reception-poster.jpg" fetchpriority="high" media="(min-width: 1025px)">
+  <link rel="preload" as="image" href="/images/reception-bioclinic.webp" fetchpriority="high" media="(max-width: 1024px)">
   <link rel="preload" as="image" href="/images/logo-bioclinic.webp" type="image/webp">
   <!-- Styles -->
   <link rel="stylesheet" href="/css/style.css?v=20260218-fix1">
@@ -520,8 +523,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           </div>
         </div>
-        <div class="hero-image" data-animate data-delay="200">
-          <img src="/images/hero-doctor.svg" alt="Bio-Clinic Sassari - Poliambulatorio Medico" width="600" height="500" loading="eager">
+        <div class="hero-image hero-media" data-animate data-delay="200">
+          <video id="heroVideo" class="hero-video" autoplay muted loop playsinline preload="metadata"
+                 poster="/images/hero-reception-poster.jpg" width="640" height="360"
+                 aria-label="La reception del poliambulatorio Bio-Clinic Sassari">
+            <source src="/images/hero-reception.webm" type="video/webm">
+            <source src="/images/hero-reception.mp4" type="video/mp4">
+          </video>
+          <picture class="hero-photo">
+            <source srcset="/images/reception-bioclinic.webp" type="image/webp">
+            <img src="/images/reception-bioclinic.jpg" alt="La reception di Bio-Clinic Sassari - Poliambulatorio Medico in Via Renzo Mossa 23" width="1024" height="512" loading="eager" fetchpriority="high">
+          </picture>
         </div>
       </div>
     </div>
@@ -1127,5 +1139,18 @@ _iub.csConfiguration = {
 <script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js"></script>
 <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
 <!-- End Iubenda -->
+<script>
+(function(){
+  // Hero video: se l'autoplay è bloccato o il video fallisce, mostra la foto
+  var v = document.getElementById('heroVideo');
+  if (!v) return;
+  var box = v.closest('.hero-media');
+  function showPhoto(){ if (box) box.classList.add('video-off'); }
+  v.addEventListener('error', showPhoto);
+  var p = v.play && v.play();
+  if (p && p.catch) p.catch(showPhoto);
+  setTimeout(function(){ if (v.paused && !v.ended) showPhoto(); }, 2500);
+})();
+</script>
 </body>
 </html>
