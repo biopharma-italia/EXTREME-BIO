@@ -38,7 +38,7 @@ interface Env {
   WASENDER_BASE_URL: string;
 }
 
-const MAX_SENDS_PER_RUN = 5;
+const MAX_SENDS_PER_RUN = 15;
 const WINDOW_MIN_MINUTES = 30;        // downloaded at least 30 min ago
 const WINDOW_MAX_MINUTES = 24 * 60;   // ...but no more than 24h ago (catch-up:
                                       // downloads outside the 09-19 send window
