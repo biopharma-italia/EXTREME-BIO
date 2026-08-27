@@ -1,6 +1,6 @@
 name: Referti - Promemoria WhatsApp (cron)
 
-# Chiama l'endpoint /api/cron/send-reminders ogni ora, autenticandosi con
+# Chiama l'endpoint /api/cron/send-reminders ogni 30 minuti, autenticandosi con
 # un token OIDC di GitHub Actions (nessun secret di repository necessario).
 # L'endpoint verifica firma RS256 (JWKS GitHub), issuer, audience, repository
 # e branch main. In alternativa accetta ancora X-Cron-Secret.
@@ -11,7 +11,7 @@ name: Referti - Promemoria WhatsApp (cron)
 
 on:
   schedule:
-    - cron: '0 * * * *'   # ogni ora al minuto 0 (UTC)
+    - cron: '0,30 * * * *' # ogni 30 minuti (UTC) — raddoppia il throughput recensioni (max 5/run → 10/ora)
   workflow_dispatch: {}    # trigger manuale per test
   push:
     branches: [main]
