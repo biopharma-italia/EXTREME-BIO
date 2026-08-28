@@ -328,6 +328,12 @@ FORBIDDEN = [
     (r'4\.450\+', 'recensioni 4.450+'),
     (r'1\.1(?:00|36)\+?(?:</strong>)?\s*[Ee]sami', 'esami non canonici'),
     (r'\b(?:48|50|67)\s*(?:[Mm]edici|[Ss]pecialisti)\b', 'totale medici non canonico'),
+    # Orari canonici: Lun-Ven 07:00-21:00, Sab 08:00-14:00.
+    # "Lun-Sab" seguito da un orario implica sabato con orario feriale (errato).
+    (r'Lun-Sab(?:</strong>)?(?:<[^>]+>|[^<>0-9]){0,25}0?7[:.]0?0', 'orario Lun-Sab 7:00 (sabato apre alle 8)'),
+    # Chiusura sabato alle 13:00 (testo o JSON-LD): orario non canonico.
+    (r'Sab(?:ato)?\.?:?\s*0?8[:.]00\s*[-–]\s*13[:.]00', 'orario sabato 8-13 non canonico'),
+    (r'"dayOfWeek":(?:\[)?"Saturday"(?:\])?,"opens":"08:00","closes":"13:00"', 'JSON-LD sabato closes 13:00'),
 ]
 
 
