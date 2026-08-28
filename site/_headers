@@ -12,8 +12,8 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
   
-  # Cache Control (1 hour for HTML)
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  # Cache Control (HTML: 5 min max, always revalidate — no stale snapshots)
+  Cache-Control: public, max-age=300, must-revalidate
 
 # ===========================================
 # DEPRECATED FILES (force no-cache to kill CDN stale copies)
