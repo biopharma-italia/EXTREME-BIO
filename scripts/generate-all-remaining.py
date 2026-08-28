@@ -234,7 +234,7 @@ QUICK_DATA = {
 "alimentazione-sport":("10","Z71.3","Non applicabile","l'alimentazione sportiva",["Nutrizione sportiva","Dieta atleta"],"Z71.3",["Attività intensa","Carenze nutrizionali"],["Non applicabile - ottimizzazione"],
 "Supporto nutrizionale personalizzato per atleti sardi di ogni livello a Bio-Clinic.","Visita nutrizionale per sportivi con piano alimentare a Bio-Clinic Sassari."),
 "analisi-sangue-guida":("10","Z01.7","Non applicabile","le analisi del sangue",["Esami del sangue","Emocromo"],"Z01.7",["Non applicabile - diagnostica"],["Non applicabile - diagnostica"],
-"Laboratorio ad accesso diretto 07:00-10:00, 1.136 esami disponibili a Bio-Clinic.","Analisi del sangue con accesso diretto al Laboratorio Bio-Clinic Sassari."),
+"Laboratorio ad accesso diretto 07:00-10:00, 1.162 esami disponibili a Bio-Clinic.","Analisi del sangue con accesso diretto al Laboratorio Bio-Clinic Sassari."),
 }
 
 # Template body generator

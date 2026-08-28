@@ -9222,7 +9222,7 @@
   },
   "analisi-sangue-guida": {
     "reading_time": "10",
-    "subtitle": "Laboratorio ad accesso diretto 07:00-10:00, 1.136 esami disponibili a Bio-Clinic.",
+    "subtitle": "Laboratorio ad accesso diretto 07:00-10:00, 1.162 esami disponibili a Bio-Clinic.",
     "condition_name": "le analisi del sangue",
     "cta_text": "Analisi del sangue con accesso diretto al Laboratorio Bio-Clinic Sassari.",
     "schema_about": {
@@ -9260,7 +9260,7 @@
       },
       {
         "label": "Sardegna",
-        "text": "Laboratorio ad accesso diretto 07:00-10:00, 1.136 esami disponibili."
+        "text": "Laboratorio ad accesso diretto 07:00-10:00, 1.162 esami disponibili."
       },
       {
         "label": "Diagnosi a Bio-Clinic",
@@ -9276,13 +9276,13 @@
         "id": "cos-e",
         "toc_title": "Cos'è le analisi del sangue",
         "heading": "Analisi del Sangue: Guida Completa ai Valori Normali",
-        "body": "    <p>Guida medica completa su <strong>analisi del sangue</strong>: definizione, cause, fattori di rischio, sintomi, diagnosi e opzioni terapeutiche disponibili a Bio-Clinic Sassari.</p>\n    <p>Laboratorio ad accesso diretto 07:00-10:00, 1.136 esami disponibili a Bio-Clinic.</p>\n    <ul>\n      <li><strong>Causa:</strong> Non applicabile - diagnostica</li>\n      <li><strong>Sintomi:</strong> Non applicabile - diagnostica</li>\n      <li><strong>Diagnosi:</strong> visita specialistica con accertamenti mirati</li>\n      <li><strong>Trattamento:</strong> personalizzato in base alla gravità e alle esigenze del paziente</li>\n    </ul>"
+        "body": "    <p>Guida medica completa su <strong>analisi del sangue</strong>: definizione, cause, fattori di rischio, sintomi, diagnosi e opzioni terapeutiche disponibili a Bio-Clinic Sassari.</p>\n    <p>Laboratorio ad accesso diretto 07:00-10:00, 1.162 esami disponibili a Bio-Clinic.</p>\n    <ul>\n      <li><strong>Causa:</strong> Non applicabile - diagnostica</li>\n      <li><strong>Sintomi:</strong> Non applicabile - diagnostica</li>\n      <li><strong>Diagnosi:</strong> visita specialistica con accertamenti mirati</li>\n      <li><strong>Trattamento:</strong> personalizzato in base alla gravità e alle esigenze del paziente</li>\n    </ul>"
       },
       {
         "id": "sardegna",
         "toc_title": "Analisi del Sangue in Sardegna",
         "heading": "Analisi del Sangue in Sardegna",
-        "body": "    <div class=\"sardinia-box\">\n      <h3>&#127963;&#65039; Il focus Sardegna</h3>\n      <p>Laboratorio ad accesso diretto 07:00-10:00, 1.136 esami disponibili.</p>\n    </div>\n    <p>Bio-Clinic Sassari offre un percorso diagnostico e terapeutico completo per le analisi del sangue, con specialisti dedicati e accesso rapido alla diagnostica strumentale e di laboratorio.</p>"
+        "body": "    <div class=\"sardinia-box\">\n      <h3>&#127963;&#65039; Il focus Sardegna</h3>\n      <p>Laboratorio ad accesso diretto 07:00-10:00, 1.162 esami disponibili.</p>\n    </div>\n    <p>Bio-Clinic Sassari offre un percorso diagnostico e terapeutico completo per le analisi del sangue, con specialisti dedicati e accesso rapido alla diagnostica strumentale e di laboratorio.</p>"
       },
       {
         "id": "sintomi",
@@ -9322,8 +9322,8 @@
       },
       {
         "q": "Qual è il collegamento con la Sardegna?",
-        "a_plain": "Laboratorio ad accesso diretto 07:00-10:00, 1.136 esami disponibili.",
-        "a_html": "<p>Laboratorio ad accesso diretto 07:00-10:00, 1.136 esami disponibili.</p>"
+        "a_plain": "Laboratorio ad accesso diretto 07:00-10:00, 1.162 esami disponibili.",
+        "a_html": "<p>Laboratorio ad accesso diretto 07:00-10:00, 1.162 esami disponibili.</p>"
       },
       {
         "q": "Esistono convenzioni con fondi sanitari?",
