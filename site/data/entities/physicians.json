@@ -1,7 +1,7 @@
 {
   "version": "3.0",
-  "generated": "2026-02-28T19:26:41Z",
-  "total": 50,
+  "generated": "2026-08-28T00:00:00Z",
+  "total": 51,
   "physicians": [
     {
       "id": "francesco-dessole",
@@ -84,6 +84,16 @@
       "booking_enabled": true
     },
     {
+      "id": "camilla-ruzzoli",
+      "slug": "camilla-ruzzoli",
+      "title": "Dott.ssa",
+      "name": "Camilla Ruzzoli",
+      "specialty_id": "ostetricia",
+      "job_title": "Ostetrica",
+      "photo_url": null,
+      "booking_enabled": false
+    },
+    {
       "id": "tonino-bullitta",
       "slug": "tonino-bullitta",
       "title": "Dr.",
@@ -161,7 +171,10 @@
       "specialty_id": "endocrinologia",
       "job_title": "Endocrinologo - Pediatra",
       "photo_url": null,
-      "booking_enabled": true
+      "booking_enabled": true,
+      "secondary_specialty_ids": [
+        "pediatria"
+      ]
     },
     {
       "id": "fabrizia-caucci",
@@ -468,7 +481,7 @@
       "slug": "alessandro-pandolfi",
       "title": "Dott.",
       "name": "Alessandro Pandolfi",
-      "specialty_id": "medicina-interna",
+      "specialty_id": "nutrizione",
       "job_title": "Medico Internista",
       "photo_url": null,
       "booking_enabled": false

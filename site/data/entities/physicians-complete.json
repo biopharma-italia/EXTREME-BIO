@@ -1,7 +1,7 @@
 {
   "version": "3.0",
-  "generated": "2026-02-28T19:26:41Z",
-  "total": 50,
+  "generated": "2026-08-28T00:00:00Z",
+  "total": 51,
   "physicians": [
     {
       "id": "francesco-dessole",
@@ -193,6 +193,24 @@
       "photo_url": null
     },
     {
+      "id": "camilla-ruzzoli",
+      "slug": "camilla-ruzzoli",
+      "title": "Dott.ssa",
+      "name": "Camilla Ruzzoli",
+      "specialty_id": "ostetricia",
+      "job_title": "Ostetrica",
+      "photo_url": null,
+      "booking_enabled": false,
+      "full_name": "Camilla Ruzzoli",
+      "role_badge": "Ostetrica",
+      "bio": "Ostetrica specializzata in riabilitazione del pavimento pelvico e assistenza ostetrica presso Bio-Clinic Sassari.",
+      "miodottore_id": null,
+      "miodottore_url": null,
+      "procedures": [],
+      "pathways": [],
+      "widget_html": null
+    },
+    {
       "id": "tonino-bullitta",
       "slug": "tonino-bullitta",
       "title": "Dr.",
@@ -378,7 +396,10 @@
       "miodottore_url": "https://www.miodottore.it/carlo-burrai/endocrinologo-pediatra/sassari",
       "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/carlo-burrai/endocrinologo-pediatra/sassari\" rel=\"nofollow\" data-zlw-doctor=\"carlo-burrai\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dr. Carlo Burrai - MioDottore.it</a>",
       "booking_enabled": true,
-      "photo_url": null
+      "photo_url": null,
+      "secondary_specialty_ids": [
+        "pediatria"
+      ]
     },
     {
       "id": "fabrizia-caucci",
@@ -1048,7 +1069,7 @@
       "title": "Dott.",
       "name": "Alessandro Pandolfi",
       "full_name": "Dott. Alessandro Pandolfi",
-      "specialty_id": "medicina-interna",
+      "specialty_id": "nutrizione",
       "job_title": "Medico Internista",
       "role_badge": "Team Slim Care",
       "bio": "Medico internista del team Slim Care.",

@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "updated": "2026-08-28",
+  "note": "FONTE DELLA VERITA' dei numeri del sito. Modificare SOLO questo file (e physicians.json per i medici), poi eseguire: python3 scripts/sync-site-facts.py --apply. Il deploy esegue --check e FALLISCE se trova numeri divergenti.",
+  "totals": {
+    "physicians": 51,
+    "specialties_claim": 31,
+    "procedures": "1.840",
+    "lab_tests": "1.162",
+    "reviews": "4.450",
+    "rating": "5.0",
+    "rating_schema": "5.0",
+    "review_count_schema": 4450
+  },
+  "specialty_overrides": {
+    "pma-fertilita": 4
+  },
+  "slug_to_specialty": {
+    "ginecologia": "ginecologia",
+    "cardiologia": "cardiologia",
+    "endocrinologia": "endocrinologia",
+    "dermatologia": "dermatologia",
+    "oculistica": "oculistica",
+    "ortopedia": "ortopedia",
+    "neurologia": "neurologia",
+    "urologia": "urologia",
+    "otorinolaringoiatria": "otorinolaringoiatria",
+    "gastroenterologia": "gastroenterologia",
+    "pneumologia": "pneumologia",
+    "reumatologia": "reumatologia",
+    "ematologia": "ematologia",
+    "chirurgia-vascolare": "chirurgia-vascolare",
+    "medicina-del-lavoro": "medicina-lavoro",
+    "colloquio-psicologico": "psicologia",
+    "visita-nutrizionale": "nutrizione",
+    "visita-pediatrica": "pediatria",
+    "visita-internistica": "medicina-interna",
+    "ortopedia/visita-fisiatrica": "fisiatria",
+    "laboratorio": "laboratorio",
+    "nefrologia": "nefrologia",
+    "ostetricia": "ostetricia"
+  },
+  "specialty_words": {
+    "ginecologia": ["ginecologi", "ginecologhe"],
+    "endocrinologia": ["endocrinologi"],
+    "cardiologia": ["cardiologi"],
+    "dermatologia": ["dermatologi"],
+    "oculistica": ["oculisti"],
+    "ortopedia": ["ortopedici"],
+    "neurologia": ["neurologi"],
+    "ematologia": ["ematologi"],
+    "nefrologia": ["nefrologi"],
+    "pneumologia": ["pneumologi"],
+    "reumatologia": ["reumatologi"],
+    "urologia": ["urologi"],
+    "pediatria": ["pediatri"],
+    "psicologia": ["psicologi"],
+    "fisiatria": ["fisiatri"],
+    "ostetricia": ["ostetriche"]
+  }
+}

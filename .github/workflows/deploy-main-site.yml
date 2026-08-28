@@ -41,6 +41,9 @@ jobs:
       - name: Install Wrangler
         run: npm install -g wrangler@latest
 
+      - name: Verifica coerenza numeri sito (fonte della verita')
+        run: python3 scripts/sync-site-facts.py --check
+
       - name: Update sitemap lastmod from git history
         run: python3 scripts/update-sitemap-lastmod.py || true
 
