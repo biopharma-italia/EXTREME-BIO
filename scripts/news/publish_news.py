@@ -458,6 +458,9 @@ def rebuild_news_sitemap(articles, now):
 </urlset>
 '''
     write_file(NEWS_SITEMAP, xml)
+    # Alias: /sitemap-news.xml — workaround per lo stato "Impossibile
+    # recuperare" che GSC pu\u00f2 tenere in cache sul primo URL inviato.
+    write_file(os.path.join(SITE_DIR, "sitemap-news.xml"), xml)
     return len(entries)
 
 

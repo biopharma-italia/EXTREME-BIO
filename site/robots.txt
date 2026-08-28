@@ -36,3 +36,4 @@ Disallow: /news/_drafts/
 Sitemap: https://bio-clinic.it/sitemap.xml
 Sitemap: https://bio-clinic.it/sitemap-esami.xml
 Sitemap: https://bio-clinic.it/news-sitemap.xml
+Sitemap: https://bio-clinic.it/sitemap-news.xml
