@@ -266,6 +266,62 @@ def extra_home_rules(path, content):
     return content
 
 
+def fix_hub_claim_sentence(path, content, facts, spec_counts):
+    """Frase template degli hub: 'centro di X a Sassari con <strong>N specialisti</strong>
+    iscritti all'Ordine dei Medici e <strong>M prestazioni</strong>'.
+
+    - N: allineato a physicians.json (via slug_to_specialty + specialty_overrides)
+    - M: allineato al numero di prestazioni REALMENTE elencate nella tabella prezzi
+      della stessa pagina (div.price-row, esclusa la riga header). Verificabile in pagina.
+    - Grammatica: 1 specialista iscritto / N specialisti iscritti; 1 prestazione / M prestazioni.
+    """
+    rel = os.path.relpath(path, SITE).replace(os.sep, '/')
+    if not rel.endswith('/index.html'):
+        return content
+    slug = rel[:-len('/index.html')]
+
+    pat = re.compile(
+        r"con <strong>\d+ specialist\w+</strong> iscritt\w+ all'Ordine dei Medici"
+        r"(?: e <strong>\d+ prestazion\w+</strong>)?")
+    m = pat.search(content)
+    if not m:
+        return content
+
+    # N specialisti dal DB
+    spec = facts.get('slug_to_specialty', {}).get(slug)
+    n = facts.get('specialty_overrides', {}).get(slug)
+    if n is None and spec:
+        n = spec_counts.get(spec)
+
+    # M prestazioni = righe listino effettivamente presenti in pagina
+    rows = 0
+    sec = re.search(r'<section id="prezzi".*?</section>', content, re.S)
+    if sec:
+        rows = len(re.findall(r'<div class="price-row"(?! font-bold)', sec.group(0)))
+
+    def spec_part(k):
+        if k == 1:
+            return "con <strong>1 specialista</strong> iscritto all'Ordine dei Medici"
+        return f"con <strong>{k} specialisti</strong> iscritti all'Ordine dei Medici"
+
+    def proc_part(k):
+        if k <= 0:
+            return ""
+        if k == 1:
+            return " e <strong>1 prestazione</strong>"
+        return f" e <strong>{k} prestazioni</strong>"
+
+    if not n:
+        # specialita' non mappata: correggi almeno M (e la grammatica di M)
+        cur = re.search(r'con <strong>(\d+) specialist', m.group(0))
+        n = int(cur.group(1)) if cur else 0
+        if not n:
+            return content
+
+    new = spec_part(n) + proc_part(rows)
+    return content[:m.start()] + new + content[m.end():]
+
+
 FORBIDDEN = [
     (r'3\.200\+?\s*[Rr]ecensioni', 'recensioni 3.200'),
     (r'3\.914', 'recensioni 3.914'),
@@ -303,6 +359,7 @@ def process(apply=False):
         content = fix_hub_pages(path, content, facts, spec_counts)
         content = fix_stat_boxes(content, facts, spec_counts)
         content = extra_home_rules(path, content)
+        content = fix_hub_claim_sentence(path, content, facts, spec_counts)
 
         if content != original:
             changed_files.append(os.path.relpath(path, ROOT))

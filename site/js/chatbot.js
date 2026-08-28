@@ -99,7 +99,7 @@
         }
       }
       const topDocs = (kb.doctors_summary || []).slice(0, 8).map(d => `• ${d.name} — ${d.specialty}`).join('\n');
-      return `Bio-Clinic ha circa 67 specialisti. Ecco alcuni:\n${topDocs}\n\nLista completa: ${kb.clinic.website}/equipe/`;
+      return `Bio-Clinic ha 51 specialisti. Ecco alcuni:\n${topDocs}\n\nLista completa: ${kb.clinic.website}/equipe/`;
     }
 
     // 6. Servizi / specialità

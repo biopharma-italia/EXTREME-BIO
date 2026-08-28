@@ -38,24 +38,58 @@
     "ortopedia/visita-fisiatrica": "fisiatria",
     "laboratorio": "laboratorio",
     "nefrologia": "nefrologia",
-    "ostetricia": "ostetricia"
+    "ostetricia": "ostetricia",
+    "mounjaro-tirzepatide-sassari": "endocrinologia"
   },
   "specialty_words": {
-    "ginecologia": ["ginecologi", "ginecologhe"],
-    "endocrinologia": ["endocrinologi"],
-    "cardiologia": ["cardiologi"],
-    "dermatologia": ["dermatologi"],
-    "oculistica": ["oculisti"],
-    "ortopedia": ["ortopedici"],
-    "neurologia": ["neurologi"],
-    "ematologia": ["ematologi"],
-    "nefrologia": ["nefrologi"],
-    "pneumologia": ["pneumologi"],
-    "reumatologia": ["reumatologi"],
-    "urologia": ["urologi"],
-    "pediatria": ["pediatri"],
-    "psicologia": ["psicologi"],
-    "fisiatria": ["fisiatri"],
-    "ostetricia": ["ostetriche"]
+    "ginecologia": [
+      "ginecologi",
+      "ginecologhe"
+    ],
+    "endocrinologia": [
+      "endocrinologi"
+    ],
+    "cardiologia": [
+      "cardiologi"
+    ],
+    "dermatologia": [
+      "dermatologi"
+    ],
+    "oculistica": [
+      "oculisti"
+    ],
+    "ortopedia": [
+      "ortopedici"
+    ],
+    "neurologia": [
+      "neurologi"
+    ],
+    "ematologia": [
+      "ematologi"
+    ],
+    "nefrologia": [
+      "nefrologi"
+    ],
+    "pneumologia": [
+      "pneumologi"
+    ],
+    "reumatologia": [
+      "reumatologi"
+    ],
+    "urologia": [
+      "urologi"
+    ],
+    "pediatria": [
+      "pediatri"
+    ],
+    "psicologia": [
+      "psicologi"
+    ],
+    "fisiatria": [
+      "fisiatri"
+    ],
+    "ostetricia": [
+      "ostetriche"
+    ]
   }
 }

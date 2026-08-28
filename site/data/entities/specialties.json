@@ -28,12 +28,13 @@
         "beta-hcg"
       ],
       "physicians": [
-        "salvatore-dessole",
         "francesco-dessole",
-        "margherita-dessole",
+        "salvatore-dessole",
         "maddalena-pola",
         "marco-petrillo",
-        "antonella-pruneddu"
+        "antonella-pruneddu",
+        "sonia-bove",
+        "margherita-dessole"
       ],
       "related_pathways": [
         "pma-fertilita",
@@ -79,9 +80,9 @@
       "physicians": [
         "tonino-bullitta",
         "sara-uras",
-        "giuliana-guagnozzi",
         "paolo-pischedda",
-        "paolo-franca"
+        "paolo-franca",
+        "giuliana-guagnozzi"
       ],
       "related_pathways": [
         "checkup-cardiovascolare"
@@ -126,6 +127,8 @@
         "insulina"
       ],
       "physicians": [
+        "carlo-burrai",
+        "fabrizia-caucci",
         "francesco-tolu",
         "irene-aini"
       ],
@@ -168,7 +171,9 @@
         "prick-test"
       ],
       "physicians": [
-        "giovanna-costa"
+        "giovanna-costa",
+        "alessandra-musinu",
+        "speranza-anedda"
       ],
       "related_pathways": [],
       "keywords": [
@@ -206,9 +211,7 @@
       ],
       "physicians": [
         "cinzia-guarino",
-        "gloria-reggiani",
-        "sara-meloni",
-        "gabriele-delogu"
+        "gloria-reggiani"
       ],
       "related_pathways": [
         "checkup-base",
@@ -244,7 +247,10 @@
         "potenziali-evocati"
       ],
       "main_tests": [],
-      "physicians": [],
+      "physicians": [
+        "guido-marongiu",
+        "sebastiano-traccis"
+      ],
       "related_pathways": [],
       "keywords": [
         "neurologo",
@@ -277,7 +283,11 @@
         "pachimetria"
       ],
       "main_tests": [],
-      "physicians": [],
+      "physicians": [
+        "maria-pina-pintus",
+        "francesco-santoru",
+        "matteo-zucca"
+      ],
       "related_pathways": [],
       "keywords": [
         "oculista",
@@ -309,7 +319,8 @@
       ],
       "main_tests": [],
       "physicians": [
-        "giorgio-chiarelli"
+        "andrea-donato",
+        "pietro-lisai"
       ],
       "related_pathways": [],
       "keywords": [
@@ -333,7 +344,7 @@
       "description": "Visite nutrizionali, piani alimentari personalizzati, composizione corporea",
       "procedures_count": 2,
       "tests_count": 15,
-      "physicians_count": 1,
+      "physicians_count": 2,
       "page_url": null,
       "main_procedures": [
         "visita-nutrizionale",
@@ -345,8 +356,8 @@
         "intolleranze-alimentari"
       ],
       "physicians": [
-        "antonella-galatino",
-        "alessandro-pandolfi"
+        "alessandro-pandolfi",
+        "antonella-galatino"
       ],
       "related_pathways": [
         "slim-care",
@@ -402,7 +413,7 @@
       "description": "Assistenza gravidanza, ecografie ostetriche, corsi preparto, monitoraggio fetale",
       "procedures_count": 4,
       "tests_count": 20,
-      "physicians_count": 1,
+      "physicians_count": 2,
       "page_url": "/ginecologia/",
       "main_procedures": [
         "ecografia-ostetrica-3d-4d",
