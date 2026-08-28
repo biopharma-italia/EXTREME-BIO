@@ -263,16 +263,35 @@ def rebuild_hub_page(articles, today_str):
     return len(published)
 
 
+def load_redirected_paths():
+    """Return set of source paths that have a redirect rule in site/_redirects.
+
+    URLs with a redirect (301/302) must never be (re)added to the sitemap:
+    Google flags them as sitemap warnings."""
+    redirects_path = os.path.join(SITE_DIR, "_redirects")
+    paths = set()
+    if os.path.exists(redirects_path):
+        with open(redirects_path, 'r', encoding='utf-8') as f:
+            for line in f:
+                parts = line.split()
+                if len(parts) >= 2 and parts[0].startswith('/'):
+                    paths.add(parts[0].rstrip('/'))
+    return paths
+
+
 def update_sitemap(articles, today_str):
     """Add new article URLs to sitemap.xml."""
     with open(SITEMAP_PATH, 'r', encoding='utf-8') as f:
         sitemap = f.read()
 
     published = [a for a in articles if a['Stato'].strip() == 'published']
+    redirected = load_redirected_paths()
     added = 0
 
     for a in published:
         slug = a['Slug']
+        if f"/salute/{slug}" in redirected:
+            continue  # URL redirected: must not appear in sitemap
         url = f"https://bio-clinic.it/salute/{slug}/"
         if url not in sitemap:
             # Insert before </urlset>
