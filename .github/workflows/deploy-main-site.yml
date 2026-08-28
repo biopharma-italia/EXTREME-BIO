@@ -107,6 +107,27 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: bash deploy-cloudflare.sh
 
+      - name: Purge Cloudflare cache (bio-clinic.it + .online)
+        # La cache di zona (max-age=3600 + SWR=86400) puo' servire snapshot
+        # vecchi fino a ~24h dopo il deploy: purge automatico per evitare
+        # falsi positivi negli audit e contenuti obsoleti ai pazienti.
+        continue-on-error: true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          purge_zone() {
+            ZONE_ID=$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+              "https://api.cloudflare.com/client/v4/zones?name=$1" \
+              | python3 -c "import json,sys; r=(json.load(sys.stdin).get('result') or []); print(r[0]['id'] if r else '')")
+            if [ -z "$ZONE_ID" ]; then echo "WARN: zona $1 non trovata/permessi mancanti"; return 0; fi
+            curl -s -X POST -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+              -H "Content-Type: application/json" --data '{"purge_everything":true}' \
+              "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \
+              | python3 -c "import json,sys; d=json.load(sys.stdin); print('$1: PURGE OK' if d.get('success') else '$1: PURGE FAILED '+json.dumps(d.get('errors')))"
+          }
+          purge_zone "bio-clinic.it"
+          purge_zone "bio-clinic.online"
+
       - name: Smoke test API live
         run: |
           sleep 20
