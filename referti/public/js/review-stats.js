@@ -67,7 +67,7 @@
     html += kpiCard('CTR 30 giorni', data.ctr_30d_pct || 'n/a',
       (clk.last_30d || 0) + ' click su ' + ((req.last_30d || {}).sent || 0) + ' richieste', '');
     html += kpiCard('In coda', q.ready_next_run || 0,
-      'pronti al prossimo run (max ' + (q.max_per_run || 5) + ' per run, ogni 15 min — max 60/ora)' +
+      'pronti al prossimo run (max ' + (q.max_per_run || 5) + ' per run, ogni 15 min — max 40/ora)' +
       ((q.waiting_window || 0) > 0 ? ' — ' + q.waiting_window + ' in attesa finestra' : ''), '');
     html += '</div>';
 

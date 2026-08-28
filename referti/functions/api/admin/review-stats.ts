@@ -200,7 +200,7 @@ export async function onRequestGet(context: {
       ready_next_run: queueReady,
       waiting_window: queueWaiting,
       skipped_cooldown: queueCooldown,
-      max_per_run: 15,
+      max_per_run: 10,
     },
   }, 200);
 }

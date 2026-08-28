@@ -11,7 +11,7 @@ name: Referti - Promemoria WhatsApp (cron)
 
 on:
   schedule:
-    - cron: '*/15 * * * *' # ogni 15 minuti (UTC) — throughput recensioni 15/run x 4 = 60/ora
+    - cron: '*/15 * * * *' # ogni 15 minuti (UTC) — throughput recensioni 10/run x 4 = 40/ora (soglia sicura WaSender ~10 consecutivi)
   workflow_dispatch: {}    # trigger manuale per test
   push:
     branches: [main]
