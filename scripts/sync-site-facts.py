@@ -280,8 +280,21 @@ def fix_hub_claim_sentence(path, content, facts, spec_counts):
         return content
     slug = rel[:-len('/index.html')]
 
+    # Ordine professionale corretto per pagina (default: Ordine dei Medici).
+    # Psicologi e team misti medico/nutrizionista NON vanno attribuiti all'Ordine dei Medici.
+    ORDER_BY_SLUG = {
+        'colloquio-psicologico': ("iscritto all'Ordine degli Psicologi",
+                                  "iscritti all'Ordine degli Psicologi"),
+        'visita-nutrizionale': ("iscritto al rispettivo Ordine professionale",
+                                "iscritti ai rispettivi Ordini professionali"),
+    }
+    order_sing, order_plur = ORDER_BY_SLUG.get(
+        slug, ("iscritto all'Ordine dei Medici", "iscritti all'Ordine dei Medici"))
+
     pat = re.compile(
-        r"con <strong>\d+ specialist\w+</strong> iscritt\w+ all'Ordine dei Medici"
+        r"con <strong>\d+ specialist\w+</strong> iscritt\w+ "
+        r"(?:all'Ordine dei Medici|all'Ordine degli Psicologi"
+        r"|al rispettivo Ordine professionale|ai rispettivi Ordini professionali)"
         r"(?: e <strong>\d+ prestazion\w+</strong>)?")
     m = pat.search(content)
     if not m:
@@ -301,8 +314,8 @@ def fix_hub_claim_sentence(path, content, facts, spec_counts):
 
     def spec_part(k):
         if k == 1:
-            return "con <strong>1 specialista</strong> iscritto all'Ordine dei Medici"
-        return f"con <strong>{k} specialisti</strong> iscritti all'Ordine dei Medici"
+            return f"con <strong>1 specialista</strong> {order_sing}"
+        return f"con <strong>{k} specialisti</strong> {order_plur}"
 
     def proc_part(k):
         if k <= 0:
@@ -334,6 +347,9 @@ FORBIDDEN = [
     # Chiusura sabato alle 13:00 (testo o JSON-LD): orario non canonico.
     (r'Sab(?:ato)?\.?:?\s*0?8[:.]00\s*[-–]\s*13[:.]00', 'orario sabato 8-13 non canonico'),
     (r'"dayOfWeek":(?:\[)?"Saturday"(?:\])?,"opens":"08:00","closes":"13:00"', 'JSON-LD sabato closes 13:00'),
+    # Placeholder template mai sostituito (es. "Linee Guida Linee Guida").
+    (r'[Ll]inee [Gg]uida [Ll]inee [Gg]uida', 'placeholder Linee Guida duplicato'),
+    (r'internazionali Linee Guida', 'placeholder Linee Guida residuo'),
 ]
 
 
