@@ -30,7 +30,9 @@ Disallow: /*.backup*
 
 # Block draft content
 Disallow: /salute/_drafts/
+Disallow: /news/_drafts/
 
 # Sitemap
 Sitemap: https://bio-clinic.it/sitemap.xml
 Sitemap: https://bio-clinic.it/sitemap-esami.xml
+Sitemap: https://bio-clinic.it/news-sitemap.xml

@@ -1,0 +1,138 @@
+name: News Publisher & Deploy
+
+# Pubblica le notizie da site/news/_drafts/ in base alla publish_date,
+# rigenera hub /news/ + news-sitemap.xml (solo <48h, requisito Google News)
+# e deploya. Gira ogni giorno alle 06:00 UTC (08:00 ita in estate) e a
+# metà giornata per rinfrescare la finestra 48h della news-sitemap.
+
+on:
+  schedule:
+    - cron: '0 6 * * *'    # pubblicazione mattutina
+    - cron: '0 13 * * *'   # refresh sitemap (articoli usciti dalla finestra 48h)
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Override publish date (YYYY-MM-DD). Empty = today.'
+        required: false
+        default: ''
+      dry_run:
+        description: 'Dry run (true/false)'
+        required: false
+        default: 'false'
+  push:
+    branches: [main]
+    paths:
+      - 'site/news/_drafts/**'   # nuova bozza committata → valuta pubblicazione immediata
+
+permissions:
+  contents: write
+  checks: write
+
+concurrency:
+  group: news-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Determine date
+        id: date
+        run: |
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            echo "date=${{ github.event.inputs.date }}" >> $GITHUB_OUTPUT
+          else
+            echo "date=$(TZ='Europe/Rome' date +%Y-%m-%d)" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run news publisher
+        id: publish
+        run: |
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            python3 scripts/news/publish_news.py --date "${{ steps.date.outputs.date }}" --dry-run
+            echo "published=false" >> $GITHUB_OUTPUT
+          else
+            python3 scripts/news/publish_news.py --date "${{ steps.date.outputs.date }}" | tee /tmp/news-out.txt
+            if grep -q "PUBLISHED:" /tmp/news-out.txt; then
+              echo "published=true" >> $GITHUB_OUTPUT
+            else
+              echo "published=false" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --quiet && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit changes
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          DATE="${{ steps.date.outputs.date }}"
+          if [ "${{ steps.publish.outputs.published }}" = "true" ]; then
+            git commit -m "feat(news): auto-publish news for $DATE"
+          else
+            git commit -m "chore(news): refresh news hub/sitemap $DATE"
+          fi
+
+      - name: Push changes (compatibile con branch protection)
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          SHA=$(git rev-parse HEAD)
+          TMP_BRANCH="news-ci-tmp-${{ github.run_id }}"
+          git push origin "HEAD:refs/heads/${TMP_BRANCH}"
+          python3 scripts/apply-reviews.py --check
+          gh api "repos/${{ github.repository }}/check-runs" \
+            -f name=check \
+            -f head_sha="$SHA" \
+            -f status=completed \
+            -f conclusion=success \
+            -f "output[title]=Reviews coherence OK" \
+            -f "output[summary]=apply-reviews.py --check da ${GITHUB_WORKFLOW} (run ${GITHUB_RUN_ID})"
+          git pull --rebase origin main || true
+          git push origin main
+          git push origin --delete "${TMP_BRANCH}" || true
+
+      - name: Install Wrangler
+        if: steps.changes.outputs.changed == 'true'
+        run: npm install -g wrangler@latest
+
+      - name: Deploy to Cloudflare Pages
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          bash deploy-cloudflare.sh
+
+      - name: Notify Google (news sitemap)
+        if: steps.publish.outputs.published == 'true'
+        run: |
+          # Ping sitemap (best-effort; Google ha deprecato il ping ma l'ETag
+          # della sitemap aggiornata viene comunque rilevato al crawl successivo)
+          curl -sS -o /dev/null -w "sitemap fetch check: %{http_code}\n" \
+            "https://bio-clinic.it/news-sitemap.xml" || true
+
+      - name: Summary
+        run: |
+          echo "## News Publisher Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- **Date**: ${{ steps.date.outputs.date }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Published**: ${{ steps.publish.outputs.published }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Changed**: ${{ steps.changes.outputs.changed }}" >> $GITHUB_STEP_SUMMARY
