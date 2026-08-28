@@ -1,0 +1,57 @@
+name: Purge Cloudflare Cache
+
+# Purge manuale della cache CDN (Purge Everything) per le zone del sito.
+# Utile dopo fix di contenuto per invalidare subito gli snapshot in cache
+# (max-age=3600 + stale-while-revalidate=86400) senza aspettare la scadenza.
+on:
+  workflow_dispatch:
+    inputs:
+      zone:
+        description: "Zona da purgare"
+        required: true
+        default: "bio-clinic.it"
+        type: choice
+        options:
+          - bio-clinic.it
+          - bio-clinic.online
+          - entrambe
+
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Purge cache
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          purge_zone() {
+            local ZONE_NAME="$1"
+            echo "── Zona: $ZONE_NAME"
+            local ZONE_ID
+            ZONE_ID=$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+              "https://api.cloudflare.com/client/v4/zones?name=$ZONE_NAME" \
+              | python3 -c "import json,sys; d=json.load(sys.stdin); r=d.get('result') or []; print(r[0]['id'] if r else '')")
+            if [ -z "$ZONE_ID" ]; then
+              echo "::warning::Zona $ZONE_NAME non trovata o token senza permesso Zone:Read"
+              return 1
+            fi
+            local RESP
+            RESP=$(curl -s -X POST \
+              -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+              -H "Content-Type: application/json" \
+              --data '{"purge_everything":true}' \
+              "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache")
+            echo "$RESP" | python3 -c "import json,sys; d=json.load(sys.stdin); ok=d.get('success'); print('PURGE OK' if ok else 'PURGE FAILED: '+json.dumps(d.get('errors'))); sys.exit(0 if ok else 1)"
+          }
+          FAIL=0
+          case "${{ inputs.zone }}" in
+            entrambe)
+              purge_zone "bio-clinic.it" || FAIL=1
+              purge_zone "bio-clinic.online" || FAIL=1
+              ;;
+            *)
+              purge_zone "${{ inputs.zone }}" || FAIL=1
+              ;;
+          esac
+          exit $FAIL
