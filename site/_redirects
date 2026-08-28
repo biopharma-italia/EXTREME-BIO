@@ -552,3 +552,21 @@
 /fisiatria/ /ortopedia/visita-fisiatrica/ 301
 /nutrizione /visita-nutrizionale/ 301
 /nutrizione/ /visita-nutrizionale/ 301
+
+# === Fix 2026-08-28: percorsi linkati da /salute/ ma inesistenti (erano 404) ===
+/nutrizionista /visita-nutrizionale/ 301
+/nutrizionista/ /visita-nutrizionale/ 301
+/nefrologia /visita-nefrologica/ 301
+/nefrologia/ /visita-nefrologica/ 301
+/pediatria /visita-pediatrica/ 301
+/pediatria/ /visita-pediatrica/ 301
+/psicologia /colloquio-psicologico/ 301
+/psicologia/ /colloquio-psicologico/ 301
+/medicina-interna /visita-internistica/ 301
+/medicina-interna/ /visita-internistica/ 301
+/medicina-lavoro /medicina-del-lavoro/ 301
+/medicina-lavoro/ /medicina-del-lavoro/ 301
+/medicina-dello-sport /visita-medicina-sport/ 301
+/medicina-dello-sport/ /visita-medicina-sport/ 301
+/medicina-sport /visita-medicina-sport/ 301
+/medicina-sport/ /visita-medicina-sport/ 301
