@@ -151,11 +151,12 @@ export async function onRequestPost(context: {
     await adminClient.from('audit_log').insert({
       user_id: target.id,
       user_role: target.role,
-      action: body.reset_password ? 'admin_unlock_and_reset' : 'admin_unlock',
+      action: 'admin_action', // enum audit_action: dettaglio in details.operation
       ip_address: ctx.ip,
       user_agent: ctx.userAgent,
       request_id: ctx.requestId,
       details: {
+        operation: body.reset_password ? 'admin_unlock_and_reset' : 'admin_unlock',
         email: target.email,
         performed_by: ctx.user!.id,
         performed_by_role: callerRole,
