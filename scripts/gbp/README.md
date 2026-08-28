@@ -12,6 +12,22 @@ Integrazione API GBP per gestione autonoma di recensioni, post, servizi/prezzi e
 - [ ] App OAuth pubblicata in produzione (altrimenti il refresh token scade in 7 giorni!)
 - [ ] Discover eseguito (`config.json` presente)
 
+### ⚠️ BLOCCO IDENTIFICATO (28/08): account disallineati
+
+Il profilo My Business è di proprietà di **gestione.bioclinic@gmail.com**, mentre progetto
+Cloud/OAuth/form usano **gestione@bio-clinic.it** → Google non può associare la richiesta
+al profilo e la lascia pendente senza risposta. Rimedio (da fare lato utente):
+
+1. Da business.google.com (login gestione.bioclinic@gmail.com): Utenti e accesso →
+   aggiungi `gestione@bio-clinic.it` come **Proprietario**
+2. Accettare l'invito dalla casella gestione@bio-clinic.it
+3. Reinviare il form https://support.google.com/business/contact/api_default
+   loggati come gestione@bio-clinic.it (Project ID: `bio-clinic-gbp`)
+4. Console Cloud → Schermata consenso OAuth → **Pubblica app** (se ancora "in test")
+
+Il workflow `gbp-discover.yml` fa un probe giornaliero (07:35 UTC): appena Google
+approva, completa il setup da solo (config.json committato automaticamente).
+
 ## Attivazione (quando arriva l'email di approvazione Google)
 
 1. Lancia il workflow **"GBP - Discover (setup iniziale)"** da Actions → genera e committa `config.json`
