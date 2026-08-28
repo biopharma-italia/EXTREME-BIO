@@ -5,6 +5,8 @@ name: GBP - Discover (setup iniziale)
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '35 7 * * *'   # test giornaliero 09:35 ita: appena Google approva, il discover passa e committa config.json
   push:
     branches: [main]
     paths:
