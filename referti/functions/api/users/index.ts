@@ -40,7 +40,7 @@ export async function onRequestGet(context: {
 
   let query = adminClient
     .from('users')
-    .select('id, email, first_name, last_name, fiscal_code, phone, role, is_active, totp_enabled, created_at, last_login_at', { count: 'exact' })
+    .select('id, email, first_name, last_name, fiscal_code, phone, role, is_active, totp_enabled, created_at, last_login_at, failed_login_count, locked_until', { count: 'exact' })
     .is('deleted_at', null);
 
   // Ostetrica and lab_technician can only see patients

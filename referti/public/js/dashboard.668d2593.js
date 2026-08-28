@@ -2474,15 +2474,32 @@
           : u.role === 'lab_technician' ? 'pending'
           : u.role === 'ostetrica' ? 'validated'
           : 'released';
+        // Stato lock: bloccato (locked_until futuro) o tentativi falliti in corso
+        var isLocked = u.locked_until && new Date(u.locked_until) > new Date();
+        var hasFails = (u.failed_login_count || 0) > 0;
+        var statusCell;
+        if (isLocked) {
+          statusCell = '<span class="badge badge-inactive" title="Bloccato fino a ' + fmtDateTime(u.locked_until) + ' (' + u.failed_login_count + ' tentativi falliti)">&#128274; Bloccato</span>';
+        } else if (!u.is_active) {
+          statusCell = '<span class="badge badge-inactive">Inattivo</span>';
+        } else if (hasFails) {
+          statusCell = '<span class="badge badge-active" title="' + u.failed_login_count + ' tentativi di login falliti">Attivo &#9888;&#65039;' + u.failed_login_count + '</span>';
+        } else {
+          statusCell = '<span class="badge badge-active">Attivo</span>';
+        }
+        var actions = '<button class="btn btn-outline btn-sm" onclick="window._editUser(\'' + u.id + '\')">Modifica</button>';
+        if (isLocked || hasFails || !u.is_active) {
+          actions += ' <button class="btn btn-sm" style="background:#f59e0b;color:#fff;border:0" title="Sblocca account e/o reimposta password" onclick="window._unlockUser(\'' + u.id + '\',\'' + esc(u.first_name + ' ' + u.last_name).replace(/'/g, '') + '\',\'' + esc(u.email) + '\')">&#128275; Sblocca</button>';
+        }
         return '<tr>' +
           '<td><strong>' + esc(u.first_name + ' ' + u.last_name) + '</strong></td>' +
           '<td>' + esc(u.email) + '</td>' +
           '<td><code style="font-size:0.78rem">' + esc(u.fiscal_code || '--') + '</code></td>' +
           '<td><span class="badge badge-' + roleBadge + '">' + roleLabel(u.role, u.email) + '</span></td>' +
-          '<td><span class="badge ' + (u.is_active ? 'badge-active' : 'badge-inactive') + '">' + (u.is_active ? 'Attivo' : 'Inattivo') + '</span></td>' +
+          '<td>' + statusCell + '</td>' +
           '<td>' + (u.totp_enabled ? '<span style="color:#22c55e">&#10003;</span>' : '<span style="color:var(--text-muted)">&#8212;</span>') + '</td>' +
           '<td>' + fmtDate(u.created_at) + '</td>' +
-          '<td><button class="btn btn-outline btn-sm" onclick="window._editUser(\'' + u.id + '\')">Modifica</button></td></tr>';
+          '<td>' + actions + '</td></tr>';
       }).join('');
     });
 
@@ -3106,6 +3123,62 @@
       openModal('Dettagli Referto — ' + (r.report_number || ''), html, footer);
     });
   };
+
+  // ── UNLOCK USER (sblocca lockout + reset password opzionale) ─────────
+  window._unlockUser = function (id, name, email) {
+    var html = '<p style="margin-bottom:1rem">Utente: <strong>' + esc(name) + '</strong><br>' +
+      '<span style="color:var(--text-muted);font-size:0.85rem">' + esc(email) + '</span></p>' +
+      '<div style="display:flex;flex-direction:column;gap:0.5rem">' +
+      '<label class="checkbox-label" style="display:flex;align-items:center;gap:0.5rem;cursor:pointer">' +
+      '<input type="checkbox" id="unlockResetPw" checked><span class="checkmark"></span> ' +
+      '<span>Reimposta anche la password (genera una temporanea da comunicare al paziente)</span></label>' +
+      '<p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.5rem">' +
+      'Lo sblocco azzera i tentativi falliti, rimuove il blocco temporaneo, riattiva l\u2019account se disattivato dal lockout e conferma l\u2019email se mai verificata.</p>' +
+      '</div><div id="unlockResult" style="margin-top:1rem"></div>';
+    openModal('\uD83D\uDD13 Sblocca account', html,
+      '<button class="btn btn-outline" onclick="window._closeModal()">Annulla</button>' +
+      '<button class="btn btn-primary" id="unlockConfirmBtn" onclick="window._doUnlockUser(\'' + id + '\')">Sblocca</button>');
+  };
+  window._doUnlockUser = function (id) {
+    var resetPw = $('unlockResetPw') && $('unlockResetPw').checked;
+    var btn = $('unlockConfirmBtn');
+    if (btn) { btn.disabled = true; btn.textContent = 'Sblocco in corso...'; }
+    fetch('/api/admin/users/unlock', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + state.token },
+      body: JSON.stringify({ user_id: id, reset_password: resetPw })
+    }).then(function (r) { return r.json(); }).then(function (resp) {
+      if (!resp.success) {
+        toast(resp.error || 'Errore durante lo sblocco', 'error');
+        if (btn) { btn.disabled = false; btn.textContent = 'Sblocca'; }
+        return;
+      }
+      var box = $('unlockResult');
+      if (resp.data && resp.data.temp_password) {
+        if (box) {
+          box.innerHTML = '<div style="background:#f0fdf4;border:1px solid #22c55e;border-radius:8px;padding:1rem">' +
+            '<p style="font-weight:600;color:#15803d;margin-bottom:0.5rem">\u2705 Account sbloccato \u2014 password temporanea:</p>' +
+            '<div style="display:flex;align-items:center;gap:0.5rem">' +
+            '<code id="unlockTempPw" style="font-size:1.05rem;background:#fff;padding:0.4rem 0.8rem;border-radius:6px;border:1px solid #ddd;user-select:all">' + esc(resp.data.temp_password) + '</code>' +
+            '<button class="btn btn-outline btn-sm" onclick="navigator.clipboard.writeText(document.getElementById(\'unlockTempPw\').textContent).then(function(){window._toastCopied&&window._toastCopied()})">Copia</button>' +
+            '</div>' +
+            '<p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.5rem">Comunicala al paziente e invitalo a cambiarla dopo il primo accesso. Non sar\u00e0 pi\u00f9 visibile dopo la chiusura di questa finestra.</p></div>';
+        }
+        if (btn) { btn.style.display = 'none'; }
+        var cancelBtns = document.querySelectorAll('.modal-footer .btn-outline, #modalFooter .btn-outline');
+        for (var i = 0; i < cancelBtns.length; i++) { cancelBtns[i].textContent = 'Chiudi'; }
+        toast('Account sbloccato e password reimpostata', 'success');
+      } else {
+        closeModal();
+        toast('Account sbloccato', 'success');
+      }
+      loadUsers();
+    }).catch(function () {
+      toast('Errore di rete durante lo sblocco', 'error');
+      if (btn) { btn.disabled = false; btn.textContent = 'Sblocca'; }
+    });
+  };
+  window._toastCopied = function () { toast('Password copiata negli appunti', 'info'); };
 
   window._editUser = function (id) {
     sbGet('users', 'id=eq.' + id + '&select=*').then(function (data) {
