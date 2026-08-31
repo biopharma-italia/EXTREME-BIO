@@ -2,7 +2,7 @@
  * REVIEW-STATS.JS — Pannello "Recensioni Google"
  * Tracking in tempo reale: richieste inviate, click sul link, coda invii.
  * Fonte: GET /api/admin/review-stats (admin JWT).
- * @version 1.0.0  @date 2026-08-26
+ * @version 1.1.0  @date 2026-08-31 (baseline + conteggio attuale aggiornabile + delta campagna)
  */
 (function () {
   'use strict';
@@ -95,16 +95,72 @@
       ((clk.bot_previews_30d || 0) > 0 ? ' Esclusi ' + esc(clk.bot_previews_30d) + ' accessi automatici (anteprime WhatsApp/bot) negli ultimi 30gg.' : '') + '</div>' +
       '</div>';
 
-    // ── Baseline GBP ──
+    // ── Profilo GBP: baseline + attuale + delta campagna ──
+    var gbpCur = data.gbp_current || gbp;
+    var delta = (typeof data.gbp_campaign_delta === 'number') ? data.gbp_campaign_delta : null;
+    var deltaHtml = '';
+    if (delta !== null) {
+      var deltaCls = delta > 0 ? 'color:#22c55e;font-weight:700' : 'color:var(--text-muted)';
+      deltaHtml = '<div class="ds-stat-line">Recensioni ottenute dalla campagna: <span style="' + deltaCls + '">' +
+        (delta > 0 ? '+' : '') + esc(delta) + '</span></div>';
+    }
     html += '<div class="ds-section"><h3>⭐ Profilo Google Business</h3>' +
-      '<div class="ds-stat-line">Baseline al ' + esc(gbp.noted_at || '--') + ': <strong>' + esc(gbp.stars || '--') + '★</strong> — <strong>' + esc(gbp.reviews || '--') + ' recensioni</strong></div>' +
-      '<div class="ds-stat-line" style="color:var(--text-muted);font-size:0.85rem">Confronta il numero attuale su Google con la baseline per stimare le recensioni ottenute dalla campagna.</div>' +
+      '<div class="ds-stat-line">Attuale (al ' + esc(gbpCur.noted_at || '--') + '): <strong>' + esc(gbpCur.stars || '--') + '★</strong> — <strong>' + esc(gbpCur.reviews || '--') + ' recensioni</strong></div>' +
+      '<div class="ds-stat-line" style="color:var(--text-muted)">Baseline campagna (al ' + esc(gbp.noted_at || '--') + '): ' + esc(gbp.stars || '--') + '★ — ' + esc(gbp.reviews || '--') + ' recensioni</div>' +
+      deltaHtml +
+      '<div class="ds-stat-line" style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">' +
+        '<input type="number" id="rsGbpReviews" min="0" step="1" placeholder="N. recensioni su Google oggi" ' +
+          'style="width:220px;padding:6px 10px;border:1px solid var(--border,#334);border-radius:6px;background:transparent;color:inherit">' +
+        '<button type="button" id="rsGbpSave" class="btn btn-sm" style="padding:6px 14px;border-radius:6px;cursor:pointer">Aggiorna conteggio</button>' +
+        '<span id="rsGbpMsg" style="font-size:0.85rem"></span>' +
+      '</div>' +
+      '<div class="ds-stat-line" style="color:var(--text-muted);font-size:0.85rem">Inserisci il numero attuale di recensioni visibile sul profilo Google per aggiornare il confronto con la baseline.</div>' +
       '</div>';
 
     html += '<div class="ds-footer">Aggiornato: ' + esc(new Date(data.generated_at).toLocaleString('it-IT', { timeZone: 'Europe/Rome' })) +
       ' — auto-refresh ogni 60 secondi</div>';
 
     el.innerHTML = html;
+    bindGbpForm();
+  }
+
+  function bindGbpForm() {
+    var btn = $('rsGbpSave');
+    var input = $('rsGbpReviews');
+    var msg = $('rsGbpMsg');
+    if (!btn || !input) return;
+
+    function submit() {
+      var n = parseInt(input.value, 10);
+      if (isNaN(n) || n < 0) {
+        if (msg) { msg.textContent = 'Inserisci un numero valido'; msg.style.color = '#f59e0b'; }
+        return;
+      }
+      btn.disabled = true;
+      if (msg) { msg.textContent = 'Salvataggio\u2026'; msg.style.color = 'var(--text-muted)'; }
+
+      var headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' };
+      var t = getToken();
+      if (t) headers['Authorization'] = 'Bearer ' + t;
+
+      fetch('/api/admin/review-stats', {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify({ reviews: n }),
+      })
+        .then(function (r) { return r.json().then(function (d) { if (!r.ok || !d.success) throw new Error(d.error || 'HTTP ' + r.status); return d; }); })
+        .then(function () {
+          if (msg) { msg.textContent = 'Aggiornato \u2713'; msg.style.color = '#22c55e'; }
+          load();
+        })
+        .catch(function (e) {
+          if (msg) { msg.textContent = 'Errore: ' + e.message; msg.style.color = '#ef4444'; }
+        })
+        .finally(function () { btn.disabled = false; });
+    }
+
+    btn.addEventListener('click', submit);
+    input.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') submit(); });
   }
 
   function renderError(msg) {

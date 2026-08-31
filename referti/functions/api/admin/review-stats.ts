@@ -11,7 +11,11 @@
  * Auth: admin / super_admin JWT via _middleware.
  * No patient PII in output (clicks are anonymous by design).
  *
- * @version 1.0.0 — 2026-08-26
+ * GBP counter: the current Google review count is stored in audit_log
+ * (target_type 'gbp_review_count', details.reviews) and can be updated from
+ * the dashboard via POST — the baseline stays fixed to measure campaign uplift.
+ *
+ * @version 1.1.0 — 2026-08-31 (v1.0.0 2026-08-26)
  */
 
 import { createClient } from '@supabase/supabase-js';
@@ -24,6 +28,8 @@ interface Env {
 }
 
 const REVIEW_SUBJECT = 'Richiesta recensione Google';
+const GBP_BASELINE = { stars: 5.0, reviews: 459, noted_at: '2026-08-26' };
+const GBP_TARGET_TYPE = 'gbp_review_count';
 const COOLDOWN_DAYS = 180;
 const WINDOW_MIN_MINUTES = 30;
 const WINDOW_MAX_MINUTES = 24 * 60;
@@ -174,7 +180,22 @@ export async function onRequestGet(context: {
     }
   }
 
-  // ── 4) Assemble ─────────────────────────────────────────────────────────────
+  // ── 4) Current GBP review count (latest manual update, fallback baseline) ───
+  const { data: gbpRows } = await db
+    .from('audit_log')
+    .select('created_at, details')
+    .eq('target_type', GBP_TARGET_TYPE)
+    .order('created_at', { ascending: false })
+    .limit(1);
+
+  const gbpLatest = (gbpRows || [])[0] as { created_at: string; details: { reviews?: number; stars?: number } } | undefined;
+  const gbpCurrent = {
+    stars: gbpLatest?.details?.stars ?? GBP_BASELINE.stars,
+    reviews: gbpLatest?.details?.reviews ?? GBP_BASELINE.reviews,
+    noted_at: gbpLatest ? gbpLatest.created_at.slice(0, 10) : GBP_BASELINE.noted_at,
+  };
+
+  // ── 5) Assemble ─────────────────────────────────────────────────────────────
   const sent30 = countIn(reqs, d30, 'sent');
   const clicks30 = clickCountIn(d30);
 
@@ -182,7 +203,9 @@ export async function onRequestGet(context: {
     success: true,
     generated_at: new Date().toISOString(),
     review_link: 'https://referti.bio-clinic.it/r/recensione',
-    gbp_baseline: { stars: 5.0, reviews: 459, noted_at: '2026-08-26' },
+    gbp_baseline: GBP_BASELINE,
+    gbp_current: gbpCurrent,
+    gbp_campaign_delta: gbpCurrent.reviews - GBP_BASELINE.reviews,
     requests: {
       today: { sent: countIn(reqs, todayStart, 'sent'), failed: countIn(reqs, todayStart, 'failed') },
       last_7d: { sent: countIn(reqs, d7, 'sent'), failed: countIn(reqs, d7, 'failed') },
@@ -202,5 +225,62 @@ export async function onRequestGet(context: {
       skipped_cooldown: queueCooldown,
       max_per_run: 10,
     },
+  }, 200);
+}
+
+
+/**
+ * POST /api/admin/review-stats — update the current GBP review count.
+ * Body: { reviews: number, stars?: number }
+ * Stored as an audit_log row (action 'admin_action', target_type 'gbp_review_count').
+ */
+export async function onRequestPost(context: {
+  request: Request;
+  data: { ctx: RequestContext; env: Env };
+}) {
+  const { request, data } = context;
+  const { ctx, env } = data;
+
+  const authError = requireRole(ctx, 'admin', 'super_admin');
+  if (authError) return authError;
+
+  let body: { reviews?: unknown; stars?: unknown };
+  try {
+    body = await request.json();
+  } catch {
+    return jsonResponse({ success: false, error: 'JSON non valido' }, 400);
+  }
+
+  const reviews = Number(body.reviews);
+  if (!Number.isInteger(reviews) || reviews < 0 || reviews > 100000) {
+    return jsonResponse({ success: false, error: 'Numero recensioni non valido' }, 400);
+  }
+  const starsRaw = body.stars === undefined || body.stars === null || body.stars === '' ? 5.0 : Number(body.stars);
+  if (Number.isNaN(starsRaw) || starsRaw < 1 || starsRaw > 5) {
+    return jsonResponse({ success: false, error: 'Valutazione stelle non valida (1–5)' }, 400);
+  }
+  const stars = Math.round(starsRaw * 10) / 10;
+
+  const db = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_KEY, {
+    auth: { autoRefreshToken: false, persistSession: false },
+  });
+
+  const { error: insErr } = await db.from('audit_log').insert({
+    user_id: ctx.user?.id || null,
+    user_role: ctx.user?.role || null,
+    action: 'admin_action',
+    target_type: GBP_TARGET_TYPE,
+    target_id: null,
+    request_id: crypto.randomUUID(),
+    details: { type: 'gbp_review_count_update', reviews, stars },
+    risk_level: 'low',
+  });
+
+  if (insErr) return jsonResponse({ success: false, error: insErr.message }, 500);
+
+  return jsonResponse({
+    success: true,
+    gbp_current: { stars, reviews, noted_at: new Date().toISOString().slice(0, 10) },
+    gbp_campaign_delta: reviews - GBP_BASELINE.reviews,
   }, 200);
 }
