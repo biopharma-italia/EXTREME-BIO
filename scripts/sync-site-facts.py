@@ -88,7 +88,7 @@ def build_rules(facts, spec_counts, total_physicians):
     regex_rules.append((re.compile(r'>1\.162\+(</div>\s*<div[^>]*>\s*Esami Disponibili)'), '>' + lab_tests + r'\1', 'hero lab esami'))
 
     # --- Totale medici/specialisti: 48/50/67 -> canonico ---
-    for wrong in ('48', '50', '67'):
+    for wrong in ('48', '50', '51', '67'):
         if wrong == n_med:
             continue
         regex_rules.append((re.compile(r'\b' + wrong + r'(\s*(?:[Mm]edici|[Ss]pecialisti)\b)'), n_med + r'\1',
@@ -340,7 +340,7 @@ FORBIDDEN = [
     (r'3\.914', 'recensioni 3.914'),
     (r'4\.450\+', 'recensioni 4.450+'),
     (r'1\.1(?:00|36)\+?(?:</strong>)?\s*[Ee]sami', 'esami non canonici'),
-    (r'\b(?:48|50|67)\s*(?:[Mm]edici|[Ss]pecialisti)\b', 'totale medici non canonico'),
+    (r'\b(?:48|50|51|67)\s*(?:[Mm]edici|[Ss]pecialisti)\b', 'totale medici non canonico'),
     # Orari canonici: Lun-Ven 07:00-21:00, Sab 08:00-14:00.
     # "Lun-Sab" seguito da un orario implica sabato con orario feriale (errato).
     (r'Lun-Sab(?:</strong>)?(?:<[^>]+>|[^<>0-9]){0,25}0?7[:.]0?0', 'orario Lun-Sab 7:00 (sabato apre alle 8)'),

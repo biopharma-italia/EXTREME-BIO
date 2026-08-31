@@ -1,7 +1,7 @@
 {
   "version": "3.0",
-  "generated": "2026-08-28T00:00:00Z",
-  "total": 51,
+  "generated": "2026-08-31",
+  "total": 52,
   "physicians": [
     {
       "id": "francesco-dessole",
@@ -475,6 +475,16 @@
       "job_title": "Cardiologa",
       "photo_url": null,
       "booking_enabled": false
+    },
+    {
+      "id": "paola-berne-suarez",
+      "slug": "paola-berne-suarez",
+      "title": "Dott.ssa",
+      "name": "Paola Berne Suárez",
+      "specialty_id": "cardiologia",
+      "job_title": "Specialista in Canalopatie e Cardiogenetica",
+      "photo_url": "/images/equipe/paola-berne-suarez.jpg",
+      "booking_enabled": true
     },
     {
       "id": "alessandro-pandolfi",
