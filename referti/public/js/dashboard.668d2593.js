@@ -87,7 +87,13 @@
     return h;
   }
   function sbGet(table, query) {
-    return fetch(SB_URL + '/rest/v1/' + table + '?' + (query || ''), {
+    var q = query || '';
+    // I referti eliminati (soft-delete) non devono MAI comparire nelle liste:
+    // filtro applicato a monte per tutte le letture della tabella reports
+    if (table === 'reports' && q.indexOf('deleted_at') === -1) {
+      q += (q ? '&' : '') + 'deleted_at=is.null';
+    }
+    return fetch(SB_URL + '/rest/v1/' + table + '?' + q, {
       headers: Object.assign({}, sbHeaders(), { 'Prefer': 'count=exact' })
     }).then(function (r) {
       if (!r.ok) throw new Error('API error: ' + r.status);
@@ -99,6 +105,9 @@
   function sbCount(table, filter) {
     var q = 'select=id';
     if (filter) q += '&' + filter;
+    if (table === 'reports' && q.indexOf('deleted_at') === -1) {
+      q += '&deleted_at=is.null';
+    }
     return fetch(SB_URL + '/rest/v1/' + table + '?' + q, {
       method: 'HEAD',
       headers: Object.assign({}, sbHeaders(), { 'Prefer': 'count=exact', 'Range-Unit': 'items', 'Range': '0-0' })

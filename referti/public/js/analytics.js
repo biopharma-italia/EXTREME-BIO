@@ -99,6 +99,10 @@
     var pageSize = 1000;
     function fetchPage(offset) {
       var q = query || '';
+      // Escludi i referti soft-deleted da tutte le statistiche
+      if (table === 'reports' && q.indexOf('deleted_at') === -1) {
+        q += (q ? '&' : '') + 'deleted_at=is.null';
+      }
       q += (q ? '&' : '') + 'limit=' + pageSize + '&offset=' + offset;
       return fetch(SB_URL + '/rest/v1/' + table + '?' + q, {
         headers: Object.assign({}, sbHeaders(), { 'Prefer': 'count=exact' })
