@@ -13,7 +13,8 @@
     "review_count_schema": 4450
   },
   "specialty_overrides": {
-    "pma-fertilita": 4
+    "pma-fertilita": 4,
+    "cardiologia": 5
   },
   "slug_to_specialty": {
     "ginecologia": "ginecologia",
