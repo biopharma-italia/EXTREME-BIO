@@ -40,10 +40,19 @@ interface Env {
 
 const MAX_SENDS_PER_RUN = 10;
 const WINDOW_MIN_MINUTES = 30;        // downloaded at least 30 min ago
-const WINDOW_MAX_MINUTES = 24 * 60;   // ...but no more than 24h ago (catch-up:
-                                      // downloads outside the 09-19 send window
-                                      // or missed by a failed run are recovered
-                                      // by later runs; dedupe prevents doubles)
+const WINDOW_MAX_MINUTES = 48 * 60;   // ...but no more than 48h ago (catch-up:
+                                      // downloads outside the 09-19 send window,
+                                      // runs skipped by GitHub scheduling or
+                                      // days lost to WhatsApp rate limits are
+                                      // recovered by later runs — even 2 bad
+                                      // days in a row; dedupe prevents doubles)
+// Rate-limit backoff: on 429 wait and retry before giving up (the hourly
+// quota may free up within a minute if the limiter uses a rolling window).
+// The budget is GLOBAL per run (not per message): worst case added wall
+// time = BUDGET x BACKOFF = 120s — safely under the caller's 240s curl
+// timeout (baseline 10 msgs x 5.5s = 55s).
+const RATE_LIMIT_BACKOFF_BUDGET = 2;  // max backoff waits per run (global)
+const RATE_LIMIT_BACKOFF_MS = 60_000;
 const REVIEW_COOLDOWN_DAYS = 180; // max 1 request per patient per 6 months
 const REVIEW_SUBJECT = 'Richiesta recensione Google';
 // Tracked redirect on our own domain (functions/r/recensione.ts):
@@ -77,6 +86,33 @@ function buildMessage(firstName: string | null): string {
 
 function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function isRateLimitError(err: string | undefined): boolean {
+  return (err || '').toLowerCase().includes('rate limit');
+}
+
+/**
+ * Send with backoff on rate limit, consuming from a GLOBAL per-run budget:
+ * on 429 wait RATE_LIMIT_BACKOFF_MS and retry, as long as budget remains.
+ * Non-rate-limit failures are returned immediately (retrying a broken
+ * number is pointless). Returns the send result and the budget consumed.
+ */
+async function sendWithBackoff(
+  env: WhatsAppEnv,
+  phone: string,
+  body: string,
+  budgetLeft: number,
+): Promise<{ result: Awaited<ReturnType<typeof sendWhatsApp>>; budgetUsed: number }> {
+  let result = await sendWhatsApp(env, phone, body);
+  let budgetUsed = 0;
+  while (!result.success && isRateLimitError(result.error) && budgetUsed < budgetLeft) {
+    budgetUsed++;
+    console.warn(`[review-request] Rate limited — backoff ${RATE_LIMIT_BACKOFF_MS / 1000}s (budget ${budgetLeft - budgetUsed} left)`);
+    await delay(RATE_LIMIT_BACKOFF_MS);
+    result = await sendWhatsApp(env, phone, body);
+  }
+  return { result, budgetUsed };
 }
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
@@ -181,6 +217,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   let sent = 0;
   let failed = 0;
   let rateLimitHit = false;
+  let backoffBudget = RATE_LIMIT_BACKOFF_BUDGET; // global per-run budget
   const results: { report: string; success: boolean; error?: string }[] = [];
 
   for (let i = 0; i < candidates.length; i++) {
@@ -190,15 +227,17 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     if (i > 0) await delay(5500);
 
     const body = buildMessage(patient.first_name);
-    const waResult = await sendWhatsApp(env as unknown as WhatsAppEnv, patient.phone, body);
+    const { result: waResult, budgetUsed } = await sendWithBackoff(
+      env as unknown as WhatsAppEnv, patient.phone, body, backoffBudget,
+    );
+    backoffBudget -= budgetUsed;
     const nowIso = new Date().toISOString();
 
     // Record notification (also serves as the cooldown marker; recorded even
     // on PERMANENT failure so a broken number is not hammered every hour.
     // Transient rate-limit failures write NO marker: the patient stays
     // eligible and is automatically retried at the next hourly run.
-    const isRateLimited = !waResult.success
-      && (waResult.error || '').toLowerCase().includes('rate limit');
+    const isRateLimited = !waResult.success && isRateLimitError(waResult.error);
     if (!isRateLimited) {
       await db.from('notifications').insert({
         user_id: patient.id,
@@ -223,9 +262,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     } else {
       failed++;
       results.push({ report: r.report_number, success: false, error: waResult.error });
-      if ((waResult.error || '').toLowerCase().includes('rate limit')) {
+      if (isRateLimitError(waResult.error)) {
+        // Still rate-limited after exhausting the backoff budget: quota is
+        // truly gone for this hour. Stop the batch — never steal quota from
+        // release notifications. Candidates stay eligible (48h window, no
+        // cooldown marker is written for rate-limited attempts).
         rateLimitHit = true;
-        console.warn('[review-request] Rate limit hit — stopping batch early');
+        console.warn('[review-request] Rate limit persisted after backoff — stopping batch early');
         break;
       }
     }

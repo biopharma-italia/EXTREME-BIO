@@ -11,7 +11,13 @@ name: Referti - Promemoria WhatsApp (cron)
 
 on:
   schedule:
-    - cron: '*/15 * * * *' # ogni 15 minuti (UTC) — throughput recensioni 10/run x 4 = 40/ora (soglia sicura WaSender ~10 consecutivi)
+    # Minuti "non tondi" (7,23,38,52): GitHub ritarda/salta pesantemente gli
+    # schedule sui minuti 0/15/30/45 per congestione — con orari sparsi il
+    # numero di esecuzioni reali/giorno sale sensibilmente (osservato: con
+    # */15 solo 4-7 run/giorno effettivi). Doppia entry come ridondanza:
+    # se una viene saltata, l'altra recupera entro ~30 minuti.
+    - cron: '7,38 * * * *'  # ~ogni 30 min (UTC)
+    - cron: '23,52 * * * *' # ridondanza sfalsata (~ogni 30 min, offset 15)
   workflow_dispatch: {}    # trigger manuale per test
   push:
     branches: [main]

@@ -32,7 +32,7 @@ const GBP_BASELINE = { stars: 5.0, reviews: 459, noted_at: '2026-08-26' };
 const GBP_TARGET_TYPE = 'gbp_review_count';
 const COOLDOWN_DAYS = 180;
 const WINDOW_MIN_MINUTES = 30;
-const WINDOW_MAX_MINUTES = 24 * 60;
+const WINDOW_MAX_MINUTES = 48 * 60; // keep in sync with cron/review-request.ts
 
 function startOfTodayRomeIso(): string {
   // Rome-local midnight expressed in UTC (handles CET/CEST)
@@ -157,7 +157,7 @@ export async function onRequestGet(context: {
     return true;
   });
 
-  let queueReady = 0;   // in the 30min-24h window, sendable next run
+  let queueReady = 0;   // in the 30min-48h window, sendable next run
   let queueWaiting = 0; // downloaded <30 min ago, will enter window soon
   let queueCooldown = 0;
 
