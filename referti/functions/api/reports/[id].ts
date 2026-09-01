@@ -294,13 +294,10 @@ export async function onRequestDelete(context: {
     }, 400);
   }
 
-  // Ostetrica / lab_technician can only delete reports they uploaded
-  if ((ctx.user!.role === 'ostetrica' || ctx.user!.role === 'lab_technician') && report.uploaded_by !== ctx.user!.id) {
-    return jsonResponse({
-      success: false,
-      error: 'Puoi eliminare solo i referti che hai caricato.',
-    }, 403);
-  }
+  // 2026-09-01: rimosso il vincolo "solo i referti che hai caricato" per
+  // ostetrica/lab_technician — stessa policy dei sospesi (richiesta 2026-08-26):
+  // tutto lo staff può eliminare i referti in stato 'pending', chiunque li
+  // abbia caricati. Restano: pending-only per non-admin, confirm UI e audit.
 
   // Delete associated files from Supabase Storage
   const files = (report as any).report_files || [];
