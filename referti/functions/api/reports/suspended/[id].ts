@@ -10,7 +10,11 @@
  * Body POST: { patient_id: uuid, report_type?, category?, sample_date? }
  * DELETE: rimuove il sospeso (file + meta) senza creare un referto.
  *
- * @version 1.0.0 — 2026-08-25
+ * @version 1.1.0 — 2026-09-01: removeSuspended robusto — elimina tutti i file
+ * della cartella (non solo quello in meta.json) e VERIFICA l'esito: prima un
+ * fallimento dello storage remove veniva ignorato e l'API rispondeva comunque
+ * success:true (la riga ricompariva al reload — segnalato per ruoli
+ * biologa/ostetrica, ma il bug era indipendente dal ruolo).
  */
 
 import { createClient } from '@supabase/supabase-js';
@@ -59,11 +63,44 @@ async function loadMeta(client: ReturnType<typeof db>, id: string): Promise<Susp
   }
 }
 
-async function removeSuspended(client: ReturnType<typeof db>, id: string, fileName: string) {
-  await client.storage.from('referti').remove([
+async function removeSuspended(
+  client: ReturnType<typeof db>,
+  id: string,
+  fileName: string
+): Promise<{ ok: boolean; removed: number; error: string | null }> {
+  // Elenca la cartella per catturare TUTTI i file (robusto anche se il nome
+  // in meta.json non corrisponde più al file effettivamente presente)
+  const paths = new Set<string>([
     `${PREFIX}/${id}/${fileName}`,
     `${PREFIX}/${id}/meta.json`,
   ]);
+  const { data: listed } = await client.storage
+    .from('referti')
+    .list(`${PREFIX}/${id}`, { limit: 50 });
+  for (const f of listed || []) {
+    if (f.name) paths.add(`${PREFIX}/${id}/${f.name}`);
+  }
+
+  const { data: removed, error } = await client.storage
+    .from('referti')
+    .remove([...paths]);
+
+  if (error) {
+    console.error(`[Suspended:remove] ${id}:`, error.message);
+    return { ok: false, removed: 0, error: error.message };
+  }
+
+  // Verifica: la cartella deve essere vuota dopo la rimozione
+  const { data: after } = await client.storage
+    .from('referti')
+    .list(`${PREFIX}/${id}`, { limit: 5 });
+  const leftovers = (after || []).filter((f) => !!f.name).length;
+  if (leftovers > 0) {
+    console.error(`[Suspended:remove] ${id}: ${leftovers} file residui dopo remove`);
+    return { ok: false, removed: removed?.length ?? 0, error: `${leftovers} file non rimossi` };
+  }
+
+  return { ok: true, removed: removed?.length ?? 0, error: null };
 }
 
 // ── POST /api/reports/suspended/[id] — resolve ──────────────────────────────
@@ -201,6 +238,8 @@ export async function onRequestPost(context: {
   }
 
   // ── Cleanup suspended + audit ──────────────────────────────────────────────
+  // Il referto è già stato creato: un residuo in _sospesi non è bloccante,
+  // ma va loggato (removeSuspended logga internamente su console).
   await removeSuspended(client, suspendedId, meta.file_name);
 
   await client.from('audit_log').insert({
@@ -256,7 +295,13 @@ export async function onRequestDelete(context: {
     return jsonResponse({ success: false, error: 'Referto sospeso non trovato.' }, 404);
   }
 
-  await removeSuspended(client, suspendedId, meta.file_name);
+  const removal = await removeSuspended(client, suspendedId, meta.file_name);
+  if (!removal.ok) {
+    return jsonResponse({
+      success: false,
+      error: `Eliminazione non riuscita (${removal.error || 'errore storage'}). Riprova o contatta l'amministratore.`,
+    }, 500);
+  }
 
   await client.from('audit_log').insert({
     user_id: ctx.user!.id,
