@@ -118,7 +118,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script>
 window.bcDataLayer = {"page_type": "hub", "specialty": "cardiologia", "service_name": "cardiologia_hub", "physician_name": "tonino-bullitta", "price_range": "100-200", "content_group": "cardiologia_hub", "funnel_stage": "awareness"};
 </script>
-<script src="/js/cge-tracking.js?v=CGE_v4_20260217" defer></script>
+<script src="/js/cge-tracking.js?v=CGE_v4_1_20260907" defer></script>
 <!-- End CGE -->
 </head>
 <body>

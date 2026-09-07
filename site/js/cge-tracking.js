@@ -1,4 +1,4 @@
-// CGE v4.0.1 Compliance Patch — 2026-02-17
+// CGE v4.1.0 — 2026-09-07 (ChatGPT Ads Measurement Pixel, consent-gated)
 /**
  * ============================================================================
  * BIO-CLINIC CLINICAL GROWTH ENGINE (CGE) v4.0 — PRODUCTION
@@ -74,8 +74,45 @@
   var BCG = window.BCG || {};
   window.BCG = BCG;
 
-  BCG.version = 'CGE_v4.0';
+  BCG.version = 'CGE_v4.1';
   BCG.debug = (window.location.search.indexOf('cge_debug=1') > -1);
+
+  // =========================================================================
+  // 1b. CHATGPT ADS MEASUREMENT PIXEL (oaiq) — CONSENT-GATED
+  // =========================================================================
+  // GDPR: consent is set to FALSE before init; it is unlocked exclusively in
+  // BCG.updateConsent() when preferences.marketing === true (Iubenda purpose 5,
+  // same gate as ad_storage). Blocked events are NOT retried by the SDK.
+  // Pixel: F1GFqmzkKboRmJjNtxz7gV — bio-clinic.it (ChatGPT Ads account)
+
+  BCG._OAIQ_PIXEL_ID = 'F1GFqmzkKboRmJjNtxz7gV';
+
+  (function(w, d) {
+    if (w.oaiq) return;
+    var q = function() { (q.queue = q.queue || []).push(arguments); };
+    w.oaiq = q;
+    try {
+      w.oaiq('consent', false); // deny-by-default, BEFORE init (GDPR)
+      w.oaiq('init', { pixelId: BCG._OAIQ_PIXEL_ID });
+      var s = d.createElement('script');
+      s.async = true;
+      s.src = 'https://bzrcdn.openai.com/sdk/oaiq.min.js';
+      var f = d.getElementsByTagName('script')[0];
+      if (f && f.parentNode) { f.parentNode.insertBefore(s, f); }
+      else { (d.head || d.documentElement).appendChild(s); }
+    } catch (e) {}
+  })(window, document);
+
+  // Safe wrapper: never let pixel errors break site tracking
+  BCG._oaiqMeasure = function(eventName, payload, options) {
+    try {
+      if (typeof window.oaiq !== 'function') return;
+      window.oaiq('measure', eventName, payload || {}, options || {});
+      if (BCG.debug) {
+        console.log('%c[CGE] oaiq measure: ' + eventName, 'color:#10A37F;font-weight:bold', payload, options);
+      }
+    } catch (e) {}
+  };
 
   // =========================================================================
   // 2. GCLID CLOSED-LOOP ATTRIBUTION
@@ -394,6 +431,9 @@
           currency: 'EUR'
         });
 
+        // ChatGPT Ads pixel (consent-gated by SDK; event_id = dedup key)
+        BCG._oaiqMeasure('lead_created', { type: 'customer_action' }, { event_id: leadId });
+
         if (BCG.debug) {
           console.log('%c[CGE] generate_lead auto-fired from phone_click', 'color:#4285F4;font-weight:bold', {
             lead_id: leadId, value: estimatedValue, source: 'phone_call'
@@ -436,6 +476,9 @@
           value: estimatedValue,
           currency: 'EUR'
         });
+
+        // ChatGPT Ads pixel (consent-gated by SDK; event_id = dedup key)
+        BCG._oaiqMeasure('lead_created', { type: 'customer_action' }, { event_id: leadId });
 
         if (BCG.debug) {
           console.log('%c[CGE] generate_lead auto-fired from whatsapp_click', 'color:#25D366;font-weight:bold', {
@@ -826,6 +869,13 @@
     // 2. purchase fires on same trigger (212) in GTM via bc_booking_confirmed
     // The purchase tag in GTM reads bc_revenue and bc_transaction_id from dataLayer
 
+    // 3. ChatGPT Ads pixel (consent-gated; amount = integer cents; event_id = dedup)
+    BCG._oaiqMeasure('appointment_scheduled', {
+      type: 'customer_action',
+      amount: Math.round((parseFloat(revenue) || 0) * 100),
+      currency: 'EUR'
+    }, { event_id: transactionId });
+
     if (BCG.debug) {
       console.log('%c[CGE] bc_booking_confirmed + purchase fired', 'color:#EA4335;font-weight:bold', {
         value: revenue, currency: 'EUR', transaction_id: transactionId, gclid: BCG.getGclid()
@@ -871,6 +921,13 @@
     }
 
     gtag('consent', 'update', consentMap);
+
+    // ChatGPT Ads pixel: unlock/lock on same gate as ad_storage (marketing purpose)
+    try {
+      if (typeof window.oaiq === 'function') {
+        window.oaiq('consent', !!preferences.marketing);
+      }
+    } catch (e) {}
 
     window.dataLayer.push({
       event: 'bc_consent_update',
@@ -977,6 +1034,9 @@
             value: estimatedValue,
             currency: 'EUR'
           });
+
+          // ChatGPT Ads pixel (consent-gated by SDK; event_id = dedup key)
+          BCG._oaiqMeasure('lead_created', { type: 'customer_action' }, { event_id: leadId });
 
           if (BCG.debug) {
             console.log('%c[CGE] bc_lead_generated fired (form API success)', 'color:#4285F4;font-weight:bold', {
