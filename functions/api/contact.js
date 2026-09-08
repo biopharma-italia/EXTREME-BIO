@@ -22,22 +22,53 @@
  *   - LEADS_KV: KV namespace binding for lead storage
  *   - ALLOWED_ORIGINS: comma-separated allowed origins
  * 
- * @version 1.0.0
- * @date 2026-02-16
+ * @version 1.1.0 — 2026-09-08
+ *   Fix audit 2026-09-07:
+ *   - P1.2: niente più success:true se il lead NON è stato salvato né
+ *     recapitato (prima gli errori D1/Resend erano inghiottiti in silenzio
+ *     e il paziente credeva di aver contattato la clinica).
+ *   - P1.2: rate limit basico per IP (10 invii/ora via KV).
+ *   - P1.3: CORS con origin singolo da whitelist + Vary: Origin.
  */
+
+import { corsHeadersFor } from '../lib/cors.js';
+
+const RATE_LIMIT_PER_HOUR = 10;
+
+async function checkRateLimit(env, ip) {
+  // Best-effort (KV get+put non atomico: tollerabile per anti-spam)
+  if (!env.BOOKING_KV || !ip || ip === 'unknown') return true;
+  try {
+    const key = `rl:contact:${ip}`;
+    const current = parseInt(await env.BOOKING_KV.get(key)) || 0;
+    if (current >= RATE_LIMIT_PER_HOUR) return false;
+    await env.BOOKING_KV.put(key, String(current + 1), { expirationTtl: 3600 });
+  } catch { /* mai bloccare un paziente per un errore del rate limiter */ }
+  return true;
+}
 
 export async function onRequestPost(context) {
   const { request, env } = context;
 
-  // CORS headers
+  // CORS headers (P1.3: origin singolo valido, non lista)
   const corsHeaders = {
-    'Access-Control-Allow-Origin': env.ALLOWED_ORIGINS || 'https://bio-clinic.it',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
+    ...corsHeadersFor(request, env, 'POST, OPTIONS', 'Content-Type'),
     'Access-Control-Max-Age': '86400',
   };
 
   try {
+    // Rate limit per IP (P1.2)
+    const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
+    if (!(await checkRateLimit(env, clientIP))) {
+      return new Response(JSON.stringify({
+        success: false,
+        error: 'Troppe richieste. Attendi qualche minuto o chiamaci al 079 956 1332.'
+      }), {
+        status: 429,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json', 'Retry-After': '600' }
+      });
+    }
+
     // Parse request body
     const body = await request.json();
 
@@ -75,6 +106,11 @@ export async function onRequestPost(context) {
       ip_city: request.cf?.city || 'unknown',
     };
 
+    // Esiti reali di persistenza/recapito (P1.2: niente successi finti)
+    let storedD1 = false;
+    let storedKV = false;
+    let emailed = false;
+
     // Store lead in D1 database (primary storage)
     if (env.BOOKING_DB) {
       try {
@@ -90,19 +126,21 @@ export async function onRequestPost(context) {
           lead.bc_user_id, lead.bc_session_id, lead.bc_device_type, lead.referrer,
           lead.ip_country, lead.ip_city, now, now
         ).run();
+        storedD1 = true;
       } catch (dbError) {
         console.error('D1 storage error:', dbError);
       }
     }
 
-    // Fallback: store in KV if D1 unavailable
-    if (!env.BOOKING_DB && env.BOOKING_KV) {
+    // Fallback: store in KV if D1 unavailable OR D1 write failed
+    if (!storedD1 && env.BOOKING_KV) {
       try {
         await env.BOOKING_KV.put(
           `lead:${lead.lead_id}`,
           JSON.stringify(lead),
           { expirationTtl: 60 * 60 * 24 * 365 }
         );
+        storedKV = true;
       } catch (kvError) {
         console.error('KV storage error:', kvError);
       }
@@ -113,10 +151,25 @@ export async function onRequestPost(context) {
       try {
         const emailBody = buildEmailBody(lead);
         await sendEmail(env, lead, emailBody);
+        emailed = true;
       } catch (emailError) {
         console.error('Email send error:', emailError);
-        // Don't fail the request if email fails
+        // Non fallire la richiesta se l'email fallisce MA il lead è salvato
       }
+    }
+
+    // P1.2: successo SOLO se il lead è stato salvato (D1/KV) o recapitato via
+    // email. Se tutti i canali falliscono, il paziente deve saperlo subito.
+    const delivered = storedD1 || storedKV || emailed;
+    if (!delivered) {
+      console.error('Contact lead LOST (no storage, no email):', lead.lead_id);
+      return new Response(JSON.stringify({
+        success: false,
+        error: 'Non siamo riusciti a registrare la richiesta. Riprova tra qualche minuto o chiamaci al 079 956 1332.'
+      }), {
+        status: 503,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json', 'Retry-After': '120' }
+      });
     }
 
     // Success response
@@ -147,9 +200,7 @@ export async function onRequestOptions(context) {
   return new Response(null, {
     status: 204,
     headers: {
-      'Access-Control-Allow-Origin': context.env.ALLOWED_ORIGINS || 'https://bio-clinic.it',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
+      ...corsHeadersFor(context.request, context.env, 'POST, OPTIONS', 'Content-Type'),
       'Access-Control-Max-Age': '86400',
     }
   });

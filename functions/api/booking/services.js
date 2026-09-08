@@ -8,6 +8,8 @@
  * @version 1.1.0
  * @date 2026-02-17
  */
+import { corsHeadersFor } from '../../lib/cors.js';
+
 const FALLBACK_SERVICES = [
   {
     id: "prelievo-standard",
@@ -184,18 +186,15 @@ const FALLBACK_SERVICES = [
  * @date 2026-02-17
  */
 
-function corsHeaders(env) {
-  return {
-    'Access-Control-Allow-Origin': env.ALLOWED_ORIGINS || 'https://bio-clinic.it',
-    'Access-Control-Allow-Methods': 'GET, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-  };
+// Fix audit P1.3: origin singolo da whitelist + Vary: Origin (helper condiviso)
+function corsHeaders(request, env) {
+  return corsHeadersFor(request, env, 'GET, OPTIONS', 'Content-Type');
 }
 
 export async function onRequestGet(context) {
-  const { env } = context;
+  const { request, env } = context;
   const headers = {
-    ...corsHeaders(env),
+    ...corsHeaders(request, env),
     'Content-Type': 'application/json',
     'Cache-Control': 'public, max-age=300, s-maxage=600',
   };
@@ -256,7 +255,7 @@ export async function onRequestOptions(context) {
   return new Response(null, {
     status: 204,
     headers: {
-      ...corsHeaders(context.env),
+      ...corsHeaders(context.request, context.env),
       'Access-Control-Max-Age': '86400',
     }
   });

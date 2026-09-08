@@ -9,6 +9,7 @@
  * @date 2026-02-17
  */
 import { sendWhatsApp, messageBookingConfirmed } from '../../lib/whatsapp.js';
+import { corsHeadersFor } from '../../lib/cors.js';
 
 const FALLBACK_SERVICES = [
   {
@@ -299,19 +300,16 @@ async function markBookingDedup(env, bookingId, serviceId, date, time, phone) {
 
 // ── CORS ─────────────────────────────────────────────────────────────────────
 
-function corsHeaders(env) {
-  return {
-    'Access-Control-Allow-Origin': env.ALLOWED_ORIGINS || 'https://bio-clinic.it',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, X-CSRF-Token',
-  };
+// Fix audit P1.3: origin singolo da whitelist + Vary: Origin (helper condiviso)
+function corsHeaders(request, env) {
+  return corsHeadersFor(request, env, 'POST, OPTIONS', 'Content-Type, X-CSRF-Token');
 }
 
 // ── Main Handler ─────────────────────────────────────────────────────────────
 
 export async function onRequestPost(context) {
   const { request, env } = context;
-  const headers = { ...corsHeaders(env), 'Content-Type': 'application/json' };
+  const headers = { ...corsHeaders(request, env), 'Content-Type': 'application/json' };
 
   try {
     // Rate limiting
@@ -449,10 +447,15 @@ export async function onRequestPost(context) {
       created_at: new Date().toISOString(),
     };
 
-    // Persist to D1
+    // Persist to D1.
+    // Fix audit 2026-09-07 (P1.1): l'INSERT è condizionale sul conteggio slot
+    // NELLO STESSO statement (INSERT ... SELECT ... WHERE count < max): in
+    // SQLite/D1 un singolo statement è atomico, quindi due richieste
+    // simultanee non possono più superare max_per_slot (il vecchio
+    // SELECT COUNT + INSERT separati era una race condition).
     if (env.BOOKING_DB) {
       try {
-        await env.BOOKING_DB.prepare(
+        const result = await env.BOOKING_DB.prepare(
           `INSERT INTO bookings (
             id, transaction_id, service_id, department,
             booking_date, booking_time, duration_minutes,
@@ -460,7 +463,13 @@ export async function onRequestPost(context) {
             price_eur, currency,
             gclid, lead_source, source_page, utm_source, utm_medium, utm_campaign,
             status, notes, ip_country, ip_city, user_agent, created_at
-          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+          )
+          SELECT ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+          WHERE (
+            SELECT COUNT(*) FROM bookings
+            WHERE service_id = ? AND booking_date = ? AND booking_time = ?
+            AND status IN ('confirmed', 'completed')
+          ) < ?`
         ).bind(
           booking.id, booking.transaction_id, booking.service_id, booking.department,
           booking.booking_date, booking.booking_time, booking.duration_minutes,
@@ -469,8 +478,17 @@ export async function onRequestPost(context) {
           booking.gclid, booking.lead_source, booking.source_page,
           booking.utm_source, booking.utm_medium, booking.utm_campaign,
           booking.status, booking.notes, booking.ip_country, booking.ip_city,
-          booking.user_agent, booking.created_at
+          booking.user_agent, booking.created_at,
+          booking.service_id, booking.booking_date, booking.booking_time, maxPerSlot
         ).run();
+        // Nessuna riga inserita = slot riempito da una richiesta concorrente
+        if (!result?.meta || result.meta.changes === 0) {
+          return new Response(JSON.stringify({
+            success: false,
+            error: 'Questo orario non \u00e8 pi\u00f9 disponibile. Scegliere un altro slot.',
+            error_code: 'SLOT_FULL'
+          }), { status: 409, headers });
+        }
       } catch (dbErr) {
         if (dbErr.message?.includes('UNIQUE')) {
           return new Response(JSON.stringify({
@@ -687,7 +705,7 @@ export async function onRequestOptions(context) {
   return new Response(null, {
     status: 204,
     headers: {
-      ...corsHeaders(context.env),
+      ...corsHeaders(context.request, context.env),
       'Access-Control-Max-Age': '86400',
     }
   });

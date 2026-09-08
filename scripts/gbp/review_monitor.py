@@ -158,8 +158,15 @@ def main():
         first_name = name.split()[0] if name and name != 'Anonimo' else ''
         draft = TEMPLATES.get(stars, TEMPLATES[3]).format(name=first_name or 'e grazie ancora').replace('  ', ' ')
         issue_url = open_issue(rv, draft)
-        state['seen'][rid] = {'stars': stars, 'issue': issue_url, 'replied': False}
-        new_count += 1
+        if issue_url:
+            state['seen'][rid] = {'stars': stars, 'issue': issue_url, 'replied': False}
+            new_count += 1
+        else:
+            # Fix audit 2026-09-07 (sez. GBP): se la issue NON è stata creata,
+            # NON marcare la recensione come vista — verrà ritentata al
+            # prossimo run invece di perdere la bozza per sempre.
+            print(f'Recensione {rid} NON marcata come vista: retry al prossimo run.',
+                  file=sys.stderr)
 
     if not args.list:
         save_state(state)

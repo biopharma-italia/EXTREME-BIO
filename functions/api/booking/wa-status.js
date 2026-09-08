@@ -12,8 +12,14 @@
  * Privacy: i numeri di telefono sono mascherati (+39*******123).
  * Nessun dato paziente (nomi, email) viene esposto.
  *
- * @version 1.0.0 — 2026-08-25
+ * SICUREZZA: endpoint riservato agli amministratori (audit 2026-09-07, P0.1).
+ * Richiede header `Authorization: Bearer <JWT Supabase>` con ruolo admin —
+ * stesso meccanismo degli endpoint /api/admin/* (withAdminAuth).
+ *
+ * @version 1.1.0 — 2026-09-08
  */
+
+import { withAdminAuth } from '../../lib/admin-helpers.js';
 
 const DEFAULT_BASE_URL = 'https://wasenderapi.com/api';
 
@@ -90,6 +96,11 @@ async function checkOnWhatsApp(env, phoneE164) {
 }
 
 export async function onRequestGet(context) {
+  // Guard admin: nessun dato diagnostico senza autenticazione (P0.1)
+  return withAdminAuth(context, handleWaStatus);
+}
+
+async function handleWaStatus(context) {
   const { request, env } = context;
   const headers = { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' };
   const url = new URL(request.url);

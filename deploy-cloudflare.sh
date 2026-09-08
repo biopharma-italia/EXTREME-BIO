@@ -87,6 +87,9 @@ cd "$SITE_DIR" && tar cf - \
     --exclude='./backups' \
     --exclude='./build' \
     --exclude='./salute/_drafts' \
+    --exclude='./news/_drafts' \
+    --exclude='*/_drafts' \
+    --exclude='./docs' \
     --exclude='./data/cache' \
     --exclude='./data/v2' \
     --exclude='./data/*.xlsx' \
