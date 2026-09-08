@@ -9,7 +9,7 @@
  *   - Request logging
  *
  * Usage in endpoint:
- *   import { withAdminAuth, corsHeaders, jsonResponse, errorResponse } from './lib-admin.js';
+ *   import { withAdminAuth, corsHeaders, jsonResponse, errorResponse } from '../../lib/admin-helpers.js';
  *   export async function onRequestGet(context) {
  *     return withAdminAuth(context, async (ctx, user) => { ... });
  *   }

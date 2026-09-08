@@ -6,6 +6,9 @@
 # ===========================================
 /*
   # Security Headers
+  # HSTS (audit 2026-09-07 P2): max-age iniziale prudente di 1 settimana;
+  # da alzare a 31536000 + includeSubDomains dopo verifica su tutti i sottodomini.
+  Strict-Transport-Security: max-age=604800
   X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
   X-XSS-Protection: 1; mode=block

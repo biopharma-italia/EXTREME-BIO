@@ -17,7 +17,7 @@ import {
   errorResponse,
   corsHeaders,
   parsePagination,
-} from './lib-admin.js';
+} from './admin-helpers.js';
 
 /**
  * Create CRUD handlers for a given table

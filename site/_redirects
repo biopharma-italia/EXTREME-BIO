@@ -570,3 +570,6 @@
 /medicina-dello-sport/ /visita-medicina-sport/ 301
 /medicina-sport /visita-medicina-sport/ 301
 /medicina-sport/ /visita-medicina-sport/ 301
+
+# Media sostituiti (audit 2026-09-07 P2: GIF 2.7MB -> video)
+/images/ecografia-renale.gif /images/ecografia-renale-poster.jpg 301
