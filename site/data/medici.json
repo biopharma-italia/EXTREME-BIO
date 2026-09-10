@@ -518,5 +518,55 @@
     "prenotazione": false,
     "miodottore": null,
     "foto": null
+  },
+  {
+    "id": "lorenzo-cordero",
+    "nome": "Lorenzo Cordero",
+    "titolo": "Dott.",
+    "specialita": "pneumologia",
+    "ruolo": "Pneumologo - Allergologo",
+    "prenotazione": true,
+    "miodottore": "https://www.miodottore.it/profilo/lorenzo-cordero",
+    "foto": null
+  },
+  {
+    "id": "sara-fois",
+    "nome": "Sara Fois",
+    "titolo": "Dott.ssa",
+    "specialita": "pneumologia",
+    "ruolo": "Pneumologa",
+    "prenotazione": true,
+    "miodottore": "https://www.miodottore.it/profilo/sara-s-fois",
+    "foto": null
+  },
+  {
+    "id": "alberto-porcu",
+    "nome": "Alberto Porcu",
+    "titolo": "Prof.",
+    "specialita": "chirurgia-generale",
+    "ruolo": "Chirurgo Generale",
+    "prenotazione": true,
+    "miodottore": "https://www.miodottore.it/profilo/alberto-porcu",
+    "foto": null
+  },
+  {
+    "id": "lorena-tanda",
+    "nome": "Lorena Tanda",
+    "titolo": "Dott.ssa",
+    "specialita": "gastroenterologia",
+    "ruolo": "Gastroenterologa",
+    "prenotazione": true,
+    "miodottore": "https://www.miodottore.it/profilo/lorena-tanda",
+    "foto": null
+  },
+  {
+    "id": "elena-viale",
+    "nome": "Elena Viale",
+    "titolo": "Dott.ssa",
+    "specialita": "nutrizione",
+    "ruolo": "Biologa - Team Slim Care",
+    "prenotazione": false,
+    "miodottore": null,
+    "foto": "/images/equipe/elena-viale.jpg"
   }
 ]

@@ -1701,14 +1701,18 @@ a.team-member-clickable:hover {
 
 /* Avatar animation on hover - NO sfondo verde pieno */
 .team-member:hover .team-avatar,
-.physician-card:hover .physician-card-header,
 a.team-member-clickable:hover .team-avatar {
   background: var(--primary-bg);
   transform: scale(1.05);
 }
 
+/* physician-card: niente sfondo colorato sull'header in hover (solo leggero zoom avatar) */
+.physician-card:hover .physician-avatar {
+  transform: scale(1.06);
+  transition: transform 0.25s ease;
+}
+
 .team-member:hover .team-avatar svg,
-.physician-card:hover .physician-card-header svg,
 a.team-member-clickable:hover .team-avatar svg {
   stroke: var(--primary);
 }

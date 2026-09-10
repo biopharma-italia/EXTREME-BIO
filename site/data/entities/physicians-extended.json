@@ -1,7 +1,7 @@
 {
   "version": "3.0",
-  "generated": "2026-02-28T19:26:41Z",
-  "total": 52,
+  "generated": "2026-09-10",
+  "total": 57,
   "physicians": [
     {
       "id": "francesco-dessole",
@@ -954,6 +954,89 @@
       "miodottore_url": null,
       "procedures": [],
       "pathways": []
+    },
+    {
+      "id": "lorenzo-cordero",
+      "slug": "lorenzo-cordero",
+      "title": "Dott.",
+      "name": "Lorenzo Cordero",
+      "specialty_id": "pneumologia",
+      "job_title": "Pneumologo - Allergologo",
+      "bio": "Pneumologo e allergologo, già dirigente medico della Clinica Pneumologica dell'Università di Sassari, esperto in allergologia respiratoria, BPCO e oncologia polmonare.",
+      "photo_url": null,
+      "booking_enabled": true,
+      "miodottore_url": "https://www.miodottore.it/profilo/lorenzo-cordero",
+      "procedures": [
+        "visita-pneumologica",
+        "spirometria"
+      ],
+      "pathways": []
+    },
+    {
+      "id": "sara-fois",
+      "slug": "sara-fois",
+      "title": "Dott.ssa",
+      "name": "Sara Fois",
+      "specialty_id": "pneumologia",
+      "job_title": "Pneumologa",
+      "bio": "Pneumologa, dirigente medico presso la Pneumologia Clinica e Interventistica dell'AOU di Sassari, con interesse clinico e di ricerca per le interstiziopatie polmonari, la sarcoidosi e il tumore del polmone.",
+      "photo_url": null,
+      "booking_enabled": true,
+      "miodottore_url": "https://www.miodottore.it/profilo/sara-s-fois",
+      "procedures": [
+        "visita-pneumologica",
+        "spirometria"
+      ],
+      "pathways": []
+    },
+    {
+      "id": "alberto-porcu",
+      "slug": "alberto-porcu",
+      "title": "Prof.",
+      "name": "Alberto Porcu",
+      "specialty_id": "chirurgia-generale",
+      "job_title": "Chirurgo Generale",
+      "bio": "Chirurgo generale con oltre vent'anni di esperienza in chirurgia epato-bilio-pancreatica, colo-rettale ed esofagea, Direttore della Clinica Chirurgica dell'AOU di Sassari e docente della Facoltà di Medicina.",
+      "photo_url": null,
+      "booking_enabled": true,
+      "miodottore_url": "https://www.miodottore.it/profilo/alberto-porcu",
+      "procedures": [],
+      "pathways": []
+    },
+    {
+      "id": "lorena-tanda",
+      "slug": "lorena-tanda",
+      "title": "Dott.ssa",
+      "name": "Lorena Tanda",
+      "specialty_id": "gastroenterologia",
+      "job_title": "Gastroenterologa",
+      "bio": "Gastroenterologa specializzata in gastroenterologia ed epatologia, esperta in malattie dell'apparato digerente, reflusso gastroesofageo, epatopatie croniche e malattie infiammatorie croniche intestinali.",
+      "photo_url": null,
+      "booking_enabled": true,
+      "miodottore_url": "https://www.miodottore.it/profilo/lorena-tanda",
+      "procedures": [
+        "visita-gastroenterologica",
+        "ecografia-addominale"
+      ],
+      "pathways": []
+    },
+    {
+      "id": "elena-viale",
+      "slug": "elena-viale",
+      "title": "Dott.ssa",
+      "name": "Elena Viale",
+      "specialty_id": "nutrizione",
+      "job_title": "Biologa - Team Slim Care",
+      "bio": "Biologa abilitata, laureata con lode in Scienze della Nutrizione Umana, esperta nella valutazione dello stato nutrizionale e nella pianificazione dietetica personalizzata all'interno dei percorsi Slim Care.",
+      "photo_url": "/images/equipe/elena-viale.jpg",
+      "booking_enabled": false,
+      "miodottore_url": null,
+      "procedures": [
+        "visita-nutrizionale"
+      ],
+      "pathways": [
+        "slim-care"
+      ]
     }
   ]
 }

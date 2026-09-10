@@ -1,6 +1,6 @@
 {
   "version": "3.0",
-  "generated": "2026-02-28T19:26:41Z",
+  "generated": "2026-09-10",
   "total": 11,
   "specialties": [
     {
@@ -345,7 +345,7 @@
       "description": "Visite nutrizionali, piani alimentari personalizzati, composizione corporea",
       "procedures_count": 2,
       "tests_count": 15,
-      "physicians_count": 2,
+      "physicians_count": 3,
       "page_url": null,
       "main_procedures": [
         "visita-nutrizionale",
@@ -358,7 +358,8 @@
       ],
       "physicians": [
         "alessandro-pandolfi",
-        "antonella-galatino"
+        "antonella-galatino",
+        "elena-viale"
       ],
       "related_pathways": [
         "slim-care",

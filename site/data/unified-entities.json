@@ -1,7 +1,7 @@
 {
   "version": "3.0",
   "generated": "2026-02-28T19:26:41Z",
-  "total": 125,
+  "total": 130,
   "entities": [
     {
       "type": "specialty",
@@ -568,6 +568,51 @@
       "slug": "gloria-reggiani",
       "url": "/equipe/gloria-reggiani/",
       "specialty": "consulenti-esterni",
+      "title": "Dott.ssa"
+    },
+    {
+      "type": "physician",
+      "id": "lorenzo-cordero",
+      "name": "Lorenzo Cordero",
+      "slug": "lorenzo-cordero",
+      "url": "/equipe/lorenzo-cordero/",
+      "specialty": "pneumologia",
+      "title": "Dott."
+    },
+    {
+      "type": "physician",
+      "id": "sara-fois",
+      "name": "Sara Fois",
+      "slug": "sara-fois",
+      "url": "/equipe/sara-fois/",
+      "specialty": "pneumologia",
+      "title": "Dott.ssa"
+    },
+    {
+      "type": "physician",
+      "id": "alberto-porcu",
+      "name": "Alberto Porcu",
+      "slug": "alberto-porcu",
+      "url": "/equipe/alberto-porcu/",
+      "specialty": "chirurgia-generale",
+      "title": "Prof."
+    },
+    {
+      "type": "physician",
+      "id": "lorena-tanda",
+      "name": "Lorena Tanda",
+      "slug": "lorena-tanda",
+      "url": "/equipe/lorena-tanda/",
+      "specialty": "gastroenterologia",
+      "title": "Dott.ssa"
+    },
+    {
+      "type": "physician",
+      "id": "elena-viale",
+      "name": "Elena Viale",
+      "slug": "elena-viale",
+      "url": "/equipe/elena-viale/",
+      "specialty": "nutrizione",
       "title": "Dott.ssa"
     },
     {

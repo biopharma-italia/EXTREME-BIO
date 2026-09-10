@@ -333,6 +333,30 @@ specialties:
     status: "active"
 
   # ==========================================================================
+  # CHIRURGIA GENERALE
+  # ==========================================================================
+  - id: "chirurgia-generale"
+    name: "Chirurgia Generale"
+    name_extended: "Chirurgia Generale"
+    slug: "chirurgia-generale"
+    
+    display:
+      icon: "🔪"
+      color_primary: "#5D4037"
+      color_dark: "#3E2723"
+      color_light: "#D7CCC8"
+    
+    content:
+      description_short: "Visite chirurgiche e chirurgia epato-bilio-pancreatica, colo-rettale ed esofagea"
+    
+    visibility:
+      show_in_menu: false
+      menu_order: 27
+      show_in_homepage: false
+    
+    status: "active"
+
+  # ==========================================================================
   # MEDICINA INTERNA
   # ==========================================================================
   - id: "medicina-interna"

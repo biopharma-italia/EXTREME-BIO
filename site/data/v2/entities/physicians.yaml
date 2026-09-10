@@ -1,5 +1,5 @@
 schema_version: '2.1'
-last_updated: '2026-01-29'
+last_updated: '2026-09-10'
 physicians:
 - id: salvatore-dessole
   title: Prof.
@@ -1108,4 +1108,97 @@ physicians:
     show_in_equipe: true
     show_in_specialty_page: true
     priority_order: 1
+  status: active
+- id: lorenzo-cordero
+  title: Dott.
+  first_name: Lorenzo
+  last_name: Cordero
+  name: Lorenzo Cordero
+  specialty_id: pneumologia
+  job_title: Pneumologo - Allergologo
+  procedures:
+  - visita-pneumologica
+  - spirometria
+  bio_short: Pneumologo e allergologo, già dirigente medico della Clinica Pneumologica dell'Università di Sassari, esperto in allergologia respiratoria, BPCO e oncologia polmonare.
+  booking:
+    enabled: true
+    miodottore_id: lorenzo-cordero
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 2
+  status: active
+- id: sara-fois
+  title: Dott.ssa
+  first_name: Sara
+  last_name: Fois
+  name: Sara Fois
+  specialty_id: pneumologia
+  job_title: Pneumologa
+  procedures:
+  - visita-pneumologica
+  - spirometria
+  bio_short: Pneumologa, dirigente medico presso la Pneumologia Clinica e Interventistica dell'AOU di Sassari, con interesse clinico e di ricerca per le interstiziopatie polmonari, la sarcoidosi e il tumore del polmone.
+  booking:
+    enabled: true
+    miodottore_id: sara-s-fois
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 3
+  status: active
+- id: alberto-porcu
+  title: Prof.
+  first_name: Alberto
+  last_name: Porcu
+  name: Alberto Porcu
+  specialty_id: chirurgia-generale
+  job_title: Chirurgo Generale
+  bio_short: Chirurgo generale con oltre vent'anni di esperienza in chirurgia epato-bilio-pancreatica, colo-rettale ed esofagea, Direttore della Clinica Chirurgica dell'AOU di Sassari e docente della Facoltà di Medicina.
+  booking:
+    enabled: true
+    miodottore_id: alberto-porcu
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 1
+  status: active
+- id: lorena-tanda
+  title: Dott.ssa
+  first_name: Lorena
+  last_name: Tanda
+  name: Lorena Tanda
+  specialty_id: gastroenterologia
+  job_title: Gastroenterologa
+  procedures:
+  - visita-gastroenterologica
+  - ecografia-addominale
+  bio_short: Gastroenterologa specializzata in gastroenterologia ed epatologia, esperta in malattie dell'apparato digerente, reflusso gastroesofageo, epatopatie croniche e malattie infiammatorie croniche intestinali.
+  booking:
+    enabled: true
+    miodottore_id: lorena-tanda
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 2
+  status: active
+- id: elena-viale
+  title: Dott.ssa
+  first_name: Elena
+  last_name: Viale
+  name: Elena Viale
+  specialty_id: dietologia
+  job_title: Biologa - Team Slim Care
+  role_badges:
+  - Team Slim Care
+  procedures:
+  - visita-nutrizionale
+  bio_short: Biologa abilitata, laureata con lode in Scienze della Nutrizione Umana, esperta nella valutazione dello stato nutrizionale e nella pianificazione dietetica personalizzata all'interno dei percorsi Slim Care.
+  booking:
+    enabled: false
+  image: /images/equipe/elena-viale.jpg
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 2
   status: active

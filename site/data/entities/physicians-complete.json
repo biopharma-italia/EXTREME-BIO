@@ -1,7 +1,7 @@
 {
   "version": "3.0",
-  "generated": "2026-08-28T00:00:00Z",
-  "total": 53,
+  "generated": "2026-09-10",
+  "total": 58,
   "physicians": [
     {
       "id": "francesco-dessole",
@@ -1183,6 +1183,109 @@
       "widget_html": null,
       "booking_enabled": false,
       "photo_url": null
+    },
+    {
+      "id": "lorenzo-cordero",
+      "slug": "lorenzo-cordero",
+      "title": "Dott.",
+      "name": "Lorenzo Cordero",
+      "full_name": "Dott. Lorenzo Cordero",
+      "specialty_id": "pneumologia",
+      "job_title": "Pneumologo - Allergologo",
+      "role_badge": null,
+      "bio": "Pneumologo e allergologo, già dirigente medico della Clinica Pneumologica dell'Università di Sassari, esperto in allergologia respiratoria, BPCO e oncologia polmonare.",
+      "procedures": [
+        "visita-pneumologica",
+        "spirometria"
+      ],
+      "pathways": [],
+      "miodottore_id": "lorenzo-cordero",
+      "miodottore_url": "https://www.miodottore.it/profilo/lorenzo-cordero",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/profilo/lorenzo-cordero\" rel=\"nofollow\" data-zlw-doctor=\"lorenzo-cordero\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Lorenzo Cordero - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "sara-fois",
+      "slug": "sara-fois",
+      "title": "Dott.ssa",
+      "name": "Sara Fois",
+      "full_name": "Dott.ssa Sara Fois",
+      "specialty_id": "pneumologia",
+      "job_title": "Pneumologa",
+      "role_badge": null,
+      "bio": "Pneumologa, dirigente medico presso la Pneumologia Clinica e Interventistica dell'AOU di Sassari, con interesse clinico e di ricerca per le interstiziopatie polmonari, la sarcoidosi e il tumore del polmone.",
+      "procedures": [
+        "visita-pneumologica",
+        "spirometria"
+      ],
+      "pathways": [],
+      "miodottore_id": "sara-s-fois",
+      "miodottore_url": "https://www.miodottore.it/profilo/sara-s-fois",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/profilo/sara-s-fois\" rel=\"nofollow\" data-zlw-doctor=\"sara-s-fois\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Sara Fois - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "alberto-porcu",
+      "slug": "alberto-porcu",
+      "title": "Prof.",
+      "name": "Alberto Porcu",
+      "full_name": "Prof. Alberto Porcu",
+      "specialty_id": "chirurgia-generale",
+      "job_title": "Chirurgo Generale",
+      "role_badge": null,
+      "bio": "Chirurgo generale con oltre vent'anni di esperienza in chirurgia epato-bilio-pancreatica, colo-rettale ed esofagea, Direttore della Clinica Chirurgica dell'AOU di Sassari e docente della Facoltà di Medicina.",
+      "procedures": [],
+      "pathways": [],
+      "miodottore_id": "alberto-porcu",
+      "miodottore_url": "https://www.miodottore.it/profilo/alberto-porcu",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/profilo/alberto-porcu\" rel=\"nofollow\" data-zlw-doctor=\"alberto-porcu\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Prof. Alberto Porcu - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "lorena-tanda",
+      "slug": "lorena-tanda",
+      "title": "Dott.ssa",
+      "name": "Lorena Tanda",
+      "full_name": "Dott.ssa Lorena Tanda",
+      "specialty_id": "gastroenterologia",
+      "job_title": "Gastroenterologa",
+      "role_badge": null,
+      "bio": "Gastroenterologa specializzata in gastroenterologia ed epatologia, esperta in malattie dell'apparato digerente, reflusso gastroesofageo, epatopatie croniche e malattie infiammatorie croniche intestinali.",
+      "procedures": [
+        "visita-gastroenterologica",
+        "ecografia-addominale"
+      ],
+      "pathways": [],
+      "miodottore_id": "lorena-tanda",
+      "miodottore_url": "https://www.miodottore.it/profilo/lorena-tanda",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/profilo/lorena-tanda\" rel=\"nofollow\" data-zlw-doctor=\"lorena-tanda\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Lorena Tanda - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "elena-viale",
+      "slug": "elena-viale",
+      "title": "Dott.ssa",
+      "name": "Elena Viale",
+      "full_name": "Dott.ssa Elena Viale",
+      "specialty_id": "nutrizione",
+      "job_title": "Biologa - Team Slim Care",
+      "role_badge": "Team Slim Care",
+      "bio": "Biologa abilitata, laureata con lode in Scienze della Nutrizione Umana, esperta nella valutazione dello stato nutrizionale e nella pianificazione dietetica personalizzata all'interno dei percorsi Slim Care.",
+      "procedures": [
+        "visita-nutrizionale"
+      ],
+      "pathways": [
+        "slim-care"
+      ],
+      "miodottore_id": null,
+      "miodottore_url": null,
+      "widget_html": null,
+      "booking_enabled": false,
+      "photo_url": "/images/equipe/elena-viale.jpg"
     }
   ]
 }

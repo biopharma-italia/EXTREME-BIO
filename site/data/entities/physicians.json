@@ -1,7 +1,7 @@
 {
   "version": "3.0",
-  "generated": "2026-08-31",
-  "total": 54,
+  "generated": "2026-09-10",
+  "total": 59,
   "physicians": [
     {
       "id": "francesco-dessole",
@@ -544,6 +544,56 @@
       "specialty_id": "consulenti-esterni",
       "job_title": "Biologa - Consulente Esterna",
       "photo_url": null,
+      "booking_enabled": false
+    },
+    {
+      "id": "lorenzo-cordero",
+      "slug": "lorenzo-cordero",
+      "title": "Dott.",
+      "name": "Lorenzo Cordero",
+      "specialty_id": "pneumologia",
+      "job_title": "Pneumologo - Allergologo",
+      "photo_url": null,
+      "booking_enabled": true
+    },
+    {
+      "id": "sara-fois",
+      "slug": "sara-fois",
+      "title": "Dott.ssa",
+      "name": "Sara Fois",
+      "specialty_id": "pneumologia",
+      "job_title": "Pneumologa",
+      "photo_url": null,
+      "booking_enabled": true
+    },
+    {
+      "id": "alberto-porcu",
+      "slug": "alberto-porcu",
+      "title": "Prof.",
+      "name": "Alberto Porcu",
+      "specialty_id": "chirurgia-generale",
+      "job_title": "Chirurgo Generale",
+      "photo_url": null,
+      "booking_enabled": true
+    },
+    {
+      "id": "lorena-tanda",
+      "slug": "lorena-tanda",
+      "title": "Dott.ssa",
+      "name": "Lorena Tanda",
+      "specialty_id": "gastroenterologia",
+      "job_title": "Gastroenterologa",
+      "photo_url": null,
+      "booking_enabled": true
+    },
+    {
+      "id": "elena-viale",
+      "slug": "elena-viale",
+      "title": "Dott.ssa",
+      "name": "Elena Viale",
+      "specialty_id": "nutrizione",
+      "job_title": "Biologa - Team Slim Care",
+      "photo_url": "/images/equipe/elena-viale.jpg",
       "booking_enabled": false
     }
   ]
