@@ -413,6 +413,42 @@ physicians:
   visibility:
     priority_order: 2
   status: active
+- id: paolo-solinas
+  title: Dott.
+  first_name: Paolo
+  last_name: Solinas
+  name: Paolo Solinas
+  specialty_id: dermatologia
+  job_title: Dermatologo
+  procedures:
+  - visita-dermatologica
+  - mappatura-nevi
+  bio_short: Dermatologo esperto in controllo dei nei, diagnosi precoce delle lesioni
+    cutanee maligne e dermo-chirurgia.
+  booking:
+    enabled: true
+    miodottore_id: paolo-solinas
+    miodottore_specialty: dermatologo
+  visibility:
+    priority_order: 3
+  status: active
+- id: cosimo-cherveddu
+  title: Dott.
+  first_name: Cosimo
+  last_name: Cherveddu
+  name: Cosimo Cherveddu
+  specialty_id: dermatologia
+  job_title: Dermatologo
+  procedures:
+  - visita-dermatologica
+  bio_short: Dermatologo e venereologo con competenze in tricologia.
+  booking:
+    enabled: true
+    miodottore_id: cosimo-cherveddu
+    miodottore_specialty: dermatologo
+  visibility:
+    priority_order: 4
+  status: active
 - id: giuliana-guagnozzi
   title: Dott.ssa
   first_name: Giuliana

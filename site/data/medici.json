@@ -140,6 +140,26 @@
     "foto": null
   },
   {
+    "id": "paolo-solinas",
+    "nome": "Paolo Solinas",
+    "titolo": "Dott.",
+    "specialita": "dermatologia",
+    "ruolo": "Dermatologo",
+    "prenotazione": true,
+    "miodottore": "https://www.miodottore.it/profilo/paolo-solinas",
+    "foto": null
+  },
+  {
+    "id": "cosimo-cherveddu",
+    "nome": "Cosimo Cherveddu",
+    "titolo": "Dott.",
+    "specialita": "dermatologia",
+    "ruolo": "Dermatologo",
+    "prenotazione": true,
+    "miodottore": "https://www.miodottore.it/profilo/cosimo-cherveddu",
+    "foto": null
+  },
+  {
     "id": "carlo-burrai",
     "nome": "Carlo Burrai",
     "titolo": "Dr.",

@@ -158,7 +158,7 @@
       "description": "Visite dermatologiche, mappatura nevi, dermatoscopia digitale, patologie cutanee",
       "procedures_count": 2,
       "tests_count": 8,
-      "physicians_count": 3,
+      "physicians_count": 4,
       "page_url": "/dermatologia/",
       "main_procedures": [
         "visita-dermatologica",
@@ -172,7 +172,9 @@
       ],
       "physicians": [
         "giovanna-costa",
-        "alessandra-musinu"
+        "alessandra-musinu",
+        "paolo-solinas",
+        "cosimo-cherveddu"
       ],
       "related_pathways": [],
       "keywords": [

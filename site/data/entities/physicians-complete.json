@@ -1,7 +1,7 @@
 {
   "version": "3.0",
   "generated": "2026-08-28T00:00:00Z",
-  "total": 51,
+  "total": 52,
   "physicians": [
     {
       "id": "francesco-dessole",
@@ -352,6 +352,50 @@
       "miodottore_id": "alessandra-musinu",
       "miodottore_url": "https://www.miodottore.it/alessandra-musinu/dermatologo/sassari",
       "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/alessandra-musinu/dermatologo/sassari\" rel=\"nofollow\" data-zlw-doctor=\"alessandra-musinu\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Alessandra Musinu - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "paolo-solinas",
+      "slug": "paolo-solinas",
+      "title": "Dott.",
+      "name": "Paolo Solinas",
+      "full_name": "Dott. Paolo Solinas",
+      "specialty_id": "dermatologia",
+      "job_title": "Dermatologo",
+      "role_badge": null,
+      "bio": "Dermatologo esperto in controllo dei nei, diagnosi precoce delle lesioni cutanee maligne e dermo-chirurgia.",
+      "procedures": [
+        "visita-dermatologica",
+        "mappatura-nevi",
+        "asportazione-neoformazioni"
+      ],
+      "pathways": [],
+      "miodottore_id": "paolo-solinas",
+      "miodottore_url": "https://www.miodottore.it/profilo/paolo-solinas",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/profilo/paolo-solinas\" rel=\"nofollow\" data-zlw-doctor=\"paolo-solinas\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Paolo Solinas - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "cosimo-cherveddu",
+      "slug": "cosimo-cherveddu",
+      "title": "Dott.",
+      "name": "Cosimo Cherveddu",
+      "full_name": "Dott. Cosimo Cherveddu",
+      "specialty_id": "dermatologia",
+      "job_title": "Dermatologo",
+      "role_badge": null,
+      "bio": "Dermatologo e venereologo con competenze in tricologia, specializzato presso l'Università degli Studi di Cagliari.",
+      "procedures": [
+        "visita-dermatologica",
+        "dermatoscopia-digitale",
+        "crioterapia"
+      ],
+      "pathways": [],
+      "miodottore_id": "cosimo-cherveddu",
+      "miodottore_url": "https://www.miodottore.it/profilo/cosimo-cherveddu",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/profilo/cosimo-cherveddu\" rel=\"nofollow\" data-zlw-doctor=\"cosimo-cherveddu\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Cosimo Cherveddu - MioDottore.it</a>",
       "booking_enabled": true,
       "photo_url": null
     },

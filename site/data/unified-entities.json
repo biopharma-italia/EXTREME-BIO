@@ -1,7 +1,7 @@
 {
   "version": "3.0",
   "generated": "2026-02-28T19:26:41Z",
-  "total": 123,
+  "total": 125,
   "entities": [
     {
       "type": "specialty",
@@ -227,6 +227,24 @@
       "url": "/equipe/alessandra-musinu/",
       "specialty": "dermatologia",
       "title": "Dott.ssa"
+    },
+    {
+      "type": "physician",
+      "id": "paolo-solinas",
+      "name": "Paolo Solinas",
+      "slug": "paolo-solinas",
+      "url": "/equipe/paolo-solinas/",
+      "specialty": "dermatologia",
+      "title": "Dott."
+    },
+    {
+      "type": "physician",
+      "id": "cosimo-cherveddu",
+      "name": "Cosimo Cherveddu",
+      "slug": "cosimo-cherveddu",
+      "url": "/equipe/cosimo-cherveddu/",
+      "specialty": "dermatologia",
+      "title": "Dott."
     },
     {
       "type": "physician",

@@ -1,7 +1,7 @@
 {
   "version": "3.0",
   "generated": "2026-02-28T19:26:41Z",
-  "total": 50,
+  "total": 51,
   "physicians": [
     {
       "id": "francesco-dessole",
@@ -278,6 +278,42 @@
         "visita-dermatologica",
         "mappatura-nevi",
         "dermatoscopia-digitale"
+      ],
+      "pathways": []
+    },
+    {
+      "id": "paolo-solinas",
+      "slug": "paolo-solinas",
+      "title": "Dott.",
+      "name": "Paolo Solinas",
+      "specialty_id": "dermatologia",
+      "job_title": "Dermatologo",
+      "bio": "Dermatologo esperto in controllo dei nei, diagnosi precoce delle lesioni cutanee maligne e dermo-chirurgia.",
+      "photo_url": null,
+      "booking_enabled": true,
+      "miodottore_url": "https://www.miodottore.it/profilo/paolo-solinas",
+      "procedures": [
+        "visita-dermatologica",
+        "mappatura-nevi",
+        "asportazione-neoformazioni"
+      ],
+      "pathways": []
+    },
+    {
+      "id": "cosimo-cherveddu",
+      "slug": "cosimo-cherveddu",
+      "title": "Dott.",
+      "name": "Cosimo Cherveddu",
+      "specialty_id": "dermatologia",
+      "job_title": "Dermatologo",
+      "bio": "Dermatologo e venereologo con competenze in tricologia, specializzato presso l'Università degli Studi di Cagliari.",
+      "photo_url": null,
+      "booking_enabled": true,
+      "miodottore_url": "https://www.miodottore.it/profilo/cosimo-cherveddu",
+      "procedures": [
+        "visita-dermatologica",
+        "dermatoscopia-digitale",
+        "crioterapia"
       ],
       "pathways": []
     },

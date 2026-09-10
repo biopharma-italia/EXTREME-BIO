@@ -1,7 +1,7 @@
 {
   "version": "3.0",
   "generated": "2026-08-31",
-  "total": 52,
+  "total": 53,
   "physicians": [
     {
       "id": "francesco-dessole",
@@ -150,6 +150,26 @@
       "name": "Alessandra Musinu",
       "specialty_id": "dermatologia",
       "job_title": "Dermatologa",
+      "photo_url": null,
+      "booking_enabled": true
+    },
+    {
+      "id": "paolo-solinas",
+      "slug": "paolo-solinas",
+      "title": "Dott.",
+      "name": "Paolo Solinas",
+      "specialty_id": "dermatologia",
+      "job_title": "Dermatologo",
+      "photo_url": null,
+      "booking_enabled": true
+    },
+    {
+      "id": "cosimo-cherveddu",
+      "slug": "cosimo-cherveddu",
+      "title": "Dott.",
+      "name": "Cosimo Cherveddu",
+      "specialty_id": "dermatologia",
+      "job_title": "Dermatologo",
       "photo_url": null,
       "booking_enabled": true
     },
