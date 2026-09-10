@@ -471,24 +471,6 @@ const DEMO_DATA = {
       "updated_at": "2026-02-28T00:00:00Z"
     },
     {
-      "id": "speranza-anedda",
-      "title": "Dott.ssa",
-      "first_name": "Speranza",
-      "last_name": "Anedda",
-      "display_name": "Dott.ssa Speranza Anedda",
-      "specialty_id": "dermatologia",
-      "job_title": "Dermatologa",
-      "role_badge": null,
-      "bio_short": "Dermatologa specializzata in patologie cutanee.",
-      "booking_enabled": true,
-      "miodottore_url": "https://www.miodottore.it/speranza-anedda/dermatologo/ossi",
-      "priority_order": 15,
-      "featured_on_homepage": false,
-      "status": "active",
-      "created_at": "2026-02-28T00:00:00Z",
-      "updated_at": "2026-02-28T00:00:00Z"
-    },
-    {
       "id": "carlo-burrai",
       "title": "Dr.",
       "first_name": "Carlo",

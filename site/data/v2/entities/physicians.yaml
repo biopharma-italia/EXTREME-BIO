@@ -473,26 +473,6 @@ physicians:
     show_in_specialty_page: true
     priority_order: 2
   status: active
-- id: speranza-anedda
-  title: Dott.ssa
-  first_name: Speranza
-  last_name: Anedda
-  name: Speranza Anedda
-  specialty_id: dermatologia
-  job_title: Dermatologa
-  procedures:
-  - visita-dermatologica
-  - mappatura-nevi
-  bio_short: Dermatologa specializzata in patologie cutanee.
-  booking:
-    enabled: true
-    miodottore_id: speranza-anedda
-    miodottore_specialty: dermatologo
-  visibility:
-    show_in_equipe: true
-    show_in_specialty_page: true
-    priority_order: 3
-  status: active
 - id: antonella-galatino
   title: Dott.ssa
   first_name: Antonella

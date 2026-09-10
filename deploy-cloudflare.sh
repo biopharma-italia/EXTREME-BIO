@@ -90,6 +90,7 @@ cd "$SITE_DIR" && tar cf - \
     --exclude='./news/_drafts' \
     --exclude='*/_drafts' \
     --exclude='./docs' \
+    --exclude='./reports' \
     --exclude='./data/cache' \
     --exclude='./data/v2' \
     --exclude='./data/*.xlsx' \

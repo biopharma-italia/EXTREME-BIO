@@ -230,15 +230,6 @@
     },
     {
       "type": "physician",
-      "id": "speranza-anedda",
-      "name": "Speranza Anedda",
-      "slug": "speranza-anedda",
-      "url": "/equipe/speranza-anedda/",
-      "specialty": "dermatologia",
-      "title": "Dott.ssa"
-    },
-    {
-      "type": "physician",
       "id": "carlo-burrai",
       "name": "Carlo Burrai",
       "slug": "carlo-burrai",

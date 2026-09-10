@@ -282,23 +282,6 @@
       "pathways": []
     },
     {
-      "id": "speranza-anedda",
-      "slug": "speranza-anedda",
-      "title": "Dott.ssa",
-      "name": "Speranza Anedda",
-      "specialty_id": "dermatologia",
-      "job_title": "Dermatologa",
-      "bio": "Dermatologa specializzata in patologie cutanee.",
-      "photo_url": null,
-      "booking_enabled": true,
-      "miodottore_url": "https://www.miodottore.it/speranza-anedda/dermatologo/ossi",
-      "procedures": [
-        "visita-dermatologica",
-        "mappatura-nevi"
-      ],
-      "pathways": []
-    },
-    {
       "id": "carlo-burrai",
       "slug": "carlo-burrai",
       "title": "Dr.",

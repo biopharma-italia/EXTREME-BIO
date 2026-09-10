@@ -356,27 +356,6 @@
       "photo_url": null
     },
     {
-      "id": "speranza-anedda",
-      "slug": "speranza-anedda",
-      "title": "Dott.ssa",
-      "name": "Speranza Anedda",
-      "full_name": "Dott.ssa Speranza Anedda",
-      "specialty_id": "dermatologia",
-      "job_title": "Dermatologa",
-      "role_badge": null,
-      "bio": "Dermatologa specializzata in patologie cutanee.",
-      "procedures": [
-        "visita-dermatologica",
-        "mappatura-nevi"
-      ],
-      "pathways": [],
-      "miodottore_id": "speranza-anedda",
-      "miodottore_url": "https://www.miodottore.it/speranza-anedda/dermatologo/ossi",
-      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/speranza-anedda/dermatologo/ossi\" rel=\"nofollow\" data-zlw-doctor=\"speranza-anedda\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Speranza Anedda - MioDottore.it</a>",
-      "booking_enabled": true,
-      "photo_url": null
-    },
-    {
       "id": "carlo-burrai",
       "slug": "carlo-burrai",
       "title": "Dr.",

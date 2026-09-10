@@ -154,16 +154,6 @@
       "booking_enabled": true
     },
     {
-      "id": "speranza-anedda",
-      "slug": "speranza-anedda",
-      "title": "Dott.ssa",
-      "name": "Speranza Anedda",
-      "specialty_id": "dermatologia",
-      "job_title": "Dermatologa",
-      "photo_url": null,
-      "booking_enabled": true
-    },
-    {
       "id": "carlo-burrai",
       "slug": "carlo-burrai",
       "title": "Dr.",

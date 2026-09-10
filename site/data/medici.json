@@ -140,16 +140,6 @@
     "foto": null
   },
   {
-    "id": "speranza-anedda",
-    "nome": "Speranza Anedda",
-    "titolo": "Dott.ssa",
-    "specialita": "dermatologia",
-    "ruolo": "Dermatologa",
-    "prenotazione": true,
-    "miodottore": "https://www.miodottore.it/speranza-anedda/dermatologo/ossi",
-    "foto": null
-  },
-  {
     "id": "carlo-burrai",
     "nome": "Carlo Burrai",
     "titolo": "Dr.",

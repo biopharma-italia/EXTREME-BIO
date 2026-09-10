@@ -10,7 +10,13 @@
   },
   "schedule": {
     "frequency": "daily",
-    "days": ["monday", "tuesday", "wednesday", "thursday", "friday"],
+    "days": [
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday"
+    ],
     "publish_time": "07:00 CET",
     "start_date": "2026-02-23"
   },
@@ -45,9 +51,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "analisi del sangue per profilo lipidico e renale", "url": "/laboratorio/"},
-        "specialist": {"anchor": "équipe di cardiologia Bio-Clinic", "url": "/cardiologia/"},
-        "booking": {"anchor": "Prenota una visita cardiologica a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "analisi del sangue per profilo lipidico e renale",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "équipe di cardiologia Bio-Clinic",
+          "url": "/cardiologia/"
+        },
+        "booking": {
+          "anchor": "Prenota una visita cardiologica a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -74,9 +89,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "esami della tiroide TSH, FT3, FT4", "url": "/laboratorio/"},
-        "specialist": {"anchor": "specialisti in endocrinologia", "url": "/endocrinologia/"},
-        "booking": {"anchor": "Prenota un checkup tiroideo a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "esami della tiroide TSH, FT3, FT4",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "specialisti in endocrinologia",
+          "url": "/endocrinologia/"
+        },
+        "booking": {
+          "anchor": "Prenota un checkup tiroideo a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -103,9 +127,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "marker CA-125 e profilo ormonale", "url": "/laboratorio/"},
-        "specialist": {"anchor": "ginecologi esperti in endometriosi", "url": "/ginecologia/"},
-        "booking": {"anchor": "Prenota una visita ginecologica a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "marker CA-125 e profilo ormonale",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "ginecologi esperti in endometriosi",
+          "url": "/ginecologia/"
+        },
+        "booking": {
+          "anchor": "Prenota una visita ginecologica a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -132,9 +165,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "glicemia, emoglobina glicata HbA1c e profilo metabolico", "url": "/laboratorio/"},
-        "specialist": {"anchor": "diabetologa ed endocrinologa Bio-Clinic", "url": "/endocrinologia/"},
-        "booking": {"anchor": "Prenota un controllo diabetologico a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "glicemia, emoglobina glicata HbA1c e profilo metabolico",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "diabetologa ed endocrinologa Bio-Clinic",
+          "url": "/endocrinologia/"
+        },
+        "booking": {
+          "anchor": "Prenota un controllo diabetologico a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -161,9 +203,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "emocromo completo, elettroforesi emoglobina e test genetico", "url": "/laboratorio/"},
-        "specialist": {"anchor": "ematologi Bio-Clinic Sassari", "url": "/ematologia/"},
-        "booking": {"anchor": "Prenota uno screening per talassemia a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "emocromo completo, elettroforesi emoglobina e test genetico",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "ematologi Bio-Clinic Sassari",
+          "url": "/ematologia/"
+        },
+        "booking": {
+          "anchor": "Prenota uno screening per talassemia a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -184,9 +235,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "test per Helicobacter pylori e marcatori infiammatori", "url": "/laboratorio/"},
-        "specialist": {"anchor": "gastroenterologo Bio-Clinic Sassari", "url": "/gastroenterologia/"},
-        "booking": {"anchor": "Prenota una visita gastroenterologica a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "test per Helicobacter pylori e marcatori infiammatori",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "gastroenterologo Bio-Clinic Sassari",
+          "url": "/gastroenterologia/"
+        },
+        "booking": {
+          "anchor": "Prenota una visita gastroenterologica a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -213,9 +273,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "dosaggio TSH, calcitonina e tireoglobulina", "url": "/laboratorio/"},
-        "specialist": {"anchor": "endocrinologi Bio-Clinic", "url": "/endocrinologia/"},
-        "booking": {"anchor": "Prenota un'ecografia tiroidea a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "dosaggio TSH, calcitonina e tireoglobulina",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "endocrinologi Bio-Clinic",
+          "url": "/endocrinologia/"
+        },
+        "booking": {
+          "anchor": "Prenota un'ecografia tiroidea a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -242,44 +311,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "esami ematici per indici infiammatori", "url": "/laboratorio/"},
-        "specialist": {"anchor": "ortopedici Bio-Clinic", "url": "/ortopedia/"},
-        "booking": {"anchor": "Prenota una visita ortopedica a Sassari", "url": "/contatti/"}
-      }
-    },
-    {
-      "id": 9,
-      "publish_date": "2026-03-05",
-      "slug": "dermatite-atopica",
-      "keyword": "dermatite atopica adulti cura sintomi",
-      "title_h1": "Dermatite Atopica: Sintomi, Cause e Cura a Sassari",
-      "specialty": "dermatologia",
-      "specialty_page": "/dermatologia/",
-      "sardinia_angle": "La dermatite atopica in Sardegna colpisce con prevalenza significativa, complice il clima secco estivo e la predisposizione genetica autoimmune della popolazione sarda.",
-      "specialists": [
-        {
-          "name": "Dott.ssa Alessandra Musinu",
-          "slug": "alessandra-musinu",
-          "role": "Dermatologa",
-          "url": "/equipe/alessandra-musinu/"
+        "lab": {
+          "anchor": "esami ematici per indici infiammatori",
+          "url": "/laboratorio/"
         },
-        {
-          "name": "Dott.ssa Giovanna Costa",
-          "slug": "giovanna-costa",
-          "role": "Dermatologa – Dermatoscopia",
-          "url": "/equipe/giovanna-costa/"
+        "specialist": {
+          "anchor": "ortopedici Bio-Clinic",
+          "url": "/ortopedia/"
         },
-        {
-          "name": "Dott.ssa Speranza Anedda",
-          "slug": "speranza-anedda",
-          "role": "Dermatologa",
-          "url": "/equipe/speranza-anedda/"
+        "booking": {
+          "anchor": "Prenota una visita ortopedica a Sassari",
+          "url": "/contatti/"
         }
-      ],
-      "internal_links": {
-        "lab": {"anchor": "test allergologici e IgE specifiche", "url": "/laboratorio/"},
-        "specialist": {"anchor": "dermatologhe Bio-Clinic", "url": "/dermatologia/"},
-        "booking": {"anchor": "Prenota una visita dermatologica a Sassari", "url": "/contatti/"}
       }
     },
     {
@@ -300,9 +343,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "esame urine e urinocoltura con antibiogramma", "url": "/laboratorio/"},
-        "specialist": {"anchor": "urologo Bio-Clinic Sassari", "url": "/urologia/"},
-        "booking": {"anchor": "Prenota una visita urologica a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "esame urine e urinocoltura con antibiogramma",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "urologo Bio-Clinic Sassari",
+          "url": "/urologia/"
+        },
+        "booking": {
+          "anchor": "Prenota una visita urologica a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -329,9 +381,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "esami coagulazione e BNP", "url": "/laboratorio/"},
-        "specialist": {"anchor": "cardiologi Bio-Clinic", "url": "/cardiologia/"},
-        "booking": {"anchor": "Prenota un Holter ECG a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "esami coagulazione e BNP",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "cardiologi Bio-Clinic",
+          "url": "/cardiologia/"
+        },
+        "booking": {
+          "anchor": "Prenota un Holter ECG a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -358,9 +419,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "profilo ormonale completo e insulinemia", "url": "/laboratorio/"},
-        "specialist": {"anchor": "ginecologi esperti in PCOS", "url": "/ginecologia/"},
-        "booking": {"anchor": "Prenota un'ecografia pelvica a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "profilo ormonale completo e insulinemia",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "ginecologi esperti in PCOS",
+          "url": "/ginecologia/"
+        },
+        "booking": {
+          "anchor": "Prenota un'ecografia pelvica a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -387,9 +457,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "esami ematici pre-operatori", "url": "/laboratorio/"},
-        "specialist": {"anchor": "ortopedici e fisiatri Bio-Clinic", "url": "/ortopedia/"},
-        "booking": {"anchor": "Prenota una visita ortopedica a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "esami ematici pre-operatori",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "ortopedici e fisiatri Bio-Clinic",
+          "url": "/ortopedia/"
+        },
+        "booking": {
+          "anchor": "Prenota una visita ortopedica a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -410,9 +489,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "breath test e antigene fecale H. pylori", "url": "/laboratorio/"},
-        "specialist": {"anchor": "gastroenterologo Bio-Clinic", "url": "/gastroenterologia/"},
-        "booking": {"anchor": "Prenota un test per Helicobacter a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "breath test e antigene fecale H. pylori",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "gastroenterologo Bio-Clinic",
+          "url": "/gastroenterologia/"
+        },
+        "booking": {
+          "anchor": "Prenota un test per Helicobacter a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -439,9 +527,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "dosaggio TSH, FT3, FT4 e anticorpi anti-recettore TSH", "url": "/laboratorio/"},
-        "specialist": {"anchor": "endocrinologhe Bio-Clinic", "url": "/endocrinologia/"},
-        "booking": {"anchor": "Prenota un checkup tiroideo a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "dosaggio TSH, FT3, FT4 e anticorpi anti-recettore TSH",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "endocrinologhe Bio-Clinic",
+          "url": "/endocrinologia/"
+        },
+        "booking": {
+          "anchor": "Prenota un checkup tiroideo a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -462,9 +559,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "spirometria e test allergologici", "url": "/laboratorio/"},
-        "specialist": {"anchor": "pneumologo Bio-Clinic", "url": "/pneumologia/"},
-        "booking": {"anchor": "Prenota una spirometria a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "spirometria e test allergologici",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "pneumologo Bio-Clinic",
+          "url": "/pneumologia/"
+        },
+        "booking": {
+          "anchor": "Prenota una spirometria a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -491,38 +597,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "profilo ormonale menopausale e MOC-DEXA", "url": "/laboratorio/"},
-        "specialist": {"anchor": "ginecologi esperti in menopausa", "url": "/ginecologia/"},
-        "booking": {"anchor": "Prenota una visita ginecologica a Sassari", "url": "/contatti/"}
-      }
-    },
-    {
-      "id": 18,
-      "publish_date": "2026-03-18",
-      "slug": "psoriasi",
-      "keyword": "psoriasi cause sintomi cura",
-      "title_h1": "Psoriasi: Cause, Sintomi e Cura a Sassari",
-      "specialty": "dermatologia",
-      "specialty_page": "/dermatologia/",
-      "sardinia_angle": "La psoriasi, malattia autoimmune cronica, colpisce circa il 2-3% della popolazione italiana. In Sardegna, la componente autoimmune è amplificata dal profilo genetico isolano.",
-      "specialists": [
-        {
-          "name": "Dott.ssa Giovanna Costa",
-          "slug": "giovanna-costa",
-          "role": "Dermatologa – Dermatoscopia",
-          "url": "/equipe/giovanna-costa/"
+        "lab": {
+          "anchor": "profilo ormonale menopausale e MOC-DEXA",
+          "url": "/laboratorio/"
         },
-        {
-          "name": "Dott.ssa Speranza Anedda",
-          "slug": "speranza-anedda",
-          "role": "Dermatologa",
-          "url": "/equipe/speranza-anedda/"
+        "specialist": {
+          "anchor": "ginecologi esperti in menopausa",
+          "url": "/ginecologia/"
+        },
+        "booking": {
+          "anchor": "Prenota una visita ginecologica a Sassari",
+          "url": "/contatti/"
         }
-      ],
-      "internal_links": {
-        "lab": {"anchor": "esami autoimmunitari e indici infiammatori", "url": "/laboratorio/"},
-        "specialist": {"anchor": "dermatologhe Bio-Clinic", "url": "/dermatologia/"},
-        "booking": {"anchor": "Prenota una visita dermatologica a Sassari", "url": "/contatti/"}
       }
     },
     {
@@ -543,9 +629,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "PSA, esame urine e spermiocoltura", "url": "/laboratorio/"},
-        "specialist": {"anchor": "urologo Bio-Clinic Sassari", "url": "/urologia/"},
-        "booking": {"anchor": "Prenota una visita urologica a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "PSA, esame urine e spermiocoltura",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "urologo Bio-Clinic Sassari",
+          "url": "/urologia/"
+        },
+        "booking": {
+          "anchor": "Prenota una visita urologica a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -572,9 +667,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "profilo lipidico completo", "url": "/laboratorio/"},
-        "specialist": {"anchor": "cardiologi Bio-Clinic", "url": "/cardiologia/"},
-        "booking": {"anchor": "Prenota un checkup cardiovascolare a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "profilo lipidico completo",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "cardiologi Bio-Clinic",
+          "url": "/cardiologia/"
+        },
+        "booking": {
+          "anchor": "Prenota un checkup cardiovascolare a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -595,9 +699,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "fattore reumatoide, anti-CCP e VES/PCR", "url": "/laboratorio/"},
-        "specialist": {"anchor": "reumatologo Bio-Clinic", "url": "/reumatologia/"},
-        "booking": {"anchor": "Prenota una visita reumatologica a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "fattore reumatoide, anti-CCP e VES/PCR",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "reumatologo Bio-Clinic",
+          "url": "/reumatologia/"
+        },
+        "booking": {
+          "anchor": "Prenota una visita reumatologica a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -624,9 +737,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "esami ematici per escludere cause secondarie", "url": "/laboratorio/"},
-        "specialist": {"anchor": "neurologi Bio-Clinic", "url": "/neurologia/"},
-        "booking": {"anchor": "Prenota una visita neurologica a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "esami ematici per escludere cause secondarie",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "neurologi Bio-Clinic",
+          "url": "/neurologia/"
+        },
+        "booking": {
+          "anchor": "Prenota una visita neurologica a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -653,9 +775,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "profilo ormonale fertilità e AMH", "url": "/laboratorio/"},
-        "specialist": {"anchor": "specialisti PMA Bio-Clinic", "url": "/pma-fertilita/"},
-        "booking": {"anchor": "Prenota una consulenza fertilità a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "profilo ormonale fertilità e AMH",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "specialisti PMA Bio-Clinic",
+          "url": "/pma-fertilita/"
+        },
+        "booking": {
+          "anchor": "Prenota una consulenza fertilità a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -682,9 +813,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "esami sangue, potenziali evocati e RMN encefalo", "url": "/laboratorio/"},
-        "specialist": {"anchor": "neurologi Bio-Clinic Sassari", "url": "/neurologia/"},
-        "booking": {"anchor": "Prenota una visita neurologica a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "esami sangue, potenziali evocati e RMN encefalo",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "neurologi Bio-Clinic Sassari",
+          "url": "/neurologia/"
+        },
+        "booking": {
+          "anchor": "Prenota una visita neurologica a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -711,9 +851,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "eco-Doppler venoso arti inferiori", "url": "/laboratorio/"},
-        "specialist": {"anchor": "chirurghi vascolari Bio-Clinic", "url": "/chirurgia-vascolare/"},
-        "booking": {"anchor": "Prenota un eco-Doppler a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "eco-Doppler venoso arti inferiori",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "chirurghi vascolari Bio-Clinic",
+          "url": "/chirurgia-vascolare/"
+        },
+        "booking": {
+          "anchor": "Prenota un eco-Doppler a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -740,9 +889,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "audiometria e impedenzometria", "url": "/laboratorio/"},
-        "specialist": {"anchor": "otorinolaringoiatri Bio-Clinic", "url": "/otorinolaringoiatria/"},
-        "booking": {"anchor": "Prenota una visita ORL a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "audiometria e impedenzometria",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "otorinolaringoiatri Bio-Clinic",
+          "url": "/otorinolaringoiatria/"
+        },
+        "booking": {
+          "anchor": "Prenota una visita ORL a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -775,9 +933,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "campo visivo e tonometria oculare", "url": "/laboratorio/"},
-        "specialist": {"anchor": "oculisti Bio-Clinic", "url": "/oculistica/"},
-        "booking": {"anchor": "Prenota una visita oculistica a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "campo visivo e tonometria oculare",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "oculisti Bio-Clinic",
+          "url": "/oculistica/"
+        },
+        "booking": {
+          "anchor": "Prenota una visita oculistica a Sassari",
+          "url": "/contatti/"
+        }
       }
     },
     {
@@ -798,9 +965,18 @@
         }
       ],
       "internal_links": {
-        "lab": {"anchor": "anticorpi anti-transglutaminasi e IgA totali", "url": "/laboratorio/"},
-        "specialist": {"anchor": "gastroenterologo Bio-Clinic", "url": "/gastroenterologia/"},
-        "booking": {"anchor": "Prenota uno screening celiachia a Sassari", "url": "/contatti/"}
+        "lab": {
+          "anchor": "anticorpi anti-transglutaminasi e IgA totali",
+          "url": "/laboratorio/"
+        },
+        "specialist": {
+          "anchor": "gastroenterologo Bio-Clinic",
+          "url": "/gastroenterologia/"
+        },
+        "booking": {
+          "anchor": "Prenota uno screening celiachia a Sassari",
+          "url": "/contatti/"
+        }
       }
     }
   ]

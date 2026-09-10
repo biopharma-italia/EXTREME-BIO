@@ -174,7 +174,6 @@
 /equipe/sebastiano-traccis /equipe/sebastiano-traccis/ 301
 /equipe/sergio-paolo-sotgia /equipe/sergio-paolo-sotgia/ 301
 /equipe/sonia-bove /equipe/sonia-bove/ 301
-/equipe/speranza-anedda /equipe/speranza-anedda/ 301
 /equipe/tonino-bullitta /equipe/tonino-bullitta/ 301
 /gastroenterologia /gastroenterologia/ 301
 /genetica /genetica/ 301
@@ -573,3 +572,6 @@
 
 # Media sostituiti (audit 2026-09-07 P2: GIF 2.7MB -> video)
 /images/ecografia-renale.gif /images/ecografia-renale-poster.jpg 301
+/equipe/speranza-anedda /equipe/ 301
+/equipe/speranza-anedda/ /equipe/ 301
+/equipe/speranza-anedda.html /equipe/ 301
