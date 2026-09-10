@@ -554,11 +554,20 @@
     },
     {
       "type": "physician",
+      "id": "sara-meloni",
+      "name": "Sara Meloni",
+      "slug": "sara-meloni",
+      "url": "/equipe/sara-meloni/",
+      "specialty": "laboratorio",
+      "title": "Dott.ssa"
+    },
+    {
+      "type": "physician",
       "id": "gloria-reggiani",
       "name": "Gloria Reggiani",
       "slug": "gloria-reggiani",
       "url": "/equipe/gloria-reggiani/",
-      "specialty": "laboratorio",
+      "specialty": "consulenti-esterni",
       "title": "Dott.ssa"
     },
     {

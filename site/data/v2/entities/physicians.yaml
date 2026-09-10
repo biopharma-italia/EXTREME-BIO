@@ -683,14 +683,29 @@ physicians:
     show_in_specialty_page: true
     priority_order: 1
   status: active
+- id: sara-meloni
+  title: Dott.ssa
+  first_name: Sara
+  last_name: Meloni
+  name: Sara Meloni
+  specialty_id: laboratorio
+  job_title: Biologa - Laboratorio Analisi
+  bio_short: Biologa del Laboratorio Analisi Bio-Clinic.
+  booking:
+    enabled: false
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 2
+  status: active
 - id: gloria-reggiani
   title: Dott.ssa
   first_name: Gloria
   last_name: Reggiani
   name: Gloria Reggiani
-  specialty_id: laboratorio
-  job_title: Biologa - Laboratorio Analisi
-  bio_short: Biologa del Laboratorio Analisi Bio-Clinic.
+  specialty_id: consulenti-esterni
+  job_title: Biologa - Consulente Esterna
+  bio_short: Biologa, consulente esterna di Bio-Clinic.
   booking:
     enabled: false
   visibility:

@@ -500,11 +500,21 @@
     "foto": null
   },
   {
-    "id": "gloria-reggiani",
-    "nome": "Gloria Reggiani",
+    "id": "sara-meloni",
+    "nome": "Sara Meloni",
     "titolo": "Dott.ssa",
     "specialita": "laboratorio",
     "ruolo": "Biologa - Laboratorio Analisi",
+    "prenotazione": false,
+    "miodottore": null,
+    "foto": null
+  },
+  {
+    "id": "gloria-reggiani",
+    "nome": "Gloria Reggiani",
+    "titolo": "Dott.ssa",
+    "specialita": "consulenti-esterni",
+    "ruolo": "Biologa - Consulente Esterna",
     "prenotazione": false,
     "miodottore": null,
     "foto": null

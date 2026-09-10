@@ -1,7 +1,7 @@
 {
   "version": "3.0",
   "generated": "2026-02-28T19:26:41Z",
-  "total": 51,
+  "total": 52,
   "physicians": [
     {
       "id": "francesco-dessole",
@@ -928,13 +928,27 @@
       "pathways": []
     },
     {
+      "id": "sara-meloni",
+      "slug": "sara-meloni",
+      "title": "Dott.ssa",
+      "name": "Sara Meloni",
+      "specialty_id": "laboratorio",
+      "job_title": "Biologa - Laboratorio Analisi",
+      "bio": "Biologa del Laboratorio Analisi Bio-Clinic.",
+      "photo_url": null,
+      "booking_enabled": false,
+      "miodottore_url": null,
+      "procedures": [],
+      "pathways": []
+    },
+    {
       "id": "gloria-reggiani",
       "slug": "gloria-reggiani",
       "title": "Dott.ssa",
       "name": "Gloria Reggiani",
-      "specialty_id": "laboratorio",
-      "job_title": "Biologa - Laboratorio Analisi",
-      "bio": "Biologa del Laboratorio Analisi Bio-Clinic.",
+      "specialty_id": "consulenti-esterni",
+      "job_title": "Biologa - Consulente Esterna",
+      "bio": "Biologa, consulente esterna di Bio-Clinic.",
       "photo_url": null,
       "booking_enabled": false,
       "miodottore_url": null,
