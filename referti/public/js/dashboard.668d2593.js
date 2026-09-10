@@ -2600,8 +2600,8 @@
         }
       }
 
-      // Validate CF format (16 chars alphanumeric)
-      if (fiscalCode && !/^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$/.test(fiscalCode)) {
+      // Validate CF format (16 chars alphanumeric, omocodia-aware; check digit enforced server-side)
+      if (fiscalCode && !/^[A-Z]{6}[0-9LMNPQRSTUV]{2}[A-Z][0-9LMNPQRSTUV]{2}[A-Z][0-9LMNPQRSTUV]{3}[A-Z]$/.test(fiscalCode)) {
         showMsg('inviteMessage', 'Formato Codice Fiscale non valido', 'error');
         return;
       }

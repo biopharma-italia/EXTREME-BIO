@@ -6,6 +6,7 @@ on:
     paths:
       - 'referti/public/**'
       - 'referti/functions/**'
+      - 'referti/src/**'
       - 'referti/wrangler.toml'
       - '.github/workflows/deploy-referti.yml'
   workflow_dispatch:

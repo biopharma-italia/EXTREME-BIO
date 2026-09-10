@@ -570,8 +570,32 @@
     return errors;
   }
 
+  // Odd-position (1-based) character values for the CF check digit
+  // (Agenzia delle Entrate algorithm)
+  var CF_ODD_VALUES = {
+    '0': 1, '1': 0, '2': 5, '3': 7, '4': 9, '5': 13, '6': 15, '7': 17, '8': 19, '9': 21,
+    'A': 1, 'B': 0, 'C': 5, 'D': 7, 'E': 9, 'F': 13, 'G': 15, 'H': 17, 'I': 19, 'J': 21,
+    'K': 2, 'L': 4, 'M': 18, 'N': 20, 'O': 11, 'P': 3, 'Q': 6, 'R': 8, 'S': 12, 'T': 14,
+    'U': 16, 'V': 10, 'W': 22, 'X': 25, 'Y': 24, 'Z': 23
+  };
+
   function validateFiscalCode(fc) {
-    return /^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$/.test(fc.toUpperCase());
+    var cf = fc.toUpperCase();
+    // Structural check (omocodia-aware: digits may be replaced by LMNPQRSTUV)
+    if (!/^[A-Z]{6}[0-9LMNPQRSTUV]{2}[A-Z][0-9LMNPQRSTUV]{2}[A-Z][0-9LMNPQRSTUV]{3}[A-Z]$/.test(cf)) {
+      return false;
+    }
+    // Check digit (16th char) — computed over the first 15 characters
+    var sum = 0;
+    for (var i = 0; i < 15; i++) {
+      var c = cf.charAt(i);
+      if (i % 2 === 0) {
+        sum += CF_ODD_VALUES[c];
+      } else {
+        sum += (c >= '0' && c <= '9') ? (c.charCodeAt(0) - 48) : (c.charCodeAt(0) - 65);
+      }
+    }
+    return cf.charAt(15) === String.fromCharCode(65 + (sum % 26));
   }
 
   function showFieldError(fieldId, message) {
