@@ -67,7 +67,7 @@
     "ruolo": "Ginecologa",
     "prenotazione": true,
     "miodottore": "https://www.miodottore.it/margherita-dessole/ginecologo/sassari",
-    "foto": null
+    "foto": "/images/equipe/margherita-dessole.jpg"
   },
   {
     "id": "angelica-fois",
@@ -107,7 +107,7 @@
     "ruolo": "Cardiologo",
     "prenotazione": true,
     "miodottore": "https://www.miodottore.it/paolo-pischedda/cardiologo/sassari",
-    "foto": null
+    "foto": "/images/equipe/paolo-pischedda.jpg"
   },
   {
     "id": "paolo-franca",
@@ -407,7 +407,7 @@
     "ruolo": "Ecografista",
     "prenotazione": true,
     "miodottore": "https://www.miodottore.it/antonio-michele-cavazzuti/ecografista/sassari",
-    "foto": null
+    "foto": "/images/equipe/antonio-michele-cavazzuti.jpg"
   },
   {
     "id": "giorgio-chiarelli",
@@ -457,7 +457,7 @@
     "ruolo": "Psicoterapeuta",
     "prenotazione": true,
     "miodottore": "https://www.miodottore.it/alessia-piras/psicoterapeuta-psicologo-psicologo-clinico/sassari",
-    "foto": null
+    "foto": "/images/equipe/alessia-piras.jpg"
   },
   {
     "id": "giuliana-guagnozzi",

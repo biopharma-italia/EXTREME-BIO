@@ -70,7 +70,7 @@
       "name": "Margherita Dessole",
       "specialty_id": "ginecologia",
       "job_title": "Ginecologa",
-      "photo_url": null,
+      "photo_url": "/images/equipe/margherita-dessole.jpg",
       "booking_enabled": true
     },
     {
@@ -120,7 +120,7 @@
       "name": "Paolo Pischedda",
       "specialty_id": "cardiologia",
       "job_title": "Cardiologo",
-      "photo_url": null,
+      "photo_url": "/images/equipe/paolo-pischedda.jpg",
       "booking_enabled": true
     },
     {
@@ -423,7 +423,7 @@
       "name": "Antonio Michele Cavazzuti",
       "specialty_id": "ecografia",
       "job_title": "Ecografista",
-      "photo_url": null,
+      "photo_url": "/images/equipe/antonio-michele-cavazzuti.jpg",
       "booking_enabled": true
     },
     {
@@ -473,7 +473,7 @@
       "name": "Alessia Piras",
       "specialty_id": "psicologia",
       "job_title": "Psicoterapeuta",
-      "photo_url": null,
+      "photo_url": "/images/equipe/alessia-piras.jpg",
       "booking_enabled": true
     },
     {
