@@ -8,11 +8,13 @@ Integrazione API GBP per gestione autonoma di recensioni, post, servizi/prezzi e
 - [x] API abilitate (Account Management, Business Information, Performance)
 - [x] OAuth client + refresh token (`gestione@bio-clinic.it`, scope `business.manage`)
 - [x] GitHub Secrets: `GBP_CLIENT_ID`, `GBP_CLIENT_SECRET`, `GBP_REFRESH_TOKEN`
-- [ ] **Form richiesta accesso API approvato da Google** ⏳ (2-14 gg — finché pende, le API rispondono 429)
-- [ ] App OAuth pubblicata in produzione (altrimenti il refresh token scade in 7 giorni!)
-- [ ] Discover eseguito (`config.json` presente)
+- [x] **Form richiesta accesso API approvato da Google** ✅ (email 11/09/2026 — quota default 300 QPM)
+- [ ] App OAuth pubblicata in produzione (altrimenti il refresh token scade in 7 giorni!) ⚠️ **DA VERIFICARE lato utente**
+- [x] Discover eseguito (`config.json` presente: account `accounts/106995163873237266861` «Bio Clinic», location `locations/12706187496040631959` Sassari, placeId `ChIJ65ZKjVtj3BIRfTU2bXMebmw`)
 
-### ⚠️ BLOCCO IDENTIFICATO (28/08): account disallineati
+### ✅ RISOLTO (11/09): blocco account disallineati superato — allowlist approvata
+
+<details><summary>Storico del blocco (28/08)</summary>
 
 Il profilo My Business è di proprietà di **gestione.bioclinic@gmail.com**, mentre progetto
 Cloud/OAuth/form usano **gestione@bio-clinic.it** → Google non può associare la richiesta
@@ -25,13 +27,15 @@ al profilo e la lascia pendente senza risposta. Rimedio (da fare lato utente):
    loggati come gestione@bio-clinic.it (Project ID: `bio-clinic-gbp`)
 4. Console Cloud → Schermata consenso OAuth → **Pubblica app** (se ancora "in test")
 
-Il workflow `gbp-discover.yml` fa un probe giornaliero (07:35 UTC): appena Google
-approva, completa il setup da solo (config.json committato automaticamente).
+</details>
 
-## Attivazione (quando arriva l'email di approvazione Google)
+Nota operativa: la branch protection blocca il push del bot del workflow discover;
+il config.json viene comunque caricato come **artifact** (`gbp-config`) da committare a mano.
 
-1. Lancia il workflow **"GBP - Discover (setup iniziale)"** da Actions → genera e committa `config.json`
-2. Verifica: workflow **"GBP - Monitor Recensioni"** (manuale la prima volta)
+## Attivazione — COMPLETATA 11/09/2026
+
+1. ~~Lancia il workflow discover~~ ✅ eseguito, `config.json` committato
+2. Verifica: workflow **"GBP - Monitor Recensioni"** — cron 06:15/12:15/18:15 UTC (prima run utile automatica)
 3. Sync servizi: localmente o via Actions ad hoc
    ```bash
    PYTHONPATH=scripts/gbp python3 scripts/gbp/sync_services.py            # dry-run
