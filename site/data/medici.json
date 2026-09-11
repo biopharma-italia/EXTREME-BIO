@@ -568,5 +568,35 @@
     "prenotazione": false,
     "miodottore": null,
     "foto": "/images/equipe/elena-viale.jpg"
+  },
+  {
+    "id": "mauro-quilichini",
+    "nome": "Mauro Quilichini",
+    "titolo": "Dott.",
+    "specialita": "reumatologia",
+    "ruolo": "Reumatologo",
+    "prenotazione": true,
+    "miodottore": "https://www.miodottore.it/profilo/mauro-quilichini",
+    "foto": null
+  },
+  {
+    "id": "carla-maria-deiana",
+    "nome": "Carla Maria Deiana",
+    "titolo": "Dott.ssa",
+    "specialita": "allergologia",
+    "ruolo": "Allergologa",
+    "prenotazione": true,
+    "miodottore": "https://www.miodottore.it/profilo/carla-maria-deiana",
+    "foto": null
+  },
+  {
+    "id": "luigi-bosincu",
+    "nome": "Luigi Bosincu",
+    "titolo": "Dott.",
+    "specialita": "medicina-lavoro",
+    "ruolo": "Medico del Lavoro",
+    "prenotazione": false,
+    "miodottore": null,
+    "foto": null
   }
 ]

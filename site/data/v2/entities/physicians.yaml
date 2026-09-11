@@ -1202,3 +1202,57 @@ physicians:
     show_in_specialty_page: true
     priority_order: 2
   status: active
+- id: mauro-quilichini
+  title: Dott.
+  first_name: Mauro
+  last_name: Quilichini
+  name: Mauro Quilichini
+  specialty_id: reumatologia
+  job_title: Reumatologo
+  procedures:
+  - visita-reumatologica
+  bio_short: Reumatologo esperto nella diagnosi e nel trattamento delle malattie reumatiche, tra cui artrite reumatoide, reumatismi e dolore articolare.
+  booking:
+    enabled: true
+    miodottore_id: mauro-quilichini
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 2
+  status: active
+- id: carla-maria-deiana
+  title: Dott.ssa
+  first_name: Carla Maria
+  last_name: Deiana
+  name: Carla Maria Deiana
+  specialty_id: allergologia
+  job_title: Allergologa
+  procedures:
+  - visita-allergologica
+  - prick-test
+  bio_short: Allergologa specializzata in Allergologia e Immunologia Clinica, esperta in allergie alimentari, respiratorie, da farmaci e da imenotteri, asma, rinite, dermatite atopica e da contatto, orticaria e angioedema. Visita adulti e bambini.
+  booking:
+    enabled: true
+    miodottore_id: carla-maria-deiana
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 1
+  status: active
+- id: luigi-bosincu
+  title: Dott.
+  first_name: Luigi
+  last_name: Bosincu
+  name: Luigi Bosincu
+  specialty_id: medicina-lavoro
+  job_title: Medico del Lavoro
+  procedures:
+  - visita-medicina-lavoro
+  bio_short: Medico del Lavoro, si occupa di visite di idoneità e sorveglianza sanitaria in ambito di medicina del lavoro.
+  booking:
+    enabled: false
+  visibility:
+    show_in_equipe: true
+    show_in_specialty_page: true
+    priority_order: 2
+  status: active

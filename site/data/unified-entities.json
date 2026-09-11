@@ -1,7 +1,7 @@
 {
   "version": "3.0",
   "generated": "2026-02-28T19:26:41Z",
-  "total": 130,
+  "total": 133,
   "entities": [
     {
       "type": "specialty",
@@ -1148,6 +1148,33 @@
       "slug": "checkup-pregravidanza",
       "url": "/checkup-pregravidanza/",
       "is_flagship": false
+    },
+    {
+      "type": "physician",
+      "id": "mauro-quilichini",
+      "name": "Mauro Quilichini",
+      "slug": "mauro-quilichini",
+      "url": "/equipe/mauro-quilichini/",
+      "specialty": "reumatologia",
+      "title": "Dott."
+    },
+    {
+      "type": "physician",
+      "id": "carla-maria-deiana",
+      "name": "Carla Maria Deiana",
+      "slug": "carla-maria-deiana",
+      "url": "/equipe/carla-maria-deiana/",
+      "specialty": "allergologia",
+      "title": "Dott.ssa"
+    },
+    {
+      "type": "physician",
+      "id": "luigi-bosincu",
+      "name": "Luigi Bosincu",
+      "slug": "luigi-bosincu",
+      "url": "/equipe/luigi-bosincu/",
+      "specialty": "medicina-lavoro",
+      "title": "Dott."
     }
   ]
 }

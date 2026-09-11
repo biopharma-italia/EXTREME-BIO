@@ -595,6 +595,36 @@
       "job_title": "Biologa - Team Slim Care",
       "photo_url": "/images/equipe/elena-viale.jpg",
       "booking_enabled": false
+    },
+    {
+      "id": "mauro-quilichini",
+      "slug": "mauro-quilichini",
+      "title": "Dott.",
+      "name": "Mauro Quilichini",
+      "specialty_id": "reumatologia",
+      "job_title": "Reumatologo",
+      "photo_url": null,
+      "booking_enabled": true
+    },
+    {
+      "id": "carla-maria-deiana",
+      "slug": "carla-maria-deiana",
+      "title": "Dott.ssa",
+      "name": "Carla Maria Deiana",
+      "specialty_id": "allergologia",
+      "job_title": "Allergologa",
+      "photo_url": null,
+      "booking_enabled": true
+    },
+    {
+      "id": "luigi-bosincu",
+      "slug": "luigi-bosincu",
+      "title": "Dott.",
+      "name": "Luigi Bosincu",
+      "specialty_id": "medicina-lavoro",
+      "job_title": "Medico del Lavoro",
+      "photo_url": null,
+      "booking_enabled": false
     }
   ]
 }

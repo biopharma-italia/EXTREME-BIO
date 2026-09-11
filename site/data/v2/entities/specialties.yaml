@@ -548,6 +548,30 @@ specialties:
     status: "active"
 
   # ==========================================================================
+  # ALLERGOLOGIA
+  # ==========================================================================
+  - id: "allergologia"
+    name: "Allergologia"
+    name_extended: "Allergologia e Immunologia Clinica"
+    slug: "allergologia"
+    
+    display:
+      icon: "🌼"
+      color_primary: "#F9A825"
+      color_dark: "#F57F17"
+      color_light: "#FFF9C4"
+    
+    content:
+      description_short: "Diagnosi e cura di allergie alimentari, respiratorie, da farmaci e da imenotteri, prick test"
+    
+    visibility:
+      show_in_menu: false
+      menu_order: 28
+      show_in_homepage: false
+    
+    status: "active"
+
+  # ==========================================================================
   # EMATOLOGIA
   # ==========================================================================
   - id: "ematologia"

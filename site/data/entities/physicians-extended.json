@@ -1037,6 +1037,55 @@
       "pathways": [
         "slim-care"
       ]
+    },
+    {
+      "id": "mauro-quilichini",
+      "slug": "mauro-quilichini",
+      "title": "Dott.",
+      "name": "Mauro Quilichini",
+      "specialty_id": "reumatologia",
+      "job_title": "Reumatologo",
+      "bio": "Reumatologo esperto nella diagnosi e nel trattamento delle malattie reumatiche, tra cui artrite reumatoide, reumatismi e dolore articolare.",
+      "photo_url": null,
+      "booking_enabled": true,
+      "miodottore_url": "https://www.miodottore.it/profilo/mauro-quilichini",
+      "procedures": [
+        "visita-reumatologica"
+      ],
+      "pathways": []
+    },
+    {
+      "id": "carla-maria-deiana",
+      "slug": "carla-maria-deiana",
+      "title": "Dott.ssa",
+      "name": "Carla Maria Deiana",
+      "specialty_id": "allergologia",
+      "job_title": "Allergologa",
+      "bio": "Allergologa specializzata in Allergologia e Immunologia Clinica, esperta in allergie alimentari, respiratorie, da farmaci e da imenotteri, asma, rinite, dermatite atopica e da contatto, orticaria e angioedema. Visita adulti e bambini.",
+      "photo_url": null,
+      "booking_enabled": true,
+      "miodottore_url": "https://www.miodottore.it/profilo/carla-maria-deiana",
+      "procedures": [
+        "visita-allergologica",
+        "prick-test"
+      ],
+      "pathways": []
+    },
+    {
+      "id": "luigi-bosincu",
+      "slug": "luigi-bosincu",
+      "title": "Dott.",
+      "name": "Luigi Bosincu",
+      "specialty_id": "medicina-lavoro",
+      "job_title": "Medico del Lavoro",
+      "bio": "Medico del Lavoro, si occupa di visite di idoneità e sorveglianza sanitaria in ambito di medicina del lavoro.",
+      "photo_url": null,
+      "booking_enabled": false,
+      "miodottore_url": null,
+      "procedures": [
+        "visita-medicina-lavoro"
+      ],
+      "pathways": []
     }
   ]
 }

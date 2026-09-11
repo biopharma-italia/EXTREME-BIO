@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "updated": "2026-09-10",
+  "updated": "2026-09-11",
   "note": "FONTE DELLA VERITA' dei numeri del sito. Modificare SOLO questo file (e physicians.json per i medici), poi eseguire: python3 scripts/sync-site-facts.py --apply. Il deploy esegue --check e FALLISCE se trova numeri divergenti.",
   "totals": {
-    "physicians": 59,
+    "physicians": 62,
     "specialties_claim": 31,
     "procedures": "1.840",
     "lab_tests": "1.162",

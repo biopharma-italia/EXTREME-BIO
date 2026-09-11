@@ -1286,6 +1286,67 @@
       "widget_html": null,
       "booking_enabled": false,
       "photo_url": "/images/equipe/elena-viale.jpg"
+    },
+    {
+      "id": "mauro-quilichini",
+      "slug": "mauro-quilichini",
+      "title": "Dott.",
+      "name": "Mauro Quilichini",
+      "full_name": "Dott. Mauro Quilichini",
+      "specialty_id": "reumatologia",
+      "job_title": "Reumatologo",
+      "role_badge": null,
+      "bio": "Reumatologo esperto nella diagnosi e nel trattamento delle malattie reumatiche, tra cui artrite reumatoide, reumatismi e dolore articolare.",
+      "procedures": [
+        "visita-reumatologica"
+      ],
+      "pathways": [],
+      "miodottore_id": "mauro-quilichini",
+      "miodottore_url": "https://www.miodottore.it/profilo/mauro-quilichini",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/profilo/mauro-quilichini\" rel=\"nofollow\" data-zlw-doctor=\"mauro-quilichini\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott. Mauro Quilichini - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "carla-maria-deiana",
+      "slug": "carla-maria-deiana",
+      "title": "Dott.ssa",
+      "name": "Carla Maria Deiana",
+      "full_name": "Dott.ssa Carla Maria Deiana",
+      "specialty_id": "allergologia",
+      "job_title": "Allergologa",
+      "role_badge": null,
+      "bio": "Allergologa specializzata in Allergologia e Immunologia Clinica, esperta in allergie alimentari, respiratorie, da farmaci e da imenotteri, asma, rinite, dermatite atopica e da contatto, orticaria e angioedema. Visita adulti e bambini.",
+      "procedures": [
+        "visita-allergologica",
+        "prick-test"
+      ],
+      "pathways": [],
+      "miodottore_id": "carla-maria-deiana",
+      "miodottore_url": "https://www.miodottore.it/profilo/carla-maria-deiana",
+      "widget_html": "<a id=\"zl-url\" class=\"zl-url\" href=\"https://www.miodottore.it/profilo/carla-maria-deiana\" rel=\"nofollow\" data-zlw-doctor=\"carla-maria-deiana\" data-zlw-type=\"button_calendar_medium\" data-zlw-opinion=\"false\" data-zlw-hide-branding=\"true\" data-zlw-saas-only=\"true\" data-zlw-a11y-title=\"Widget di prenotazione visite mediche\">Dott.ssa Carla Maria Deiana - MioDottore.it</a>",
+      "booking_enabled": true,
+      "photo_url": null
+    },
+    {
+      "id": "luigi-bosincu",
+      "slug": "luigi-bosincu",
+      "title": "Dott.",
+      "name": "Luigi Bosincu",
+      "full_name": "Dott. Luigi Bosincu",
+      "specialty_id": "medicina-lavoro",
+      "job_title": "Medico del Lavoro",
+      "role_badge": null,
+      "bio": "Medico del Lavoro, si occupa di visite di idoneità e sorveglianza sanitaria in ambito di medicina del lavoro.",
+      "procedures": [
+        "visita-medicina-lavoro"
+      ],
+      "pathways": [],
+      "miodottore_id": null,
+      "miodottore_url": null,
+      "widget_html": null,
+      "booking_enabled": false,
+      "photo_url": null
     }
   ]
 }
