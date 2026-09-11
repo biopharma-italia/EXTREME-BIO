@@ -2,6 +2,7 @@ name: GBP - Discover (setup iniziale)
 
 # Da lanciare MANUALMENTE una volta, appena Google approva l'accesso API.
 # Scopre account/location e committa scripts/gbp/config.json.
+# 2026-09-11: email Google ricevuta — allowlist APPROVATA (progetto 762256014734, quota 300 QPM).
 
 on:
   workflow_dispatch:
