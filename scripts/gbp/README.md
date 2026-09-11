@@ -6,9 +6,15 @@ Integrazione API GBP per gestione autonoma di recensioni, post, servizi/prezzi e
 
 - [x] Progetto Google Cloud `bio-clinic-gbp` (project number: 762256014734)
 - [x] API abilitate (Account Management, Business Information, Performance)
-- [ ] ⚠️ **My Business API v4 (recensioni/post) DA ABILITARE** — il monitor risponde 403:
-  abilitarla da https://console.developers.google.com/apis/api/mybusiness.googleapis.com/overview?project=762256014734
-  (è il punto "Activate the API" dell'email di approvazione 11/09)
+- [ ] ⚠️ **My Business API v4 (recensioni/post) BLOCCATA — serve intervento Google** (11/09):
+  l'API è *ristretta* e non abilitabile self-service. Verificato: la pagina Libreria dà
+  "Impossibile caricare" con qualsiasi account; `gcloud services enable mybusiness.googleapis.com`
+  dà AUTH_PERMISSION_DENIED (servicemanagement.services.bind) **anche eseguito dal Proprietario**
+  (gestione@bio-clinic.it, unico Owner in IAM). L'abilitazione era riuscita solo su un progetto
+  personale legacy ("My First Project") estraneo alle nostre credenziali.
+  → **Ticket inviato al supporto GBP** (https://support.google.com/business/contact/api_default)
+  chiedendo l'allowlist di mybusiness.googleapis.com per il progetto 762256014734.
+  Il monitor recensioni fa skip pulito (exit 3) e si attiverà da solo appena l'API risponde.
 - [x] OAuth client + refresh token (`gestione@bio-clinic.it`, scope `business.manage`)
 - [x] GitHub Secrets: `GBP_CLIENT_ID`, `GBP_CLIENT_SECRET`, `GBP_REFRESH_TOKEN`
 - [x] **Form richiesta accesso API approvato da Google** ✅ (email 11/09/2026 — quota default 300 QPM)
