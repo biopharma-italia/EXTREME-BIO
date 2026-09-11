@@ -1,0 +1,22 @@
+{
+  "accounts": [
+    {
+      "name": "accounts/106995163873237266861",
+      "accountName": "Bio Clinic",
+      "type": "PERSONAL"
+    }
+  ],
+  "locations": [
+    {
+      "name": "locations/12706187496040631959",
+      "account": "accounts/106995163873237266861",
+      "title": "Bio Clinic",
+      "locality": "Sassari",
+      "websiteUri": "https://bio-clinic.it/",
+      "placeId": "ChIJ65ZKjVtj3BIRfTU2bXMebmw",
+      "mapsUri": "https://maps.google.com/maps?cid=7813215884636730749"
+    }
+  ],
+  "primary_location": "locations/12706187496040631959",
+  "primary_account": "accounts/106995163873237266861"
+}
