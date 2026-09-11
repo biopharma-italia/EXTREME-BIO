@@ -131,15 +131,77 @@ h1{font-family:var(--font-heading);font-size:clamp(1.8rem,4vw,2.8rem);font-weigh
       border-radius: var(--radius-lg);
       padding: 1.5rem;
       box-shadow: var(--shadow-sm);
-      transition: all 0.3s ease;
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
       text-decoration: none;
       color: inherit;
       display: block;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Variante D: linea animata in basso col colore della specialità */
+    .physician-card::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 100%;
+      background: var(--spec-color, var(--primary));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
     }
     .physician-card:hover {
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
       transform: translateY(-2px);
+      border: none;
     }
+    .physician-card:hover::after {
+      transform: scaleX(1);
+    }
+    .physician-card:hover .physician-cta span {
+      color: var(--spec-color, var(--primary)) !important;
+    }
+    .physician-card:hover .cta-arrow {
+      transform: translateX(4px);
+    }
+    a.physician-card:active {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+    .cta-arrow {
+      display: inline-block;
+      transition: transform 0.25s ease;
+    }
+    /* Colori linea per specialità */
+    .physician-card[data-specialty="ginecologia"] { --spec-color: #E91E8C; }
+    .physician-card[data-specialty="ostetricia"] { --spec-color: #E91E8C; }
+    .physician-card[data-specialty="cardiologia"] { --spec-color: #E53935; }
+    .physician-card[data-specialty="chirurgia-generale"] { --spec-color: #5D4037; }
+    .physician-card[data-specialty="chirurgia-vascolare"] { --spec-color: #AD1457; }
+    .physician-card[data-specialty="consulenti-esterni"] { --spec-color: #607D8B; }
+    .physician-card[data-specialty="dermatologia"] { --spec-color: #8E24AA; }
+    .physician-card[data-specialty="ecografia"] { --spec-color: #757575; }
+    .physician-card[data-specialty="ematologia"] { --spec-color: #C62828; }
+    .physician-card[data-specialty="endocrinologia"] { --spec-color: #43A047; }
+    .physician-card[data-specialty="fisiatria"] { --spec-color: #00838F; }
+    .physician-card[data-specialty="gastroenterologia"] { --spec-color: #FF8F00; }
+    .physician-card[data-specialty="laboratorio"] { --spec-color: #00897B; }
+    .physician-card[data-specialty="medicina-interna"] { --spec-color: #546E7A; }
+    .physician-card[data-specialty="medicina-lavoro"] { --spec-color: #455A64; }
+    .physician-card[data-specialty="medicina-sport"] { --spec-color: #2E7D32; }
+    .physician-card[data-specialty="nefrologia"] { --spec-color: #7B1FA2; }
+    .physician-card[data-specialty="neurologia"] { --spec-color: #5C6BC0; }
+    .physician-card[data-specialty="nutrizione"] { --spec-color: #689F38; }
+    .physician-card[data-specialty="oculistica"] { --spec-color: #00ACC1; }
+    .physician-card[data-specialty="ortopedia"] { --spec-color: #6D4C41; }
+    .physician-card[data-specialty="otorinolaringoiatria"] { --spec-color: #F4511E; }
+    .physician-card[data-specialty="pediatria"] { --spec-color: #EC407A; }
+    .physician-card[data-specialty="pneumologia"] { --spec-color: #0288D1; }
+    .physician-card[data-specialty="psicologia"] { --spec-color: #7E57C2; }
+    .physician-card[data-specialty="reumatologia"] { --spec-color: #00796B; }
+    .physician-card[data-specialty="allergologia"] { --spec-color: #F9A825; }
+    .physician-card[data-specialty="urologia"] { --spec-color: #1565C0; }
     .physician-card.hidden {
       display: none;
     }
@@ -157,6 +219,7 @@ h1{font-family:var(--font-heading);font-size:clamp(1.8rem,4vw,2.8rem);font-weigh
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      transition: transform 0.25s ease;
     }
     .physician-avatar.director {
       background: var(--primary) !important;
@@ -571,7 +634,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/salvatore-dessole/" class="physician-card" data-specialty="ginecologia">
@@ -586,7 +649,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/maddalena-pola/" class="physician-card" data-specialty="ginecologia">
@@ -601,7 +664,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/marco-petrillo/" class="physician-card" data-specialty="ginecologia">
@@ -616,7 +679,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/antonella-pruneddu/" class="physician-card" data-specialty="ginecologia">
@@ -631,7 +694,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/sonia-bove/" class="physician-card" data-specialty="ginecologia">
@@ -646,7 +709,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/margherita-dessole/" class="physician-card" data-specialty="ginecologia">
@@ -661,7 +724,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -685,7 +748,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/camilla-ruzzoli/" class="physician-card" data-specialty="ostetricia">
@@ -700,7 +763,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -724,7 +787,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/sara-uras/" class="physician-card" data-specialty="cardiologia">
@@ -739,7 +802,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/paolo-pischedda/" class="physician-card" data-specialty="cardiologia">
@@ -754,7 +817,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/paolo-franca/" class="physician-card" data-specialty="cardiologia">
@@ -769,7 +832,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/giuliana-guagnozzi/" class="physician-card" data-specialty="cardiologia">
@@ -784,7 +847,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           
@@ -800,7 +863,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           
@@ -825,7 +888,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/alessandra-musinu/" class="physician-card" data-specialty="dermatologia">
@@ -840,7 +903,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/paolo-solinas/" class="physician-card" data-specialty="dermatologia">
@@ -855,7 +918,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/cosimo-cherveddu/" class="physician-card" data-specialty="dermatologia">
@@ -870,7 +933,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -894,7 +957,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/fabrizia-caucci/" class="physician-card" data-specialty="endocrinologia">
@@ -909,7 +972,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/francesco-tolu/" class="physician-card" data-specialty="endocrinologia">
@@ -924,7 +987,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/irene-aini/" class="physician-card" data-specialty="endocrinologia">
@@ -939,7 +1002,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -963,7 +1026,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/sebastiano-traccis/" class="physician-card" data-specialty="neurologia">
@@ -978,7 +1041,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -1004,7 +1067,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/francesco-santoru/" class="physician-card" data-specialty="oculistica">
@@ -1019,7 +1082,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/matteo-zucca/" class="physician-card" data-specialty="oculistica">
@@ -1034,7 +1097,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -1058,7 +1121,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/maria-laura-de-luca/" class="physician-card" data-specialty="otorinolaringoiatria">
@@ -1073,7 +1136,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -1097,7 +1160,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/pietro-lisai/" class="physician-card" data-specialty="ortopedia">
@@ -1112,7 +1175,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -1136,7 +1199,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/lorena-tanda/" class="physician-card" data-specialty="gastroenterologia">
@@ -1151,7 +1214,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -1175,7 +1238,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -1199,7 +1262,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/sergio-paolo-sotgia/" class="physician-card" data-specialty="nefrologia">
@@ -1214,7 +1277,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -1238,7 +1301,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/lorenzo-cordero/" class="physician-card" data-specialty="pneumologia">
@@ -1253,7 +1316,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         <a href="/equipe/sara-fois/" class="physician-card" data-specialty="pneumologia">
@@ -1268,7 +1331,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -1292,7 +1355,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/daniele-sabiu/" class="physician-card" data-specialty="ematologia">
@@ -1307,7 +1370,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -1331,7 +1394,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/mauro-quilichini/" class="physician-card" data-specialty="reumatologia">
@@ -1346,7 +1409,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -1370,7 +1433,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -1394,7 +1457,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/roberto-mancino/" class="physician-card" data-specialty="chirurgia-vascolare">
@@ -1409,7 +1472,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -1433,7 +1496,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -1457,7 +1520,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -1481,7 +1544,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -1505,7 +1568,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -1529,7 +1592,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/luigi-bosincu/" class="physician-card" data-specialty="medicina-lavoro">
@@ -1544,7 +1607,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -1568,7 +1631,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -1592,7 +1655,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -1616,7 +1679,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -1640,7 +1703,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/alessandro-pandolfi/" class="physician-card" data-specialty="nutrizione">
@@ -1655,7 +1718,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/elena-viale/" class="physician-card" data-specialty="nutrizione">
@@ -1670,7 +1733,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -1694,7 +1757,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
           <a href="/equipe/sara-meloni/" class="physician-card" data-specialty="laboratorio">
@@ -1709,7 +1772,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -1733,7 +1796,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </div>
             <div class="physician-cta">
-              <span style="color: var(--gray-500); font-size: 0.85rem;">Vedi profilo &rarr;</span>
+              <span style="color: var(--gray-500); font-size: 0.85rem; transition: color 0.25s ease;">Vedi profilo <span class="cta-arrow">&rarr;</span></span>
             </div>
           </a>
         </div>
