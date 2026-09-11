@@ -117,7 +117,7 @@
     "ruolo": "Cardiologo",
     "prenotazione": true,
     "miodottore": "https://www.miodottore.it/paolo-franca/cardiologo/sassari",
-    "foto": null
+    "foto": "/images/equipe/paolo-franca.jpg"
   },
   {
     "id": "giovanna-costa",
@@ -317,7 +317,7 @@
     "ruolo": "Nefrologo",
     "prenotazione": true,
     "miodottore": "https://www.miodottore.it/paolo-dessole/nefrologo/sassari",
-    "foto": null
+    "foto": "/images/equipe/paolo-dessole.jpg"
   },
   {
     "id": "sergio-paolo-sotgia",
@@ -327,7 +327,7 @@
     "ruolo": "Nefrologo",
     "prenotazione": true,
     "miodottore": "https://www.miodottore.it/sergio-paolo-sotgia/nefrologo/sassari",
-    "foto": null
+    "foto": "/images/equipe/sergio-paolo-sotgia.jpg"
   },
   {
     "id": "pietro-pirina",
@@ -417,7 +417,7 @@
     "ruolo": "Medico dello Sport",
     "prenotazione": true,
     "miodottore": "https://www.miodottore.it/giorgio-chiarelli-2/medico-dello-sport/sassari",
-    "foto": null
+    "foto": "/images/equipe/giorgio-chiarelli.jpg"
   },
   {
     "id": "gianfranco-manchia",

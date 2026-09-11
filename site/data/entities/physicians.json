@@ -130,7 +130,7 @@
       "name": "Paolo Franca",
       "specialty_id": "cardiologia",
       "job_title": "Cardiologo",
-      "photo_url": null,
+      "photo_url": "/images/equipe/paolo-franca.jpg",
       "booking_enabled": true
     },
     {
@@ -333,7 +333,7 @@
       "name": "Paolo Dessole",
       "specialty_id": "nefrologia",
       "job_title": "Nefrologo",
-      "photo_url": null,
+      "photo_url": "/images/equipe/paolo-dessole.jpg",
       "booking_enabled": true
     },
     {
@@ -343,7 +343,7 @@
       "name": "Sergio Paolo Sotgia",
       "specialty_id": "nefrologia",
       "job_title": "Nefrologo",
-      "photo_url": null,
+      "photo_url": "/images/equipe/sergio-paolo-sotgia.jpg",
       "booking_enabled": true
     },
     {
@@ -433,7 +433,7 @@
       "name": "Giorgio Chiarelli",
       "specialty_id": "medicina-sport",
       "job_title": "Medico dello Sport",
-      "photo_url": null,
+      "photo_url": "/images/equipe/giorgio-chiarelli.jpg",
       "booking_enabled": true
     },
     {
