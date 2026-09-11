@@ -1,5 +1,5 @@
 name: GBP - Monitor Recensioni
-# 2026-09-11: My Business API v4 abilitata dall'utente via Cloud Shell — run di verifica baseline. Retry post-propagazione 10:23 UTC.
+# 2026-09-11: My Business API v4 abilitata dall'utente via Cloud Shell — run di verifica baseline. Retry 2: abilitazione eseguita dall'utente (account gmail) — verifica progetto corretto.
 
 on:
   schedule:
