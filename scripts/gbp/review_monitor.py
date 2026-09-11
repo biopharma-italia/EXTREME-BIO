@@ -62,13 +62,28 @@ def save_state(state):
         json.dump(state, f, indent=2, ensure_ascii=False)
 
 
-def fetch_reviews(c, cfg):
-    # v4: accounts/{aid}/locations/{lid}/reviews — serve il path v4 completo
+def fetch_reviews(c, cfg, max_pages=4):
+    """Ritorna (reviews, v4_path, summary). Le recensioni arrivano ordinate per
+    updateTime desc: bastano le prime pagine (default 200) — il totale è ~4450,
+    paginarle tutte sprecherebbe quota senza beneficio (le vecchie sono già gestite).
+    summary = {'averageRating': float, 'totalReviewCount': int} dal primo response.
+    """
     account = cfg['primary_account']              # accounts/XXXX
     location = cfg['primary_location']            # locations/YYYY
     v4_path = f"{account}/{location}"
-    url = f"{API['v4']}/{v4_path}/reviews?pageSize=50&orderBy=updateTime desc"
-    return c.get_paged(url, 'reviews'), v4_path
+    url = f"{API['v4']}/{v4_path}/reviews?pageSize=50&orderBy=updateTime%20desc"
+    reviews, summary, page_token = [], {}, None
+    for _ in range(max_pages):
+        u = url + (f'&pageToken={page_token}' if page_token else '')
+        resp = c.get(u)
+        if not summary:
+            summary = {'averageRating': resp.get('averageRating'),
+                       'totalReviewCount': resp.get('totalReviewCount')}
+        reviews.extend(resp.get('reviews', []))
+        page_token = resp.get('nextPageToken')
+        if not page_token:
+            break
+    return reviews, v4_path, summary
 
 
 def open_issue(review, draft):
@@ -135,11 +150,31 @@ def main():
         save_state(state)
         return
 
-    reviews, _ = fetch_reviews(c, cfg)
+    reviews, _, summary = fetch_reviews(c, cfg)
     state = load_state()
     new_count = 0
 
-    print(f'Trovate {len(reviews)} recensioni (ultime 50).')
+    print(f"Rating medio GBP: {summary.get('averageRating')} — recensioni totali: {summary.get('totalReviewCount')}")
+    print(f'Scaricate {len(reviews)} recensioni (le più recenti).')
+
+    # BASELINE (primo run, state vuoto): marca tutto come visto SENZA aprire
+    # issue — evita di spammare centinaia di issue per recensioni storiche.
+    # Dal run successivo, solo le recensioni davvero nuove generano issue.
+    if not args.list and not state['seen']:
+        unanswered = 0
+        for rv in reviews:
+            has_reply = 'reviewReply' in rv
+            if not has_reply:
+                unanswered += 1
+            state['seen'][rv['reviewId']] = {
+                'stars': STAR_MAP.get(rv.get('starRating', ''), 0),
+                'replied': has_reply,
+                'baseline': True,
+            }
+        save_state(state)
+        print(f'BASELINE primo run: {len(reviews)} recensioni marcate come viste '
+              f'({unanswered} senza risposta — nessuna issue aperta per lo storico).')
+        return
     for rv in reviews:
         rid = rv['reviewId']
         stars = STAR_MAP.get(rv.get('starRating', ''), 0)
