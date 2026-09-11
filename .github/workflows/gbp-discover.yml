@@ -38,10 +38,25 @@ jobs:
           cd scripts/gbp
           python3 discover.py
 
-      - name: Commit config
+      - name: Mostra config generato
+        run: |
+          echo "=== scripts/gbp/config.json ==="
+          cat scripts/gbp/config.json
+
+      - name: Upload config come artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gbp-config
+          path: scripts/gbp/config.json
+
+      - name: Commit config (best-effort — la branch protection può bloccare il bot)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add scripts/gbp/config.json
-          git diff --cached --quiet || git commit -m "chore(gbp): discover account/location [skip ci]"
-          git push
+          if git diff --cached --quiet; then
+            echo "config.json già aggiornato nel repo — niente da committare."
+          else
+            git commit -m "chore(gbp): discover account/location [skip ci]"
+            git push || echo "::warning::Push bloccato dalla branch protection. Scarica l'artifact 'gbp-config' e committa manualmente scripts/gbp/config.json."
+          fi
