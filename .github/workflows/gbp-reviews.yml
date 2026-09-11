@@ -1,4 +1,5 @@
 name: GBP - Monitor Recensioni
+# 2026-09-11: My Business API v4 abilitata dall'utente via Cloud Shell — run di verifica baseline.
 
 on:
   schedule:
