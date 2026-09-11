@@ -24,7 +24,7 @@ import os
 import subprocess
 import sys
 
-from gbp_client import API, GBPClient, load_config
+from gbp_client import API, GBPClient, GBPError, load_config
 
 STATE_PATH = os.path.join(os.path.dirname(__file__), 'reviews_state.json')
 
@@ -150,7 +150,15 @@ def main():
         save_state(state)
         return
 
-    reviews, _, summary = fetch_reviews(c, cfg)
+    try:
+        reviews, _, summary = fetch_reviews(c, cfg)
+    except GBPError as e:
+        if e.code == 403 and ('has not been used in project' in e.body or 'it is disabled' in e.body):
+            print('My Business API (v4, recensioni) NON ancora abilitata nel progetto Cloud.\n'
+                  'Abilitarla da: https://console.developers.google.com/apis/api/'
+                  'mybusiness.googleapis.com/overview?project=762256014734', file=sys.stderr)
+            sys.exit(3)  # il workflow tratta exit 3 come skip non-fatale
+        raise
     state = load_state()
     new_count = 0
 

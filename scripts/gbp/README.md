@@ -6,6 +6,9 @@ Integrazione API GBP per gestione autonoma di recensioni, post, servizi/prezzi e
 
 - [x] Progetto Google Cloud `bio-clinic-gbp` (project number: 762256014734)
 - [x] API abilitate (Account Management, Business Information, Performance)
+- [ ] ⚠️ **My Business API v4 (recensioni/post) DA ABILITARE** — il monitor risponde 403:
+  abilitarla da https://console.developers.google.com/apis/api/mybusiness.googleapis.com/overview?project=762256014734
+  (è il punto "Activate the API" dell'email di approvazione 11/09)
 - [x] OAuth client + refresh token (`gestione@bio-clinic.it`, scope `business.manage`)
 - [x] GitHub Secrets: `GBP_CLIENT_ID`, `GBP_CLIENT_SECRET`, `GBP_REFRESH_TOKEN`
 - [x] **Form richiesta accesso API approvato da Google** ✅ (email 11/09/2026 — quota default 300 QPM)
@@ -35,7 +38,10 @@ il config.json viene comunque caricato come **artifact** (`gbp-config`) da commi
 ## Attivazione — COMPLETATA 11/09/2026
 
 1. ~~Lancia il workflow discover~~ ✅ eseguito, `config.json` committato
-2. Verifica: workflow **"GBP - Monitor Recensioni"** — cron 06:15/12:15/18:15 UTC (prima run utile automatica)
+2. Verifica: workflow **"GBP - Monitor Recensioni"** — cron 06:15/12:15/18:15 UTC.
+   ⚠️ In attesa dell'abilitazione della My Business API v4 il monitor fa skip pulito (exit 3).
+   Il **primo run riuscito** crea la baseline dello storico SENZA aprire issue; dal secondo
+   run in poi ogni nuova recensione senza risposta genera una GitHub Issue (label `gbp-review`).
 3. Sync servizi: localmente o via Actions ad hoc
    ```bash
    PYTHONPATH=scripts/gbp python3 scripts/gbp/sync_services.py            # dry-run

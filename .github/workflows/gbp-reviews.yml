@@ -44,7 +44,7 @@ jobs:
           python3 review_monitor.py || {
             code=$?
             if [ $code -eq 3 ]; then
-              echo "::notice::Quota API non ancora concessa (form in approvazione)."
+              echo "::notice::API non disponibile (quota non concessa o My Business API v4 non abilitata nel progetto Cloud) — skip."
               exit 0
             fi
             exit $code
