@@ -139,19 +139,22 @@ CREATE INDEX IF NOT EXISTS idx_blocked_date ON blocked_slots(department, blocked
 -- SEED DATA — Default schedule and initial services
 -- ============================================================================
 
--- Default lab schedule: Mon-Fri 07:00-21:00, Sat 08:00-14:00
+-- Default lab schedule: Mon-Fri 07:00-20:45 (ultimo slot 20:30), Sat 08:00-14:00 (ultimo slot 13:45)
 INSERT OR IGNORE INTO schedule_rules (department, day_of_week, start_time, end_time, slot_interval)
 VALUES
-  ('laboratorio', 1, '07:00', '21:00', 15),  -- Monday
-  ('laboratorio', 2, '07:00', '21:00', 15),  -- Tuesday
-  ('laboratorio', 3, '07:00', '21:00', 15),  -- Wednesday
-  ('laboratorio', 4, '07:00', '21:00', 15),  -- Thursday
-  ('laboratorio', 5, '07:00', '21:00', 15),  -- Friday
+  ('laboratorio', 1, '07:00', '20:45', 15),  -- Monday
+  ('laboratorio', 2, '07:00', '20:45', 15),  -- Tuesday
+  ('laboratorio', 3, '07:00', '20:45', 15),  -- Wednesday
+  ('laboratorio', 4, '07:00', '20:45', 15),  -- Thursday
+  ('laboratorio', 5, '07:00', '20:45', 15),  -- Friday
   ('laboratorio', 6, '08:00', '14:00', 15);  -- Saturday
 
 -- Align pre-existing rows (INSERT OR IGNORE does not touch them): 2026-08-28
 UPDATE schedule_rules SET end_time = '21:00'
   WHERE department = 'laboratorio' AND day_of_week IN (1,2,3,4,5) AND end_time = '20:00';
+-- 2026-09-12: ultimo prelievo feriale alle 20:30 (end_time esclusivo => 20:45)
+UPDATE schedule_rules SET end_time = '20:45'
+  WHERE department = 'laboratorio' AND day_of_week IN (1,2,3,4,5) AND end_time = '21:00';
 UPDATE schedule_rules SET end_time = '14:00'
   WHERE department = 'laboratorio' AND day_of_week = 6 AND end_time = '13:00';
 

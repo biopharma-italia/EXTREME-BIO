@@ -146,14 +146,14 @@ CREATE INDEX IF NOT EXISTS idx_services_active
   ON services(department, active);
 
 -- ============================================================================
--- SEED DATA: Laboratory schedule (Mon-Fri 07:00-21:00, Sat 08:00-14:00)
+-- SEED DATA: Laboratory schedule (Mon-Fri 07:00-20:45 => ultimo slot 20:30, Sat 08:00-14:00)
 -- ============================================================================
 
 INSERT OR IGNORE INTO schedule_rules (department, day_of_week, start_time, end_time, slot_interval)
 VALUES
-  ('laboratorio', 1, '07:00', '21:00', 15),  -- Monday
-  ('laboratorio', 2, '07:00', '21:00', 15),  -- Tuesday
-  ('laboratorio', 3, '07:00', '21:00', 15),  -- Wednesday
-  ('laboratorio', 4, '07:00', '21:00', 15),  -- Thursday
-  ('laboratorio', 5, '07:00', '21:00', 15),  -- Friday
+  ('laboratorio', 1, '07:00', '20:45', 15),  -- Monday
+  ('laboratorio', 2, '07:00', '20:45', 15),  -- Tuesday
+  ('laboratorio', 3, '07:00', '20:45', 15),  -- Wednesday
+  ('laboratorio', 4, '07:00', '20:45', 15),  -- Thursday
+  ('laboratorio', 5, '07:00', '20:45', 15),  -- Friday
   ('laboratorio', 6, '08:00', '14:00', 15);  -- Saturday

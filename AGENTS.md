@@ -71,10 +71,12 @@ Il **source of truth è `site/data/listino-processed.json`**.
 - Le incoerenze in attesa di decisione della direzione stanno in `PENDING_DECISION`
   nello script: non aggiungerne altre per "far passare" il check.
 
-Stesso principio per gli **orari**: apertura struttura Lun-Ven 07:00-21:00, Sab
-08:00-14:00 (JSON-LD `openingHoursSpecification` + `functions/api/booking/slots.js`).
-Non scrivere finestre prelievi diverse (es. "07:00-10:00") se non come
-raccomandazione per il digiuno.
+Stesso principio per gli **orari** (decisione direzione 2026-09-12):
+- apertura struttura: Lun-Ven 07:00-21:00, Sab 08:00-14:00 (JSON-LD `openingHoursSpecification`);
+- **prelievi: Lun-Ven 07:00-20:30** (ultimo prelievo 20:30), Sab 08:00-14:00
+  (`functions/api/booking/slots.js` + D1 `schedule_rules`, end_time esclusivo = 20:45);
+- **niente "entro le 10:00"**: il digiuno va suggerito solo come preparazione
+  ("a digiuno 8-12 ore"), mai come finestra oraria.
 
 ---
 
