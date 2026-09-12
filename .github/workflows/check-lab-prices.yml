@@ -1,0 +1,43 @@
+# Verifica che i prezzi degli esami di laboratorio citati negli HTML
+# (card, FAQ visibili, FAQ JSON-LD, OfferCatalog, meta description, noscript)
+# coincidano con il source-of-truth site/data/listino-processed.json.
+#
+# Contesto: 2026-09-12 — /laboratorio/ mostrava emocromo €6,50 nella card ma
+# €5 in FAQ/JSON-LD/noscript; vitamina D €16 vs €22; ferritina €13,90 vs €8.
+# Google usa il JSON-LD per rich result e AI Overview: il paziente leggeva un
+# prezzo e ne trovava un altro al banco.
+
+name: Check lab prices coherence
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**/*.html'
+      - 'site/data/listino-processed.json'
+      - 'scripts/check-lab-prices.py'
+  pull_request:
+    paths:
+      - 'site/**/*.html'
+      - 'site/data/listino-processed.json'
+      - 'scripts/check-lab-prices.py'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check HTML prices vs listino-processed.json
+        run: python3 scripts/check-lab-prices.py
+
+      - name: Suggest fix if check fails
+        if: failure()
+        run: |
+          echo "::error::Prezzi negli HTML non coerenti con site/data/listino-processed.json."
+          echo "::error::Esegui in locale: python3 scripts/check-lab-prices.py"
+          echo "::error::Correggi le occorrenze elencate (o aggiorna il listino se e' quello a essere vecchio)."

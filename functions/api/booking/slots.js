@@ -181,19 +181,21 @@ const FALLBACK_SERVICES = [
  * Computes capacity dynamically: schedule_rules - existing bookings - overrides.
  *
  * When D1 is not bound, returns deterministic mock slots based on day-of-week
- * schedule rules (Mon-Fri 07:00-21:00, Sat 08:00-14:00).
+ * schedule rules (Mon-Fri 07:00-20:30 last slot 20:30 / closing 21:00, Sat 08:00-14:00).
  *
  * @version 2.0.0
  * @date 2026-02-17
  */
 
 // Default lab schedule (matches D1 seed data)
+// NB: `end` è esclusivo nel generatore: 20:45 => ultimo slot prenotabile 20:30
+// (decisione direzione 2026-09-12: ultimo prelievo feriale alle 20:30, struttura aperta fino alle 21:00).
 const DEFAULT_SCHEDULE = {
-  1: { start: '07:00', end: '21:00', interval: 15 }, // Mon
-  2: { start: '07:00', end: '21:00', interval: 15 }, // Tue
-  3: { start: '07:00', end: '21:00', interval: 15 }, // Wed
-  4: { start: '07:00', end: '21:00', interval: 15 }, // Thu
-  5: { start: '07:00', end: '21:00', interval: 15 }, // Fri
+  1: { start: '07:00', end: '20:45', interval: 15 }, // Mon
+  2: { start: '07:00', end: '20:45', interval: 15 }, // Tue
+  3: { start: '07:00', end: '20:45', interval: 15 }, // Wed
+  4: { start: '07:00', end: '20:45', interval: 15 }, // Thu
+  5: { start: '07:00', end: '20:45', interval: 15 }, // Fri
   6: { start: '08:00', end: '14:00', interval: 15 }, // Sat
   // 0: Sunday = closed
 };

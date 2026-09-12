@@ -59,6 +59,27 @@ La CI `.github/workflows/check-reviews-coherence.yml` blocca i push in cui HTML 
 
 ---
 
+## ⚠️ Regola #2-bis: Prezzi esami = `site/data/listino-processed.json`
+
+I prezzi degli esami di laboratorio compaiono in più punti della stessa pagina
+(card, FAQ visibili, FAQ JSON-LD, `OfferCatalog`, meta description, `<noscript>`).
+Il **source of truth è `site/data/listino-processed.json`**.
+
+- Se cambia un prezzo: aggiorna prima il listino JSON, poi gli HTML.
+- Prima di committare: `python3 scripts/check-lab-prices.py` (deve uscire 0).
+- La CI `.github/workflows/check-lab-prices.yml` blocca push/PR incoerenti.
+- Le incoerenze in attesa di decisione della direzione stanno in `PENDING_DECISION`
+  nello script: non aggiungerne altre per "far passare" il check.
+
+Stesso principio per gli **orari** (decisione direzione 2026-09-12):
+- apertura struttura: Lun-Ven 07:00-21:00, Sab 08:00-14:00 (JSON-LD `openingHoursSpecification`);
+- **prelievi: Lun-Ven 07:00-20:30** (ultimo prelievo 20:30), Sab 08:00-14:00
+  (`functions/api/booking/slots.js` + D1 `schedule_rules`, end_time esclusivo = 20:45);
+- **niente "entro le 10:00"**: il digiuno va suggerito solo come preparazione
+  ("a digiuno 8-12 ore"), mai come finestra oraria.
+
+---
+
 ## ⚠️ Regola #3: Verifica live dopo ogni deploy
 
 Dopo un deploy, **sempre** verificare che la modifica sia effettivamente live:
